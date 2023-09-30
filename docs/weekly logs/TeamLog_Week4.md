@@ -16,7 +16,7 @@
 - Kanban feature board setup in Trello
 
 ## Burnup Chart
-![](burnup_chart_week4.png)
+![](screenshots/burnup_chart_week4.JPG)
 
 ## Network Graph
 ![](network_graph_week4.png)
@@ -42,4 +42,4 @@
 - Capstone Project Repository Setup
 
 ## Test Report 
-- Not Applicable for this week, since this week's focus involved submitting our team's project plan.
+- Not applicable for this week, since this week's focus involved submitting our team's project plan.
