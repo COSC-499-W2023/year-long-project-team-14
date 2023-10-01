@@ -4,7 +4,7 @@
 - End Date: October 1
 
 ### Tasks I worked on:
-![](screenshots/tasks_jesse_week4.png)
+![](screenshots/tasks_jesse_week4.JPG)
   
 ### Recap on your week's goals
 - My goal for this week was to help complete our team's weekly log, outline our minimum viable product in our project plan, meet with the rest of the team to discuss our product features during meetings, and outline my selected tasks in our project plan's teamwork distribution feature board. 
@@ -22,7 +22,7 @@
 - End Date: September 24
 
 ### Tasks I worked on:
-![](screenshots/tasks_jesse_week3.png)
+![](screenshots/tasks_jesse_week3.JPG)
   
 ### Recap on your week's goals
 - My goals for this week was to get more experience working with Git/GitHub branching workflow and aid in completing the word chain exercise.
