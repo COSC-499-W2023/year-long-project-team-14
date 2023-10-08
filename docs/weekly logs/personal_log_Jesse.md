@@ -4,7 +4,7 @@
 - End Date: October 8
 
 ### Tasks I worked on:
-![](screenshots/tasks_jesse_week5.PNG)
+![](screenshots/tasks_jesse_week5.JPG)
   
 ### Recap on your week's goals
 My goals this week were to: 
