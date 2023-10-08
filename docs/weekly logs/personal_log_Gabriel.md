@@ -1,4 +1,28 @@
 # Personal Log - Gabriel Mercier
+## Week 5
+- Start Date: October 2
+- End Date: October 8
+
+### Tasks I worked on:
+![](screenshots/tasks_gabriel_week5.PNG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Discuss with the team making sure we are on the same page for the track of the project
+* Stay on top of my designated tasks/features
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Install Unity and it's respective programs
+* Try out unity following a tutorial to prepare for future milestones.
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed all my tasks. I followed this tutorial on [youtube](https://youtu.be/Ii-scMenaOQ?si=fdblajOZv-Tpky3p) parts 1-6. Below are screenshots of my unity editor and the scripts I wrote alongside.
+
+![](screenshots/gabrielM_wk5_unity_tutorial.PNG)
+![](screenshots/gabrielM_wk5_unityscript.png)
+
+***
+
 ## Week 4
 - Start Date: September 25
 - End Date: October 1
