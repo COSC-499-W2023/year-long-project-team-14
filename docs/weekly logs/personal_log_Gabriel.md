@@ -16,7 +16,7 @@ My features this week were to:
 * Install Unity and it's respective programs
 * Try out unity following a tutorial to prepare for future milestones.
 ### Among these tasks, which have you completed/in progress in the last week?
-I have completed all my tasks. I followed [this](https://youtu.be/Ii-scMenaOQ?si=fdblajOZv-Tpky3p) tutorial on youtube parts 1-6. Below are screenshots of my unity editor and the scripts I wrote alongside.
+I have completed all my tasks. I followed this [tutorial](https://youtu.be/Ii-scMenaOQ?si=fdblajOZv-Tpky3p) on youtube parts 1-6. Below are screenshots of my unity editor and the scripts I wrote alongside.
 
 ![](screenshots/gabrielM_wk5_unity_tutorial.PNG)
 ![](screenshots/gabrielM_wk5_unityscript.png)
