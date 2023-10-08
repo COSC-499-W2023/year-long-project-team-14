@@ -1,4 +1,22 @@
 # Personal Log - Darion Pescada
+## Week 5
+- Start Date: October 2
+- End Date: October 8
+
+### Tasks I worked on:
+![](screenshots/tasks_darion_week5.png)
+  
+### Recap on your week's goals
+- My goals this week were to set up the Unity project and prepare for future milestones by familiarizing myself with parts of Unity that I haven't used in a while.
+
+### Which features were yours in the project plan for this milestone?
+- My feature was to create and set up the Unity project. This included organizing the file structure in Unity, importing the art assets, setting up the testing framework, adding a proper gitignore file, and adding git lfs for large file uploads to GitHub. I also reviewed how to use certain features in Unity and planned out how I will implement some of my features in future milestones.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- I completed all my tasks for this week.
+
+***
+
 ## Week 4
 - Start Date: September 25
 - End Date: October 1
