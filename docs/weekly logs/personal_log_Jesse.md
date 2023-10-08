@@ -1,4 +1,32 @@
 # Personal Log - Jesse Lazzari
+## Week 5
+- Start Date: October 2
+- End Date: October 8
+
+### Tasks I worked on:
+![](screenshots/tasks_jesse_week5.PNG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Learn more about the tech stack we will be using for the year long project
+* Dicuss with the rest of the team and ensure we are on the same page about the project
+* Ensure I completed my designated tasks for this week in a timely manner
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Install Unity and it's respective programs
+* Familiarize myself with Unity and learn the basic functionality so I am prepared for the upcoming milestones and able to code my respective features for the year long project.
+* Help complete the weekly log for our team
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I completed all my designated tasks for this week.
+* In order to learn more about the basics of Unity I followed along with this Youtube [tutorial](https://youtu.be/Ii-scMenaOQ?si=fdblajOZv-Tpky3p) and completed videos 1 to 5.
+* I have attached a screenshot of my Unity tutorial project below 
+
+![](screenshots/UnityTutorialScreenshot_Jesse.JPG)
+
+***
+
 ## Week 4
 - Start Date: September 25
 - End Date: October 1
