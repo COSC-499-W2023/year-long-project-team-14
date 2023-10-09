@@ -1,4 +1,24 @@
 # Personal Log - Justin McKendry
+## Week 5
+- Start Date: October 2
+- End Date: October 8
+
+### Tasks I worked on:
+![](screenshots/Justin_tasks_week5.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Download and get a grasp of the basic's of Unity to ensure proper perparedness for the upcoming week's of work.
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Download and install unity
+* Educate myself on the basic's of it's syntax
+* Educate myself on how to use it with Github
+* Ensure that I am comfortable to work with it moving forward
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed all my tasks.
+
 ## Week 4
 - Start Date: September 25
 - End Date: October 1
