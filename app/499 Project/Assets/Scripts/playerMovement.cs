@@ -25,7 +25,7 @@ public class playerMovement : MonoBehaviour
     void Update()
     {
 
-        moveDirection = playerMovements.ReadValue<Vector2>();
+        moveDirection = playerMovements.ReadValue<Vector2>().normalized;
         
     }
 
