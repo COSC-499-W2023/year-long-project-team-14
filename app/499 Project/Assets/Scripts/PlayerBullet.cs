@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player_bullet : MonoBehaviour
+public class PlayerBullet : MonoBehaviour
 {
 
     public int bounces = 1;
