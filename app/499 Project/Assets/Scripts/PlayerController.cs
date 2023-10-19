@@ -5,9 +5,18 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private float attackCharge;
+    [SerializeField] private float attackChargeSpeed;
+    [SerializeField] private float attackChargeMax;
+    [SerializeField] private float attackCost;
+    [SerializeField] private float bulletForce;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private int bulletBounces;
+
+    public GameObject bulletPrefab;
+
     public PlayerInput playerInput;
     public Rigidbody2D rb;
-    public float moveSpeed = 10f;
     public Animator animator;
 
     [SerializeField] Transform gunFollow;
@@ -22,6 +31,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if(attackCharge < attackChargeMax)
+            attackCharge += Time.deltaTime * attackChargeSpeed;
+
         if(moveDirection.x != 0 || moveDirection.y != 0){
             animator.SetFloat("X", moveDirection.x);
             animator.SetFloat("Y", moveDirection.y);
@@ -59,5 +71,22 @@ public class PlayerController : MonoBehaviour
     public void Aim(InputAction.CallbackContext context)
     {
         aimDirection = context.ReadValue<Vector2>();
+    }
+
+    public void Shoot(InputAction.CallbackContext context)
+    {
+        if(context.performed && attackCharge >= attackCost)
+        {
+            attackCharge -= attackCost;
+
+            GameObject bullet = Instantiate(bulletPrefab, gunFollow.position + (Vector3)(-gunFollow.up), new Quaternion(0, 0, 180, transform.rotation.w));
+            Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
+            bulletRB.AddForce(-gunFollow.up * bulletForce);
+
+            PlayerBullet playerBullet = bullet.GetComponent<PlayerBullet>();
+            playerBullet.bounces = bulletBounces;
+
+            Destroy(bullet, 30);
+        }
     }
 }
