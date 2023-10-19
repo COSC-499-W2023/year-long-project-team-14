@@ -10,7 +10,10 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 10f;
     public Animator animator;
 
+    [SerializeField] Transform gunFollow;
+
     Vector2 moveDirection = Vector2.zero;
+    Vector2 aimDirection = Vector2.zero;
 
     private void Awake()
     {
@@ -27,7 +30,20 @@ public class PlayerController : MonoBehaviour
         } else {
             animator.SetBool("IsWalking", false);
         }
-        
+
+
+        if (playerInput.currentControlScheme == "Keyboard&Mouse")
+        {
+            var mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            Quaternion rotation = Quaternion.LookRotation(mousePos - gunFollow.transform.position, gunFollow.transform.TransformDirection(Vector3.forward));
+            gunFollow.transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
+        }
+        else
+        {
+            Quaternion rotation = Quaternion.LookRotation(aimDirection, gunFollow.transform.TransformDirection(Vector3.forward));
+            gunFollow.transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
+        }
+
     }
 
     private void FixedUpdate()
@@ -38,5 +54,10 @@ public class PlayerController : MonoBehaviour
     public void Move(InputAction.CallbackContext context)
     {
         moveDirection = context.ReadValue<Vector2>().normalized;
+    }
+
+    public void Aim(InputAction.CallbackContext context)
+    {
+        aimDirection = context.ReadValue<Vector2>();
     }
 }
