@@ -20,9 +20,14 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
 
     [SerializeField] Transform gunFollow;
+    [SerializeField] Transform playerCenter;
 
     Vector2 moveDirection = Vector2.zero;
     Vector2 aimDirection = Vector2.zero;
+
+    public LineRenderer lineRenderer;
+    public float maxAimDistance;
+    public LayerMask layerDetection;
 
     private void Awake()
     {
@@ -47,13 +52,23 @@ public class PlayerController : MonoBehaviour
         if (playerInput.currentControlScheme == "Keyboard&Mouse")
         {
             var mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            Quaternion rotation = Quaternion.LookRotation(mousePos - gunFollow.transform.position, gunFollow.transform.TransformDirection(Vector3.forward));
-            gunFollow.transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
+            Quaternion rotation = Quaternion.LookRotation(mousePos - playerCenter.transform.position, playerCenter.transform.TransformDirection(Vector3.forward));
+            playerCenter.transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
         }
         else
         {
-            Quaternion rotation = Quaternion.LookRotation(aimDirection, gunFollow.transform.TransformDirection(Vector3.forward));
-            gunFollow.transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
+            Quaternion rotation = Quaternion.LookRotation(aimDirection, playerCenter.transform.TransformDirection(Vector3.forward));
+            playerCenter.transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
+        }
+
+        lineRenderer.positionCount = 1;
+        lineRenderer.SetPosition(0, gunFollow.transform.position);
+        RaycastHit2D hit = Physics2D.Raycast(gunFollow.transform.position, -gunFollow.up, maxAimDistance, layerDetection);
+
+        lineRenderer.positionCount += 1;
+        if(hit.collider != null)
+        {
+            lineRenderer.SetPosition(lineRenderer.positionCount - 1, hit.point);
         }
 
     }
