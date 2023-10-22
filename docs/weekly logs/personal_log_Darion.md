@@ -1,4 +1,26 @@
 # Personal Log - Darion Pescada
+
+## Week 6 and 7
+- Start Date: October 9
+- End Date: October 22
+
+### Tasks I worked on:
+![](screenshots/tasks_darion_week6.png)
+  
+### Recap on your week's goals
+- My goals for the past couple weeks were to implement my milestone 1 features from the project plan, assist our team with their features, and get familiar with Unity's testing framework.
+
+### Which features were yours in the project plan for this milestone?
+My features in the project plan for this milestone include:
+- giving the player the ability to shoot bullets
+- implementing controller support
+- Additionally, I added a line of sight to the player for improved aim
+
+### Among these tasks, which have you completed/in progress in the last week?
+- I completed all my tasks which were my milestone 1 features as stated above, assisting my team with their milestone 1 features, and learning more about the testing framework.
+
+***
+
 ## Week 5
 - Start Date: October 2
 - End Date: October 8
