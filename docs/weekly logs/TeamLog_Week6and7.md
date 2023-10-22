@@ -13,7 +13,7 @@
 - Player bullets
 - Player collisions with other objects
 - Player animations for Player 1 Red mage (walking, attacking, dying)
-- Player animations for Player 2 Green mage (walking, attacking, dying)
+- Player animations for Player 2 Cyan mage (walking, attacking, dying)
 - Create The level template that will be used in the future for creating other levels
 - Create The main menu 
 - Create The pause menu
@@ -40,9 +40,13 @@
 - Player bullets
 - Player collisions with other objects
 - Player animations for Player 1 Red mage (walking, attacking, dying)
-- Player animations for Player 2 Green mage (walking, attacking, dying)
+- Player animations for Player 2 Cyan mage (walking, attacking, dying)
 - The level template that will be used in the future for creating other levels
 - Player aim using player mouse input, or input from controller with line of sight for player
+
+## Screenshot of Game
+
+![](screenshots/game_screenshot.PNG)
 
 ## In Progress Tasks
 - Create The main menu 
