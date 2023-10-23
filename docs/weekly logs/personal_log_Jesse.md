@@ -1,4 +1,34 @@
 # Personal Log - Jesse Lazzari
+## Week 6 and 7
+- Start Date: October 9
+- End Date: October 22
+
+### Tasks I worked on:
+![](screenshots/peer_eval_tasks_week6.JPG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Finalize the level template that will be used in the future for creating other levels
+* Implement player directional animations for idle, walking, attacking, and dying for player 1 (red mage)
+* Implement player directional animations for idle, walking, attacking, and dying for player 2 (green mage)
+* Add functionality for playing character animations and animator tree transitions on either keypress or joystick movement
+* Write weekly teamlog for the team
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Default level 1 template setup and design
+* Player animations for player 1 character
+* Player animations for player 2 character
+* Play directional animation based on movement (on key press or joystick direction) for player 1
+* Play directional animation based on movement (on key press or joystick direction) for player 2
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed all features I set out to implement
+* In progress tasks are implementing unit tests for the features above
+
+
+***
+
 ## Week 5
 - Start Date: October 2
 - End Date: October 8
