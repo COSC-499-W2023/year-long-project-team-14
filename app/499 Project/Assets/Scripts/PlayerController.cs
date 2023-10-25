@@ -1,23 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.InputSystem; 
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float attackCharge;
-    [SerializeField] private float attackChargeSpeed;
-    [SerializeField] private float attackChargeMax;
-    [SerializeField] private float attackCost;
-    [SerializeField] private float bulletForce;
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private int bulletBounces;
+    public float attackCharge;
+    public float attackChargeSpeed;
+    public float attackChargeMax;
+    public float attackCost;
+    public float bulletForce;
+    public float moveSpeed;
+    public int bulletBounces;
 
     public GameObject bulletPrefab;
 
-    public PlayerInput playerInput;
-    public Rigidbody2D rb;
-    public Animator animator;
+    PlayerInput playerInput;
+    Rigidbody2D rb;
+    Animator animator;
 
     [SerializeField] Transform gunFollow;
     [SerializeField] Transform playerCenter;
@@ -25,12 +25,16 @@ public class PlayerController : MonoBehaviour
     Vector2 moveDirection = Vector2.zero;
     Vector2 aimDirection = Vector2.zero;
 
-    public LineRenderer lineRenderer;
-    public float maxAimDistance;
-    public LayerMask layerDetection;
+    [SerializeField] private LineRenderer lineRenderer;
+    float maxAimDistance = 50;
+    [SerializeField] private LayerMask layerDetection;
+
+    [HideInInspector] public bool unitTest = false;
 
     private void Awake()
     {
+        playerInput = GetComponent<PlayerInput>();
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
@@ -48,18 +52,18 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsWalking", false);
         }
 
-
-        if (playerInput.currentControlScheme == "Keyboard&Mouse")
-        {
-            var mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            Quaternion rotation = Quaternion.LookRotation(mousePos - playerCenter.transform.position, playerCenter.transform.TransformDirection(Vector3.forward));
-            playerCenter.transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
-        }
-        else
-        {
-            Quaternion rotation = Quaternion.LookRotation(aimDirection, playerCenter.transform.TransformDirection(Vector3.forward));
-            playerCenter.transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
-        }
+        if(!unitTest)
+            if (playerInput.currentControlScheme == "Keyboard&Mouse")
+            {
+                var mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                Quaternion rotation = Quaternion.LookRotation(mousePos - playerCenter.transform.position, playerCenter.transform.TransformDirection(Vector3.forward));
+                playerCenter.transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
+            }
+            else
+            {
+                Quaternion rotation = Quaternion.LookRotation(aimDirection, playerCenter.transform.TransformDirection(Vector3.forward));
+                playerCenter.transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
+            }
 
         lineRenderer.positionCount = 1;
         lineRenderer.SetPosition(0, gunFollow.transform.position);
@@ -88,13 +92,21 @@ public class PlayerController : MonoBehaviour
         aimDirection = context.ReadValue<Vector2>();
     }
 
-    public void Shoot(InputAction.CallbackContext context)
+    public void Fire(InputAction.CallbackContext context)
     {
-        if(context.performed && attackCharge >= attackCost)
+        if(context.performed)
+        {
+            Shoot();
+        }
+    }
+
+    public void Shoot()
+    {
+        if(attackCharge >= attackCost)
         {
             attackCharge -= attackCost;
 
-            GameObject bullet = Instantiate(bulletPrefab, gunFollow.position + (Vector3)(-gunFollow.up), new Quaternion(0, 0, 180, transform.rotation.w));
+            GameObject bullet = Instantiate(bulletPrefab, gunFollow.position, Quaternion.identity);
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
             bulletRB.AddForce(-gunFollow.up * bulletForce);
 
@@ -104,4 +116,5 @@ public class PlayerController : MonoBehaviour
             Destroy(bullet, 30);
         }
     }
+
 }

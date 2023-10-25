@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9020650352874436745
 Transform:
   m_ObjectHideFlags: 0
@@ -182,6 +182,7 @@ MonoBehaviour:
   layerDetection:
     serializedVersion: 2
     m_Bits: 896
+  unitTest: 0
 --- !u!95 &2945665864706798238
 Animator:
   serializedVersion: 5
@@ -263,8 +264,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4452037770434438324}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Shoot
+        m_TargetAssemblyTypeName: PlayerController, ProjectScripts
+        m_MethodName: Fire
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
