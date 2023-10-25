@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9020650352874436745
 Transform:
   m_ObjectHideFlags: 0
@@ -172,13 +172,9 @@ MonoBehaviour:
   moveSpeed: 5
   bulletBounces: 1
   bulletPrefab: {fileID: 8495944747531926129, guid: e0f038ea01aad6a479c19c275fdbd3d1, type: 3}
-  playerInput: {fileID: 3476007376617294521}
-  rb: {fileID: 8516023400171509827}
-  animator: {fileID: 2945665864706798238}
   gunFollow: {fileID: 2784160869417341797}
   playerCenter: {fileID: 8244858132379321173}
   lineRenderer: {fileID: 517172463433549030}
-  maxAimDistance: 50
   layerDetection:
     serializedVersion: 2
     m_Bits: 896
