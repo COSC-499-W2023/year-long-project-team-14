@@ -172,13 +172,9 @@ MonoBehaviour:
   moveSpeed: 5
   bulletBounces: 1
   bulletPrefab: {fileID: 5755921796930191897, guid: 3d996469d34a57d48b5cda7756cb6536, type: 3}
-  playerInput: {fileID: 3476007376617294521}
-  rb: {fileID: 8516023400171509827}
-  animator: {fileID: 0}
   gunFollow: {fileID: 267668128978849629}
   playerCenter: {fileID: 3697424085047379290}
   lineRenderer: {fileID: 4187919560129157548}
-  maxAimDistance: 50
   layerDetection:
     serializedVersion: 2
     m_Bits: 896
@@ -318,7 +314,7 @@ MonoBehaviour:
     m_ActionId: 1b1a5003-e87e-4ff7-9e88-ba9723113efd
     m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
