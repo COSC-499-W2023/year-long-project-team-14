@@ -8,9 +8,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttackTest
 {
-    GameObject player;
-    PlayerController playerController;
-    GameObject[] bullets;
+    private GameObject player;
+    private PlayerController playerController;
+    private GameObject[] bullets;
 
     [SetUp]
     public void Setup()

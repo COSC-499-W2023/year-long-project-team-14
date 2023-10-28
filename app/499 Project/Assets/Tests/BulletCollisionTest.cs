@@ -8,12 +8,13 @@ using UnityEngine.InputSystem;
 
 public class bulletCollisionTest 
 {
-    PlayerController playerController;
-    UnityEngine.Object playerPrefab;
-    GameObject player;
+    private PlayerController playerController;
+    private UnityEngine.Object playerPrefab;
+    private GameObject player;
+    private  GameObject[] bullets;
 
     private UnityEngine.Object templatePrefab;
-    GameObject template;
+    private GameObject template;
 
     [SetUp]
     public void Setup()
@@ -44,7 +45,7 @@ public class bulletCollisionTest
         playerController.SetMoveDirection(Vector2.left);
 
         //Store the bullet in a variable
-        GameObject[] bullets = GameObject.FindGameObjectsWithTag("Player_bullet");
+        bullets = GameObject.FindGameObjectsWithTag("Player_bullet");
 
         //Let the bullet travel 
         yield return new WaitForSeconds(3.0f); 
@@ -61,6 +62,9 @@ public class bulletCollisionTest
         Object.Destroy(playerController.gameObject);
 
         GameObject.Destroy(template);
+
+        for(int i = 0; i < bullets.Length; i++)
+            GameObject.Destroy(bullets[i]);
     }
 
 }
