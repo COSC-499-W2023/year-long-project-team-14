@@ -192,6 +192,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelTemplate
       objectReference: {fileID: 0}
+    - target: {fileID: 4870101288684059196, guid: bea5726489661344bbf1dea76e4253fa, type: 3}
+      propertyPath: m_TileAnchor.x
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6843485374949641022, guid: bea5726489661344bbf1dea76e4253fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -391,6 +395,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 2019937772}
-  - {fileID: 1163165045}
   - {fileID: 5453973980132885787}
   - {fileID: 825253363}
+  - {fileID: 1163165045}
