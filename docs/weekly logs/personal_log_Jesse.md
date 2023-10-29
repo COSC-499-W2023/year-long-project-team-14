@@ -1,4 +1,34 @@
 # Personal Log - Jesse Lazzari
+## Week 8
+- Start Date: October 23
+- End Date: October 29
+
+### Tasks I worked on:
+![](screenshots/peer_eval_tasks_week8_Jesse.JPG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Learn Unit Testing Basics (C#, NUnit)
+* Implement unit testing for directional player animations and ensure Animator tree is playing correct animation when player is moving
+* Prepare for the upcoming mini-presentation
+* Write weekly teamlog for the team
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Implement Unit Testing for Player animations for player 1 and player 2 character 
+* Implement Unit Testing for playing directional animation based on movement (on key press or joystick direction) for player 1 and 2
+
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed all unit testing for the features I set out to implement
+* In progress tasks are continuing to prepare for the upcoming mini-presentation
+
+### Screenshots of Implemented Unit Testing with NUnit
+![](screenshots/week8_task_jesse1.JPG)
+![](screenshots/week8_task_jesse2.JPG)
+
+***
+
 ## Week 6 and 7
 - Start Date: October 9
 - End Date: October 22
