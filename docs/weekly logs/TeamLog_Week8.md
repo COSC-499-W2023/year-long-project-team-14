@@ -55,5 +55,5 @@
 - Unit testing for main menu
 
 ## Test Report 
-### [Milestone 1 - Test Report Documentation](tests/Test_log.md)
+### [Milestone 1 - Test Report Documentation](https://github.com/COSC-499-W2023/year-long-project-team-14/blob/d333264cca30bf54437f0083fbc6bd36f96a2825/tests/Test_log.md)
 ![](screenshots/week8_task_jesse1.JPG)
