@@ -1,4 +1,34 @@
 # Personal Log - Kibele Sebnem Yildirim
+## Week 6-7
+- Start Date: October 9
+- End Date: October 22
+
+### Tasks I worked on:
+![](screenshots/tasks_kibele_week6.png)
+
+### Recap on your week's goals
+- My goals these 2 weeks were to:
+* Learn more about main menu and pause menu on Unity
+* Learn more about C# language
+* Construct the main menu and pause menu for our game
+* Improve my skills on Unity and C# language
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past 2 weeks was watching tutorials and practiting the main menu, options menu within main menu and the pause menu, and then constructing one for our game.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- I have finalized all my main menu and pause menu tasks. I have also improved my experience in Unity and C# language. 
+
+Here is a screenshot of my exercise on Unity:
+![](screenshots/kibele_unity_tutorial1.png)
+
+Here is a screenshot of my final product of menus on Unity after the end of the week:
+![](screenshots/kibele_mainmenu.jpeg)
+![](screenshots/kibele_optionsmenu.jpeg)
+![](screenshots/kibele_pausemenu.jpeg)
+
+
+***
 ## Week 5
 - Start Date: October 2
 - End Date: October 8
