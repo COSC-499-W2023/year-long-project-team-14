@@ -55,5 +55,5 @@
 - Unit testing for main menu
 
 ## Test Report 
-### [Milestone 1 - Test Report Documentation](year-long-project-team-14/tests/Test_log.md)
+### [Milestone 1 - Test Report Documentation](tests/Test_log.md)
 ![](screenshots/week8_task_jesse1.JPG)
