@@ -1028,7 +1028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 1630056774}
+  m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &613829514
@@ -2147,7 +2147,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -2814,6 +2814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e3d05a3f9f7484bbbcc38ca8bf7adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playButton: {fileID: 1630056774}
 --- !u!224 &1980289031
 RectTransform:
   m_ObjectHideFlags: 0
