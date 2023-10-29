@@ -6,11 +6,11 @@
 - For this week, we set out to learn the NUnit testing framework for implementing automated testing in Unity for each feature we have implemented thus far. Additionally, we aimed to improve the functionality of the first draft of the main menu and added controller support using Unity's new Input System. At the end of this milestone, we aim to have unit testing finished for each associated feature implemented so far and refine our features for the live demo mini-presentation. As well as have a good idea of how we will allocate time for the 5 minute mini-presenstion. We have also designed a logo for our game. 
 
 ## Associated Board Tasks
-- Unit testing for player attack test
-- Unit testing for player controls test
-- Unit testing for player animation test
-- Unit testing for player collision test
-- Unit testing for bullet collision test
+- Unit testing for player attack 
+- Unit testing for player controls 
+- Unit testing for player animation 
+- Unit testing for player collision 
+- Unit testing for bullet collision 
 - Revamp main menu and add controller support
 - Unit testing for main menu
 - Create logo for main menu
@@ -34,11 +34,11 @@
 - Justin Mckendry → @justinmdry
 
 ## Completed Tasks
-- Unit testing for player attack test
-- Unit testing for player controls test
-- Unit testing for player animation test
-- Unit testing for player collision test
-- Unit testing for bullet collision test
+- Unit testing for player attack 
+- Unit testing for player controls 
+- Unit testing for player animation 
+- Unit testing for player collision 
+- Unit testing for bullet collision 
 - Update main menu
 - Create logo for main menu
 - Document test report
@@ -51,7 +51,7 @@
 ![](screenshots/game_screenshot.PNG)
 
 ## In Progress Tasks
-- Continue to Prepare for mini presentation
+- Continue to prepare for mini presentation
 - Unit testing for main menu
 
 ## Test Report 
