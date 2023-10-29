@@ -15,7 +15,10 @@ How this test works:
 ![](Test_screenshots/Milestone1/test_playerAnamation.png)
 
 How this test works:
-  * 
+  * Spawn a player
+  * Set playerController to move joystick in a specific direction
+  * Assert that Animator Tree is storing the corresponding x,y position and playing correct animation
+
 ## Test for player attack
 ![](Test_screenshots/Milestone1/test_playerAttack.png)
 
