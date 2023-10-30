@@ -1,4 +1,29 @@
 # Personal Log - Kibele Sebnem Yildirim
+## Week 8
+- Start Date: October 23
+- End Date: October 29
+
+### Tasks I worked on:
+![](screenshots/kibele_week8.png)
+
+### Recap on your week's goals
+- My goals this week were to:
+* Learn more about Unity Testing Tools and NUnit
+* Write test cases for our game
+* Prepare for next week's presentation
+* Brainstorm with team about the demo
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to learn more about Unity Testing Tools and NUnit, and write test cases for our game. I have also got prepared for next week's presentation and brainstormed with my team about the demo.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week. I have also thought of what we can present in the demo and what we can show to the class. 
+
+Here is a screenshot of my codework on Unity:
+![](screenshots/unity-kibeletest.jpeg)
+![](screenshots/unity-kibeletest2.jpeg)
+
+
 ## Week 6-7
 - Start Date: October 9
 - End Date: October 22
@@ -52,7 +77,6 @@ Here is a screenshot of my Unity account and a small portion of the tutorial I w
 ![](screenshots/kibele_unity_tutorial.png)
 
 ***
-
 ## Week 4
 - Start Date: September 25
 - End Date: October 1
@@ -70,19 +94,15 @@ Here is a screenshot of my Unity account and a small portion of the tutorial I w
 - I completed all my tasks this week.
 
 ***
-
 ## Week 3
 - Start Date: September 21
 - End Date: September 24
 
 ### Tasks I worked on:
 ![](screenshots/tasks_kibele_week3.png)
-  
-## Recap on your week's goals
+### Recap on your week's goals
 This week it was great for me to communicate with the pull requests and get familiar with the review feature on GitHub while working with my team
-
-## Which features were yours in the project plan for this milestone?
+### Which features were yours in the project plan for this milestone?
 I have completed the test class for wordChanger feature and also testing the URL if it successively takes it or not on the word chain exercise.
-
-## Among these tasks, which have you completed/in progress in the last week?
+### Among these tasks, which have you completed/in progress in the last week?
 I have finalized my test classes for this week. I have also worked on the word chain exercise and tested the URL if it takes it or not.
