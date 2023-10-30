@@ -7,24 +7,50 @@ using UnityEngine.InputSystem;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject mainMenuObject;
+    public GameObject playerMenuObject;
+
     public GameObject playButton;
+    public GameObject player1Button;
 
     public bool mainMenu = true;
+    public bool playerMenu = false;
 
     void Start()
     {
         StartCoroutine(SelectMenuButon());
-
-        if(Gamepad.all.Count > 0)
-        {
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(playButton);
-        }
+        SelectButton(playButton);
     }
+
+    public void Play()
+    {
+        mainMenu = false;
+        playerMenu = true;
+        mainMenuObject.SetActive(false);
+        playerMenuObject.SetActive(true);
+        SelectButton(player1Button);
+    }
+    public void OnePlayer()
+    {
+        PlayGame();
+    }
+    public void TwoPlayer()
+    {
+        PlayGame();
+    }
+    public void BackToMainMenu()
+    {
+        mainMenu = true;
+        playerMenu = false;
+        mainMenuObject.SetActive(true);
+        playerMenuObject.SetActive(false);
+        SelectButton(playButton);
+    }
+
 
     public void PlayGame()
     {
-     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void QuitGame()
@@ -33,6 +59,14 @@ public class MainMenu : MonoBehaviour
      Application.Quit();
     }
 
+    public void SelectButton(GameObject button)
+    {
+        if(Gamepad.all.Count > 0)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(button);
+        }
+    }
     public IEnumerator SelectMenuButon() 
     {
         if(Gamepad.all.Count > 0) 
@@ -42,6 +76,10 @@ public class MainMenu : MonoBehaviour
                 if(mainMenu)
                 {
                     EventSystem.current.SetSelectedGameObject(playButton);
+                }
+                else if(playerMenu)
+                {
+                    EventSystem.current.SetSelectedGameObject(player1Button);
                 }
             }
         }
