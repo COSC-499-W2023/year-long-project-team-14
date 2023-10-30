@@ -1,4 +1,64 @@
 # Personal Log - Jesse Lazzari
+## Week 8
+- Start Date: October 23
+- End Date: October 29
+
+### Tasks I worked on:
+![](screenshots/peer_eval_tasks_week8_Jesse.JPG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Learn Unit Testing Basics (C#, NUnit)
+* Implement unit testing for directional player animations and ensure Animator tree is playing correct animation when player is moving
+* Prepare for the upcoming mini-presentation
+* Write weekly teamlog for the team
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Implement Unit Testing for Player animations for player 1 and player 2 character 
+* Implement Unit Testing for playing directional animation based on movement (on key press or joystick direction) for player 1 and 2
+
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed all unit testing for the features I set out to implement
+* In progress tasks are continuing to prepare for the upcoming mini-presentation
+
+### Screenshots of Implemented Unit Testing with NUnit
+![](screenshots/week8_task_jesse1.JPG)
+![](screenshots/week8_task_jesse2.JPG)
+
+***
+
+## Week 6 and 7
+- Start Date: October 9
+- End Date: October 22
+
+### Tasks I worked on:
+![](screenshots/peer_eval_tasks_week6.JPG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Finalize the level template that will be used in the future for creating other levels
+* Implement player directional animations for idle, walking, attacking, and dying for player 1 (red mage)
+* Implement player directional animations for idle, walking, attacking, and dying for player 2 (green mage)
+* Add functionality for playing character animations and animator tree transitions on either keypress or joystick movement
+* Write weekly teamlog for the team
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Default level 1 template setup and design
+* Player animations for player 1 character
+* Player animations for player 2 character
+* Play directional animation based on movement (on key press or joystick direction) for player 1
+* Play directional animation based on movement (on key press or joystick direction) for player 2
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed all features I set out to implement
+* In progress tasks are implementing unit tests for the features above
+
+
+***
+
 ## Week 5
 - Start Date: October 2
 - End Date: October 8
