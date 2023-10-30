@@ -23,7 +23,10 @@ How this test works:
 ![](Test_screenshots/Milestone1/test_playerAttack.png)
 
 How this test works:
-  * 
+  * Spawn a player and initialize some attributes.
+  * Attempt to shoot 2 bullets and check that only 1 bullet spawns to ensure that the players cannot shoot when they have no ammo.
+  * Check the bullets position to make sure it moves in the correct direction.
+  * Wait some time and shoot another bullet to test that ammo recharges over time.
 
 ## Test for player Collision
 ![](Test_screenshots/Milestone1/test_playerCollision.png)
