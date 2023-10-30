@@ -172,16 +172,14 @@ MonoBehaviour:
   moveSpeed: 5
   bulletBounces: 1
   bulletPrefab: {fileID: 5755921796930191897, guid: 3d996469d34a57d48b5cda7756cb6536, type: 3}
-  playerInput: {fileID: 3476007376617294521}
-  rb: {fileID: 8516023400171509827}
-  animator: {fileID: 0}
   gunFollow: {fileID: 267668128978849629}
   playerCenter: {fileID: 3697424085047379290}
   lineRenderer: {fileID: 4187919560129157548}
-  maxAimDistance: 50
   layerDetection:
     serializedVersion: 2
     m_Bits: 896
+  unitTest: 0
+  unitTest2: 0
 --- !u!95 &2945665864706798238
 Animator:
   serializedVersion: 5
@@ -263,8 +261,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4452037770434438324}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Shoot
+        m_TargetAssemblyTypeName: PlayerController, ProjectScripts
+        m_MethodName: Fire
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -482,7 +480,7 @@ LineRenderer:
   m_SortingOrder: 10
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -491,7 +489,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.25
+        value: 0.2
         inSlope: 0
         outSlope: 0
         tangentMode: 0
