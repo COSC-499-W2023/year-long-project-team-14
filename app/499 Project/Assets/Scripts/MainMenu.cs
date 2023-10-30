@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
 
     public GameObject playButton;
     public GameObject player1Button;
+    public GameObject player2Button;
 
     public bool mainMenu = true;
     public bool playerMenu = false;
