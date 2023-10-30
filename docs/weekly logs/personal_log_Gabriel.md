@@ -18,9 +18,6 @@ My features this week were player control tests:
 ### Among these tasks, which have you completed/in progress in the last week?
 I have completed all my tasks. Still prepping for the mini presentation.
 
-Test code screenshot:
-![](Test_screenshots/Milestone1/test_playerController.png)
-
 ***
 ## Week 6 + 7
 - Start Date: October 9
