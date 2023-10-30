@@ -40,4 +40,8 @@ How this test works:
 ![](Test_screenshots/Milestone1/test_playerController.png)
 
 How this test works:
-  * 
+  * Spawn a player
+  * set the player's move direction to up
+  * Assert that the player is moving up (only need to test one direction as the input system rather knows all directions or none)
+  * set the player's aim direction to the right
+  * Assert that the player's bullet is facing right (only need to test one direction as the input system rather knows all directions or none)
