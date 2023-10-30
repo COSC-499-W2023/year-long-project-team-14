@@ -32,13 +32,15 @@ public class MainMenu : MonoBehaviour
     }
     public void OnePlayer()
     {
+        PlayerPrefs.SetInt("playerCount", 1);
         PlayGame();
     }
     public void TwoPlayer()
     {
+        PlayerPrefs.SetInt("playerCount", 2);
         PlayGame();
     }
-    public void BackToMainMenu()
+    public void PlayerBackButton()
     {
         mainMenu = true;
         playerMenu = false;
@@ -50,7 +52,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()

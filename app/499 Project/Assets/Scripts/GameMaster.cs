@@ -22,6 +22,8 @@ public class GameMaster : MonoBehaviour
 
     void Start()
     {
+        playerCount = PlayerPrefs.GetInt("playerCount");
+        print(playerCount);
         Setup();
     }
 

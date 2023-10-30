@@ -17,7 +17,7 @@ public class PauseMenuTests
         pauseMenu.resumeButton = new GameObject();
 
         // Act
-        pauseMenu.Pause(new InputAction.CallbackContext());
+        pauseMenu.Pause();
         pauseMenu.Resume();
 
         // Assert

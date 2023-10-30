@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     float maxAimDistance = 50;
     [SerializeField] private LayerMask layerDetection;
 
+    PauseMenu pauseMenu;
+
     [HideInInspector] public bool unitTest = false;
     [HideInInspector] public bool unitTest2 = false;
 
@@ -37,6 +39,13 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+    }
+
+    void Start()
+    {
+        GameObject canvas = GameObject.FindWithTag("Canvas");
+        if(canvas != null)
+            pauseMenu = canvas.GetComponent<PauseMenu>();
     }
 
     void Update()
@@ -114,6 +123,21 @@ public class PlayerController : MonoBehaviour
         if(context.performed && !PauseMenu.GameIsPaused)
         {
             Shoot();
+        }
+    }
+
+    public void Pause(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            if(PauseMenu.GameIsPaused)
+            {
+                pauseMenu.Resume();
+            }
+            else
+            {
+                pauseMenu.Pause();
+            }
         }
     }
 
