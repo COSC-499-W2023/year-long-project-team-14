@@ -1,12 +1,6 @@
-using System.Collections;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using UnityEngine.TestTools;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-
+using NUnit.Framework;
 
 public class PauseMenuTest
 {
@@ -15,30 +9,40 @@ public class PauseMenuTest
     [SetUp]
     public void Setup()
     {
+        // Load the scene with the PauseMenu
         SceneManager.LoadScene("Menu");
         pauseMenuScript = Object.FindObjectOfType<PauseMenu>();
     }
 
-    [UnityTest]
-    public IEnumerator PauseMenu_PauseAndResume()
+    [Test]
+    public void PauseMenu_PauseAndResume()
     {
-        pauseMenuScript.Pause(new InputAction.CallbackContext());
-        yield return new WaitForSeconds(1);
-        Assert.AreEqual(true, pauseMenuScript.pauseMenu);
-        Assert.AreEqual(true, pauseMenuScript.pauseMenuUI.activeSelf);
+        // Simulate the pause action
+        var context = new InputAction.CallbackContext();
+        context.performed = true;
+
+        pauseMenuScript.Pause(context);
+
+        // Pause and Resume assertions
+        Assert.IsTrue(pauseMenuScript.pauseMenu);
+        Assert.IsTrue(pauseMenuScript.pauseMenuUI.activeSelf);
         Assert.AreEqual(0f, Time.timeScale);
 
-        pauseMenuScript.Pause(new InputAction.CallbackContext());
-        yield return new WaitForSeconds(1);
-        Assert.AreEqual(false, pauseMenuScript.pauseMenu);
-        Assert.AreEqual(false, pauseMenuScript.pauseMenuUI.activeSelf);
+        // Simulate the resume action
+        context.performed = false;
+        pauseMenuScript.Pause(context);
+
+        // Additional assertions after resuming
+        Assert.IsFalse(pauseMenuScript.pauseMenu);
+        Assert.IsFalse(pauseMenuScript.pauseMenuUI.activeSelf);
         Assert.AreEqual(1f, Time.timeScale);
-        Assert.AreEqual(null, EventSystem.current.currentSelectedGameObject);
+        Assert.IsNull(EventSystem.current.currentSelectedGameObject);
     }
 
     [TearDown]
     public void Teardown()
     {
+        // Unload the scene
         SceneManager.UnloadSceneAsync("Menu");
     }
 }
