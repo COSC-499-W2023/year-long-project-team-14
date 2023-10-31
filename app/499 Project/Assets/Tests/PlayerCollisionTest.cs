@@ -30,7 +30,6 @@ public class PlayerCollisionTest
         playerController = player.GetComponent<PlayerController>();
         playerController.unitTest = true; 
 
-        playerController = player.GetComponent<PlayerController>();
     }
 
     [UnityTest]
@@ -43,7 +42,7 @@ public class PlayerCollisionTest
         // Wait for 5 seconds to ensure the player hits the top wall
         yield return new WaitForSeconds(5.0f); 
 
-        // Check if the correct The player is within the level template 
+        // Check if the the player is within the level template 
         Assert.IsTrue(player.transform.position.y < 6.5); 
     }
 
@@ -57,7 +56,7 @@ public class PlayerCollisionTest
         // Wait for 5 seconds to ensure the player hits the top wall
         yield return new WaitForSeconds(5.0f);
 
-        // Check if the correct The player is within the level template 
+        // Check if the the player is within the level template 
         Assert.IsTrue(player.transform.position.y > -7.5); 
     }
 
@@ -71,7 +70,7 @@ public class PlayerCollisionTest
         // Wait for 5 seconds to ensure the player hits the top wall
         yield return new WaitForSeconds(5.0f); 
 
-        // Check if the correct The player is within the level template 
+        // Check if the the player is within the level template 
         Assert.IsTrue(player.transform.position.x > -11.5);  
     }
 
@@ -85,7 +84,7 @@ public class PlayerCollisionTest
         // Wait for 5 seconds to ensure the player hits the top wall
         yield return new WaitForSeconds(5.0f);
 
-        // Check if the correct The player is within the level template 
+        // Check if the the player is within the level template 
         Assert.IsTrue(player.transform.position.x < 11.5); 
     }
 
