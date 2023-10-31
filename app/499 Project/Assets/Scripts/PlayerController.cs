@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!unitTest2)
         {
-            if (animator != null)
+            if (animator != null && !PauseMenu.GameIsPaused)
             {
                 if (attackCharge < attackChargeMax)
                     attackCharge += Time.deltaTime * attackChargeSpeed;
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-            if (playerInput != null)
+            if (playerInput != null && !PauseMenu.GameIsPaused)
             {
                 if (!unitTest)
                     if (playerInput.currentControlScheme == "Keyboard&Mouse")
@@ -87,7 +87,6 @@ public class PlayerController : MonoBehaviour
                 {
                     lineRenderer.SetPosition(lineRenderer.positionCount - 1, hit.point);
                 }
-
             }
         }
     }
@@ -112,7 +111,7 @@ public class PlayerController : MonoBehaviour
 
     public void Fire(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if(context.performed && !PauseMenu.GameIsPaused)
         {
             Shoot();
         }
