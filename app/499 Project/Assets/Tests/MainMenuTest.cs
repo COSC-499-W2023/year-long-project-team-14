@@ -9,7 +9,9 @@ using UnityEngine.TestTools;
 public class MainMenuTest
 {
     private MainMenu mainMenuScript;
+    private GameObject playerMenuObject;
     private GameObject playButton;
+    private GameObject player1Button;
 
     [UnitySetUp]
     public IEnumerator Setup()
@@ -26,6 +28,20 @@ public class MainMenuTest
             Assert.Fail("MainMenu script not found.");
         }
 
+        playerMenuObject = mainMenuScript.playerMenuObject;
+        if (playerMenuObject == null)
+        {
+            Debug.LogError("playerMenuObject not found in MainMenu script.");
+            Assert.Fail("playerMenuObject not found.");
+        }
+
+        player1Button = mainMenuScript.player1Button;
+        if (player1Button == null)
+        {
+            Debug.LogError("Player1 button not found in MainMenu script.");
+            Assert.Fail("Play button not found.");
+        }
+
         playButton = mainMenuScript.playButton;
         if (playButton == null)
         {
@@ -36,25 +52,46 @@ public class MainMenuTest
     }
 
     [UnityTest]
-    public IEnumerator MainMenu_PlayGameButton()
+    public IEnumerator MainMenu_PlayButton()
     {
         EventSystem.current.SetSelectedGameObject(null);
         ExecuteEvents.Execute(playButton, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
 
         yield return new WaitForSeconds(1);
+        Assert.IsTrue(playerMenuObject.activeSelf);
+    }
+
+    [UnityTest]
+    public IEnumerator MainMenu_PlayerButton()
+    {
+        playerMenuObject.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        ExecuteEvents.Execute(player1Button, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
+
+        yield return new WaitForSeconds(1);
         Assert.AreEqual("GameScene", SceneManager.GetActiveScene().name);
     }
-[UnityTearDown]
-public IEnumerator Teardown()
-{
-    // Wait for the scene to load
-    yield return SceneManager.LoadSceneAsync("Menu");
 
-    // Wait for a very short time to ensure that the scene is fully loaded
-    yield return new WaitForSeconds(0.1f);
+    [UnityTest]
+    public IEnumerator MainMenu_PlayerBackButton()
+    {
+        playerMenuObject.SetActive(true);
+        mainMenuScript.PlayerBackButton();
+        yield return new WaitForSeconds(0.1f);
+        Assert.IsFalse(playerMenuObject.activeSelf);
+    }
 
-    // Unload the scene
-    yield return SceneManager.UnloadSceneAsync("Menu");
-}
+    [UnityTearDown]
+    public IEnumerator Teardown()
+    {
+        // Wait for the scene to load
+        yield return SceneManager.LoadSceneAsync("Menu");
+
+        // Wait for a very short time to ensure that the scene is fully loaded
+        yield return new WaitForSeconds(0.1f);
+
+        // Unload the scene
+        yield return SceneManager.UnloadSceneAsync("Menu");
+    }
 
 }
