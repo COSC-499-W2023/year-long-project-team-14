@@ -23,7 +23,6 @@ public class GameMaster : MonoBehaviour
     void Start()
     {
         playerCount = PlayerPrefs.GetInt("playerCount");
-        print(playerCount);
         Setup();
     }
 
@@ -61,7 +60,7 @@ public class GameMaster : MonoBehaviour
             }
             else //controller
             {
-                if(player1ControlScheme == 0)
+                if(player1ControlScheme == 0 && gamepads.Length > 0)
                     player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[0]);
                 else if(gamepads.Length > 1)
                     player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[1]);
