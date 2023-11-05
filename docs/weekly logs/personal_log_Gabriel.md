@@ -1,4 +1,27 @@
 # Personal Log - Gabriel Mercier
+## Week 9
+- Start Date: October 30
+- End Date: November 5
+
+### Tasks I worked on:
+![](screenshots/tasks_gabriel_week9.PNG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Prep for the presentation
+* Do the presentation
+* Do team evals
+* Keep up with meetings
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Work on in-game UI/overlay
+* Create a health system
+### Among these tasks, which have you completed/in progress in the last week?
+Hearts/lives, bullets UI and health system script are completed. Unit testing and adding additional UI elements are in progress.
+![](screenshots/ui_progress.PNG)
+
+***
 ## Week 8
 - Start Date: October 23
 - End Date: October 29
