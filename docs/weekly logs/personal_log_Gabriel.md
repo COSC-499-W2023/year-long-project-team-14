@@ -1,4 +1,5 @@
 # Personal Log - Gabriel Mercier
+
 ## Week 8
 - Start Date: October 23
 - End Date: October 29

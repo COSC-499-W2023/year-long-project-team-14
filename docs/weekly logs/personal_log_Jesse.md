@@ -1,4 +1,39 @@
 # Personal Log - Jesse Lazzari
+## Week 9
+- Start Date: October 30
+- End Date: November 5
+
+### Tasks I worked on:
+![](screenshots/tasks_week9_jesse.JPG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Attend meetings and prepare for mini presentation
+* Present mini-demo on Thursday with rest of team
+* Complete the required number of evaluations for other teams
+* Add directional idle animations for first enemy (Cyan Orc)
+* Add directional walking animations for first enemy (Cyan Orc)
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Add directional idle animations for first enemy (Cyan Orc)
+* Add directional walking animations for first enemy (Cyan Orc)
+* Add hit and death animations for first enemy (Cyan Orc)
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed all unit testing for the features I set out to implement:
+* Add directional idle animations for first enemy (Cyan Orc)
+* Add directional walking animations for first enemy (Cyan Orc)
+* Add hit and death animations for first enemy (Cyan Orc)
+* In progress tasks are implementing script to play correct hit/death animations when enemy collides with player bullet
+
+### Screenshots of Implemented Unit Testing and New Enemy
+![](screenshots/OrcCyan_death_screenshot.JPG)
+![](screenshots/week8_task_jesse1.JPG)
+![](screenshots/week8_task_jesse2.JPG)
+
+***
+
 ## Week 8
 - Start Date: October 23
 - End Date: October 29
