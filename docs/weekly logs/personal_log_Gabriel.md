@@ -4,7 +4,7 @@
 - End Date: November 5
 
 ### Tasks I worked on:
-![](screenshots/tasks_gabriel_week9.PNG)
+![](screenshots/tasks_gabriel_week9.png)
   
 ### Recap on your week's goals
 My goals this week were to: 
@@ -19,7 +19,8 @@ My features this week were to:
 * Create a health system
 ### Among these tasks, which have you completed/in progress in the last week?
 Hearts/lives, bullets UI and health system script are completed. Unit testing and adding additional UI elements are in progress.
-![](screenshots/ui_progress.PNG)
+
+![](screenshots/ui_progress.png)
 
 ***
 ## Week 8
