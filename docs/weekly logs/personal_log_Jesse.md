@@ -25,7 +25,7 @@ My features this week were to:
 * Add directional idle animations for first enemy (Cyan Orc)
 * Add directional walking animations for first enemy (Cyan Orc)
 * Add hit and death animations for first enemy (Cyan Orc)
-* In progress tasks are implementing script to play correct hit/death animations with enemy collides with player bullet
+* In progress tasks are implementing script to play correct hit/death animations when enemy collides with player bullet
 
 ### Screenshots of Implemented Unit Testing and New Enemy
 ![](screenshots/OrcCyan_death_screenshot.JPG)
