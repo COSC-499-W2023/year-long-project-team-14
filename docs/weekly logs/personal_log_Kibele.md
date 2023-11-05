@@ -1,4 +1,27 @@
 # Personal Log - Kibele Sebnem Yildirim
+## Week 9
+- Start Date: October 30
+- End Date: November 5
+
+### Tasks I worked on:
+![](screenshots/tasks_kibele_week9.png)
+
+### Recap on your week's goals
+- My goals this week were to:
+* Prepare for the mini presentation with my team
+* Learn more about Unity Testing Tools and NUnit
+* Listen and evaluate other teams' presentations and their work on their mobile app/game/website.
+* Present our mini presentation to the class
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to prepare for the mini presentation with my team and learn more about Unity Testing Tools and NUnit. I have also listened and evaluated other teams' presentations and their work on their mobile app/game/website. I have also presented our mini presentation to the class with my team. 
+
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week. I have also improved my abilities on UI and design in game development.
+
+Here is a screenshot of my work on our Options Menu in Unity this week:
+![](screenshots/kibele_weekly9.png)
+
 ## Week 8
 - Start Date: October 23
 - End Date: October 29
