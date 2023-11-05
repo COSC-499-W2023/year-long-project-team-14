@@ -1,4 +1,26 @@
 # Personal Log - Justin McKendry
+## Week 9
+- Start Date: October 30th
+- End Date: November 5th
+
+### Tasks I worked on:
+![](screenshots/tasks_justin_week9.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Help organize and ensure quality of our presentation.
+* Ensure all of my parts were working for our live demo.
+* Complete my feature for this week aswell as my other feature so I can start working on stretch goals (without testing since other features are needed first).
+* Research webGl and other ways to host our game on a webpage. 
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Create the prefab for the cyan orc.
+* Create the prefab for the enemy bullets.
+* Create the script for the enemy bullets.
+
+### Among these tasks, which have you completed/in progress in the last week?
+I have made completed all of the prefabs and made the script for the enemy bullets.
 
 ## Week 8
 - Start Date: October 23th
