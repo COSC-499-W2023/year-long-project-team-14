@@ -1,4 +1,8 @@
 # Personal Log - Gabriel Mercier
+## Week 9
+- Start Date: October 30
+- End Date: November 5
+  
 ### Tasks I worked on:
 ![](screenshots/tasks_gabriel_week9.png)
   
