@@ -1,4 +1,44 @@
 # Personal Log - Darion Pescada
+
+## Week 8
+- Start Date: October 23
+- End Date: October 29
+
+### Tasks I worked on:
+![](screenshots/tasks_darion_week8.png)
+  
+### Recap on your week's goals
+- My goals this week were to test my milestone 1 features, add controller support for the menus, fix bugs, and make other adjustments to improve the quality of our game.
+
+### Which features were yours in the project plan for this milestone?
+- This week, I tested my features which include the players ability to shoot, and controller support. I created a unit test for the player attack and thoroughly tested the controller support manually since it is not possible to my knowledge to unit test something that requires physical hardware and user inputs such as controller support.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- I completed all my tasks for this week which include testing my features as well as making other improvements to the game such as adding controller support to the menus, reducing the size of the players line of sight, making adjustments to the level template, and redesigning the menus with the help of my team.
+
+***
+
+## Week 6 and 7
+- Start Date: October 9
+- End Date: October 22
+
+### Tasks I worked on:
+![](screenshots/tasks_darion_week6.png)
+  
+### Recap on your week's goals
+- My goals for the past couple weeks were to implement my milestone 1 features from the project plan, assist our team with their features, and get familiar with Unity's testing framework.
+
+### Which features were yours in the project plan for this milestone?
+My features in the project plan for this milestone include:
+- giving the player the ability to shoot bullets
+- implementing controller support
+- Additionally, I added a line of sight to the player for improved aim
+
+### Among these tasks, which have you completed/in progress in the last week?
+- I completed all my tasks which were my milestone 1 features as stated above, assisting my team with their milestone 1 features, and learning more about the testing framework.
+
+***
+
 ## Week 5
 - Start Date: October 2
 - End Date: October 8

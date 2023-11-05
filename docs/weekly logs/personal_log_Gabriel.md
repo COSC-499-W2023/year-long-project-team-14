@@ -1,4 +1,46 @@
 # Personal Log - Gabriel Mercier
+## Week 8
+- Start Date: October 23
+- End Date: October 29
+
+### Tasks I worked on:
+![](screenshots/tasks_gabriel_week8.PNG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Make sure the team had similar expectations for the presentation
+* Polish and test features 
+
+### Which features were yours in the project plan for this milestone?
+My features this week were player control tests:
+* moveDirection test: ensure player moves when given input
+* aimDirection test: ensure player bullet aims in the direction of input
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed all my tasks. Still prepping for the mini presentation.
+
+***
+## Week 6 + 7
+- Start Date: October 9
+- End Date: October 22
+
+### Tasks I worked on:
+![](screenshots/tasks_gabriel_week67.PNG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Have the teams work be collaborative
+* Stay on top of my designated tasks/features
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Player controls: System detects input from user.
+* Player movement: player can move up,down,left,right.
+* Player aim: Added the bullet that revolves around the player point to the mouse position
+* Assisted with controller support.
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed all my features. Still working on Unit tests. 
+
+***
 ## Week 5
 - Start Date: October 2
 - End Date: October 8
