@@ -1,5 +1,4 @@
 # Personal Log - Gabriel Mercier
-
 ## Week 9
 - Start Date: October 30
 - End Date: November 5
