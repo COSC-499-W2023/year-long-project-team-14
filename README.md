@@ -8,6 +8,7 @@ A 2D top-down shooter game designed for 1-2 players in local multiplayer mode, w
 Assets acknowledgement:
 * Characters: https://merchant-shade.itch.io/16x16-puny-characters
 * Level design: https://pixel-poem.itch.io/dungeon-assetpuck
+* Menu Background: https://assetstore.unity.com/packages/2d/textures-materials/tiles/parallax-dusk-mountain-background-53403
 
 Please use the provided folder structure for your docs (project plan, design documentation, communications log, weekly logs, and final documentation), source code, testing, etc.    You are free to organize any additional internal folder structure as required by the project.  Please use a branching workflow and once an item is ready, do remember to issue a PR, code review, and merge it into the develop branch and then the master branch.
 ```
