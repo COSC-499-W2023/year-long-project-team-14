@@ -18,7 +18,7 @@ My features this week were to:
 * Work on in-game UI/overlay
 * Create a health system
 ### Among these tasks, which have you completed/in progress in the last week?
-Hearts/lives, bullets UI and health system script are completed. Unit testing and adding additional UI elements are in progress.
+Hearts/lives, bullets UI and health system script are completed. Unit testing and adding additional UI elements are still in progress.
 
 ![](screenshots/ui_progress.png)
 
