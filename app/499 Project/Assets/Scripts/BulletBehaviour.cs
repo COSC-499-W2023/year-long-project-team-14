@@ -15,6 +15,11 @@ public class BulletBehaviour : MonoBehaviour
         // Check if the collision involves a player bullet GameObject.
         if (collision.gameObject.CompareTag("Player_bullet"))
         {
+            healthSystem playerHealth = GetComponent<healthSystem>();
+            if (playerHealth != null)
+            {
+                playerHealth.takeDamage();
+            }
             animator.SetTrigger("isHit");
             Destroy(collision.gameObject);
 
