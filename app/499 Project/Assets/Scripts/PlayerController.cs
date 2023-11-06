@@ -55,7 +55,14 @@ public class PlayerController : MonoBehaviour
             if (animator != null && !PauseMenu.GameIsPaused)
             {
                 if (attackCharge < attackChargeMax)
+                {
                     attackCharge += Time.deltaTime * attackChargeSpeed;
+                    bulletUI bullets = GetComponent<bulletUI>();
+                    if (bullets != null)
+                    {
+                        bullets.setCharge((int) attackCharge);
+                    }
+                }
 
                 if (moveDirection.x != 0 || moveDirection.y != 0)
                 {
@@ -145,6 +152,11 @@ public class PlayerController : MonoBehaviour
     {
         if(attackCharge >= attackCost)
         {
+            bulletUI bullets = GetComponent<bulletUI>();
+            if (bullets != null)
+            {
+                bullets.oneLessShot();
+            }
             attackCharge -= attackCost;
 
             GameObject bullet = Instantiate(bulletPrefab, gunFollow.position, Quaternion.identity);

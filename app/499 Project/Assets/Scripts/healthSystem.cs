@@ -21,12 +21,13 @@ public class healthSystem : MonoBehaviour
         }
     }
 
-    public void takeDamage(int damage)
+    public void takeDamage()
     {
         if (life >=1)
         {
-            life -= damage;
-            Destroy(hearts[life].gameObject);
+            life --;
+            //Destroy(hearts[life].gameObject);
+            hearts[life].SetActive(false);
             if (life < 1)
             {
                 dead = true;
