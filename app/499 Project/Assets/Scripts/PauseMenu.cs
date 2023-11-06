@@ -17,44 +17,31 @@ public class PauseMenu : MonoBehaviour
         StartCoroutine(SelectMenuButon());
     }
 
-    public void Pause(InputAction.CallbackContext context)
-    {
-        if(context.performed)
-        {
-            if(GameIsPaused)
-            {
-                pauseMenu = false;
-                pauseMenuUI.SetActive(false); 
-                Time.timeScale = 1f;
-                GameIsPaused = false;
-                EventSystem.current.SetSelectedGameObject(null);
-            }
-            else
-            {
-                pauseMenu = true;
-                pauseMenuUI.SetActive(true);
-                Time.timeScale = 0f;
-                GameIsPaused = true;
-                if(Gamepad.all.Count > 0)
-                {
-                    EventSystem.current.SetSelectedGameObject(null);
-                    EventSystem.current.SetSelectedGameObject(resumeButton);
-                }
-            }
-        }
-    }
-
     public void LoadMenu() {
         Time.timeScale = 1f;
+        GameIsPaused = false;
         SceneManager.LoadScene(0);
     }
 
     public void Restart()
     {
         Time.timeScale = 1f;
+        GameIsPaused = false;
         SceneManager.LoadScene(1);
     }
 
+    public void Pause()
+    {
+        pauseMenu = true;
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+        if(Gamepad.all.Count > 0)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(resumeButton);
+        }
+    }
     public void Resume()
     {
         pauseMenu = false;

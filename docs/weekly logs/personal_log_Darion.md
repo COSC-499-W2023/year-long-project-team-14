@@ -1,5 +1,23 @@
 # Personal Log - Darion Pescada
 
+## Week 9
+- Start Date: October 30
+- End Date: October 5
+
+### Tasks I worked on:
+![](screenshots/tasks_darion_week9.png)
+  
+### Recap on your week's goals
+- My goals this week were to meet with the team to plan out and practice our mini presentation, set up a demo of our game for the presentation, and to start working on my milestone 2 features.
+
+### Which features were yours in the project plan for this milestone?
+- For milestone 2, my features are to implement local co-op, create the enemy movement AI, and create the enemy targeting AI.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- This week, I implemented the co-op feature and I created some unit tests for it as well. The enemy movement and enemy targeting features are in progress, and I plan to complete them throughout the next couple of weeks.
+
+***
+
 ## Week 8
 - Start Date: October 23
 - End Date: October 29

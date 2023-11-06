@@ -45,3 +45,37 @@ How this test works:
   * Assert that the player is moving up (only need to test one direction as the input system rather knows all directions or none)
   * set the player's aim direction to the right
   * Assert that the player's bullet is facing right (only need to test one direction as the input system rather knows all directions or none)
+
+## Test for main menu
+![](Test_screenshots/Milestone1/testmainmenu.png)
+
+How this test works:
+* loads the menu scene from Unity
+* checks if the menu scene is loaded
+* checks if the play button is existed in the menu scene
+* checks if the ser clicking the "playButton" and the game scene is loaded
+* cleans up the scene
+
+## Test for pause menu
+![](Test_screenshots/Milestone1/testpausemenu.png)
+![](Test_screenshots/Milestone1/testpausemenu1.png)
+
+How this test works:
+* PauseMenu_ResumeGame:
+  * checks if the game scene is loaded
+  * checks if the pause menu is existed in the game scene and is active
+  * checks if the resume button is existed in the pause menu
+  * checks if the user clicking the "resumeButton" and the game scene is loaded
+
+* PauseMenu_LoadMenu:
+    * checks if the menu scene is loaded
+    * checks if the pause menu is existed in the game scene and is active
+    * checks if the load menu button is existed in the pause menu
+    * checks if the user clicking the "loadMenuButton" and the menu scene is loaded
+
+* PauseMenu_Restart:
+    * creates a new instance of the PauseMenu
+    * yields control to complete the Unity testing
+
+
+
