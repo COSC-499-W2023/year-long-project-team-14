@@ -9,12 +9,13 @@ using UnityEngine.InputSystem;
 public class PlayerControllerTests
 {
     private PlayerController playerController;
+    private GameObject playerObject;
 
     [SetUp]
     public void Setup()
     {
         //spawn and set up the player
-        GameObject playerObject = new GameObject();
+        playerObject = new GameObject();
         playerController = playerObject.AddComponent<PlayerController>();
 
     }
@@ -48,5 +49,6 @@ public class PlayerControllerTests
     {
         // Clean up any objects created during the tests.
         Object.Destroy(playerController.gameObject);
+        GameObject.Destroy(playerObject);
     }
 }
