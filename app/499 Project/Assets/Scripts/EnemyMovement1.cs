@@ -80,10 +80,14 @@ public class EnemyMovement1 : MonoBehaviour
                 currentWaypoint++;
             }
 
+            // Smoothly interpolate the animation parameters
+            float x = Mathf.Lerp(animator.GetFloat("X"), direction.x, 0.1f);
+            float y = Mathf.Lerp(animator.GetFloat("Y"), direction.y, 0.1f);
+
             if (direction.x != 0 || direction.y != 0)
             {
-                animator.SetFloat("X", direction.x);
-                animator.SetFloat("Y", direction.y);
+                animator.SetFloat("X", x);
+                animator.SetFloat("Y", y);
 
                 animator.SetBool("IsWalking", true);
             }
