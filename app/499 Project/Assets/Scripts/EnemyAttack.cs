@@ -6,6 +6,10 @@ public class EnemyAttack : MonoBehaviour
 {
     public GameObject[] players;
     public GameObject targetPlayer;
+    public GameObject bulletPrefab;
+    public float shootInterval = 2.0f;
+    public float bulletSpeed = 10.0f;
+    private float lastShootTime;
 
     public List<Vector3> Points;
     Vector2 direction = Vector2.zero;
@@ -16,7 +20,6 @@ public class EnemyAttack : MonoBehaviour
 
     void Start()
     {
-        players = GameObject.FindGameObjectsWithTag("Player");
         Points = new List<Vector3>();
     }
 
@@ -37,15 +40,25 @@ public class EnemyAttack : MonoBehaviour
             {
                 Points.Add(hitData.centroid);
 
-                if(hitData.collider.CompareTag("Player"))
+                if(hitData.collider.CompareTag("Player") && Time.time - lastShootTime >= shootInterval)
                 {
-                    //shoot at player
+                    Shoot();
                 }
             }
 
             lineRenderer.positionCount = Points.Count;
             lineRenderer.SetPositions(Points.ToArray());
         }
+        else
+            players = GameObject.FindGameObjectsWithTag("Player");
+    }
+
+    void Shoot()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        Vector2 direction = lineRenderer.transform.right;
+        bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+        lastShootTime = Time.time;
     }
 
     public void FindClosestPlayer()

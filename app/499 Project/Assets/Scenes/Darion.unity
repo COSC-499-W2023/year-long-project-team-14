@@ -132,6 +132,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3368329574245914549, guid: bea5726489661344bbf1dea76e4253fa, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3368329574245914549, guid: bea5726489661344bbf1dea76e4253fa, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -986,6 +990,10 @@ PrefabInstance:
     - target: {fileID: 4522541046923769925, guid: bea5726489661344bbf1dea76e4253fa, type: 3}
       propertyPath: m_Name
       value: LevelTemplate
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522541046923769925, guid: bea5726489661344bbf1dea76e4253fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4870101288684059196, guid: bea5726489661344bbf1dea76e4253fa, type: 3}
       propertyPath: m_Tiles.Array.size
@@ -3195,6 +3203,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7284573943433907667, guid: bea5726489661344bbf1dea76e4253fa, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3211,6 +3223,10 @@ PrefabInstance:
     - target: {fileID: 881379806320011560, guid: 076a5c51a2c98254abac4863d7fab8ef, type: 3}
       propertyPath: m_Name
       value: Mage_player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 881379806320011560, guid: 076a5c51a2c98254abac4863d7fab8ef, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9020650352874436745, guid: 076a5c51a2c98254abac4863d7fab8ef, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3268,6 +3284,10 @@ PrefabInstance:
     - target: {fileID: 881379806320011560, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
       propertyPath: m_Name
       value: Mage_player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 881379806320011560, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9020650352874436745, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3420,11 +3440,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6697224005387493961, guid: 521fad6bc7d5e4f4e9157bef5ee8e044, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -9.12
       objectReference: {fileID: 0}
     - target: {fileID: 6697224005387493961, guid: 521fad6bc7d5e4f4e9157bef5ee8e044, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 4.23
       objectReference: {fileID: 0}
     - target: {fileID: 6697224005387493961, guid: 521fad6bc7d5e4f4e9157bef5ee8e044, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3534,7 +3554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2434394410695414027, guid: fcdd986f2de65fc4681d45730eb9b2ed, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6960557881597457038, guid: fcdd986f2de65fc4681d45730eb9b2ed, type: 3}
       propertyPath: m_LocalPosition.y
