@@ -5,6 +5,7 @@ using Pathfinding;
 
 public class EnemyMovement1 : MonoBehaviour
 {
+    Animator animator;
     public Vector2 targetPosition;
 
     public float movementSpeed = 10;
@@ -20,11 +21,15 @@ public class EnemyMovement1 : MonoBehaviour
     float waitTime = 0;
     float timer = 0;
 
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-
         NewTarget();
         InvokeRepeating("UpdatePath", 0f, 0.25f);
         
@@ -47,6 +52,7 @@ public class EnemyMovement1 : MonoBehaviour
 
     void FixedUpdate()
     {
+        animator.SetBool("IsWalking", false);
         if(timer >= waitTime)
         {
             if(path == null)
@@ -72,6 +78,14 @@ public class EnemyMovement1 : MonoBehaviour
             if(distance < nextWaypointDistance)
             {
                 currentWaypoint++;
+            }
+
+            if (direction.x != 0 || direction.y != 0)
+            {
+                animator.SetFloat("X", direction.x);
+                animator.SetFloat("Y", direction.y);
+
+                animator.SetBool("IsWalking", true);
             }
         }
 
