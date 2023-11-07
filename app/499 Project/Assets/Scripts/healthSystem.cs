@@ -6,7 +6,7 @@ public class healthSystem : MonoBehaviour
 {
     public GameObject[] hearts;
     private int life;
-    private bool dead;
+    public bool dead;
 
     private void Start()
     {
@@ -26,7 +26,6 @@ public class healthSystem : MonoBehaviour
         if (life >=1)
         {
             life --;
-            //Destroy(hearts[life].gameObject);
             hearts[life].SetActive(false);
             if (life < 1)
             {
