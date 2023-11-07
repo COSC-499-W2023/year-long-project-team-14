@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public Transform player;
+    //public Transform player;
+    public Transform[] potentialTargets;
     public GameObject bulletPrefab;
     public float shootInterval = 2.0f;
     public float bulletSpeed = 10.0f;
@@ -16,22 +17,27 @@ public class EnemyAttack : MonoBehaviour
         // Check if it's time to shoot again
         if (Time.time - lastShootTime >= shootInterval)
         {
-            // Perform raycast from enemy to player
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, (player.position - transform.position).normalized);
-
-            if (hit.collider != null && hit.collider.CompareTag("Player"))
+            // Loop through potential targets
+            foreach (Transform target in potentialTargets)
             {
-                // The ray hit the player, so we can shoot
-                Shoot();
+                // Perform raycast from enemy to target
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, (target.position - transform.position).normalized);
+
+                if (hit.collider != null && hit.collider.CompareTag("Player"))
+                {
+                    // The ray hit a player, so we can shoot
+                    Shoot(target);
+                    break;  // Exit the loop after shooting to avoid shooting at multiple targets.
+                }
             }
         }
     }
 
-    void Shoot()
+    void Shoot(Transform target)
     {
-        // Instantiate a bullet and set its direction towards the player
+        // Instantiate a bullet and set its direction towards the target
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        Vector2 direction = (player.position - transform.position).normalized;
+        Vector2 direction = (target.position - transform.position).normalized;
         bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
 
         lastShootTime = Time.time;
