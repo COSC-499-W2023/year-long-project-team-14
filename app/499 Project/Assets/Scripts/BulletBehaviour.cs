@@ -13,7 +13,7 @@ public class BulletBehaviour : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if the collision involves a player bullet GameObject.
-        if (collision.gameObject.CompareTag("Player_bullet"))
+        if (collision.gameObject.CompareTag("Player_bullet") || collision.gameObject.CompareTag("EnemyBullet"))
         {
             healthSystem playerHealth = GetComponent<healthSystem>();
             if (playerHealth != null)
