@@ -19,7 +19,7 @@
 - i have completed all my tasks this week. I have also improved my abilities on UI and design in game development.
 
 Here is a screenshot of my work on our Game Over Menu in Unity this week:
-![](screenshots/kibele_weekly10.png)
+![](screenshots/kibele_weekly10.jpeg)
 
 ## Week 9
 - Start Date: October 30
