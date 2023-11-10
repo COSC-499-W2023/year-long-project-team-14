@@ -1,4 +1,26 @@
 # Personal Log - Kibele Sebnem Yildirim
+## Week 10
+- Start Date: November 6
+- End Date: November 12
+
+### Tasks I worked on:
+![](screenshots/tasks_kibele_week10.png)
+
+### Recap on your week's goals
+- My goals this week were to:
+* Work on Game Over Menu
+* Brainstorm with team about the possible new menu options we can add to our game
+* Review my teammates' work on the game
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to work on Game Over Menu and brainstorm with team about the possible new menu options we can add to our game. I have also reviewed my teammates' work on the game. 
+
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week. I have also improved my abilities on UI and design in game development.
+
+Here is a screenshot of my work on our Game Over Menu in Unity this week:
+![](screenshots/kibele_weekly10.png)
+
 ## Week 9
 - Start Date: October 30
 - End Date: November 5
