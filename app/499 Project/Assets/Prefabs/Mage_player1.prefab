@@ -367,6 +367,7 @@ MonoBehaviour:
   - {fileID: 2963293245771210651}
   - {fileID: 6791258993376698776}
   - {fileID: 7327355830875134866}
+  dead: 0
 --- !u!114 &5323379100632877089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,7 +554,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.2
+        value: 0.12
         inSlope: 0
         outSlope: 0
         tangentMode: 0

@@ -383,6 +383,7 @@ MonoBehaviour:
   - {fileID: 348100419379070312}
   - {fileID: 8355425184293190507}
   - {fileID: 5216566618434552161}
+  dead: 0
 --- !u!1 &1787117395732597122
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +522,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.2
+        value: 0.12
         inSlope: 0
         outSlope: 0
         tangentMode: 0
