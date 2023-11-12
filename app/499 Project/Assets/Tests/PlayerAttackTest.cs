@@ -50,6 +50,7 @@ public class PlayerAttackTest
     public void Teardown()
     {
         //destroy all gameobjects
+        Object.Destroy(playerController.gameObject);
         GameObject.Destroy(player);
         for(int i = 0; i < bullets.Length; i++)
             GameObject.Destroy(bullets[i]);
