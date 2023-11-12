@@ -29,7 +29,8 @@ public class GameMaster : MonoBehaviour
     public void Setup()
     {
         level = Instantiate(levelTemplate, transform.position, Quaternion.identity);
-
+        AstarPath.active.Scan();
+        
         SetupPlayers();
     }
 
