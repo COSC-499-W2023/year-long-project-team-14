@@ -110,6 +110,12 @@ public class EnemyMovement1 : MonoBehaviour
         targetPosition = new Vector2(x, y);
     }
 
+    // This will be used for unit testing. 
+    public void NewTarget(float x, float y)
+    {
+        targetPosition = new Vector2(x,y);
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Player"))
@@ -118,4 +124,5 @@ public class EnemyMovement1 : MonoBehaviour
 
         }
     }
+    
 }
