@@ -10,14 +10,14 @@ using UnityEngine.InputSystem;
 public class OrcCollisionWalls : MonoBehaviour
 {
     private UnityEngine.Object orcPrefab;
-    GameObject orc;
-    EnemyMovement1 orcController;
+    private GameObject orc;
+    private EnemyMovement1 orcController;
 
     private UnityEngine.Object templatePrefab;
-    GameObject template;
+    private GameObject template;
 
     //private UnityEngine.Object pathfinder;
-    GameObject path;
+    private GameObject path;
 
   
 
@@ -26,9 +26,10 @@ public class OrcCollisionWalls : MonoBehaviour
     [SetUp]
     public void Setup()
     {
+        //Have to instantiate this based off of the implementation of the movement for the orc.
         path = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Pathfinder.prefab")) as GameObject;
 
-        //spawn and set up the player
+        //spawn and set up the orc
         orcPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Orc_cyan.prefab"); 
         orc = GameObject.Instantiate(orcPrefab) as GameObject;
         orcController = orc.GetComponent<EnemyMovement1>();
@@ -46,13 +47,12 @@ public class OrcCollisionWalls : MonoBehaviour
     {
 
         orcController.NewTarget((float) 0, (float)6.5);
-        InvokeRepeating("UpdatePath", 0f, 0.25f);
 
 
-        // Wait for 5 seconds to ensure the player hits the top wall
-        yield return new WaitForSeconds(5.0f); 
+        // Wait for 5 seconds to ensure the orc hits the top wall
+        yield return new WaitForSeconds(3.5f); 
 
-        // Check if the the player is within the level template 
+        // Check if the the orc is within the level template 
         Assert.IsTrue(orc.transform.position.y < 6.5); 
     }
 
@@ -60,14 +60,13 @@ public class OrcCollisionWalls : MonoBehaviour
     public IEnumerator OrcCollisionTestBottom()
     {
         
-         // Make the character walk down 
+         // Make the orc walk down 
          orcController.NewTarget((float) 0,(float) -7.5);
-        InvokeRepeating("UpdatePath", 0f, 0.25f);
 
-        // Wait for 5 seconds to ensure the player hits the top wall
-        yield return new WaitForSeconds(5.0f);
+        // Wait for 5 seconds to ensure the orc hits the top wall
+        yield return new WaitForSeconds(3.5f);
 
-        // Check if the the player is within the level template 
+        // Check if the the orc is within the level template 
         Assert.IsTrue(orc.transform.position.y > -7.5); 
     }
 
@@ -75,14 +74,13 @@ public class OrcCollisionWalls : MonoBehaviour
     public IEnumerator OrcCollisionTestLeft()
     {
         
-         // Make the character walk left 
+         // Make the orc walk left 
          orcController.NewTarget((float) -11.5,(float) 0);
-        InvokeRepeating("UpdatePath", 0f, 0.25f);
 
-        // Wait for 5 seconds to ensure the player hits the top wall
-        yield return new WaitForSeconds(5.0f); 
+        // Wait for 5 seconds to ensure the orc hits the top wall
+        yield return new WaitForSeconds(3.5f); 
 
-        // Check if the the player is within the level template 
+        // Check if the the orc is within the level template 
         Assert.IsTrue(orc.transform.position.x > -11.5);  
     }
 
@@ -90,14 +88,13 @@ public class OrcCollisionWalls : MonoBehaviour
     public IEnumerator OrcCollisionTestRight()
     {
         
-         // Make the character walk right 
+         // Make the orc walk right 
          orcController.NewTarget((float) 11.5,(float) 0);
-        InvokeRepeating("UpdatePath", 0f, 0.25f);
 
-        // Wait for 5 seconds to ensure the player hits the top wall
-        yield return new WaitForSeconds(5.0f);
+        // Wait for 5 seconds to ensure the orc hits the top wall
+        yield return new WaitForSeconds(3.5f);
 
-        // Check if the the player is within the level template 
+        // Check if the the orc is within the level template 
         Assert.IsTrue(orc.transform.position.x < 11.5); 
     }
 
@@ -108,6 +105,7 @@ public class OrcCollisionWalls : MonoBehaviour
         // Clean up any objects created during the tests.
         GameObject.Destroy(orc);
         GameObject.Destroy(template);
+        GameObject.Destroy(path);
     }
 
 }
