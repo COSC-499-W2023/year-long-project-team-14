@@ -1,4 +1,33 @@
 # Personal Log - Jesse Lazzari
+## Week 10
+- Start Date: November 6
+- End Date: November 12
+
+### Tasks I worked on:
+![](screenshots/tasks_week10_jesse.JPG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Attend team meetings
+* Make sure team is on the same page before reading week begins
+* Add functionality for collisions between Player bullets and other Players
+* Add functionality for collisions between Player bullets and other Enemies
+* Add functionality for collisions between Enemy bullets and Players
+* Fix a bug from last week where player hit animation was delayed after colliding with enemy bullets
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Added functionality for collisions between Player bullets and other Players
+* Added functionality for collisions between Player bullets and other Enemies
+* Added functionality for collisions between Enemy bullets and Players
+* Fixed a bug from last week where player hit animation was delayed after colliding with enemy bullets
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed the features I set out to implement as outlined above:
+* In progress tasks are implementing death animations when player/or enemies have no more lives and unit testing for features above
+
+***
+
 ## Week 9
 - Start Date: October 30
 - End Date: November 5

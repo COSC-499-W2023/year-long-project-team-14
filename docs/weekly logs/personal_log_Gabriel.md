@@ -1,4 +1,26 @@
 # Personal Log - Gabriel Mercier
+## Week 10
+- Start Date: November 6
+- End Date: November 12
+  
+### Tasks I worked on:
+![](screenshots/tasks_gabriel_week10.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Improve on UI
+* Experiment on potential feature implementation (level switching)
+* Ensure team is on the same page going into reading break
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Improve UI functionality
+* Write unit tests for UI
+* Work on Enemy Attack feature
+### Among these tasks, which have you completed/in progress in the last week?
+I completed all my tasks. level switching still in progress along with unit tests.
+
+***
 ## Week 9
 - Start Date: October 30
 - End Date: November 5
