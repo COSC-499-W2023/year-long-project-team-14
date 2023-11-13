@@ -88,7 +88,7 @@ public class EnemyAttack : MonoBehaviour
             players = GameObject.FindGameObjectsWithTag("Player");
     }
 
-    void Shoot(LineRenderer lr)
+    public void Shoot(LineRenderer lr)
     {
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         Vector2 direction = lr.transform.right;
