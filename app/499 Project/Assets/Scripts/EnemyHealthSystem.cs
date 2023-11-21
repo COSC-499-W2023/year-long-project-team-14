@@ -8,6 +8,17 @@ public class EnemyHealthSystem : MonoBehaviour
     private Rigidbody2D rb;
     private EnemyAttack ea; 
     private int enemyHealth = 2;
+
+    private CircleCollider2D enemyCollider;
+    public Portal portal;
+
+    private static List<EnemyHealthSystem> allEnemies = new List<EnemyHealthSystem>();
+    private void Start()
+    {
+        // Add the enemy to the list of allEnemies when it's instantiated
+        allEnemies.Add(this);
+        enemyCollider = GetComponent<CircleCollider2D>();
+    }
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -41,5 +52,18 @@ public class EnemyHealthSystem : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Static;
         ea.enabled = false;
         animator.SetTrigger("Death");
+
+        enemyCollider.enabled = false;
+        allEnemies.Remove(this);
+
+        if (allEnemies.Count == 0)
+        {
+            EndLevel();
+        }
+    }
+
+    void EndLevel()
+    {
+        portal.SetPortalActive(true);
     }
 }
