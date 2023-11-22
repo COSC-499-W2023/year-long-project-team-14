@@ -8,7 +8,7 @@ public class healthSystem : MonoBehaviour
     public GameObject[] hearts;
     private Animator animator;
     private CircleCollider2D cc;
-    private int life;
+    public int life;
     public bool dead;
 
     private void Start()

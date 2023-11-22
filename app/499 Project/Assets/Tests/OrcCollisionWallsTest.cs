@@ -33,6 +33,7 @@ public class OrcCollisionWalls : MonoBehaviour
         orcPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Orc_cyan.prefab"); 
         orc = GameObject.Instantiate(orcPrefab) as GameObject;
         orcController = orc.GetComponent<EnemyMovement1>();
+        orcController.movementSpeed = 25;
        
        //Spawn and set up the level template
         templatePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LevelTemplate.prefab"); 
@@ -45,12 +46,15 @@ public class OrcCollisionWalls : MonoBehaviour
     [UnityTest]
     public IEnumerator OrcCollisionTestTop()
     {
-
+        // Make the orc walk up 
         orcController.NewTarget((float) 0, (float)6.5);
 
+        //Make the orc move immediately
+        yield return null;
+        orcController.waitTime = 0;
 
-        // Wait for 5 seconds to ensure the orc hits the top wall
-        yield return new WaitForSeconds(3.5f); 
+        // Wait for 1 seconds to ensure the orc hits the top wall
+        yield return new WaitForSeconds(1f); 
 
         // Check if the the orc is within the level template 
         Assert.IsTrue(orc.transform.position.y < 6.5); 
@@ -60,11 +64,15 @@ public class OrcCollisionWalls : MonoBehaviour
     public IEnumerator OrcCollisionTestBottom()
     {
         
-         // Make the orc walk down 
-         orcController.NewTarget((float) 0,(float) -7.5);
+        // Make the orc walk down 
+        orcController.NewTarget((float) 0,(float) -7.5);
 
-        // Wait for 5 seconds to ensure the orc hits the top wall
-        yield return new WaitForSeconds(3.5f);
+        //Make the orc move immediately
+        yield return null;
+        orcController.waitTime = 0;
+
+        // Wait for 1 seconds to ensure the orc hits the top wall
+        yield return new WaitForSeconds(1f);
 
         // Check if the the orc is within the level template 
         Assert.IsTrue(orc.transform.position.y > -7.5); 
@@ -74,11 +82,15 @@ public class OrcCollisionWalls : MonoBehaviour
     public IEnumerator OrcCollisionTestLeft()
     {
         
-         // Make the orc walk left 
-         orcController.NewTarget((float) -11.5,(float) 0);
+        // Make the orc walk left 
+        orcController.NewTarget((float) -11.5,(float) 0);
 
-        // Wait for 5 seconds to ensure the orc hits the top wall
-        yield return new WaitForSeconds(3.5f); 
+        //Make the orc move immediately
+        yield return null;
+        orcController.waitTime = 0;
+
+        // Wait for 1 seconds to ensure the orc hits the top wall
+        yield return new WaitForSeconds(1f); 
 
         // Check if the the orc is within the level template 
         Assert.IsTrue(orc.transform.position.x > -11.5);  
@@ -88,11 +100,15 @@ public class OrcCollisionWalls : MonoBehaviour
     public IEnumerator OrcCollisionTestRight()
     {
         
-         // Make the orc walk right 
-         orcController.NewTarget((float) 11.5,(float) 0);
+        // Make the orc walk right 
+        orcController.NewTarget((float) 11.5,(float) 0);
 
-        // Wait for 5 seconds to ensure the orc hits the top wall
-        yield return new WaitForSeconds(3.5f);
+        //Make the orc move immediately
+        yield return null;
+        orcController.waitTime = 0;
+
+        // Wait for 1 seconds to ensure the orc hits the top wall
+        yield return new WaitForSeconds(1f);
 
         // Check if the the orc is within the level template 
         Assert.IsTrue(orc.transform.position.x < 11.5); 
