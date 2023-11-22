@@ -30,6 +30,8 @@ public class PlayerCollisionTest
         playerController = player.GetComponent<PlayerController>();
         playerController.unitTest = true; 
 
+        playerController.moveSpeed = 20;
+
     }
 
     [UnityTest]
@@ -39,8 +41,8 @@ public class PlayerCollisionTest
          // Make the character walk up 
         playerController.SetMoveDirection(Vector2.up);
 
-        // Wait for 5 seconds to ensure the player hits the top wall
-        yield return new WaitForSeconds(5.0f); 
+        // Wait for 1 seconds to ensure the player hits the top wall
+        yield return new WaitForSeconds(1f); 
 
         // Check if the the player is within the level template 
         Assert.IsTrue(player.transform.position.y < 6.5); 
@@ -53,8 +55,8 @@ public class PlayerCollisionTest
          // Make the character walk down 
         playerController.SetMoveDirection(Vector2.down);
 
-        // Wait for 5 seconds to ensure the player hits the top wall
-        yield return new WaitForSeconds(5.0f);
+        // Wait for 1 seconds to ensure the player hits the bottom wall
+        yield return new WaitForSeconds(1f);
 
         // Check if the the player is within the level template 
         Assert.IsTrue(player.transform.position.y > -7.5); 
@@ -67,8 +69,8 @@ public class PlayerCollisionTest
          // Make the character walk left 
         playerController.SetMoveDirection(Vector2.left);
 
-        // Wait for 5 seconds to ensure the player hits the top wall
-        yield return new WaitForSeconds(5.0f); 
+        // Wait for 1 seconds to ensure the player hits the left wall
+        yield return new WaitForSeconds(1f); 
 
         // Check if the the player is within the level template 
         Assert.IsTrue(player.transform.position.x > -11.5);  
@@ -81,8 +83,8 @@ public class PlayerCollisionTest
          // Make the character walk right 
         playerController.SetMoveDirection(Vector2.right);
 
-        // Wait for 5 seconds to ensure the player hits the top wall
-        yield return new WaitForSeconds(5.0f);
+        // Wait for 1 seconds to ensure the player hits the right wall
+        yield return new WaitForSeconds(1f);
 
         // Check if the the player is within the level template 
         Assert.IsTrue(player.transform.position.x < 11.5); 
