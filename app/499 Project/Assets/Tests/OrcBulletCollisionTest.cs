@@ -22,13 +22,9 @@ public class OrcBulletCollisionTest : MonoBehaviour
     private GameObject path;
 
 
-    [UnitySetUp]
-    public IEnumerator Setup()
+    [SetUp]
+    public void Setup()
     {
-        //Load in test scene because previous unit test puts you in the main menu which covers up what is happening during the unit test
-        SceneManager.LoadScene("Test");
-        yield return null;
-
         //Set up path so the orc can move and shoot without an error from the path finding algo
         path = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Pathfinder.prefab")) as GameObject;
 
@@ -55,7 +51,7 @@ public class OrcBulletCollisionTest : MonoBehaviour
         bullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
 
         //Let the bullet travel 
-        yield return new WaitForSeconds(1.0f); 
+        yield return new WaitForSeconds(0.5f); 
 
         // Check if the bullet is within the level template.
         Assert.IsTrue(bullets[0].transform.position.y < 6.5 && bullets[0].transform.position.y > -7.5 && bullets[0].transform.position.x < 11.5 && bullets[0].transform.position.x > -11.5); 

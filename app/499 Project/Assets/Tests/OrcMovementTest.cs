@@ -19,8 +19,6 @@ public class OrcMovementTest : MonoBehaviour
     [SetUp]
     public void Setup()
     {
-        //Set up camera so you can see what is happening during the test
-        cam = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/MainCamera.prefab")) as GameObject;
 
         //Spawn in a level with a wall that the enemy has to navigate around
         template = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TestLevel.prefab")) as GameObject;
@@ -31,7 +29,7 @@ public class OrcMovementTest : MonoBehaviour
         //Spawn and set up the orc
         orc = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Orc_cyan.prefab"), new Vector3(-10, 0, 0), Quaternion.identity) as GameObject;
         enemyMovement = orc.GetComponent<EnemyMovement1>();
-        enemyMovement.movementSpeed = 20;
+        enemyMovement.movementSpeed = 25;
        
     }
 
@@ -44,13 +42,17 @@ public class OrcMovementTest : MonoBehaviour
         //Keep track of the target position
         Vector2 previousTargetPosition = enemyMovement.targetPosition;
 
+        //Make the orc move immediately
+        yield return null;
+        enemyMovement.waitTime = 0;
+
         //Wait for the orc to move through the level to get to the target position
         yield return new WaitUntil(() => orc.transform.position.x >= enemyMovement.targetPosition.x);
 
         //Check if the the orc reached the target position 
         Assert.IsTrue(orc.transform.position.x >= 9); 
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.1f);
 
         //Check that the enemy has a new target position after reaching its previous one
         Assert.IsFalse(enemyMovement.targetPosition == previousTargetPosition);
@@ -60,7 +62,6 @@ public class OrcMovementTest : MonoBehaviour
     public void Teardown()
     {
         //Clean up any objects created during the tests
-        GameObject.Destroy(cam);
         GameObject.Destroy(orc);
         GameObject.Destroy(template);
         GameObject.Destroy(path);

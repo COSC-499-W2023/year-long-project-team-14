@@ -95,8 +95,6 @@ public class PlayerCollisionTest
     {
         // Clean up any objects created during the tests.
         GameObject.Destroy(player);
-        Object.Destroy(playerController.gameObject);
-
         GameObject.Destroy(template);
     }
 }
