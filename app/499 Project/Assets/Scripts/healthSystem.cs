@@ -5,7 +5,7 @@ using UnityEngine;
 public class healthSystem : MonoBehaviour
 {
     public GameObject[] hearts;
-    private int life;
+    public int life;
     public bool dead;
 
     private void Start()

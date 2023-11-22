@@ -12,6 +12,8 @@ public class PauseMenuTests
     public IEnumerator PauseMenu_ResumeGame()
     {
         // Arrange
+        SceneManager.LoadScene(0);
+        yield return null;
         var pauseMenu = new GameObject().AddComponent<PauseMenu>();
         pauseMenu.pauseMenuUI = new GameObject();
         pauseMenu.resumeButton = new GameObject();
@@ -62,5 +64,11 @@ public class PauseMenuTests
         Assert.AreEqual(1, SceneManager.GetActiveScene().buildIndex);
 
         yield return null;
+    }
+
+    [TearDown]
+    public void Teardown()
+    {
+        SceneManager.LoadScene("Test");
     }
 }

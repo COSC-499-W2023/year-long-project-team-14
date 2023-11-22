@@ -10,12 +10,16 @@ public class PlayerAnimationTest
 {
     private UnityEngine.Object playerPrefab;
     GameObject player;
+    private GameObject template;
     PlayerController playerController;
     private Animator animator;
 
     [SetUp]
     public void Setup()
     {
+        //Spawn in the level template 
+        template = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LevelTemplate.prefab")) as GameObject;
+
         //spawn and set up the player
         playerPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Mage_player1.prefab"); 
         player = GameObject.Instantiate(playerPrefab) as GameObject;
@@ -88,6 +92,7 @@ public class PlayerAnimationTest
     {
         // Clean up any objects created during the tests.
         GameObject.Destroy(player);
+        GameObject.Destroy(template);
         Object.Destroy(playerController.gameObject);
     }
 
