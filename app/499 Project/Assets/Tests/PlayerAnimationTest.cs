@@ -35,7 +35,7 @@ public class PlayerAnimationTest
         playerController.SetMoveDirection(Vector2.right);
 
         // Wait for a few frames or a condition to ensure the animation has played.
-        yield return new WaitForSeconds(2.0f); // Adjust the time as needed.
+        yield return new WaitForSeconds(0.1f); // Adjust the time as needed.
 
         // Check if the correct animation x float is stored for playing the corresponding animation from Animator tree and check if Boolean IsWalking is true while input is set to walk right
         Assert.IsTrue(animator.GetFloat("X") > 0 && animator.GetBool("IsWalking") == true); 
@@ -49,7 +49,7 @@ public class PlayerAnimationTest
         playerController.SetMoveDirection(Vector2.left);
 
         // Wait for a few frames or a condition to ensure the animation has played.
-        yield return new WaitForSeconds(2.0f); // Adjust the time as needed.
+        yield return new WaitForSeconds(0.1f); // Adjust the time as needed.
 
         // Check if the correct animation x float is stored for playing the corresponding animation from Animator tree and check if Boolean IsWalking is true while input is set to walk right
         Assert.IsTrue(animator.GetFloat("X") < 0 && animator.GetBool("IsWalking") == true); 
@@ -63,7 +63,7 @@ public class PlayerAnimationTest
         playerController.SetMoveDirection(Vector2.up);
 
         // Wait for a few frames or a condition to ensure the animation has played.
-        yield return new WaitForSeconds(2.0f); // Adjust the time as needed.
+        yield return new WaitForSeconds(0.1f); // Adjust the time as needed.
 
         // Check if the correct animation x float is stored for playing the corresponding animation from Animator tree and check if Boolean IsWalking is true while input is set to walk right
         Assert.IsTrue(animator.GetFloat("Y") > 0 && animator.GetBool("IsWalking") == true); 
@@ -77,7 +77,7 @@ public class PlayerAnimationTest
         playerController.SetMoveDirection(Vector2.down);
 
         // Wait for a few frames or a condition to ensure the animation has played.
-        yield return new WaitForSeconds(2.0f); // Adjust the time as needed.
+        yield return new WaitForSeconds(0.1f); // Adjust the time as needed.
 
         // Check if the correct animation x float is stored for playing the corresponding animation from Animator tree and check if Boolean IsWalking is true while input is set to walk right
         Assert.IsTrue(animator.GetFloat("Y") < 0 && animator.GetBool("IsWalking") == true); 

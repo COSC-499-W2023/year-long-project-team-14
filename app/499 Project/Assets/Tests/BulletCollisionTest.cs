@@ -32,6 +32,7 @@ public class bulletCollisionTest
         playerController.unitTest = true; 
         //Give the player a bullet to shoot
         playerController.attackCharge = 1;
+        playerController.bulletForce = 1000;
 
     }
 
@@ -48,7 +49,7 @@ public class bulletCollisionTest
         bullets = GameObject.FindGameObjectsWithTag("Player_bullet");
 
         //Let the bullet travel 
-        yield return new WaitForSeconds(3.0f); 
+        yield return new WaitForSeconds(1.0f); 
 
         // Check if the bullet is within the level template.
         Assert.IsTrue(bullets[0].transform.position.y < 6.5 && bullets[0].transform.position.y > -7.5); 

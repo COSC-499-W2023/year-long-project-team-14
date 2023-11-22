@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEditor; 
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class OrcBulletCollisionTest : MonoBehaviour
 {
@@ -21,18 +22,21 @@ public class OrcBulletCollisionTest : MonoBehaviour
     private GameObject path;
 
 
-    [SetUp]
-    public void Setup()
+    [UnitySetUp]
+    public IEnumerator Setup()
     {
+        //Load in test scene because previous unit test puts you in the main menu which covers up what is happening during the unit test
+        SceneManager.LoadScene("Test");
+        yield return null;
 
         //Set up path so the orc can move and shoot without an error from the path finding algo
         path = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Pathfinder.prefab")) as GameObject;
-
 
         //spawn and set up the orc
         orcPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Orc_cyan.prefab"); 
         orc = GameObject.Instantiate(orcPrefab) as GameObject;
         orcShooter = orc.GetComponent<EnemyAttack>();
+        orcShooter.bulletSpeed = 25;
        
        //Spawn and set up the level template
         templatePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LevelTemplate.prefab"); 
@@ -46,11 +50,12 @@ public class OrcBulletCollisionTest : MonoBehaviour
     {
         // Make the orc shoot 
         orcShooter.Shoot(orcShooter.lineRenderer1);
+
         //Store the bullet in a variable
         bullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
 
         //Let the bullet travel 
-        yield return new WaitForSeconds(3.0f); 
+        yield return new WaitForSeconds(1.0f); 
 
         // Check if the bullet is within the level template.
         Assert.IsTrue(bullets[0].transform.position.y < 6.5 && bullets[0].transform.position.y > -7.5 && bullets[0].transform.position.x < 11.5 && bullets[0].transform.position.x > -11.5); 

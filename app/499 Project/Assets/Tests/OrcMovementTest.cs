@@ -31,7 +31,7 @@ public class OrcMovementTest : MonoBehaviour
         //Spawn and set up the orc
         orc = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Orc_cyan.prefab"), new Vector3(-10, 0, 0), Quaternion.identity) as GameObject;
         enemyMovement = orc.GetComponent<EnemyMovement1>();
-        enemyMovement.movementSpeed = 10;
+        enemyMovement.movementSpeed = 20;
        
     }
 
@@ -50,7 +50,7 @@ public class OrcMovementTest : MonoBehaviour
         //Check if the the orc reached the target position 
         Assert.IsTrue(orc.transform.position.x >= 9); 
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.25f);
 
         //Check that the enemy has a new target position after reaching its previous one
         Assert.IsFalse(enemyMovement.targetPosition == previousTargetPosition);
@@ -59,7 +59,7 @@ public class OrcMovementTest : MonoBehaviour
     [TearDown]
     public void Teardown()
     {
-        // Clean up any objects created during the tests
+        //Clean up any objects created during the tests
         GameObject.Destroy(cam);
         GameObject.Destroy(orc);
         GameObject.Destroy(template);
