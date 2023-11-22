@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class healthSystem : MonoBehaviour
 {
+    private Rigidbody2D rb;
     public GameObject[] hearts;
+    private Animator animator;
+    private CircleCollider2D cc;
     private int life;
     public bool dead;
 
@@ -12,13 +15,18 @@ public class healthSystem : MonoBehaviour
     {
         life = hearts.Length;
     }
-    // Update is called once per frame
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        cc = GetComponent<CircleCollider2D>();
+        
+    }
+
     void Update()
     {
-        if (dead == true)
-        {
-            //death
-        }
+    
     }
 
     public void takeDamage()
@@ -29,8 +37,15 @@ public class healthSystem : MonoBehaviour
             hearts[life].SetActive(false);
             if (life < 1)
             {
-                dead = true;
+                Die();
             }
         }
+    }
+
+    void Die()
+    {
+        rb.bodyType = RigidbodyType2D.Static;
+        animator.SetTrigger("Death");
+        cc.enabled = false;
     }
 }
