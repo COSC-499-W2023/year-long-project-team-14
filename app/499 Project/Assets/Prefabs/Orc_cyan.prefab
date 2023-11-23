@@ -57,6 +57,7 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0}
   movementSpeed: 3
   nextWaypointDistance: 1
+  waitTime: 0
 --- !u!114 &8478109246432669997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,6 +75,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3646651384316253834, guid: 1bfe49c7730abc141b70578a420c4ce7, type: 3}
   shootInterval: 2
   bulletSpeed: 10
+  lastShootTime: 0
   Points1: []
   Points2: []
   Points3: []
@@ -125,7 +127,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 9
   m_Sprite: {fileID: 385569629, guid: f8c9172c798198048836a9d37fa88d8c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -260,6 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5743ec2bb89168468afcf4b1065d30c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  portal: {fileID: 0}
 --- !u!1 &4796158390444706035
 GameObject:
   m_ObjectHideFlags: 0
