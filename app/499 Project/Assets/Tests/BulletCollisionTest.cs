@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEditor; 
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class bulletCollisionTest 
 {
@@ -16,15 +17,18 @@ public class bulletCollisionTest
     private UnityEngine.Object templatePrefab;
     private GameObject template;
 
-    [SetUp]
-    public void Setup()
+    [UnitySetUp]
+    public IEnumerator Setup()
     {
+        SceneManager.LoadScene("Test");
+        yield return null;
+
         //spawn and set up the player
         playerPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Mage_player1.prefab"); 
         player = GameObject.Instantiate(playerPrefab) as GameObject;
        
        //Spawn and set up the level template
-        templatePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LevelTemplate.prefab"); 
+        templatePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TestLevel.prefab"); 
         template = GameObject.Instantiate(templatePrefab) as GameObject;
 
         // Set up the player controller
@@ -32,7 +36,7 @@ public class bulletCollisionTest
         playerController.unitTest = true; 
         //Give the player a bullet to shoot
         playerController.attackCharge = 1;
-        playerController.bulletForce = 1000;
+        playerController.bulletForce = 35;
 
     }
 
@@ -49,7 +53,7 @@ public class bulletCollisionTest
         bullets = GameObject.FindGameObjectsWithTag("Player_bullet");
 
         //Let the bullet travel 
-        yield return new WaitForSeconds(1.0f); 
+        yield return new WaitForSeconds(0.5f); 
 
         // Check if the bullet is within the level template.
         Assert.IsTrue(bullets[0].transform.position.y < 6.5 && bullets[0].transform.position.y > -7.5); 

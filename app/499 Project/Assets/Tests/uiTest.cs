@@ -31,7 +31,7 @@ public class uiTest
         bulletUI = player.GetComponent<bulletUI>();
 
         //Spawn in the level template 
-        template = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LevelTemplate.prefab")) as GameObject;
+        template = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TestLevel.prefab")) as GameObject;
     }
 
     [UnityTest]

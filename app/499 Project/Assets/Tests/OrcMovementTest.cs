@@ -21,7 +21,7 @@ public class OrcMovementTest : MonoBehaviour
     {
 
         //Spawn in a level with a wall that the enemy has to navigate around
-        template = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TestLevel.prefab")) as GameObject;
+        template = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TestLevel2.prefab")) as GameObject;
 
         //This allows the orc to move and avoid obstacles
         path = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Pathfinder.prefab")) as GameObject;
@@ -29,7 +29,7 @@ public class OrcMovementTest : MonoBehaviour
         //Spawn and set up the orc
         orc = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Orc_cyan.prefab"), new Vector3(-10, 0, 0), Quaternion.identity) as GameObject;
         enemyMovement = orc.GetComponent<EnemyMovement1>();
-        enemyMovement.movementSpeed = 25;
+        enemyMovement.movementSpeed = 35;
        
     }
 
