@@ -37,7 +37,7 @@ public class CoopTest
         ExecuteEvents.Execute(player1Button, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
 
         //Wait and check that the game scene is loaded and check that only 1 player spawned in
-        yield return null;
+        yield return new WaitForSeconds(0.6f);
         Assert.AreEqual("GameScene", SceneManager.GetActiveScene().name);
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         Assert.IsTrue(players.Length == 1);
@@ -51,7 +51,7 @@ public class CoopTest
         ExecuteEvents.Execute(player2Button, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
 
         //Wait and check that the game scene is loaded and check that 2 players spawned in
-        yield return null;
+        yield return new WaitForSeconds(0.6f);
         Assert.AreEqual("GameScene", SceneManager.GetActiveScene().name);
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         Assert.IsTrue(players.Length == 2);

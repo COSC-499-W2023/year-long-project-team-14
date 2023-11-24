@@ -29,7 +29,7 @@ public class OrcAttackTest : MonoBehaviour
         yield return null;
 
         //Spawn in a level with a wall in the center
-        level = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TestLevel.prefab")) as GameObject;
+        level = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TestLevel2.prefab")) as GameObject;
 
         //This allows the orc to move and avoid obstacles
         path = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Pathfinder.prefab")) as GameObject;

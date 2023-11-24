@@ -47,5 +47,6 @@ public class healthSystem : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Static;
         animator.SetTrigger("Death");
         cc.enabled = false;
+        dead = true;
     }
 }

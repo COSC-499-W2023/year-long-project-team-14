@@ -23,14 +23,14 @@ public class PlayerCollisionTest
         player = GameObject.Instantiate(playerPrefab) as GameObject;
        
        //Spawn and set up the level template
-        templatePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LevelTemplate.prefab"); 
+        templatePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TestLevel.prefab"); 
         template = GameObject.Instantiate(templatePrefab) as GameObject;
 
         // Set up the player controller
         playerController = player.GetComponent<PlayerController>();
         playerController.unitTest = true; 
 
-        playerController.moveSpeed = 20;
+        playerController.moveSpeed = 30;
 
     }
 

@@ -70,7 +70,7 @@ public class EnemyMovement1 : MonoBehaviour
             }
 
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-            Vector2 force = direction * movementSpeed * 5000 * Time.deltaTime;
+            Vector2 force = direction * movementSpeed * 2500 * Time.deltaTime;
             rb.AddForce(force);
 
             float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);

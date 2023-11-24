@@ -32,6 +32,9 @@ public class EnemyAttack : MonoBehaviour
         Points1 = new List<Vector3>();
         Points2 = new List<Vector3>();
         Points3 = new List<Vector3>();
+
+        //prevent enemies from shooting at the start of a level
+        lastShootTime = Time.time;
     }
 
     void Update()
