@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 public class PlayerAttackTest
 {
     private GameObject player;
+    private GameObject template;
     private PlayerController playerController;
     private GameObject[] bullets;
 
@@ -22,6 +23,9 @@ public class PlayerAttackTest
         playerController.unitTest = true; //this prevents some code from running in PlayerController that requires user input
         playerController.attackCharge = 1;
         playerController.attackChargeSpeed = 2;
+
+        //Spawn in the level template 
+        template = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TestLevel.prefab")) as GameObject;
     }
 
     [UnityTest]
@@ -52,6 +56,7 @@ public class PlayerAttackTest
         //destroy all gameobjects
         Object.Destroy(playerController.gameObject);
         GameObject.Destroy(player);
+        GameObject.Destroy(template);
         for(int i = 0; i < bullets.Length; i++)
             GameObject.Destroy(bullets[i]);
     }

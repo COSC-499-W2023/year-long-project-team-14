@@ -17,10 +17,12 @@ public class CoopTest
     [UnitySetUp]
     public IEnumerator Setup()
     {
+        //Load the main menu
         SceneManager.LoadScene("Menu");
 
         yield return null;
 
+        //Get access to some of the menu objects
         mainMenuScript = Object.FindObjectOfType<MainMenu>();
         playerMenuObject = mainMenuScript.playerMenuObject;
         player1Button = mainMenuScript.player1Button;
@@ -30,10 +32,12 @@ public class CoopTest
     [UnityTest]
     public IEnumerator OnePlayerTest()
     {
+        //Set the player selection menu active and call the 1 player function
         playerMenuObject.SetActive(true);
         ExecuteEvents.Execute(player1Button, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
 
-        yield return new WaitForSeconds(1);
+        //Wait and check that the game scene is loaded and check that only 1 player spawned in
+        yield return new WaitForSeconds(0.6f);
         Assert.AreEqual("GameScene", SceneManager.GetActiveScene().name);
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         Assert.IsTrue(players.Length == 1);
@@ -42,26 +46,14 @@ public class CoopTest
     [UnityTest]
     public IEnumerator TwoPlayerTest()
     {
+        //Set the player selection menu active and call the 2 player function
         playerMenuObject.SetActive(true);
         ExecuteEvents.Execute(player2Button, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
 
-        yield return new WaitForSeconds(1);
+        //Wait and check that the game scene is loaded and check that 2 players spawned in
+        yield return new WaitForSeconds(0.6f);
         Assert.AreEqual("GameScene", SceneManager.GetActiveScene().name);
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         Assert.IsTrue(players.Length == 2);
     }
-
-    [UnityTearDown]
-    public IEnumerator Teardown()
-    {
-        // Wait for the scene to load
-        yield return SceneManager.LoadSceneAsync("Menu");
-
-        // Wait for a very short time to ensure that the scene is fully loaded
-        yield return new WaitForSeconds(0.1f);
-
-        // Unload the scene
-        yield return SceneManager.UnloadSceneAsync("Menu");
-    }
-
 }

@@ -168,12 +168,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9a59b41eb2537b4e95e074c29bc44ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCharge: 0
-  attackChargeSpeed: 2
+  attackCharge: 1
+  attackChargeSpeed: 1
   attackChargeMax: 3
   attackCost: 1
-  bulletForce: 250
-  moveSpeed: 5
+  bulletForce: 7
+  moveSpeed: 7
   bulletBounces: 1
   bulletPrefab: {fileID: 5755921796930191897, guid: 3d996469d34a57d48b5cda7756cb6536, type: 3}
   gunFollow: {fileID: 267668128978849629}
@@ -367,6 +367,8 @@ MonoBehaviour:
   - {fileID: 2963293245771210651}
   - {fileID: 6791258993376698776}
   - {fileID: 7327355830875134866}
+  life: 0
+  dead: 0
 --- !u!114 &5323379100632877089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,7 +555,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.2
+        value: 0.12
         inSlope: 0
         outSlope: 0
         tangentMode: 0

@@ -16,11 +16,11 @@ public class MainMenuTest
     [UnitySetUp]
     public IEnumerator Setup()
     {
+        //Wait for the menu scene to load
         SceneManager.LoadScene("Menu");
-
-        // Wait for the scene to load
         yield return null;
 
+        //Get access to some of the menu objects
         mainMenuScript = Object.FindObjectOfType<MainMenu>();
         if (mainMenuScript == null)
         {
@@ -54,44 +54,33 @@ public class MainMenuTest
     [UnityTest]
     public IEnumerator MainMenu_PlayButton()
     {
+        //Execute the play button and check that the player menu is now active
         EventSystem.current.SetSelectedGameObject(null);
         ExecuteEvents.Execute(playButton, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.1f);
         Assert.IsTrue(playerMenuObject.activeSelf);
     }
 
     [UnityTest]
     public IEnumerator MainMenu_PlayerButton()
     {
+        //Execute the 1 player button and check that the game scene is loaded
         playerMenuObject.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
         ExecuteEvents.Execute(player1Button, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.6f);
         Assert.AreEqual("GameScene", SceneManager.GetActiveScene().name);
     }
 
     [UnityTest]
     public IEnumerator MainMenu_PlayerBackButton()
     {
+        //Execute the player menu back button and check that the player menu is no longer active
         playerMenuObject.SetActive(true);
         mainMenuScript.PlayerBackButton();
         yield return new WaitForSeconds(0.1f);
         Assert.IsFalse(playerMenuObject.activeSelf);
     }
-
-    [UnityTearDown]
-    public IEnumerator Teardown()
-    {
-        // Wait for the scene to load
-        yield return SceneManager.LoadSceneAsync("Menu");
-
-        // Wait for a very short time to ensure that the scene is fully loaded
-        yield return new WaitForSeconds(0.1f);
-
-        // Unload the scene
-        yield return SceneManager.UnloadSceneAsync("Menu");
-    }
-
 }
