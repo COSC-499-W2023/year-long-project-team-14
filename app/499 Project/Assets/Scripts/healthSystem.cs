@@ -47,6 +47,14 @@ public class healthSystem : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Static;
         animator.SetTrigger("Death");
         cc.enabled = false;
+        
+        PlayerController p = GetComponent<PlayerController>();
+        GameObject bullet = transform.Find("Center").gameObject;
+        if (p!= null)
+        {
+            Destroy(p);
+            Destroy(bullet);
+        }
         dead = true;
     }
 }
