@@ -18,6 +18,7 @@ public class GameMaster : MonoBehaviour
     public GameObject player2Prefab;
 
     public GameObject levelTemplate;
+    public GameObject level1;
     public GameObject[] levels;
     private Transform player1Spawn;
     private Transform player2Spawn;
@@ -26,6 +27,8 @@ public class GameMaster : MonoBehaviour
 
     void Start()
     {
+        level = Instantiate(level1, transform.position, Quaternion.identity);
+        AstarPath.active.Scan();
         playerCount = PlayerPrefs.GetInt("playerCount");
         SetupPlayers();
     }
@@ -40,9 +43,8 @@ public class GameMaster : MonoBehaviour
         fadeAnim.Play("ScreenFadeOut");
         yield return new WaitForSecondsRealtime(0.5f);
         Destroy(level);
+        yield return null;
         fadeAnim.Play("ScreenFadeIn");
-        yield return new WaitForSecondsRealtime(0.1f);
-        
 
         //move players out of the way
         player1.transform.position = new Vector3(1000, 0, 0);

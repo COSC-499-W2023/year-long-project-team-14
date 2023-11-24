@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 7892380796491269603}
   - component: {fileID: 2593783467049871882}
   - component: {fileID: 8569756120131184106}
-  - component: {fileID: 4381576740979951869}
+  - component: {fileID: 2652700196406471793}
   m_Layer: 0
-  m_Name: portal
-  m_TagString: Portal
+  m_Name: Ladder
+  m_TagString: Ladder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &4381576740979951869
+--- !u!114 &2652700196406471793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,11 +140,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9025800119931175684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39bba65b66e83494fae5cdf55e5f5f9a, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b2be3b8b8f838b418e65e9812373f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevelPrefab: {fileID: 6729654811240848532, guid: d07cd36c5a37bb1498e35f3b18bbd3d5, type: 3}
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 2593783467049871882}
   ladderSprite: {fileID: 21300000, guid: aa22c9b1c600b954b8b30861088de863, type: 3}
   trapDoorSprite: {fileID: 21300000, guid: 74b45ec4fe61b9a44a75e8e28d9d2a7a, type: 3}
   allEnemies: []

@@ -10,15 +10,15 @@ public class EnemyHealthSystem : MonoBehaviour
     public int enemyHealth = 2;
 
     private CircleCollider2D enemyCollider;
-    public Portal portal;
+    public Ladder ladder;
     private void Start()
     {
         // Add the enemy to the list of allEnemies when it's instantiated
-        GameObject p = GameObject.FindWithTag("Portal");
-        if(p != null)
+        GameObject lad = GameObject.FindWithTag("Ladder");
+        if(lad != null)
         {
-            portal = p.GetComponent<Portal>();
-            portal.allEnemies.Add(gameObject);
+            ladder = lad.GetComponent<Ladder>();
+            ladder.allEnemies.Add(gameObject);
         }
         enemyCollider = GetComponent<CircleCollider2D>();
         
@@ -58,9 +58,9 @@ public class EnemyHealthSystem : MonoBehaviour
         animator.SetTrigger("Death");
 
         enemyCollider.enabled = false;
-        portal.allEnemies.Remove(gameObject);
+        ladder.allEnemies.Remove(gameObject);
 
-        if (portal.allEnemies.Count == 0)
+        if (ladder.allEnemies.Count == 0)
         {
             EndLevel();
         }
@@ -68,6 +68,6 @@ public class EnemyHealthSystem : MonoBehaviour
 
     void EndLevel()
     {
-        portal.SetPortalActive(true);
+        ladder.SetLadderActive(true);
     }
 }
