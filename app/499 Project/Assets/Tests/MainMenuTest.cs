@@ -70,7 +70,7 @@ public class MainMenuTest
         EventSystem.current.SetSelectedGameObject(null);
         ExecuteEvents.Execute(player1Button, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.6f);
         Assert.AreEqual("GameScene", SceneManager.GetActiveScene().name);
     }
 

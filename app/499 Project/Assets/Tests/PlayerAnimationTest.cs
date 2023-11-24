@@ -18,7 +18,7 @@ public class PlayerAnimationTest
     public void Setup()
     {
         //Spawn in the level template 
-        template = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LevelTemplate.prefab")) as GameObject;
+        template = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TestLevel.prefab")) as GameObject;
 
         //spawn and set up the player
         playerPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Mage_player1.prefab"); 

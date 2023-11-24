@@ -40,6 +40,7 @@ public class PauseMenuTests
 
         // Act
         pauseMenu.LoadMenu();
+        yield return new WaitForSeconds(0.6f);
 
         // Assert
         Assert.AreEqual(1f, Time.timeScale);
@@ -58,6 +59,7 @@ public class PauseMenuTests
 
         // Act
         pauseMenu.Restart();
+        yield return new WaitForSeconds(0.6f);
 
         // Assert
         Assert.AreEqual(1f, Time.timeScale);

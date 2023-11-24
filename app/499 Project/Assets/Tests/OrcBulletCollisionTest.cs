@@ -32,10 +32,10 @@ public class OrcBulletCollisionTest : MonoBehaviour
         orcPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Orc_cyan.prefab"); 
         orc = GameObject.Instantiate(orcPrefab) as GameObject;
         orcShooter = orc.GetComponent<EnemyAttack>();
-        orcShooter.bulletSpeed = 25;
+        orcShooter.bulletSpeed = 35;
        
        //Spawn and set up the level template
-        templatePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/LevelTemplate.prefab"); 
+        templatePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TestLevel.prefab"); 
         template = GameObject.Instantiate(templatePrefab) as GameObject;
 
     }

@@ -7,17 +7,21 @@ public class EnemyHealthSystem : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
     private EnemyAttack ea; 
-    private int enemyHealth = 2;
+    public int enemyHealth = 2;
 
     private CircleCollider2D enemyCollider;
-    public Portal portal;
-
-    private static List<EnemyHealthSystem> allEnemies = new List<EnemyHealthSystem>();
+    public Ladder ladder;
     private void Start()
     {
         // Add the enemy to the list of allEnemies when it's instantiated
-        allEnemies.Add(this);
+        GameObject lad = GameObject.FindWithTag("Ladder");
+        if(lad != null)
+        {
+            ladder = lad.GetComponent<Ladder>();
+            ladder.allEnemies.Add(gameObject);
+        }
         enemyCollider = GetComponent<CircleCollider2D>();
+        
     }
     private void Awake()
     {
@@ -54,9 +58,9 @@ public class EnemyHealthSystem : MonoBehaviour
         animator.SetTrigger("Death");
 
         enemyCollider.enabled = false;
-        allEnemies.Remove(this);
+        ladder.allEnemies.Remove(gameObject);
 
-        if (allEnemies.Count == 0)
+        if (ladder.allEnemies.Count == 0)
         {
             EndLevel();
         }
@@ -64,6 +68,6 @@ public class EnemyHealthSystem : MonoBehaviour
 
     void EndLevel()
     {
-        portal.SetPortalActive(true);
+        ladder.SetLadderActive(true);
     }
 }

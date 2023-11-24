@@ -55,5 +55,6 @@ public class healthSystem : MonoBehaviour
             Destroy(p);
             Destroy(bullet);
         }
+        dead = true;
     }
 }
