@@ -45,7 +45,6 @@ public class healthSystem : MonoBehaviour
     void Die()
     {
         rb.bodyType = RigidbodyType2D.Static;
-        animator.SetTrigger("isHit");
         animator.SetTrigger("Death");
         cc.enabled = false;
         

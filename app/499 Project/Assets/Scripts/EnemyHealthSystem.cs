@@ -63,7 +63,6 @@ public class EnemyHealthSystem : MonoBehaviour
     {
         rb.bodyType = RigidbodyType2D.Static;
         ea.enabled = false;
-        animator.SetTrigger("isHit");
         animator.SetTrigger("Death");
 
         enemyCollider.enabled = false;
