@@ -16,7 +16,7 @@ public class PlayerBullet : MonoBehaviour
             bounces--;
         }
 
-        if(collision.gameObject.CompareTag("EnemyBullet")){
+        if(collision.gameObject.CompareTag("EnemyBullet") || collision.gameObject.CompareTag("Player_bullet")){
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
