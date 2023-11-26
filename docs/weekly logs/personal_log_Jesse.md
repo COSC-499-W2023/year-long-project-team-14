@@ -1,4 +1,36 @@
 # Personal Log - Jesse Lazzari
+## Week 12
+- Start Date: November 20
+- End Date: November 26
+  
+### Tasks I worked on:
+![](screenshots/peer_eval_tasks_week12.JPG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Ensure I am completing all of my assigned features
+* Attend team meetings and provide input on gameplay design decisions
+* Test gameplay mechanics and brainstorm with the team how we can balance the game
+* Provide feedback on current features and bug fixes related to player/enemy animations
+* Write weekly teamlog for the team
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Add health system script for enemies which stores current enemy health, and decrements if enemy is hit
+* Add working implementation for playing death animation only when enemy is out of lives
+* Adjust the player health system script to trigger death animations if a player runs out of lives
+* Re-work animation tree so that once player/enemy is dead they remain static in their dead state in the level
+* Adjust enemy movement script to disable pathfinding/walking when enemy is dead
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed the features I set out to implement as outlined above:
+* In progress tasks are unit testing for features above and begin working on the upcoming design document and video demo.
+
+### Screenshots of Tasks I Worked On
+![](screenshots/week12_jesse_1.JPG)
+![](screenshots/week12_jesse_2.JPG)
+![](screenshots/week12_jesse_3.JPG)
+
 ## Week 10
 - Start Date: November 6
 - End Date: November 12
