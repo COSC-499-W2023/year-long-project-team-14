@@ -20,6 +20,9 @@ My features this week were to:
 ### Among these tasks, which have you completed/in progress in the last week?
 I completed all my tasks. Unit test for enemy health system script in progress as wells as the Design doc/video.
 
+![](screenshots/enemyHealthSystemScreenshot.png)
+![](screenshots/portalScreenshot.png)
+
 ***
 ## Week 10
 - Start Date: November 6
