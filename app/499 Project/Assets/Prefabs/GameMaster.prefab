@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2255637680890580704}
   m_Layer: 0
   m_Name: GameMaster
-  m_TagString: Untagged
+  m_TagString: GameMaster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,11 +89,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4546a7f5504acb843909d77941bbb26d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeAnim: {fileID: 0}
   playerCount: 2
   player1ControlScheme: 0
   player2ControlScheme: 1
+  currentLevel: 1
   player1: {fileID: 0}
   player2: {fileID: 0}
   player1Prefab: {fileID: 881379806320011560, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
   player2Prefab: {fileID: 881379806320011560, guid: 076a5c51a2c98254abac4863d7fab8ef, type: 3}
   levelTemplate: {fileID: 4522541046923769925, guid: bea5726489661344bbf1dea76e4253fa, type: 3}
+  level1: {fileID: 5110116461203669445, guid: be654b483021c914c931345e096af7bb, type: 3}
+  levels:
+  - {fileID: 5110116461203669445, guid: be654b483021c914c931345e096af7bb, type: 3}
+  - {fileID: 4065921660135442551, guid: c8532903dc5889d4189b99035544b895, type: 3}
+  - {fileID: 1866938049884259573, guid: 3043074287534c349ada20ff8feed134, type: 3}
+  level: {fileID: 0}

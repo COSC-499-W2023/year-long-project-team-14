@@ -1,4 +1,24 @@
 # Personal Log - Justin McKendry
+## Week 10
+- Start Date: November 5th
+- End Date: November 12th
+
+### Tasks I worked on:
+![](screenshots/tasks_justin_week10.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Complete unit testing for my previous weeks work.
+* Get a better understanding of the scripts my teamates have implemented.
+* Decide on which web hosting service to use for uploading our game to a webpage
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Create the unit tests for my previous weeks features
+
+### Among these tasks, which have you completed/in progress in the last week?
+I have made completed all of the needed unit test and decided to try to host it on itch.io.
+
 ## Week 9
 - Start Date: October 30th
 - End Date: November 5th

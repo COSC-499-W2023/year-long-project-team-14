@@ -9,7 +9,7 @@ public class EnemyAttack : MonoBehaviour
     public GameObject bulletPrefab;
     public float shootInterval = 2.0f;
     public float bulletSpeed = 10.0f;
-    private float lastShootTime;
+    public float lastShootTime;
 
     public List<Vector3> Points1;
     public List<Vector3> Points2;
@@ -32,10 +32,14 @@ public class EnemyAttack : MonoBehaviour
         Points1 = new List<Vector3>();
         Points2 = new List<Vector3>();
         Points3 = new List<Vector3>();
+
+        //prevent enemies from shooting at the start of a level
+        lastShootTime = Time.time;
     }
 
     void Update()
     {
+        players = GameObject.FindGameObjectsWithTag("Player");
         if(players.Length > 0)
         {
             FindClosestPlayer();
@@ -83,12 +87,10 @@ public class EnemyAttack : MonoBehaviour
             lineRenderer1.SetPositions(Points1.ToArray());
             lineRenderer2.SetPositions(Points2.ToArray());
             lineRenderer3.SetPositions(Points3.ToArray());
-        }
-        else
-            players = GameObject.FindGameObjectsWithTag("Player");
+        }     
     }
 
-    void Shoot(LineRenderer lr)
+    public void Shoot(LineRenderer lr)
     {
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         Vector2 direction = lr.transform.right;

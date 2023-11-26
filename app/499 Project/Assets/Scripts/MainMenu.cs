@@ -17,6 +17,8 @@ public class MainMenu : MonoBehaviour
     public bool mainMenu = true;
     public bool playerMenu = false;
 
+    public Animator fadeAnim;
+
     void Start()
     {
         StartCoroutine(SelectMenuButon());
@@ -34,12 +36,12 @@ public class MainMenu : MonoBehaviour
     public void OnePlayer()
     {
         PlayerPrefs.SetInt("playerCount", 1);
-        PlayGame();
+        StartCoroutine(PlayGame());
     }
     public void TwoPlayer()
     {
         PlayerPrefs.SetInt("playerCount", 2);
-        PlayGame();
+        StartCoroutine(PlayGame());
     }
     public void PlayerBackButton()
     {
@@ -51,8 +53,10 @@ public class MainMenu : MonoBehaviour
     }
 
 
-    public void PlayGame()
+    public IEnumerator PlayGame()
     {
+        fadeAnim.Play("ScreenFadeOut");
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(1);
     }
 

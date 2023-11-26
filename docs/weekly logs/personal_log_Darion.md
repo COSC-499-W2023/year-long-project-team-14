@@ -1,8 +1,26 @@
 # Personal Log - Darion Pescada
 
+## Week 10
+- Start Date: November 6
+- End Date: November 12
+
+### Tasks I worked on:
+![](screenshots/tasks_darion_week10.png)
+  
+### Recap on your week's goals
+- My goals this week were to finish implementing my milestone 2 features.
+
+### Which features were yours in the project plan for this milestone?
+- My features for this week were to add the enemy movement AI and to create the enemy targeting system.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- This week, I completed all my tasks. Unit testing for enemy movement and enemy targeting are in progress. 
+
+***
+
 ## Week 9
 - Start Date: October 30
-- End Date: October 5
+- End Date: November 5
 
 ### Tasks I worked on:
 ![](screenshots/tasks_darion_week9.png)
