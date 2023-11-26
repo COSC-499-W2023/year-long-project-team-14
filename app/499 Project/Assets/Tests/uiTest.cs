@@ -77,7 +77,12 @@ public class uiTest
     {
         //destroy all gameobjects
         GameObject.Destroy(player);
-        Object.Destroy(playerController.gameObject);
+
+        /* Had to add the if below, heart was trying to tear down playerController when it was already torn down.
+        */
+        if(playerController != null){
+            Object.Destroy(playerController.gameObject);
+        }
         GameObject.Destroy(bullet);
         GameObject.Destroy(heart);
         GameObject.Destroy(template);
