@@ -48,6 +48,20 @@ public class PlayerController : MonoBehaviour
             pauseMenu = canvas.GetComponent<PauseMenu>();
     }
 
+
+    // This function is called when a collision is detected.
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy")){
+            healthSystem playerHealth = GetComponent<healthSystem>();
+
+            if(playerHealth != null){
+                playerHealth.takeDamage();
+            }
+            animator.SetTrigger("isHit");
+        }
+    }
+
     void Update()
     {
         if (!unitTest2)
@@ -192,3 +206,4 @@ public class PlayerController : MonoBehaviour
 
 
 }
+ 

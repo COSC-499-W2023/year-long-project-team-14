@@ -77,6 +77,23 @@ public class OrcAttackTest : MonoBehaviour
         Destroy(player1);
     }
 
+    [UnityTest]
+    public IEnumerator OrcMoveToPlayerTest()
+    {
+        // Let the orc be able to move
+        orc.GetComponent<EnemyMovement1>().movementSpeed = 4;
+
+        // Make the orc walk to the second player 
+        orc.GetComponent<EnemyMovement1>().NewTarget((float) -3,(float) -5);
+
+        //wait until  that player would take damage
+        yield return new WaitForSeconds(5f);
+
+        //Check that the orc was able to damange player 2
+        Assert.IsTrue(healthSystem2.life < 3);
+        Destroy(player1);
+    }
+
     [TearDown]
     public void Teardown()
     {
@@ -84,5 +101,7 @@ public class OrcAttackTest : MonoBehaviour
         GameObject.Destroy(orc);
         GameObject.Destroy(level);
         GameObject.Destroy(path);
+        GameObject.Destroy(player1);
+        GameObject.Destroy(player2);
     }
 }
