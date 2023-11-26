@@ -550,8 +550,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 925822472}
-        m_TargetAssemblyTypeName: PauseMenu, ProjectScripts
+      - m_Target: {fileID: 925822473}
+        m_TargetAssemblyTypeName: GameOverMenu, ProjectScripts
         m_MethodName: LoadMenu
         m_Mode: 1
         m_Arguments:
@@ -1295,8 +1295,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 925822472}
-        m_TargetAssemblyTypeName: PauseMenu, ProjectScripts
+      - m_Target: {fileID: 633710527}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 925822473}
+        m_TargetAssemblyTypeName: GameOverMenu, ProjectScripts
         m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
@@ -1305,7 +1317,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &493994676
 MonoBehaviour:
@@ -1607,6 +1619,7 @@ GameObject:
   - component: {fileID: 925822469}
   - component: {fileID: 925822468}
   - component: {fileID: 925822472}
+  - component: {fileID: 925822473}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Canvas
@@ -1715,6 +1728,22 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 911344141}
   resumeButton: {fileID: 1109078355}
   pauseMenu: 0
+--- !u!114 &925822473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925822467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a690d81b866e8be4eadffd73872dcff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeAnim: {fileID: 0}
+  gameOverMenuUI: {fileID: 0}
+  restartButton: {fileID: 0}
+  gameOverMenu: 0
 --- !u!1 &937657950
 GameObject:
   m_ObjectHideFlags: 0
