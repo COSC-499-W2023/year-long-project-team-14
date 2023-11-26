@@ -1,4 +1,26 @@
 # Personal Log - Gabriel Mercier
+## Week 12
+- Start Date: November 20
+- End Date: November 26
+  
+### Tasks I worked on:
+![](screenshots/tasks_gabriel_week12.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Stay on top of my features
+* Ensure the team had the same vision for the design doc/video
+* Improve on minor game adjustments
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Create a portal and portal script for switching levels
+* Adjust the enemy health system to accomodate for the use of a portal or a trapdoor/ladder
+* Minor adjustments: Make players unable to shoot/remove line of sight once their dead. And remove enemy/player collider once their dead.
+### Among these tasks, which have you completed/in progress in the last week?
+I completed all my tasks. Unit test for enemy health system script in progress as wells as the Design doc/video.
+
+***
 ## Week 10
 - Start Date: November 6
 - End Date: November 12
