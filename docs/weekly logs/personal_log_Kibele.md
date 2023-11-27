@@ -1,4 +1,30 @@
 # Personal Log - Kibele Sebnem Yildirim
+## Week 12
+- Start Date: November 19
+- End Date: November 27
+
+### Tasks I worked on:
+![](screenshots/kibeletasks_week12.png)
+
+### Recap on your week's goals
+- My goals this week were to:
+* Contniue my progress on Game Over Menu
+* Discuss with my team about the design document and the video
+* Review my teammates' work on the game
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to continue my progress on Game Over Menu and discuss with my team about the design document and the video. I have also reviewed my teammates' work on the game.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week. 
+
+Here is a screenshot of my work on our Game Over Menu in Unity this week:
+![](screenshots/kibele_week12.png)
+
+Here is a screenshot of my work on VScode in Game Over Menu this week:
+![](screenshots/kibele_weekly12_1.png)
+
+
 ## Week 10
 - Start Date: November 6
 - End Date: November 12
