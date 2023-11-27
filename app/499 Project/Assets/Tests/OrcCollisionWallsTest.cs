@@ -19,10 +19,6 @@ public class OrcCollisionWalls : MonoBehaviour
     //private UnityEngine.Object pathfinder;
     private GameObject path;
 
-  
-
-   
-
     [SetUp]
     public void Setup()
     {
@@ -39,8 +35,6 @@ public class OrcCollisionWalls : MonoBehaviour
         templatePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TestLevel.prefab"); 
         template = GameObject.Instantiate(templatePrefab) as GameObject;
     }
-
-
 
 
     [UnityTest]
