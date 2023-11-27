@@ -15,6 +15,7 @@ public class uiTest
     private bulletUI bulletUI;
     private GameObject heart;
     private healthSystem healthSystem;
+    private GameObject template;
 
     [SetUp]
     public void Setup()
@@ -25,9 +26,12 @@ public class uiTest
         playerController = player.GetComponent<PlayerController>();
         playerController.unitTest = true; //this prevents some code from running in PlayerController that requires user input
         playerController.attackCharge = 3;
-        playerController.attackChargeSpeed = 2;
+        playerController.attackChargeSpeed = 10;
         healthSystem = player.GetComponent<healthSystem>();
         bulletUI = player.GetComponent<bulletUI>();
+
+        //Spawn in the level template 
+        template = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/TestLevel.prefab")) as GameObject;
     }
 
     [UnityTest]
@@ -59,12 +63,12 @@ public class uiTest
     {
         //shoot a bullet and assert that the ui bullet image is deactivated so that it reflects attack charge
         playerController.Shoot();
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.01f);
         bullet = bulletUI.bullets[(int)playerController.attackCharge];
         Assert.IsFalse(bullet.activeSelf);
 
         //wait and check if the image is reactivated once attack charge goes back up
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         Assert.IsTrue(bullet.activeSelf);
     }
 
@@ -73,8 +77,14 @@ public class uiTest
     {
         //destroy all gameobjects
         GameObject.Destroy(player);
-        Object.Destroy(playerController.gameObject);
+
+        /* Had to add the if below, heart was trying to tear down playerController when it was already torn down.
+        */
+        if(playerController != null){
+            Object.Destroy(playerController.gameObject);
+        }
         GameObject.Destroy(bullet);
         GameObject.Destroy(heart);
+        GameObject.Destroy(template);
     }
 }

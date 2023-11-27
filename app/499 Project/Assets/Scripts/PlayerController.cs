@@ -48,6 +48,20 @@ public class PlayerController : MonoBehaviour
             pauseMenu = canvas.GetComponent<PauseMenu>();
     }
 
+
+    // This function is called when a collision is detected.
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy")){
+            healthSystem playerHealth = GetComponent<healthSystem>();
+
+            if(playerHealth != null){
+                playerHealth.takeDamage();
+            }
+            animator.SetTrigger("isHit");
+        }
+    }
+
     void Update()
     {
         if (!unitTest2)
@@ -111,7 +125,7 @@ public class PlayerController : MonoBehaviour
     {
         if (rb != null)
         {
-            rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+            rb.velocity = new Vector2(moveDirection.x * 0.5f * moveSpeed, moveDirection.y * 0.5f * moveSpeed);
         }
     }
 
@@ -161,7 +175,7 @@ public class PlayerController : MonoBehaviour
 
             GameObject bullet = Instantiate(bulletPrefab, gunFollow.position, Quaternion.identity);
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
-            bulletRB.AddForce(-gunFollow.up * bulletForce);
+            bulletRB.AddForce(-gunFollow.up * 50 * bulletForce);
 
             PlayerBullet playerBullet = bullet.GetComponent<PlayerBullet>();
             playerBullet.bounces = bulletBounces;
@@ -192,3 +206,4 @@ public class PlayerController : MonoBehaviour
 
 
 }
+ 

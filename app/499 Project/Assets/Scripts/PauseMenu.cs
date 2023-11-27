@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
+    public Animator fadeAnim;
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI; 
     public GameObject resumeButton;
@@ -18,6 +19,14 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void LoadMenu() {
+        StartCoroutine(GoToMenu());
+    }
+
+    public IEnumerator GoToMenu()
+    {
+        if(fadeAnim != null)
+            fadeAnim.Play("ScreenFadeOut");
+        yield return new WaitForSecondsRealtime(0.5f);
         Time.timeScale = 1f;
         GameIsPaused = false;
         SceneManager.LoadScene(0);
@@ -25,6 +34,14 @@ public class PauseMenu : MonoBehaviour
 
     public void Restart()
     {
+        StartCoroutine(RestartGame());
+    }
+
+    public IEnumerator RestartGame()
+    {
+        if(fadeAnim != null)
+            fadeAnim.Play("ScreenFadeOut");
+        yield return new WaitForSecondsRealtime(0.5f);
         Time.timeScale = 1f;
         GameIsPaused = false;
         SceneManager.LoadScene(1);
