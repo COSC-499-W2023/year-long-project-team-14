@@ -22,7 +22,7 @@ Here is a screenshot of my work on our Game Over Menu in Unity this week:
 ![](screenshots/kibele_week12.png)
 
 Here is a screenshot of my work on VScode in Game Over Menu this week:
-![](screenshots/kibele_weekly12_1.png)
+![](screenshots/kibele_week12_1.png)
 
 
 ## Week 10
