@@ -54,7 +54,7 @@ public class OrcAttackTest : MonoBehaviour
     }
 
     [UnityTest]
-    public IEnumerator OrcMoveTest()
+    public IEnumerator OrcShootTest()
     {
         //Allow orc to shoot
         enemyAttack.lastShootTime = -10;
@@ -81,13 +81,17 @@ public class OrcAttackTest : MonoBehaviour
     public IEnumerator OrcMoveToPlayerTest()
     {
         // Let the orc be able to move
-        orc.GetComponent<EnemyMovement1>().movementSpeed = 4;
+        orc.GetComponent<EnemyMovement1>().movementSpeed = 35;
 
         // Make the orc walk to the second player 
         orc.GetComponent<EnemyMovement1>().NewTarget((float) -3,(float) -5);
 
+        //Make the orc move immediately
+        yield return null;
+        orc.GetComponent<EnemyMovement1>().waitTime = 0;
+
         //wait until  that player would take damage
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
 
         //Check that the orc was able to damange player 2
         Assert.IsTrue(healthSystem2.life < 3);

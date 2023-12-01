@@ -7,6 +7,7 @@ public class EnemyHealthSystem : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
     private EnemyAttack ea; 
+    private EnemyMovement1 enemyMovement; 
     public int enemyHealth = 2;
 
     private CircleCollider2D enemyCollider;
@@ -16,18 +17,21 @@ public class EnemyHealthSystem : MonoBehaviour
     private void Start()
     {
         // Add the enemy to the list of allEnemies when it's instantiated
-        if (Portal.portalExists)
-        {
-            portal.GetComponent<Portal>();
+        GameObject port = GameObject.FindWithTag("Portal");
+        if (port != null)
+        {   portal = port.GetComponent<Portal>();
             portal.allEnemies.Add(gameObject);
         }
-        
-        GameObject lad = GameObject.FindWithTag("Ladder");
-        if(lad != null)
+        else
         {
-            ladder = lad.GetComponent<Ladder>();
-            ladder.allEnemies.Add(gameObject);
+            GameObject lad = GameObject.FindWithTag("Ladder");
+            if(lad != null)
+            {
+                ladder = lad.GetComponent<Ladder>();
+                ladder.allEnemies.Add(gameObject);
+            }
         }
+        
         enemyCollider = GetComponent<CircleCollider2D>();
         
     }
@@ -36,6 +40,7 @@ public class EnemyHealthSystem : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         ea = GetComponent<EnemyAttack>();
+        enemyMovement = GetComponent<EnemyMovement1>();
         
     }
      // This function is called when a collision is detected.
@@ -61,12 +66,13 @@ public class EnemyHealthSystem : MonoBehaviour
 
     void Die()
     {
-        rb.bodyType = RigidbodyType2D.Static;
+        enemyMovement.enabled = false;
         ea.enabled = false;
+        enemyCollider.enabled = false;
+
         animator.SetTrigger("Death");
 
-        enemyCollider.enabled = false;
-        if (Portal.portalExists)
+        if (portal != null)
         {
             portal.allEnemies.Remove(gameObject);
 
@@ -75,28 +81,32 @@ public class EnemyHealthSystem : MonoBehaviour
                 EndLevel();
             }
         }
-        GameObject lad = GameObject.FindWithTag("Ladder");
-        if (lad != null)
+        else
         {
-            ladder.allEnemies.Remove(gameObject);
-
-            if (ladder.allEnemies.Count == 0)
+            if (ladder != null)
             {
-                EndLevel();
+                ladder.allEnemies.Remove(gameObject);
+
+                if (ladder.allEnemies.Count == 0)
+                {
+                    EndLevel();
+                }
             }
         }
     }
 
     void EndLevel()
     {
-        if (Portal.portalExists)
+        if (portal != null)
         {
             portal.SetPortalActive(true);
         }
-        GameObject lad = GameObject.FindWithTag("Ladder");
-        if (lad != null)
+        else
         {
-            ladder.SetLadderActive(true);
+            if (ladder != null)
+            {
+                ladder.SetLadderActive(true);
+            }
         }
     }
 }
