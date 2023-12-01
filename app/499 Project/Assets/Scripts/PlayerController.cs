@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public int bulletBounces;
 
+    public bool aimingInWall = false;
+
     public GameObject bulletPrefab;
 
     PlayerInput playerInput;
@@ -113,9 +115,13 @@ public class PlayerController : MonoBehaviour
                 RaycastHit2D hit = Physics2D.Raycast(gunFollow.transform.position, -gunFollow.up, maxAimDistance, layerDetection);
 
                 lineRenderer.positionCount += 1;
-                if (hit.collider != null)
+                if (hit.collider != null && !aimingInWall)
                 {
                     lineRenderer.SetPosition(lineRenderer.positionCount - 1, hit.point);
+                }
+                else
+                {
+                    lineRenderer.SetPosition(lineRenderer.positionCount - 1, gunFollow.transform.position);
                 }
             }
         }
