@@ -98,30 +98,35 @@ public class PlayerController : MonoBehaviour
             if (playerInput != null && !PauseMenu.GameIsPaused)
             {
                 if (!unitTest)
+                {
                     if (playerInput.currentControlScheme == "Keyboard&Mouse")
-                {
-                    var mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-                    Quaternion rotation = Quaternion.LookRotation(mousePos - playerCenter.transform.position, playerCenter.transform.TransformDirection(Vector3.forward));
-                    playerCenter.transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
-                }
-                else
-                {
-                    Quaternion rotation = Quaternion.LookRotation(aimDirection, playerCenter.transform.TransformDirection(Vector3.forward));
-                    playerCenter.transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
-                }
+                    {
+                        var mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                        Quaternion rotation = Quaternion.LookRotation(mousePos - playerCenter.transform.position, playerCenter.transform.TransformDirection(Vector3.forward));
+                        playerCenter.transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
+                    }
+                    else
+                    {
+                        //Quaternion rotation = Quaternion.LookRotation(aimDirection, playerCenter.transform.TransformDirection(Vector3.forward));
+                        //playerCenter.transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
 
-                lineRenderer.positionCount = 1;
-                lineRenderer.SetPosition(0, gunFollow.transform.position);
-                RaycastHit2D hit = Physics2D.Raycast(gunFollow.transform.position, -gunFollow.up, maxAimDistance, layerDetection);
+                        Quaternion rotation = Quaternion.LookRotation(aimDirection, playerCenter.transform.TransformDirection(Vector3.forward));
+                        playerCenter.transform.rotation = Quaternion.Slerp(playerCenter.transform.rotation, new Quaternion(0, 0, rotation.z, rotation.w), 50 * Time.deltaTime);
+                    }
 
-                lineRenderer.positionCount += 1;
-                if (hit.collider != null && !aimingInWall)
-                {
-                    lineRenderer.SetPosition(lineRenderer.positionCount - 1, hit.point);
-                }
-                else
-                {
-                    lineRenderer.SetPosition(lineRenderer.positionCount - 1, gunFollow.transform.position);
+                    lineRenderer.positionCount = 1;
+                    lineRenderer.SetPosition(0, gunFollow.transform.position);
+                    RaycastHit2D hit = Physics2D.Raycast(gunFollow.transform.position, -gunFollow.up, maxAimDistance, layerDetection);
+
+                    lineRenderer.positionCount += 1;
+                    if (hit.collider != null && !aimingInWall)
+                    {
+                        lineRenderer.SetPosition(lineRenderer.positionCount - 1, hit.point);
+                    }
+                    else
+                    {
+                        lineRenderer.SetPosition(lineRenderer.positionCount - 1, gunFollow.transform.position);
+                    }
                 }
             }
         }
@@ -142,7 +147,7 @@ public class PlayerController : MonoBehaviour
 
     public void Aim(InputAction.CallbackContext context)
     {
-        aimDirection = context.ReadValue<Vector2>();
+        aimDirection = context.ReadValue<Vector2>().normalized;
     }
 
     public void Fire(InputAction.CallbackContext context)
