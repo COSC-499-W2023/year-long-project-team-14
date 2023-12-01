@@ -9,11 +9,12 @@ public class healthSystem : MonoBehaviour
     private Animator animator;
     private CircleCollider2D cc;
     public int life;
+    public int maxLife = 3;
     public bool dead;
 
     private void Start()
     {
-        life = hearts.Length;
+        life = maxLife;
     }
 
     private void Awake()
@@ -58,5 +59,11 @@ public class healthSystem : MonoBehaviour
         dead = true;
 
         GetComponent<SpriteRenderer>().sortingOrder = 8;
+    }
+
+    public void SetHeartsActive()
+    {
+        for(int i = 0; i < life; i++)
+        hearts[i].SetActive(true);
     }
 }
