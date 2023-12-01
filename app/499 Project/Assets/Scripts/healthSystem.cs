@@ -56,5 +56,7 @@ public class healthSystem : MonoBehaviour
             Destroy(bullet);
         }
         dead = true;
+
+        GetComponent<SpriteRenderer>().sortingOrder = 8;
     }
 }
