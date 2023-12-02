@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class healthSystem : MonoBehaviour
 {
+    private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
     public GameObject[] hearts;
     private Animator animator;
@@ -22,7 +23,7 @@ public class healthSystem : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         cc = GetComponent<CircleCollider2D>();
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -47,6 +48,7 @@ public class healthSystem : MonoBehaviour
     {
         rb.bodyType = RigidbodyType2D.Static;
         animator.SetTrigger("Death");
+        StartCoroutine(Transparent());
         cc.enabled = false;
         
         PlayerController p = GetComponent<PlayerController>();
@@ -57,8 +59,15 @@ public class healthSystem : MonoBehaviour
             Destroy(bullet);
         }
         dead = true;
+        spriteRenderer.sortingOrder = 8;
+    }
 
-        GetComponent<SpriteRenderer>().sortingOrder = 8;
+    IEnumerator Transparent()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Color currentColor = spriteRenderer.color; // Set the transparency (alpha) value
+        currentColor.a = 0.5f; // Adjust the alpha value as needed
+        spriteRenderer.color = currentColor;
     }
 
     public void SetHeartsActive()

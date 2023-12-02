@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyHealthSystem : MonoBehaviour
 {
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
     private EnemyAttack ea; 
     private EnemyMovement1 enemyMovement; 
@@ -33,7 +34,6 @@ public class EnemyHealthSystem : MonoBehaviour
         }
         
         enemyCollider = GetComponent<CircleCollider2D>();
-        
     }
     private void Awake()
     {
@@ -41,6 +41,7 @@ public class EnemyHealthSystem : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         ea = GetComponent<EnemyAttack>();
         enemyMovement = GetComponent<EnemyMovement1>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         
     }
      // This function is called when a collision is detected.
@@ -72,6 +73,8 @@ public class EnemyHealthSystem : MonoBehaviour
 
         animator.SetTrigger("Death");
 
+        StartCoroutine(Transparent());
+
         if (portal != null)
         {
             portal.allEnemies.Remove(gameObject);
@@ -93,6 +96,14 @@ public class EnemyHealthSystem : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator Transparent()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Color currentColor = spriteRenderer.color; // Set the transparency (alpha) value
+        currentColor.a = 0.5f; // Adjust the alpha value as needed
+        spriteRenderer.color = currentColor;
     }
 
     void EndLevel()
