@@ -1,5 +1,42 @@
 # Personal Log - Darion Pescada
 
+## Week 13
+- Start Date: November 27
+- End Date: December 3
+
+### Tasks I worked on:
+![](screenshots/tasks_darion_week13.png)
+  
+### Recap on your week's goals
+This week, my goals were to create the design document with the team, create unit tests for the transition system, and fix bugs / make improvements to our game.
+
+### Which features were yours in the project plan for this milestone?
+Since I have already completed all my features for milestone 2, I decided to focus on making improvements to our game and fixing bugs.
+- removed the additional health script from orc prefab causing the transition system to break
+- fixed the portal object where it would appear after killing only 1 enemy
+- improved the portal object by fixing the collider, making the sprite not blurry, and allowing the players line of sight to go through it
+- disabled player bullets colliding with each other
+- decreased the width of the players line of sight again
+- prevented the players from being able to shoot inside the walls
+- improved aiming with controller so there is less jittering
+- fixed some unit tests and adjusted some to run faster
+- decreased players sorting layer when they die so enemies no longer walk underneath their dead bodies
+- fixed a bug where dead enemies would continue playing the walking animation
+- added a feature where the players get all their health back after completing a level
+
+Additionally, I created unit tests for the transition system which checks if players are able to transition from one level to the next by using the ladder or portal objects after killing all the enemies.
+
+For the design document, I was responsible for the system architecture portion and the ECS diagram.
+
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed all of my tasks for this week as listed above.
+
+### Unit Test Screenshots
+![](screenshots/transitionTest1.PNG)
+![](screenshots/transitionTest2.PNG)
+
+***
+
 ## Week 12
 - Start Date: November 20
 - End Date: November 26
