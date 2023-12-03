@@ -7,11 +7,11 @@ public class EnemyHealthSystem : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
-    private EnemyAttack ea; 
-    private EnemyMovement1 enemyMovement; 
+    public EnemyAttack ea; 
+    public EnemyMovement1 enemyMovement; 
     public int enemyHealth = 2;
 
-    private CircleCollider2D enemyCollider;
+    public CircleCollider2D enemyCollider;
     public Ladder ladder;
     public Portal portal;
 
@@ -45,14 +45,14 @@ public class EnemyHealthSystem : MonoBehaviour
         
     }
      // This function is called when a collision is detected.
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if the collision involves a player bullet GameObject.
         if (collision.gameObject.CompareTag("Player_bullet"))
         {
             if (enemyHealth > 1)
             {
-                enemyHealth--;
+                takeDamage();
                 animator.SetTrigger("isHit");
             }
             else
@@ -65,6 +65,11 @@ public class EnemyHealthSystem : MonoBehaviour
         }
     }
 
+    public void takeDamage()
+    {
+        enemyHealth--;
+    }
+    
     public void Die()
     {
         enemyMovement.enabled = false;
