@@ -180,8 +180,8 @@ How this test works:
 *
 
 ## Test for the Transition System
-![](Test_screenshots/Milestone2/transitionTest1.png)
-![](Test_screenshots/Milestone2/transitionTest2.png)
+![](Test_screenshots/Milestone2/transitionTest1.PNG)
+![](Test_screenshots/Milestone2/transitionTest2.PNG)
 
 How this test works:
 * LadderTransitionTest
