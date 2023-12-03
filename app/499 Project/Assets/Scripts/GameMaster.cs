@@ -14,6 +14,9 @@ public class GameMaster : MonoBehaviour
 
     [SerializeField] private GameObject player1;
     [SerializeField] private GameObject player2;
+    public healthSystem healthSystem1;
+    public healthSystem healthSystem2;
+
     public GameObject player1Prefab;
     public GameObject player2Prefab;
 
@@ -24,6 +27,8 @@ public class GameMaster : MonoBehaviour
     private Transform player2Spawn;
 
     public GameObject level;
+
+    public bool unitTest = false;
 
     void Start()
     {
@@ -40,11 +45,15 @@ public class GameMaster : MonoBehaviour
     public IEnumerator NextLevel()
     {
         //wait for screen to fade out and then destroy current level
-        fadeAnim.Play("ScreenFadeOut");
-        yield return new WaitForSecondsRealtime(0.5f);
+        if(fadeAnim != null)
+        {
+            fadeAnim.Play("ScreenFadeOut");
+            yield return new WaitForSecondsRealtime(0.5f);
+        }
         Destroy(level);
         yield return null;
-        fadeAnim.Play("ScreenFadeIn");
+        if(fadeAnim != null)
+            fadeAnim.Play("ScreenFadeIn");
 
         //move players out of the way
         player1.transform.position = new Vector3(1000, 0, 0);
@@ -69,18 +78,20 @@ public class GameMaster : MonoBehaviour
                 player2.transform.position = player2Spawn.position;
             }
 
-            //TODO:
+            //reset player health
+            healthSystem1.life = healthSystem1.maxLife;
+            healthSystem1.SetHeartsActive();
 
+            if(playerCount > 1)
+            {
+                healthSystem2.life = healthSystem2.maxLife;
+                healthSystem2.SetHeartsActive();
+            }
+            
             //revive player if dead
-
-            //maybe give players a life at the end of each level unless they already have 3
-
-            //update the level counter UI
         }
         else
         {
-            //TODO:
-            
             //display win screen and end game
 
             print("YOU WIN!!!");
@@ -93,6 +104,7 @@ public class GameMaster : MonoBehaviour
 
         player1Spawn = GameObject.FindWithTag("Player1Spawn").GetComponent<Transform>();
         player1 = Instantiate(player1Prefab, player1Spawn.position, Quaternion.identity);
+        healthSystem1 = player1.GetComponent<healthSystem>();
 
         if(player1ControlScheme == 0) //keyboard
         {
@@ -107,6 +119,7 @@ public class GameMaster : MonoBehaviour
         {
             player2Spawn = GameObject.FindWithTag("Player2Spawn").GetComponent<Transform>();
             player2 = Instantiate(player2Prefab, player2Spawn.position, Quaternion.identity);
+            healthSystem2 = player2.GetComponent<healthSystem>();
 
             if(player2ControlScheme == 0 && player1ControlScheme == 1) //keyboard
             {

@@ -15,6 +15,13 @@ public class PlayerBullet : MonoBehaviour
             }
             bounces--;
         }
+
+        if(collision.gameObject.CompareTag("EnemyBullet") || collision.gameObject.CompareTag("Player_bullet")){
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+
+        // ^ if a player bullet collidies with an enemy bullet than delete both.
     }
     
 }

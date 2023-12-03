@@ -1,4 +1,33 @@
 # Personal Log - Justin McKendry
+
+## Week 12
+- Start Date: November 13th
+- End Date: November 26th
+
+### Tasks I worked on:
+![](screenshots/tasks_justin_week12.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Have the game up and running on a webpage
+* Talk to my group about the implementation of abilities
+* Do some bug fixing (this includes unit test for these bugs)
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Host the game on a webpage
+
+### Among these tasks, which have you completed/in progress in the last week?
+I have made completed all of the needed bug fixes, unit tests and hosting on a web page.
+Please see screenshots of the unit test for the bug fixes below, along with that is an image of the game on a web page.
+The link to the webpage is here https://magemadness.itch.io/mage-madness .
+
+![](screenshots/test_bulletCollidingBullet.png)
+
+![](screenshots/test_OrcMoveToPlayer.png)
+
+![](screenshots/webpage_Pic.png)
+
 ## Week 10
 - Start Date: November 5th
 - End Date: November 12th

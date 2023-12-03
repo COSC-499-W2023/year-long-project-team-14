@@ -1,5 +1,25 @@
 # Personal Log - Darion Pescada
 
+## Week 12
+- Start Date: November 20
+- End Date: November 26
+
+### Tasks I worked on:
+![](screenshots/tasks_darion_week12.png)
+  
+### Recap on your week's goals
+- My goals this week were to create unit tests for my milestone 2 features, and to meet with the team to make decisions about some of the features in our game.
+- I also wanted to start working on the transition system which is one of my milestone 3 features.
+
+### Which features were yours in the project plan for this milestone?
+- My features for this week were to create unit tests for the enemy movement AI and the enemy targeting system.
+- Additionally, I created the transition system which moves players from one level to the next, along with some test levels, and a screen fade animation.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- This week, I completed all my tasks of creating unit tests and starting on my milestone 3 features. Design document and video demo is in progress. 
+
+***
+
 ## Week 10
 - Start Date: November 6
 - End Date: November 12
