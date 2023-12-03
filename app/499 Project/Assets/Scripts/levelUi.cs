@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class levelUi : MonoBehaviour
 {
     private Text levelText;
+    GameMaster gameMaster;
 
     private void Start()
     {
+        gameMaster = GameObject.FindObjectOfType<GameMaster>();
         levelText = GetComponent<Text>();
 
         if (levelText == null)
@@ -19,9 +21,7 @@ public class levelUi : MonoBehaviour
 
     private void Update()
     {
-        GameMaster gameMaster = GameObject.FindObjectOfType<GameMaster>();
-
-        if (gameMaster != null)
+        if(gameMaster != null)
         {
             int levelNum = gameMaster.currentLevel;
             levelText.text = "LEVEL " + levelNum;

@@ -69,7 +69,7 @@ public class EnemyHealthSystem : MonoBehaviour
     {
         enemyHealth--;
     }
-
+    
     public void Die()
     {
         enemyMovement.enabled = false;

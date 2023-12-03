@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ladder : MonoBehaviour
 {
     private bool playerIsOverExit = false;
-    private bool exitUnlocked = false;
+    public bool exitUnlocked = false;
     GameMaster gameMaster;
     public SpriteRenderer spriteRenderer;
     public Sprite ladderSprite;
