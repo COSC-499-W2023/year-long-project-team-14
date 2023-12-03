@@ -28,6 +28,8 @@ public class GameMaster : MonoBehaviour
 
     public GameObject level;
 
+    public bool unitTest = false;
+
     void Start()
     {
         level = Instantiate(level1, transform.position, Quaternion.identity);
@@ -43,11 +45,15 @@ public class GameMaster : MonoBehaviour
     public IEnumerator NextLevel()
     {
         //wait for screen to fade out and then destroy current level
-        fadeAnim.Play("ScreenFadeOut");
-        yield return new WaitForSecondsRealtime(0.5f);
+        if(fadeAnim != null)
+        {
+            fadeAnim.Play("ScreenFadeOut");
+            yield return new WaitForSecondsRealtime(0.5f);
+        }
         Destroy(level);
         yield return null;
-        fadeAnim.Play("ScreenFadeIn");
+        if(fadeAnim != null)
+            fadeAnim.Play("ScreenFadeIn");
 
         //move players out of the way
         player1.transform.position = new Vector3(1000, 0, 0);
@@ -82,16 +88,10 @@ public class GameMaster : MonoBehaviour
                 healthSystem2.SetHeartsActive();
             }
             
-            //TODO:
-
             //revive player if dead
-
-            //update the level counter UI
         }
         else
         {
-            //TODO:
-            
             //display win screen and end game
 
             print("YOU WIN!!!");

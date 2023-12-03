@@ -65,7 +65,7 @@ public class EnemyHealthSystem : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
         enemyMovement.enabled = false;
         ea.enabled = false;
