@@ -24,7 +24,7 @@
 ![](screenshots/burnup_chart_week8.JPG)
 
 ## Network Graph
-![](screenshots/networkgraph_week8.png)
+![](screenshots/network_graph_week8.JPG)
 
 ## Quick Reminder of Student Name → Username
 - Jesse Lazzari → @jesselazzari
