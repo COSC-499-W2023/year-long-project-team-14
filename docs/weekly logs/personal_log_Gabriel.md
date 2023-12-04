@@ -1,4 +1,29 @@
 # Personal Log - Gabriel Mercier
+## Week 13
+- Start Date: November 27
+- End Date: December 3
+  
+### Tasks I worked on:
+![](screenshots/tasks_gabriel_week13.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Make sure my features were fully complete
+* Ensure the team had the same expectations for the end of the milestone
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Make the level Count displayed in the in-game UI
+* Make unit tests for enemy health
+* Make the Design video
+* Write who did what for milestone 2 in the design doc
+### Among these tasks, which have you completed/in progress in the last week?
+I completed all my tasks. Looking forward to the next semester!
+
+![](screenshots/leveluiScreenshot.png)
+![](screenshots/orcHealthTestScreenshot.png)
+
+***
 ## Week 12
 - Start Date: November 20
 - End Date: November 26

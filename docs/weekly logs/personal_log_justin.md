@@ -1,5 +1,30 @@
 # Personal Log - Justin McKendry
 
+## Week 13
+- Start Date: November 27th
+- End Date: December 3rd
+
+### Tasks I worked on:
+![](screenshots/tasks_justin_week13.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Complete the User Interface Design section of the Design document
+* Prepare and organize the design document for submission
+* Update and ensure all test are present in the test log
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Create the prefab and collision mechanics for both the orc and their bullets
+* Additional:
+  * Host the game online
+  * Ensure bullets delete on collision with one another
+  * Ensure the orc damages the player if they make contact  
+
+### Among these tasks, which have you completed/in progress in the last week?
+I have made completed all of my tasks for this week. 
+The Design document is ready for submission, the game is hosted online with the most recent build and all of my gameplay mechanics have been implemented in the game.
+
 ## Week 12
 - Start Date: November 13th
 - End Date: November 26th

@@ -7,6 +7,16 @@ using System.Collections;
 
 public class GameOverMenuTest
 {
+    [UnityTest]
+    public IEnumerator ShouldShowGameOverMenu()
+    {
+       var gameOverMenu = new GameObject().AddComponent<GameOverMenu>();
+
+        yield return gameOverMenu.ShowGameOverMenu();
+
+        Assert.IsTrue(gameOverMenu.GameIsOver, "GameIsOver should be true");
+
+    }
 
     [UnityTest]
     public IEnumerator GameOver_LoadMenu()

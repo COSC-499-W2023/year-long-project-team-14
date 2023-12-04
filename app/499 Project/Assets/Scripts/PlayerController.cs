@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     float maxAimDistance = 50;
     [SerializeField] private LayerMask layerDetection;
 
+    GameMaster gameMaster;
     PauseMenu pauseMenu;
 
     [HideInInspector] public bool unitTest = false;
@@ -48,6 +49,10 @@ public class PlayerController : MonoBehaviour
         GameObject canvas = GameObject.FindWithTag("Canvas");
         if(canvas != null)
             pauseMenu = canvas.GetComponent<PauseMenu>();
+
+        GameObject gm = GameObject.FindWithTag("GameMaster");
+        if(gm != null)
+            gameMaster = gm.GetComponent<GameMaster>();
     }
 
 
@@ -97,7 +102,7 @@ public class PlayerController : MonoBehaviour
 
             if (playerInput != null && !PauseMenu.GameIsPaused)
             {
-                if (!unitTest)
+                if (!unitTest && (gameMaster == null || !gameMaster.unitTest))
                 {
                     if (playerInput.currentControlScheme == "Keyboard&Mouse")
                     {

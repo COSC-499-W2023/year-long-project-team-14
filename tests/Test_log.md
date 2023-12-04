@@ -1,6 +1,6 @@
 # Test Log
 ## Tests passing
-![](Test_screenshots/Milestone2/test_passing_m2.png)
+![](Test_screenshots/Milestone2/test_passing_m2.png) 
 
 ## Test for bullet collisions
 ![](Test_screenshots/Milestone2/bulletCTestmS2.png)
@@ -93,10 +93,22 @@ How this test works:
 
 ## Test for COOP
 ![](Test_screenshots/Milestone2/coopTest1P.png)
-![](Test_screenshots/Milestone2/coopTest2p.png)
+![](Test_screenshots/Milestone2/coopTest2P.png)
 
 How this test works:
-*
+* OnePlayerTest:
+    * Loads into the main menu and activates the player menu
+    * Executes the 1 player button
+    * Waits to load into the game scene
+    * Checks that it loaded into the game scene
+    * Checks that only 1 player exists
+
+* TwoPlayerTest:
+    * Loads into the main menu and activates the player menu
+    * Executes the 2 player button
+    * Waits to load into the game scene
+    * Checks that it loaded into the game scene
+    * Checks that 2 players exists
 
 ## Test for Game Over Menu
 ![](Test_screenshots/Milestone2/GOMTMs2.png)
@@ -104,13 +116,22 @@ How this test works:
 ## Test for Orc Attack's
 ![](Test_screenshots/Milestone2/OAT_p1_ms2.png)
 ![](Test_screenshots/Milestone2/OAT_p2_ms2.png)
-How OrcMoveToPlayerTest works:
-* Spawn both a player and an orc
-* Have the orc move to the player
-* Check that the player's health has decreased, if so the test pass's
-
 ![](Test_screenshots/Milestone2/OAT_p3_ms2.png)
 
+How this test works:
+* OrcShootTest:
+    * Spawn in a level with a wall down the middle
+    * Spawn an orc on the left side of the wall
+    * Spawn a player on the right side of the wall
+    * Spawn another player on the left side of the wall
+    * Check that the orc shoots directly at the player on the left side of the wall
+    * Remove the player
+    * Check that the orc shoots a bullet off the boarder of the level to hit the other player on the other side of the wall
+
+* OrcMoveToPlayerTest:
+    * Spawn both a player and an orc
+    * Have the orc move to the player
+    * Check that the player's health has decreased, if so the test pass's
 
 ## Test for Orc Bullet Collision
 ![](Test_screenshots/Milestone2/OBCT_p1_ms2.png)
@@ -138,16 +159,15 @@ How this test works:
 ![](Test_screenshots/Milestone2/OMT_p1_ms2.png)
 ![](Test_screenshots/Milestone2/OMT_p2_ms2.png)
 
-
-
 How this test works:
-*
+* Spawn in a level with a wall down the middle
+* Spawn an orc on the left side of the wall
+* Set the orcs target position to the other side of the wall
+* Check that the orc moves around the wall to get to the target position
 
 ## Test for Pause menu
 ![](Test_screenshots/Milestone2/PMT_p1_ms2.png)
 ![](Test_screenshots/Milestone2/PMT_p2_ms2.png)
-
-
 
 How this test works:
 *
@@ -156,10 +176,25 @@ How this test works:
 ![](Test_screenshots/Milestone2/uiT_p1_ms2.png)
 ![](Test_screenshots/Milestone2/uiT_p2_ms2.png)
 
-
-
 How this test works:
 *
+
+## Test for the Transition System
+![](Test_screenshots/Milestone2/transitionTest1.PNG)
+![](Test_screenshots/Milestone2/transitionTest2.PNG)
+
+How this test works:
+* LadderTransitionTest
+    * Spawn in GameMaster and Pathfinder, and start level 1
+    * Check that the ladder is locked
+    * Kill all the enemies
+    * Check that the ladder in now unlocked
+    * Call the LevelComplete function to transition to next level
+    * Check that the current level is now level 2
+    * Check that the players health is reset
+
+* PortalTransitionTest
+    * Same as previous test but uses portal instead of ladder 
 
 ## Test for Orc Animator Component
 ![](Test_screenshots/Milestone2/OrcAnimatorUnitTests.JPG)
