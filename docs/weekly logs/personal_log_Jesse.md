@@ -1,4 +1,43 @@
 # Personal Log - Jesse Lazzari
+## Week 13
+- Start Date: November 27
+- End Date: December 3
+  
+### Tasks I worked on:
+![](screenshots/peer_eval_tasks_week13.JPG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Compile slide set presentation which discusses design decisions made for 2 features for the design milestone document
+* Record video demo presentation which discusses design changes made to the main menu
+* Edit full video demo ensuring it is under 5 minutes
+* Attend team meetings and plan task division for the design milestone document
+* Add feature which makes dead enemies and players transparent
+* Add unit tests for orc enemy Animator parameters
+* Write weekly teamlog for the team
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Added feature which makes dead enemies and players transparent
+* Added unit tests for orc enemy Animator parameters which tests orc enemy walking animations
+* Added unit tests for orc enemy death animator trigger
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed the features I set out to implement as outlined above with unit testing as well
+* In progress tasks are looking ahead towards the next milestone and begin working on player abilities
+
+## Screenshots of Tasks I Worked On
+
+### Screenshot of transparent dead enemy & player
+![](screenshots/TransparencyCoroutine3.JPG)
+#### Orc Animator Unit Testing
+![](screenshots/OrcAnimatorUnitTests.JPG)
+#### Scripts for Transparency applied on Dead Enemies
+![](screenshots/TransparencyCoroutine1.JPG)
+#### Scripts for Transparency applied on Dead Player
+![](screenshots/TransparencyCoroutine2.JPG)
+
+***
 ## Week 12
 - Start Date: November 20
 - End Date: November 26

@@ -196,5 +196,9 @@ How this test works:
 * PortalTransitionTest
     * Same as previous test but uses portal instead of ladder 
 
-
-
+## Test for Orc Animator Component
+![](Test_screenshots/Milestone2/OrcAnimatorUnitTests.JPG)
+How this test works:
+* Spawn an orc and asscociated Animator component
+* Have orc walk towards a direction and check if associated cardinal direction for Animator component is correct
+* Additionally, checks that Orc animator death trigger is not called when orc is alive
