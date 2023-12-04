@@ -7,12 +7,12 @@ public class Portal : MonoBehaviour
     // Define the next level scene name
     GameMaster gameMaster;
     private bool playerIsOverPortal = false;
-    public static bool portalExists = false;
     public List<GameObject> allEnemies = new List<GameObject>();
+    public GameObject port;
+    public bool portalActive = false;
     private void Start()
     {
         // Initially, the portal is inactive
-        portalExists = true;
         SetPortalActive(false);
         gameMaster = GameObject.FindWithTag("GameMaster").GetComponent<GameMaster>();
     }
@@ -35,15 +35,20 @@ public class Portal : MonoBehaviour
 
     private void Update()
     {
-        if (playerIsOverPortal && Input.GetKeyDown(KeyCode.E))
+        if (playerIsOverPortal && portalActive && Input.GetKeyDown(KeyCode.E))
         {
-            portalExists = false;
+            playerIsOverPortal = false;
             gameMaster.LevelComplete();
         }
     }
 
     public void SetPortalActive(bool active)
     {
-        gameObject.SetActive(active);
+        port.SetActive(active);
+
+        if(active)
+            portalActive = true;
+        else
+            portalActive = false;
     }
 }

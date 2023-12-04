@@ -7,15 +7,42 @@ using UnityEngine.InputSystem;
 public class GameOverMenu : MonoBehaviour
 {
     public Animator fadeAnim;
-    public static bool GameIsOver = false;
+    public bool GameIsOver = false;
     public GameObject gameOverMenuUI;
     public GameObject restartButton;
     public bool gameOverMenu = false;
-    
+    public int playercount; 
 
-    void Start()
+    public void Start()
     {
         StartCoroutine(SelectMenuButton());
+        playercount = PlayerPrefs.GetInt("playerCount");
+    }
+
+    public void Update(){
+        if (playercount == 0 && GameIsOver==false){
+            StartCoroutine(ShowGameOverMenu());
+        }
+
+    }
+    public IEnumerator ShowGameOverMenu()
+    {
+         if (fadeAnim != null)
+        fadeAnim.Play("ScreenFadeOut");
+
+    yield return new WaitForSecondsRealtime(0.5f);
+
+    GameIsOver = true;
+    gameOverMenuUI?.SetActive(true);
+
+    if (Gamepad.all.Count > 0)
+    {
+        EventSystem.current?.SetSelectedGameObject(null);
+        EventSystem.current?.SetSelectedGameObject(restartButton);
+    }
+
+    if (fadeAnim != null)
+        fadeAnim.Play("ScreenFadeIn");
     }
 
     public void LoadMenu()
@@ -52,32 +79,33 @@ public class GameOverMenu : MonoBehaviour
     {
         gameOverMenu = true;
         gameOverMenuUI.SetActive(true);
-        Time.timeScale = 0f;
         GameIsOver = true;
         if (Gamepad.all.Count > 0)
         {
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(restartButton);
-        }
+        }    
     }
 
-    public IEnumerator SelectMenuButton()
+   public IEnumerator SelectMenuButton()
+{
+    if (Gamepad.all.Count > 0 && EventSystem.current != null)
     {
-        if (Gamepad.all.Count > 0)
+        if (EventSystem.current.currentSelectedGameObject == null && gameOverMenu != null)
         {
-            if (EventSystem.current.currentSelectedGameObject == null)
+            if (restartButton != null)
             {
-                if (gameOverMenu)
-                {
-                    EventSystem.current.SetSelectedGameObject(restartButton);
-                }
+                EventSystem.current.SetSelectedGameObject(restartButton);
             }
         }
-        else
-            EventSystem.current.SetSelectedGameObject(null);
-
-        yield return new WaitForSecondsRealtime(1f);
-        StopCoroutine(SelectMenuButton());
-        StartCoroutine(SelectMenuButton());
     }
+    else
+    {
+        EventSystem.current?.SetSelectedGameObject(null);
+    }
+
+    yield return new WaitForSecondsRealtime(1f);
+
+    StartCoroutine(SelectMenuButton());
+}
 }

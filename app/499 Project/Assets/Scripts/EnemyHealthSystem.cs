@@ -5,48 +5,54 @@ using UnityEngine;
 public class EnemyHealthSystem : MonoBehaviour
 {
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
-    private EnemyAttack ea; 
+    public EnemyAttack ea; 
+    public EnemyMovement1 enemyMovement; 
     public int enemyHealth = 2;
 
-    private CircleCollider2D enemyCollider;
+    public CircleCollider2D enemyCollider;
     public Ladder ladder;
     public Portal portal;
 
     private void Start()
     {
         // Add the enemy to the list of allEnemies when it's instantiated
-        if (Portal.portalExists)
-        {
-            portal.GetComponent<Portal>();
+        GameObject port = GameObject.FindWithTag("Portal");
+        if (port != null)
+        {   portal = port.GetComponent<Portal>();
             portal.allEnemies.Add(gameObject);
         }
-        
-        GameObject lad = GameObject.FindWithTag("Ladder");
-        if(lad != null)
+        else
         {
-            ladder = lad.GetComponent<Ladder>();
-            ladder.allEnemies.Add(gameObject);
+            GameObject lad = GameObject.FindWithTag("Ladder");
+            if(lad != null)
+            {
+                ladder = lad.GetComponent<Ladder>();
+                ladder.allEnemies.Add(gameObject);
+            }
         }
-        enemyCollider = GetComponent<CircleCollider2D>();
         
+        enemyCollider = GetComponent<CircleCollider2D>();
     }
     private void Awake()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         ea = GetComponent<EnemyAttack>();
+        enemyMovement = GetComponent<EnemyMovement1>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         
     }
      // This function is called when a collision is detected.
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if the collision involves a player bullet GameObject.
         if (collision.gameObject.CompareTag("Player_bullet"))
         {
             if (enemyHealth > 1)
             {
-                enemyHealth--;
+                takeDamage();
                 animator.SetTrigger("isHit");
             }
             else
@@ -59,14 +65,22 @@ public class EnemyHealthSystem : MonoBehaviour
         }
     }
 
-    void Die()
+    public void takeDamage()
     {
-        rb.bodyType = RigidbodyType2D.Static;
+        enemyHealth--;
+    }
+    
+    public void Die()
+    {
+        enemyMovement.enabled = false;
         ea.enabled = false;
+        enemyCollider.enabled = false;
+
         animator.SetTrigger("Death");
 
-        enemyCollider.enabled = false;
-        if (Portal.portalExists)
+        StartCoroutine(Transparent());
+
+        if (portal != null)
         {
             portal.allEnemies.Remove(gameObject);
 
@@ -75,28 +89,40 @@ public class EnemyHealthSystem : MonoBehaviour
                 EndLevel();
             }
         }
-        GameObject lad = GameObject.FindWithTag("Ladder");
-        if (lad != null)
+        else
         {
-            ladder.allEnemies.Remove(gameObject);
-
-            if (ladder.allEnemies.Count == 0)
+            if (ladder != null)
             {
-                EndLevel();
+                ladder.allEnemies.Remove(gameObject);
+
+                if (ladder.allEnemies.Count == 0)
+                {
+                    EndLevel();
+                }
             }
         }
     }
 
+    IEnumerator Transparent()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Color currentColor = spriteRenderer.color; // Set the transparency (alpha) value
+        currentColor.a = 0.5f; // Adjust the alpha value as needed
+        spriteRenderer.color = currentColor;
+    }
+
     void EndLevel()
     {
-        if (Portal.portalExists)
+        if (portal != null)
         {
             portal.SetPortalActive(true);
         }
-        GameObject lad = GameObject.FindWithTag("Ladder");
-        if (lad != null)
+        else
         {
-            ladder.SetLadderActive(true);
+            if (ladder != null)
+            {
+                ladder.SetLadderActive(true);
+            }
         }
     }
 }
