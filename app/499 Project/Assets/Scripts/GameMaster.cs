@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
+
 
 public class GameMaster : MonoBehaviour
 {
+    public LeaderboardManager leaderboardManager;
+    public float gameTime = 0;
     public Animator fadeAnim;
     public int playerCount = 1;
     public int player1ControlScheme = 0;
@@ -36,6 +40,11 @@ public class GameMaster : MonoBehaviour
         AstarPath.active.Scan();
         playerCount = PlayerPrefs.GetInt("playerCount");
         SetupPlayers();
+    }
+
+    void Update()
+    {
+        gameTime += Time.deltaTime;
     }
 
     public void LevelComplete()
@@ -92,9 +101,11 @@ public class GameMaster : MonoBehaviour
         }
         else
         {
-            //display win screen and end game
-
+            //TODO: display win screen and end game
             print("YOU WIN!!!");
+
+            //uploads score to leaderboard
+            leaderboardManager.SubmitScore((int)(Math.Round(gameTime, 2) * 100), "Test");
         }
     }
 
