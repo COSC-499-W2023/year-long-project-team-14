@@ -32,7 +32,7 @@ public class LeaderboardTest : MonoBehaviour
 
 
         //Upload score to leaderboard
-        leaderboardManager.SubmitScore(100, "Test");
+        leaderboardManager.SubmitScore(100, "UnitTest");
         yield return new WaitForSeconds(1);
 
         //Check that their are no errors when uploading a score
@@ -60,7 +60,7 @@ public class LeaderboardTest : MonoBehaviour
 
 
         //Retrieve scores from leaderboard
-        leaderboardManager.FetchHighscores("Test");
+        leaderboardManager.FetchHighscores("UnitTest");
         yield return new WaitForSeconds(1);
 
         //Check that their are no errors when retrieving a score 
