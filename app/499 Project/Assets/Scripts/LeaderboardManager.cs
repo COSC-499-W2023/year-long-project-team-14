@@ -18,10 +18,10 @@ public class LeaderboardManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(LoginRoutine());
+        StartSession();
     }
 
-    IEnumerator LoginRoutine()
+    public void StartSession() //Connect to LootLocker
     {
         bool done = false;
 
@@ -37,13 +37,12 @@ public class LeaderboardManager : MonoBehaviour
             {
                 print("LootLocker failed to connect");
                 done = true;
-                StartCoroutine(LoginRoutine());
+                StartSession();
             }
         });
-        yield return new WaitWhile(() => done == false);
     }
 
-    public void SubmitScore(int score, string leaderboardID)
+    public void SubmitScore(int score, string leaderboardID) //Upload score to correct leaderboard
     {   
         if(connected)
         {
@@ -66,7 +65,7 @@ public class LeaderboardManager : MonoBehaviour
         }
     }
 
-    public void FetchHighscores(string leaderboardID)
+    public void FetchHighscores(string leaderboardID) //Retrieve leaderboard scores 
     {   
         if(connected)
         {
@@ -112,7 +111,7 @@ public class LeaderboardManager : MonoBehaviour
         }
     }
 
-    public void DisplayHighscore(int iteration, int rank, string name, int memberID, int score)
+    public void DisplayHighscore(int iteration, int rank, string name, int memberID, int score) //Display leaderboard scores on leaderboard menu
     {     
         if(rank != 0)
             playerRanks[iteration].text = rank + ".";
@@ -130,7 +129,7 @@ public class LeaderboardManager : MonoBehaviour
             playerScores[iteration].text = " ";
     }
 
-    public string FormatTime(int t)
+    public string FormatTime(int t) //Properly format scores
     {
         print(t);
         double time = ((double)t) / 100;
