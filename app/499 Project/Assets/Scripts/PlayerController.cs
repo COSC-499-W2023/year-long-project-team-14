@@ -53,6 +53,9 @@ public class PlayerController : MonoBehaviour
         GameObject gm = GameObject.FindWithTag("GameMaster");
         if(gm != null)
             gameMaster = gm.GetComponent<GameMaster>();
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");     
+        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 
 
@@ -67,6 +70,7 @@ public class PlayerController : MonoBehaviour
             }
             animator.SetTrigger("isHit");
         }
+
     }
 
     void Update()
