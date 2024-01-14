@@ -15,7 +15,7 @@
 - Add all animations for orc soldier enemy
 
 ## Burnup Chart
-![](screenshots/burnup_chart_t2_week1.JPG)
+![](screenshots/burnup_week1_t2.PNG)
 
 ## Network Graph
 ![](screenshots/networkgraph_t2_week1.png)
