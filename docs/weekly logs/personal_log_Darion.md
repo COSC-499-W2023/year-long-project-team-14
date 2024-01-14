@@ -1,5 +1,33 @@
 # Personal Log - Darion Pescada
 
+## Week 14
+- Start Date: January 8
+- End Date: January 14
+
+### Tasks I worked on:
+![](screenshots/tasks_darion_week14.PNG)
+  
+### Recap on your week's goals
+This week, my goal was to start implementing the online leaderboards for our game.
+
+### Which features were yours in the project plan for this milestone?
+- installed the LootLocker SDK and set up the online leaderboards
+- created functions to submit, retrieve, format, and display leaderboard scores
+- added a timer to the game which gets submitted to a leaderboard once all levels are complete
+- created the leaderboard menu to display users highscores
+- added unit tests for the leaderboard functions I created
+
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed all of my tasks for this week as listed above.
+
+### Leaderboard Screenshot
+![](screenshots/leaderboardMenu.PNG)
+
+### Unit Test Screenshot
+![](screenshots/leaderboardTest.PNG)
+
+***
+
 ## Week 13
 - Start Date: November 27
 - End Date: December 3
