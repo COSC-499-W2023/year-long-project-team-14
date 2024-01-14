@@ -12,6 +12,7 @@ My goals this week were to:
 * Add new enemy (orc soldier) with all associated animations
 * Add idle and walking animations for orc soldier in animator tree
 * Add hit and death animations with functionality in new enemy health script
+* Add unit testing for new orc soldier enemy
 * Write team log report
 
 ### Which features were yours in the project plan for this milestone?
@@ -21,11 +22,14 @@ My features this week were to:
 * Add hit and death animations with functionality in new enemy health script
 
 ### Among these tasks, which have you completed/in progress in the last week?
-* I have completed the features I set out to implement as outlined above
+* I have completed the features I set out to implement as outlined above with associated unit tests
 * In progress tasks are looking ahead towards the next milestone and begin working on player abilities
 
 ## Screenshots of new Orc Soldier Enemy and Animator Tree 
 ![](screenshots/orc_soldier_tree.PNG)
+
+## Screenshot of Unit Test for Orc Soldier 
+![](screenshots/orcSoldierUnitTest.PNG)
 
 ***
 
