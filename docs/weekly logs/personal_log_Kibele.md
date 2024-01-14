@@ -21,10 +21,10 @@
 - i have completed all my tasks this week. 
 
 Here is a screenshot of my work on our Controls Menu in Unity this week:
-![](screenshots/kibele_week13.png)
+![](screenshots/kibele_week14.png)
 
 Here is a screenshot of my work on VScode in Controls Menu this week:
-![](screenshots/kibele_week13_1.png)
+![](screenshots/week14_kibele.png)
 
 ## Week 13
 - Start Date: November 28
