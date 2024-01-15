@@ -1,4 +1,39 @@
 # Personal Log - Jesse Lazzari
+## Term 2 Week 1
+- Start Date: January 8
+- End Date: January 14
+  
+### Tasks I worked on:
+![](screenshots/term2_week1_tasks_jesse.PNG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Meet with team and discuss gameplay changes
+* Add new enemy (orc soldier) with all associated animations
+* Add idle and walking animations for orc soldier in animator tree
+* Add hit and death animations with functionality in new enemy health script
+* Add unit testing for new orc soldier enemy
+* Write team log report
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Add new enemy (orc soldier) with all associated animations
+* Add idle and walking animations for orc soldier in animator tree
+* Add hit and death animations with functionality in new enemy health script
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed the features I set out to implement as outlined above with associated unit tests
+* In progress tasks are looking ahead towards the next milestone and begin working on player abilities
+
+## Screenshots of new Orc Soldier Enemy and Animator Tree 
+![](screenshots/orc_soldier_tree.PNG)
+
+## Screenshot of Unit Test for Orc Soldier 
+![](screenshots/orcSoldierUnitTest.PNG)
+
+***
+
+
 ## Week 13
 - Start Date: November 27
 - End Date: December 3

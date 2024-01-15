@@ -1,4 +1,26 @@
 # Personal Log - Gabriel Mercier
+## Week 1 - T2
+- Start Date: January 8
+- End Date: January 14
+  
+### Tasks I worked on:
+![](screenshots/t2Week1_peerEval_Gabriel.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Maintain good communication
+* Ensure the team had was on the same page starting out t2
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Review other feedback given by  the other teams to see what we may change
+* No lonnger have player bullets hurting other players or giving self inflicting damage
+* Make bullets move through other players
+### Among these tasks, which have you completed/in progress in the last week?
+I completed all my tasks.
+
+
+***
 ## Week 13
 - Start Date: November 27
 - End Date: December 3
