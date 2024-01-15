@@ -5,7 +5,7 @@
 - End Date: January 14
 
 ### Tasks I worked on:
-![](screenshots/term2_tasks_darion_week1.PNG)
+![](screenshots/term2_tasks_darion_week1.png)
   
 ### Recap on your week's goals
 This week, my goal was to start implementing the online leaderboards for our game.
@@ -24,7 +24,7 @@ I have completed all of my tasks for this week as listed above.
 ![](screenshots/leaderboardMenu.PNG)
 
 ### Unit Test Screenshot
-![](screenshots/leaderboardTest.PNG)
+![](screenshots/leaderboardTest.png)
 
 ***
 
