@@ -1,11 +1,11 @@
 # Personal Log - Darion Pescada
 
-## Week 14
+## Term 2 Week 1
 - Start Date: January 8
 - End Date: January 14
 
 ### Tasks I worked on:
-![](screenshots/tasks_darion_week14.PNG)
+![](screenshots/term2_tasks_darion_week1.PNG)
   
 ### Recap on your week's goals
 This week, my goal was to start implementing the online leaderboards for our game.
