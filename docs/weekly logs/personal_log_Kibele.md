@@ -1,4 +1,57 @@
 # Personal Log - Kibele Sebnem Yildirim
+## Week 14 - Term 2
+- Start Date: January 8
+- End Date: January 15
+
+### Tasks I worked on:
+![](screenshots/weekly_kibele_week14.png)
+
+### Recap on your week's goals
+- My goals this week were to:
+* Create and plan the controls menu for our game
+* Discuss with my team about the design
+* Review my teammates' work on the game
+* Write test for my menu's code
+
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to create and plan the controls menu for our game, discuss with my team about the design, review my teammates' work on the game, and write test for my menu's code.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week. 
+
+Here is a screenshot of my work on our Controls Menu in Unity this week:
+![](screenshots/kibele_week14.png)
+
+Here is a screenshot of my work on VScode in Controls Menu this week:
+![](screenshots/week14_kibele.png)
+
+## Week 13
+- Start Date: November 28
+- End Date: December 3
+
+### Tasks I worked on:
+![](screenshots/kibeletasks_week13.png)
+
+### Recap on your week's goals
+- My goals this week were to:
+* Contniue my progress on Game Over Menu
+* Design the ER Diagram of our Prototype
+* Discuss with my team about the design document and the video
+* Review my teammates' code on the game
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to continue my progress on Game Over Menu, design the ER Diagram of our Prototype, and discuss with my team about the design document and the video. I have also reviewed my teammates' code on the game.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week. 
+
+Here is a screenshot of my work on our Game Over Menu in Unity this week:
+![](screenshots/kibele_week13.png)
+
+Here is a screenshot of my work on VScode in Game Over Menu this week:
+![](screenshots/kibele_week13_1.png)
+
 ## Week 12
 - Start Date: November 19
 - End Date: November 27

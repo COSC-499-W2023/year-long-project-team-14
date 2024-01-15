@@ -9,15 +9,20 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject mainMenuObject;
     public GameObject playerMenuObject;
+    public GameObject leaderboardMenuObject;
 
     public GameObject playButton;
     public GameObject player1Button;
     public GameObject player2Button;
+    public GameObject leaderboardBackButton;
 
     public bool mainMenu = true;
     public bool playerMenu = false;
+    public bool leaderboardMenu = true;
 
     public Animator fadeAnim;
+
+    public LeaderboardManager leaderboardManager;
 
     void Start()
     {
@@ -52,12 +57,30 @@ public class MainMenu : MonoBehaviour
         SelectButton(playButton);
     }
 
-
     public IEnumerator PlayGame()
     {
         fadeAnim.Play("ScreenFadeOut");
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(1);
+    }
+
+    public void LeaderboardMenu()
+    {
+        mainMenu = false;
+        leaderboardMenu = true;
+        mainMenuObject.SetActive(false);
+        leaderboardMenuObject.SetActive(true);
+        SelectButton(leaderboardBackButton);
+        leaderboardManager.FetchHighscores("Test");
+    }
+
+    public void LeaderboardBackButton()
+    {
+        mainMenu = true;
+        leaderboardMenu = false;
+        mainMenuObject.SetActive(true);
+        leaderboardMenuObject.SetActive(false);
+        SelectButton(playButton);
     }
 
     public void QuitGame()

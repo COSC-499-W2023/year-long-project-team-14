@@ -12,10 +12,15 @@ public class healthSystem : MonoBehaviour
     public int life;
     public int maxLife = 3;
     public bool dead;
+    public GameOverMenu gameOverMenu;
+
 
     private void Start()
     {
         life = maxLife;
+        GameObject canvas = GameObject.FindWithTag("Canvas");
+        if(canvas != null)
+            gameOverMenu = canvas.GetComponent<GameOverMenu>();
     }
 
     private void Awake()
@@ -60,6 +65,9 @@ public class healthSystem : MonoBehaviour
         }
         dead = true;
         spriteRenderer.sortingOrder = 8;
+
+        if(gameOverMenu != null)
+            gameOverMenu.playercount--;
     }
 
     IEnumerator Transparent()
