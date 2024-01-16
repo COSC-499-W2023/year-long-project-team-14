@@ -9,8 +9,9 @@ public class PlayerBullet : MonoBehaviour
 
     void Start()
     {
-        // Ignore collisions with objects in the "Player" layer
+        // Ignore collisions with objects in the "Player" layer and broken walls
         Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Player"));
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("BrokenWall").GetComponent<CompositeCollider2D>());
     }
     void OnCollisionEnter2D(Collision2D collision){
         if(collision.gameObject.CompareTag("Wall") ){
@@ -20,7 +21,17 @@ public class PlayerBullet : MonoBehaviour
             bounces--;
         }
 
-        if(collision.gameObject.CompareTag("EnemyBullet")){
+        if (collision.gameObject.CompareTag("Breakable"))
+        {
+            Destroy(collision.gameObject);
+            if (bounces <= 0)
+            {
+                Destroy(gameObject);
+            }
+            bounces--;
+        }
+
+        if (collision.gameObject.CompareTag("EnemyBullet")){
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
