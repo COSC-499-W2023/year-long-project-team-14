@@ -54,8 +54,9 @@ public class PlayerController : MonoBehaviour
         if(gm != null)
             gameMaster = gm.GetComponent<GameMaster>();
 
-        GameObject player = GameObject.FindGameObjectWithTag("Player");     
-        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        GameObject player = GameObject.FindGameObjectWithTag("Player");    
+        if(player != null) 
+            Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 
 
