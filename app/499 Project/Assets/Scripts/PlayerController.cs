@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        //Get components
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -46,6 +47,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        //Get objects and components
+
         GameObject canvas = GameObject.FindWithTag("Canvas");
         if(canvas != null)
             pauseMenu = canvas.GetComponent<PauseMenu>();
@@ -76,10 +79,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!unitTest2)
+        if (!unitTest2) //If running a unit test, do not run this code
         {
             if (animator != null && !PauseMenu.GameIsPaused)
             {
+                //Increase attack charge and update bullet UI
                 if (attackCharge < attackChargeMax)
                 {
                     attackCharge += Time.deltaTime * attackChargeSpeed;
@@ -89,7 +93,8 @@ public class PlayerController : MonoBehaviour
                         bullets.setCharge((int) attackCharge);
                     }
                 }
-
+                
+                //Play animations based on movement
                 if (moveDirection.x != 0 || moveDirection.y != 0)
                 {
                     animator.SetFloat("X", moveDirection.x);
@@ -109,6 +114,8 @@ public class PlayerController : MonoBehaviour
             {
                 if (!unitTest && (gameMaster == null || !gameMaster.unitTest))
                 {
+
+                    //Set aim direction based on user input
                     if (playerInput.currentControlScheme == "Keyboard&Mouse")
                     {
                         var mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
@@ -117,13 +124,11 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
-                        //Quaternion rotation = Quaternion.LookRotation(aimDirection, playerCenter.transform.TransformDirection(Vector3.forward));
-                        //playerCenter.transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
-
                         Quaternion rotation = Quaternion.LookRotation(aimDirection, playerCenter.transform.TransformDirection(Vector3.forward));
                         playerCenter.transform.rotation = Quaternion.Slerp(playerCenter.transform.rotation, new Quaternion(0, 0, rotation.z, rotation.w), 50 * Time.deltaTime);
                     }
 
+                    //Create line renderer in direction the player is aiming in
                     lineRenderer.positionCount = 1;
                     lineRenderer.SetPosition(0, gunFollow.transform.position);
                     RaycastHit2D hit = Physics2D.Raycast(gunFollow.transform.position, -gunFollow.up, maxAimDistance, layerDetection);
@@ -144,22 +149,26 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //Moves player
         if (rb != null)
         {
             rb.velocity = new Vector2(moveDirection.x * 0.5f * moveSpeed, moveDirection.y * 0.5f * moveSpeed);
         }
     }
 
+    //Gets the direction the player is moving in from input system
     public void Move(InputAction.CallbackContext context)
     {
         moveDirection = context.ReadValue<Vector2>().normalized;
     }
 
+    //Gets the direction the player is aiming in from input system
     public void Aim(InputAction.CallbackContext context)
     {
         aimDirection = context.ReadValue<Vector2>().normalized;
     }
 
+    //Detects if player presses shoot button
     public void Fire(InputAction.CallbackContext context)
     {
         if(context.performed && !PauseMenu.GameIsPaused)
@@ -168,6 +177,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Pauses the game
     public void Pause(InputAction.CallbackContext context)
     {
         if(context.performed)
@@ -183,6 +193,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Shoots a bullet in the direction the player is aiming in if they can shoot
     public void Shoot()
     {
         if(attackCharge >= attackCost)

@@ -8,12 +8,11 @@ public class EnemyMovement1 : MonoBehaviour
     Animator animator;
     public Vector2 targetPosition;
 
-    public float movementSpeed = 10;
+    public float movementSpeed = 4;
     public float nextWaypointDistance = 1;
     
     Path path;
     int currentWaypoint = 0;
-    //bool reachedEndOfPath = false;
 
     Seeker seeker; 
     Rigidbody2D rb;
@@ -21,18 +20,14 @@ public class EnemyMovement1 : MonoBehaviour
     public float waitTime = 0;
     float timer = 0;
 
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-    }
-
     void Start()
     {
+        //Get components and start pathfinding
+        animator = GetComponent<Animator>();
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         NewTarget();
         InvokeRepeating("UpdatePath", 0f, 0.25f);
-        
     }
 
     void UpdatePath()
@@ -53,28 +48,27 @@ public class EnemyMovement1 : MonoBehaviour
     void FixedUpdate()
     {
         animator.SetBool("IsWalking", false);
+
+        //Wait for timer before moving
         if(timer >= waitTime)
         {
             if(path == null)
                 return;
 
+            //Set new target after reaching target position
             if(currentWaypoint >= path.vectorPath.Count)
             {
-                //reachedEndOfPath = true;
                 NewTarget();
                 return;
             }
-            else
-            {
-                //reachedEndOfPath = false;
-            }
 
+            //Moves the enemy
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
             Vector2 force = direction * movementSpeed * 2500 * Time.deltaTime;
             rb.AddForce(force);
 
+            //Increment waypoint
             float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-
             if(distance < nextWaypointDistance)
             {
                 currentWaypoint++;
@@ -93,10 +87,12 @@ public class EnemyMovement1 : MonoBehaviour
             }
         }
 
+        //Increment wait timer
         if(timer < waitTime)
             timer += Time.deltaTime;
     }
 
+    //Set random target position and waitTime
     public void NewTarget()
     {
         float t = Random.Range(-2f, 2f);
@@ -110,13 +106,14 @@ public class EnemyMovement1 : MonoBehaviour
         targetPosition = new Vector2(x, y);
     }
 
-    // This will be used for unit testing. 
+    //Set specific target position, used for unit testing. 
     public void NewTarget(float x, float y)
     {
         targetPosition = new Vector2(x,y);
         waitTime = 0;
     }
 
+    //If enemy collides with player or walls, find new target position 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Player"))

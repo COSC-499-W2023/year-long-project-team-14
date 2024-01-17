@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SelectMenuButon());
+        StartCoroutine(SelectMenuButton());
     }
 
     public void LoadMenu() {
@@ -68,7 +68,7 @@ public class PauseMenu : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
     }
 
-    public IEnumerator SelectMenuButon() 
+    public IEnumerator SelectMenuButton() //Selects a button depending on which menu you are in when using a controller and no buttons are already selected
     {
         if(Gamepad.all.Count > 0) 
         {
@@ -84,8 +84,8 @@ public class PauseMenu : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(null);
                     
         yield return new WaitForSecondsRealtime(1f);
-        StopCoroutine(SelectMenuButon());
-        StartCoroutine(SelectMenuButon());
+        StopCoroutine(SelectMenuButton());
+        StartCoroutine(SelectMenuButton());
     }
 }
 

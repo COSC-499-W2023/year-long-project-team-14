@@ -26,7 +26,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SelectMenuButon());
+        StartCoroutine(SelectMenuButton());
         SelectButton(playButton);
     }
 
@@ -97,7 +97,7 @@ public class MainMenu : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(button);
         }
     }
-    public IEnumerator SelectMenuButon() 
+    public IEnumerator SelectMenuButton() //Selects a button depending on which menu you are in when using a controller and no buttons are already selected
     {
         if(Gamepad.all.Count > 0) 
         {
@@ -117,8 +117,8 @@ public class MainMenu : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(null);
                     
         yield return new WaitForSecondsRealtime(1f);
-        StopCoroutine(SelectMenuButon());
-        StartCoroutine(SelectMenuButon());
+        StopCoroutine(SelectMenuButton());
+        StartCoroutine(SelectMenuButton());
     }
 }
 

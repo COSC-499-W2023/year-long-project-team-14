@@ -34,7 +34,7 @@ public class GameMaster : MonoBehaviour
 
     public bool unitTest = false;
 
-    void Start()
+    void Start() //Sets everything up
     {
         level = Instantiate(level1, transform.position, Quaternion.identity);
         AstarPath.active.Scan();
@@ -44,6 +44,7 @@ public class GameMaster : MonoBehaviour
 
     void Update()
     {
+        //Increment game timer
         gameTime += Time.deltaTime;
     }
 
@@ -97,7 +98,7 @@ public class GameMaster : MonoBehaviour
                 healthSystem2.SetHeartsActive();
             }
             
-            //revive player if dead
+            //TODO: revive player if dead
         }
         else
         {
@@ -145,5 +146,4 @@ public class GameMaster : MonoBehaviour
             }
         }
     }
-   
 }
