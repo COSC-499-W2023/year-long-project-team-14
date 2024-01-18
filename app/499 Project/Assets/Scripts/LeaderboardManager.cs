@@ -245,22 +245,22 @@ public class LeaderboardManager : MonoBehaviour
         if(difficulty == 1)
         {
             difficulty++;
-            difficultyButtonText.text = "Medium";
+            difficultyButtonText.text = "MEDIUM";
         }
-        if(difficulty == 2)
+        else if(difficulty == 2)
         {
             difficulty++;
-            difficultyButtonText.text = "Hard";
+            difficultyButtonText.text = "HARD";
         }
-        if(difficulty == 3)
+        else if(difficulty == 3)
         {
             difficulty++;
-            difficultyButtonText.text = "Extreme";
+            difficultyButtonText.text = "EXTREME";
         }
-        if(difficulty == 4)
+        else if(difficulty == 4)
         {
             difficulty = 1;
-            difficultyButtonText.text = "Easy";
+            difficultyButtonText.text = "EASY";
         }
         FetchHighscores(null);
     }
@@ -270,28 +270,28 @@ public class LeaderboardManager : MonoBehaviour
         if(players == 1)
         {
             players = 2;
-            playerButtonText.text = "2 Player";
+            playerButtonText.text = "2 PLAYER";
         }
         else
         {
             players = 1;
-            playerButtonText.text = "1 Player";
+            playerButtonText.text = "1 PLAYER";
         }
         
         FetchHighscores(null);
     }
 
-    public void ScoreDisplayType() //Work in progress: Changes the leaderboard menu to display your score or the top scores
+    public void ScoreDisplayType() //Changes the leaderboard menu to display your score or the top scores
     {
         if(scoreType == 1)
         {
             scoreType = 2;
-            scoreButtonText.text = "Top Scores";
+            scoreButtonText.text = "TOP SCORES";
         }
         else
         {
             scoreType = 1;
-            scoreButtonText.text = "Your Score";
+            scoreButtonText.text = "YOUR SCORES";
         }
     }
 }
