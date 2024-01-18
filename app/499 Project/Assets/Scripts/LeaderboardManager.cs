@@ -48,7 +48,7 @@ public class LeaderboardManager : MonoBehaviour
         });
     }
 
-    public void SubmitScore(int score, string leaderboardID) //Upload score to correct leaderboard
+    public void SubmitScore(int score, string leaderboardID) //Save and upload score to correct leaderboard
     {   
         if(connected)
         {
@@ -66,6 +66,8 @@ public class LeaderboardManager : MonoBehaviour
                 leaderboardID += "Player";
             }
 
+            SaveScore(score, leaderboardID);
+
             LootLockerSDKManager.SubmitScore(PlayerPrefs.GetString("PlayerID"), score, leaderboardID, (response) =>
             {
                 if(response.success)
@@ -81,6 +83,26 @@ public class LeaderboardManager : MonoBehaviour
                 }
             });
         }
+    }
+
+    public void SaveScore(int score, string leaderboardID) //Saves scores locally
+    {
+        if(leaderboardID == "Easy1Player")
+            PlayerPrefs.SetInt("Easy1Player", score);
+        else if(leaderboardID == "Medium1Player")
+            PlayerPrefs.SetInt("Medium1Player", score);
+        else if(leaderboardID == "Hard1Player")
+            PlayerPrefs.SetInt("Hard1Player", score);
+        else if(leaderboardID == "Extreme1Player")
+            PlayerPrefs.SetInt("Extreme1Player", score);
+        else if(leaderboardID == "Easy2Player")
+            PlayerPrefs.SetInt("Easy2Player", score);
+        else if(leaderboardID == "Medium2Player")
+            PlayerPrefs.SetInt("Medium2Player", score);
+        else if(leaderboardID == "Hard2Player")
+            PlayerPrefs.SetInt("Hard2Player", score);
+        else if(leaderboardID == "Extreme2Player")
+            PlayerPrefs.SetInt("Extreme2Player", score);
     }
 
     public void FetchHighscores(string leaderboardID) //Retrieve leaderboard scores 
