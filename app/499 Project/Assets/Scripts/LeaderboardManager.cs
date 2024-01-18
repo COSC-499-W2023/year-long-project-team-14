@@ -9,6 +9,7 @@ public class LeaderboardManager : MonoBehaviour
 {
     public GameMaster gameMaster;
     public bool connected = false;
+    public bool inMenu = false;
 
     public TMP_Text[] playerRanks = new TMP_Text[10];
     public TMP_Text[] playerNames = new TMP_Text[10];
@@ -17,6 +18,7 @@ public class LeaderboardManager : MonoBehaviour
     public TMP_Text scoreButtonText;
     public TMP_Text playerButtonText;
     public TMP_Text difficultyButtonText;
+     public TMP_Text displayNameText;
 
     public int scoreType = 1;
     public int players = 1;
@@ -24,65 +26,88 @@ public class LeaderboardManager : MonoBehaviour
 
     void Start()
     {
-        StartSession();
+        StartCoroutine(StartSession());
     }
 
-    public void StartSession() //Connect to LootLocker
-    {
-        bool done = false;
+    public IEnumerator StartSession() //Connect to LootLocker
+    {     
+        if(!connected)   
+        {
+            LootLockerSDKManager.StartGuestSession((response) =>
+            {
+                if(response.success)
+                {
+                    PlayerPrefs.SetString("PlayerID", response.player_id.ToString());
+                    connected = true;    
+                }
+                else
+                {
+                    print("LootLocker failed to connect");
+                }
+            });
 
-        LootLockerSDKManager.StartGuestSession((response) =>
+            if(inMenu)
+            {
+                displayNameText.text = "" +PlayerPrefs.GetString("DisplayName");
+                UpdatePlayerName();
+            }
+        }
+
+        yield return new WaitForSeconds(5);
+        StartCoroutine(StartSession());
+    }
+
+    public void SetPlayerName(string name) //Change name locally
+    {
+        PlayerPrefs.SetString("DisplayName", name); 
+        UpdatePlayerName();
+    }
+
+    public void UpdatePlayerName() //Update online leaderboard name
+    {
+        LootLockerSDKManager.SetPlayerName(PlayerPrefs.GetString("DisplayName"), (response) =>
         {
             if(response.success)
             {
-                PlayerPrefs.SetString("PlayerID", response.player_id.ToString());
-                done = true;
+                print("Succesfully set player name");
                 connected = true;
             }
             else
             {
-                print("LootLocker failed to connect");
-                done = true;
-                StartSession();
+                print("Failed to set player name");
+                connected = false;
             }
         });
     }
 
     public void SubmitScore(int score, string leaderboardID) //Save and upload score to correct leaderboard
     {   
-        if(connected)
+        if(leaderboardID == null)
         {
-            bool done = false;
+            if(gameMaster.difficulty == 1) leaderboardID = "Easy";
+            else if(gameMaster.difficulty == 2) leaderboardID = "Medium";
+            else if(gameMaster.difficulty == 3) leaderboardID = "Hard";
+            else if(gameMaster.difficulty == 4) leaderboardID = "Extreme";
 
-            if(leaderboardID == null)
-            {
-                if(gameMaster.difficulty == 1) leaderboardID = "Easy";
-                else if(gameMaster.difficulty == 2) leaderboardID = "Medium";
-                else if(gameMaster.difficulty == 3) leaderboardID = "Hard";
-                else if(gameMaster.difficulty == 4) leaderboardID = "Extreme";
-
-                if(gameMaster.playerCount == 1) leaderboardID += "1";
-                else leaderboardID += "2";
-                leaderboardID += "Player";
-            }
-
-            SaveScore(score, leaderboardID);
-
-            LootLockerSDKManager.SubmitScore(PlayerPrefs.GetString("PlayerID"), score, leaderboardID, (response) =>
-            {
-                if(response.success)
-                {
-                    done = true;
-                    connected = true;
-                }
-                else
-                {
-                    print("Failed to upload score");
-                    done = true;
-                    connected = false;
-                }
-            });
+            if(gameMaster.playerCount == 1) leaderboardID += "1";
+            else leaderboardID += "2";
+            leaderboardID += "Player";
         }
+
+        SaveScore(score, leaderboardID);
+
+        LootLockerSDKManager.SubmitScore(PlayerPrefs.GetString("PlayerID"), score, leaderboardID, (response) =>
+        {
+            if(response.success)
+            {
+                connected = true;
+            }
+            else
+            {
+                print("Failed to upload score");
+                connected = false;
+            }
+        });
     }
 
     public void SaveScore(int score, string leaderboardID) //Saves scores locally
@@ -106,61 +131,54 @@ public class LeaderboardManager : MonoBehaviour
     }
 
     public void FetchHighscores(string leaderboardID) //Retrieve leaderboard scores 
-    {   
-        if(connected)
+    {             
+        if(leaderboardID == null)
         {
-            bool done = false;
-            
-            if(leaderboardID == null)
-            {
-                if(difficulty == 1) leaderboardID = "Easy";
-                else if(difficulty == 2) leaderboardID = "Medium";
-                else if(difficulty == 3) leaderboardID = "Hard";
-                else if(difficulty == 4) leaderboardID = "Extreme";
+            if(difficulty == 1) leaderboardID = "Easy";
+            else if(difficulty == 2) leaderboardID = "Medium";
+            else if(difficulty == 3) leaderboardID = "Hard";
+            else if(difficulty == 4) leaderboardID = "Extreme";
 
-                if(players == 1) leaderboardID += "1";
-                else leaderboardID += "2";
-                leaderboardID += "Player";
-            }
-            
-            LootLockerSDKManager.GetScoreList(leaderboardID, 10, 0, (response) =>
-            {
-                if(response.success)
-                {
-                    LootLockerLeaderboardMember[] members = response.items;
-                    string name = "";
-
-                    for(int i = 0; i < members.Length; i++)
-                    {
-                        if(members[i].player.name != "")
-                        {
-                            name = members[i].player.name + "";
-                        }
-                        else
-                        {
-                            name = members[i].player.id + "";
-                        }
-                        DisplayHighscore(i, members[i].rank, name, members[i].player.id, members[i].score);
-                    }
-                    done = true;
-                    connected = true;
-
-                    int blankSpots = 10 - members.Length;
-                    for(int i = 0; i < blankSpots; i++)
-                    {
-                        playerRanks[9 - i].text = " ";
-                        playerNames[9 - i].text = " ";
-                        playerScores[9 - i].text = " ";
-                    }
-                }
-                else
-                {
-                    print("Failed to fetch scores");
-                    done = true;
-                    connected = false;
-                }
-            });
+            if(players == 1) leaderboardID += "1";
+            else leaderboardID += "2";
+            leaderboardID += "Player";
         }
+        
+        LootLockerSDKManager.GetScoreList(leaderboardID, 10, 0, (response) =>
+        {
+            if(response.success)
+            {
+                LootLockerLeaderboardMember[] members = response.items;
+                string name = "";
+
+                for(int i = 0; i < members.Length; i++)
+                {
+                    if(members[i].player.name != "")
+                    {
+                        name = members[i].player.name + "";
+                    }
+                    else
+                    {
+                        name = members[i].player.id + "";
+                    }
+                    DisplayHighscore(i, members[i].rank, name, members[i].player.id, members[i].score);
+                }
+                connected = true;
+
+                int blankSpots = 10 - members.Length;
+                for(int i = 0; i < blankSpots; i++)
+                {
+                    playerRanks[9 - i].text = " ";
+                    playerNames[9 - i].text = " ";
+                    playerScores[9 - i].text = " ";
+                }
+            }
+            else
+            {
+                print("Failed to fetch scores");
+                connected = false;
+            }
+        });
     }
 
     public void DisplayHighscore(int iteration, int rank, string name, int memberID, int score) //Display leaderboard scores on leaderboard menu
@@ -180,7 +198,7 @@ public class LeaderboardManager : MonoBehaviour
         else
             playerScores[iteration].text = " ";
 
-        if(playerNames[iteration].text == PlayerPrefs.GetString("PlayerID"))
+        if(playerNames[iteration].text == PlayerPrefs.GetString("PlayerID") || playerNames[iteration].text == PlayerPrefs.GetString("DisplayName"))
         {
             playerNames[iteration].color = new Color32(255, 255, 0, 255);
             playerRanks[iteration].color = new Color32(255, 255, 0, 255);

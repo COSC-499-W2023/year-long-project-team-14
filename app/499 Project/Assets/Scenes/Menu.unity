@@ -2115,7 +2115,19 @@ MonoBehaviour:
   m_CharacterLimit: 15
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1726719921}
+        m_TargetAssemblyTypeName: LeaderboardManager, ProjectScripts
+        m_MethodName: SetPlayerName
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -2148,7 +2160,7 @@ MonoBehaviour:
   m_GlobalFontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_OnFocusSelectAll: 1
   m_ResetOnDeActivation: 1
-  m_RestoreOriginalTextOnEscape: 1
+  m_RestoreOriginalTextOnEscape: 0
   m_isRichTextEditingAllowed: 0
   m_LineLimit: 0
   m_InputValidator: {fileID: 0}
@@ -8692,6 +8704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameMaster: {fileID: 0}
   connected: 0
+  inMenu: 1
   playerRanks:
   - {fileID: 1672790743}
   - {fileID: 1534324977}
@@ -8728,6 +8741,7 @@ MonoBehaviour:
   scoreButtonText: {fileID: 0}
   playerButtonText: {fileID: 0}
   difficultyButtonText: {fileID: 0}
+  displayNameText: {fileID: 1078635819}
   scoreType: 1
   players: 1
   difficulty: 1
