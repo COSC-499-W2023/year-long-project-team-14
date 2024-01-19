@@ -7,7 +7,7 @@ public class healthSystem : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
     public GameObject[] hearts;
-    private Animator animator;
+    public Animator animator;
     private CircleCollider2D cc;
     public int life;
     public int maxLife = 3;
