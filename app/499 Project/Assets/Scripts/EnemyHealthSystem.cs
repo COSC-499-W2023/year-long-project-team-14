@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyHealthSystem : MonoBehaviour
 {
-    private Animator animator;
+    public Animator animator;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
     public EnemyAttack ea; 
