@@ -52,6 +52,7 @@ public class healthSystem : MonoBehaviour
     void Die()
     {
         rb.bodyType = RigidbodyType2D.Static;
+        animator.SetBool("IsWalking", false);
         animator.SetTrigger("Death");
         StartCoroutine(Transparent());
         cc.enabled = false;
