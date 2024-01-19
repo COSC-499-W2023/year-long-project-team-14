@@ -11,6 +11,7 @@ public class GameMaster : MonoBehaviour
     public float gameTime = 0;
     public Animator fadeAnim;
     public int playerCount = 1;
+    public int difficulty = 1;
     public int player1ControlScheme = 0;
     public int player2ControlScheme = 1;
 
@@ -105,7 +106,7 @@ public class GameMaster : MonoBehaviour
             print("YOU WIN!!!");
 
             //uploads score to leaderboard
-            leaderboardManager.SubmitScore((int)(Math.Round(gameTime, 2) * 100), "Test");
+            leaderboardManager.SubmitScore((int)(Math.Round(gameTime, 2) * 100), null);
         }
     }
 
