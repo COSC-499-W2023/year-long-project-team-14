@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
 
 
     // This function is called when a collision is detected.
+    // Moved all info to do with anamations into the healthSystem script - Justin.
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Enemy")){
@@ -69,7 +70,6 @@ public class PlayerController : MonoBehaviour
             if(playerHealth != null){
                 playerHealth.takeDamage();
             }
-            animator.SetTrigger("isHit");
         }
 
     }
@@ -139,6 +139,8 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
+
+        
         }
     }
 
@@ -224,7 +226,6 @@ public class PlayerController : MonoBehaviour
     {
         aimDirection = direction;
     }
-
 
 }
  

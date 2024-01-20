@@ -175,6 +175,7 @@ MonoBehaviour:
   bulletForce: 7
   moveSpeed: 7
   bulletBounces: 1
+  isInvic: 0
   aimingInWall: 0
   bulletPrefab: {fileID: 5755921796930191897, guid: 3d996469d34a57d48b5cda7756cb6536, type: 3}
   gunFollow: {fileID: 267668128978849629}
@@ -368,8 +369,12 @@ MonoBehaviour:
   - {fileID: 2963293245771210651}
   - {fileID: 6791258993376698776}
   - {fileID: 7327355830875134866}
+  animator: {fileID: 0}
   life: 0
+  maxLife: 3
   dead: 0
+  gameOverMenu: {fileID: 0}
+  pC: {fileID: 4452037770434438324}
 --- !u!114 &5323379100632877089
 MonoBehaviour:
   m_ObjectHideFlags: 0
