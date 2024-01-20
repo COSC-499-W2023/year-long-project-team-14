@@ -76,6 +76,8 @@ public class EnemyHealthSystem : MonoBehaviour
         ea.enabled = false;
         enemyCollider.enabled = false;
 
+        animator.SetBool("IsWalking", false);
+
         animator.SetTrigger("Death");
 
         StartCoroutine(Transparent());
