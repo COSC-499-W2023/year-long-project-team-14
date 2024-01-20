@@ -6,6 +6,7 @@ public class EnemyBullet : MonoBehaviour
 {
   
     public int bounces = 1;
+    public GameObject impactEffect;
     void Start()
     {
         // Ignore collisions with broken walls
@@ -16,6 +17,8 @@ public class EnemyBullet : MonoBehaviour
         if(collision.gameObject.CompareTag("Wall") ){
             if(bounces <= 0){
                 Destroy(gameObject);
+                GameObject clone = Instantiate(impactEffect, transform.position, transform.rotation);
+                Destroy(clone, 1.0f);
             }
             bounces--;
         }
@@ -26,6 +29,8 @@ public class EnemyBullet : MonoBehaviour
             if (bounces <= 0)
             {
                 Destroy(gameObject);
+                GameObject clone = Instantiate(impactEffect, transform.position, transform.rotation);
+                Destroy(clone, 1.0f);
             }
             bounces--;
         }
