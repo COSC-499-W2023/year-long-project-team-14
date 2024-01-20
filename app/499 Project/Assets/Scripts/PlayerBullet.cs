@@ -18,7 +18,8 @@ public class PlayerBullet : MonoBehaviour
         if(collision.gameObject.CompareTag("Wall") ){
             if(bounces <= 0){
                 Destroy(gameObject);
-                Instantiate(impactEffect, transform.position, transform.rotation);
+                GameObject clone = Instantiate(impactEffect, transform.position, transform.rotation);
+                Destroy(clone, 1.0f);
             }
             bounces--;
         }
@@ -29,7 +30,8 @@ public class PlayerBullet : MonoBehaviour
             if (bounces <= 0)
             {
                 Destroy(gameObject);
-                Instantiate(impactEffect, transform.position, transform.rotation);
+                GameObject clone = Instantiate(impactEffect, transform.position, transform.rotation);
+                Destroy(clone, 1.0f);
             }
             bounces--;
         }
@@ -37,7 +39,8 @@ public class PlayerBullet : MonoBehaviour
         if (collision.gameObject.CompareTag("EnemyBullet")){
             Destroy(collision.gameObject);
             Destroy(gameObject);
-            Instantiate(impactEffect, transform.position, transform.rotation);
+            GameObject clone = Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(clone, 1.0f);
         }
 
         // ^ if a player bullet collidies with an enemy bullet than delete both.

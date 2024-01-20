@@ -17,7 +17,8 @@ public class EnemyBullet : MonoBehaviour
         if(collision.gameObject.CompareTag("Wall") ){
             if(bounces <= 0){
                 Destroy(gameObject);
-                Instantiate(impactEffect, transform.position, transform.rotation);
+                GameObject clone = Instantiate(impactEffect, transform.position, transform.rotation);
+                Destroy(clone, 1.0f);
             }
             bounces--;
         }
@@ -28,7 +29,8 @@ public class EnemyBullet : MonoBehaviour
             if (bounces <= 0)
             {
                 Destroy(gameObject);
-                Instantiate(impactEffect, transform.position, transform.rotation);
+                GameObject clone = Instantiate(impactEffect, transform.position, transform.rotation);
+                Destroy(clone, 1.0f);
             }
             bounces--;
         }
