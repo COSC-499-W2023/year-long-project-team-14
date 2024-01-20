@@ -71,7 +71,7 @@ public class MainMenu : MonoBehaviour
         mainMenuObject.SetActive(false);
         leaderboardMenuObject.SetActive(true);
         SelectButton(leaderboardBackButton);
-        leaderboardManager.FetchHighscores("Test");
+        leaderboardManager.FetchHighscores(null);
     }
 
     public void LeaderboardBackButton()
