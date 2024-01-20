@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
 
 public class movingWall : MonoBehaviour
 {
@@ -9,11 +8,6 @@ public class movingWall : MonoBehaviour
     private int index = 0;
 
     [SerializeField] private float speed = 2f;
-
-    void Start()
-    {
-        StartCoroutine(UpdateGrid());
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -52,15 +46,5 @@ public class movingWall : MonoBehaviour
             }
         }
         transform.position = Vector2.MoveTowards(transform.position, waypoints[index].transform.position, Time.deltaTime * speed);
-    }
-
-    //Updates pathfinding grid so enemies know where the wall is as it moves
-    public IEnumerator UpdateGrid()
-    {
-        GraphUpdateObject guo = new GraphUpdateObject(transform.parent.gameObject.GetComponent<Collider2D>().bounds);
-        guo.updatePhysics = true;
-        AstarPath.active.UpdateGraphs(guo);
-        yield return new WaitForSeconds(0.1f);
-        StartCoroutine(UpdateGrid());
     }
 }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7933937214872020134}
-  - component: {fileID: 5427409500977172682}
+  - component: {fileID: 8360460938433509137}
   - component: {fileID: 8379747542874414333}
   - component: {fileID: 6745678162269555927}
   - component: {fileID: 5005771786603602445}
@@ -42,7 +42,7 @@ Transform:
   - {fileID: 4973439271485061908}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5427409500977172682
+--- !u!114 &8360460938433509137
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -51,13 +51,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 3279354335901742904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bab037766f274445bf6eb025d96bfb6, type: 3}
+  m_Script: {fileID: 11500000, guid: d418acd50c56c144f96c94627884d381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0}
-  movementSpeed: 4
-  nextWaypointDistance: 1
+  movementSpeed: 8
+  nextWaypointDistance: 0.1
+  chargeDuration: 0
   waitTime: 0
+  timer: 0
+  targetPlayer: {fileID: 0}
+  players: []
+  followPlayer: 0
+  chargePlayer: 1
 --- !u!212 &8379747542874414333
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -233,6 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5743ec2bb89168468afcf4b1065d30c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   ea: {fileID: 0}
   enemyMovement: {fileID: 0}
   enemyHealth: 3

@@ -11,7 +11,7 @@ public class OrcCollisionWalls : MonoBehaviour
 {
     private UnityEngine.Object orcPrefab;
     private GameObject orc;
-    private EnemyMovement1 orcController;
+    private EnemyMovement orcController;
 
     private UnityEngine.Object templatePrefab;
     private GameObject template;
@@ -28,7 +28,7 @@ public class OrcCollisionWalls : MonoBehaviour
         //spawn and set up the orc
         orcPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Orc_cyan.prefab"); 
         orc = GameObject.Instantiate(orcPrefab) as GameObject;
-        orcController = orc.GetComponent<EnemyMovement1>();
+        orcController = orc.GetComponent<EnemyMovement>();
         orcController.movementSpeed = 35;
        
        //Spawn and set up the level template

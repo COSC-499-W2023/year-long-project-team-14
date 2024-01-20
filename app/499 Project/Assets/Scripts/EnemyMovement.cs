@@ -80,7 +80,7 @@ public class EnemyMovement : MonoBehaviour
         animator.SetBool("IsWalking", false);
 
         //Wait for timer before moving unless followPlayer = true
-        if(timer >= waitTime || followPlayer)
+        if((timer >= waitTime || followPlayer) && (targetPlayer != null || (!followPlayer && !chargePlayer)))
         {
             if(path == null)
                 return;
@@ -96,28 +96,31 @@ public class EnemyMovement : MonoBehaviour
                 }
             }
 
-            //Move the enemy
-            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-            Vector2 force = direction * movementSpeed * 2500 * Time.deltaTime;
-            rb.AddForce(force);
-
-            //Increment waypoint
-            float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-            if(distance < nextWaypointDistance)
+            if(currentWaypoint < path.vectorPath.Count)
             {
-                currentWaypoint++;
-            }
+                //Move the enemy
+                Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+                Vector2 force = direction * movementSpeed * 2500 * Time.deltaTime;
+                rb.AddForce(force);
+            
+                //Increment waypoint
+                float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+                if(distance < nextWaypointDistance)
+                {
+                    currentWaypoint++;
+                }
+            
+                // Smoothly interpolate the animation parameters
+                float x = Mathf.Lerp(animator.GetFloat("X"), direction.x, 0.1f);
+                float y = Mathf.Lerp(animator.GetFloat("Y"), direction.y, 0.1f);
 
-            // Smoothly interpolate the animation parameters
-            float x = Mathf.Lerp(animator.GetFloat("X"), direction.x, 0.1f);
-            float y = Mathf.Lerp(animator.GetFloat("Y"), direction.y, 0.1f);
+                if (direction.x != 0 || direction.y != 0)
+                {
+                    animator.SetFloat("X", x);
+                    animator.SetFloat("Y", y);
 
-            if (direction.x != 0 || direction.y != 0)
-            {
-                animator.SetFloat("X", x);
-                animator.SetFloat("Y", y);
-
-                animator.SetBool("IsWalking", true);
+                    animator.SetBool("IsWalking", true);
+                }
             }
         }
 
@@ -170,9 +173,8 @@ public class EnemyMovement : MonoBehaviour
                 targetPlayer = players[0];
             if(players[0].GetComponent<healthSystem>().dead && !players[1].GetComponent<healthSystem>().dead) //If player 1 is dead, target player 2
                 targetPlayer = players[1];
-            else 
+            else if(!players[0].GetComponent<healthSystem>().dead && !players[1].GetComponent<healthSystem>().dead) //Target closest player
             {
-                //Target closest player
                 float distance1 = Vector3.Distance(gameObject.transform.position, players[0].transform.position);
                 float distance2 = Vector3.Distance(gameObject.transform.position, players[1].transform.position);
                 if(distance2 < distance1)
@@ -180,9 +182,11 @@ public class EnemyMovement : MonoBehaviour
                 else
                     targetPlayer = players[0];
             }
+            else targetPlayer = null;
         }
-        else
-            targetPlayer = players[0]; //Target player 1 if there is only 1 player
+        else if(!players[0].GetComponent<healthSystem>().dead)
+            targetPlayer = players[0]; //Target player 1 if only 1 player and not dead
+        else targetPlayer = null;
     }
 
     //Set new wait time before moving again
