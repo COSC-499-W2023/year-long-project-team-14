@@ -25,6 +25,7 @@ public class EnemyMovement : MonoBehaviour
     public GameObject[] players;
     public bool followPlayer = false;
     public bool chargePlayer = false;
+    public bool noWait = false;
 
     void Start()
     {
@@ -42,7 +43,7 @@ public class EnemyMovement : MonoBehaviour
         if(chargePlayer)
         {
             ResetWaitTime(1f, 2f);
-            chargeDuration = Random.Range(3f, 6f);
+            chargeDuration = 1;
         }
         
         //Start pathfinding
@@ -80,7 +81,7 @@ public class EnemyMovement : MonoBehaviour
         animator.SetBool("IsWalking", false);
 
         //Wait for timer before moving unless followPlayer = true
-        if((timer >= waitTime || followPlayer) && (targetPlayer != null || (!followPlayer && !chargePlayer)))
+        if((timer >= waitTime || followPlayer) && (targetPlayer != null || (!followPlayer && !chargePlayer)) || noWait)
         {
             if(path == null)
                 return;
@@ -130,8 +131,8 @@ public class EnemyMovement : MonoBehaviour
         //Reset wait time and charge duration
         if(chargePlayer && timer >= waitTime + chargeDuration)
         {
-            ResetWaitTime(2f, 4f);
-            chargeDuration = Random.Range(3f, 6f);
+            ResetWaitTime(1f, 2f);
+            chargeDuration = 1;
         }
     }
 
@@ -155,8 +156,8 @@ public class EnemyMovement : MonoBehaviour
     {   
         if(collision.gameObject.CompareTag("Player") && (chargePlayer || followPlayer))
         {     
-            ResetWaitTime(0.5f, 1f);
-            chargeDuration = Random.Range(3f, 6f);
+            ResetWaitTime(1f, 2f);
+            chargeDuration = 1;
         }
         else if((collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("BrokenWall") || collision.gameObject.CompareTag("Breakable") || collision.gameObject.CompareTag("Player")) && !chargePlayer && !followPlayer)
         {
