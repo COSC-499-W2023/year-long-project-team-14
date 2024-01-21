@@ -4,7 +4,7 @@
 - End Date: January 14th
 
 ### Tasks I worked on:
-![](screenshots/tasks_justin_week14.png)
+![](screenshots/tasks_justin_week_14.png)
   
 ### Recap on your week's goals
 My goals this week were to: 
