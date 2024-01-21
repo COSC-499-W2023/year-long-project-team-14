@@ -10,7 +10,8 @@ public class EnemyBullet : MonoBehaviour
     void Start()
     {
         // Ignore collisions with broken walls
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("BrokenWall").GetComponent<CompositeCollider2D>());
+        if(GameObject.FindGameObjectWithTag("BrokenWall") == true){
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("BrokenWall").GetComponent<CompositeCollider2D>());}
     }
 
     void OnCollisionEnter2D(Collision2D collision){

@@ -45,11 +45,13 @@ public class uiTest
         heart = healthSystem.hearts[healthSystem.hearts.Length-1];
         Assert.IsFalse(heart.activeSelf);
         //take damage a 2nd time
+        yield return new WaitForSeconds(1.05f);
         healthSystem.takeDamage();
         yield return new WaitForSeconds(0.1f);
         heart = healthSystem.hearts[healthSystem.hearts.Length - 2];
         Assert.IsFalse(heart.activeSelf);
         //take damage a 3rd time
+        yield return new WaitForSeconds(1.05f);
         healthSystem.takeDamage();
         yield return new WaitForSeconds(0.1f);
         heart = healthSystem.hearts[healthSystem.hearts.Length - 3];
