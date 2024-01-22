@@ -1,4 +1,26 @@
 # Personal Log - Gabriel Mercier
+## Week 2 - T2
+- Start Date: January 15
+- End Date: January 21
+  
+### Tasks I worked on:
+![](screenshots/t2Week2_peerEval_Gabriel.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* give eand take feedback
+* Stay on top of my tasks
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Created Broken Walls: walls that can be shot over but can't be walked over
+* Created Breakble Walls
+* Created moving Walls
+### Among these tasks, which have you completed/in progress in the last week?
+I completed all my tasks.
+![](screenshots/movingWallScript.png)
+
+***
 ## Week 1 - T2
 - Start Date: January 8
 - End Date: January 14
