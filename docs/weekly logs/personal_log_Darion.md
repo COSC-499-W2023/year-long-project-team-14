@@ -1,5 +1,45 @@
 # Personal Log - Darion Pescada
 
+## Term 2 Week 2
+- Start Date: January 15
+- End Date: January 21
+
+### Tasks I worked on:
+![](screenshots/term2_tasks_darion_week2.png)
+  
+### Recap on your week's goals
+This week, my goal was to finish the online leaderboards for our game and to meet with the team to discuss the current state of the project as well as our future plans. 
+
+### Which features were yours in the project plan for this milestone?
+- created leaderboards for each difficulty, and for 1 and 2 players
+- improved leaderboard script to upload score to correct leaderboard depending on the difficulty and amount of players
+- added filter buttons in leaderboard menu so users can select which leaderboard they want to view and display their score or the top scores
+- improved the options menu and added an input field for users to enter a display name
+- created functions to update users display name and highlight their name on the leaderboards
+- added a function to locally save leaderboard scores
+- improved and added more unit tests
+
+Additionally, I improved and added new features to the enemy pathfinding:
+- recreated the enemy movement script which now has the option to make enemies either chase after the player, charge at the player periodically, or randomly walk around
+- added the movement script to each of the enemies and set them up to behave correctly
+- created a function to repeatedly update the pathfinding grid graph so enemies know where they can and cannot go, even if the environment changes
+- fixed a bug where the enemies would stop moving before reaching their target position
+- added unit tests for the pathfinding/movement of new enemies
+
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed all of my tasks for this week and completed a bunch of additional work as well.
+
+### Leaderboard Screenshot
+![](screenshots/leaderboardMenuV2.png)
+
+### Unit Test Screenshots
+![](screenshots/leaderboardTest1.png)
+![](screenshots/leaderboardTest2.png)
+![](screenshots/slimeMovementTest.png)
+![](screenshots/bonkMovementTest.png)
+
+***
+
 ## Term 2 Week 1
 - Start Date: January 8
 - End Date: January 14
