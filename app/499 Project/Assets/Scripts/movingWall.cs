@@ -7,7 +7,7 @@ public class movingWall : MonoBehaviour
     [SerializeField] public GameObject[] waypoints;
     private int index = 0;
 
-    [SerializeField] public float speed = 2f;
+    public float speed = 2f;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
