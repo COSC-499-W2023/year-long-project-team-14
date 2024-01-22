@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
-
+using Pathfinding;
 
 public class GameMaster : MonoBehaviour
 {
@@ -11,6 +11,7 @@ public class GameMaster : MonoBehaviour
     public float gameTime = 0;
     public Animator fadeAnim;
     public int playerCount = 1;
+    public int difficulty = 1;
     public int player1ControlScheme = 0;
     public int player2ControlScheme = 1;
 
@@ -34,16 +35,18 @@ public class GameMaster : MonoBehaviour
 
     public bool unitTest = false;
 
-    void Start()
+    void Start() //Sets everything up
     {
         level = Instantiate(level1, transform.position, Quaternion.identity);
         AstarPath.active.Scan();
         playerCount = PlayerPrefs.GetInt("playerCount");
         SetupPlayers();
+        StartCoroutine(UpdateGrid());
     }
 
     void Update()
     {
+        //Increment game timer
         gameTime += Time.deltaTime;
     }
 
@@ -97,7 +100,7 @@ public class GameMaster : MonoBehaviour
                 healthSystem2.SetHeartsActive();
             }
             
-            //revive player if dead
+            //TODO: revive player if dead
         }
         else
         {
@@ -105,7 +108,7 @@ public class GameMaster : MonoBehaviour
             print("YOU WIN!!!");
 
             //uploads score to leaderboard
-            leaderboardManager.SubmitScore((int)(Math.Round(gameTime, 2) * 100), "Test");
+            leaderboardManager.SubmitScore((int)(Math.Round(gameTime, 2) * 100), null);
         }
     }
 
@@ -145,5 +148,14 @@ public class GameMaster : MonoBehaviour
             }
         }
     }
-   
+
+    //Constantly updates pathfinding grid so enemies know where they can and cannot go
+    public IEnumerator UpdateGrid()
+    {
+        GraphUpdateObject guo = new GraphUpdateObject(GetComponent<Collider2D>().bounds);
+        guo.updatePhysics = true;
+        AstarPath.active.UpdateGraphs(guo);
+        yield return new WaitForSeconds(0.1f);
+        StartCoroutine(UpdateGrid());
+    }
 }

@@ -1,10 +1,40 @@
 # Personal Log - Justin McKendry
+## Week 15
+- Start Date: January 15th
+- End Date: January 21st
+
+### Tasks I worked on:
+![](screenshots/tasks_justin_week15.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Rework the damage system to make the player invincible shortly after taking damage for a short time.
+* Ensure this new code does not break anything previously made.
+* Follow up on reworked project plan and ensure proper understanding for all members.
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Rework the damage system to give the player invicibility for a breif period after taking damage.
+* Change the anamations to reflect the invicibility.
+
+### Among these tasks, which have you completed/in progress in the last week?
+I have made completed all of my tasks for this week. 
+
+### First change was moving everything to do with the functionality of removing health to the healthSystem script and ensure the player does not take damage while invincible:
+![](screenshots/justin_takedmg.png)
+
+### Second change was making the player transparent then blink on and off screen in short succession to show the player is invincible:
+![](screenshots/justin_invincible.png)
+
+### Finally here is the unit test for my feature this week:
+![](screenshots/justin_test_invincible.png)
+
 ## Week 14
 - Start Date: January 8th
 - End Date: January 14th
 
 ### Tasks I worked on:
-![](screenshots/tasks_justin_week14.png)
+![](screenshots/tasks_justin_week_14.png)
   
 ### Recap on your week's goals
 My goals this week were to: 

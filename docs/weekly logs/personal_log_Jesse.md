@@ -1,4 +1,34 @@
 # Personal Log - Jesse Lazzari
+## Term 2 Week 2
+- Start Date: January 15
+- End Date: January 21
+  
+### Tasks I worked on:
+![](screenshots/t2week2_tasks.PNG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Meet with team and discuss gameplay improvements and controls
+* Learn how to add particle effects in Unity and follow additional tutorial videos
+* Add red particle effects for player 1 and enemies when bullets are destroyed
+* Add blue particle effects for player 2 when bullets are destroyed
+* Add new enemy type, Slime with all animations
+* Add new enemy type, light armored "bonk" orc with all animations 
+* Write team log report
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Add red particle effects for player 1 and enemies when bullets are destroyed
+* Add blue particle effects for player 2 when bullets are destroyed
+* Add new enemy type, Slime with all animations
+* Add new enemy type, light armored "bonk" orc with all animations 
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed the features I set out to implement as outlined above
+* In progress tasks are additional unit testing for existing features and work on "lightning" ability for players which zaps enemies
+
+***
+
 ## Term 2 Week 1
 - Start Date: January 8
 - End Date: January 14

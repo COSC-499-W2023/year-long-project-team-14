@@ -61,7 +61,7 @@ public class bulletCollisionTest
         orcShooter.shootInterval = 10f;
 
         //restrict the orc from moving 
-        orc.GetComponent<EnemyMovement1>().movementSpeed = 0;
+        orc.GetComponent<EnemyMovement>().movementSpeed = 0;
 
     }
 

@@ -41,7 +41,7 @@ public class OrcAttackTest : MonoBehaviour
         enemyAttack.shootInterval = 10f;
 
         //Restrict the orc from moving
-        orc.GetComponent<EnemyMovement1>().movementSpeed = 0;
+        orc.GetComponent<EnemyMovement>().movementSpeed = 0;
 
         //Spawn player 1 on the right side of the wall
         player1 = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Mage_player1.prefab"), new Vector3(5, 2, 0), Quaternion.identity) as GameObject;
@@ -81,14 +81,14 @@ public class OrcAttackTest : MonoBehaviour
     public IEnumerator OrcMoveToPlayerTest()
     {
         // Let the orc be able to move
-        orc.GetComponent<EnemyMovement1>().movementSpeed = 35;
+        orc.GetComponent<EnemyMovement>().movementSpeed = 35;
 
         // Make the orc walk to the second player 
-        orc.GetComponent<EnemyMovement1>().NewTarget((float) -3,(float) -5);
+        orc.GetComponent<EnemyMovement>().NewTarget((float) -3,(float) -5);
 
         //Make the orc move immediately
         yield return null;
-        orc.GetComponent<EnemyMovement1>().waitTime = 0;
+        orc.GetComponent<EnemyMovement>().waitTime = 0;
 
         //wait until  that player would take damage
         yield return new WaitForSeconds(1f);

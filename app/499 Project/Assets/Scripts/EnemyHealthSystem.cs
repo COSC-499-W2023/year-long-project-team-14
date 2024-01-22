@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class EnemyHealthSystem : MonoBehaviour
 {
-    private Animator animator;
+    public Animator animator;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
     public EnemyAttack ea; 
-    public EnemyMovement1 enemyMovement; 
+    public EnemyMovement enemyMovement; 
     public int enemyHealth = 2;
 
     public CircleCollider2D enemyCollider;
@@ -40,7 +40,7 @@ public class EnemyHealthSystem : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         ea = GetComponent<EnemyAttack>();
-        enemyMovement = GetComponent<EnemyMovement1>();
+        enemyMovement = GetComponent<EnemyMovement>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         
     }
@@ -75,6 +75,8 @@ public class EnemyHealthSystem : MonoBehaviour
         enemyMovement.enabled = false;
         ea.enabled = false;
         enemyCollider.enabled = false;
+
+        animator.SetBool("IsWalking", false);
 
         animator.SetTrigger("Death");
 
