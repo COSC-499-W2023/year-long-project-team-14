@@ -1,4 +1,30 @@
 # Personal Log - Kibele Sebnem Yildirim
+## Week 15 - Term 2
+- Start Date: January 16
+- End Date: January 21
+
+### Tasks I worked on:
+![](screenshots/weekly_kibele_week15.png)
+
+### Recap on your week's goals
+- My goals this week were to:
+* finalize the controls menu for our game
+* Discuss with my team about the design
+* Review my teammates' work on the game
+* Write test for my menu's code
+
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to finalize the controls menu for our game, discuss with my team about the design, review my teammates' work on the game, and write test for my menu's code.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week. 
+
+Here are the screenshots of my work on our Controls Menu in Unity this week:
+![](screenshots/kibeleweek15-1.png)
+
+![](screenshots/kibeleweek15.png)
+
 ## Week 14 - Term 2
 - Start Date: January 8
 - End Date: January 15
