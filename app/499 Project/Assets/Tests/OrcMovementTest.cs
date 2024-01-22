@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 public class OrcMovementTest : MonoBehaviour
 {
     private GameObject orc;
-    private EnemyMovement1 enemyMovement;
+    private EnemyMovement enemyMovement;
 
     private GameObject template;
     private GameObject path;
@@ -28,7 +28,7 @@ public class OrcMovementTest : MonoBehaviour
 
         //Spawn and set up the orc
         orc = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Orc_cyan.prefab"), new Vector3(-10, 0, 0), Quaternion.identity) as GameObject;
-        enemyMovement = orc.GetComponent<EnemyMovement1>();
+        enemyMovement = orc.GetComponent<EnemyMovement>();
         enemyMovement.movementSpeed = 35;
        
     }

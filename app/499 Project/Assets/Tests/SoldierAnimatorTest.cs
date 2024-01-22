@@ -11,7 +11,7 @@ public class SoldierAnimatorTest : MonoBehaviour
 {
     private UnityEngine.Object soldierPrefab;
     private GameObject soldier;
-    private EnemyMovement1 soldierController;
+    private EnemyMovement soldierController;
 
     private UnityEngine.Object templatePrefab;
     private GameObject template;
@@ -32,7 +32,7 @@ public class SoldierAnimatorTest : MonoBehaviour
         //Spawn and set up the orc
         soldierPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Orc_soldier.prefab"); 
         soldier = GameObject.Instantiate(soldierPrefab) as GameObject;
-        soldierController = soldier.GetComponent<EnemyMovement1>();
+        soldierController = soldier.GetComponent<EnemyMovement>();
         soldierController.movementSpeed = 35;
        
        //Spawn and set up the emtpy level template so that the orc can freely walk in the room 
