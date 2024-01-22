@@ -44,7 +44,7 @@ public class PlayerInvincible : MonoBehaviour
         enemyAttack.shootInterval = 10f;
 
         //Restrict the orc from moving
-        orc.GetComponent<EnemyMovement1>().movementSpeed = 0;
+        orc.GetComponent<EnemyMovement>().movementSpeed = 0;
 
         //Spawn the orc 
         orc2 = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Orc_cyan.prefab"), new Vector3(5, 0, 0), Quaternion.identity) as GameObject;
@@ -53,7 +53,7 @@ public class PlayerInvincible : MonoBehaviour
         enemyAttack2.shootInterval = 10f;
 
         //Restrict the orc from moving
-        orc2.GetComponent<EnemyMovement1>().movementSpeed = 0;
+        orc2.GetComponent<EnemyMovement>().movementSpeed = 0;
 
         //Spawn player 1 on the right side of the wall
         player1 = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Mage_player1.prefab"), new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
