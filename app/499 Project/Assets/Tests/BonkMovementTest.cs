@@ -48,7 +48,7 @@ public class BonkMovementTest : MonoBehaviour
     {
         //Wait for the bonk to move through the level to get to the player
         yield return new WaitUntil(() => bonk.transform.position.x >= 9.5);
-
+        yield return null;
         //Check if the the bonk reached the player and damaged them
         Assert.IsTrue(healthScript.life == 2); 
     }
