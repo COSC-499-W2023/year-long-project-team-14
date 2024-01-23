@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Ladder : MonoBehaviour
 {
+    public GameObject floatingText;
+
     private bool playerIsOverExit = false;
     public bool exitUnlocked = false;
     GameMaster gameMaster;
@@ -27,8 +29,15 @@ public class Ladder : MonoBehaviour
         {
             playerIsOverExit = true;
         }
+        if (other.CompareTag("Player") && exitUnlocked)
+        {
+            ShowFloatingText();
+        }
     }
-
+    void ShowFloatingText()
+    {
+        Instantiate(floatingText, transform.position, Quaternion.identity, transform);
+    }
     //check if player left exit
     private void OnTriggerExit2D(Collider2D other)
     {
