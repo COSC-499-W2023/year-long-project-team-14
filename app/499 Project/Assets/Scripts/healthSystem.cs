@@ -16,6 +16,8 @@ public class healthSystem : MonoBehaviour
     public PlayerController pC;
     public bool isInvic = false;
 
+    [SerializeField] private AudioSource hitSound;
+    [SerializeField] private AudioSource deathSound;
 
     private void Start()
     {
@@ -59,6 +61,8 @@ public class healthSystem : MonoBehaviour
                 //Signal the isHit anamation and play the invincible anamation
                 animator.SetTrigger("isHit");
                 StartCoroutine(Transparent2());
+                //play hit sound
+                hitSound.Play();
 
             
 
@@ -72,6 +76,10 @@ public class healthSystem : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Static;
         animator.SetBool("IsWalking", false);
         animator.SetTrigger("Death");
+
+        //play death sound
+        deathSound.Play();
+
         StartCoroutine(Transparent());
         cc.enabled = false;
         

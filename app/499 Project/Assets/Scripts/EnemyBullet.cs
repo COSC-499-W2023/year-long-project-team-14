@@ -7,6 +7,9 @@ public class EnemyBullet : MonoBehaviour
   
     public int bounces = 1;
     public GameObject impactEffect;
+
+    [SerializeField] private AudioSource wallBreakSound;
+
     void Start()
     {
         // Ignore collisions with broken walls
@@ -27,6 +30,8 @@ public class EnemyBullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Breakable"))
         {
             Destroy(collision.gameObject);
+            //play wall break sound
+            wallBreakSound.Play();
             if (bounces <= 0)
             {
                 Destroy(gameObject);
