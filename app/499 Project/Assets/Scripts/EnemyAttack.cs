@@ -26,7 +26,9 @@ public class EnemyAttack : MonoBehaviour
     int reflections2 = 0;
     public int maxReflections = 1;
     public float rotationSpeed;
-    
+
+    [SerializeField] private AudioSource shootSound;
+
     void Start()
     {
         //Create list of points for each line renderer
@@ -111,6 +113,8 @@ public class EnemyAttack : MonoBehaviour
         bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
         bullet.GetComponent<EnemyBullet>().bounces = maxReflections;
         lastShootTime = Time.time;
+        //play shoot sound
+        shootSound.Play();
     }
 
     void CheckCollision(Vector2 direction, RaycastHit2D hitData, List<Vector3> Points, int reflections, LineRenderer lr)

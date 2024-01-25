@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool unitTest = false;
     [HideInInspector] public bool unitTest2 = false;
 
+    [SerializeField] private AudioSource shootSound;
+
     private void Awake()
     {
         //Get components
@@ -210,6 +212,9 @@ public class PlayerController : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, gunFollow.position, Quaternion.identity);
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
             bulletRB.AddForce(-gunFollow.up * 50 * bulletForce);
+
+            //shoot sound effect
+            shootSound.Play();
 
             PlayerBullet playerBullet = bullet.GetComponent<PlayerBullet>();
             playerBullet.bounces = bulletBounces;

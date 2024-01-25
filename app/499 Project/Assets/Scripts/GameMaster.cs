@@ -35,6 +35,8 @@ public class GameMaster : MonoBehaviour
 
     public bool unitTest = false;
 
+    [SerializeField] private AudioSource transitionSound;
+
     void Start() //Sets everything up
     {
         level = Instantiate(level1, transform.position, Quaternion.identity);
@@ -56,8 +58,10 @@ public class GameMaster : MonoBehaviour
     }
     public IEnumerator NextLevel()
     {
+        //play transition sound
+        transitionSound.Play();
         //wait for screen to fade out and then destroy current level
-        if(fadeAnim != null)
+        if (fadeAnim != null)
         {
             fadeAnim.Play("ScreenFadeOut");
             yield return new WaitForSecondsRealtime(0.5f);
