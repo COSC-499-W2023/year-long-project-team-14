@@ -92,6 +92,7 @@ public class EnemyHealthSystem : MonoBehaviour
     
     public void Die()
     {
+        enemyHealth = 0;
         enemyMovement.enabled = false;
         ea.enabled = false;
         enemyCollider.enabled = false;
