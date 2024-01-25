@@ -35,6 +35,14 @@ public class EnemyBullet : MonoBehaviour
             }
             bounces--;
         }
+
+        if(collision.gameObject.CompareTag("Player") ){
+                Destroy(gameObject);
+                GameObject clone = Instantiate(impactEffect, transform.position, transform.rotation);
+                Destroy(clone, 1.0f);
+        }
+
+
     }
     
 }
