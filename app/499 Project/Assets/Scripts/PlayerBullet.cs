@@ -44,6 +44,13 @@ public class PlayerBullet : MonoBehaviour
         }
 
         // ^ if a player bullet collidies with an enemy bullet than delete both.
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+                Destroy(gameObject);
+                GameObject clone = Instantiate(impactEffect, transform.position, transform.rotation);
+                Destroy(clone, 1.0f);
+        }
     }
     
 }
