@@ -41,6 +41,11 @@ public class ControlMenuTest
         yield return null;
     }
 
+ [UnityTest]
+    public IEnumerator ControlMenuButton_ActivatesMenuAndSetsTimeScale()
+    {
+        yield return null;
+        SceneManager.LoadScene(0);}
 
     [TearDown]
     public void Teardown()
