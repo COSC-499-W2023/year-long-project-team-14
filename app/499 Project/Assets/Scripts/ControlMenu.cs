@@ -58,6 +58,14 @@ public class ControlMenu : MonoBehaviour
         StopCoroutine(SelectMenuButon());
         StartCoroutine(SelectMenuButon());
     }
+
+    public void ControlMenuButton()
+    {
+        controlMenu = true;
+        controlMenuUI.SetActive(true); 
+        Time.timeScale = 0f;
+        StartCoroutine(SelectMenuButon());
+    }
 }
 
 
