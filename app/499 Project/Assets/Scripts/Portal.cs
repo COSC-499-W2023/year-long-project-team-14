@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
+    public GameObject floatingText;
+
     // Define the next level scene name
     GameMaster gameMaster;
     private bool playerIsOverPortal = false;
@@ -23,6 +25,15 @@ public class Portal : MonoBehaviour
         {
             playerIsOverPortal = true;
         }
+        if (other.CompareTag("Player") && portalActive)
+        {
+            ShowFloatingText();
+        }
+    }
+
+    void ShowFloatingText()
+    {
+        Instantiate(floatingText, transform.position, Quaternion.identity, transform);
     }
 
     private void OnTriggerExit2D(Collider2D other)
