@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class healthSystem : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
-    private Rigidbody2D rb;
+    public SpriteRenderer spriteRenderer;
+    public Rigidbody2D rb;
     public GameObject[] hearts;
     public Animator animator;
-    private CircleCollider2D cc;
+    public CircleCollider2D cc;
     public int life;
     public int maxLife = 3;
     public bool dead;
     public GameOverMenu gameOverMenu;
-    public PlayerController pC;
+    public PlayerController playerController;
     public bool isInvic = false;
 
     [SerializeField] private AudioSource hitSound;
@@ -25,21 +25,6 @@ public class healthSystem : MonoBehaviour
         GameObject canvas = GameObject.FindWithTag("Canvas");
         if(canvas != null)
             gameOverMenu = canvas.GetComponent<GameOverMenu>();
-
-        
-    }
-
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
-        cc = GetComponent<CircleCollider2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    void Update()
-    {
-    
     }
 
     public void takeDamage()
@@ -47,8 +32,7 @@ public class healthSystem : MonoBehaviour
         //Check if the player has >= health and if the player is temporarly invincible
         if (life >=1 && isInvic == false)
         {
-
-            life --;
+            life--;
             hearts[life].SetActive(false);
            
            //Make the player invicible 
@@ -57,17 +41,15 @@ public class healthSystem : MonoBehaviour
             if (life < 1)
             {
                 Die();
-            }else{
+            }
+            else
+            {
                 //Signal the isHit anamation and play the invincible anamation
                 animator.SetTrigger("isHit");
                 StartCoroutine(Transparent2());
                 //play hit sound
                 hitSound.Play();
-
-            
-
             }
-
         }
     }
 
@@ -81,15 +63,10 @@ public class healthSystem : MonoBehaviour
         deathSound.Play();
 
         StartCoroutine(Transparent());
-        cc.enabled = false;
         
-        PlayerController p = GetComponent<PlayerController>();
-        GameObject bullet = transform.Find("Center").gameObject;
-        if (p!= null)
-        {
-            Destroy(p);
-            Destroy(bullet);
-        }
+        gameObject.layer = LayerMask.NameToLayer("NoCollide");
+        playerController.playerCenter.SetActive(false);
+        
         dead = true;
         spriteRenderer.sortingOrder = 8;
 
@@ -154,7 +131,6 @@ public class healthSystem : MonoBehaviour
         //Make the player able to take damage again
         isInvic = false;
     }
-
 
     public void SetHeartsActive()
     {

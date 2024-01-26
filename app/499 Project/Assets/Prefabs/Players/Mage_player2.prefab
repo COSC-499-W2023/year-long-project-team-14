@@ -181,8 +181,12 @@ MonoBehaviour:
   bulletBounces: 1
   aimingInWall: 0
   bulletPrefab: {fileID: 8495944747531926129, guid: e0f038ea01aad6a479c19c275fdbd3d1, type: 3}
+  playerInput: {fileID: 3476007376617294521}
+  rb: {fileID: 8516023400171509827}
+  animator: {fileID: 2945665864706798238}
+  hs: {fileID: 6761068036563319627}
   gunFollow: {fileID: 2784160869417341797}
-  playerCenter: {fileID: 8244858132379321173}
+  playerCenter: {fileID: 2056452103875701276}
   lineRenderer: {fileID: 517172463433549030}
   layerDetection:
     serializedVersion: 2
@@ -385,16 +389,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d208e4fe668d8ff4c88d978a46a66ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 47878624049746190}
+  rb: {fileID: 8516023400171509827}
   hearts:
   - {fileID: 348100419379070312}
   - {fileID: 8355425184293190507}
   - {fileID: 5216566618434552161}
-  animator: {fileID: 0}
-  life: 0
+  animator: {fileID: 2945665864706798238}
+  cc: {fileID: 6462940028143027065}
+  life: 3
   maxLife: 3
   dead: 0
   gameOverMenu: {fileID: 0}
-  pC: {fileID: 4452037770434438324}
+  playerController: {fileID: 4452037770434438324}
   isInvic: 0
   hitSound: {fileID: 3364955169198809843}
   deathSound: {fileID: -2053607497160900435}
@@ -702,6 +709,7 @@ MonoBehaviour:
   spellCooldown: 1
   cooldownTimer: 0
   playerController: {fileID: 4452037770434438324}
+  hs: {fileID: 6761068036563319627}
   fireballPrefab: {fileID: 1345593741101300040, guid: 18f719aa43c40ed4d9679fe79f234e7f, type: 3}
 --- !u!1 &1787117395732597122
 GameObject:

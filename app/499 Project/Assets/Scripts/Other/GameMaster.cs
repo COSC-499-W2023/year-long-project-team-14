@@ -58,9 +58,10 @@ public class GameMaster : MonoBehaviour
     }
     public IEnumerator NextLevel()
     {
-        //play transition sound
+        //Play transition sound
         transitionSound.Play();
-        //wait for screen to fade out and then destroy current level
+
+        //Wait for screen to fade out and then destroy current level
         if (fadeAnim != null)
         {
             fadeAnim.Play("ScreenFadeOut");
@@ -71,21 +72,21 @@ public class GameMaster : MonoBehaviour
         if(fadeAnim != null)
             fadeAnim.Play("ScreenFadeIn");
 
-        //move players out of the way
+        //Move players out of the way
         player1.transform.position = new Vector3(1000, 0, 0);
         if(playerCount > 1)
             player2.transform.position = new Vector3(1000, 0, 0);
 
-        //increase level count and spawn in new level or end game if on last level
+        //Increase level count and spawn in new level or end game if on last level
         currentLevel++;
 
         if(currentLevel <= levels.Length)
         {
-            //spawn in new level
+            //Spawn in new level
             level = Instantiate(levels[currentLevel-1], transform.position, Quaternion.identity);
             AstarPath.active.Scan();
             
-            //set player positions to new start positions
+            //Set player positions to new start positions
             player1Spawn = GameObject.FindWithTag("Player1Spawn").GetComponent<Transform>();
             player1.transform.position = player1Spawn.position;
             if(playerCount > 1)
@@ -94,28 +95,55 @@ public class GameMaster : MonoBehaviour
                 player2.transform.position = player2Spawn.position;
             }
 
-            //reset player health
-            healthSystem1.life = healthSystem1.maxLife;
-            healthSystem1.SetHeartsActive();
+            //Give players health
+            if(healthSystem1.life < 3 && !healthSystem1.dead)
+            {
+                healthSystem1.life++;
+                healthSystem1.SetHeartsActive();
+            }
 
             if(playerCount > 1)
             {
-                healthSystem2.life = healthSystem2.maxLife;
-                healthSystem2.SetHeartsActive();
+                if(healthSystem2.life < 3 && !healthSystem2.dead)
+                {
+                    healthSystem2.life++;
+                    healthSystem2.SetHeartsActive();
+                }
             }
             
-            //TODO: revive player if dead
+            //Respawn player if dead
+            if(healthSystem1.dead)
+                RespawnPlayer(healthSystem1);
+            else if(healthSystem2.dead)
+                RespawnPlayer(healthSystem2);
         }
         else
         {
             //TODO: display win screen and end game
             print("YOU WIN!!!");
 
-            //uploads score to leaderboard
+            //Uploads score to leaderboard
             leaderboardManager.SubmitScore((int)(Math.Round(gameTime, 2) * 100), null);
         }
     }
 
+    //Brings player back to life
+    public void RespawnPlayer(healthSystem hs)
+    {
+        hs.life = 1;
+        hs.SetHeartsActive();
+        hs.dead = false;
+        hs.rb.bodyType = RigidbodyType2D.Dynamic;
+        hs.gameObject.layer = LayerMask.NameToLayer("Player");
+        hs.playerController.playerCenter.SetActive(true);        
+        hs.spriteRenderer.sortingOrder = 10;
+        hs.gameOverMenu.playercount++;
+        hs.spriteRenderer.color = new Color(1, 1, 1, 1);
+        hs.animator.SetTrigger("isHit");
+        hs.isInvic = false;
+    }
+
+    //Set up controls for players
     public void SetupPlayers()
     {
         Gamepad[] gamepads = Gamepad.all.ToArray();

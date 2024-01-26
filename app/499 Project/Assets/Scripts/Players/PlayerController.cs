@@ -17,12 +17,13 @@ public class PlayerController : MonoBehaviour
 
     public GameObject bulletPrefab;
 
-    PlayerInput playerInput;
-    Rigidbody2D rb;
-    Animator animator;
+    public PlayerInput playerInput;
+    public Rigidbody2D rb;
+    public Animator animator;
+    public healthSystem hs;
 
     public Transform gunFollow;
-    public Transform playerCenter;
+    public GameObject playerCenter; 
 
     Vector2 moveDirection = Vector2.zero;
     Vector2 aimDirection = Vector2.zero;
@@ -39,14 +40,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private AudioSource shootSound;
 
-    private void Awake()
-    {
-        //Get components
-        playerInput = GetComponent<PlayerInput>();
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-    }
-
     void Start()
     {
         //Get objects and components
@@ -58,10 +51,6 @@ public class PlayerController : MonoBehaviour
         GameObject gm = GameObject.FindWithTag("GameMaster");
         if(gm != null)
             gameMaster = gm.GetComponent<GameMaster>();
-
-        GameObject player = GameObject.FindGameObjectWithTag("Player");    
-        if(player != null) 
-            Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 
 
@@ -70,20 +59,15 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Enemy")){
-            healthSystem playerHealth = GetComponent<healthSystem>();
-
-            if(playerHealth != null){
-                playerHealth.takeDamage();
-            }
+            hs.takeDamage();
         }
-
     }
 
     void Update()
     {
         if (!unitTest2) //If running a unit test, do not run this code
         {
-            if (animator != null && !PauseMenu.GameIsPaused)
+            if (animator != null && !hs.dead && !PauseMenu.GameIsPaused)
             {
                 //Increase attack charge and update bullet UI
                 if (attackCharge < attackChargeMax)
@@ -110,9 +94,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-
-
-            if (playerInput != null && !PauseMenu.GameIsPaused)
+            if (playerInput != null && !hs.dead && !PauseMenu.GameIsPaused)
             {
                 if (!unitTest && (gameMaster == null || !gameMaster.unitTest))
                 {
@@ -146,18 +128,14 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-
-        
         }
     }
 
     private void FixedUpdate()
     {
         //Moves player
-        if (rb != null)
-        {
+        if(!hs.dead)
             rb.velocity = new Vector2(moveDirection.x * 0.5f * moveSpeed, moveDirection.y * 0.5f * moveSpeed);
-        }
     }
 
     //Gets the direction the player is moving in from input system
@@ -175,7 +153,7 @@ public class PlayerController : MonoBehaviour
     //Detects if player presses shoot button
     public void Fire(InputAction.CallbackContext context)
     {
-        if(context.performed && !PauseMenu.GameIsPaused)
+        if(context.performed)
         {
             Shoot();
         }
@@ -200,7 +178,7 @@ public class PlayerController : MonoBehaviour
     //Shoots a bullet in the direction the player is aiming in if they can shoot
     public void Shoot()
     {
-        if(attackCharge >= attackCost)
+        if(attackCharge >= attackCost && !hs.dead && !PauseMenu.GameIsPaused)
         {
             bulletUI bullets = GetComponent<bulletUI>();
             if (bullets != null)
