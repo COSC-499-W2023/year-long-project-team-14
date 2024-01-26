@@ -13,6 +13,7 @@ public class Ladder : MonoBehaviour
     public Sprite ladderSprite;
     public Sprite trapDoorSprite;
     public List<GameObject> allEnemies = new List<GameObject>();
+    public GameObject ladderArrow;
     private void Start()
     {
         //get access to game master
@@ -27,6 +28,9 @@ public class Ladder : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if(gameMaster.currentLevel == 1 && ladderArrow != null)
+                ladderArrow.SetActive(false);
+
             playerIsOverExit = true;
         }
         if (other.CompareTag("Player") && exitUnlocked)
@@ -64,6 +68,8 @@ public class Ladder : MonoBehaviour
         {
             spriteRenderer.sprite = ladderSprite;
             exitUnlocked = true;
+            if(gameMaster.currentLevel == 1 && ladderArrow != null)
+                ladderArrow.SetActive(true);
         }
         else
         {
