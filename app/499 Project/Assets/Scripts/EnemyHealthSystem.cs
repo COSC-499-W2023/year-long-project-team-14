@@ -66,7 +66,22 @@ public class EnemyHealthSystem : MonoBehaviour
             }
             
             Destroy(collision.gameObject);
+        }
+    }
 
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("FireballExplosion"))
+        {
+            if (enemyHealth > 3)
+            {
+                TakeDamage(3);
+                animator.SetTrigger("isHit");
+            }
+            else
+            {
+                Die();
+            }
         }
     }
 
@@ -76,9 +91,15 @@ public class EnemyHealthSystem : MonoBehaviour
         //play hit sound
         hitSound.Play();
     }
+
+    public void TakeDamage(int damage)
+    {
+        enemyHealth -= damage;
+    }
     
     public void Die()
     {
+        enemyHealth = 0;
         enemyMovement.enabled = false;
         ea.enabled = false;
         enemyCollider.enabled = false;

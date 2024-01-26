@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Animator animator;
 
-    [SerializeField] Transform gunFollow;
-    [SerializeField] Transform playerCenter;
+    public Transform gunFollow;
+    public Transform playerCenter;
 
     Vector2 moveDirection = Vector2.zero;
     Vector2 aimDirection = Vector2.zero;
