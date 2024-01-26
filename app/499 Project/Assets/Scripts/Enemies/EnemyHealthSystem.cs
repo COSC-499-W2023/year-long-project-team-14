@@ -57,9 +57,9 @@ public class EnemyHealthSystem : MonoBehaviour
     }
 
     // Damage enemy if colliding with fireball
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collision.gameObject.CompareTag("FireballExplosion"))
+        if(collider.gameObject.CompareTag("FireballExplosion"))
         {
             takeDamage(3);
         }
@@ -90,7 +90,7 @@ public class EnemyHealthSystem : MonoBehaviour
     //Decreases health and kill enemy if health <= 0
     public void takeDamage(int damage)
     {
-        if(enemyHealth >= damage)
+        if(enemyHealth >= 0)
         {
             enemyHealth -= damage;
 

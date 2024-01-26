@@ -17,7 +17,7 @@ public class PlayerControllerTests
         //spawn and set up the player
         playerObject = new GameObject();
         playerController = playerObject.AddComponent<PlayerController>();
-
+        
     }
 
     [UnityTest]
