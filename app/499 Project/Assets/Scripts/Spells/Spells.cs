@@ -8,6 +8,7 @@ public class Spells : MonoBehaviour
     public float spellCooldown = 1;
     public float cooldownTimer = 0;
     public PlayerController playerController;
+    public healthSystem hs;
     public GameObject fireballPrefab;
 
     void Update()
@@ -23,8 +24,8 @@ public class Spells : MonoBehaviour
 
     public void CastSpell()
     {
-        //Only cast spell if the cooldown is complete
-        if(cooldownTimer >= spellCooldown)
+        //Only cast spell if the cooldown is complete, player isn't dead, and game isn't paused
+        if(cooldownTimer >= spellCooldown && !hs.dead && !PauseMenu.GameIsPaused)
         {
             //Reset cooldown
             cooldownTimer = 0;
@@ -43,7 +44,7 @@ public class Spells : MonoBehaviour
 
     public void FireballSpell()
     {
-        GameObject fireball = Instantiate(fireballPrefab, playerController.gunFollow.position, playerController.playerCenter.rotation);
+        GameObject fireball = Instantiate(fireballPrefab, playerController.gunFollow.position, playerController.playerCenter.transform.rotation);
         Rigidbody2D fireballRB = fireball.GetComponent<Rigidbody2D>();
         fireballRB.AddForce(-playerController.gunFollow.up * 50 * playerController.bulletForce);
     }
