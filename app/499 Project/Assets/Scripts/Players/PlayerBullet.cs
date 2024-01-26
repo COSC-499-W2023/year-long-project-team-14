@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
-
     public int bounces = 1;
     public GameObject impactEffect;
 
-    [SerializeField] private AudioSource wallBreakSound;
     void Start()
     {
         // Ignore collisions with objects in the "Player" layer and broken walls
@@ -16,21 +14,8 @@ public class PlayerBullet : MonoBehaviour
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), GameObject.FindGameObjectWithTag("BrokenWall").GetComponent<CompositeCollider2D>());
     }
     void OnCollisionEnter2D(Collision2D collision){
-        if(collision.gameObject.CompareTag("Wall") ){
-            if(bounces <= 0){
-                Destroy(gameObject);
-                GameObject clone = Instantiate(impactEffect, transform.position, transform.rotation);
-                Destroy(clone, 1.0f);
-            }
-            bounces--;
-        }
-
-        if (collision.gameObject.CompareTag("Breakable"))
-        {
-            Destroy(collision.gameObject);
-            //play wall break sound
-            wallBreakSound.Play();
-            if (bounces <= 0)
+        if(collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Breakable")){
+            if(bounces <= 0)
             {
                 Destroy(gameObject);
                 GameObject clone = Instantiate(impactEffect, transform.position, transform.rotation);
@@ -38,15 +23,6 @@ public class PlayerBullet : MonoBehaviour
             }
             bounces--;
         }
-
-        if (collision.gameObject.CompareTag("EnemyBullet")){
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-            GameObject clone = Instantiate(impactEffect, transform.position, transform.rotation);
-            Destroy(clone, 1.0f);
-        }
-
-        // ^ if a player bullet collidies with an enemy bullet than delete both.
 
         if (collision.gameObject.CompareTag("Enemy"))
         {

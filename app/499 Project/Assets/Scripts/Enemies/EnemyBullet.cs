@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-  
     public int bounces = 1;
     public GameObject impactEffect;
-
-    [SerializeField] private AudioSource wallBreakSound;
 
     void Start()
     {
@@ -18,21 +15,8 @@ public class EnemyBullet : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision){
-        if(collision.gameObject.CompareTag("Wall") ){
-            if(bounces <= 0){
-                Destroy(gameObject);
-                GameObject clone = Instantiate(impactEffect, transform.position, transform.rotation);
-                Destroy(clone, 1.0f);
-            }
-            bounces--;
-        }
-
-        if (collision.gameObject.CompareTag("Breakable"))
-        {
-            Destroy(collision.gameObject);
-            //play wall break sound
-            wallBreakSound.Play();
-            if (bounces <= 0)
+        if(collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Breakable")){
+            if(bounces <= 0)
             {
                 Destroy(gameObject);
                 GameObject clone = Instantiate(impactEffect, transform.position, transform.rotation);
@@ -46,8 +30,6 @@ public class EnemyBullet : MonoBehaviour
                 GameObject clone = Instantiate(impactEffect, transform.position, transform.rotation);
                 Destroy(clone, 1.0f);
         }
-
-
     }
     
 }

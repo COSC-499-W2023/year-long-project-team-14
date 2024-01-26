@@ -47,54 +47,59 @@ public class EnemyHealthSystem : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         
     }
-     // This function is called when a collision is detected.
+     // Damage enemy if colliding with bullet
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        // Check if the collision involves a player bullet GameObject.
         if (collision.gameObject.CompareTag("Player_bullet"))
         {
-            if (enemyHealth > 1)
-            {
-                takeDamage();
-                animator.SetTrigger("isHit");
-            }
-            else
-            {
-                //play death sound
-                deathSound.Play();
-                Die();
-            }
-            
-            Destroy(collision.gameObject);
+            takeDamage();
         }
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("FireballExplosion"))
+        if(collision.gameObject.CompareTag("FireballExplosion"))
         {
-            if (enemyHealth > 3)
-            {
-                TakeDamage(3);
-                animator.SetTrigger("isHit");
-            }
-            else
-            {
-                Die();
-            }
+            takeDamage(3);
         }
     }
 
     public void takeDamage()
     {
-        enemyHealth--;
-        //play hit sound
-        hitSound.Play();
+        if(enemyHealth >= 1)
+        {
+            enemyHealth--;
+
+            if (enemyHealth <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                animator.SetTrigger("isHit");
+                //play hit sound
+                hitSound.Play();
+            }
+        }
     }
 
-    public void TakeDamage(int damage)
+    public void takeDamage(int damage)
     {
-        enemyHealth -= damage;
+        if(enemyHealth >= damage)
+        {
+            enemyHealth -= damage;
+
+            if (enemyHealth <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                animator.SetTrigger("isHit");
+                //play hit sound
+                hitSound.Play();
+            }
+        }
     }
     
     public void Die()
@@ -105,8 +110,10 @@ public class EnemyHealthSystem : MonoBehaviour
         enemyCollider.enabled = false;
 
         animator.SetBool("IsWalking", false);
-
         animator.SetTrigger("Death");
+
+        //play death sound
+        deathSound.Play();
 
         StartCoroutine(Transparent());
 

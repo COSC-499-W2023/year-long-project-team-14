@@ -27,8 +27,15 @@ public class healthSystem : MonoBehaviour
             gameOverMenu = canvas.GetComponent<GameOverMenu>();
     }
 
-    // This function is called when a collision is detected.
-    // Moved all info to do with anamations into the healthSystem script - Justin.
+    // Damage player if colliding with enemy or bullet
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet")){
+            takeDamage();
+        }
+    }
+
+    //Continue to take damage if still touching enemy
     private void OnCollisionStay2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Enemy")){
@@ -36,17 +43,10 @@ public class healthSystem : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.CompareTag("EnemyBullet")){
-            takeDamage();
-        }
-    }
-
     public void takeDamage()
     {
         //Check if the player has >= health and if the player is temporarly invincible
-        if (life >= 1 && isInvic == false)
+        if(life >= 1 && isInvic == false)
         {
             life--;
             hearts[life].SetActive(false);
