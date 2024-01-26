@@ -27,22 +27,24 @@ public class GameOverMenu : MonoBehaviour
     }
     public IEnumerator ShowGameOverMenu()
     {
+        yield return new WaitForSecondsRealtime(1f);
+
          if (fadeAnim != null)
-        fadeAnim.Play("ScreenFadeOut");
+            fadeAnim.Play("ScreenFadeOut");
 
-    yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.5f);
 
-    GameIsOver = true;
-    gameOverMenuUI?.SetActive(true);
+        GameIsOver = true;
+        gameOverMenuUI?.SetActive(true);
 
-    if (Gamepad.all.Count > 0)
-    {
-        EventSystem.current?.SetSelectedGameObject(null);
-        EventSystem.current?.SetSelectedGameObject(restartButton);
-    }
+        if (Gamepad.all.Count > 0)
+        {
+            EventSystem.current?.SetSelectedGameObject(null);
+            EventSystem.current?.SetSelectedGameObject(restartButton);
+        }
 
-    if (fadeAnim != null)
-        fadeAnim.Play("ScreenFadeIn");
+        if (fadeAnim != null)
+            fadeAnim.Play("ScreenFadeIn");
     }
 
     public void LoadMenu()
@@ -91,7 +93,7 @@ public class GameOverMenu : MonoBehaviour
 {
     if (Gamepad.all.Count > 0 && EventSystem.current != null)
     {
-        if (EventSystem.current.currentSelectedGameObject == null && gameOverMenu != null)
+        if (EventSystem.current.currentSelectedGameObject == null)
         {
             if (restartButton != null)
             {
