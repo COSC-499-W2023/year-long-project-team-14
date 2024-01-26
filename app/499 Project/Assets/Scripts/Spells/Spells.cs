@@ -24,7 +24,7 @@ public class Spells : MonoBehaviour
 
     public void CastSpell()
     {
-        //Only cast spell if the cooldown is complete
+        //Only cast spell if the cooldown is complete, player isn't dead, and game isn't paused
         if(cooldownTimer >= spellCooldown && !hs.dead && !PauseMenu.GameIsPaused)
         {
             //Reset cooldown
