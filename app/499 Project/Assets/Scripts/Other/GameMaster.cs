@@ -150,38 +150,43 @@ public class GameMaster : MonoBehaviour
     //Set up controls for players
     public void SetupPlayers()
     {
-        Gamepad[] gamepads = Gamepad.all.ToArray();
-
-        player1Spawn = GameObject.FindWithTag("Player1Spawn").GetComponent<Transform>();
-        player1 = Instantiate(player1Prefab, player1Spawn.position, Quaternion.identity);
-        healthSystem1 = player1.GetComponent<healthSystem>();
-
-        if(player1ControlScheme == 0) //keyboard
+        if(player1 != null && player2 != null)
         {
-            player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
-        }
-        else //controller
-        {
-            player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[0]);
-        }
+            Gamepad[] gamepads = Gamepad.all.ToArray();
 
-        if(playerCount > 1)
-        {
-            player2Spawn = GameObject.FindWithTag("Player2Spawn").GetComponent<Transform>();
-            player2 = Instantiate(player2Prefab, player2Spawn.position, Quaternion.identity);
-            healthSystem2 = player2.GetComponent<healthSystem>();
+            player1Spawn = GameObject.FindWithTag("Player1Spawn").GetComponent<Transform>();
+            player1.transform.position = player1Spawn.position;
+            healthSystem1 = player1.GetComponent<healthSystem>();
 
-            if(player2ControlScheme == 0 && player1ControlScheme == 1) //keyboard
+            if(player1ControlScheme == 0) //keyboard
             {
-                player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
+                player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
             }
             else //controller
             {
-                if(player1ControlScheme == 0 && gamepads.Length > 0)
-                    player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[0]);
-                else if(gamepads.Length > 1)
-                    player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[1]);
+                player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[0]);
             }
+
+            if(playerCount > 1)
+            {
+                player2Spawn = GameObject.FindWithTag("Player2Spawn").GetComponent<Transform>();
+                player2.transform.position = player2Spawn.position;
+                healthSystem2 = player2.GetComponent<healthSystem>();
+
+                if(player2ControlScheme == 0 && player1ControlScheme == 1) //keyboard
+                {
+                    player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
+                }
+                else //controller
+                {
+                    if(player1ControlScheme == 0 && gamepads.Length > 0)
+                        player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[0]);
+                    else if(gamepads.Length > 1)
+                        player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[1]);
+                }
+            }
+            else
+                player2.SetActive(false);
         }
     }
 
