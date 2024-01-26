@@ -31,8 +31,15 @@ public class healthSystem : MonoBehaviour
     // Moved all info to do with anamations into the healthSystem script - Justin.
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet")){
-            hs.takeDamage();
+        if(collision.gameObject.CompareTag("Enemy")){
+            takeDamage();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("EnemyBullet")){
+            takeDamage();
         }
     }
 
@@ -47,7 +54,7 @@ public class healthSystem : MonoBehaviour
            //Make the player invicible 
            isInvic = true;
 
-            if (life < 1)
+            if (life <= 0)
             {
                 Die();
             }
