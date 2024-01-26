@@ -24,9 +24,13 @@ public class MainMenu : MonoBehaviour
 
     public LeaderboardManager leaderboardManager;
     public GameObject inputField;
+    public GameObject quitButton;
 
     void Start()
     {
+        if(Application.platform == RuntimePlatform.WebGLPlayer)
+            quitButton.SetActive(false);
+            
         StartCoroutine(SelectMenuButton());
         SelectButton(playButton);
     }
