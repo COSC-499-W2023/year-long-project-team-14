@@ -19,6 +19,7 @@ public class levelUi : MonoBehaviour
         }
     }
 
+    //Updates text to display current level
     private void Update()
     {
         if(gameMaster != null)

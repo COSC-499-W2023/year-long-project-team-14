@@ -18,6 +18,7 @@ public class PauseMenu : MonoBehaviour
         StartCoroutine(SelectMenuButton());
     }
 
+    //Load into menu scene
     public void LoadMenu() {
         StartCoroutine(GoToMenu());
     }
@@ -32,6 +33,7 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    //Restart the game
     public void Restart()
     {
         StartCoroutine(RestartGame());
@@ -47,6 +49,7 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    //Pause the game and display pause menu
     public void Pause()
     {
         pauseMenu = true;
@@ -59,6 +62,8 @@ public class PauseMenu : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(resumeButton);
         }
     }
+
+    //Resume the game deactivate pause menu
     public void Resume()
     {
         pauseMenu = false;

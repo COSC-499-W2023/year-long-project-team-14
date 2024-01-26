@@ -28,6 +28,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        //If playing the browser version, disable quit button because it does nothing
         if(Application.platform == RuntimePlatform.WebGLPlayer)
             quitButton.SetActive(false);
             
@@ -35,6 +36,7 @@ public class MainMenu : MonoBehaviour
         SelectButton(playButton);
     }
 
+    //Set player menu active and deactivate main menu
     public void Play()
     {
         mainMenu = false;
@@ -43,16 +45,22 @@ public class MainMenu : MonoBehaviour
         playerMenuObject.SetActive(true);
         SelectButton(player1Button);
     }
+
+    //Start the game with 1 player
     public void OnePlayer()
     {
         PlayerPrefs.SetInt("playerCount", 1);
         StartCoroutine(PlayGame());
     }
+
+    //Start the game with 2 players
     public void TwoPlayer()
     {
         PlayerPrefs.SetInt("playerCount", 2);
         StartCoroutine(PlayGame());
     }
+
+    //Set main menu active and deactivate player menu
     public void PlayerBackButton()
     {
         mainMenu = true;
@@ -62,6 +70,7 @@ public class MainMenu : MonoBehaviour
         SelectButton(playButton);
     }
 
+    //Load into the game scene
     public IEnumerator PlayGame()
     {
         fadeAnim.Play("ScreenFadeOut");
@@ -69,6 +78,7 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    //Set leaderboard menu active and deactivate main menu
     public void LeaderboardMenu()
     {
         mainMenu = false;
@@ -79,6 +89,7 @@ public class MainMenu : MonoBehaviour
         leaderboardManager.FetchHighscores(null);
     }
 
+    //Set main menu active and deactivate leaderboard menu
     public void LeaderboardBackButton()
     {
         mainMenu = true;
@@ -88,6 +99,7 @@ public class MainMenu : MonoBehaviour
         SelectButton(playButton);
     }
 
+    //Quit the game
     public void QuitGame()
     {
      Debug.Log("Quit");
@@ -116,6 +128,7 @@ public class MainMenu : MonoBehaviour
                 {
                     EventSystem.current.SetSelectedGameObject(player1Button);
                 }
+                //TODO: add options, leaderboard, and control menu to this
             }
         }
         else if(EventSystem.current.currentSelectedGameObject != inputField)

@@ -6,7 +6,7 @@ public class floatingText : MonoBehaviour
 {
     public Vector3 Offset = new Vector3(0, 1, 0);
     public float DestroyTime = 5f;
-    // Start is called before the first frame update
+
     void Start()
     {
         transform.localPosition += Offset;

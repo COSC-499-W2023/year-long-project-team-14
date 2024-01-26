@@ -19,16 +19,18 @@ public class GameOverMenu : MonoBehaviour
         playercount = PlayerPrefs.GetInt("playerCount");
     }
 
+    //If both players are dead, end game
     public void Update(){
         if (playercount == 0 && GameIsOver==false){
             StartCoroutine(ShowGameOverMenu());
         }
-
     }
+
+    //Display the game over menu
     public IEnumerator ShowGameOverMenu()
     {
         GameIsOver = true;
-        
+
         yield return new WaitForSecondsRealtime(1f);
 
          if (fadeAnim != null)
@@ -48,6 +50,7 @@ public class GameOverMenu : MonoBehaviour
             fadeAnim.Play("ScreenFadeIn");
     }
 
+    //Load into menu scene
     public void LoadMenu()
     {
         StartCoroutine(GoToMenu());
@@ -63,6 +66,7 @@ public class GameOverMenu : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    //Restart game
     public void Restart()
     {
         StartCoroutine(RestartGame());
@@ -78,37 +82,25 @@ public class GameOverMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public void GameOver()
+    public IEnumerator SelectMenuButton()
     {
-        gameOverMenu = true;
-        gameOverMenuUI.SetActive(true);
-        GameIsOver = true;
-        if (Gamepad.all.Count > 0)
+        if (Gamepad.all.Count > 0 && EventSystem.current != null)
         {
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(restartButton);
-        }    
-    }
-
-   public IEnumerator SelectMenuButton()
-{
-    if (Gamepad.all.Count > 0 && EventSystem.current != null)
-    {
-        if (EventSystem.current.currentSelectedGameObject == null)
-        {
-            if (restartButton != null)
+            if (EventSystem.current.currentSelectedGameObject == null)
             {
-                EventSystem.current.SetSelectedGameObject(restartButton);
+                if (restartButton != null)
+                {
+                    EventSystem.current.SetSelectedGameObject(restartButton);
+                }
             }
         }
-    }
-    else
-    {
-        EventSystem.current?.SetSelectedGameObject(null);
-    }
+        else
+        {
+            EventSystem.current?.SetSelectedGameObject(null);
+        }
 
-    yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(1f);
 
-    StartCoroutine(SelectMenuButton());
-}
+        StartCoroutine(SelectMenuButton());
+    }
 }

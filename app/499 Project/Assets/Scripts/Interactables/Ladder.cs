@@ -23,7 +23,7 @@ public class Ladder : MonoBehaviour
         SetLadderActive(false);
     }
 
-    //check if player is on exit
+    //player is within range
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -42,7 +42,8 @@ public class Ladder : MonoBehaviour
     {
         Instantiate(floatingText, transform.position, Quaternion.identity, transform);
     }
-    //check if player left exit
+
+    //player is no longer within range
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -61,7 +62,7 @@ public class Ladder : MonoBehaviour
         }
     }
 
-    //sets exit active or inactives
+    //sets exit active or inactive
     public void SetLadderActive(bool active)
     {
         if(active)

@@ -8,6 +8,7 @@ public class movingWall : MonoBehaviour
     private int index = 0;
     public float speed = 2f;
 
+    //Damages enemies and players if they get crushed by the wall
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
@@ -31,7 +32,7 @@ public class movingWall : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    //Moves the wall
     public void Update()
     {
         if (Vector2.Distance(transform.position, waypoints[index].transform.position) < .01f)

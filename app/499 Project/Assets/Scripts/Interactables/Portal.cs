@@ -19,6 +19,7 @@ public class Portal : MonoBehaviour
         gameMaster = GameObject.FindWithTag("GameMaster").GetComponent<GameMaster>();
     }
 
+    //player is within range
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -36,6 +37,7 @@ public class Portal : MonoBehaviour
         Instantiate(floatingText, transform.position, Quaternion.identity, transform);
     }
 
+    //player is no longer within range
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -44,6 +46,7 @@ public class Portal : MonoBehaviour
         }
     }
 
+    //go to next level if player interacts with exit and satisfies conditions
     private void Update()
     {
         if (playerIsOverPortal && portalActive && Input.GetKeyDown(KeyCode.E))
@@ -53,6 +56,7 @@ public class Portal : MonoBehaviour
         }
     }
 
+    //sets exit active or inactive
     public void SetPortalActive(bool active)
     {
         port.SetActive(active);

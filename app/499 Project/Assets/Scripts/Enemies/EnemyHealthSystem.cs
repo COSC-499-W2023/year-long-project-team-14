@@ -38,7 +38,7 @@ public class EnemyHealthSystem : MonoBehaviour
         
         enemyCollider = GetComponent<CircleCollider2D>();
     }
-    private void Awake()
+    private void Awake() //Get components
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -56,6 +56,7 @@ public class EnemyHealthSystem : MonoBehaviour
         }
     }
 
+    // Damage enemy if colliding with fireball
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("FireballExplosion"))
@@ -64,6 +65,7 @@ public class EnemyHealthSystem : MonoBehaviour
         }
     }
 
+    //Decrease health by 1 and kill enemy if health <= 0
     public void takeDamage()
     {
         if(enemyHealth >= 1)
@@ -76,13 +78,16 @@ public class EnemyHealthSystem : MonoBehaviour
             }
             else
             {
+                //play hit animation
                 animator.SetTrigger("isHit");
+
                 //play hit sound
                 hitSound.Play();
             }
         }
     }
 
+    //Decreases health and kill enemy if health <= 0
     public void takeDamage(int damage)
     {
         if(enemyHealth >= damage)
@@ -95,13 +100,16 @@ public class EnemyHealthSystem : MonoBehaviour
             }
             else
             {
+                //play hit animation
                 animator.SetTrigger("isHit");
+
                 //play hit sound
                 hitSound.Play();
             }
         }
     }
     
+    //Kills enemy
     public void Die()
     {
         enemyHealth = 0;
@@ -117,6 +125,7 @@ public class EnemyHealthSystem : MonoBehaviour
 
         StartCoroutine(Transparent());
 
+        //If last enemy, end level
         if (portal != null)
         {
             portal.allEnemies.Remove(gameObject);

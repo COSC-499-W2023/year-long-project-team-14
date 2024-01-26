@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         //Moves player
-        if(!hs.dead)
+        if(rb != null && !hs.dead)
             rb.velocity = new Vector2(moveDirection.x * 0.5f * moveSpeed, moveDirection.y * 0.5f * moveSpeed);
     }
 

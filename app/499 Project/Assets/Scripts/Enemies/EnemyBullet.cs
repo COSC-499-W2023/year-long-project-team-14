@@ -8,6 +8,7 @@ public class EnemyBullet : MonoBehaviour
     public GameObject impactEffect;
 
     void OnCollisionEnter2D(Collision2D collision){
+        //Destroy bullet if bounces <= 0 and colliding with an object
         if(collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Breakable")){
             if(bounces <= 0)
             {
@@ -18,6 +19,7 @@ public class EnemyBullet : MonoBehaviour
             bounces--;
         }
 
+        //Break bullet if colliding with player
         if(collision.gameObject.CompareTag("Player") ){
                 Destroy(gameObject);
                 GameObject clone = Instantiate(impactEffect, transform.position, transform.rotation);

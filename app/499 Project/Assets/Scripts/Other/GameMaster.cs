@@ -40,7 +40,6 @@ public class GameMaster : MonoBehaviour
     void Start() //Sets everything up
     {
         level = Instantiate(level1, transform.position, Quaternion.identity);
-        AstarPath.active.Scan();
         playerCount = PlayerPrefs.GetInt("playerCount");
         SetupPlayers();
         StartCoroutine(UpdateGrid());
@@ -52,6 +51,7 @@ public class GameMaster : MonoBehaviour
         gameTime += Time.deltaTime;
     }
 
+    //Go to next level
     public void LevelComplete()
     {
         StartCoroutine(NextLevel());
@@ -150,44 +150,46 @@ public class GameMaster : MonoBehaviour
     //Set up controls for players
     public void SetupPlayers()
     {
-        if(player1 != null && player2 != null)
+        if(player1 == null)
         {
-            Gamepad[] gamepads = Gamepad.all.ToArray();
+            player1 = Instantiate(player1Prefab, new Vector3(0, 0, 0), Quaternion.identity);
+        }
+        
+        Gamepad[] gamepads = Gamepad.all.ToArray();
 
-            player1Spawn = GameObject.FindWithTag("Player1Spawn").GetComponent<Transform>();
-            player1.transform.position = player1Spawn.position;
-            healthSystem1 = player1.GetComponent<healthSystem>();
+        player1Spawn = GameObject.FindWithTag("Player1Spawn").GetComponent<Transform>();
+        player1.transform.position = player1Spawn.position;
+        healthSystem1 = player1.GetComponent<healthSystem>();
 
-            if(player1ControlScheme == 0) //keyboard
+        if(player1ControlScheme == 0) //keyboard
+        {
+            player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
+        }
+        else //controller
+        {
+            player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[0]);
+        }
+
+        if(playerCount > 1)
+        {
+            player2Spawn = GameObject.FindWithTag("Player2Spawn").GetComponent<Transform>();
+            player2.transform.position = player2Spawn.position;
+            healthSystem2 = player2.GetComponent<healthSystem>();
+
+            if(player2ControlScheme == 0 && player1ControlScheme == 1) //keyboard
             {
-                player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
+                player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
             }
             else //controller
             {
-                player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[0]);
+                if(player1ControlScheme == 0 && gamepads.Length > 0)
+                    player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[0]);
+                else if(gamepads.Length > 1)
+                    player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[1]);
             }
-
-            if(playerCount > 1)
-            {
-                player2Spawn = GameObject.FindWithTag("Player2Spawn").GetComponent<Transform>();
-                player2.transform.position = player2Spawn.position;
-                healthSystem2 = player2.GetComponent<healthSystem>();
-
-                if(player2ControlScheme == 0 && player1ControlScheme == 1) //keyboard
-                {
-                    player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
-                }
-                else //controller
-                {
-                    if(player1ControlScheme == 0 && gamepads.Length > 0)
-                        player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[0]);
-                    else if(gamepads.Length > 1)
-                        player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[1]);
-                }
-            }
-            else
-                player2.SetActive(false);
         }
+        else if(player2 != null)
+            player2.SetActive(false);
     }
 
     //Constantly updates pathfinding grid so enemies know where they can and cannot go

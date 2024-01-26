@@ -48,13 +48,14 @@ public class healthSystem : MonoBehaviour
         //Check if the player has >= health and if the player is temporarly invincible
         if(life >= 1 && isInvic == false)
         {
+            //Decrease health by 1
             life--;
             hearts[life].SetActive(false);
            
            //Make the player invicible 
            isInvic = true;
 
-            if (life <= 0)
+            if (life <= 0) //Kill player if no life
             {
                 Die();
             }
@@ -62,7 +63,10 @@ public class healthSystem : MonoBehaviour
             {
                 //Signal the isHit anamation and play the invincible anamation
                 animator.SetTrigger("isHit");
+
+                //Make player flash while invincible
                 StartCoroutine(Transparent2());
+
                 //play hit sound
                 hitSound.Play();
             }
@@ -71,15 +75,18 @@ public class healthSystem : MonoBehaviour
 
     void Die()
     {
-        rb.bodyType = RigidbodyType2D.Static;
+        //Play death animation
         animator.SetBool("IsWalking", false);
         animator.SetTrigger("Death");
 
-        //play death sound
+        //Play death sound
         deathSound.Play();
 
+        //Make player transparent
         StartCoroutine(Transparent());
         
+        //Make player not able to interact or do anything while dead
+        rb.bodyType = RigidbodyType2D.Static;
         gameObject.layer = LayerMask.NameToLayer("NoCollide");
         playerController.playerCenter.SetActive(false);
         
@@ -148,6 +155,7 @@ public class healthSystem : MonoBehaviour
         isInvic = false;
     }
 
+    //Update heart UI
     public void SetHeartsActive()
     {
         for(int i = 0; i < life; i++)

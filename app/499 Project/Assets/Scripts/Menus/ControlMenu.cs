@@ -18,6 +18,7 @@ public class ControlMenu : MonoBehaviour
         StartCoroutine(SelectMenuButon());
     }
 
+    //Sets control menu to be active and deactivates pause menu
     public void ControlMenuButton()
     {
         controlMenu = true;
@@ -27,6 +28,7 @@ public class ControlMenu : MonoBehaviour
         StartCoroutine(SelectMenuButon());
     }
     
+    //Sets pause menu to be active and deactivates control menu
     public void Back()
     {
         controlMenu = false;

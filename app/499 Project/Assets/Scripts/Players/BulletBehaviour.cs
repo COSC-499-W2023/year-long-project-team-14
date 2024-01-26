@@ -5,6 +5,10 @@ using UnityEngine;
 public class BulletBehaviour : MonoBehaviour
 {
     private Animator animator;
+
+
+    //THIS COLLISION IS NOW IN THE HEALTHSYSTEM SCRIPT AND THIS SCRIPT IS NO LONGER USED
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
