@@ -89,7 +89,6 @@ public class LeaderboardManager : MonoBehaviour
         {
             if(response.success)
             {
-                print("Succesfully set player name");
                 done = true;
                 connected = true;
             }
