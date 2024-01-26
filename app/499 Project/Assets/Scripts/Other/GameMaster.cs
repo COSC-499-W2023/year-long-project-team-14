@@ -61,14 +61,20 @@ public class GameMaster : MonoBehaviour
         //Play transition sound
         transitionSound.Play();
 
-        //Wait for screen to fade out and then destroy current level
+        //Wait for screen to fade out and then destroy current level and bullets
         if (fadeAnim != null)
         {
             fadeAnim.Play("ScreenFadeOut");
             yield return new WaitForSecondsRealtime(0.5f);
         }
         Destroy(level);
+        GameObject[] playerBullets = GameObject.FindGameObjectsWithTag("Player_bullet");
+        GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
+        for(int i = 0; i < playerBullets.Length; i++) Destroy(playerBullets[i]);
+        for(int i = 0; i < enemyBullets.Length; i++) Destroy(enemyBullets[i]);
         yield return null;
+
+        //Start to fade back in
         if(fadeAnim != null)
             fadeAnim.Play("ScreenFadeIn");
 
