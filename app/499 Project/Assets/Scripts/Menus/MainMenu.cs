@@ -23,6 +23,7 @@ public class MainMenu : MonoBehaviour
     public Animator fadeAnim;
 
     public LeaderboardManager leaderboardManager;
+    public GameObject inputField;
 
     void Start()
     {
@@ -113,7 +114,7 @@ public class MainMenu : MonoBehaviour
                 }
             }
         }
-        else
+        else if(EventSystem.current.currentSelectedGameObject != inputField)
             EventSystem.current.SetSelectedGameObject(null);
                     
         yield return new WaitForSecondsRealtime(1f);

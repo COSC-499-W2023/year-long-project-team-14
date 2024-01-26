@@ -2803,7 +2803,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Score
+  m_text: Time
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e10e00b4d3e137e4da0876362a21e06c, type: 2}
   m_sharedMaterial: {fileID: 885593585194045846, guid: e10e00b4d3e137e4da0876362a21e06c, type: 2}
@@ -9421,9 +9421,10 @@ MonoBehaviour:
   leaderboardBackButton: {fileID: 389764377}
   mainMenu: 1
   playerMenu: 0
-  leaderboardMenu: 1
+  leaderboardMenu: 0
   fadeAnim: {fileID: 499405143}
   leaderboardManager: {fileID: 1726719921}
+  inputField: {fileID: 332261465}
 --- !u!1 &1503460343
 GameObject:
   m_ObjectHideFlags: 0
