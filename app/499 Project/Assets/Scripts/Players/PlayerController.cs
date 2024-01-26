@@ -53,16 +53,6 @@ public class PlayerController : MonoBehaviour
             gameMaster = gm.GetComponent<GameMaster>();
     }
 
-
-    // This function is called when a collision is detected.
-    // Moved all info to do with anamations into the healthSystem script - Justin.
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.CompareTag("Enemy")){
-            hs.takeDamage();
-        }
-    }
-
     void Update()
     {
         if (!unitTest2) //If running a unit test, do not run this code
