@@ -7,35 +7,32 @@ using UnityEngine.InputSystem;
 
 public class ControlMenu : MonoBehaviour
 {
-   public Animator fadeAnim;
     public GameObject controlMenuUI; 
-    public GameObject resumeButton;
+    public GameObject pauseMenuUI;
+    public GameObject backButton;
     public bool controlMenu = false;
+    public PauseMenu pauseMenu;
 
     void Start()
     {
         StartCoroutine(SelectMenuButon());
     }
 
-    public void LoadMenu() {
-        StartCoroutine(GoToMenu());
-    }
-
-    public IEnumerator GoToMenu()
+    public void ControlMenuButton()
     {
-        if(fadeAnim != null)
-            fadeAnim.Play("ScreenFadeOut");
-        yield return new WaitForSecondsRealtime(0.5f);
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(0);
+        controlMenu = true;
+        pauseMenu.pauseMenu = false;
+        controlMenuUI.SetActive(true); 
+        pauseMenuUI.SetActive(false); 
+        StartCoroutine(SelectMenuButon());
     }
-
-
-    public void Resume()
+    
+    public void Back()
     {
         controlMenu = false;
+        pauseMenu.pauseMenu = true;
         controlMenuUI.SetActive(false); 
-        Time.timeScale = 1f;
+        pauseMenuUI.SetActive(true); 
         EventSystem.current.SetSelectedGameObject(null);
     }
 
@@ -47,7 +44,7 @@ public class ControlMenu : MonoBehaviour
             {
                 if(controlMenu)
                 {
-                    EventSystem.current.SetSelectedGameObject(resumeButton);
+                    EventSystem.current.SetSelectedGameObject(backButton);
                 }
             }
         }
@@ -56,14 +53,6 @@ public class ControlMenu : MonoBehaviour
                     
         yield return new WaitForSecondsRealtime(1f);
         StopCoroutine(SelectMenuButon());
-        StartCoroutine(SelectMenuButon());
-    }
-
-    public void ControlMenuButton()
-    {
-        controlMenu = true;
-        controlMenuUI.SetActive(true); 
-        Time.timeScale = 0f;
         StartCoroutine(SelectMenuButon());
     }
 }

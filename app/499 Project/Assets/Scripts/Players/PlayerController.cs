@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
 
     GameMaster gameMaster;
     PauseMenu pauseMenu;
+    GameOverMenu gameOverMenu;
+    ControlMenu controlMenu;
 
     [HideInInspector] public bool unitTest = false;
     [HideInInspector] public bool unitTest2 = false;
@@ -46,7 +48,11 @@ public class PlayerController : MonoBehaviour
 
         GameObject canvas = GameObject.FindWithTag("Canvas");
         if(canvas != null)
+        {
             pauseMenu = canvas.GetComponent<PauseMenu>();
+            gameOverMenu = canvas.GetComponent<GameOverMenu>();
+            controlMenu = canvas.GetComponent<ControlMenu>();
+        }
 
         GameObject gm = GameObject.FindWithTag("GameMaster");
         if(gm != null)
@@ -154,11 +160,11 @@ public class PlayerController : MonoBehaviour
     {
         if(context.performed)
         {
-            if(PauseMenu.GameIsPaused)
+            if(PauseMenu.GameIsPaused && pauseMenu.pauseMenu)
             {
                 pauseMenu.Resume();
             }
-            else
+            else if(!controlMenu.controlMenu && !gameOverMenu.GameIsOver)   //TODO: add win menu to this when its done
             {
                 pauseMenu.Pause();
             }

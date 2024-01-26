@@ -27,6 +27,8 @@ public class GameOverMenu : MonoBehaviour
     }
     public IEnumerator ShowGameOverMenu()
     {
+        GameIsOver = true;
+        
         yield return new WaitForSecondsRealtime(1f);
 
          if (fadeAnim != null)
@@ -34,7 +36,6 @@ public class GameOverMenu : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(0.5f);
 
-        GameIsOver = true;
         gameOverMenuUI?.SetActive(true);
 
         if (Gamepad.all.Count > 0)

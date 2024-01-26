@@ -9,43 +9,44 @@ public class ControlMenuTest
 {
 
     [UnityTest]
-    public IEnumerator ControlMenu_ResumeGame()
+    public IEnumerator ControlMenuBackTest()
     {
-        SceneManager.LoadScene(0);
+        //Load into game scene
+        SceneManager.LoadScene(1);
         yield return null;
-        var controlMenu = new GameObject().AddComponent<ControlMenu>();
+
+        //Set up control menu
+        GameObject canvas = GameObject.FindWithTag("Canvas");
+        ControlMenu controlMenu = canvas.GetComponent<ControlMenu>();
+        controlMenu.pauseMenu = canvas.GetComponent<PauseMenu>();
         controlMenu.controlMenuUI = new GameObject();
-        controlMenu.resumeButton = new GameObject();
+        controlMenu.pauseMenuUI = new GameObject();
 
-        controlMenu.Resume();
-
+        //Call Back function and check that the pause menu is active and control menu is not
+        controlMenu.Back();
         Assert.IsFalse(controlMenu.controlMenuUI.activeSelf);
-        Assert.AreEqual(1f, Time.timeScale);
-
-        yield return null;
+        Assert.IsTrue(controlMenu.pauseMenuUI.activeSelf);
     }
 
     [UnityTest]
-    public IEnumerator controlMenu_LoadMenu()
+    public IEnumerator ControlMenuButtonTest()
     {
-        SceneManager.LoadScene(0);
+        //Load into game scene
+        SceneManager.LoadScene(1);
         yield return null;
-        var controlMenu = new GameObject().AddComponent<ControlMenu>();
 
-        controlMenu.LoadMenu();
-        yield return new WaitForSeconds(0.6f);
+        //Set up control menu
+        GameObject canvas = GameObject.FindWithTag("Canvas");
+        ControlMenu controlMenu = canvas.GetComponent<ControlMenu>();
+        controlMenu.pauseMenu = canvas.GetComponent<PauseMenu>();
+        controlMenu.controlMenuUI = new GameObject();
+        controlMenu.pauseMenuUI = new GameObject();
 
-        Assert.AreEqual(1f, Time.timeScale);
-        Assert.AreEqual(0, SceneManager.GetActiveScene().buildIndex);
-
-        yield return null;
+        //Call ControlMenuButton function and check that the control menu is active and pause menu is not
+        controlMenu.ControlMenuButton();
+        Assert.IsTrue(controlMenu.controlMenuUI.activeSelf);
+        Assert.IsFalse(controlMenu.pauseMenuUI.activeSelf);
     }
-
- [UnityTest]
-    public IEnumerator ControlMenuButton_ActivatesMenuAndSetsTimeScale()
-    {
-        yield return null;
-        SceneManager.LoadScene(0);}
 
     [TearDown]
     public void Teardown()
