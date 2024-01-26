@@ -71,9 +71,9 @@ public class EnemyAttack : MonoBehaviour
             direction3 = lineRenderer3.transform.right;
 
             //Shoot a raycast on each line renderer
-            RaycastHit2D hitData1 = Physics2D.CircleCast(lineRenderer1.transform.position + (Vector3)direction1, radius, direction1, 100, LayerDetection);
-            RaycastHit2D hitData2 = Physics2D.CircleCast(lineRenderer2.transform.position + (Vector3)direction2, radius, direction2, 100, LayerDetection);
-            RaycastHit2D hitData3 = Physics2D.CircleCast(lineRenderer3.transform.position + (Vector3)direction3, radius, direction3, 100, LayerDetection);
+            RaycastHit2D hitData1 = Physics2D.CircleCast(lineRenderer1.transform.position, radius, direction1, 100, LayerDetection);
+            RaycastHit2D hitData2 = Physics2D.CircleCast(lineRenderer2.transform.position, radius, direction2, 100, LayerDetection);
+            RaycastHit2D hitData3 = Physics2D.CircleCast(lineRenderer3.transform.position, radius, direction3, 100, LayerDetection);
 
             //Reset reflections
             reflections1 = 0;
