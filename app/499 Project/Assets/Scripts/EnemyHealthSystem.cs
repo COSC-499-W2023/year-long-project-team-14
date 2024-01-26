@@ -15,6 +15,9 @@ public class EnemyHealthSystem : MonoBehaviour
     public Ladder ladder;
     public Portal portal;
 
+    [SerializeField] private AudioSource hitSound;
+    [SerializeField] private AudioSource deathSound;
+
     private void Start()
     {
         // Add the enemy to the list of allEnemies when it's instantiated
@@ -57,6 +60,8 @@ public class EnemyHealthSystem : MonoBehaviour
             }
             else
             {
+                //play death sound
+                deathSound.Play();
                 Die();
             }
             
@@ -83,6 +88,8 @@ public class EnemyHealthSystem : MonoBehaviour
     public void takeDamage()
     {
         enemyHealth--;
+        //play hit sound
+        hitSound.Play();
     }
 
     public void TakeDamage(int damage)
