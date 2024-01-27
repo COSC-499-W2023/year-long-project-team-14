@@ -78,6 +78,31 @@ public class OrcAttackTest : MonoBehaviour
     }
 
     [UnityTest]
+    public IEnumerator OrcShootParticleTest()
+    {
+
+        //Allow orc to shoot
+        enemyAttack.lastShootTime = -10;
+
+        //Wait for orc to shoot at player and for particle animation to end
+        yield return new WaitForSeconds(2.5f);
+
+        //Search the scene for particles and check that enemy bullet particle game object plays fully and is destroyed from the game scene after animation has ended
+        Assert.IsTrue(GameObject.FindGameObjectsWithTag("effect").Length == 0);
+        Destroy(player2);
+
+        //Allow orc to shoot
+        enemyAttack.lastShootTime = -10;
+
+        //Wait for orc to shoot at player and for particle animation to end
+        yield return new WaitForSeconds(2.5f);
+
+        //Search the scene for particles and check that enemy bullet particle game object plays fully and is destroyed from the game scene after animation has ended
+        Assert.IsTrue(GameObject.FindGameObjectsWithTag("effect").Length == 0);
+        Destroy(player1);
+    }
+
+    [UnityTest]
     public IEnumerator OrcMoveToPlayerTest()
     {
         // Let the orc be able to move
