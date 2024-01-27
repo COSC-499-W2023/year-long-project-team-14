@@ -1,4 +1,32 @@
 # Personal Log - Jesse Lazzari
+
+## Term 2 Week 3
+- Start Date: January 22
+- End Date: January 27
+  
+### Tasks I worked on:
+![](screenshots/t2week3_tasks.PNG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Meet with team and discuss task list for upcoming peer evaluation
+* Add additional unit testing for the bullet particle effects
+* Add an additional spell ability for players to use
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Add unit testing for bullet particle effects for player 1, 2, and enemies when bullets are destroyed
+* Add lightning ability to "spells" script which cast a lightning bolt onto each enemy in the game scene and inflicts 1 damage per enemy. If an enemy is dead they are not struck by lightning. There is also a cooldown on the abillity which will be re-balanced later on
+* Research additional copyright free sprite and sound effect assets to add to the game
+* Modify bullet shooting sounds based on team feedback
+* Write weekly team log for the team
+* Test completion time with team for completing all peer testing tasks
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed the features I set out to implement as outlined above
+* In progress tasks are additional unit testing for the "lightning" ability and working on next player abillity 
+
+***
 ## Term 2 Week 2
 - Start Date: January 15
 - End Date: January 21
