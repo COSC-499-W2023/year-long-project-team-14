@@ -136,15 +136,18 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            // Check if the player press's space, if they do call dash
+            
+        }
+
+        // Check if the player press's space, if they do call dash
              if(Input.GetKeyDown("space"))
             {
-                dash();
+                Dash();
             }
 
             //Used for the dash cooldown (its the timer)
             dashCDT += Time.deltaTime;
-        }
+
     }
 
     private void FixedUpdate()
@@ -217,7 +220,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void dash(){
+    public void Dash(){
         //If the dash is off cooldown, the player is alive and the game is not paused.
         if(dashCDT >= dashCooldown && !hs.dead && !PauseMenu.GameIsPaused){
             //Add force in the direction the player is moving
