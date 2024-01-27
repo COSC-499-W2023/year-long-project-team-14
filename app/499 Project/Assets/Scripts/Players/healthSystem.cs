@@ -98,7 +98,9 @@ public class healthSystem : MonoBehaviour
     }
 
     public void dashHs(){
+        // Set the player to invincible during the dash
         isInvic = true;
+        //Start the transparent anamation for the dash
         StartCoroutine(Transparent3());
     }
 
@@ -160,6 +162,7 @@ public class healthSystem : MonoBehaviour
         isInvic = false;
     }
 
+    //This is used during the dash to make the player transparent and resets invincibility 
      IEnumerator Transparent3()
     {
         //Make the player transparent
@@ -168,12 +171,13 @@ public class healthSystem : MonoBehaviour
         currentColor.a = 0.5f; // Adjust the alpha value as needed
         spriteRenderer.color = currentColor;
 
-        //Make the player invisible 
+        //Make the player fully visible  
         yield return new WaitForSeconds(0.13f);
          currentColor = spriteRenderer.color; // Set the transparency (alpha) value
         currentColor.a = 1f; // Adjust the alpha value as needed
         spriteRenderer.color = currentColor;
 
+        //reset invincibility. 
         isInvic = false;
 
     }
