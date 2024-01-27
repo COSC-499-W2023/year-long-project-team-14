@@ -23,7 +23,7 @@ This week our team work on additional player abilities, gameplay mechanics, and 
 - Update test log for next milestone
 
 ## Burnup Chart
-![](screenshots/burnup_chart_t2week3.PNG)
+![](screenshots/week3t2_burnup_chart.PNG)
 
 ## Network Graph
 ![](screenshots/networkgraph_t2_week3.png)
