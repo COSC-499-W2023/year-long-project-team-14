@@ -58,7 +58,9 @@ public class Spells : MonoBehaviour
         {
             Vector3 lightningPos = new Vector3(enemies[i].transform.position.x, enemies[i].transform.position.y + yOffset, enemies[i].transform.position.z);
             GameObject lightning = Instantiate(lightningPrefab, lightningPos, Quaternion.identity);
-            Destroy(lightning, 1.0f);
+            Destroy(lightning, 0.25f);
+            EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
+            enemyHealthSystem.takeDamage();
         }
 
     }
