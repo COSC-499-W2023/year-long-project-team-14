@@ -55,12 +55,15 @@ public class Spells : MonoBehaviour
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         for(int i = 0; i < enemies.Length; i++)
-        {
-            Vector3 lightningPos = new Vector3(enemies[i].transform.position.x, enemies[i].transform.position.y + yOffset, enemies[i].transform.position.z);
-            GameObject lightning = Instantiate(lightningPrefab, lightningPos, Quaternion.identity);
-            Destroy(lightning, 0.25f);
-            EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
-            enemyHealthSystem.takeDamage();
+        {   EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
+            if(enemyHealthSystem.enemyHealth > 0)
+            {
+                Vector3 lightningPos = new Vector3(enemies[i].transform.position.x, enemies[i].transform.position.y + yOffset, enemies[i].transform.position.z);
+                GameObject lightning = Instantiate(lightningPrefab, lightningPos, Quaternion.identity);
+                enemyHealthSystem.takeDamage(1);
+                Destroy(lightning, 0.25f);
+            }
+                
         }
 
     }
