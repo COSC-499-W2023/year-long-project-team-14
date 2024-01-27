@@ -97,6 +97,11 @@ public class healthSystem : MonoBehaviour
             gameOverMenu.playercount--;
     }
 
+    public void dashHs(){
+        isInvic = true;
+        StartCoroutine(Transparent3());
+    }
+
     IEnumerator Transparent()
     {
         yield return new WaitForSeconds(0.5f);
@@ -153,6 +158,24 @@ public class healthSystem : MonoBehaviour
 
         //Make the player able to take damage again
         isInvic = false;
+    }
+
+     IEnumerator Transparent3()
+    {
+        //Make the player transparent
+        yield return new WaitForSeconds(0f);
+        Color currentColor = spriteRenderer.color; // Set the transparency (alpha) value
+        currentColor.a = 0.5f; // Adjust the alpha value as needed
+        spriteRenderer.color = currentColor;
+
+        //Make the player invisible 
+        yield return new WaitForSeconds(0.13f);
+         currentColor = spriteRenderer.color; // Set the transparency (alpha) value
+        currentColor.a = 1f; // Adjust the alpha value as needed
+        spriteRenderer.color = currentColor;
+
+        isInvic = false;
+
     }
 
     //Update heart UI

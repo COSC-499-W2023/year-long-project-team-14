@@ -42,6 +42,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private AudioSource shootSound;
 
+    //dash cooldown
+    public float dashCooldown = 1;
+    
+    //dash cool down timer 
+    public float dashCDT = 1;
+
+
+
     void Start()
     {
         //Get objects and components
@@ -127,6 +135,14 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
+
+
+             if(Input.GetKeyDown("space"))
+            {
+                dash();
+            }
+
+            dashCDT += Time.deltaTime;
         }
     }
 
@@ -197,6 +213,14 @@ public class PlayerController : MonoBehaviour
             playerBullet.bounces = bulletBounces;
 
             Destroy(bullet, 30);
+        }
+    }
+
+    public void dash(){
+        if(dashCDT >= dashCooldown && !hs.dead && !PauseMenu.GameIsPaused){
+            rb.AddForce(GetMoveDirection()*50000);
+            hs.dashHs();
+            dashCDT = 0;
         }
     }
 
