@@ -44,7 +44,6 @@ public class WinMenu : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    //Restart game
     public void Restart()
     {
         StartCoroutine(RestartGame());

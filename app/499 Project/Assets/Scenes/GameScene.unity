@@ -4868,8 +4868,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 925822473}
-        m_TargetAssemblyTypeName: GameOverMenu, ProjectScripts
+      - m_Target: {fileID: 925822475}
+        m_TargetAssemblyTypeName: WinMenu, ProjectScripts
         m_MethodName: LoadMenu
         m_Mode: 1
         m_Arguments:
@@ -5100,6 +5100,7 @@ GameObject:
   - component: {fileID: 925822473}
   - component: {fileID: 925822474}
   - component: {fileID: 925822475}
+  - component: {fileID: 925822476}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Canvas
@@ -5264,6 +5265,24 @@ MonoBehaviour:
   playercount: 0
   gameMaster: {fileID: 0}
   timetext: {fileID: 309982432}
+--- !u!114 &925822476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925822467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0831869956b9b304184b3c6fa8ad19a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeAnim: {fileID: 0}
+  WinMenuUI: {fileID: 0}
+  restartButton: {fileID: 0}
+  playercount: 0
+  gameMaster: {fileID: 0}
+  timetext: {fileID: 0}
 --- !u!1 &928307466
 GameObject:
   m_ObjectHideFlags: 0
@@ -8772,8 +8791,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 925822473}
-        m_TargetAssemblyTypeName: GameOverMenu, ProjectScripts
+      - m_Target: {fileID: 925822475}
+        m_TargetAssemblyTypeName: WinMenu, ProjectScripts
         m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
@@ -9683,7 +9702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1742790743
 RectTransform:
   m_ObjectHideFlags: 0
