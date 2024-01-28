@@ -1,4 +1,37 @@
 # Personal Log - Justin McKendry
+## Week 16
+- Start Date: January 22nd
+- End Date: January 28th
+
+### Tasks I worked on:
+![](screenshots/tasks_justin_week16.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Add the dash feature and appropriate unit tests
+* Update the test log with all current tests
+* Update the build on the itch website
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Add the dash feature
+  
+### Among these tasks, which have you completed/in progress in the last week?
+I have made completed all of my tasks for this week. 
+
+### First I had to check when the player hits space and call the dash function:
+![](screenshots/dash_onspace.png)
+
+### Second I had to check the cooldown, if the player is alive and if the game is paused. If not increase the force in the move direction and call the invincible script in Health system. Than reset the timer:
+![](screenshots/dash().png)
+
+### Third in dashHs we set the player to invinicble than start the Transparent 3 coroutine to make them trnasparent to refelect trasnparency, the transparency works the same as the transparency 2 last week just with differnt times:
+![](screenshots/dashHS().png)
+
+### Finally here are the unit tests:
+![](screenshots/dashTest1.png)
+![](screenshots/dashTest2.png)
+
 ## Week 15
 - Start Date: January 15th
 - End Date: January 21st
