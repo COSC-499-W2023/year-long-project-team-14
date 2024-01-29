@@ -12,6 +12,8 @@ Assets acknowledgement:
 * Enemy movement AI: https://www.arongranberg.com/astar
 * Portal: https://elthen.itch.io/2d-pixel-art-portal-sprites
 * Font: https://fonts.google.com/specimen/Press+Start+2P?query=press
+* Leaderboards: https://lootlocker.com/
+* Fireball explosion: https://xthekendrick.itch.io/2d-explosions-pack
 
 Please use the provided folder structure for your docs (project plan, design documentation, communications log, weekly logs, and final documentation), source code, testing, etc.    You are free to organize any additional internal folder structure as required by the project.  Please use a branching workflow and once an item is ready, do remember to issue a PR, code review, and merge it into the develop branch and then the master branch.
 ```
