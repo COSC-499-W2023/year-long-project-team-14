@@ -1,4 +1,25 @@
 # Personal Log - Gabriel Mercier
+## Week 3 - T2
+- Start Date: January 22
+- End Date: January 28
+  
+### Tasks I worked on:
+![](screenshots/t2Week3_peerEval_Gabriel.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Prep for upcoming peer testing (tasks/questionnaire)
+* Stay on top of my tasks
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* unit tests for broken/breakable/moving walls
+* Added Sound effects for most game actions
+* Added text prompts to interact
+### Among these tasks, which have you completed/in progress in the last week?
+I completed all my tasks.
+
+***
 ## Week 2 - T2
 - Start Date: January 15
 - End Date: January 21
