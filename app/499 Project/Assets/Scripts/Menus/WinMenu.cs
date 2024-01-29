@@ -24,7 +24,7 @@ public class WinMenu : MonoBehaviour
 
     void Update()
     {
-        if (gameMaster != null)
+        if (gameMaster != null && timetext != null)
         {
             float time = gameMaster.gameTime;
             timetext.text = "Time: " + time;
