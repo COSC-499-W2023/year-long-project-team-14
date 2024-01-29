@@ -17,6 +17,8 @@ public class GameMaster : MonoBehaviour
 
     public int currentLevel = 1;
 
+    public GameObject WinMenu;
+
     [SerializeField] private GameObject player1;
     [SerializeField] private GameObject player2;
     public healthSystem healthSystem1;
@@ -125,6 +127,7 @@ public class GameMaster : MonoBehaviour
         {
             //TODO: display win screen and end game
             print("YOU WIN!!!");
+            WinMenu.SetActive(true);
 
             //Uploads score to leaderboard
             leaderboardManager.SubmitScore((int)(Math.Round(gameTime, 2) * 100), null);
