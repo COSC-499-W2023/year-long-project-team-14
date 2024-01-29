@@ -177,7 +177,8 @@ How this test works:
 ![](Test_screenshots/Milestone2/uiT_p2_ms2.png)
 
 How this test works:
-*
+* For the hearts, test ensure that when damage is taken, the hearts display the proper number of hearts
+* For the bullets, test ensure that when shots are taken, the bullet charge is displayed appropriately
 
 ## Test for the Transition System
 ![](Test_screenshots/Milestone2/transitionTest1.PNG)
