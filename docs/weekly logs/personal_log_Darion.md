@@ -1,5 +1,48 @@
 # Personal Log - Darion Pescada
 
+## Term 2 Week 3
+- Start Date: January 22
+- End Date: January 28
+
+### Tasks I worked on:
+![](screenshots/term2_tasks_darion_week3.png)
+  
+### Recap on your week's goals
+This week, my goals were to meet with the team to plan out everything for the peer review, and to create the fireball spell that lets players shoot a fireball that explodes when colliding with an object and damages enemies.
+
+### Which features were yours in the project plan for this milestone?
+- created the spells script that lets players shoot a fireball in the direction they are aiming in once its cooldown is complete
+- created the fireball and fireball explosion prefabs and animations
+- added a unit test for the fireball spell
+
+I also completed a bunch of extra work this week by cleaning up the project, fixing bugs, and adding a few other features:
+- created a respawn system so if a player dies in 2 player mode, they can come back to life if the other player completes the level
+- added a green arrow that directs the players to the ladder at the end of the first level so they know where to go
+- added an animation for when breakable walls get destroyed
+- removed the quit game button in the webGL build of the game since it doesn't do anything
+- changed the player HUD to render underneath the other UI elements
+- made all of the bullets on the screen get deleted when transitioning to the next level
+- fixed the player collisions so players continue to take damage when colliding with an enemy or bullet as long if they aren't invincible
+- cleaned up all of the collision code and damage functions so it is more consistent and easier to use, read, and modify
+- made the players and enemies line of sight go through broken walls
+- fixed a bug where the enemies would try to shoot at the player through solid walls
+- prevented the players from being able to pause and resume the game when they shouldn't be able to
+- fixed a bug that prevents players from entering a display name unless they have a controller plugged into their computer
+- improved the menus and fixed scaling issues
+- improved the controls menu and unit tests
+- added click sound effect to the control menu buttons
+- put all of the assets into organized folders
+- added comments to all of our code
+- removed all of the irrelevant logs that cluttered the console when running the game in unity
+
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed all of my tasks for this week as well as a lot of additional work.
+
+### Fireball Unit Test Screenshot
+![](screenshots/fireballTest.png)
+
+***
+
 ## Term 2 Week 2
 - Start Date: January 15
 - End Date: January 21
