@@ -1,4 +1,186 @@
 # Personal Log - Gabriel Mercier
+## Week 2 - T2
+- Start Date: January 15
+- End Date: January 21
+  
+### Tasks I worked on:
+![](screenshots/t2Week2_peerEval_Gabriel.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* give eand take feedback
+* Stay on top of my tasks
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Created Broken Walls: walls that can be shot over but can't be walked over
+* Created Breakble Walls
+* Created moving Walls
+### Among these tasks, which have you completed/in progress in the last week?
+I completed all my tasks.
+![](screenshots/movingWallScript.png)
+
+***
+## Week 1 - T2
+- Start Date: January 8
+- End Date: January 14
+  
+### Tasks I worked on:
+![](screenshots/t2Week1_peerEval_Gabriel.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Maintain good communication
+* Ensure the team had was on the same page starting out t2
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Review other feedback given by  the other teams to see what we may change
+* No lonnger have player bullets hurting other players or giving self inflicting damage
+* Make bullets move through other players
+### Among these tasks, which have you completed/in progress in the last week?
+I completed all my tasks.
+
+
+***
+## Week 13
+- Start Date: November 27
+- End Date: December 3
+  
+### Tasks I worked on:
+![](screenshots/tasks_gabriel_week13.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Make sure my features were fully complete
+* Ensure the team had the same expectations for the end of the milestone
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Make the level Count displayed in the in-game UI
+* Make unit tests for enemy health
+* Make the Design video
+* Write who did what for milestone 2 in the design doc
+### Among these tasks, which have you completed/in progress in the last week?
+I completed all my tasks. Looking forward to the next semester!
+
+![](screenshots/leveluiScreenshot.png)
+![](screenshots/orcHealthTestScreenshot.png)
+
+***
+## Week 12
+- Start Date: November 20
+- End Date: November 26
+  
+### Tasks I worked on:
+![](screenshots/tasks_gabriel_week12.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Stay on top of my features
+* Ensure the team had the same vision for the design doc/video
+* Improve on minor game adjustments
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Create a portal and portal script for switching levels
+* Adjust the enemy health system to accomodate for the use of a portal or a trapdoor/ladder
+* Minor adjustments: Make players unable to shoot/remove line of sight once their dead. And remove enemy/player collider once their dead.
+### Among these tasks, which have you completed/in progress in the last week?
+I completed all my tasks. Unit test for enemy health system script in progress as wells as the Design doc/video.
+
+![](screenshots/enemyHealthSystemScreenshot.png)
+![](screenshots/portalScreenshot.png)
+
+***
+## Week 10
+- Start Date: November 6
+- End Date: November 12
+  
+### Tasks I worked on:
+![](screenshots/tasks_gabriel_week10.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Improve on UI
+* Experiment on potential feature implementation (level switching)
+* Ensure team is on the same page going into reading break
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Improve UI functionality
+* Write unit tests for UI
+* Work on Enemy Attack feature
+### Among these tasks, which have you completed/in progress in the last week?
+I completed all my tasks. level switching still in progress along with unit tests.
+
+***
+## Week 9
+- Start Date: October 30
+- End Date: November 5
+  
+### Tasks I worked on:
+![](screenshots/tasks_gabriel_week9.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Prep for the presentation
+* Do the presentation
+* Do team evals
+* Keep up with meetings
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Work on in-game UI/overlay
+* Create a health system
+### Among these tasks, which have you completed/in progress in the last week?
+Hearts/lives, bullets UI and health system script are completed. Unit testing and adding additional UI elements are still in progress.
+
+![](screenshots/ui_progress.png)
+
+***
+## Week 8
+- Start Date: October 23
+- End Date: October 29
+
+### Tasks I worked on:
+![](screenshots/tasks_gabriel_week8.PNG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Make sure the team had similar expectations for the presentation
+* Polish and test features 
+
+### Which features were yours in the project plan for this milestone?
+My features this week were player control tests:
+* moveDirection test: ensure player moves when given input
+* aimDirection test: ensure player bullet aims in the direction of input
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed all my tasks. Still prepping for the mini presentation.
+
+***
+## Week 6 + 7
+- Start Date: October 9
+- End Date: October 22
+
+### Tasks I worked on:
+![](screenshots/tasks_gabriel_week67.PNG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Have the teams work be collaborative
+* Stay on top of my designated tasks/features
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Player controls: System detects input from user.
+* Player movement: player can move up,down,left,right.
+* Player aim: Added the bullet that revolves around the player point to the mouse position
+* Assisted with controller support.
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed all my features. Still working on Unit tests. 
+
+***
 ## Week 5
 - Start Date: October 2
 - End Date: October 8
