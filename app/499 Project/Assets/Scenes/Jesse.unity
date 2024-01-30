@@ -820,6 +820,10 @@ PrefabInstance:
       value: Mage_player2
       objectReference: {fileID: 0}
     - target: {fileID: 7399802652880358767, guid: 076a5c51a2c98254abac4863d7fab8ef, type: 3}
+      propertyPath: yOffset
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399802652880358767, guid: 076a5c51a2c98254abac4863d7fab8ef, type: 3}
       propertyPath: spellName
       value: Lightning
       objectReference: {fileID: 0}
@@ -967,6 +971,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mage_player1
       objectReference: {fileID: 0}
+    - target: {fileID: 4335837073719164080, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
+      propertyPath: yOffset
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4335837073719164080, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
+      propertyPath: lightningPrefab
+      value: 
+      objectReference: {fileID: 4084521033630141133, guid: 9414e171bb10ea848b96be1cb0081fab, type: 3}
     - target: {fileID: 9020650352874436745, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.9603305

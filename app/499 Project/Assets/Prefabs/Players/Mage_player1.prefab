@@ -193,6 +193,8 @@ MonoBehaviour:
   unitTest: 0
   unitTest2: 0
   shootSound: {fileID: 1950902560532192884}
+  dashCooldown: 1
+  dashCDT: 1
 --- !u!95 &2945665864706798238
 Animator:
   serializedVersion: 5
@@ -698,6 +700,8 @@ MonoBehaviour:
   playerController: {fileID: 4452037770434438324}
   hs: {fileID: 182166649963881013}
   fireballPrefab: {fileID: 1345593741101300040, guid: 18f719aa43c40ed4d9679fe79f234e7f, type: 3}
+  lightningPrefab: {fileID: 4084521033630141133, guid: 9414e171bb10ea848b96be1cb0081fab, type: 3}
+  yOffset: 2.5
 --- !u!1 &4048208355466576517
 GameObject:
   m_ObjectHideFlags: 0
