@@ -250,6 +250,10 @@ public class GameMaster : MonoBehaviour
                     {
                         EventSystem.current.SetSelectedGameObject(pauseMenu.resumeButton);
                     }
+                    else if(leaderboardManager.lbMenu)
+                    {
+                        EventSystem.current.SetSelectedGameObject(leaderboardManager.menuButton);
+                    }
                     else if(winMenu.winMenu)
                     {
                         EventSystem.current.SetSelectedGameObject(winMenu.restartButton);
