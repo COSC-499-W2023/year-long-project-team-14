@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
     //dash cool down timer 
     public float dashCDT = 1;
 
+    public GameObject dashPrefab; 
+
 
 
     void Start()
@@ -223,13 +225,27 @@ public class PlayerController : MonoBehaviour
     public void Dash(){
         //If the dash is off cooldown, the player is alive and the game is not paused.
         if(dashCDT >= dashCooldown && !hs.dead && !PauseMenu.GameIsPaused){
+
+            GameObject dashSmoke = Instantiate(dashPrefab, transform.position, transform.rotation);
             //Add force in the direction the player is moving
             rb.AddForce(GetMoveDirection()*50000);
+            Destroy(dashSmoke, 0.2f);
             //Make the player invincible through the duration of the dash.
             hs.dashHs();
             // reset the dash cool down.
             dashCDT = 0;
+             // Start a coroutine for the second part of the dash after a delay.
+            StartCoroutine(SecondDashEffect());
         }
+    }
+
+    private IEnumerator SecondDashEffect(){
+        // Wait for new player position after dash
+        yield return new WaitForSeconds(0.15f);
+
+        // Instantiate the second dash smoke at the updated position.
+        GameObject dashSmoke2 = Instantiate(dashPrefab, transform.position, transform.rotation);
+        Destroy(dashSmoke2, 0.2f);
     }
 
     public Vector2 GetMoveDirection()
