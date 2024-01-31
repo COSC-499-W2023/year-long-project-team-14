@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 using Pathfinding;
+using UnityEngine.EventSystems;
 
 public class GameMaster : MonoBehaviour
 {
@@ -19,8 +20,14 @@ public class GameMaster : MonoBehaviour
 
     public GameObject WinMenu;
 
-    [SerializeField] private GameObject player1;
-    [SerializeField] private GameObject player2;
+    public PauseMenu pauseMenu;
+    public WinMenu winMenu;
+    public GameOverMenu gameOverMenu;
+    public ControlMenu controlMenu;
+    public GameObject inputField;
+
+    public GameObject player1;
+    public GameObject player2;
     public healthSystem healthSystem1;
     public healthSystem healthSystem2;
 
@@ -35,6 +42,7 @@ public class GameMaster : MonoBehaviour
 
     public GameObject level;
 
+    public bool stopTimer = false;
     public bool unitTest = false;
 
     [SerializeField] private AudioSource transitionSound;
@@ -45,12 +53,14 @@ public class GameMaster : MonoBehaviour
         playerCount = PlayerPrefs.GetInt("playerCount");
         SetupPlayers();
         StartCoroutine(UpdateGrid());
+        StartCoroutine(SelectMenuButton());
     }
 
     void Update()
     {
         //Increment game timer
-        gameTime += Time.deltaTime;
+        if(!stopTimer)
+            gameTime += Time.deltaTime;
     }
 
     //Go to next level
@@ -63,33 +73,33 @@ public class GameMaster : MonoBehaviour
         //Play transition sound
         transitionSound.Play();
 
-        //Wait for screen to fade out and then destroy current level and bullets
-        if (fadeAnim != null)
+        if(currentLevel < levels.Length)
         {
-            fadeAnim.Play("ScreenFadeOut");
-            yield return new WaitForSecondsRealtime(0.5f);
-        }
-        Destroy(level);
-        GameObject[] playerBullets = GameObject.FindGameObjectsWithTag("Player_bullet");
-        GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
-        for(int i = 0; i < playerBullets.Length; i++) Destroy(playerBullets[i]);
-        for(int i = 0; i < enemyBullets.Length; i++) Destroy(enemyBullets[i]);
-        yield return null;
+            //Wait for screen to fade out and then destroy current level and bullets
+            if (fadeAnim != null)
+            {
+                fadeAnim.Play("ScreenFadeOut");
+                yield return new WaitForSecondsRealtime(0.5f);
+            }
+            Destroy(level);
+            GameObject[] playerBullets = GameObject.FindGameObjectsWithTag("Player_bullet");
+            GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
+            for(int i = 0; i < playerBullets.Length; i++) Destroy(playerBullets[i]);
+            for(int i = 0; i < enemyBullets.Length; i++) Destroy(enemyBullets[i]);
+            yield return null;
 
-        //Start to fade back in
-        if(fadeAnim != null)
-            fadeAnim.Play("ScreenFadeIn");
+            //Start to fade back in
+            if(fadeAnim != null)
+                fadeAnim.Play("ScreenFadeIn");
 
-        //Move players out of the way
-        player1.transform.position = new Vector3(1000, 0, 0);
-        if(playerCount > 1)
-            player2.transform.position = new Vector3(1000, 0, 0);
+            //Move players out of the way
+            player1.transform.position = new Vector3(1000, 0, 0);
+            if(playerCount > 1)
+                player2.transform.position = new Vector3(1000, 0, 0);
 
-        //Increase level count and spawn in new level or end game if on last level
-        currentLevel++;
+            //Increase level count
+            currentLevel++;
 
-        if(currentLevel <= levels.Length)
-        {
             //Spawn in new level
             level = Instantiate(levels[currentLevel-1], transform.position, Quaternion.identity);
             AstarPath.active.Scan();
@@ -125,12 +135,26 @@ public class GameMaster : MonoBehaviour
         }
         else
         {
-            //TODO: display win screen and end game
-            print("YOU WIN!!!");
-            WinMenu.SetActive(true);
+            stopTimer = true;
 
-            //Uploads score to leaderboard
-            leaderboardManager.SubmitScore((int)(Math.Round(gameTime, 2) * 100), null);
+            //Fade out
+            if (fadeAnim != null)
+                fadeAnim.Play("ScreenFadeOut");
+            yield return new WaitForSecondsRealtime(0.5f);
+
+            //Display win screen and end game
+            WinMenu.SetActive(true);
+            winMenu.winMenu = true;
+            SelectButton(winMenu.restartButton);
+            player1.SetActive(false);
+            player2.SetActive(false);
+            GameObject portal = GameObject.FindWithTag("Portal");
+            if(portal != null)
+                Destroy(portal);
+
+            //Fade back in
+            if (fadeAnim != null)
+                fadeAnim.Play("ScreenFadeIn");
         }
     }
 
@@ -203,5 +227,49 @@ public class GameMaster : MonoBehaviour
         AstarPath.active.UpdateGraphs(guo);
         yield return new WaitForSeconds(0.1f);
         StartCoroutine(UpdateGrid());
+    }
+
+    public void SelectButton(GameObject button)
+    {
+        if(Gamepad.all.Count > 0)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(button);
+        }
+    }
+
+    public IEnumerator SelectMenuButton() //Selects a button depending on which menu you are in when using a controller and no buttons are already selected
+    {
+        if(!unitTest)
+        {
+            if(Gamepad.all.Count > 0) 
+            {
+                if(EventSystem.current.currentSelectedGameObject == null)
+                {
+                    if(pauseMenu.pauseMenu)
+                    {
+                        EventSystem.current.SetSelectedGameObject(pauseMenu.resumeButton);
+                    }
+                    else if(winMenu.winMenu)
+                    {
+                        EventSystem.current.SetSelectedGameObject(winMenu.restartButton);
+                    }
+                    else if(gameOverMenu.gameOverMenu)
+                    {
+                        EventSystem.current.SetSelectedGameObject(gameOverMenu.restartButton);
+                    }
+                    else if(controlMenu.controlMenu)
+                    {
+                        EventSystem.current.SetSelectedGameObject(controlMenu.backButton);
+                    }
+                }
+            }
+            else if(EventSystem.current.currentSelectedGameObject != inputField)
+                EventSystem.current.SetSelectedGameObject(null);
+                        
+            yield return new WaitForSecondsRealtime(1f);
+            StopCoroutine(SelectMenuButton());
+            StartCoroutine(SelectMenuButton());
+        }
     }
 }

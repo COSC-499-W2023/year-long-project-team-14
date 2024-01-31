@@ -18,11 +18,11 @@ public class timeUi : MonoBehaviour
     {
         if (gameMaster != null && timeText != null)
         {
-            float t = gameMaster.gameTime;
-            double time = ((double)t);
-            double ms = Math.Round((time % 1), 2);
-            double s = Math.Round((time - ms) % 60);
-            double m = Math.Round((time - s - ms) / 60);
+            double t = Math.Floor(gameMaster.gameTime * 100);
+            double time = t / 100;
+            double ms = time % 1;
+            double s = Math.Floor((time - ms) % 60);
+            double m = Math.Floor((time - s - ms) / 60);
 
             string score = "";
 
@@ -36,7 +36,7 @@ public class timeUi : MonoBehaviour
             else
                 score += ":" + s;
 
-            ms *= 100;
+            ms = Math.Floor(ms * 100);
             if (ms < 10)
                 score += ".0" + ms;
             else

@@ -56,6 +56,7 @@ public class LeaderboardTest : MonoBehaviour
 
         //Get LeaderboardManager
         leaderboardManager = GameObject.FindWithTag("LeaderboardManager").GetComponent<LeaderboardManager>();
+        leaderboardManager.unitTest = true;
         yield return null;
 
 
@@ -68,7 +69,7 @@ public class LeaderboardTest : MonoBehaviour
 
         
         //Upload score to leaderboard
-        leaderboardManager.SubmitScore(100, "UnitTest");
+        leaderboardManager.Submit();
         yield return new WaitWhile(() => leaderboardManager.done == false);
 
         //Check that the score was saved locally
