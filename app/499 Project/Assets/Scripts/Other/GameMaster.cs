@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 using Pathfinding;
+using UnityEngine.EventSystems;
 
 public class GameMaster : MonoBehaviour
 {
@@ -18,6 +19,12 @@ public class GameMaster : MonoBehaviour
     public int currentLevel = 1;
 
     public GameObject WinMenu;
+
+    public PauseMenu pauseMenu;
+    public WinMenu winMenu;
+    public GameOverMenu gameOverMenu;
+    public ControlMenu controlMenu;
+    public GameObject inputField;
 
     public GameObject player1;
     public GameObject player2;
@@ -46,6 +53,7 @@ public class GameMaster : MonoBehaviour
         playerCount = PlayerPrefs.GetInt("playerCount");
         SetupPlayers();
         StartCoroutine(UpdateGrid());
+        StartCoroutine(SelectMenuButton());
     }
 
     void Update()
@@ -89,7 +97,7 @@ public class GameMaster : MonoBehaviour
             if(playerCount > 1)
                 player2.transform.position = new Vector3(1000, 0, 0);
 
-            //Increase level count and spawn in new level or end game if on last level
+            //Increase level count
             currentLevel++;
 
             //Spawn in new level
@@ -130,11 +138,14 @@ public class GameMaster : MonoBehaviour
             stopTimer = true;
 
             //Fade out
-            fadeAnim.Play("ScreenFadeOut");
+            if (fadeAnim != null)
+                fadeAnim.Play("ScreenFadeOut");
             yield return new WaitForSecondsRealtime(0.5f);
 
             //Display win screen and end game
             WinMenu.SetActive(true);
+            winMenu.winMenu = true;
+            SelectButton(winMenu.restartButton);
             player1.SetActive(false);
             player2.SetActive(false);
             GameObject portal = GameObject.FindWithTag("Portal");
@@ -142,7 +153,8 @@ public class GameMaster : MonoBehaviour
                 Destroy(portal);
 
             //Fade back in
-            fadeAnim.Play("ScreenFadeIn");
+            if (fadeAnim != null)
+                fadeAnim.Play("ScreenFadeIn");
         }
     }
 
@@ -215,5 +227,49 @@ public class GameMaster : MonoBehaviour
         AstarPath.active.UpdateGraphs(guo);
         yield return new WaitForSeconds(0.1f);
         StartCoroutine(UpdateGrid());
+    }
+
+    public void SelectButton(GameObject button)
+    {
+        if(Gamepad.all.Count > 0)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(button);
+        }
+    }
+
+    public IEnumerator SelectMenuButton() //Selects a button depending on which menu you are in when using a controller and no buttons are already selected
+    {
+        if(!unitTest)
+        {
+            if(Gamepad.all.Count > 0) 
+            {
+                if(EventSystem.current.currentSelectedGameObject == null)
+                {
+                    if(pauseMenu.pauseMenu)
+                    {
+                        EventSystem.current.SetSelectedGameObject(pauseMenu.resumeButton);
+                    }
+                    else if(winMenu.winMenu)
+                    {
+                        EventSystem.current.SetSelectedGameObject(winMenu.restartButton);
+                    }
+                    else if(gameOverMenu.gameOverMenu)
+                    {
+                        EventSystem.current.SetSelectedGameObject(gameOverMenu.restartButton);
+                    }
+                    else if(controlMenu.controlMenu)
+                    {
+                        EventSystem.current.SetSelectedGameObject(controlMenu.backButton);
+                    }
+                }
+            }
+            else if(EventSystem.current.currentSelectedGameObject != inputField)
+                EventSystem.current.SetSelectedGameObject(null);
+                        
+            yield return new WaitForSecondsRealtime(1f);
+            StopCoroutine(SelectMenuButton());
+            StartCoroutine(SelectMenuButton());
+        }
     }
 }

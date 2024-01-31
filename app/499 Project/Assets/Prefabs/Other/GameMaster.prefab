@@ -99,6 +99,12 @@ MonoBehaviour:
   player1ControlScheme: 0
   player2ControlScheme: 1
   currentLevel: 1
+  WinMenu: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  winMenu: {fileID: 0}
+  gameOverMenu: {fileID: 0}
+  controlMenu: {fileID: 0}
+  inputField: {fileID: 0}
   player1: {fileID: 0}
   player2: {fileID: 0}
   healthSystem1: {fileID: 0}
@@ -109,9 +115,9 @@ MonoBehaviour:
   level1: {fileID: 5110116461203669445, guid: be654b483021c914c931345e096af7bb, type: 3}
   levels:
   - {fileID: 5110116461203669445, guid: be654b483021c914c931345e096af7bb, type: 3}
-  - {fileID: 2865736330508074711, guid: 924a85c2a14c91b479ab2c8c63b1082c, type: 3}
-  - {fileID: 1866938049884259573, guid: 3043074287534c349ada20ff8feed134, type: 3}
+  - {fileID: 5110116461203669445, guid: be654b483021c914c931345e096af7bb, type: 3}
   level: {fileID: 0}
+  stopTimer: 0
   unitTest: 0
   transitionSound: {fileID: 5396071285216400737}
 --- !u!61 &7205540267827596304

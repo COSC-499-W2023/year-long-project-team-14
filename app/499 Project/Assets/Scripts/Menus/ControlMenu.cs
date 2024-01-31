@@ -11,12 +11,8 @@ public class ControlMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject backButton;
     public bool controlMenu = false;
+    public GameMaster gameMaster;
     public PauseMenu pauseMenu;
-
-    void Start()
-    {
-        StartCoroutine(SelectMenuButon());
-    }
 
     //Sets control menu to be active and deactivates pause menu
     public void ControlMenuButton()
@@ -25,7 +21,7 @@ public class ControlMenu : MonoBehaviour
         pauseMenu.pauseMenu = false;
         controlMenuUI.SetActive(true); 
         pauseMenuUI.SetActive(false); 
-        StartCoroutine(SelectMenuButon());
+        gameMaster.SelectButton(backButton);
     }
     
     //Sets pause menu to be active and deactivates control menu
@@ -35,27 +31,7 @@ public class ControlMenu : MonoBehaviour
         pauseMenu.pauseMenu = true;
         controlMenuUI.SetActive(false); 
         pauseMenuUI.SetActive(true); 
-        EventSystem.current.SetSelectedGameObject(null);
-    }
-
-    public IEnumerator SelectMenuButon() 
-    {
-        if(Gamepad.all.Count > 0) 
-        {
-            if(EventSystem.current.currentSelectedGameObject == null)
-            {
-                if(controlMenu)
-                {
-                    EventSystem.current.SetSelectedGameObject(backButton);
-                }
-            }
-        }
-        else
-            EventSystem.current.SetSelectedGameObject(null);
-                    
-        yield return new WaitForSecondsRealtime(1f);
-        StopCoroutine(SelectMenuButon());
-        StartCoroutine(SelectMenuButon());
+        gameMaster.SelectButton(pauseMenu.resumeButton);
     }
 }
 

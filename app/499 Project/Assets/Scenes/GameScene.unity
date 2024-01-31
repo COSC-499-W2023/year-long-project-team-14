@@ -5907,6 +5907,7 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 911344141}
   resumeButton: {fileID: 1109078355}
   pauseMenu: 0
+  gameMaster: {fileID: 1436582726}
 --- !u!114 &925822473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5925,6 +5926,7 @@ MonoBehaviour:
   restartButton: {fileID: 493994673}
   gameOverMenu: 0
   playercount: 0
+  gameMaster: {fileID: 1436582726}
 --- !u!114 &925822474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5941,6 +5943,7 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 911344141}
   backButton: {fileID: 1592892748}
   controlMenu: 0
+  gameMaster: {fileID: 1436582726}
   pauseMenu: {fileID: 925822472}
 --- !u!114 &925822475
 MonoBehaviour:
@@ -5960,6 +5963,7 @@ MonoBehaviour:
   playercount: 0
   gameMaster: {fileID: 1436582726}
   timetext: {fileID: 309982432}
+  winMenu: 0
 --- !u!1 &928307466
 GameObject:
   m_ObjectHideFlags: 0
@@ -6660,7 +6664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -8736,9 +8740,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1037085551}
     - target: {fileID: 2255637680890580704, guid: fcdd986f2de65fc4681d45730eb9b2ed, type: 3}
+      propertyPath: winMenu
+      value: 
+      objectReference: {fileID: 925822475}
+    - target: {fileID: 2255637680890580704, guid: fcdd986f2de65fc4681d45730eb9b2ed, type: 3}
       propertyPath: fadeAnim
       value: 
       objectReference: {fileID: 2058672981}
+    - target: {fileID: 2255637680890580704, guid: fcdd986f2de65fc4681d45730eb9b2ed, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 925822472}
+    - target: {fileID: 2255637680890580704, guid: fcdd986f2de65fc4681d45730eb9b2ed, type: 3}
+      propertyPath: inputField
+      value: 
+      objectReference: {fileID: 1041594166}
+    - target: {fileID: 2255637680890580704, guid: fcdd986f2de65fc4681d45730eb9b2ed, type: 3}
+      propertyPath: controlMenu
+      value: 
+      objectReference: {fileID: 925822474}
+    - target: {fileID: 2255637680890580704, guid: fcdd986f2de65fc4681d45730eb9b2ed, type: 3}
+      propertyPath: gameOverMenu
+      value: 
+      objectReference: {fileID: 925822473}
     - target: {fileID: 2255637680890580704, guid: fcdd986f2de65fc4681d45730eb9b2ed, type: 3}
       propertyPath: levels.Array.size
       value: 1

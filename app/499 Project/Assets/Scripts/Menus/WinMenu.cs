@@ -15,11 +15,10 @@ public class WinMenu : MonoBehaviour
     public int playercount;    
     public GameMaster gameMaster;
     public Text timetext;
+    public bool winMenu = false;
 
-        void Start()
+    void Start()
     {
-        StartCoroutine(SelectMenuButton());
-
         gameMaster = GameObject.FindObjectOfType<GameMaster>();
     }
 
@@ -81,26 +80,4 @@ public class WinMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public IEnumerator SelectMenuButton()
-    {
-        if (Gamepad.all.Count > 0 && EventSystem.current != null)
-        {
-            if (EventSystem.current.currentSelectedGameObject == null)
-            {
-                if (restartButton != null)
-                {
-                    EventSystem.current.SetSelectedGameObject(restartButton);
-                }
-            }
-        }
-        else
-        {
-            EventSystem.current?.SetSelectedGameObject(null);
-        }
-
-        yield return new WaitForSecondsRealtime(1f);
-
-        StartCoroutine(SelectMenuButton());
-    }
- 
 }

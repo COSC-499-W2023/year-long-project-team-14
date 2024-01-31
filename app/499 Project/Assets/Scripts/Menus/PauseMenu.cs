@@ -12,11 +12,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI; 
     public GameObject resumeButton;
     public bool pauseMenu = false;
-
-    void Start()
-    {
-        StartCoroutine(SelectMenuButton());
-    }
+    public GameMaster gameMaster;
 
     //Load into menu scene
     public void LoadMenu() {
@@ -56,11 +52,8 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
-        if(Gamepad.all.Count > 0)
-        {
-            EventSystem.current.SetSelectedGameObject(null);
-            EventSystem.current.SetSelectedGameObject(resumeButton);
-        }
+        if(gameMaster != null)
+            gameMaster.SelectButton(resumeButton);
     }
 
     //Resume the game deactivate pause menu
@@ -71,26 +64,6 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
         EventSystem.current.SetSelectedGameObject(null);
-    }
-
-    public IEnumerator SelectMenuButton() //Selects a button depending on which menu you are in when using a controller and no buttons are already selected
-    {
-        if(Gamepad.all.Count > 0) 
-        {
-            if(EventSystem.current.currentSelectedGameObject == null)
-            {
-                if(pauseMenu)
-                {
-                    EventSystem.current.SetSelectedGameObject(resumeButton);
-                }
-            }
-        }
-        else
-            EventSystem.current.SetSelectedGameObject(null);
-                    
-        yield return new WaitForSecondsRealtime(1f);
-        StopCoroutine(SelectMenuButton());
-        StartCoroutine(SelectMenuButton());
     }
 }
 

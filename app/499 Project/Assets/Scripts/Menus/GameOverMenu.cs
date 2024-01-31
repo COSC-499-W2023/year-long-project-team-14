@@ -12,10 +12,10 @@ public class GameOverMenu : MonoBehaviour
     public GameObject restartButton;
     public bool gameOverMenu = false;
     public int playercount; 
+    public GameMaster gameMaster;
 
     public void Start()
     {
-        StartCoroutine(SelectMenuButton());
         playercount = PlayerPrefs.GetInt("playerCount");
     }
 
@@ -30,6 +30,7 @@ public class GameOverMenu : MonoBehaviour
     public IEnumerator ShowGameOverMenu()
     {
         GameIsOver = true;
+        gameOverMenu = true;
 
         yield return new WaitForSecondsRealtime(1f);
 
@@ -40,11 +41,8 @@ public class GameOverMenu : MonoBehaviour
 
         gameOverMenuUI?.SetActive(true);
 
-        if (Gamepad.all.Count > 0)
-        {
-            EventSystem.current?.SetSelectedGameObject(null);
-            EventSystem.current?.SetSelectedGameObject(restartButton);
-        }
+        if(gameMaster != null)
+            gameMaster.SelectButton(restartButton);
 
         if (fadeAnim != null)
             fadeAnim.Play("ScreenFadeIn");
@@ -80,27 +78,5 @@ public class GameOverMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsOver = false;
         SceneManager.LoadScene(1);
-    }
-
-    public IEnumerator SelectMenuButton()
-    {
-        if (Gamepad.all.Count > 0 && EventSystem.current != null)
-        {
-            if (EventSystem.current.currentSelectedGameObject == null)
-            {
-                if (restartButton != null)
-                {
-                    EventSystem.current.SetSelectedGameObject(restartButton);
-                }
-            }
-        }
-        else
-        {
-            EventSystem.current?.SetSelectedGameObject(null);
-        }
-
-        yield return new WaitForSecondsRealtime(1f);
-
-        StartCoroutine(SelectMenuButton());
     }
 }
