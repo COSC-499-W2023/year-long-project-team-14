@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System;
 
 public class WinMenu : MonoBehaviour
 {
@@ -26,8 +27,30 @@ public class WinMenu : MonoBehaviour
     {
         if (gameMaster != null && timetext != null)
         {
-            float time = gameMaster.gameTime;
-            timetext.text = "Time: " + time;
+            float t = gameMaster.gameTime;
+            double time = ((double)t);
+            double ms = Math.Round((time % 1), 2);
+            double s = Math.Round((time - ms) % 60);
+            double m = Math.Round((time - s - ms) / 60);
+
+            string score = "";
+
+            if (m < 10)
+                score += "0" + m;
+            else
+                score += "" + m;
+
+            if (s < 10)
+                score += ":0" + s;
+            else
+                score += ":" + s;
+
+            ms *= 100;
+            if (ms < 10)
+                score += ".0" + ms;
+            else
+                score += "." + ms;
+            timetext.text = "TIME: " + score;
         }
     }
  public void LoadMenu()
