@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject dashPrefab; 
 
-
+    public GameObject interactable;
 
     void Start()
     {
@@ -137,18 +137,10 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-
-            
         }
 
-        // Check if the player press's space, if they do call dash
-             if(Input.GetKeyDown("space"))
-            {
-                Dash();
-            }
-
-            //Used for the dash cooldown (its the timer)
-            dashCDT += Time.deltaTime;
+        //Used for the dash cooldown (its the timer)
+        dashCDT += Time.deltaTime;
 
     }
 
@@ -177,6 +169,22 @@ public class PlayerController : MonoBehaviour
         if(context.performed)
         {
             Shoot();
+        }
+    }
+
+    public void Dash(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            Dash();
+        }
+    }
+
+    public void Interact(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            Interact();
         }
     }
 
@@ -246,6 +254,36 @@ public class PlayerController : MonoBehaviour
         // Instantiate the second dash smoke at the updated position.
         GameObject dashSmoke2 = Instantiate(dashPrefab, transform.position, transform.rotation);
         Destroy(dashSmoke2, 0.2f);
+    }
+
+    public void Interact()
+    {
+        if(interactable != null)
+        {
+            string tag = interactable.tag;
+            if(tag == "Ladder")
+            {
+                interactable.GetComponent<Ladder>().Interact();
+            }
+            else if(tag == "Portal")
+            {
+                interactable.GetComponent<Portal>().Interact();
+            }
+            else if(tag == "Spell")
+            {
+
+            }
+        }
+    }
+
+    public void OnTriggerStay2D(Collider2D collider)
+    {
+        interactable = collider.gameObject;
+    }
+
+    public void OnTriggerExit2D(Collider2D collider)
+    {
+        interactable = null;
     }
 
     public Vector2 GetMoveDirection()
