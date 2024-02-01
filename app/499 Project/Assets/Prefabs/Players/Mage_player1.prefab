@@ -193,6 +193,7 @@ MonoBehaviour:
   unitTest: 0
   unitTest2: 0
   shootSound: {fileID: 1950902560532192884}
+  buttonClick: {fileID: 0}
   dashCooldown: 1
   dashCDT: 1
   dashPrefab: {fileID: 3772763697755507536, guid: d606806970e9fa147ac01f4c0b7b3be1, type: 3}
@@ -416,7 +417,7 @@ MonoBehaviour:
     m_ActionId: 5c381588-9e67-4fe2-bd59-49c065139e6c
     m_ActionName: UI/Back[/Keyboard/escape,/XInputControllerWindows/buttonEast]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Gamepad
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

@@ -198,14 +198,17 @@ public class GameMaster : MonoBehaviour
         player1.transform.position = player1Spawn.position;
         healthSystem1 = player1.GetComponent<healthSystem>();
 
-        if(player1ControlScheme == 0) //keyboard
-        {
-            player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
-        }
-        else //controller
-        {
-            player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[0]);
-        }
+        
+
+        // if(playerCount > 1 && gamepads.Length > 1)
+        // {
+        //     InputDevice[] devices = {Keyboard.current, Gamepad.all[0]};
+        //     PlayerInput.Instantiate(player1, controlScheme: "normal", pairWithDevices: devices);
+        // }
+        // else
+        // {
+        //     PlayerInput.Instantiate(player1, controlScheme: "normal", pairWithDevice: Keyboard.current);
+        // }
 
         if(playerCount > 1)
         {
@@ -213,17 +216,17 @@ public class GameMaster : MonoBehaviour
             player2.transform.position = player2Spawn.position;
             healthSystem2 = player2.GetComponent<healthSystem>();
 
-            if(player2ControlScheme == 0 && player1ControlScheme == 1) //keyboard
-            {
-                player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
-            }
-            else //controller
-            {
-                if(player1ControlScheme == 0 && gamepads.Length > 0)
-                    player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[0]);
-                else if(gamepads.Length > 1)
-                    player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[1]);
-            }
+            // if(player2ControlScheme == 0 && player1ControlScheme == 1) //keyboard
+            // {
+            //     player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
+            // }
+            // else //controller
+            // {
+            //     if(player1ControlScheme == 0 && gamepads.Length > 0)
+            //         player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[0]);
+            //     else if(gamepads.Length > 1)
+            //         player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[1]);
+            // }
         }
         else if(player2 != null)
             player2.SetActive(false);
