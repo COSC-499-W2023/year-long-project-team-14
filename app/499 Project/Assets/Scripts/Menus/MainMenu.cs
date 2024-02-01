@@ -27,6 +27,7 @@ public class MainMenu : MonoBehaviour
     public bool controlMenu = true;
 
 
+    public AudioSource buttonClick;
     public Animator fadeAnim;
 
     public LeaderboardManager leaderboardManager;
@@ -196,6 +197,24 @@ public class MainMenu : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
         StopCoroutine(SelectMenuButton());
         StartCoroutine(SelectMenuButton());
+    }
+
+    public void Back(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            if(playerMenu)
+                PlayerBackButton();
+            else if(optionsMenu)
+                OptionsMenuBackButton();
+            else if(leaderboardMenu)
+                LeaderboardBackButton();
+            else if(controlMenu)
+                ControlMenuBackButton();
+            else return;
+            
+            buttonClick.Play();
+        }
     }
 }
 

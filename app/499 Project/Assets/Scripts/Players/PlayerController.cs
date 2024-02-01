@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool unitTest2 = false;
 
     [SerializeField] private AudioSource shootSound;
+    public AudioSource buttonClick;
 
     //dash cooldown
     public float dashCooldown = 1;
@@ -190,12 +191,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Back(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            if(controlMenu.controlMenu)
+            {
+                controlMenu.Back();
+                buttonClick.Play();
+            }
+        }   
+    }
+
     //Pauses the game
     public void Pause(InputAction.CallbackContext context)
     {
         if(context.performed)
         {
-            if(PauseMenu.GameIsPaused && pauseMenu.pauseMenu)
+            if(pauseMenu.pauseMenu)
             {
                 pauseMenu.Resume();
             }
