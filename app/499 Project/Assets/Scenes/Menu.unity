@@ -1504,22 +1504,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 564813778}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1980289029}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1500741192}
+        m_TargetAssemblyTypeName: MainMenu, ProjectScripts
+        m_MethodName: OptionsMenuBackButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1796,10 +1784,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1980289029}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1500741192}
+        m_TargetAssemblyTypeName: MainMenu, ProjectScripts
+        m_MethodName: OptionsMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1807,18 +1795,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 564813778}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1054666341}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
@@ -3015,22 +2991,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 22883367}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1980289029}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1500741192}
+        m_TargetAssemblyTypeName: MainMenu, ProjectScripts
+        m_MethodName: ControlMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4068,6 +4032,7 @@ GameObject:
   - component: {fileID: 613829514}
   - component: {fileID: 613829513}
   - component: {fileID: 613829512}
+  - component: {fileID: 613829515}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -4091,17 +4056,17 @@ MonoBehaviour:
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: 724265b1e3012714bacd937b1ab96dc0, type: 3}
+  m_PointAction: {fileID: -8680508390853859914, guid: 724265b1e3012714bacd937b1ab96dc0, type: 3}
+  m_MoveAction: {fileID: 8032598277738059358, guid: 724265b1e3012714bacd937b1ab96dc0, type: 3}
+  m_SubmitAction: {fileID: 1224847961753468299, guid: 724265b1e3012714bacd937b1ab96dc0, type: 3}
+  m_CancelAction: {fileID: 6553185053029804577, guid: 724265b1e3012714bacd937b1ab96dc0, type: 3}
+  m_LeftClickAction: {fileID: 8367864965707377819, guid: 724265b1e3012714bacd937b1ab96dc0, type: 3}
+  m_MiddleClickAction: {fileID: 4622929125974377673, guid: 724265b1e3012714bacd937b1ab96dc0, type: 3}
+  m_RightClickAction: {fileID: 3138915969306586049, guid: 724265b1e3012714bacd937b1ab96dc0, type: 3}
+  m_ScrollWheelAction: {fileID: -914137259751943307, guid: 724265b1e3012714bacd937b1ab96dc0, type: 3}
+  m_TrackedDevicePositionAction: {fileID: -6668536460658048005, guid: 724265b1e3012714bacd937b1ab96dc0, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: -6379316462842636922, guid: 724265b1e3012714bacd937b1ab96dc0, type: 3}
   m_DeselectOnBackgroundClick: 0
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
@@ -4135,6 +4100,124 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &613829515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613829511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 724265b1e3012714bacd937b1ab96dc0, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 76faf1b9-e374-45c3-88ee-285c0e6ffbbb
+    m_ActionName: Player/Move[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 56fff046-a044-43d7-8bb4-cf7bbd34d892
+    m_ActionName: Player/Look[/XInputControllerWindows/rightStick,/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0d725040-aaa7-48db-ac33-ec9c5256fca6
+    m_ActionName: Player/Fire[/XInputControllerWindows/rightShoulder,/Mouse/leftButton,/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 535eb3ab-1ef5-428c-b41a-175e8393d49c
+    m_ActionName: Player/Pause[/XInputControllerWindows/start,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0c8c2879-b35c-4c54-a7be-4283567b896c
+    m_ActionName: Player/Interact[/Keyboard/e,/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 892a4dcf-ca56-4af2-baad-fcb3c4bd979e
+    m_ActionName: Player/Spell[/Keyboard/q,/XInputControllerWindows/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 407cda60-c7e9-4cab-bc28-a2d8e3cebf94
+    m_ActionName: Player/Dash[/Keyboard/space,/XInputControllerWindows/leftShoulder]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1500741192}
+        m_TargetAssemblyTypeName: MainMenu, ProjectScripts
+        m_MethodName: Back
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e87bd85e-925c-4ab3-90e5-d63711e7de40
+    m_ActionName: Player/Back[/Keyboard/escape,/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3f3ef854-909c-43e8-8ebe-c6566d700ea4
+    m_ActionName: UI/Navigate[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/rightStick/right,/XInputControllerWindows/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 631fdab5-fffd-4040-ae80-f3afcd2df53c
+    m_ActionName: UI/Submit[/Keyboard/enter,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 04ce89fe-9bbf-4b9d-b899-cd0c242815ee
+    m_ActionName: UI/Cancel[/Keyboard/escape,/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a56229ac-7d70-4958-b5ba-79526a9bb140
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c38dbf0e-bb21-4a5a-aecb-a10aaa8f48f0
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 49ac9b63-39ee-45d8-9388-b53410713cf6
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9edd7043-2ce4-46de-8916-29c2356dc59f
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ee6cc0e7-2ee0-4669-ad30-9c2fcf022c62
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 87e51ad7-a4b9-4d05-9683-967187824ae0
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1b1a5003-e87e-4ff7-9e88-ba9723113efd
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5c381588-9e67-4fe2-bd59-49c065139e6c
+    m_ActionName: UI/Back[/Keyboard/escape,/XInputControllerWindows/buttonEast]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &623934936
 GameObject:
   m_ObjectHideFlags: 0
@@ -8649,15 +8732,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainMenuObject: {fileID: 1980289029}
+  optionsMenuObject: {fileID: 564813778}
   playerMenuObject: {fileID: 239391390}
   leaderboardMenuObject: {fileID: 1231314401}
+  controlMenuObject: {fileID: 22883367}
   playButton: {fileID: 1630056774}
   player1Button: {fileID: 2070240511}
   player2Button: {fileID: 1613804490}
+  musicSlider: {fileID: 1997985579}
   leaderboardBackButton: {fileID: 389764377}
+  controlsBackButton: {fileID: 1648803937}
   mainMenu: 1
   playerMenu: 0
+  optionsMenu: 0
   leaderboardMenu: 0
+  controlMenu: 0
+  buttonClick: {fileID: 1054666341}
   fadeAnim: {fileID: 499405143}
   leaderboardManager: {fileID: 1726719921}
   inputField: {fileID: 0}
@@ -9765,22 +9855,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 22883367}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1980289029}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1500741192}
+        m_TargetAssemblyTypeName: MainMenu, ProjectScripts
+        m_MethodName: ControlMenuBackButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10259,7 +10337,8 @@ MonoBehaviour:
   winMenu: {fileID: 0}
   leaderboardMenu: {fileID: 0}
   submitButton: {fileID: 0}
-  menuButton: {fileID: 0}
+  menuButton: {fileID: 389764377}
+  lbMenu: 0
 --- !u!4 &1726719922
 Transform:
   m_ObjectHideFlags: 0

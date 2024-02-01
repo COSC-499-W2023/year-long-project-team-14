@@ -36,11 +36,13 @@ public class PlayerController : MonoBehaviour
     PauseMenu pauseMenu;
     GameOverMenu gameOverMenu;
     ControlMenu controlMenu;
+    WinMenu winMenu;
 
     [HideInInspector] public bool unitTest = false;
     [HideInInspector] public bool unitTest2 = false;
 
     [SerializeField] private AudioSource shootSound;
+    public AudioSource buttonClick;
 
     //dash cooldown
     public float dashCooldown = 1;
@@ -50,7 +52,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject dashPrefab; 
 
-
+    public GameObject interactable;
 
     void Start()
     {
@@ -62,6 +64,7 @@ public class PlayerController : MonoBehaviour
             pauseMenu = canvas.GetComponent<PauseMenu>();
             gameOverMenu = canvas.GetComponent<GameOverMenu>();
             controlMenu = canvas.GetComponent<ControlMenu>();
+            winMenu = canvas.GetComponent<WinMenu>();
         }
 
         GameObject gm = GameObject.FindWithTag("GameMaster");
@@ -137,18 +140,10 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-
-            
         }
 
-        // Check if the player press's space, if they do call dash
-             if(Input.GetKeyDown("space"))
-            {
-                Dash();
-            }
-
-            //Used for the dash cooldown (its the timer)
-            dashCDT += Time.deltaTime;
+        //Used for the dash cooldown (its the timer)
+        dashCDT += Time.deltaTime;
 
     }
 
@@ -180,16 +175,44 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Dash(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            Dash();
+        }
+    }
+
+    public void Interact(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            Interact();
+        }
+    }
+
+    public void Back(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            // if(controlMenu.controlMenu)
+            // {
+            //     controlMenu.Back();
+            //     buttonClick.Play();
+            // }
+        }   
+    }
+
     //Pauses the game
     public void Pause(InputAction.CallbackContext context)
     {
         if(context.performed)
         {
-            if(PauseMenu.GameIsPaused && pauseMenu.pauseMenu)
+            if(pauseMenu.pauseMenu)
             {
                 pauseMenu.Resume();
             }
-            else if(!controlMenu.controlMenu && !gameOverMenu.GameIsOver)   //TODO: add win menu to this when its done
+            else if(!winMenu.winMenu &&!controlMenu.controlMenu && !gameOverMenu.GameIsOver)   //TODO: add win menu to this when its done
             {
                 pauseMenu.Pause();
             }
@@ -246,6 +269,36 @@ public class PlayerController : MonoBehaviour
         // Instantiate the second dash smoke at the updated position.
         GameObject dashSmoke2 = Instantiate(dashPrefab, transform.position, transform.rotation);
         Destroy(dashSmoke2, 0.2f);
+    }
+
+    public void Interact()
+    {
+        if(interactable != null)
+        {
+            string tag = interactable.tag;
+            if(tag == "Ladder")
+            {
+                interactable.GetComponent<Ladder>().Interact();
+            }
+            else if(tag == "Portal")
+            {
+                interactable.GetComponent<Portal>().Interact();
+            }
+            else if(tag == "Spell")
+            {
+
+            }
+        }
+    }
+
+    public void OnTriggerStay2D(Collider2D collider)
+    {
+        interactable = collider.gameObject;
+    }
+
+    public void OnTriggerExit2D(Collider2D collider)
+    {
+        interactable = null;
     }
 
     public Vector2 GetMoveDirection()

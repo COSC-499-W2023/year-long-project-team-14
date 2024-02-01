@@ -30,6 +30,8 @@ public class LeaderboardManager : MonoBehaviour
     public GameObject leaderboardMenu;
     public GameObject submitButton;
     public GameObject menuButton;
+    public bool lbMenu = false;
+
 
     void Start()
     {
@@ -119,6 +121,8 @@ public class LeaderboardManager : MonoBehaviour
     {   
         winMenu.SetActive(false);
         leaderboardMenu.SetActive(true);
+        gameMaster.SelectButton(menuButton);
+        lbMenu = true;
 
         yield return new WaitWhile(() => done == false);
 
