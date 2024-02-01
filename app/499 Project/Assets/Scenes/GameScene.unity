@@ -8729,6 +8729,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2255637680890580704, guid: fcdd986f2de65fc4681d45730eb9b2ed, type: 3}
+      propertyPath: level1
+      value: 
+      objectReference: {fileID: 6748021877914911168, guid: 5d06453a5771ae648a9b93570535b7b5, type: 3}
+    - target: {fileID: 2255637680890580704, guid: fcdd986f2de65fc4681d45730eb9b2ed, type: 3}
       propertyPath: WinMenu
       value: 
       objectReference: {fileID: 1742790742}
@@ -8766,12 +8770,24 @@ PrefabInstance:
       objectReference: {fileID: 925822473}
     - target: {fileID: 2255637680890580704, guid: fcdd986f2de65fc4681d45730eb9b2ed, type: 3}
       propertyPath: levels.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2255637680890580704, guid: fcdd986f2de65fc4681d45730eb9b2ed, type: 3}
       propertyPath: leaderboardManager
       value: 
       objectReference: {fileID: 40737993}
+    - target: {fileID: 2255637680890580704, guid: fcdd986f2de65fc4681d45730eb9b2ed, type: 3}
+      propertyPath: levels.Array.data[0]
+      value: 
+      objectReference: {fileID: 6748021877914911168, guid: 5d06453a5771ae648a9b93570535b7b5, type: 3}
+    - target: {fileID: 2255637680890580704, guid: fcdd986f2de65fc4681d45730eb9b2ed, type: 3}
+      propertyPath: levels.Array.data[1]
+      value: 
+      objectReference: {fileID: 1421846945589003999, guid: c125dfbdaf8352d44900e79fd141d91b, type: 3}
+    - target: {fileID: 2255637680890580704, guid: fcdd986f2de65fc4681d45730eb9b2ed, type: 3}
+      propertyPath: levels.Array.data[2]
+      value: 
+      objectReference: {fileID: 3547094814978444647, guid: 0b413a1f227c9e14eb5c1e1eda108178, type: 3}
     - target: {fileID: 2434394410695414027, guid: fcdd986f2de65fc4681d45730eb9b2ed, type: 3}
       propertyPath: m_Name
       value: GameMaster
