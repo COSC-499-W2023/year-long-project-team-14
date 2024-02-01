@@ -203,17 +203,17 @@ public class MainMenu : MonoBehaviour
     {
         if(context.performed)
         {
-            if(playerMenu)
-                PlayerBackButton();
-            else if(optionsMenu)
-                OptionsMenuBackButton();
-            else if(leaderboardMenu)
-                LeaderboardBackButton();
-            else if(controlMenu)
-                ControlMenuBackButton();
-            else return;
+            // if(playerMenu)
+            //     PlayerBackButton();
+            // else if(optionsMenu)
+            //     OptionsMenuBackButton();
+            // else if(leaderboardMenu)
+            //     LeaderboardBackButton();
+            // else if(controlMenu)
+            //     ControlMenuBackButton();
+            // else return;
             
-            buttonClick.Play();
+            // buttonClick.Play();
         }
     }
 }

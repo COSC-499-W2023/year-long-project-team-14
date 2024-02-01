@@ -195,11 +195,11 @@ public class PlayerController : MonoBehaviour
     {
         if(context.performed)
         {
-            if(controlMenu.controlMenu)
-            {
-                controlMenu.Back();
-                buttonClick.Play();
-            }
+            // if(controlMenu.controlMenu)
+            // {
+            //     controlMenu.Back();
+            //     buttonClick.Play();
+            // }
         }   
     }
 
