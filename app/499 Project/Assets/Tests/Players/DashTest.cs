@@ -87,6 +87,34 @@ public class DashTest : MonoBehaviour
         yield return null;
     }
 
+    [UnityTest]
+    public IEnumerator dashAnimationEffectTest()
+    {
+        //Wait for dash to charge
+        yield return new WaitForSeconds(1f);
+
+        //Allow orc to shoot
+        enemyAttack.lastShootTime = -10;
+        
+        //Wait to allow the orc to shoot at a more standarized time
+        yield return new WaitForSeconds(0.1f);
+
+        // Set player move direction to left for dash direction
+        playerController.SetMoveDirection(Vector2.left);
+        
+        // Wait for the bullet to get closer to the player
+        yield return new WaitForSeconds(0.1f);
+
+        // Get the player to dash
+        playerController.Dash();
+
+        // After player has dashed, check that Dash effect Game Object has spawned properly within the Game Scene
+        Assert.IsTrue(GameObject.FindGameObjectsWithTag("dashEffect").Length > 0);
+
+        yield return null;
+    }
+
+
     [TearDown]
     public void Teardown()
     {
