@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float bulletForce;
     public float moveSpeed;
     public int bulletBounces;
+    public bool player1 = false;
 
     public bool aimingInWall = false;
 
@@ -107,21 +108,17 @@ public class PlayerController : MonoBehaviour
             {
                 if (!unitTest && (gameMaster == null || !gameMaster.unitTest))
                 {
-
                     //Set aim direction based on user input
-                    if (playerInput.currentControlScheme == "Keyboard&Mouse")
+                    if(aimDirection.x != 0 && aimDirection.y != 0)
+                    {
+                        Quaternion rotation = Quaternion.LookRotation(aimDirection, playerCenter.transform.TransformDirection(Vector3.forward));
+                        playerCenter.transform.rotation = Quaternion.Slerp(playerCenter.transform.rotation, new Quaternion(0, 0, rotation.z, rotation.w), 50 * Time.deltaTime);
+                    }
+                    else if(player1)
                     {
                         var mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
                         Quaternion rotation = Quaternion.LookRotation(mousePos - playerCenter.transform.position, playerCenter.transform.TransformDirection(Vector3.forward));
                         playerCenter.transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
-                    }
-                    else
-                    {
-                        if(aimDirection.x != 0 && aimDirection.y != 0)
-                        {
-                            Quaternion rotation = Quaternion.LookRotation(aimDirection, playerCenter.transform.TransformDirection(Vector3.forward));
-                            playerCenter.transform.rotation = Quaternion.Slerp(playerCenter.transform.rotation, new Quaternion(0, 0, rotation.z, rotation.w), 50 * Time.deltaTime);
-                        }
                     }
 
                     //Create line renderer in direction the player is aiming in
@@ -195,11 +192,11 @@ public class PlayerController : MonoBehaviour
     {
         if(context.performed)
         {
-            // if(controlMenu.controlMenu)
-            // {
-            //     controlMenu.Back();
-            //     buttonClick.Play();
-            // }
+            if(controlMenu.controlMenu)
+            {
+                controlMenu.Back();
+                buttonClick.Play();
+            }
         }   
     }
 
@@ -271,6 +268,7 @@ public class PlayerController : MonoBehaviour
         Destroy(dashSmoke2, 0.2f);
     }
 
+    //Calls a function depending on what object you are interacting with
     public void Interact()
     {
         if(interactable != null)
