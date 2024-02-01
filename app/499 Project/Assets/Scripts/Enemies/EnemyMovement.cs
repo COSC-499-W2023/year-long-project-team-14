@@ -172,7 +172,7 @@ public class EnemyMovement : MonoBehaviour
             //Target alive player if other is dead
             if(!players[0].GetComponent<healthSystem>().dead && players[1].GetComponent<healthSystem>().dead) //If player 2 is dead, target player 1
                 targetPlayer = players[0];
-            if(players[0].GetComponent<healthSystem>().dead && !players[1].GetComponent<healthSystem>().dead) //If player 1 is dead, target player 2
+            else if(players[0].GetComponent<healthSystem>().dead && !players[1].GetComponent<healthSystem>().dead) //If player 1 is dead, target player 2
                 targetPlayer = players[1];
             else if(!players[0].GetComponent<healthSystem>().dead && !players[1].GetComponent<healthSystem>().dead) //Target closest player
             {

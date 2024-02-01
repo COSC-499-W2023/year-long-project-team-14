@@ -37,7 +37,7 @@ public class EnemyAttack : MonoBehaviour
         Points3 = new List<Vector3>();
 
         //Prevent enemies from shooting at the start of a level
-        lastShootTime = Time.time;
+        lastShootTime = Time.time + Random.Range(-1f, 1f);
     }
 
     void Update()
@@ -112,7 +112,7 @@ public class EnemyAttack : MonoBehaviour
         Vector2 direction = lr.transform.right;
         bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
         bullet.GetComponent<EnemyBullet>().bounces = maxReflections;
-        lastShootTime = Time.time;
+        lastShootTime = Time.time + Random.Range(-1f, 1f);;
         //play shoot sound
         shootSound.Play();
     }

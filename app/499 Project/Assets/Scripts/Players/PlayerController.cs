@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     PauseMenu pauseMenu;
     GameOverMenu gameOverMenu;
     ControlMenu controlMenu;
+    WinMenu winMenu;
 
     [HideInInspector] public bool unitTest = false;
     [HideInInspector] public bool unitTest2 = false;
@@ -62,6 +63,7 @@ public class PlayerController : MonoBehaviour
             pauseMenu = canvas.GetComponent<PauseMenu>();
             gameOverMenu = canvas.GetComponent<GameOverMenu>();
             controlMenu = canvas.GetComponent<ControlMenu>();
+            winMenu = canvas.GetComponent<WinMenu>();
         }
 
         GameObject gm = GameObject.FindWithTag("GameMaster");
@@ -197,7 +199,7 @@ public class PlayerController : MonoBehaviour
             {
                 pauseMenu.Resume();
             }
-            else if(!controlMenu.controlMenu && !gameOverMenu.GameIsOver)   //TODO: add win menu to this when its done
+            else if(!winMenu.winMenu &&!controlMenu.controlMenu && !gameOverMenu.GameIsOver)   //TODO: add win menu to this when its done
             {
                 pauseMenu.Pause();
             }

@@ -73,6 +73,11 @@ public class GameMaster : MonoBehaviour
         //Play transition sound
         transitionSound.Play();
 
+        //Make players invincible while transitioning
+        healthSystem1.isInvic = true;
+        if(playerCount > 1)
+            healthSystem2.isInvic = true;
+
         if(currentLevel < levels.Length)
         {
             //Wait for screen to fade out and then destroy current level and bullets
@@ -132,6 +137,11 @@ public class GameMaster : MonoBehaviour
             
             if(playerCount > 1 && healthSystem2.dead)
                 RespawnPlayer(healthSystem2);
+
+            //Make player not invincible
+            healthSystem1.isInvic = false;
+            if(playerCount > 1)
+                healthSystem2.isInvic = false;
         }
         else
         {
