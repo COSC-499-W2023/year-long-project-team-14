@@ -13,9 +13,7 @@ public class SprayBullet : MonoBehaviour
         if(collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Breakable") || collision.gameObject.CompareTag("Player") ){
             GameObject clone = Instantiate(impactEffect, transform.position, transform.rotation);
             Destroy(clone, 1.0f);
-
-            // Use the pool to return the bullet
-            BulletSprayPool.bulletSprayPoolInstanse.ReturnBullet(gameObject);
+            DestroyBullet();
         }
     }
 
@@ -36,7 +34,7 @@ public class SprayBullet : MonoBehaviour
         moveDirection = dir;
     }
 
-    private void Destroy()
+    private void DestroyBullet()
     {
         gameObject.SetActive(false);
     }

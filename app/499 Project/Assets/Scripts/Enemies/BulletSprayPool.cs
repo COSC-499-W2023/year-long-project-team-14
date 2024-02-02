@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BulletSprayPool : MonoBehaviour
 {
-    public static BulletSprayPool bulletSprayPoolInstanse;
+    public static BulletSprayPool Instance;
+    [SerializeField]
+    private int poolSize = 30;
 
     [SerializeField]
     private GameObject pooledBullet;
@@ -12,12 +14,30 @@ public class BulletSprayPool : MonoBehaviour
 
     private void Awake()
     {
-        bulletSprayPoolInstanse = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject); // Ensures only one instance of BulletSprayPool exists
+        }
     }
 
     void Start()
     {
         sprayBullets = new List<GameObject>();
+        InitializeBulletPool();
+    }
+
+    private void InitializeBulletPool()
+    {
+        for (int i = 0; i < poolSize; i++)
+        {
+            GameObject bullet = Instantiate(pooledBullet);
+            bullet.SetActive(false);
+            sprayBullets.Add(bullet);
+        }
     }
 
     public void ReturnBullet(GameObject bullet)
@@ -27,9 +47,20 @@ public class BulletSprayPool : MonoBehaviour
 
     public GameObject GetBullet()
     {
-        GameObject bul = Instantiate(pooledBullet);
-        bul.SetActive(false);
-        sprayBullets.Add(bul);
-        return bul;
+        // Search for an inactive bullet in the pool
+        for (int i = 0; i < sprayBullets.Count; i++)
+        {
+            if (!sprayBullets[i].activeInHierarchy)
+            {
+                return sprayBullets[i];
+            }
+        }
+
+        // If no inactive bullet is found, create a new one
+        GameObject newBullet = Instantiate(pooledBullet);
+        newBullet.SetActive(false);
+        sprayBullets.Add(newBullet);
+
+        return newBullet;
     }
 }
