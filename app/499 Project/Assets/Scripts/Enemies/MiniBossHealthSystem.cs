@@ -111,7 +111,9 @@ public class MiniBossHealthSystem : MonoBehaviour
     public void Die()
     {
         enemyHealth = 0;
-        shoot.firingEnabled = false;
+        
+        //TODO disable firing when dead
+
         enemyCollider.enabled = false;
 
         animator.SetBool("IsWalking", false);

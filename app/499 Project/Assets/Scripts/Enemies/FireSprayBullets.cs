@@ -8,9 +8,9 @@ public class FireSprayBullets : MonoBehaviour
     private float rateOfFire = 10f;
 
     [SerializeField]
-    private float waitTime = 1f; // pause delay between bursts
+    private float waitTime = 3f; // pause delay between bursts
 
-    int totalBurstsToFire = 5; // Set the number of bursts you want to fire
+    int totalShotsPerBurst = 3; // Set the number of bursts you want to fire
     
     [SerializeField]
     private int bulletsAmount = 10;
@@ -24,7 +24,22 @@ public class FireSprayBullets : MonoBehaviour
     // Start is called before the first frame update
      void Start()
     {
-        InvokeRepeating("Fire", 0f, 1f / rateOfFire);
+        StartCoroutine(FireBursts());
+        //InvokeRepeating("Fire", 0f, 1f / rateOfFire);
+    }
+    private IEnumerator FireBursts()
+    {
+        while(firingEnabled)
+        {
+            for (int burstCount = 0; burstCount < totalShotsPerBurst; burstCount++)
+            {
+                Fire(); // Fire a burst
+
+                yield return new WaitForSeconds(1f / rateOfFire); // rate of fire between shots of a single burst
+            }
+
+             yield return new WaitForSeconds(waitTime); // Wait for the specified time, the break time between burst of 3
+        }
     }
 
     private void Fire()

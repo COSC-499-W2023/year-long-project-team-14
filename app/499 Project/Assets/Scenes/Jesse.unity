@@ -894,6 +894,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: mini_boss_viking
       objectReference: {fileID: 0}
+    - target: {fileID: 4788542615315652322, guid: 1e76f7aa62f36b64094958356d52545c, type: 3}
+      propertyPath: waitTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4788542615315652322, guid: 1e76f7aa62f36b64094958356d52545c, type: 3}
+      propertyPath: rateOfFire
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -925,15 +933,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 25926563526435408, guid: 584a747581e7eb84e924d5d90a66fd4b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 25926563526435408, guid: 584a747581e7eb84e924d5d90a66fd4b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 25926563526435408, guid: 584a747581e7eb84e924d5d90a66fd4b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 25926563526435408, guid: 584a747581e7eb84e924d5d90a66fd4b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1026,7 +1034,7 @@ SceneRoots:
   - {fileID: 1301338063}
   - {fileID: 8883443455809593659}
   - {fileID: 5991174223172522646}
+  - {fileID: 8823024836129132223}
   - {fileID: 8250294916771712645}
   - {fileID: 943116833093068926}
   - {fileID: 1041923320131406183}
-  - {fileID: 8823024836129132223}

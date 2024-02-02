@@ -14,24 +14,14 @@ public class BulletSprayPool : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject); // Ensures only one instance of BulletSprayPool exists
-        }
-    }
-
-    void Start()
-    {
-        sprayBullets = new List<GameObject>();
+        Instance = this;
         InitializeBulletPool();
     }
 
     private void InitializeBulletPool()
-    {
+    {   
+        sprayBullets = new List<GameObject>();
+
         for (int i = 0; i < poolSize; i++)
         {
             GameObject bullet = Instantiate(pooledBullet);
