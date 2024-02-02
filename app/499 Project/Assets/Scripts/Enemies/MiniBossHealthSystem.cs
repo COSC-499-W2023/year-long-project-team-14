@@ -43,6 +43,7 @@ public class MiniBossHealthSystem : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         shoot = GetComponent<FireSprayBullets>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        shoot = GetComponent<FireSprayBullets>();
         
     }
      // Damage enemy if colliding with bullet
@@ -112,7 +113,7 @@ public class MiniBossHealthSystem : MonoBehaviour
     {
         enemyHealth = 0;
         
-        //TODO disable firing when dead
+        shoot.firingEnabled = false;
 
         enemyCollider.enabled = false;
 
