@@ -28,18 +28,22 @@ This week our team succesfully held our first peer testing session. Overall the 
 - Justin Mckendry → @justinmdry
 
 ## Completed Tasks
-- Added new levels which implement new level design features (broken walls, breakable walls, moving walls)
-- Improved controller support and addressed bugs with controller implementation
+- Created 3 test levels for peer testing session which implement new level design features (broken walls, breakable walls, moving walls)
+- Updated the hud with a timer showing user how much time has elapsed. - updated hud to display spell icons based on which spell is equipped and also show cooldown
 - Add unit testing for lightning spell ability
 - Add unit testing for dash ability effects
 - Complete peer testing session and compile relevant peer feedback
 - Additional bug fixes
 - Added new attack pattern "triple-shot" to the Orc Soldier enemy to increase enemy type variety
-- Added win-screen when player beats all levels
-- Added local leaderboards, so that peer testers could compete for the fastest game completion time
+- Added win-screen when player(s) beat all levels
+- Added leaderboard menu to game scene and improved win menu so players can enter a name and submit their scores
+- Changed how the leaderboards work so players can upload multiple scores under different names from the same device
+- Added controller support to all menus and features that previously didn't have controller support
+- Improved controller support to allow players to easily switch between controller and mouse and keyboard
 
 ## In Progress Tasks
 - Work on additional levels for the game
+- Add menu to select difficulty level (4 difficulties in total)
 - Add additional abilities
 - Add menu or in-game shop so that players can choose or switch their abilities
 - Re-balance the game so that gameplay is more enjoyable
