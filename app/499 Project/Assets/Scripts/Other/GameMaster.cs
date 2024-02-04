@@ -191,24 +191,13 @@ public class GameMaster : MonoBehaviour
         {
             player1 = Instantiate(player1Prefab, new Vector3(0, 0, 0), Quaternion.identity);
         }
-        
-        Gamepad[] gamepads = Gamepad.all.ToArray();
 
         player1Spawn = GameObject.FindWithTag("Player1Spawn").GetComponent<Transform>();
         player1.transform.position = player1Spawn.position;
         healthSystem1 = player1.GetComponent<healthSystem>();
 
-        
-
-        // if(playerCount > 1 && gamepads.Length > 1)
-        // {
-        //     InputDevice[] devices = {Keyboard.current, Gamepad.all[0]};
-        //     PlayerInput.Instantiate(player1, controlScheme: "normal", pairWithDevices: devices);
-        // }
-        // else
-        // {
-        //     PlayerInput.Instantiate(player1, controlScheme: "normal", pairWithDevice: Keyboard.current);
-        // }
+        if(!unitTest)
+            StartCoroutine(Player1Controls());
 
         if(playerCount > 1)
         {
@@ -216,20 +205,57 @@ public class GameMaster : MonoBehaviour
             player2.transform.position = player2Spawn.position;
             healthSystem2 = player2.GetComponent<healthSystem>();
 
-            // if(player2ControlScheme == 0 && player1ControlScheme == 1) //keyboard
-            // {
-            //     player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
-            // }
-            // else //controller
-            // {
-            //     if(player1ControlScheme == 0 && gamepads.Length > 0)
-            //         player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[0]);
-            //     else if(gamepads.Length > 1)
-            //         player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[1]);
-            // }
+            if(!unitTest)
+                StartCoroutine(Player2Controls());
         }
         else if(player2 != null)
             player2.SetActive(false);
+    }
+
+    //Set player 1 controls
+    public IEnumerator Player1Controls()
+    {
+        if(!gameOverMenu.gameOverMenu && !winMenu.winMenu)
+        {
+            Gamepad[] gamepads = Gamepad.all.ToArray();
+
+            if(playerCount > 1 && gamepads.Length > 1)
+            {
+                player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Keyboard.current, Mouse.current, gamepads[1]);
+            }
+            else if(playerCount < 2 && gamepads.Length > 0)
+            {
+                player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Keyboard.current, Mouse.current, gamepads[0]);
+            }
+            else
+            {
+                player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Keyboard.current, Mouse.current);
+            }
+        }
+
+        yield return new WaitForSeconds(1);
+
+        StartCoroutine(Player1Controls());
+    }
+
+    //Set player 2 controls
+    public IEnumerator Player2Controls()
+    {
+        if(!gameOverMenu.gameOverMenu && !winMenu.winMenu)
+        {
+            Gamepad[] gamepads = Gamepad.all.ToArray();
+
+            if(gamepads.Length > 0)
+            {
+                player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[0]);
+            }
+            else
+                player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Touch");
+        }
+
+        yield return new WaitForSeconds(1);
+
+        StartCoroutine(Player2Controls());
     }
 
     //Constantly updates pathfinding grid so enemies know where they can and cannot go
