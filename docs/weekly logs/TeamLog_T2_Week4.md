@@ -12,7 +12,14 @@ This week our team succesfully held our first peer testing session. Overall the 
 - Add mini-boss
 - Re-balance game and add different difficulty levels so that is appeals to a larger audience
 - Add abillity selecion feature to game, so that players and pick or switch out selected abilitity
+- added leaderboard menu to game scene and improved win menu so players can enter a name and submit their scores
 - Re-balance ability and movement cooldowns
+- Changed how the leaderboards work so players can upload multiple scores under different names from the same device
+- Added controller support to all menus and features that previously didn't have controller support
+- Triple shot enemy in progress
+- Started difficulty menu (design and buttons)
+- Updated the hud with a timer showing the user how much time has elapsed.
+- Updated hud to display spell icons based on which spell is equipped and also show cooldown
 
 ## Burnup Chart
 ![](screenshots/week4t2_burnup_chart.PNG)
