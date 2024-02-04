@@ -1,4 +1,32 @@
 # Personal Log - Kibele Sebnem Yildirim
+## Week 17 - Term 2
+- Start Date: January 29
+- End Date: February 5
+
+### Tasks I worked on:
+![](screenshots/kibele_week17.png)
+
+### Recap on your week's goals
+- My goals this week were to:
+* start and finalize the win menu for our game
+* Discuss with my team about the design
+* Review my teammates' code and fixes on the game
+* Write test for win menu's code
+
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to start and finalize the win menu for our game, discuss with my team about the design, review my teammates' code and fixes on the game, and write test for win menu's code.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week. 
+
+Here are the screenshots of my work on our Win Menu in Unity this week:
+![](screenshots/kibeleweek17_1.png)
+
+This is the screenshot of my work on VScode in Win Menu this week:
+![](screenshots/kibeleweek17.png)
+
+
 ## Week 16 - Term 2
 - Start Date: January 22
 - End Date: January 28
