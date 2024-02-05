@@ -1,4 +1,22 @@
 # Personal Log - Justin McKendry
+## Week 17
+- Start Date: January 29th
+- End Date: Feburary 4th
+
+### Tasks I worked on:
+![](screenshots/tasks_justin_week_17.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Ensure we had proper level layouts and questions for peer testing
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Develop the triple shot enemy 
+  
+### Among these tasks, which have you completed/in progress in the last week?
+The triple shot enemy is in progress, it currently shoots 3 shots at varying speeds but we would like it to shoot 3 conseqective shots. 
+
 ## Week 16
 - Start Date: January 22nd
 - End Date: January 28th
