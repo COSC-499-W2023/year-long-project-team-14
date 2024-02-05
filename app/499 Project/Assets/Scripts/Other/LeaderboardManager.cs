@@ -10,7 +10,7 @@ public class LeaderboardManager : MonoBehaviour
     public GameMaster gameMaster;
     public bool connected = false;
     public bool done = false;
-    public bool inMenu = false;
+    public bool unitTest = false;
 
     public TMP_Text[] playerRanks = new TMP_Text[10];
     public TMP_Text[] playerNames = new TMP_Text[10];
@@ -19,17 +19,40 @@ public class LeaderboardManager : MonoBehaviour
     public TMP_Text scoreButtonText;
     public TMP_Text playerButtonText;
     public TMP_Text difficultyButtonText;
-     public TMP_Text displayNameText;
+    public TMP_Text placeholderText;
+    public TMP_Text displayNameText;
 
     public int scoreType = 1;
     public int players = 1;
     public int difficulty = 1;
+
+    public GameObject winMenu;
+    public GameObject leaderboardMenu;
+    public GameObject submitButton;
+    public GameObject menuButton;
+    public bool lbMenu = false;
+
 
     void Start()
     {
         StartCoroutine(StartSession());
     }
     
+    void Update()
+    {
+        if(placeholderText != null)
+            if(PlayerPrefs.GetString("DisplayName").Length < 3)
+                placeholderText.text = "Enter Name";
+            else
+                placeholderText.text = "" +PlayerPrefs.GetString("DisplayName");
+
+        if(submitButton != null)
+            if((placeholderText.text == "Enter Name" || placeholderText.text.Length < 3) && displayNameText.text.Length < 4)
+                submitButton.SetActive(false);
+            else
+                submitButton.SetActive(true);
+    }
+
     public IEnumerator StartSession() //Connect to LootLocker
     {     
         if(!connected)   
@@ -51,16 +74,8 @@ public class LeaderboardManager : MonoBehaviour
                 }
             });
             yield return new WaitWhile(() => done == false);
-
-            if(inMenu)
-            {
-                if(PlayerPrefs.GetString("DisplayName") == "")
-                    displayNameText.text = "Enter Name";
-                else
-                    displayNameText.text = "" +PlayerPrefs.GetString("DisplayName");
-                
-                StartCoroutine(UpdatePlayerName());
-            }
+            
+            StartCoroutine(UpdatePlayerName());
         }
 
         yield return new WaitForSeconds(5);
@@ -72,11 +87,6 @@ public class LeaderboardManager : MonoBehaviour
         done = false;
 
         PlayerPrefs.SetString("DisplayName", name); 
-
-        if(PlayerPrefs.GetString("DisplayName") == "")
-            displayNameText.text = "Enter Name";
-        else
-            displayNameText.text = "" +PlayerPrefs.GetString("DisplayName");
 
         StartCoroutine(UpdatePlayerName());
     }
@@ -102,25 +112,46 @@ public class LeaderboardManager : MonoBehaviour
         yield return new WaitWhile(() => done == false);
     }
 
-    public void SubmitScore(int score, string leaderboardID) //Save and upload score to correct leaderboard
+    public void Submit()
+    {
+        StartCoroutine(SubmitScore());
+    }
+
+    public IEnumerator SubmitScore() //Save and upload score to correct leaderboard
     {   
+        winMenu.SetActive(false);
+        leaderboardMenu.SetActive(true);
+        gameMaster.SelectButton(menuButton);
+        lbMenu = true;
+
+        yield return new WaitWhile(() => done == false);
+
+        int score = (int)Mathf.Floor(gameMaster.gameTime * 100);
+        string leaderboardID = "";
+        
         done = false;
 
-        if(leaderboardID == null)
-        {
-            if(gameMaster.difficulty == 1) leaderboardID = "Easy";
-            else if(gameMaster.difficulty == 2) leaderboardID = "Medium";
-            else if(gameMaster.difficulty == 3) leaderboardID = "Hard";
-            else if(gameMaster.difficulty == 4) leaderboardID = "Extreme";
+        if(gameMaster.difficulty == 1){ leaderboardID = "Easy"; difficultyButtonText.text = "EASY";}
+        else if(gameMaster.difficulty == 2){ leaderboardID = "Medium"; difficultyButtonText.text = "MEDIUM";}
+        else if(gameMaster.difficulty == 3){ leaderboardID = "Hard"; difficultyButtonText.text = "HARD";}
+        else if(gameMaster.difficulty == 4){ leaderboardID = "Extreme"; difficultyButtonText.text = "EXTREME";}
 
-            if(gameMaster.playerCount == 1) leaderboardID += "1";
-            else leaderboardID += "2";
-            leaderboardID += "Player";
+        if(gameMaster.playerCount == 1){ leaderboardID += "1"; playerButtonText.text = "1 PLAYER";}
+        else{ leaderboardID += "2"; playerButtonText.text = "2 PLAYER";}
+        leaderboardID += "Player";
+
+        difficulty = gameMaster.difficulty;
+        players = gameMaster.playerCount;
+
+        if(unitTest)
+        {
+            score = 100;
+            leaderboardID = "UnitTest";
         }
 
         SaveScore(score, leaderboardID);
 
-        LootLockerSDKManager.SubmitScore(PlayerPrefs.GetString("PlayerID"), score, leaderboardID, (response) =>
+        LootLockerSDKManager.SubmitScore(PlayerPrefs.GetString("DisplayName"), score, leaderboardID, (response) =>
         {
             if(response.success)
             {
@@ -134,25 +165,28 @@ public class LeaderboardManager : MonoBehaviour
                 connected = false;
             }
         });
+        yield return new WaitWhile(() => done == false);
+
+        FetchHighscores(leaderboardID);
     }
 
     public void SaveScore(int score, string leaderboardID) //Saves scores locally
     {
-        if(leaderboardID == "Easy1Player")
+        if(leaderboardID == "Easy1Player" && PlayerPrefs.GetInt("Easy1Player") > score)
             PlayerPrefs.SetInt("Easy1Player", score);
-        else if(leaderboardID == "Medium1Player")
+        else if(leaderboardID == "Medium1Player" && PlayerPrefs.GetInt("Medium1Player") > score)
             PlayerPrefs.SetInt("Medium1Player", score);
-        else if(leaderboardID == "Hard1Player")
+        else if(leaderboardID == "Hard1Player" && PlayerPrefs.GetInt("Hard1Player") > score)
             PlayerPrefs.SetInt("Hard1Player", score);
-        else if(leaderboardID == "Extreme1Player")
+        else if(leaderboardID == "Extreme1Player" && PlayerPrefs.GetInt("Extreme1Player") > score)
             PlayerPrefs.SetInt("Extreme1Player", score);
-        else if(leaderboardID == "Easy2Player")
+        else if(leaderboardID == "Easy2Player" && PlayerPrefs.GetInt("Easy2Player") > score)
             PlayerPrefs.SetInt("Easy2Player", score);
-        else if(leaderboardID == "Medium2Player")
+        else if(leaderboardID == "Medium2Player" && PlayerPrefs.GetInt("Medium2Player") > score)
             PlayerPrefs.SetInt("Medium2Player", score);
-        else if(leaderboardID == "Hard2Player")
+        else if(leaderboardID == "Hard2Player" && PlayerPrefs.GetInt("Hard2Player") > score)
             PlayerPrefs.SetInt("Hard2Player", score);
-        else if(leaderboardID == "Extreme2Player")
+        else if(leaderboardID == "Extreme2Player" && PlayerPrefs.GetInt("Extreme2Player") > score)
             PlayerPrefs.SetInt("Extreme2Player", score);
         else if(leaderboardID == "UnitTest")
             PlayerPrefs.SetInt("UnitTest", score);
@@ -174,7 +208,7 @@ public class LeaderboardManager : MonoBehaviour
             leaderboardID += "Player";
         }
 
-        LootLockerSDKManager.GetMemberRank(leaderboardID, "0", (response) =>
+        LootLockerSDKManager.GetMemberRank(leaderboardID, PlayerPrefs.GetString("DisplayName"), (response) =>
         {
             if(response.success)
             {
@@ -192,15 +226,15 @@ public class LeaderboardManager : MonoBehaviour
 
                         for(int i = 0; i < members.Length; i++)
                         {
-                            if(members[i].player.name != "")
+                            if(members[i].member_id != "")
                             {
-                                name = members[i].player.name + "";
+                                name = members[i].member_id + "";
                             }
                             else
                             {
-                                name = members[i].player.id + "";
+                                name = members[i].member_id + "";
                             }
-                            DisplayHighscore(i, members[i].rank, name, members[i].player.id, members[i].score);
+                            DisplayHighscore(i, members[i].rank, name, members[i].member_id, members[i].score);
                         }
                         done = true;
                         connected = true;
@@ -230,8 +264,8 @@ public class LeaderboardManager : MonoBehaviour
         });
     }
 
-    public void DisplayHighscore(int iteration, int rank, string name, int memberID, int score) //Display leaderboard scores on leaderboard menu
-    {     
+    public void DisplayHighscore(int iteration, int rank, string name, string memberID, int score) //Display leaderboard scores on leaderboard menu
+    {    
         if(rank != 0)
             playerRanks[iteration].text = rank + ".";
         else 
@@ -243,11 +277,11 @@ public class LeaderboardManager : MonoBehaviour
             playerNames[iteration].text = " ";
         
         if(score != 0)
-            playerScores[iteration].text = FormatTime(score);
+            playerScores[iteration].text = FormatTime((double)score);
         else
             playerScores[iteration].text = " ";
 
-        if(playerNames[iteration].text == PlayerPrefs.GetString("PlayerID") || playerNames[iteration].text == PlayerPrefs.GetString("DisplayName"))
+        if(playerNames[iteration].text == PlayerPrefs.GetString("DisplayName"))
         {
             playerNames[iteration].color = new Color32(255, 255, 0, 255);
             playerRanks[iteration].color = new Color32(255, 255, 0, 255);
@@ -261,30 +295,30 @@ public class LeaderboardManager : MonoBehaviour
         }
     }
 
-    public string FormatTime(int t) //Properly format scores
+    public string FormatTime(double t) //Properly format scores
     {
-        double time = ((double)t) / 100;
-        double ms = Math.Round((time % 1), 2);
-        double s = Math.Round((time - ms) % 60);
-        double m = Math.Round((time - s - ms) / 60);
+        double time = t / 100;
+        double ms = time % 1;
+        double s = Math.Floor((time - ms) % 60);
+        double m = Math.Floor((time - s - ms) / 60);
 
         string score = "";
 
-        if(m < 10)
-            score += "0" +m;
-        else 
-            score += "" +m;
-
-        if(s < 10)
-            score += ":0" +s;
+        if (m < 10)
+            score += "0" + m;
         else
-            score += ":" +s;
+            score += "" + m;
 
-        ms *= 100;
-        if(ms < 10)
-            score += ".0" +ms;
-        else 
-            score += "." +ms;
+        if (s < 10)
+            score += ":0" + s;
+        else
+            score += ":" + s;
+
+        ms = Math.Floor(ms * 100);
+        if (ms < 10)
+            score += ".0" + ms;
+        else
+            score += "." + ms;
 
         return score;
     }

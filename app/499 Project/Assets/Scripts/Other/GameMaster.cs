@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 using Pathfinding;
+using UnityEngine.EventSystems;
 
 public class GameMaster : MonoBehaviour
 {
@@ -19,8 +20,14 @@ public class GameMaster : MonoBehaviour
 
     public GameObject WinMenu;
 
-    [SerializeField] private GameObject player1;
-    [SerializeField] private GameObject player2;
+    public PauseMenu pauseMenu;
+    public WinMenu winMenu;
+    public GameOverMenu gameOverMenu;
+    public ControlMenu controlMenu;
+    public GameObject inputField;
+
+    public GameObject player1;
+    public GameObject player2;
     public healthSystem healthSystem1;
     public healthSystem healthSystem2;
 
@@ -35,6 +42,7 @@ public class GameMaster : MonoBehaviour
 
     public GameObject level;
 
+    public bool stopTimer = false;
     public bool unitTest = false;
 
     [SerializeField] private AudioSource transitionSound;
@@ -45,12 +53,14 @@ public class GameMaster : MonoBehaviour
         playerCount = PlayerPrefs.GetInt("playerCount");
         SetupPlayers();
         StartCoroutine(UpdateGrid());
+        StartCoroutine(SelectMenuButton());
     }
 
     void Update()
     {
         //Increment game timer
-        gameTime += Time.deltaTime;
+        if(!stopTimer)
+            gameTime += Time.deltaTime;
     }
 
     //Go to next level
@@ -63,33 +73,38 @@ public class GameMaster : MonoBehaviour
         //Play transition sound
         transitionSound.Play();
 
-        //Wait for screen to fade out and then destroy current level and bullets
-        if (fadeAnim != null)
-        {
-            fadeAnim.Play("ScreenFadeOut");
-            yield return new WaitForSecondsRealtime(0.5f);
-        }
-        Destroy(level);
-        GameObject[] playerBullets = GameObject.FindGameObjectsWithTag("Player_bullet");
-        GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
-        for(int i = 0; i < playerBullets.Length; i++) Destroy(playerBullets[i]);
-        for(int i = 0; i < enemyBullets.Length; i++) Destroy(enemyBullets[i]);
-        yield return null;
-
-        //Start to fade back in
-        if(fadeAnim != null)
-            fadeAnim.Play("ScreenFadeIn");
-
-        //Move players out of the way
-        player1.transform.position = new Vector3(1000, 0, 0);
+        //Make players invincible while transitioning
+        healthSystem1.isInvic = true;
         if(playerCount > 1)
-            player2.transform.position = new Vector3(1000, 0, 0);
+            healthSystem2.isInvic = true;
 
-        //Increase level count and spawn in new level or end game if on last level
-        currentLevel++;
-
-        if(currentLevel <= levels.Length)
+        if(currentLevel < levels.Length)
         {
+            //Wait for screen to fade out and then destroy current level and bullets
+            if (fadeAnim != null)
+            {
+                fadeAnim.Play("ScreenFadeOut");
+                yield return new WaitForSecondsRealtime(0.5f);
+            }
+            Destroy(level);
+            GameObject[] playerBullets = GameObject.FindGameObjectsWithTag("Player_bullet");
+            GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
+            for(int i = 0; i < playerBullets.Length; i++) Destroy(playerBullets[i]);
+            for(int i = 0; i < enemyBullets.Length; i++) Destroy(enemyBullets[i]);
+            yield return null;
+
+            //Start to fade back in
+            if(fadeAnim != null)
+                fadeAnim.Play("ScreenFadeIn");
+
+            //Move players out of the way
+            player1.transform.position = new Vector3(1000, 0, 0);
+            if(playerCount > 1)
+                player2.transform.position = new Vector3(1000, 0, 0);
+
+            //Increase level count
+            currentLevel++;
+
             //Spawn in new level
             level = Instantiate(levels[currentLevel-1], transform.position, Quaternion.identity);
             AstarPath.active.Scan();
@@ -122,15 +137,34 @@ public class GameMaster : MonoBehaviour
             
             if(playerCount > 1 && healthSystem2.dead)
                 RespawnPlayer(healthSystem2);
+
+            //Make player not invincible
+            healthSystem1.isInvic = false;
+            if(playerCount > 1)
+                healthSystem2.isInvic = false;
         }
         else
         {
-            //TODO: display win screen and end game
-            print("YOU WIN!!!");
-            WinMenu.SetActive(true);
+            stopTimer = true;
 
-            //Uploads score to leaderboard
-            leaderboardManager.SubmitScore((int)(Math.Round(gameTime, 2) * 100), null);
+            //Fade out
+            if (fadeAnim != null)
+                fadeAnim.Play("ScreenFadeOut");
+            yield return new WaitForSecondsRealtime(0.5f);
+
+            //Display win screen and end game
+            WinMenu.SetActive(true);
+            winMenu.winMenu = true;
+            SelectButton(winMenu.restartButton);
+            player1.SetActive(false);
+            player2.SetActive(false);
+            GameObject portal = GameObject.FindWithTag("Portal");
+            if(portal != null)
+                Destroy(portal);
+
+            //Fade back in
+            if (fadeAnim != null)
+                fadeAnim.Play("ScreenFadeIn");
         }
     }
 
@@ -157,21 +191,13 @@ public class GameMaster : MonoBehaviour
         {
             player1 = Instantiate(player1Prefab, new Vector3(0, 0, 0), Quaternion.identity);
         }
-        
-        Gamepad[] gamepads = Gamepad.all.ToArray();
 
         player1Spawn = GameObject.FindWithTag("Player1Spawn").GetComponent<Transform>();
         player1.transform.position = player1Spawn.position;
         healthSystem1 = player1.GetComponent<healthSystem>();
 
-        if(player1ControlScheme == 0) //keyboard
-        {
-            player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
-        }
-        else //controller
-        {
-            player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[0]);
-        }
+        if(!unitTest)
+            StartCoroutine(Player1Controls());
 
         if(playerCount > 1)
         {
@@ -179,20 +205,57 @@ public class GameMaster : MonoBehaviour
             player2.transform.position = player2Spawn.position;
             healthSystem2 = player2.GetComponent<healthSystem>();
 
-            if(player2ControlScheme == 0 && player1ControlScheme == 1) //keyboard
-            {
-                player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current, Mouse.current);
-            }
-            else //controller
-            {
-                if(player1ControlScheme == 0 && gamepads.Length > 0)
-                    player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[0]);
-                else if(gamepads.Length > 1)
-                    player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[1]);
-            }
+            if(!unitTest)
+                StartCoroutine(Player2Controls());
         }
         else if(player2 != null)
             player2.SetActive(false);
+    }
+
+    //Set player 1 controls
+    public IEnumerator Player1Controls()
+    {
+        if(!gameOverMenu.gameOverMenu && !winMenu.winMenu)
+        {
+            Gamepad[] gamepads = Gamepad.all.ToArray();
+
+            if(playerCount > 1 && gamepads.Length > 1)
+            {
+                player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Keyboard.current, Mouse.current, gamepads[1]);
+            }
+            else if(playerCount < 2 && gamepads.Length > 0)
+            {
+                player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Keyboard.current, Mouse.current, gamepads[0]);
+            }
+            else
+            {
+                player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Keyboard.current, Mouse.current);
+            }
+        }
+
+        yield return new WaitForSeconds(1);
+
+        StartCoroutine(Player1Controls());
+    }
+
+    //Set player 2 controls
+    public IEnumerator Player2Controls()
+    {
+        if(!gameOverMenu.gameOverMenu && !winMenu.winMenu)
+        {
+            Gamepad[] gamepads = Gamepad.all.ToArray();
+
+            if(gamepads.Length > 0)
+            {
+                player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[0]);
+            }
+            else
+                player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Touch");
+        }
+
+        yield return new WaitForSeconds(1);
+
+        StartCoroutine(Player2Controls());
     }
 
     //Constantly updates pathfinding grid so enemies know where they can and cannot go
@@ -203,5 +266,53 @@ public class GameMaster : MonoBehaviour
         AstarPath.active.UpdateGraphs(guo);
         yield return new WaitForSeconds(0.1f);
         StartCoroutine(UpdateGrid());
+    }
+
+    public void SelectButton(GameObject button)
+    {
+        if(Gamepad.all.Count > 0)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(button);
+        }
+    }
+
+    public IEnumerator SelectMenuButton() //Selects a button depending on which menu you are in when using a controller and no buttons are already selected
+    {
+        if(!unitTest)
+        {
+            if(Gamepad.all.Count > 0) 
+            {
+                if(EventSystem.current.currentSelectedGameObject == null)
+                {
+                    if(pauseMenu.pauseMenu)
+                    {
+                        EventSystem.current.SetSelectedGameObject(pauseMenu.resumeButton);
+                    }
+                    else if(leaderboardManager.lbMenu)
+                    {
+                        EventSystem.current.SetSelectedGameObject(leaderboardManager.menuButton);
+                    }
+                    else if(winMenu.winMenu)
+                    {
+                        EventSystem.current.SetSelectedGameObject(winMenu.restartButton);
+                    }
+                    else if(gameOverMenu.gameOverMenu)
+                    {
+                        EventSystem.current.SetSelectedGameObject(gameOverMenu.restartButton);
+                    }
+                    else if(controlMenu.controlMenu)
+                    {
+                        EventSystem.current.SetSelectedGameObject(controlMenu.backButton);
+                    }
+                }
+            }
+            else if(EventSystem.current.currentSelectedGameObject != inputField)
+                EventSystem.current.SetSelectedGameObject(null);
+                        
+            yield return new WaitForSecondsRealtime(1f);
+            StopCoroutine(SelectMenuButton());
+            StartCoroutine(SelectMenuButton());
+        }
     }
 }

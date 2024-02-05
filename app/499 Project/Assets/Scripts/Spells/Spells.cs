@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem; 
 
 public class Spells : MonoBehaviour
 {
@@ -15,13 +16,15 @@ public class Spells : MonoBehaviour
 
     void Update()
     {
-        //temporary way to get user input until controller support is added for this
-        if(Input.GetKeyDown("q"))
+        cooldownTimer += Time.deltaTime;
+    }
+
+    public void Spell(InputAction.CallbackContext context)
+    {
+        if(context.performed)
         {
             CastSpell();
         }
-        
-        cooldownTimer += Time.deltaTime;
     }
 
     public void CastSpell()

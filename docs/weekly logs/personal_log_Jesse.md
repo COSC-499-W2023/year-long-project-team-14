@@ -1,5 +1,37 @@
 # Personal Log - Jesse Lazzari
 
+## Term 2 Week 4
+- Start Date: January 29
+- End Date: February 4
+  
+### Tasks I worked on:
+![](screenshots/t2week4_tasks.PNG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Meet with team and discuss plan for peer testing session
+* Outline tasks list for peer testing session
+* Host my peer testing station
+* Complete peer feedback for the teams I participated in
+* Create a questionnaire for testers to fill out
+* Compile relevant suggestions and feedback
+* Complete team log for team
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Add unit testing for lightning spell ability
+* Add unit testing for dash ability effects
+* Learn about object pooling to increase game performance when adding upcoming enemy type
+* Additional bug testing related to peer testing feedback
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed unit testing for the lightning spell and dash effects
+* I have also learned about object pooling and have applied this as I continue to work on a prototype "mini-boss" (a stand-alone enemy encounter with more advanced attack patterns)
+* The peer testing session was a success and I have compiled the relevant peer feedback
+* In progress tasks will be to modify the game in order to address relevant feedback and critiques
+
+***
+
 ## Term 2 Week 3
 - Start Date: January 22
 - End Date: January 27

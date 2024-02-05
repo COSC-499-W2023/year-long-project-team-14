@@ -100,6 +100,7 @@ public class healthSystem : MonoBehaviour
     public void dashHs(){
         // Set the player to invincible during the dash
         isInvic = true;
+        gameObject.layer = LayerMask.NameToLayer("NoCollide");
         //Start the transparent anamation for the dash
         StartCoroutine(Transparent3());
     }
@@ -179,6 +180,7 @@ public class healthSystem : MonoBehaviour
 
         //reset invincibility. 
         isInvic = false;
+        gameObject.layer = LayerMask.NameToLayer("Player");
 
     }
 

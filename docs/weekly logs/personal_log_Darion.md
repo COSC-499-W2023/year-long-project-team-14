@@ -1,5 +1,29 @@
 # Personal Log - Darion Pescada
 
+## Term 2 Week 4
+- Start Date: January 29
+- End Date: February 4
+
+### Tasks I worked on:
+![](screenshots/term2_tasks_darion_week4.png)
+  
+### Recap on your week's goals
+This week, my goals were to prepare for the peer review as well as update the controller support, and add the leaderboards to the game scene.
+
+### Which features were yours in the project plan for this milestone?
+- added the leaderboard menu to the game scene
+- improved the win menu so players can enter a display name, submit their scores, and view the leaderboards
+- changed how the leaderboards work so players can upload multiple scores under different names from the same device
+- fixed the game master script so you don't get teleported to an empty level and the timer doesn't continue after you complete the game
+- added controller support for casting spells, dashing, interacting, and for all the menus that previously didn't have controller support
+- improved controller support so players can easily switch between using a controller or keyboard and mouse
+
+
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed all of my tasks for this week.
+
+***
+
 ## Term 2 Week 3
 - Start Date: January 22
 - End Date: January 28

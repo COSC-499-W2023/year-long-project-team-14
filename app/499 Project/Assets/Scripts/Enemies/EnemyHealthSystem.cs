@@ -9,7 +9,7 @@ public class EnemyHealthSystem : MonoBehaviour
     private Rigidbody2D rb;
     public EnemyAttack ea; 
     public EnemyMovement enemyMovement; 
-    public int enemyHealth = 2;
+    public int enemyHealth = 3;
 
     public CircleCollider2D enemyCollider;
     public Ladder ladder;
@@ -68,7 +68,7 @@ public class EnemyHealthSystem : MonoBehaviour
     //Decrease health by 1 and kill enemy if health <= 0
     public void takeDamage()
     {
-        if(enemyHealth >= 1)
+        if(enemyHealth > 0)
         {
             enemyHealth--;
 
@@ -90,7 +90,7 @@ public class EnemyHealthSystem : MonoBehaviour
     //Decreases health and kill enemy if health <= 0
     public void takeDamage(int damage)
     {
-        if(enemyHealth >= 0)
+        if(enemyHealth > 0)
         {
             enemyHealth -= damage;
 
@@ -112,13 +112,14 @@ public class EnemyHealthSystem : MonoBehaviour
     //Kills enemy
     public void Die()
     {
-        enemyHealth = 0;
+        enemyHealth = -1;
         enemyMovement.enabled = false;
         ea.enabled = false;
         enemyCollider.enabled = false;
 
         animator.SetBool("IsWalking", false);
-        animator.SetTrigger("Death");
+        
+        animator.SetBool("IsDead", true);
 
         //play death sound
         deathSound.Play();

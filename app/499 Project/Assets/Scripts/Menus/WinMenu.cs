@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System;
 
 public class WinMenu : MonoBehaviour
 {
@@ -14,11 +15,10 @@ public class WinMenu : MonoBehaviour
     public int playercount;    
     public GameMaster gameMaster;
     public Text timetext;
+    public bool winMenu = false;
 
-        void Start()
+    void Start()
     {
-        StartCoroutine(SelectMenuButton());
-
         gameMaster = GameObject.FindObjectOfType<GameMaster>();
     }
 
@@ -26,8 +26,30 @@ public class WinMenu : MonoBehaviour
     {
         if (gameMaster != null && timetext != null)
         {
-            float time = gameMaster.gameTime;
-            timetext.text = "Time: " + time;
+            double t = Math.Floor(gameMaster.gameTime * 100);
+            double time = t / 100;
+            double ms = time % 1;
+            double s = Math.Floor((time - ms) % 60);
+            double m = Math.Floor((time - s - ms) / 60);
+
+            string score = "";
+
+            if (m < 10)
+                score += "0" + m;
+            else
+                score += "" + m;
+
+            if (s < 10)
+                score += ":0" + s;
+            else
+                score += ":" + s;
+
+            ms = Math.Floor(ms * 100);
+            if (ms < 10)
+                score += ".0" + ms;
+            else
+                score += "." + ms;
+            timetext.text = "TIME: " + score;
         }
     }
  public void LoadMenu()
@@ -58,26 +80,4 @@ public class WinMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public IEnumerator SelectMenuButton()
-    {
-        if (Gamepad.all.Count > 0 && EventSystem.current != null)
-        {
-            if (EventSystem.current.currentSelectedGameObject == null)
-            {
-                if (restartButton != null)
-                {
-                    EventSystem.current.SetSelectedGameObject(restartButton);
-                }
-            }
-        }
-        else
-        {
-            EventSystem.current?.SetSelectedGameObject(null);
-        }
-
-        yield return new WaitForSecondsRealtime(1f);
-
-        StartCoroutine(SelectMenuButton());
-    }
- 
 }

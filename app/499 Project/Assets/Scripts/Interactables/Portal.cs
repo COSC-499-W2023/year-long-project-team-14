@@ -47,9 +47,9 @@ public class Portal : MonoBehaviour
     }
 
     //go to next level if player interacts with exit and satisfies conditions
-    private void Update()
+    public void Interact()
     {
-        if (playerIsOverPortal && portalActive && Input.GetKeyDown(KeyCode.E))
+        if (playerIsOverPortal && portalActive)
         {
             playerIsOverPortal = false;
             gameMaster.LevelComplete();

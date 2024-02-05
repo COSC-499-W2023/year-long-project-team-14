@@ -53,9 +53,9 @@ public class Ladder : MonoBehaviour
     }
 
     //go to next level if player interacts with exit and satisfies conditions
-    private void Update()
+    public void Interact()
     {
-        if (playerIsOverExit && exitUnlocked && Input.GetKeyDown(KeyCode.E))
+        if (playerIsOverExit && exitUnlocked)
         {
             exitUnlocked = false;
             gameMaster.LevelComplete();

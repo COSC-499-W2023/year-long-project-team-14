@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float bulletForce;
     public float moveSpeed;
     public int bulletBounces;
+    public bool player1 = false;
 
     public bool aimingInWall = false;
 
@@ -36,11 +37,13 @@ public class PlayerController : MonoBehaviour
     PauseMenu pauseMenu;
     GameOverMenu gameOverMenu;
     ControlMenu controlMenu;
+    WinMenu winMenu;
 
     [HideInInspector] public bool unitTest = false;
     [HideInInspector] public bool unitTest2 = false;
 
     [SerializeField] private AudioSource shootSound;
+    public AudioSource buttonClick;
 
     //dash cooldown
     public float dashCooldown = 1;
@@ -48,7 +51,9 @@ public class PlayerController : MonoBehaviour
     //dash cool down timer 
     public float dashCDT = 1;
 
+    public GameObject dashPrefab; 
 
+    public GameObject interactable;
 
     void Start()
     {
@@ -60,6 +65,7 @@ public class PlayerController : MonoBehaviour
             pauseMenu = canvas.GetComponent<PauseMenu>();
             gameOverMenu = canvas.GetComponent<GameOverMenu>();
             controlMenu = canvas.GetComponent<ControlMenu>();
+            winMenu = canvas.GetComponent<WinMenu>();
         }
 
         GameObject gm = GameObject.FindWithTag("GameMaster");
@@ -102,21 +108,17 @@ public class PlayerController : MonoBehaviour
             {
                 if (!unitTest && (gameMaster == null || !gameMaster.unitTest))
                 {
-
                     //Set aim direction based on user input
-                    if (playerInput.currentControlScheme == "Keyboard&Mouse")
+                    if(aimDirection.x != 0 && aimDirection.y != 0)
+                    {
+                        Quaternion rotation = Quaternion.LookRotation(aimDirection, playerCenter.transform.TransformDirection(Vector3.forward));
+                        playerCenter.transform.rotation = Quaternion.Slerp(playerCenter.transform.rotation, new Quaternion(0, 0, rotation.z, rotation.w), 50 * Time.deltaTime);
+                    }
+                    else if(player1)
                     {
                         var mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
                         Quaternion rotation = Quaternion.LookRotation(mousePos - playerCenter.transform.position, playerCenter.transform.TransformDirection(Vector3.forward));
                         playerCenter.transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
-                    }
-                    else
-                    {
-                        if(aimDirection.x != 0 && aimDirection.y != 0)
-                        {
-                            Quaternion rotation = Quaternion.LookRotation(aimDirection, playerCenter.transform.TransformDirection(Vector3.forward));
-                            playerCenter.transform.rotation = Quaternion.Slerp(playerCenter.transform.rotation, new Quaternion(0, 0, rotation.z, rotation.w), 50 * Time.deltaTime);
-                        }
                     }
 
                     //Create line renderer in direction the player is aiming in
@@ -135,18 +137,10 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-
-            
         }
 
-        // Check if the player press's space, if they do call dash
-             if(Input.GetKeyDown("space"))
-            {
-                Dash();
-            }
-
-            //Used for the dash cooldown (its the timer)
-            dashCDT += Time.deltaTime;
+        //Used for the dash cooldown (its the timer)
+        dashCDT += Time.deltaTime;
 
     }
 
@@ -178,16 +172,44 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Dash(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            Dash();
+        }
+    }
+
+    public void Interact(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            Interact();
+        }
+    }
+
+    public void Back(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            if(controlMenu.controlMenu)
+            {
+                controlMenu.Back();
+                buttonClick.Play();
+            }
+        }   
+    }
+
     //Pauses the game
     public void Pause(InputAction.CallbackContext context)
     {
         if(context.performed)
         {
-            if(PauseMenu.GameIsPaused && pauseMenu.pauseMenu)
+            if(pauseMenu.pauseMenu)
             {
                 pauseMenu.Resume();
             }
-            else if(!controlMenu.controlMenu && !gameOverMenu.GameIsOver)   //TODO: add win menu to this when its done
+            else if(!winMenu.winMenu &&!controlMenu.controlMenu && !gameOverMenu.GameIsOver)   //TODO: add win menu to this when its done
             {
                 pauseMenu.Pause();
             }
@@ -223,13 +245,58 @@ public class PlayerController : MonoBehaviour
     public void Dash(){
         //If the dash is off cooldown, the player is alive and the game is not paused.
         if(dashCDT >= dashCooldown && !hs.dead && !PauseMenu.GameIsPaused){
+
+            GameObject dashSmoke = Instantiate(dashPrefab, transform.position, transform.rotation);
             //Add force in the direction the player is moving
             rb.AddForce(GetMoveDirection()*50000);
+            Destroy(dashSmoke, 0.2f);
             //Make the player invincible through the duration of the dash.
             hs.dashHs();
             // reset the dash cool down.
             dashCDT = 0;
+             // Start a coroutine for the second part of the dash after a delay.
+            StartCoroutine(SecondDashEffect());
         }
+    }
+
+    private IEnumerator SecondDashEffect(){
+        // Wait for new player position after dash
+        yield return new WaitForSeconds(0.15f);
+
+        // Instantiate the second dash smoke at the updated position.
+        GameObject dashSmoke2 = Instantiate(dashPrefab, transform.position, transform.rotation);
+        Destroy(dashSmoke2, 0.2f);
+    }
+
+    //Calls a function depending on what object you are interacting with
+    public void Interact()
+    {
+        if(interactable != null)
+        {
+            string tag = interactable.tag;
+            if(tag == "Ladder")
+            {
+                interactable.GetComponent<Ladder>().Interact();
+            }
+            else if(tag == "Portal")
+            {
+                interactable.GetComponent<Portal>().Interact();
+            }
+            else if(tag == "Spell")
+            {
+
+            }
+        }
+    }
+
+    public void OnTriggerStay2D(Collider2D collider)
+    {
+        interactable = collider.gameObject;
+    }
+
+    public void OnTriggerExit2D(Collider2D collider)
+    {
+        interactable = null;
     }
 
     public Vector2 GetMoveDirection()

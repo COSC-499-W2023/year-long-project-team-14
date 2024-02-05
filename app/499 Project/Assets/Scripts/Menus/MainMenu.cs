@@ -7,19 +7,28 @@ using UnityEngine.InputSystem;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject eventSystem;
     public GameObject mainMenuObject;
+    public GameObject optionsMenuObject;
     public GameObject playerMenuObject;
     public GameObject leaderboardMenuObject;
+    public GameObject controlMenuObject;
 
     public GameObject playButton;
     public GameObject player1Button;
     public GameObject player2Button;
+    public GameObject musicSlider;
     public GameObject leaderboardBackButton;
+    public GameObject controlsBackButton;
 
     public bool mainMenu = true;
     public bool playerMenu = false;
-    public bool leaderboardMenu = true;
+    public bool optionsMenu = false;
+    public bool leaderboardMenu = false;
+    public bool controlMenu = true;
 
+
+    public AudioSource buttonClick;
     public Animator fadeAnim;
 
     public LeaderboardManager leaderboardManager;
@@ -32,6 +41,7 @@ public class MainMenu : MonoBehaviour
         if(Application.platform == RuntimePlatform.WebGLPlayer)
             quitButton.SetActive(false);
             
+        StartCoroutine(SetUpControls());
         StartCoroutine(SelectMenuButton());
         SelectButton(playButton);
     }
@@ -78,6 +88,26 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    //Set options menu active and deactivate main menu
+    public void OptionsMenu()
+    {
+        optionsMenu = true;
+        mainMenu = false;
+        optionsMenuObject.SetActive(true); 
+        mainMenuObject.SetActive(false); 
+        SelectButton(musicSlider);
+    }
+    
+    //Set main menu active and deactivate options menu
+    public void OptionsMenuBackButton()
+    {
+        optionsMenu = false;
+        mainMenu = true;
+        optionsMenuObject.SetActive(false); 
+        mainMenuObject.SetActive(true); 
+        SelectButton(playButton);
+    }
+
     //Set leaderboard menu active and deactivate main menu
     public void LeaderboardMenu()
     {
@@ -99,6 +129,26 @@ public class MainMenu : MonoBehaviour
         SelectButton(playButton);
     }
 
+    //Set control menu active and deactivate main menu
+    public void ControlMenu()
+    {
+        controlMenu = true;
+        mainMenu = false;
+        controlMenuObject.SetActive(true); 
+        mainMenuObject.SetActive(false); 
+        SelectButton(controlsBackButton);
+    }
+    
+    //Set main menu active and deactivate control menu
+    public void ControlMenuBackButton()
+    {
+        controlMenu = false;
+        mainMenu = true;
+        controlMenuObject.SetActive(false); 
+        mainMenuObject.SetActive(true); 
+        SelectButton(playButton);
+    }
+
     //Quit the game
     public void QuitGame()
     {
@@ -106,6 +156,7 @@ public class MainMenu : MonoBehaviour
      Application.Quit();
     }
 
+    //Selects a button for controller navigation
     public void SelectButton(GameObject button)
     {
         if(Gamepad.all.Count > 0)
@@ -128,7 +179,18 @@ public class MainMenu : MonoBehaviour
                 {
                     EventSystem.current.SetSelectedGameObject(player1Button);
                 }
-                //TODO: add options, leaderboard, and control menu to this
+                else if(optionsMenu)
+                {
+                    EventSystem.current.SetSelectedGameObject(musicSlider);
+                }
+                else if(leaderboardMenu)
+                {
+                    EventSystem.current.SetSelectedGameObject(leaderboardBackButton);
+                }
+                else if(controlMenu)
+                {
+                    EventSystem.current.SetSelectedGameObject(controlsBackButton);
+                }
             }
         }
         else if(EventSystem.current.currentSelectedGameObject != inputField)
@@ -137,6 +199,47 @@ public class MainMenu : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
         StopCoroutine(SelectMenuButton());
         StartCoroutine(SelectMenuButton());
+    }
+
+    //Call back function depending on which menu you are in
+    public void Back(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            if(playerMenu)
+                PlayerBackButton();
+            else if(optionsMenu)
+                OptionsMenuBackButton();
+            else if(leaderboardMenu)
+                LeaderboardBackButton();
+            else if(controlMenu)
+                ControlMenuBackButton();
+            else return;
+            
+            buttonClick.Play();
+        }
+    }
+
+    //Allows the user to navigate the menu using all input devices
+    public IEnumerator SetUpControls()
+    {
+        Gamepad[] gamepads = Gamepad.all.ToArray();
+
+        if(gamepads.Length > 1)
+        {
+            eventSystem.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Keyboard.current, Mouse.current, gamepads[0], gamepads[1]);
+        }
+        else if(gamepads.Length > 0)
+        {
+            eventSystem.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Keyboard.current, Mouse.current, gamepads[0]);
+        }
+        else if(gamepads.Length == 0)
+        {
+            eventSystem.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Keyboard.current, Mouse.current);
+        }
+
+        yield return new WaitForSeconds(1);
+        StartCoroutine(SetUpControls());
     }
 }
 
