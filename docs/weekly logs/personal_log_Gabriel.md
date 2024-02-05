@@ -1,4 +1,26 @@
 # Personal Log - Gabriel Mercier
+## Week 4 - T2
+- Start Date: January 29
+- End Date: Febuary 4
+  
+### Tasks I worked on:
+![](screenshots/t2Week4_peerEval_Gabriel.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Ensure a good wrap up to the milestone
+* Stay on top of my tasks
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* updated the hud with a timer showing the user how much time has elapsed.
+* updated hud to display spell icons based on which spell is equipped and also show cooldown
+* created 3 test levels for peer testing session
+* Unit Tests for new HUD elements
+### Among these tasks, which have you completed/in progress in the last week?
+I completed all my tasks.
+
+***
 ## Week 3 - T2
 - Start Date: January 22
 - End Date: January 28
