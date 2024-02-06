@@ -282,9 +282,13 @@ public class PlayerController : MonoBehaviour
             {
                 interactable.GetComponent<Portal>().Interact();
             }
-            else if(tag == "Spell")
+            else if(tag == "lightning")
             {
-
+                interactable.GetComponent<LightningPickup>().Interact();
+            }
+            else if (tag == "Fireball")
+            {
+                interactable.GetComponent<FireballPickup>().Interact();
             }
         }
     }
