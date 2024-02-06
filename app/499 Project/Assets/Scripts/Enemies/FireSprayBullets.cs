@@ -5,18 +5,19 @@ using UnityEngine;
 public class FireSprayBullets : MonoBehaviour
 {
     [SerializeField]
-    private float rateOfFire = 10f;
+    private float rateOfFire = 10f; // Set the rate of fire
 
     [SerializeField]
-    private float waitTime = 3f; // pause delay between bursts
+    private float waitTime = 3f; // Sets pause delay between bursts
 
-    int totalShotsPerBurst = 3; // Set the number of bursts you want to fire
+    [SerializeField] 
+    int totalShotsPerBurst = 2; // Sets the number of bursts you want to fire
     
     [SerializeField]
-    private int bulletsAmount = 10;
+    private int bulletsAmount = 10; // Sets the total number of bullets in the spread
 
     [SerializeField]
-    private float startAngle = 0, endAngle = 360f;
+    private float startAngle = 0, endAngle = 360f; // Sets the start and end angle of the burst
     private Vector2 bulletMoveDirection;
 
     public bool firingEnabled = true;
@@ -27,8 +28,10 @@ public class FireSprayBullets : MonoBehaviour
         StartCoroutine(FireBursts());
         //InvokeRepeating("Fire", 0f, 1f / rateOfFire);
     }
-    private IEnumerator FireBursts()
+    private IEnumerator FireBursts() // Continuous bursts mode
     {
+        yield return new WaitForSeconds(1f); // 1 second delay before first shots fired
+
         while(firingEnabled)
         {
             for (int burstCount = 0; burstCount < totalShotsPerBurst; burstCount++)
@@ -39,6 +42,19 @@ public class FireSprayBullets : MonoBehaviour
             }
 
              yield return new WaitForSeconds(waitTime); // Wait for the specified time, the break time between burst of 3
+        }
+    }
+
+    private IEnumerator FireSingleBurst() 
+    {
+        if(firingEnabled)
+        {
+            for (int burstCount = 0; burstCount < totalShotsPerBurst; burstCount++)
+            {
+                Fire(); // Fire a burst
+
+                yield return new WaitForSeconds(1f / rateOfFire); // rate of fire between shots of a single burst
+            }
         }
     }
 

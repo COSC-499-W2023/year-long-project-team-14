@@ -154,6 +154,8 @@ GameObject:
   - component: {fileID: 8125996693403395747}
   - component: {fileID: 4788542615315652322}
   - component: {fileID: 5707318513063649654}
+  - component: {fileID: 7956662997441100755}
+  - component: {fileID: 4084945443069986836}
   m_Layer: 9
   m_Name: mini_boss_viking
   m_TagString: Enemy
@@ -614,8 +616,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fbf6db10821324882f8833e8fee50e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rateOfFire: 2
-  waitTime: 1
+  rateOfFire: 1
+  waitTime: 2
+  totalShotsPerBurst: 2
   bulletsAmount: 20
   startAngle: 0
   endAngle: 360
@@ -634,12 +637,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   shoot: {fileID: 0}
-  enemyHealth: 3
+  enemyHealth: 5
   enemyCollider: {fileID: 0}
   ladder: {fileID: 0}
   portal: {fileID: 0}
   hitSound: {fileID: 3173257750792531549}
   deathSound: {fileID: 8125996693403395747}
+--- !u!114 &7956662997441100755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2247206093011270241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d418acd50c56c144f96c94627884d381, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPosition: {x: 0, y: 0}
+  movementSpeed: 4
+  nextWaypointDistance: 15
+  chargeDuration: 0
+  waitTime: 0
+  timer: 5
+  targetPlayer: {fileID: 0}
+  players: []
+  followPlayer: 0
+  chargePlayer: 0
+  noWait: 0
+--- !u!114 &4084945443069986836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2247206093011270241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!1 &2596042489817208894
 GameObject:
   m_ObjectHideFlags: 0

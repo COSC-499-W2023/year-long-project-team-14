@@ -7,6 +7,7 @@ public class MiniBossHealthSystem : MonoBehaviour
     public Animator animator;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
+    private EnemyMovement em;
     public FireSprayBullets shoot; 
     public int enemyHealth = 10;
 
@@ -44,6 +45,7 @@ public class MiniBossHealthSystem : MonoBehaviour
         shoot = GetComponent<FireSprayBullets>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         shoot = GetComponent<FireSprayBullets>();
+        em = GetComponent<EnemyMovement>();
         
     }
      // Damage enemy if colliding with bullet
@@ -116,6 +118,7 @@ public class MiniBossHealthSystem : MonoBehaviour
         shoot.firingEnabled = false;
 
         enemyCollider.enabled = false;
+        em.enabled = false;
 
         animator.SetBool("IsWalking", false);
         animator.SetTrigger("Death");
