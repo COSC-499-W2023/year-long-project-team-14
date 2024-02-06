@@ -181,6 +181,7 @@ public class GameMaster : MonoBehaviour
         hs.gameOverMenu.playercount++;
         hs.spriteRenderer.color = new Color(1, 1, 1, 1);
         hs.animator.SetTrigger("isHit");
+        hs.animator.SetBool("IsDead", false);
         hs.isInvic = false;
     }
 
