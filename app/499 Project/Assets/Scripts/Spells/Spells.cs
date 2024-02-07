@@ -12,6 +12,7 @@ public class Spells : MonoBehaviour
     public healthSystem hs;
     public GameObject fireballPrefab;
     public GameObject lightningPrefab;
+    public GameObject seekingOrbPrefab;
     public float yOffset = 11.5f;
 
     void Update()
@@ -44,6 +45,10 @@ public class Spells : MonoBehaviour
             {   
                 LightningSpell();
             }
+            else if(spellName == "SeekingOrb")
+            {   
+                SeekingOrb();
+            }
         }
     }
 
@@ -70,4 +75,29 @@ public class Spells : MonoBehaviour
         }
 
     }
+
+    public void SeekingOrb()
+    {
+        // GameObject orb = Instantiate(seekingOrbPrefab, playerController.gunFollow.position, playerController.playerCenter.transform.rotation);
+        // Rigidbody2D orbRB = orb.GetComponent<Rigidbody2D>();
+        // orbRB.AddForce(-playerController.gunFollow.up * 200 * playerController.bulletForce);
+
+        Quaternion rotation = playerController.playerCenter.transform.rotation * Quaternion.Euler(0, 0, 180);
+
+        GameObject orb = Instantiate(seekingOrbPrefab, playerController.gunFollow.position, rotation);
+        Rigidbody2D orbRB = orb.GetComponent<Rigidbody2D>();
+        orbRB.AddForce(orb.transform.up * 200 * playerController.bulletForce);
+
+        orb = Instantiate(seekingOrbPrefab, playerController.gunFollow.position, rotation * Quaternion.Euler(0, 0, -20));
+        orbRB = orb.GetComponent<Rigidbody2D>();
+        orbRB.AddForce(orb.transform.up * 200 * playerController.bulletForce);
+
+        orb = Instantiate(seekingOrbPrefab, playerController.gunFollow.position, rotation * Quaternion.Euler(0, 0, 20));
+        orbRB = orb.GetComponent<Rigidbody2D>();
+        orbRB.AddForce(orb.transform.up * 200 * playerController.bulletForce);
+
+       
+    }
+
+    
 }
