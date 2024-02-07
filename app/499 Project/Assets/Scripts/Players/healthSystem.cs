@@ -77,7 +77,7 @@ public class healthSystem : MonoBehaviour
     {
         //Play death animation
         animator.SetBool("IsWalking", false);
-        animator.SetTrigger("Death");
+        animator.SetBool("IsDead", true);
 
         //Play death sound
         deathSound.Play();
