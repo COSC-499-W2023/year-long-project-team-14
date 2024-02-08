@@ -85,7 +85,7 @@ public class OrcAttackTest : MonoBehaviour
         enemyAttack.lastShootTime = -10;
 
         //Wait for orc to shoot at player and for particle animation to end
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.5f);
 
         //Search the scene for particles and check that enemy bullet particle game object plays fully and is destroyed from the game scene after animation has ended
         Assert.IsTrue(GameObject.FindGameObjectsWithTag("effect").Length == 0);
@@ -95,7 +95,7 @@ public class OrcAttackTest : MonoBehaviour
         enemyAttack.lastShootTime = -10;
 
         //Wait for orc to shoot at player and for particle animation to end
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2f);
 
         //Search the scene for particles and check that enemy bullet particle game object plays fully and is destroyed from the game scene after animation has ended
         Assert.IsTrue(GameObject.FindGameObjectsWithTag("effect").Length == 0);
@@ -116,7 +116,7 @@ public class OrcAttackTest : MonoBehaviour
         orc.GetComponent<EnemyMovement>().waitTime = 0;
 
         //wait until  that player would take damage
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
 
         //Check that the orc was able to damange player 2
         Assert.IsTrue(healthSystem2.life < 3);
