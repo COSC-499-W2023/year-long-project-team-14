@@ -167,7 +167,8 @@ public class LeaderboardManager : MonoBehaviour
         });
         yield return new WaitWhile(() => done == false);
 
-        FetchHighscores(leaderboardID);
+        if(!unitTest)
+            FetchHighscores(leaderboardID);
     }
 
     public void SaveScore(int score, string leaderboardID) //Saves scores locally
