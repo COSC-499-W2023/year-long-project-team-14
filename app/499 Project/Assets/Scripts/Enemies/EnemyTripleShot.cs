@@ -7,7 +7,7 @@ public class EnemyTripleShot : MonoBehaviour
     public GameObject[] players;
     public GameObject targetPlayer;
     public GameObject bulletPrefab;
-    public float shootInterval = 10;
+    public float shootInterval = 8;
     public float bulletSpeed = 10.0f;
     public float lastShootTime;
    
@@ -43,6 +43,7 @@ public class EnemyTripleShot : MonoBehaviour
 
         //Prevent enemies from shooting at the start of a level
         lastShootTime = 0;
+        shootSound = GetComponent<AudioSource>();
         
     }
 
@@ -117,19 +118,26 @@ public class EnemyTripleShot : MonoBehaviour
            
     }
 
-   public void Shoot(LineRenderer lr) //Shoot a bullet in the direction of the line renderer
+   IEnumerator Shoot(LineRenderer lr) //Shoot a bullet in the direction of the line renderer (its an IEnumerator because of the wait that is needed between bullets)
     {
+        // Reset the shoot timer to delay the next series of shots 
+        lastShootTime = 0;
+
+        //Loop 3 times since youll shoot 3 bullets
         for(int i = 1 ; i <= 3; i++){
+            //Instantiate a bullet in the target direction
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             Vector2 direction = lr.transform.right;
-            bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed * i/2;
+            //Set the velocity and max number of bounces
+            bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
             bullet.GetComponent<EnemyBullet>().bounces = maxReflections;
-            Wait();
+            //A wait between each shot so it appears as if they are shot in a seqeuence
+            //Below plays the sound after each shot
+            shootSound.Play();
+            yield return new WaitForSeconds(0.65f);
         }
+
         
-        //play shoot sound
-        lastShootTime = 0;
-        shootSound.Play();
     }
 
     
@@ -151,7 +159,7 @@ public class EnemyTripleShot : MonoBehaviour
 
                 if(lastShootTime >= shootInterval){
                         
-                       Shoot(lr);
+                    StartCoroutine(Shoot(lr));
                 }
             }
         }
@@ -190,8 +198,4 @@ public class EnemyTripleShot : MonoBehaviour
         lr.transform.rotation = Quaternion.Slerp(lr.transform.rotation, rotation, 1000 * Time.deltaTime);
     }
 
-    IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(1);
-    }
 }
