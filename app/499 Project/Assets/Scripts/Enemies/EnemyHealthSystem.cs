@@ -7,7 +7,8 @@ public class EnemyHealthSystem : MonoBehaviour
     public Animator animator;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
-    public EnemyAttack ea; 
+    public EnemyAttack ea;
+    public EnemyTripleShot et;
     public EnemyMovement enemyMovement; 
     public int enemyHealth = 3;
 
@@ -42,7 +43,11 @@ public class EnemyHealthSystem : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        ea = GetComponent<EnemyAttack>();
+        if(GetComponent<EnemyAttack>() == true){
+            ea = GetComponent<EnemyAttack>();
+        }else if(GetComponent<EnemyTripleShot>() == true){
+            et = GetComponent<EnemyTripleShot>();
+        }
         enemyMovement = GetComponent<EnemyMovement>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         
@@ -114,7 +119,11 @@ public class EnemyHealthSystem : MonoBehaviour
     {
         enemyHealth = -1;
         enemyMovement.enabled = false;
-        ea.enabled = false;
+        if(ea != null){
+            ea.enabled = false;
+        }else if( et != null){
+            et.enabled = false;
+        }
         enemyCollider.enabled = false;
 
         animator.SetBool("IsWalking", false);
