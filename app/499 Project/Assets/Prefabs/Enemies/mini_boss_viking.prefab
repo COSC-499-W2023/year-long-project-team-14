@@ -617,13 +617,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rateOfFire: 1
-  spiralRateOfFire: 8
+  spiralRateOfFire: 10
   waitTime: 2
   totalShotsPerBurst: 2
   bulletsAmount: 20
   startAngle: 0
   endAngle: 360
   firingEnabled: 1
+  totalSpirals: 1
 --- !u!114 &5707318513063649654
 MonoBehaviour:
   m_ObjectHideFlags: 0
