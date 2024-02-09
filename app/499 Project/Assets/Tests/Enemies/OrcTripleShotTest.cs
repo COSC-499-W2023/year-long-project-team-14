@@ -30,10 +30,9 @@ public class OrcTripleShotTest : MonoBehaviour
         //Spawn in a level with a wall in the center
         level = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Levels/LevelTemplate.prefab")) as GameObject;
 
-        //This allows the orc to move and avoid obstacles
         path = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Other/Pathfinder.prefab")) as GameObject;
 
-        //Spawn the orc on the left side of the wall
+        //Spawn the orc on the level
         orc = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemies/Orc_soldier.prefab"), new Vector3(-5, 0, 0), Quaternion.identity) as GameObject;
         enemyAttack = orc.GetComponent<EnemyTripleShot>();
         enemyAttack.bulletSpeed = 9f;
@@ -42,7 +41,7 @@ public class OrcTripleShotTest : MonoBehaviour
         //Restrict the orc from moving
         orc.GetComponent<EnemyMovement>().movementSpeed = 0;
 
-        //Spawn player 1 on the right side of the wall
+        //Spawn player 1 
         player1 = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Players/Mage_player1.prefab"), new Vector3(5, 0, 0), Quaternion.identity) as GameObject;
         healthSystem1 = player1.GetComponent<healthSystem>();
        
@@ -57,7 +56,7 @@ public class OrcTripleShotTest : MonoBehaviour
         //Wait for orc to shoot at player
         yield return new WaitForSeconds(3);
 
-        //Check that the orc was able to shoot off the wall to hit player 1
+        //Check that the first and last bullet hit the player
         Assert.IsTrue(healthSystem1.life < 2);
     }
 
