@@ -135,14 +135,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Orc_soldier (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 8374592486774899049, guid: f7a72d5dbc80e4844b8d38cf929a774c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8374592486774899049, guid: f7a72d5dbc80e4844b8d38cf929a774c, type: 3}
-      propertyPath: rotationSpeed
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8881423548573516546, guid: f7a72d5dbc80e4844b8d38cf929a774c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.41
@@ -183,14 +175,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8374592486774899049, guid: f7a72d5dbc80e4844b8d38cf929a774c, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6988037432058799580, guid: f7a72d5dbc80e4844b8d38cf929a774c, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 1167179824}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7a72d5dbc80e4844b8d38cf929a774c, type: 3}
 --- !u!1001 &91082562
 PrefabInstance:
@@ -588,51 +576,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcdd986f2de65fc4681d45730eb9b2ed, type: 3}
---- !u!120 &460109431 stripped
-LineRenderer:
-  m_CorrespondingSourceObject: {fileID: 6799709459550248674, guid: f7a72d5dbc80e4844b8d38cf929a774c, type: 3}
-  m_PrefabInstance: {fileID: 58202358}
-  m_PrefabAsset: {fileID: 0}
---- !u!120 &672940999 stripped
-LineRenderer:
-  m_CorrespondingSourceObject: {fileID: 3397582192235797022, guid: f7a72d5dbc80e4844b8d38cf929a774c, type: 3}
-  m_PrefabInstance: {fileID: 58202358}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1167179823 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6988037432058799580, guid: f7a72d5dbc80e4844b8d38cf929a774c, type: 3}
-  m_PrefabInstance: {fileID: 58202358}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1167179824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1167179823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 956495c62943b5e4e838883212030450, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players: []
-  targetPlayer: {fileID: 0}
-  bulletPrefab: {fileID: 3646651384316253834, guid: 1bfe49c7730abc141b70578a420c4ce7, type: 3}
-  shootInterval: 3
-  bulletSpeed: 5
-  lastShootTime: 0
-  Points1: []
-  Points2: []
-  Points3: []
-  lineRenderer1: {fileID: 672940999}
-  lineRenderer2: {fileID: 1801476597}
-  lineRenderer3: {fileID: 460109431}
-  LayerDetection:
-    serializedVersion: 2
-    m_Bits: 384
-  maxReflections: 1
-  rotationSpeed: 0
-  shootSound: {fileID: 0}
 --- !u!1001 &1301338063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -751,11 +694,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
---- !u!120 &1801476597 stripped
-LineRenderer:
-  m_CorrespondingSourceObject: {fileID: 4139805784338285291, guid: f7a72d5dbc80e4844b8d38cf929a774c, type: 3}
-  m_PrefabInstance: {fileID: 58202358}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

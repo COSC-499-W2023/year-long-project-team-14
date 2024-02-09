@@ -7,7 +7,7 @@ public class EnemyTripleShot : MonoBehaviour
     public GameObject[] players;
     public GameObject targetPlayer;
     public GameObject bulletPrefab;
-    public float shootInterval = 5;
+    public float shootInterval = 8;
     public float bulletSpeed = 10.0f;
     public float lastShootTime;
    
@@ -43,6 +43,7 @@ public class EnemyTripleShot : MonoBehaviour
 
         //Prevent enemies from shooting at the start of a level
         lastShootTime = 0;
+        shootSound = GetComponent<AudioSource>();
         
     }
 
@@ -133,7 +134,7 @@ public class EnemyTripleShot : MonoBehaviour
             //A wait between each shot so it appears as if they are shot in a seqeuence
             //Below plays the sound after each shot
             shootSound.Play();
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.65f);
         }
 
         
