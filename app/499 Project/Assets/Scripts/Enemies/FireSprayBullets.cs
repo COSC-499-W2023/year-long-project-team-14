@@ -32,11 +32,24 @@ public class FireSprayBullets : MonoBehaviour
     // Start is called before the first frame update
      void Start()
     {
+        StartCoroutine(AlternatingShooting());
         //StartCoroutine(FireBursts());
         //InvokeRepeating("Fire", 0f, 1f / rateOfFire);
         //InvokeRepeating("FireDoubleSpiral", 0f, 1f / spiralRateOfFire);
-        StartCoroutine(FireDoubleSpiral());
+        //StartCoroutine(FireDoubleSpiral());
     }
+
+    private IEnumerator AlternatingShooting()
+    {
+        while (firingEnabled == true) 
+        {
+            yield return new WaitForSeconds(1f); // delay between attacks
+            yield return StartCoroutine(FireSingleBurst());
+            yield return new WaitForSeconds(1f); // delay between attacks
+            yield return StartCoroutine(FireDoubleSpiral());
+        }
+    }
+
     private IEnumerator FireBursts() // Continuous bursts mode
     {
         yield return new WaitForSeconds(1f); // 1 second delay before first shots fired
@@ -98,8 +111,10 @@ public class FireSprayBullets : MonoBehaviour
 
         for (int i = 0; i < 360 * totalSpirals; i+= 10)
         {
-            for (int j = 0; j <= 1; j++)
+            if(firingEnabled == true)
             {
+                for (int j = 0; j <= 1; j++)
+                {
                 GameObject bul = BulletSprayPool.Instance.GetBullet();
 
                 float bulDirX = transform.position.x + Mathf.Sin(((spiralAngle + 180f * j) * Mathf.PI) / 180f);
@@ -114,10 +129,9 @@ public class FireSprayBullets : MonoBehaviour
                 bul.GetComponent<SprayBullet>().SetMoveDirection(bulDir);
 
                 spiralAngle += 10f; 
-                yield return new WaitForSeconds(1f / spiralRateOfFire);
+                yield return new WaitForSeconds(1f / spiralRateOfFire);                
+                }
             }
-
         }
     }
-
 }
