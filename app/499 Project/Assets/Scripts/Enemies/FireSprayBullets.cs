@@ -5,7 +5,11 @@ using UnityEngine;
 public class FireSprayBullets : MonoBehaviour
 {
     [SerializeField]
-    private float rateOfFire = 10f; // Set the rate of fire
+    private float rateOfFire = 1f; // Set the rate of fire for circular burst
+    
+    [SerializeField]
+    private float spiralRateOfFire = 8f; // Set the rate of fire for spiral shooting
+
 
     [SerializeField]
     private float waitTime = 3f; // Sets pause delay between bursts
@@ -21,13 +25,31 @@ public class FireSprayBullets : MonoBehaviour
     private Vector2 bulletMoveDirection;
 
     public bool firingEnabled = true;
+    
+    [SerializeField]
+    int totalSpirals = 1; 
 
     // Start is called before the first frame update
      void Start()
     {
-        StartCoroutine(FireBursts());
+        StartCoroutine(AlternatingShooting());
+        //StartCoroutine(FireBursts());
         //InvokeRepeating("Fire", 0f, 1f / rateOfFire);
+        //InvokeRepeating("FireDoubleSpiral", 0f, 1f / spiralRateOfFire);
+        //StartCoroutine(FireDoubleSpiral());
     }
+
+    private IEnumerator AlternatingShooting()
+    {
+        while (firingEnabled == true) 
+        {
+            yield return new WaitForSeconds(1f); // delay between attacks
+            yield return StartCoroutine(FireSingleBurst());
+            yield return new WaitForSeconds(1f); // delay between attacks
+            yield return StartCoroutine(FireDoubleSpiral());
+        }
+    }
+
     private IEnumerator FireBursts() // Continuous bursts mode
     {
         yield return new WaitForSeconds(1f); // 1 second delay before first shots fired
@@ -80,6 +102,36 @@ public class FireSprayBullets : MonoBehaviour
             bul.GetComponent<SprayBullet>().SetMoveDirection(bulDir);
 
             angle += angleStep;
+        }
+    }
+
+    private IEnumerator FireDoubleSpiral()
+    {
+        float spiralAngle = 0f;
+
+        for (int i = 0; i < 360 * totalSpirals; i+= 10)
+        {
+            if(firingEnabled == true)
+            {
+                for (int j = 0; j <= 1; j++)
+                {
+                GameObject bul = BulletSprayPool.Instance.GetBullet();
+
+                float bulDirX = transform.position.x + Mathf.Sin(((spiralAngle + 180f * j) * Mathf.PI) / 180f);
+                float bulDirY = transform.position.y + Mathf.Cos(((spiralAngle + 180f * j) * Mathf.PI) / 180f);
+
+                Vector3 bulMoveVector = new Vector3(bulDirX, bulDirY, 0f);
+                Vector2 bulDir = (bulMoveVector - transform.position).normalized; 
+                
+                bul.transform.position = transform.position;
+                bul.transform.rotation = transform.rotation;
+                bul.SetActive(true);
+                bul.GetComponent<SprayBullet>().SetMoveDirection(bulDir);
+
+                spiralAngle += 10f; 
+                yield return new WaitForSeconds(1f / spiralRateOfFire);                
+                }
+            }
         }
     }
 }
