@@ -10,6 +10,9 @@ public class FireSprayBullets : MonoBehaviour
     [SerializeField]
     private float spiralRateOfFire = 8f; // Set the rate of fire for spiral shooting
 
+    [SerializeField]
+    private float fireAtPlayerRateOfFire = 4f; // Set the rate of fire for firing at player
+
 
     [SerializeField]
     private float waitTime = 3f; // Sets pause delay between bursts
@@ -44,9 +47,22 @@ public class FireSprayBullets : MonoBehaviour
         while (firingEnabled == true) 
         {
             yield return new WaitForSeconds(1f); // delay between attacks
-            yield return StartCoroutine(FireSingleBurst());
-            yield return new WaitForSeconds(1f); // delay between attacks
-            yield return StartCoroutine(FireDoubleSpiral());
+            int rand = Random.Range(0, 3);
+            if(rand == 0)
+            {
+                yield return StartCoroutine(FireSingleBurst());
+                yield return new WaitForSeconds(1f); // delay between attacks
+            }
+            else if(rand == 1)
+            {
+                yield return StartCoroutine(FireDoubleSpiral());
+                yield return new WaitForSeconds(1f); // delay between attacks
+            }
+            else if(rand == 2)
+            {
+                yield return StartCoroutine(FireAtPlayer());
+                yield return new WaitForSeconds(1f); // delay between attacks
+            }
         }
     }
 
@@ -131,6 +147,44 @@ public class FireSprayBullets : MonoBehaviour
                 spiralAngle += 10f; 
                 yield return new WaitForSeconds(1f / spiralRateOfFire);                
                 }
+            }
+        }
+    }
+
+    private IEnumerator FireAtPlayer()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        GameObject targetPlayer = null;
+
+        if(players.Length > 1)
+        {
+            if(Random.Range(0, 2) == 0)
+                targetPlayer = players[0];
+            else
+                targetPlayer = players[1];
+        }
+        else if(players.Length == 1)
+            targetPlayer = players[0];
+        
+
+        for (int i = 0; i < 40; i++)
+        {
+            if(firingEnabled == true)
+            {
+                GameObject bul = BulletSprayPool.Instance.GetBullet();
+
+                float rand = Random.Range(-25, 25);
+
+                Quaternion rotation = Quaternion.Euler(0, 0, rand);
+
+                Vector3 bulMoveVector = (rotation * (gameObject.transform.position - targetPlayer.transform.position)).normalized;
+                    
+                bul.transform.position = transform.position;
+                bul.transform.rotation = transform.rotation;
+                bul.SetActive(true);
+                bul.GetComponent<SprayBullet>().SetMoveDirection(-bulMoveVector);
+
+                yield return new WaitForSeconds(1f / fireAtPlayerRateOfFire);                
             }
         }
     }
