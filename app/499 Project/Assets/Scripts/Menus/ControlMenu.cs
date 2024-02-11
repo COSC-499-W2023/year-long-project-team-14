@@ -28,11 +28,16 @@ public class ControlMenu : MonoBehaviour
     public void Back()
     {
         controlMenu = false;
-        pauseMenu.pauseMenu = true;
         controlMenuUI.SetActive(false); 
         pauseMenuUI.SetActive(true); 
         gameMaster.SelectButton(pauseMenu.resumeButton);
+        StartCoroutine(WaitForBack());
+    }
+
+    public IEnumerator WaitForBack()
+    {
+        yield return null;
+        pauseMenu.pauseMenu = true;
     }
 }
-
 

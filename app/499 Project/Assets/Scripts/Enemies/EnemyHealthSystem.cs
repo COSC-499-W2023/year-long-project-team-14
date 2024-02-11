@@ -163,7 +163,7 @@ public class EnemyHealthSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         Color currentColor = spriteRenderer.color; // Set the transparency (alpha) value
-        currentColor.a = 0.5f; // Adjust the alpha value as needed
+        currentColor.a = 0.2f; // Adjust the alpha value as needed
         spriteRenderer.color = currentColor;
     }
 
