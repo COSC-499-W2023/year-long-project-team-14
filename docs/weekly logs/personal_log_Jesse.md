@@ -14,7 +14,6 @@ My goals this week were to:
 * Add mini boss health system
 * Add additional mini boss shooting patterns
 * Add additional fields that can be modified to change difficulty of the mini-boss in a future update (total # of bullets, bullet speed, delay between shots, etc.)
-* Add third shooting pattern
 * Add randomized attack selector so that there is variety each time the mini-boss is fought by the player
 
 ### Which features were yours in the project plan for this milestone?
