@@ -32,6 +32,9 @@ public class GameOverMenu : MonoBehaviour
         GameIsOver = true;
         gameOverMenu = true;
 
+        if(gameMaster != null)
+            gameMaster.stopTimer = true;
+
         yield return new WaitForSecondsRealtime(1f);
 
          if (fadeAnim != null)

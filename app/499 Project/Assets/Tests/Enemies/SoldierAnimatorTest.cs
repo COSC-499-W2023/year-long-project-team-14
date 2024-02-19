@@ -54,7 +54,7 @@ public class SoldierAnimatorTest : MonoBehaviour
         soldierController.waitTime = 0;
 
         // Wait for 1 second to ensure orc has started walking
-        yield return new WaitForSeconds(1.0f); 
+        yield return new WaitForSeconds(0.5f); 
 
         // Check if the correct animation x float is stored for playing the corresponding animation from Animator tree
         Assert.IsTrue(animator.GetFloat("X") < 0); 
@@ -71,7 +71,7 @@ public class SoldierAnimatorTest : MonoBehaviour
         soldierController.waitTime = 0;
 
         // Wait for 1 second to ensure orc has started walking
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
 
         // Check if the correct animation x float is stored for playing the corresponding animation from Animator tree
         Assert.IsTrue(animator.GetFloat("X") > 0); 

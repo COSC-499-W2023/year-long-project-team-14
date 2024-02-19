@@ -1,4 +1,42 @@
 # Personal Log - Justin McKendry
+## Week 18
+- Start Date: Feburary 4th
+- End Date: Feburary 11th
+
+### Tasks I worked on:
+We are out of LFS for this month so no screenshot here for now. 
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Finish development of the triple shot orc and the unit test for it
+* Ensure there are no conflicts with other unit test and the orc is fully functional
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Develop the triple shot orc 
+  
+### Among these tasks, which have you completed/in progress in the last week?
+The triple shot enemy is now finished and it shoots 3 conseqitive shots as we wanted it to.
+There are no screenshots here this week as we have ran out of git LFS for the month.
+
+## Week 17
+- Start Date: January 29th
+- End Date: Feburary 4th
+
+### Tasks I worked on:
+![](screenshots/tasks_justin_week_17.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Ensure we had proper level layouts and questions for peer testing
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Develop the triple shot enemy 
+  
+### Among these tasks, which have you completed/in progress in the last week?
+The triple shot enemy is in progress, it currently shoots 3 shots at varying speeds but we would like it to shoot 3 conseqective shots. 
+
 ## Week 16
 - Start Date: January 22nd
 - End Date: January 28th

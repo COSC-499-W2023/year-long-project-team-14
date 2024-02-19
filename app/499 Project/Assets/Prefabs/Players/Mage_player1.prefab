@@ -178,6 +178,7 @@ MonoBehaviour:
   bulletForce: 7
   moveSpeed: 7
   bulletBounces: 1
+  player1: 1
   aimingInWall: 0
   bulletPrefab: {fileID: 5755921796930191897, guid: 3d996469d34a57d48b5cda7756cb6536, type: 3}
   playerInput: {fileID: 3476007376617294521}
@@ -416,8 +417,8 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5c381588-9e67-4fe2-bd59-49c065139e6c
     m_ActionName: UI/Back[/Keyboard/escape,/XInputControllerWindows/buttonEast]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -772,6 +773,7 @@ MonoBehaviour:
   hs: {fileID: 182166649963881013}
   fireballPrefab: {fileID: 1345593741101300040, guid: 18f719aa43c40ed4d9679fe79f234e7f, type: 3}
   lightningPrefab: {fileID: 4084521033630141133, guid: 9414e171bb10ea848b96be1cb0081fab, type: 3}
+  seekingOrbPrefab: {fileID: 1287584697726197767, guid: b5dce37d418318a48bf4101d9ddb1d4d, type: 3}
   yOffset: 2.5
 --- !u!1 &1552418433214647782
 GameObject:

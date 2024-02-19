@@ -86,7 +86,8 @@ public class LeaderboardManager : MonoBehaviour
     {
         done = false;
 
-        PlayerPrefs.SetString("DisplayName", name); 
+        if((placeholderText.text != "Enter Name" && placeholderText.text.Length >= 3) || displayNameText.text.Length >= 4)
+            PlayerPrefs.SetString("DisplayName", name); 
 
         StartCoroutine(UpdatePlayerName());
     }
@@ -167,7 +168,8 @@ public class LeaderboardManager : MonoBehaviour
         });
         yield return new WaitWhile(() => done == false);
 
-        FetchHighscores(leaderboardID);
+        if(!unitTest)
+            FetchHighscores(leaderboardID);
     }
 
     public void SaveScore(int score, string leaderboardID) //Saves scores locally

@@ -129,7 +129,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.35, y: 1.35}
   m_EdgeRadius: 0
 --- !u!114 &2652700196406471793
 MonoBehaviour:
@@ -149,3 +149,4 @@ MonoBehaviour:
   ladderSprite: {fileID: 21300000, guid: aa22c9b1c600b954b8b30861088de863, type: 3}
   trapDoorSprite: {fileID: 21300000, guid: 74b45ec4fe61b9a44a75e8e28d9d2a7a, type: 3}
   allEnemies: []
+  ladderArrow: {fileID: 0}

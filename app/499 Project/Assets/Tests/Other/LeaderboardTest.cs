@@ -50,6 +50,10 @@ public class LeaderboardTest : MonoBehaviour
     [UnityTest]
     public IEnumerator SubmitScoreTest()
     {
+        //Save previous name and set new name for test
+        string name = PlayerPrefs.GetString("DisplayName");
+        PlayerPrefs.SetString("DisplayName", "UnitTest");
+
         //Load into game scene
         SceneManager.LoadScene("GameScene");
         yield return null;
@@ -59,14 +63,12 @@ public class LeaderboardTest : MonoBehaviour
         leaderboardManager.unitTest = true;
         yield return null;
 
-
         //Wait while connecting to LootLocker
-        leaderboardManager.StartSession();
         yield return new WaitWhile(() => leaderboardManager.done == false);
+        yield return new WaitForSeconds(2);
 
         //Check that their are no errors when connecting
         Assert.IsTrue(leaderboardManager.connected);
-
         
         //Upload score to leaderboard
         leaderboardManager.Submit();
@@ -80,6 +82,9 @@ public class LeaderboardTest : MonoBehaviour
 
         //Reset score to 0
         PlayerPrefs.SetInt("UnitTest", 0);
+
+        //Reset name
+        PlayerPrefs.SetString("DisplayName", name);
     }
 
     [UnityTest]
@@ -95,7 +100,6 @@ public class LeaderboardTest : MonoBehaviour
 
 
         //Wait while connecting to LootLocker
-        leaderboardManager.StartSession();
         yield return new WaitWhile(() => leaderboardManager.done == false);
 
         //Check that their are no errors when connecting
@@ -104,7 +108,6 @@ public class LeaderboardTest : MonoBehaviour
 
         //Retrieve scores from leaderboard
         leaderboardManager.FetchHighscores("UnitTest");
-        yield return new WaitForSeconds(3);
         yield return new WaitWhile(() => leaderboardManager.done == false);
 
         //Check that their are no errors when retrieving a score 

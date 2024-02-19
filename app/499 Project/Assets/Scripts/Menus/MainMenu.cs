@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject eventSystem;
     public GameObject mainMenuObject;
     public GameObject optionsMenuObject;
     public GameObject playerMenuObject;
@@ -40,6 +41,7 @@ public class MainMenu : MonoBehaviour
         if(Application.platform == RuntimePlatform.WebGLPlayer)
             quitButton.SetActive(false);
             
+        StartCoroutine(SetUpControls());
         StartCoroutine(SelectMenuButton());
         SelectButton(playButton);
     }
@@ -199,22 +201,45 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(SelectMenuButton());
     }
 
+    //Call back function depending on which menu you are in
     public void Back(InputAction.CallbackContext context)
     {
         if(context.performed)
         {
-            // if(playerMenu)
-            //     PlayerBackButton();
-            // else if(optionsMenu)
-            //     OptionsMenuBackButton();
-            // else if(leaderboardMenu)
-            //     LeaderboardBackButton();
-            // else if(controlMenu)
-            //     ControlMenuBackButton();
-            // else return;
+            if(playerMenu)
+                PlayerBackButton();
+            else if(optionsMenu)
+                OptionsMenuBackButton();
+            else if(leaderboardMenu)
+                LeaderboardBackButton();
+            else if(controlMenu)
+                ControlMenuBackButton();
+            else return;
             
-            // buttonClick.Play();
+            buttonClick.Play();
         }
+    }
+
+    //Allows the user to navigate the menu using all input devices
+    public IEnumerator SetUpControls()
+    {
+        Gamepad[] gamepads = Gamepad.all.ToArray();
+
+        if(gamepads.Length > 1)
+        {
+            eventSystem.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Keyboard.current, Mouse.current, gamepads[0], gamepads[1]);
+        }
+        else if(gamepads.Length > 0)
+        {
+            eventSystem.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Keyboard.current, Mouse.current, gamepads[0]);
+        }
+        else if(gamepads.Length == 0)
+        {
+            eventSystem.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Keyboard.current, Mouse.current);
+        }
+
+        yield return new WaitForSeconds(1);
+        StartCoroutine(SetUpControls());
     }
 }
 
