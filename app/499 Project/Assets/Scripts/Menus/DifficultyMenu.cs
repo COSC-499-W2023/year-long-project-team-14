@@ -55,6 +55,12 @@ public class DifficultyMenu : MonoBehaviour
         SceneManager.LoadScene("Game");
     }
 
+    public void Madness()
+    {
+        PlayerPrefs.SetInt("difficulty", 3);
+        SceneManager.LoadScene("Game");
+    }
+
     public void SelectButton(GameObject button)
     {
         EventSystem.current.SetSelectedGameObject(null);
