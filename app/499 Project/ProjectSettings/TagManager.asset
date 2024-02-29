@@ -3,7 +3,29 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Player_bullet
+  - Wall
+  - Canvas
+  - BrokenWall
+  - Canvas
+  - Player1Spawn
+  - Player2Spawn
+  - Orc_cyan
+  - Enemy
+  - EnemyBullet
+  - GameMaster
+  - Portal
+  - Ladder
+  - LeaderboardManager
+  - Breakable
+  - MovingWall
+  - FireballExplosion
+  - Fireball
+  - effect
+  - dashEffect
+  - lightning
+  - SeekingOrb
   layers:
   - Default
   - TransparentFX
@@ -11,15 +33,15 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PlayerBullet
+  - Player
+  - Obstacle
+  - Enemy
+  - EnemyBullet
+  - prompt
+  - Fireball
+  - NoCollide
+  - BrokenWall
   - 
   - 
   - 
@@ -40,4 +62,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: New Layer 1
+    uniqueID: 2019806113
     locked: 0

@@ -37,7 +37,6 @@ My features this week were to:
 ### Among these tasks, which have you completed/in progress in the last week?
 The triple shot enemy is finished and shoots as intended, with three consequtive shots all with the same speed and direction.
 
-
 ## Week 17
 - Start Date: January 29th
 - End Date: Feburary 4th
