@@ -15,7 +15,7 @@ My features this week were to:
 * Develop the spike envrionment object.
   
 ### Among these tasks, which have you completed/in progress in the last week?
-There is no work for this week as the git LFS issue did not get solved until partly through week 20 (term 2 week 7)
+I attempted to complete the spikes while still having the issue with git LFS however found I was very limited in my progress. With this being the case the spikes are still in progress.
 
 
 ## Week 18 (term 2 week 5)
