@@ -1,5 +1,33 @@
 # Personal Log - Jesse Lazzari
 
+## Term 2 Week 5
+- Start Date: February 5
+- End Date: February 11
+  
+### Tasks I worked on:
+![](screenshots/t2week5_tasks.PNG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Meet with team brainstorm ideas for future quality of life additions to the game (modifications to controller behaviour)
+* Add mini boss movement
+* Add mini boss health system
+* Add additional mini boss shooting patterns
+* Add additional fields that can be modified to change difficulty of the mini-boss in a future update (total # of bullets, bullet speed, delay between shots, etc.)
+* Add randomized attack selector so that there is variety each time the mini-boss is fought by the player
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Finalize mini-boss and associated scripts
+* Meet with team and write team log
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed most features for the mini-boss
+* In progress tasks are adding a healthbar so that the player(s) know their progress as they are fighting the mini-boss
+* Additional unit testing for mini-boss
+
+***
+
 ## Term 2 Week 4
 - Start Date: January 29
 - End Date: February 4
