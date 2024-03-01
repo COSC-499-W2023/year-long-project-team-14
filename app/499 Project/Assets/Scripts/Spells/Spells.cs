@@ -56,7 +56,7 @@ public class Spells : MonoBehaviour
     {
         GameObject fireball = Instantiate(fireballPrefab, playerController.gunFollow.position, playerController.playerCenter.transform.rotation);
         Rigidbody2D fireballRB = fireball.GetComponent<Rigidbody2D>();
-        fireballRB.AddForce(-playerController.gunFollow.up * 50 * playerController.bulletForce);
+        fireballRB.AddForce(-playerController.gunFollow.up * 25 * playerController.bulletForce);
     }
 
     public void LightningSpell()
@@ -86,15 +86,15 @@ public class Spells : MonoBehaviour
 
         GameObject orb = Instantiate(seekingOrbPrefab, playerController.gunFollow.position, rotation);
         Rigidbody2D orbRB = orb.GetComponent<Rigidbody2D>();
-        orbRB.AddForce(orb.transform.up * 200 * playerController.bulletForce);
+        orbRB.AddForce(orb.transform.up * 80 * playerController.bulletForce);
 
         orb = Instantiate(seekingOrbPrefab, playerController.gunFollow.position, rotation * Quaternion.Euler(0, 0, -20));
         orbRB = orb.GetComponent<Rigidbody2D>();
-        orbRB.AddForce(orb.transform.up * 200 * playerController.bulletForce);
+        orbRB.AddForce(orb.transform.up * 80 * playerController.bulletForce);
 
         orb = Instantiate(seekingOrbPrefab, playerController.gunFollow.position, rotation * Quaternion.Euler(0, 0, 20));
         orbRB = orb.GetComponent<Rigidbody2D>();
-        orbRB.AddForce(orb.transform.up * 200 * playerController.bulletForce);
+        orbRB.AddForce(orb.transform.up * 80 * playerController.bulletForce);
 
        
     }
