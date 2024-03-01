@@ -132,16 +132,18 @@ public class LeaderboardManager : MonoBehaviour
         
         done = false;
 
-        if(gameMaster.difficulty == 1){ leaderboardID = "Easy"; difficultyButtonText.text = "EASY";}
-        else if(gameMaster.difficulty == 2){ leaderboardID = "Medium"; difficultyButtonText.text = "MEDIUM";}
-        else if(gameMaster.difficulty == 3){ leaderboardID = "Hard"; difficultyButtonText.text = "HARD";}
-        else if(gameMaster.difficulty == 4){ leaderboardID = "Extreme"; difficultyButtonText.text = "EXTREME";}
+        int diff = PlayerPrefs.GetInt("difficulty");
+
+        if(diff == 1){ leaderboardID = "Easy"; difficultyButtonText.text = "EASY";}
+        else if(diff == 2){ leaderboardID = "Medium"; difficultyButtonText.text = "MEDIUM";}
+        else if(diff == 3){ leaderboardID = "Hard"; difficultyButtonText.text = "HARD";}
+        else if(diff == 4){ leaderboardID = "Extreme"; difficultyButtonText.text = "MADNESS";}
 
         if(gameMaster.playerCount == 1){ leaderboardID += "1"; playerButtonText.text = "1 PLAYER";}
         else{ leaderboardID += "2"; playerButtonText.text = "2 PLAYER";}
         leaderboardID += "Player";
 
-        difficulty = gameMaster.difficulty;
+        difficulty = diff;
         players = gameMaster.playerCount;
 
         if(unitTest)
@@ -340,7 +342,7 @@ public class LeaderboardManager : MonoBehaviour
         else if(difficulty == 3)
         {
             difficulty++;
-            difficultyButtonText.text = "EXTREME";
+            difficultyButtonText.text = "MADNESS";
         }
         else if(difficulty == 4)
         {
