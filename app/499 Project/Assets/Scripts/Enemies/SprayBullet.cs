@@ -21,6 +21,19 @@ public class SprayBullet : MonoBehaviour
     void Start()
     {
         moveSpeed = 3f;
+
+        //Get difficulty
+        int diff = PlayerPrefs.GetInt("difficulty");
+        
+        //Set bullet speed
+        if(diff == 1) 
+            moveSpeed *= 1f;
+        else if(diff == 2)
+            moveSpeed *= 1.33f;
+        else if(diff == 3)
+            moveSpeed *= 1.67f;
+        else if(diff == 4)
+            moveSpeed *= 2f;
     }
 
     // Update is called once per frame
