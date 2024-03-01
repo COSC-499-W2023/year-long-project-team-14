@@ -42,7 +42,7 @@ public class EnemyTripleShot : MonoBehaviour
         Points3 = new List<Vector3>();
 
         //Prevent enemies from shooting at the start of a level
-        lastShootTime = 0;
+        lastShootTime = Time.time + Random.Range(-shootInterval/2, shootInterval/2);
         shootSound = GetComponent<AudioSource>();
         
     }
@@ -125,6 +125,10 @@ public class EnemyTripleShot : MonoBehaviour
 
         //Loop 3 times since youll shoot 3 bullets
         for(int i = 1 ; i <= 3; i++){
+
+            AimAtPlayer(lineRenderer1);
+            AimAtPlayer(lineRenderer2);
+
             //Instantiate a bullet in the target direction
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             Vector2 direction = lr.transform.right;
@@ -134,7 +138,7 @@ public class EnemyTripleShot : MonoBehaviour
             //A wait between each shot so it appears as if they are shot in a seqeuence
             //Below plays the sound after each shot
             shootSound.Play();
-            yield return new WaitForSeconds(0.65f);
+            yield return new WaitForSeconds(0.5f);
         }
 
         

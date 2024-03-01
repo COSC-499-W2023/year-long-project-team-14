@@ -20,7 +20,7 @@ public class SprayBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moveSpeed = 5f;
+        moveSpeed = 3f;
     }
 
     // Update is called once per frame

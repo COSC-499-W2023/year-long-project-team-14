@@ -37,7 +37,7 @@ public class EnemyAttack : MonoBehaviour
         Points3 = new List<Vector3>();
 
         //Prevent enemies from shooting at the start of a level
-        lastShootTime = Time.time + Random.Range(-1f, 1f);
+        lastShootTime = Time.time + Random.Range(-shootInterval/2, shootInterval/2);
     }
 
     void Update()

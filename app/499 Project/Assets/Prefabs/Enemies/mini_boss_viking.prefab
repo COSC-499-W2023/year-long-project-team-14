@@ -616,11 +616,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fbf6db10821324882f8833e8fee50e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rateOfFire: 1
-  spiralRateOfFire: 10
-  fireAtPlayerRateOfFire: 8
+  rateOfFire: 2
+  spiralRateOfFire: 0.1
+  fireAtPlayerRateOfFire: 0.25
   waitTime: 2
-  totalShotsPerBurst: 2
+  totalShotsPerBurst: 3
   bulletsAmount: 20
   startAngle: 0
   endAngle: 360
@@ -640,7 +640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   shoot: {fileID: 0}
-  enemyHealth: 5
+  enemyHealth: 60
   enemyCollider: {fileID: 0}
   ladder: {fileID: 0}
   portal: {fileID: 0}
@@ -659,7 +659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0}
-  movementSpeed: 4
+  movementSpeed: 5
   nextWaypointDistance: 15
   chargeDuration: 0
   waitTime: 0

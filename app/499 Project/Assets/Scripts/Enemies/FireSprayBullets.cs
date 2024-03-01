@@ -76,7 +76,7 @@ public class FireSprayBullets : MonoBehaviour
             {
                 Fire(); // Fire a burst
 
-                yield return new WaitForSeconds(1f / rateOfFire); // rate of fire between shots of a single burst
+                yield return new WaitForSeconds(rateOfFire); // rate of fire between shots of a single burst
             }
 
              yield return new WaitForSeconds(waitTime); // Wait for the specified time, the break time between burst of 3
@@ -91,7 +91,7 @@ public class FireSprayBullets : MonoBehaviour
             {
                 Fire(); // Fire a burst
 
-                yield return new WaitForSeconds(1f / rateOfFire); // rate of fire between shots of a single burst
+                yield return new WaitForSeconds(rateOfFire); // rate of fire between shots of a single burst
             }
         }
     }
@@ -145,7 +145,7 @@ public class FireSprayBullets : MonoBehaviour
                 bul.GetComponent<SprayBullet>().SetMoveDirection(bulDir);
 
                 spiralAngle += 10f; 
-                yield return new WaitForSeconds(1f / spiralRateOfFire);                
+                yield return new WaitForSeconds(spiralRateOfFire);                
                 }
             }
         }
@@ -173,7 +173,7 @@ public class FireSprayBullets : MonoBehaviour
             {
                 GameObject bul = BulletSprayPool.Instance.GetBullet();
 
-                float rand = Random.Range(-25, 25);
+                float rand = Random.Range(-45, 45);
 
                 Quaternion rotation = Quaternion.Euler(0, 0, rand);
 
@@ -184,7 +184,7 @@ public class FireSprayBullets : MonoBehaviour
                 bul.SetActive(true);
                 bul.GetComponent<SprayBullet>().SetMoveDirection(-bulMoveVector);
 
-                yield return new WaitForSeconds(1f / fireAtPlayerRateOfFire);                
+                yield return new WaitForSeconds(fireAtPlayerRateOfFire);                
             }
         }
     }
