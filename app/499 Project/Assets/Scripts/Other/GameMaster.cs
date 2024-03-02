@@ -12,7 +12,6 @@ public class GameMaster : MonoBehaviour
     public float gameTime = 0;
     public Animator fadeAnim;
     public int playerCount = 1;
-    public int difficulty = 1;
     public int player1ControlScheme = 0;
     public int player2ControlScheme = 1;
 

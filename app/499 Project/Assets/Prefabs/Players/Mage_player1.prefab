@@ -172,11 +172,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCharge: 1
-  attackChargeSpeed: 1
+  attackChargeSpeed: 2
   attackChargeMax: 3
   attackCost: 1
-  bulletForce: 7
-  moveSpeed: 7
+  bulletForce: 12
+  moveSpeed: 8
   bulletBounces: 1
   player1: 1
   aimingInWall: 0
@@ -195,8 +195,8 @@ MonoBehaviour:
   unitTest2: 0
   shootSound: {fileID: 1950902560532192884}
   buttonClick: {fileID: 0}
-  dashCooldown: 1
-  dashCDT: 1
+  dashCooldown: 0.5
+  dashCDT: 0.5
   dashPrefab: {fileID: 3772763697755507536, guid: d606806970e9fa147ac01f4c0b7b3be1, type: 3}
   interactable: {fileID: 0}
 --- !u!95 &2945665864706798238
@@ -766,8 +766,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e25061756d70d4f809c184106d804a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellName: SeekingOrb
-  spellCooldown: 1
+  spellName: Fireball
+  spellCooldown: 10
   cooldownTimer: 0
   playerController: {fileID: 4452037770434438324}
   hs: {fileID: 182166649963881013}
