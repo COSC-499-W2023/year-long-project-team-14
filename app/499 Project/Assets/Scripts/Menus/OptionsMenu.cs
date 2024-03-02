@@ -28,18 +28,13 @@ public class OptionsMenu : MonoBehaviour
         eventSystem = GameObject.Find("EventSystem");
         optionsMenuObject = GameObject.Find("OptionsMenu");
         pauseMenuObject = GameObject.Find("PauseMenu");
-        mainMenuObject = GameObject.Find("MainMenu");
         musicSlider = GameObject.Find("MusicSlider").GetComponent<Slider>();
-        sfxSlider = GameObject.Find("SFXSlider").GetComponent<Slider>();
         voiceSlider = GameObject.Find("VoiceSlider").GetComponent<Slider>();
-        masterSlider = GameObject.Find("MasterSlider").GetComponent<Slider>();
     }
 
     public void OnEnable() {
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
-        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
         voiceSlider.value = PlayerPrefs.GetFloat("VoiceVolume", 0.5f);
-        masterSlider.value = PlayerPrefs.GetFloat("MasterVolume", 0.5f);
     }
 
     public void Update() {
@@ -59,6 +54,11 @@ public class OptionsMenu : MonoBehaviour
     public void SetMusicVolume(float volume) {
         PlayerPrefs.SetFloat("MusicVolume", volume);
         AudioManager.instance.SetMusicVolume(volume);
+    }
+
+    public void SetVoiceVolume(float volume) {
+        PlayerPrefs.SetFloat("VoiceVolume", volume);
+        AudioManager.instance.SetVoiceVolume(volume);
     }
 
 
