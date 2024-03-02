@@ -30,7 +30,7 @@ public class healthSystem : MonoBehaviour
     // Damage player if colliding with enemy or bullet
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet") || collision.gameObject.CompareTag("Spike")){
+        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet") ){
             takeDamage();
         }
     }
@@ -39,6 +39,14 @@ public class healthSystem : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Enemy")){
+            takeDamage();
+            
+        }
+    }
+
+    //Used to check collision with the spikes while still allowing the player to walk through them.
+    private void OnTriggerStay2D(Collider2D collision){
+        if(collision.gameObject.CompareTag("Spike")){
             takeDamage();
         }
     }
