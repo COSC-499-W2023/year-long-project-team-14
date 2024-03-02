@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Audio;
+
 
 
 
@@ -53,12 +55,12 @@ public class OptionsMenu : MonoBehaviour
 
     public void SetMusicVolume(float volume) {
         PlayerPrefs.SetFloat("MusicVolume", volume);
-        AudioManager.instance.SetMusicVolume(volume);
+       // AudioManager.instance.SetMusicVolume(volume);
     }
 
     public void SetVoiceVolume(float volume) {
         PlayerPrefs.SetFloat("VoiceVolume", volume);
-        AudioManager.instance.SetVoiceVolume(volume);
+     // AudioManager.instance.SetVoiceVolume(volume);
     }
 
 
