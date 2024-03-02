@@ -29,7 +29,7 @@ public class OrcMovementTest : MonoBehaviour
         //Spawn and set up the orc
         orc = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemies/Orc_cyan.prefab"), new Vector3(-10, 0, 0), Quaternion.identity) as GameObject;
         enemyMovement = orc.GetComponent<EnemyMovement>();
-        enemyMovement.movementSpeed = 25;
+        enemyMovement.movementSpeed = 30;
        
     }
 
@@ -47,7 +47,7 @@ public class OrcMovementTest : MonoBehaviour
         enemyMovement.waitTime = 0;
 
         //Wait for the orc to move through the level to get to the target position
-        yield return new WaitUntil(() => orc.transform.position.x >= enemyMovement.targetPosition.x - 1);
+        yield return new WaitUntil(() => orc.transform.position.x > 9);
 
         //Check if the the orc reached the target position 
         Assert.IsTrue(orc.transform.position.x >= 9); 

@@ -11,18 +11,21 @@ public class MainMenu : MonoBehaviour
     public GameObject mainMenuObject;
     public GameObject optionsMenuObject;
     public GameObject playerMenuObject;
+    public GameObject difficultyMenuObject;
     public GameObject leaderboardMenuObject;
     public GameObject controlMenuObject;
 
     public GameObject playButton;
     public GameObject player1Button;
     public GameObject player2Button;
+    public GameObject easyButton;
     public GameObject musicSlider;
     public GameObject leaderboardBackButton;
     public GameObject controlsBackButton;
 
     public bool mainMenu = true;
     public bool playerMenu = false;
+    public bool difficultyMenu = false;
     public bool optionsMenu = false;
     public bool leaderboardMenu = false;
     public bool controlMenu = true;
@@ -60,14 +63,23 @@ public class MainMenu : MonoBehaviour
     public void OnePlayer()
     {
         PlayerPrefs.SetInt("playerCount", 1);
-        StartCoroutine(PlayGame());
+        playerMenu = false;
+        difficultyMenu = true;
+        playerMenuObject.SetActive(false);
+        difficultyMenuObject.SetActive(true);
+        SelectButton(easyButton);
     }
 
     //Start the game with 2 players
     public void TwoPlayer()
     {
         PlayerPrefs.SetInt("playerCount", 2);
-        StartCoroutine(PlayGame());
+        playerMenu = false;
+        difficultyMenu = true;
+        playerMenuObject.SetActive(false);
+        difficultyMenuObject.SetActive(true);
+        SelectButton(easyButton);
+        
     }
 
     //Set main menu active and deactivate player menu
@@ -78,6 +90,39 @@ public class MainMenu : MonoBehaviour
         mainMenuObject.SetActive(true);
         playerMenuObject.SetActive(false);
         SelectButton(playButton);
+    }
+
+    public void Easy()
+    {
+        PlayerPrefs.SetInt("difficulty", 1);
+        StartCoroutine(PlayGame());
+    }
+
+    public void Medium()
+    {
+        PlayerPrefs.SetInt("difficulty", 2);
+        StartCoroutine(PlayGame());
+    }
+
+    public void Hard()
+    {
+        PlayerPrefs.SetInt("difficulty", 3);
+        StartCoroutine(PlayGame());
+    }
+
+    public void Madness()
+    {
+        PlayerPrefs.SetInt("difficulty", 4);
+        StartCoroutine(PlayGame());
+    }
+
+    public void DifficultyBackButton()
+    {
+        difficultyMenu = false;
+        playerMenu = true;
+        difficultyMenuObject.SetActive(false);
+        playerMenuObject.SetActive(true);
+        SelectButton(player1Button);
     }
 
     //Load into the game scene
@@ -179,6 +224,10 @@ public class MainMenu : MonoBehaviour
                 {
                     EventSystem.current.SetSelectedGameObject(player1Button);
                 }
+                else if(difficultyMenu)
+                {
+                    EventSystem.current.SetSelectedGameObject(easyButton);
+                }
                 else if(optionsMenu)
                 {
                     EventSystem.current.SetSelectedGameObject(musicSlider);
@@ -208,6 +257,8 @@ public class MainMenu : MonoBehaviour
         {
             if(playerMenu)
                 PlayerBackButton();
+            else if(difficultyMenu)
+                DifficultyBackButton();
             else if(optionsMenu)
                 OptionsMenuBackButton();
             else if(leaderboardMenu)
