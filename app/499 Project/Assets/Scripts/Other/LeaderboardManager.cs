@@ -228,27 +228,31 @@ public class LeaderboardManager : MonoBehaviour
                         LootLockerLeaderboardMember[] members = response.items;
                         string name = "";
 
-                        for(int i = 0; i < members.Length; i++)
+                        if(members != null)
                         {
-                            if(members[i].member_id != "")
+                            for(int i = 0; i < members.Length; i++)
                             {
-                                name = members[i].member_id + "";
+                                if(members[i].member_id != "")
+                                {
+                                    name = members[i].member_id + "";
+                                }
+                                else
+                                {
+                                    name = members[i].member_id + "";
+                                }
+                                DisplayHighscore(i, members[i].rank, name, members[i].member_id, members[i].score);
                             }
-                            else
-                            {
-                                name = members[i].member_id + "";
-                            }
-                            DisplayHighscore(i, members[i].rank, name, members[i].member_id, members[i].score);
-                        }
-                        done = true;
-                        connected = true;
 
-                        int blankSpots = 10 - members.Length;
-                        for(int i = 0; i < blankSpots; i++)
-                        {
-                            playerRanks[9 - i].text = " ";
-                            playerNames[9 - i].text = " ";
-                            playerScores[9 - i].text = " ";
+                            done = true;
+                            connected = true;
+
+                            int blankSpots = 10 - members.Length;
+                            for(int i = 0; i < blankSpots; i++)
+                            {
+                                playerRanks[9 - i].text = " ";
+                                playerNames[9 - i].text = " ";
+                                playerScores[9 - i].text = " ";
+                            }
                         }
                     }
                     else
