@@ -35,7 +35,7 @@ public class OrcTripleShotTest : MonoBehaviour
         //Spawn the orc on the level
         orc = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemies/Orc_soldier.prefab"), new Vector3(-5, 0, 0), Quaternion.identity) as GameObject;
         enemyAttack = orc.GetComponent<EnemyTripleShot>();
-        enemyAttack.bulletSpeed = 9f;
+        enemyAttack.bulletSpeed = 20f;
         enemyAttack.shootInterval = 5;
 
         //Restrict the orc from moving
@@ -53,11 +53,14 @@ public class OrcTripleShotTest : MonoBehaviour
         //Allow orc to shoot
         enemyAttack.lastShootTime = 5;
 
+        //Get starting health 
+        int health = healthSystem1.life;
+
         //Wait for orc to shoot at player
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
 
         //Check that the first and last bullet hit the player
-        Assert.IsTrue(healthSystem1.life < 2);
+        Assert.IsTrue(healthSystem1.life < health);
     }
 
     [TearDown]

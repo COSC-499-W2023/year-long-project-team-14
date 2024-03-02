@@ -50,6 +50,7 @@ public class FireballPickup : MonoBehaviour
         {
             playerIsOver = false;
             player.GetComponent<Spells>().spellName = "Fireball";
+            player.GetComponent<Spells>().spellCooldown = 10;
             Destroy(gameObject);
         }
     }
