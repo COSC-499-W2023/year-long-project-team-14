@@ -56,4 +56,10 @@ public class OptionsMenu : MonoBehaviour
         eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(GameObject.Find("OptionsButton"));
     }
 
+    public void SetMusicVolume(float volume) {
+        PlayerPrefs.SetFloat("MusicVolume", volume);
+        AudioManager.instance.SetMusicVolume(volume);
+    }
+
+
 }
