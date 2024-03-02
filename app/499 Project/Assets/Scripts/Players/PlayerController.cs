@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool unitTest2 = false;
 
     [SerializeField] private AudioSource shootSound;
+    [SerializeField] private AudioSource dashSound;
     public AudioSource buttonClick;
 
     //dash cooldown
@@ -245,7 +246,7 @@ public class PlayerController : MonoBehaviour
     public void Dash(){
         //If the dash is off cooldown, the player is alive and the game is not paused.
         if(dashCDT >= dashCooldown && !hs.dead && !PauseMenu.GameIsPaused){
-
+            dashSound.Play();
             GameObject dashSmoke = Instantiate(dashPrefab, transform.position, transform.rotation);
             //Add force in the direction the player is moving
             rb.AddForce(GetMoveDirection()*50000);
