@@ -31,6 +31,11 @@ public class OptionsMenu : MonoBehaviour
         StartCoroutine(SelectMenuButton());
     }
 
-   
+    public void BackToPauseMenu() {
+        optionsMenu = false;
+        optionsMenuObject.SetActive(false); 
+        pauseMenuObject.SetActive(true);
+        StartCoroutine(SelectMenuButton());
+    }
 
 }
