@@ -42,4 +42,18 @@ public class OptionsMenu : MonoBehaviour
         masterSlider.value = PlayerPrefs.GetFloat("MasterVolume", 0.5f);
     }
 
+    public void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (optionsMenuObject.activeSelf) {
+                CloseOptionsMenu();
+            }
+        }
+    }
+
+    public void CloseOptionsMenu() {
+        optionsMenuObject.SetActive(false);
+        pauseMenuObject.SetActive(true);
+        eventSystem.GetComponent<EventSystem>().SetSelectedGameObject(GameObject.Find("OptionsButton"));
+    }
+
 }
