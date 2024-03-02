@@ -1,4 +1,25 @@
 # Personal Log - Gabriel Mercier
+## Week 5 - T2
+- Start Date: Febuary 5
+- End Date: Febuary 11
+  
+### Tasks I worked on:
+![](screenshots/t2Week5_peerEval_Gabriel.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Make sure my previous features stay up do date with newer additions
+* Stay on top of my tasks
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Create collectables for all spell abilities
+* Create text prompts for said collectables
+* update sound FX
+* Unit Tests
+### Among these tasks, which have you completed/in progress in the last week?
+I completed all my tasks. Unfortunately we having an issue with git LFS, so my last pushes weren't possible and screenshots are N/A
+
 ## Week 4 - T2
 - Start Date: January 29
 - End Date: Febuary 4

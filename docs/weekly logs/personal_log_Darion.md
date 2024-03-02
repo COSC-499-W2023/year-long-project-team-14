@@ -1,5 +1,26 @@
 # Personal Log - Darion Pescada
 
+## Term 2 Week 5
+- Start Date: February 5
+- End Date: February 11
+
+### Tasks I worked on:
+![](screenshots/term2_tasks_darion_week5.png)
+  
+### Recap on your week's goals
+This week, my goals were to meet with the team to discuss the peer review feedback as well as our future plans, and to add a new spell to the game.
+
+### Which features were yours in the project plan for this milestone?
+- implemented the seeking orb spell which shoots out 3 orbs that chase after enemies and deal damage when colliding with them
+- created unit tests for the seeking orb spell
+- fixed a few bugs and made a couple small changes such as making enemies more transparent when dead, increasing the size of the ladder and portal hit boxes, fixing the navigation from the controls menu to the pause menu, and fixing the change name function so players cannot submit a score to a leaderboard without entering a name
+- Additionally, I worked with Jesse to add a third attack to the mini boss which shoots tons of bullets in the players direction
+
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed all of my tasks for this week.
+
+***
+
 ## Term 2 Week 4
 - Start Date: January 29
 - End Date: February 4
