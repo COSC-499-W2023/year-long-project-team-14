@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 12, y: 4}
+  m_AnchoredPosition: {x: 2.6666667, y: 1.3333333}
   m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2874590014485999382
@@ -61,7 +61,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 9
   m_TargetDisplay: 0
 --- !u!114 &8480710336990135005
 MonoBehaviour:
@@ -590,7 +590,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bobbingAmount: 0.1
   bobbingSpeed: 0.5
-  prompt: {fileID: 0}
+  prompt: {fileID: 6380690297856505059}
 --- !u!1 &9139704548101425437
 GameObject:
   m_ObjectHideFlags: 0
