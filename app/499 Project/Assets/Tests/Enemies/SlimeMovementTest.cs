@@ -45,11 +45,14 @@ public class SlimeMovementTest : MonoBehaviour
     [UnityTest]
     public IEnumerator SlimeMoveTest()
     {
+        //Get starting health
+        int health = healthScript.life;
+        
         //Wait for the slime to move through the level to get to the player
         yield return new WaitUntil(() => slime.transform.position.x >= 9.5);
 
         //Check if the the slime reached the player and damaged them
-        Assert.IsTrue(healthScript.life == 2); 
+        Assert.IsTrue(healthScript.life == health - 1); 
     }
 
     [UnityTearDown]

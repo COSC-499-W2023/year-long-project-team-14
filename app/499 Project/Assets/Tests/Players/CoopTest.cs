@@ -13,6 +13,7 @@ public class CoopTest
     private GameObject playButton;
     private GameObject player1Button;
     private GameObject player2Button;
+    private GameObject easyButton;
 
     [UnitySetUp]
     public IEnumerator Setup()
@@ -27,6 +28,7 @@ public class CoopTest
         playerMenuObject = mainMenuScript.playerMenuObject;
         player1Button = mainMenuScript.player1Button;
         player2Button = mainMenuScript.player2Button;
+        easyButton = mainMenuScript.easyButton;
     }
 
     [UnityTest]
@@ -35,6 +37,7 @@ public class CoopTest
         //Set the player selection menu active and call the 1 player function
         playerMenuObject.SetActive(true);
         ExecuteEvents.Execute(player1Button, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
+        ExecuteEvents.Execute(easyButton, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
 
         //Wait and check that the game scene is loaded and check that only 1 player spawned in
         yield return new WaitForSeconds(0.6f);
@@ -49,6 +52,7 @@ public class CoopTest
         //Set the player selection menu active and call the 2 player function
         playerMenuObject.SetActive(true);
         ExecuteEvents.Execute(player2Button, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
+        ExecuteEvents.Execute(easyButton, new BaseEventData(EventSystem.current), ExecuteEvents.submitHandler);
 
         //Wait and check that the game scene is loaded and check that 2 players spawned in
         yield return new WaitForSeconds(0.6f);

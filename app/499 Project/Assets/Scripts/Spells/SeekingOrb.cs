@@ -87,7 +87,15 @@ public class SeekingOrb : MonoBehaviour
     {   
         if(collision.gameObject.CompareTag("Enemy"))
         {     
-            collision.gameObject.GetComponent<EnemyHealthSystem>().takeDamage(2);
+            EnemyHealthSystem enemyHealthSystem = collision.gameObject.GetComponent<EnemyHealthSystem>();
+            if(enemyHealthSystem != null)
+                enemyHealthSystem.takeDamage(2);
+            else
+            {
+                MiniBossHealthSystem miniBossHealthSystem = collision.gameObject.GetComponent<MiniBossHealthSystem>();
+                if(miniBossHealthSystem != null)
+                    miniBossHealthSystem.takeDamage(2);
+            }
             Explode();
         }
     }
@@ -100,8 +108,21 @@ public class SeekingOrb : MonoBehaviour
 
         for(int i = 0; i < enemies.Length; i++)
         {
-            if(enemies[i].GetComponent<EnemyHealthSystem>().enemyHealth > 0)
-                aliveEnemies.Add(enemies[i]);
+            EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
+            if(enemyHealthSystem != null)
+            {
+                if(enemyHealthSystem.enemyHealth > 0)
+                    aliveEnemies.Add(enemies[i]);
+            }
+            else
+            {
+                MiniBossHealthSystem miniBossHealthSystem = enemies[i].GetComponent<MiniBossHealthSystem>();
+                if(miniBossHealthSystem != null)
+                {
+                    if(miniBossHealthSystem.enemyHealth > 0)
+                        aliveEnemies.Add(enemies[i]);
+                }
+            }
         }
 
         if(aliveEnemies.Count > 0)
@@ -119,12 +140,29 @@ public class SeekingOrb : MonoBehaviour
     //Sets the pathfinding target position to the target enemies position
     public void SetTargetPosition() 
     {
-        if(target.GetComponent<EnemyHealthSystem>().enemyHealth > 0)
+        EnemyHealthSystem enemyHealthSystem = target.GetComponent<EnemyHealthSystem>();
+        if(enemyHealthSystem != null)
         {
-            targetPosition.x = target.transform.position.x;
-            targetPosition.y = target.transform.position.y;
+            if(enemyHealthSystem.enemyHealth > 0)
+            {
+                targetPosition.x = target.transform.position.x;
+                targetPosition.y = target.transform.position.y;
+            }
+            else if(target != null) Explode();
         }
-        else if(target != null) Explode();
+        else
+        {
+            MiniBossHealthSystem miniBossHealthSystem = target.GetComponent<MiniBossHealthSystem>();
+            if(miniBossHealthSystem != null)
+            {
+                if(miniBossHealthSystem.enemyHealth > 0)
+                {
+                    targetPosition.x = target.transform.position.x;
+                    targetPosition.y = target.transform.position.y;
+                }
+                else if(target != null) Explode();
+            }
+        }
     }
 
     public void Explode()

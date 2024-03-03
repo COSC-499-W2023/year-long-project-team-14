@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0}
-  movementSpeed: 4
+  movementSpeed: 3
   nextWaypointDistance: 1
   chargeDuration: 0
   waitTime: 0
@@ -84,7 +84,7 @@ MonoBehaviour:
   targetPlayer: {fileID: 0}
   bulletPrefab: {fileID: 3646651384316253834, guid: 1bfe49c7730abc141b70578a420c4ce7, type: 3}
   shootInterval: 3
-  bulletSpeed: 5
+  bulletSpeed: 3
   lastShootTime: 0
   Points1: []
   Points2: []
@@ -275,8 +275,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   ea: {fileID: 0}
+  et: {fileID: 0}
   enemyMovement: {fileID: 0}
-  enemyHealth: 3
+  enemyHealth: 5
   enemyCollider: {fileID: 0}
   ladder: {fileID: 0}
   portal: {fileID: 0}

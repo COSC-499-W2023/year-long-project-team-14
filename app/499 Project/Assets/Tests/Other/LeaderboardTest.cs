@@ -14,7 +14,7 @@ public class LeaderboardTest : MonoBehaviour
     public IEnumerator DisplayNameTest()
     {
         //Load into menu
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("GameScene");
         yield return null;
 
         //Get LeaderboardManager

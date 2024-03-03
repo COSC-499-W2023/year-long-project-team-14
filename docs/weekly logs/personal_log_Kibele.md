@@ -1,4 +1,29 @@
 # Personal Log - Kibele Sebnem Yildirim
+## Week 18 - Term 2
+- Start Date: February 5
+- End Date: February 12
+
+### Tasks I worked on:
+![](screenshots/kibele_week18.png)
+
+### Recap on your week's goals
+- My goals this week were to:
+* finalize the difficulty menu for our game
+* Discuss with my team about the design
+* Review my teammates' code and fixes on the game
+* Write test for difficulty menu's code
+
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to finalize the difficulty menu for our game, discuss with my team about the design, review my teammates' code and fixes on the game, and write test for difficulty menu's code.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week. 
+
+Here are the screenshots of my work on our Difficulty Menu in Unity this week:
+![](screenshots/kibeleweek18.png)
+
+
 ## Week 17 - Term 2
 - Start Date: January 29
 - End Date: February 5

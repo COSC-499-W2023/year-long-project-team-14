@@ -41,6 +41,7 @@ public class SeekingOrbTest
         //Spawn and set up the enemy
         enemy = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemies/Orc_bonk.prefab"), new Vector3(10, 0, 0), Quaternion.identity) as GameObject;
         enemyHealthSystem = enemy.GetComponent<EnemyHealthSystem>();
+        enemyHealthSystem.enemyHealth = 5;
         enemyMovement = enemy.GetComponent<EnemyMovement>();
         enemyMovement.movementSpeed = 0;
     }

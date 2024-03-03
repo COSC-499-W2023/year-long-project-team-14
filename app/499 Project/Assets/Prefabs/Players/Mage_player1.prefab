@@ -172,11 +172,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCharge: 1
-  attackChargeSpeed: 1
+  attackChargeSpeed: 2
   attackChargeMax: 3
   attackCost: 1
-  bulletForce: 7
-  moveSpeed: 7
+  bulletForce: 12
+  moveSpeed: 8
   bulletBounces: 1
   player1: 1
   aimingInWall: 0
@@ -195,8 +195,8 @@ MonoBehaviour:
   unitTest2: 0
   shootSound: {fileID: 1950902560532192884}
   buttonClick: {fileID: 0}
-  dashCooldown: 1
-  dashCDT: 1
+  dashCooldown: 0.5
+  dashCDT: 0.5
   dashPrefab: {fileID: 3772763697755507536, guid: d606806970e9fa147ac01f4c0b7b3be1, type: 3}
   interactable: {fileID: 0}
 --- !u!95 &2945665864706798238
@@ -767,7 +767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellName: Fireball
-  spellCooldown: 1
+  spellCooldown: 10
   cooldownTimer: 0
   playerController: {fileID: 4452037770434438324}
   hs: {fileID: 182166649963881013}
@@ -836,6 +836,7 @@ MonoBehaviour:
   image: {fileID: 4305409814652023011}
   fireSprite: {fileID: -1659854389, guid: 71f101bd904da3a4eb89ffd963ac31b7, type: 3}
   lightningSprite: {fileID: 339508314, guid: fa739449f8985d74aa6afb409a7beb86, type: 3}
+  SeekingSprite: {fileID: -1788315041, guid: 052d2d598db74c242b7b861ed291772f, type: 3}
 --- !u!114 &4305409814652023011
 MonoBehaviour:
   m_ObjectHideFlags: 0

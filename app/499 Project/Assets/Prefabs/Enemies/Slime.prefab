@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: -988510893411580385}
   - component: {fileID: 7929480340372743868}
   - component: {fileID: -6834315974396019378}
-  m_Layer: 9
+  m_Layer: 15
   m_Name: Slime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0}
-  movementSpeed: 4
+  movementSpeed: 3
   nextWaypointDistance: 1
   chargeDuration: 0
   waitTime: 0
@@ -549,7 +549,7 @@ MonoBehaviour:
   ea: {fileID: 0}
   et: {fileID: 0}
   enemyMovement: {fileID: 0}
-  enemyHealth: 3
+  enemyHealth: 5
   enemyCollider: {fileID: 0}
   ladder: {fileID: 0}
   portal: {fileID: 0}

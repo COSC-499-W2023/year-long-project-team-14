@@ -1,23 +1,41 @@
 # Personal Log - Justin McKendry
-## Week 18
-- Start Date: Feburary 4th
-- End Date: Feburary 11th
+
+## Week 19 (term 2 week 6)
+- Start Date: Feburary 12th 
+- End Date: Feburary 18th
 
 ### Tasks I worked on:
-We are out of LFS for this month so no screenshot here for now. 
+![](screenshots/tasks_justin_week_19.png)
   
 ### Recap on your week's goals
 My goals this week were to: 
-* Finish development of the triple shot orc and the unit test for it
-* Ensure there are no conflicts with other unit test and the orc is fully functional
+* Solve our groups issue with git LFS
 
 ### Which features were yours in the project plan for this milestone?
 My features this week were to:
-* Develop the triple shot orc 
+* Develop the spike envrionment object.
   
 ### Among these tasks, which have you completed/in progress in the last week?
-The triple shot enemy is now finished and it shoots 3 conseqitive shots as we wanted it to.
-There are no screenshots here this week as we have ran out of git LFS for the month.
+I attempted to complete the spikes while still having the issue with git LFS however found I was very limited in my progress. With this being the case the spikes are still in progress.
+
+
+## Week 18 (term 2 week 5)
+- Start Date: Feburary 5th 
+- End Date: Feburary 11th
+
+### Tasks I worked on:
+![](screenshots/tasks_justin_week_18.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Finish the triple shot enemy 
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Develop the triple shot enemy 
+  
+### Among these tasks, which have you completed/in progress in the last week?
+The triple shot enemy is finished and shoots as intended, with three consequtive shots all with the same speed and direction.
 
 ## Week 17
 - Start Date: January 29th
