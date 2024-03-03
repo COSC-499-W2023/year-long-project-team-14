@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireballPickup : MonoBehaviour
+public class SeekingOrbPickup : MonoBehaviour
 {
     private bool playerIsOver = false;
     GameObject player;
@@ -34,7 +34,7 @@ public class FireballPickup : MonoBehaviour
             playerIsOver = true;
             player = other.gameObject;
             string cd = "cooldown: " + player.GetComponent<Spells>().spellCooldown;
-            if (!prompt.isDisplayed) prompt.SetUp("Fireball", cd);
+            if (!prompt.isDisplayed) prompt.SetUp("Seeking Orb", cd);
         }
     }
 
@@ -54,8 +54,7 @@ public class FireballPickup : MonoBehaviour
         if (playerIsOver)
         {
             playerIsOver = false;
-            player.GetComponent<Spells>().spellName = "Fireball";
-            player.GetComponent<Spells>().spellCooldown = 10;
+            player.GetComponent<Spells>().spellName = "SeekingOrb";
             Destroy(gameObject);
         }
     }
