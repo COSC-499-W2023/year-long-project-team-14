@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MiniBossHealthSystem : MonoBehaviour
 {
@@ -14,12 +15,16 @@ public class MiniBossHealthSystem : MonoBehaviour
     public CircleCollider2D enemyCollider;
     public Ladder ladder;
     public Portal portal;
+    public Image healthBar;
+    public float healthAmount;
 
     [SerializeField] private AudioSource hitSound;
     [SerializeField] private AudioSource deathSound;
 
     private void Start()
     {
+        healthAmount = enemyHealth;
+
         // Add the enemy to the list of allEnemies when it's instantiated
         GameObject port = GameObject.FindWithTag("Portal");
         if (port != null)
@@ -75,6 +80,7 @@ public class MiniBossHealthSystem : MonoBehaviour
 
             if (enemyHealth <= 0)
             {
+                healthBar.fillAmount = 0;
                 Die();
             }
             else
@@ -84,6 +90,9 @@ public class MiniBossHealthSystem : MonoBehaviour
 
                 //play hit sound
                 hitSound.Play();
+
+                //update boss healthbar
+                healthBar.fillAmount =  enemyHealth / healthAmount;
             }
         }
     }
@@ -97,6 +106,7 @@ public class MiniBossHealthSystem : MonoBehaviour
 
             if (enemyHealth <= 0)
             {
+                healthBar.fillAmount = 0;
                 Die();
             }
             else
@@ -106,6 +116,10 @@ public class MiniBossHealthSystem : MonoBehaviour
 
                 //play hit sound
                 hitSound.Play();
+
+                //update boss healthbar
+                healthBar.fillAmount =  enemyHealth / healthAmount;
+
             }
         }
     }

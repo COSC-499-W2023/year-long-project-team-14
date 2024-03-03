@@ -291,6 +291,10 @@ public class PlayerController : MonoBehaviour
             {
                 interactable.GetComponent<FireballPickup>().Interact();
             }
+            else if (tag == "SeekingOrb")
+            {
+                interactable.GetComponent<SeekingOrbPickup>().Interact();
+            }
         }
     }
 
