@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FireSprayBullets : MonoBehaviour
-{
+{    
     [SerializeField]
     private float rateOfFire = 1f; // Set the rate of fire for circular burst
     
@@ -150,14 +150,11 @@ public class FireSprayBullets : MonoBehaviour
 
     private IEnumerator FireSingleBurst() 
     {
-        if(firingEnabled)
+        for (int burstCount = 0; burstCount < totalShotsPerBurst; burstCount++)
         {
-            for (int burstCount = 0; burstCount < totalShotsPerBurst; burstCount++)
-            {
-                Fire(); // Fire a burst
+            Fire(); // Fire a burst
 
-                yield return new WaitForSeconds(rateOfFire); // rate of fire between shots of a single burst
-            }
+            yield return new WaitForSeconds(rateOfFire); // rate of fire between shots of a single burst
         }
     }
 
@@ -167,22 +164,25 @@ public class FireSprayBullets : MonoBehaviour
         float angleStep = (endAngle - startAngle) / bulletsAmount;
         float angle = startAngle;
 
-        for (int i = 0; i < bulletsAmount + 1; i++)
+        if(firingEnabled)
         {
-            GameObject bul = BulletSprayPool.Instance.GetBullet();
+            for (int i = 0; i < bulletsAmount + 1; i++)
+            {
+                GameObject bul = BulletSprayPool.Instance.GetBullet();
 
-            float bulDirX = transform.position.x + Mathf.Sin((angle * Mathf.PI) / 180f);
-            float bulDirY = transform.position.y + Mathf.Cos((angle * Mathf.PI) / 180f);
+                float bulDirX = transform.position.x + Mathf.Sin((angle * Mathf.PI) / 180f);
+                float bulDirY = transform.position.y + Mathf.Cos((angle * Mathf.PI) / 180f);
 
-            Vector3 bulMoveVector = new Vector3(bulDirX, bulDirY, 0f);
-            Vector2 bulDir = (bulMoveVector - transform.position).normalized; 
-            
-            bul.transform.position = transform.position;
-            bul.transform.rotation = transform.rotation;
-            bul.SetActive(true);
-            bul.GetComponent<SprayBullet>().SetMoveDirection(bulDir);
+                Vector3 bulMoveVector = new Vector3(bulDirX, bulDirY, 0f);
+                Vector2 bulDir = (bulMoveVector - transform.position).normalized; 
+                
+                bul.transform.position = transform.position;
+                bul.transform.rotation = transform.rotation;
+                bul.SetActive(true);
+                bul.GetComponent<SprayBullet>().SetMoveDirection(bulDir);
 
-            angle += angleStep;
+                angle += angleStep;
+            }
         }
     }
 
@@ -196,21 +196,21 @@ public class FireSprayBullets : MonoBehaviour
             {
                 for (int j = 0; j <= 1; j++)
                 {
-                GameObject bul = BulletSprayPool.Instance.GetBullet();
+                    GameObject bul = BulletSprayPool.Instance.GetBullet();
 
-                float bulDirX = transform.position.x + Mathf.Sin(((spiralAngle + 180f * j) * Mathf.PI) / 180f);
-                float bulDirY = transform.position.y + Mathf.Cos(((spiralAngle + 180f * j) * Mathf.PI) / 180f);
+                    float bulDirX = transform.position.x + Mathf.Sin(((spiralAngle + 180f * j) * Mathf.PI) / 180f);
+                    float bulDirY = transform.position.y + Mathf.Cos(((spiralAngle + 180f * j) * Mathf.PI) / 180f);
 
-                Vector3 bulMoveVector = new Vector3(bulDirX, bulDirY, 0f);
-                Vector2 bulDir = (bulMoveVector - transform.position).normalized; 
-                
-                bul.transform.position = transform.position;
-                bul.transform.rotation = transform.rotation;
-                bul.SetActive(true);
-                bul.GetComponent<SprayBullet>().SetMoveDirection(bulDir);
+                    Vector3 bulMoveVector = new Vector3(bulDirX, bulDirY, 0f);
+                    Vector2 bulDir = (bulMoveVector - transform.position).normalized; 
+                    
+                    bul.transform.position = transform.position;
+                    bul.transform.rotation = transform.rotation;
+                    bul.SetActive(true);
+                    bul.GetComponent<SprayBullet>().SetMoveDirection(bulDir);
 
-                spiralAngle += spiralAngleIncrease; 
-                yield return new WaitForSeconds(spiralRateOfFire);                
+                    spiralAngle += spiralAngleIncrease; 
+                    yield return new WaitForSeconds(spiralRateOfFire);                
                 }
             }
         }
