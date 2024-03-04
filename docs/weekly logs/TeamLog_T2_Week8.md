@@ -19,7 +19,7 @@
 - Add pop-ups which appear when player approaches items in the item shop
 
 ## Burnup Chart
-![](screenshots/week8t2_burnup_chart.PNG)
+![](screenshots/t2week8_burnup.PNG)
 
 ## Network Graph
 ![](screenshots/networkgraph_t2_week8.png)
