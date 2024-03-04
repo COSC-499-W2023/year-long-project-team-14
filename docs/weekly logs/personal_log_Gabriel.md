@@ -1,4 +1,26 @@
 # Personal Log - Gabriel Mercier
+## Week 8 - T2
+- Start Date: Febuary 26
+- End Date: March 3
+  
+### Tasks I worked on:
+![](screenshots/t2Week8_peerEval_Gabriel.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Make suure we're on the same page for peer testing
+* Stay on top of my tasks
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* item shop
+* sound effects update
+* peer testing tasklist/intro
+
+### Among these tasks, which have you completed/in progress in the last week?
+I completed all my tasks.
+
+***
 ## Week 5 - T2
 - Start Date: Febuary 5
 - End Date: Febuary 11
@@ -20,6 +42,7 @@ My features this week were to:
 ### Among these tasks, which have you completed/in progress in the last week?
 I completed all my tasks. Unfortunately we having an issue with git LFS, so my last pushes weren't possible and screenshots are N/A
 
+***
 ## Week 4 - T2
 - Start Date: January 29
 - End Date: Febuary 4
