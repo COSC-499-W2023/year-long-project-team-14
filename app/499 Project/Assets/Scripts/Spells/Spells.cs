@@ -13,6 +13,7 @@ public class Spells : MonoBehaviour
     public GameObject fireballPrefab;
     public GameObject lightningPrefab;
     public GameObject seekingOrbPrefab;
+    public GameObject chadPrefab;
     public float yOffset = 11.5f;
 
     [SerializeField] private AudioSource fireballSound;
@@ -52,6 +53,10 @@ public class Spells : MonoBehaviour
             else if(spellName == "SeekingOrb")
             {   
                 SeekingOrb();
+            }
+            else if (spellName == "SummonChad")
+            {
+                SummonChad();
             }
         }
     }
@@ -105,5 +110,24 @@ public class Spells : MonoBehaviour
        
     }
 
-    
+    public void SummonChad()
+    {
+        //chadSound.Play();
+        GameObject chad = Instantiate(chadPrefab, playerController.gunFollow.position, Quaternion.identity);
+        //kill Chad if he does not die after 20 seconds
+        Invoke("KillChad", 20f);
+
+    }
+
+    void KillChad()
+    {
+        GameObject chad = GameObject.FindGameObjectWithTag("Chad");
+        // Check if chad exists and has a health system
+        if (chad != null)
+        {
+            healthSystem chadHealth = chad.GetComponent<healthSystem>();
+            chadHealth.Die();
+        }
+    }
+
 }

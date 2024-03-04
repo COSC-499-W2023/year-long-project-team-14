@@ -188,17 +188,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 21372215535025271, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 881379806320011560, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
       propertyPath: m_Name
       value: Mage_player1
       objectReference: {fileID: 0}
-    - target: {fileID: 4452037770434438324, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 4335837073719164080, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
+      propertyPath: spellName
+      value: SummonChad
       objectReference: {fileID: 0}
     - target: {fileID: 9020650352874436745, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -599,10 +595,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chad
       objectReference: {fileID: 0}
-    - target: {fileID: 268852858001884278, guid: 87c0e3250bb6bd54fbf05cb8653bde2e, type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 5755921796930191897, guid: 0627c6b426e36a2419a5c88695dfeafc, type: 3}
     - target: {fileID: 2590450452474010059, guid: 87c0e3250bb6bd54fbf05cb8653bde2e, type: 3}
       propertyPath: playerController
       value: 

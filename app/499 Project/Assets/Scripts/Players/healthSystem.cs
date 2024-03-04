@@ -83,7 +83,7 @@ public class healthSystem : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
         //Play death animation
         animator.SetBool("IsWalking", false);

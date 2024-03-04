@@ -455,6 +455,7 @@ MonoBehaviour:
   isInvic: 0
   hitSound: {fileID: 5617919102717672389}
   deathSound: {fileID: 2466968929111969126}
+  ChadAttack: chadAttack
 --- !u!114 &5323379100632877089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -779,6 +780,7 @@ MonoBehaviour:
   fireballPrefab: {fileID: 1345593741101300040, guid: 18f719aa43c40ed4d9679fe79f234e7f, type: 3}
   lightningPrefab: {fileID: 4084521033630141133, guid: 9414e171bb10ea848b96be1cb0081fab, type: 3}
   seekingOrbPrefab: {fileID: 1287584697726197767, guid: b5dce37d418318a48bf4101d9ddb1d4d, type: 3}
+  chadPrefab: {fileID: 47225787850154555, guid: 87c0e3250bb6bd54fbf05cb8653bde2e, type: 3}
   yOffset: 2.5
   fireballSound: {fileID: 6020226581851858952}
   lightningSound: {fileID: 5829597694115131600}
