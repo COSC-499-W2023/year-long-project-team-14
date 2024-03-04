@@ -89,7 +89,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 9
-  m_Sprite: {fileID: 385569629, guid: f8c9172c798198048836a9d37fa88d8c, type: 3}
+  m_Sprite: {fileID: 540428970, guid: cbe08d7f95794f44781eb9e3c2662502, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -172,7 +172,7 @@ Animator:
   m_GameObject: {fileID: 47225787850154555}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1635ce16df5c7ff419f6e57f7c582fbb, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3e479ba8fddb25844a93957b2f359abe, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -580,6 +580,7 @@ MonoBehaviour:
   isInvic: 0
   hitSound: {fileID: 506454921404844893}
   deathSound: {fileID: 4143684547295427126}
+  ChadAttack: chadAttack
 --- !u!114 &1955199670846603571
 MonoBehaviour:
   m_ObjectHideFlags: 0
