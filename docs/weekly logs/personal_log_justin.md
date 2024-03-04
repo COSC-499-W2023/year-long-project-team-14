@@ -1,5 +1,24 @@
 # Personal Log - Justin McKendry
 
+## Week 20 (term 2 week 8)
+- Start Date: Feburary 26th 
+- End Date: March 3rd
+
+### Tasks I worked on:
+![](screenshots/tasks_justin_week_20.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Complete the spikes feature
+* Ensure our group's preparedness for the peer testing 2 session.
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Develop the spike envrionment object.
+  
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed the spikes feature and collaborated with my group members to ensure our lists of tasks, questionnaire and game was up to date for the peer testing.
+
 ## Week 19 (term 2 week 6)
 - Start Date: Feburary 12th 
 - End Date: Feburary 18th
