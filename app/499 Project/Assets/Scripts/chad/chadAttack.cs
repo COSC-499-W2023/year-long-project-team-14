@@ -153,7 +153,7 @@ public class chadAttack : MonoBehaviour
                 else
                     Points.Add(hitData.centroid);
             }
-            else if(hitData.collider.CompareTag("Enemy")) //If raycast hits player, shoot in that direction
+            else if(hitData.collider.CompareTag("Enemy")) //If raycast hits enemy, shoot in that direction
             {
                 Points.Add(hitData.centroid);
 

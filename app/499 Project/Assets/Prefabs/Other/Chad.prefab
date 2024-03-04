@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 268852858001884278}
   - component: {fileID: 5271023973559526264}
   - component: {fileID: 1267528681124062820}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Chad
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -510,7 +510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players: []
   targetPlayer: {fileID: 0}
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 5755921796930191897, guid: 3d996469d34a57d48b5cda7756cb6536, type: 3}
   shootInterval: 2
   bulletSpeed: 10
   lastShootTime: 0
@@ -522,10 +522,10 @@ MonoBehaviour:
   lineRenderer3: {fileID: 4708126343900329802}
   LayerDetection:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 768
   maxReflections: 1
-  rotationSpeed: 0
-  shootSound: {fileID: 0}
+  rotationSpeed: 250
+  shootSound: {fileID: 1292430777746416027}
 --- !u!114 &5271023973559526264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,8 +572,8 @@ MonoBehaviour:
   gameOverMenu: {fileID: 0}
   playerController: {fileID: 0}
   isInvic: 0
-  hitSound: {fileID: 0}
-  deathSound: {fileID: 0}
+  hitSound: {fileID: 506454921404844893}
+  deathSound: {fileID: 4143684547295427126}
 --- !u!1 &1675709147026587721
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,7 +584,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5978838187842006488}
   - component: {fileID: 1010164062748765597}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: LineRenderer2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,7 +720,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5212383580839817105}
   - component: {fileID: 1405335407322057274}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: LineRenderer1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -856,7 +856,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3121931567498832202}
   - component: {fileID: 4708126343900329802}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: LineRenderer3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
