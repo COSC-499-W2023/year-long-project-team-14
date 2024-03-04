@@ -1,5 +1,28 @@
 # Personal Log - Jesse Lazzari
 
+## Term 2 Week 8
+- Start Date: February 26
+- End Date: March 3
+  
+### Tasks I worked on:
+![](screenshots/week8_term2_tasks_jesse.PNG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Meet with team and compile task list for upcoming peer testing session
+* Modified mini-boss health system script and added UI health bar
+* Added additional unit testing for mini-boss health system and healthbar
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Finalize mini-boss UI and health script
+* Meet with team and write team log
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have finalized all features I set out to complete for this week and look forward to the upcoming peer testing session!
+
+***
+
 ## Term 2 Week 5
 - Start Date: February 5
 - End Date: February 11
