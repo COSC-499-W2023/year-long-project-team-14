@@ -19,6 +19,8 @@ public class healthSystem : MonoBehaviour
     [SerializeField] private AudioSource hitSound;
     [SerializeField] private AudioSource deathSound;
 
+    public string ChadAttack = "chadAttack";
+
     private void Start()
     {
         life = maxLife;
@@ -97,6 +99,11 @@ public class healthSystem : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Static;
         gameObject.layer = LayerMask.NameToLayer("NoCollide");
         playerController.playerCenter.SetActive(false);
+        Component component = GetComponent(ChadAttack);
+        if (component != null)
+        {
+            (component as Behaviour).enabled = false;
+        }
         
         dead = true;
         spriteRenderer.sortingOrder = 8;
