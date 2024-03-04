@@ -136,7 +136,7 @@ public class chadAttack : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         Vector2 direction = lr.transform.right;
         bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
-        bullet.GetComponent<EnemyBullet>().bounces = maxReflections;
+        bullet.GetComponent<PlayerBullet>().bounces = maxReflections;
         lastShootTime = Time.time + Random.Range(-1f / diff, 1f / diff);;
         //play shoot sound
         shootSound.Play();

@@ -194,7 +194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6697224005387493961, guid: 521fad6bc7d5e4f4e9157bef5ee8e044, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6697224005387493961, guid: 521fad6bc7d5e4f4e9157bef5ee8e044, type: 3}
       propertyPath: m_LocalPosition.y
@@ -245,6 +245,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 21372215535025271, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 881379806320011560, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
       propertyPath: m_Name
       value: Mage_player1
@@ -522,14 +526,6 @@ PrefabInstance:
     - target: {fileID: 47225787850154555, guid: 87c0e3250bb6bd54fbf05cb8653bde2e, type: 3}
       propertyPath: m_Name
       value: Chad
-      objectReference: {fileID: 0}
-    - target: {fileID: 268852858001884278, guid: 87c0e3250bb6bd54fbf05cb8653bde2e, type: 3}
-      propertyPath: bulletSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 268852858001884278, guid: 87c0e3250bb6bd54fbf05cb8653bde2e, type: 3}
-      propertyPath: shootInterval
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5130736229416010383, guid: 87c0e3250bb6bd54fbf05cb8653bde2e, type: 3}
       propertyPath: m_LocalPosition.x
