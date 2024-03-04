@@ -957,7 +957,7 @@ MonoBehaviour:
   gameMaster: {fileID: 386558376}
   connected: 0
   done: 0
-  inMenu: 0
+  unitTest: 0
   playerRanks:
   - {fileID: 0}
   - {fileID: 0}
@@ -994,10 +994,16 @@ MonoBehaviour:
   scoreButtonText: {fileID: 0}
   playerButtonText: {fileID: 0}
   difficultyButtonText: {fileID: 0}
+  placeholderText: {fileID: 0}
   displayNameText: {fileID: 0}
   scoreType: 1
   players: 1
   difficulty: 1
+  winMenu: {fileID: 0}
+  leaderboardMenu: {fileID: 0}
+  submitButton: {fileID: 0}
+  menuButton: {fileID: 0}
+  lbMenu: 0
 --- !u!4 &109570111
 Transform:
   m_ObjectHideFlags: 0
@@ -6155,6 +6161,7 @@ MonoBehaviour:
   restartButton: {fileID: 314740108}
   gameOverMenu: 0
   playercount: 0
+  gameMaster: {fileID: 0}
 --- !u!114 &958096014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6171,6 +6178,7 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 318873923}
   backButton: {fileID: 458780564}
   controlMenu: 0
+  gameMaster: {fileID: 0}
   pauseMenu: {fileID: 958096015}
 --- !u!114 &958096015
 MonoBehaviour:
@@ -6188,6 +6196,7 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 318873923}
   resumeButton: {fileID: 365414211}
   pauseMenu: 0
+  gameMaster: {fileID: 0}
 --- !u!114 &958096016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6206,6 +6215,7 @@ MonoBehaviour:
   playercount: 0
   gameMaster: {fileID: 0}
   timetext: {fileID: 1935596935}
+  winMenu: 0
 --- !u!114 &958096017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6224,6 +6234,7 @@ MonoBehaviour:
   playercount: 0
   gameMaster: {fileID: 0}
   timetext: {fileID: 0}
+  winMenu: 0
 --- !u!114 &958096018
 MonoBehaviour:
   m_ObjectHideFlags: 0

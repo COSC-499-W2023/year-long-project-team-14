@@ -12,7 +12,12 @@ public class Spells : MonoBehaviour
     public healthSystem hs;
     public GameObject fireballPrefab;
     public GameObject lightningPrefab;
+    public GameObject seekingOrbPrefab;
     public float yOffset = 11.5f;
+
+    [SerializeField] private AudioSource fireballSound;
+    [SerializeField] private AudioSource lightningSound;
+    [SerializeField] private AudioSource seekingOrbSound;
 
     void Update()
     {
@@ -44,14 +49,19 @@ public class Spells : MonoBehaviour
             {   
                 LightningSpell();
             }
+            else if(spellName == "SeekingOrb")
+            {   
+                SeekingOrb();
+            }
         }
     }
 
     public void FireballSpell()
     {
+        fireballSound.Play();
         GameObject fireball = Instantiate(fireballPrefab, playerController.gunFollow.position, playerController.playerCenter.transform.rotation);
         Rigidbody2D fireballRB = fireball.GetComponent<Rigidbody2D>();
-        fireballRB.AddForce(-playerController.gunFollow.up * 50 * playerController.bulletForce);
+        fireballRB.AddForce(-playerController.gunFollow.up * 25 * playerController.bulletForce);
     }
 
     public void LightningSpell()
@@ -61,6 +71,7 @@ public class Spells : MonoBehaviour
         {   EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
             if(enemyHealthSystem.enemyHealth > 0)
             {
+                lightningSound.Play();
                 Vector3 lightningPos = new Vector3(enemies[i].transform.position.x, enemies[i].transform.position.y + yOffset, enemies[i].transform.position.z);
                 GameObject lightning = Instantiate(lightningPrefab, lightningPos, Quaternion.identity);
                 enemyHealthSystem.takeDamage(1);
@@ -70,4 +81,29 @@ public class Spells : MonoBehaviour
         }
 
     }
+
+    public void SeekingOrb()
+    {
+        // GameObject orb = Instantiate(seekingOrbPrefab, playerController.gunFollow.position, playerController.playerCenter.transform.rotation);
+        // Rigidbody2D orbRB = orb.GetComponent<Rigidbody2D>();
+        // orbRB.AddForce(-playerController.gunFollow.up * 200 * playerController.bulletForce);
+        seekingOrbSound.Play();
+        Quaternion rotation = playerController.playerCenter.transform.rotation * Quaternion.Euler(0, 0, 180);
+
+        GameObject orb = Instantiate(seekingOrbPrefab, playerController.gunFollow.position, rotation);
+        Rigidbody2D orbRB = orb.GetComponent<Rigidbody2D>();
+        orbRB.AddForce(orb.transform.up * 80 * playerController.bulletForce);
+
+        orb = Instantiate(seekingOrbPrefab, playerController.gunFollow.position, rotation * Quaternion.Euler(0, 0, -20));
+        orbRB = orb.GetComponent<Rigidbody2D>();
+        orbRB.AddForce(orb.transform.up * 80 * playerController.bulletForce);
+
+        orb = Instantiate(seekingOrbPrefab, playerController.gunFollow.position, rotation * Quaternion.Euler(0, 0, 20));
+        orbRB = orb.GetComponent<Rigidbody2D>();
+        orbRB.AddForce(orb.transform.up * 80 * playerController.bulletForce);
+
+       
+    }
+
+    
 }

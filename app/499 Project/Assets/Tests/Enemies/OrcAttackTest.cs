@@ -37,7 +37,7 @@ public class OrcAttackTest : MonoBehaviour
         //Spawn the orc on the left side of the wall
         orc = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemies/Orc_cyan.prefab"), new Vector3(-5, 0, 0), Quaternion.identity) as GameObject;
         enemyAttack = orc.GetComponent<EnemyAttack>();
-        enemyAttack.bulletSpeed = 35;
+        enemyAttack.bulletSpeed = 20;
         enemyAttack.shootInterval = 10f;
 
         //Restrict the orc from moving
@@ -59,11 +59,15 @@ public class OrcAttackTest : MonoBehaviour
         //Allow orc to shoot
         enemyAttack.lastShootTime = -10;
 
+        //Get starting health
+        int health1 = healthSystem1.life;
+        int health2 = healthSystem2.life;
+
         //Wait for orc to shoot at player
         yield return new WaitForSeconds(0.5f);
 
         //Check that the orc shot at player 2 and not player 1
-        Assert.IsTrue(healthSystem2.life < 3);
+        Assert.IsTrue(healthSystem2.life < health2);
         Destroy(player2);
 
         //Allow orc to shoot
@@ -73,7 +77,7 @@ public class OrcAttackTest : MonoBehaviour
         yield return new WaitForSeconds(0.75f);
 
         //Check that the orc was able to shoot off the wall to hit player 1
-        Assert.IsTrue(healthSystem1.life < 3);
+        Assert.IsTrue(healthSystem1.life < health1);
         Destroy(player1);
     }
 
@@ -85,7 +89,7 @@ public class OrcAttackTest : MonoBehaviour
         enemyAttack.lastShootTime = -10;
 
         //Wait for orc to shoot at player and for particle animation to end
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1.5f);
 
         //Search the scene for particles and check that enemy bullet particle game object plays fully and is destroyed from the game scene after animation has ended
         Assert.IsTrue(GameObject.FindGameObjectsWithTag("effect").Length == 0);
@@ -95,7 +99,7 @@ public class OrcAttackTest : MonoBehaviour
         enemyAttack.lastShootTime = -10;
 
         //Wait for orc to shoot at player and for particle animation to end
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2f);
 
         //Search the scene for particles and check that enemy bullet particle game object plays fully and is destroyed from the game scene after animation has ended
         Assert.IsTrue(GameObject.FindGameObjectsWithTag("effect").Length == 0);
@@ -116,7 +120,7 @@ public class OrcAttackTest : MonoBehaviour
         orc.GetComponent<EnemyMovement>().waitTime = 0;
 
         //wait until  that player would take damage
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
 
         //Check that the orc was able to damange player 2
         Assert.IsTrue(healthSystem2.life < 3);

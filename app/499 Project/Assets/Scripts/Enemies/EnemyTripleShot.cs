@@ -7,7 +7,7 @@ public class EnemyTripleShot : MonoBehaviour
     public GameObject[] players;
     public GameObject targetPlayer;
     public GameObject bulletPrefab;
-    public float shootInterval = 10;
+    public float shootInterval = 8;
     public float bulletSpeed = 10.0f;
     public float lastShootTime;
    
@@ -34,6 +34,8 @@ public class EnemyTripleShot : MonoBehaviour
 
     private List<GameObject> bulls;
 
+    int diff = 1;
+
     void Start()
     {
         //Create list of points for each line renderer
@@ -41,8 +43,32 @@ public class EnemyTripleShot : MonoBehaviour
         Points2 = new List<Vector3>();
         Points3 = new List<Vector3>();
 
+        //Get difficulty
+        diff = PlayerPrefs.GetInt("difficulty");
+        
+        //Set enemy fire rate
+        if(diff == 1) 
+            shootInterval /= 1f;
+        else if(diff == 2)
+            shootInterval /= 1.33f;
+        else if(diff == 3)
+            shootInterval /= 1.67f;
+        else if(diff == 4)
+            shootInterval /= 2f;
+
+        //Set enemy bullet speed
+        if(diff == 1) 
+            bulletSpeed *= 1f;
+        else if(diff == 2)
+            bulletSpeed *= 1.33f;
+        else if(diff == 3)
+            bulletSpeed *= 1.67f;
+        else if(diff == 4)
+            bulletSpeed *= 2f;
+
         //Prevent enemies from shooting at the start of a level
-        lastShootTime = 0;
+        lastShootTime = Time.time + Random.Range(0, shootInterval/2);
+        shootSound = GetComponent<AudioSource>();
         
     }
 
@@ -117,19 +143,30 @@ public class EnemyTripleShot : MonoBehaviour
            
     }
 
-   public void Shoot(LineRenderer lr) //Shoot a bullet in the direction of the line renderer
+   IEnumerator Shoot(LineRenderer lr) //Shoot a bullet in the direction of the line renderer (its an IEnumerator because of the wait that is needed between bullets)
     {
+        // Reset the shoot timer to delay the next series of shots 
+        lastShootTime = Random.Range(-1f / diff, 1f / diff);
+
+        //Loop 3 times since youll shoot 3 bullets
         for(int i = 1 ; i <= 3; i++){
+
+            AimAtPlayer(lineRenderer1);
+            AimAtPlayer(lineRenderer2);
+
+            //Instantiate a bullet in the target direction
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             Vector2 direction = lr.transform.right;
-            bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed * i/2;
+            //Set the velocity and max number of bounces
+            bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
             bullet.GetComponent<EnemyBullet>().bounces = maxReflections;
-            Wait();
+            //A wait between each shot so it appears as if they are shot in a seqeuence
+            //Below plays the sound after each shot
+            shootSound.Play();
+            yield return new WaitForSeconds(0.65f / (((diff - 1) / 2) + 1));
         }
+
         
-        //play shoot sound
-        lastShootTime = 0;
-        shootSound.Play();
     }
 
     
@@ -151,7 +188,7 @@ public class EnemyTripleShot : MonoBehaviour
 
                 if(lastShootTime >= shootInterval){
                         
-                       Shoot(lr);
+                    StartCoroutine(Shoot(lr));
                 }
             }
         }
@@ -190,8 +227,4 @@ public class EnemyTripleShot : MonoBehaviour
         lr.transform.rotation = Quaternion.Slerp(lr.transform.rotation, rotation, 1000 * Time.deltaTime);
     }
 
-    IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(1);
-    }
 }

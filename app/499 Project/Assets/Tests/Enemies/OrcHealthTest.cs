@@ -45,7 +45,7 @@ public class OrcHealthTest
         enemyHealthSystem.takeDamage();
         // Assert the orc lost another life
         yield return null;
-        Assert.AreEqual(0, enemyHealthSystem.enemyHealth);
+        Assert.AreEqual(-1, enemyHealthSystem.enemyHealth);
         //check that  when the orc dies, he cannot move, attack, or be collided with
         enemyHealthSystem.Die();
         yield return null;

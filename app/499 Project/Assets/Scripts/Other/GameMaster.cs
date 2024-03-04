@@ -12,7 +12,6 @@ public class GameMaster : MonoBehaviour
     public float gameTime = 0;
     public Animator fadeAnim;
     public int playerCount = 1;
-    public int difficulty = 1;
     public int player1ControlScheme = 0;
     public int player2ControlScheme = 1;
 
@@ -181,6 +180,7 @@ public class GameMaster : MonoBehaviour
         hs.gameOverMenu.playercount++;
         hs.spriteRenderer.color = new Color(1, 1, 1, 1);
         hs.animator.SetTrigger("isHit");
+        hs.animator.SetBool("IsDead", false);
         hs.isInvic = false;
     }
 

@@ -1,4 +1,61 @@
 # Personal Log - Justin McKendry
+
+## Week 20 (term 2 week 8)
+- Start Date: Feburary 26th 
+- End Date: March 3rd
+
+### Tasks I worked on:
+![](screenshots/tasks_justin_week_20.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Complete the spikes feature
+* Ensure our group's preparedness for the peer testing 2 session.
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Develop the spike envrionment object.
+  
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed the spikes feature and collaborated with my group members to ensure our lists of tasks, questionnaire and game was up to date for the peer testing.
+
+## Week 19 (term 2 week 6)
+- Start Date: Feburary 12th 
+- End Date: Feburary 18th
+
+### Tasks I worked on:
+![](screenshots/tasks_justin_week_19.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Solve our groups issue with git LFS
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Develop the spike envrionment object.
+  
+### Among these tasks, which have you completed/in progress in the last week?
+I attempted to complete the spikes while still having the issue with git LFS however found I was very limited in my progress. With this being the case the spikes are still in progress.
+
+
+## Week 18 (term 2 week 5)
+- Start Date: Feburary 5th 
+- End Date: Feburary 11th
+
+### Tasks I worked on:
+![](screenshots/tasks_justin_week_18.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Finish the triple shot enemy 
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Develop the triple shot enemy 
+  
+### Among these tasks, which have you completed/in progress in the last week?
+The triple shot enemy is finished and shoots as intended, with three consequtive shots all with the same speed and direction.
+
 ## Week 17
 - Start Date: January 29th
 - End Date: Feburary 4th

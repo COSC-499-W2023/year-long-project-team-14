@@ -35,6 +35,7 @@ public class FireballTest
         player = GameObject.Instantiate(playerPrefab, new Vector3(0, 1, 0), Quaternion.identity) as GameObject;
         playerController = player.GetComponent<PlayerController>();
         spells = player.GetComponent<Spells>();
+        spells.spellName = "Fireball";
         playerController.unitTest = true; //this prevents some code from running in PlayerController that requires user input
 
         //Spawn and set up the enemy

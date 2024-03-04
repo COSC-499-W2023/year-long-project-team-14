@@ -86,7 +86,8 @@ public class LeaderboardManager : MonoBehaviour
     {
         done = false;
 
-        PlayerPrefs.SetString("DisplayName", name); 
+        if((placeholderText.text != "Enter Name" && placeholderText.text.Length >= 3) || displayNameText.text.Length >= 4)
+            PlayerPrefs.SetString("DisplayName", name); 
 
         StartCoroutine(UpdatePlayerName());
     }
@@ -131,16 +132,18 @@ public class LeaderboardManager : MonoBehaviour
         
         done = false;
 
-        if(gameMaster.difficulty == 1){ leaderboardID = "Easy"; difficultyButtonText.text = "EASY";}
-        else if(gameMaster.difficulty == 2){ leaderboardID = "Medium"; difficultyButtonText.text = "MEDIUM";}
-        else if(gameMaster.difficulty == 3){ leaderboardID = "Hard"; difficultyButtonText.text = "HARD";}
-        else if(gameMaster.difficulty == 4){ leaderboardID = "Extreme"; difficultyButtonText.text = "EXTREME";}
+        int diff = PlayerPrefs.GetInt("difficulty");
+
+        if(diff == 1){ leaderboardID = "Easy"; difficultyButtonText.text = "EASY";}
+        else if(diff == 2){ leaderboardID = "Medium"; difficultyButtonText.text = "MEDIUM";}
+        else if(diff == 3){ leaderboardID = "Hard"; difficultyButtonText.text = "HARD";}
+        else if(diff == 4){ leaderboardID = "Extreme"; difficultyButtonText.text = "MADNESS";}
 
         if(gameMaster.playerCount == 1){ leaderboardID += "1"; playerButtonText.text = "1 PLAYER";}
         else{ leaderboardID += "2"; playerButtonText.text = "2 PLAYER";}
         leaderboardID += "Player";
 
-        difficulty = gameMaster.difficulty;
+        difficulty = diff;
         players = gameMaster.playerCount;
 
         if(unitTest)
@@ -167,7 +170,8 @@ public class LeaderboardManager : MonoBehaviour
         });
         yield return new WaitWhile(() => done == false);
 
-        FetchHighscores(leaderboardID);
+        if(!unitTest)
+            FetchHighscores(leaderboardID);
     }
 
     public void SaveScore(int score, string leaderboardID) //Saves scores locally
@@ -224,27 +228,31 @@ public class LeaderboardManager : MonoBehaviour
                         LootLockerLeaderboardMember[] members = response.items;
                         string name = "";
 
-                        for(int i = 0; i < members.Length; i++)
+                        if(members != null)
                         {
-                            if(members[i].member_id != "")
+                            for(int i = 0; i < members.Length; i++)
                             {
-                                name = members[i].member_id + "";
+                                if(members[i].member_id != "")
+                                {
+                                    name = members[i].member_id + "";
+                                }
+                                else
+                                {
+                                    name = members[i].member_id + "";
+                                }
+                                DisplayHighscore(i, members[i].rank, name, members[i].member_id, members[i].score);
                             }
-                            else
-                            {
-                                name = members[i].member_id + "";
-                            }
-                            DisplayHighscore(i, members[i].rank, name, members[i].member_id, members[i].score);
-                        }
-                        done = true;
-                        connected = true;
 
-                        int blankSpots = 10 - members.Length;
-                        for(int i = 0; i < blankSpots; i++)
-                        {
-                            playerRanks[9 - i].text = " ";
-                            playerNames[9 - i].text = " ";
-                            playerScores[9 - i].text = " ";
+                            done = true;
+                            connected = true;
+
+                            int blankSpots = 10 - members.Length;
+                            for(int i = 0; i < blankSpots; i++)
+                            {
+                                playerRanks[9 - i].text = " ";
+                                playerNames[9 - i].text = " ";
+                                playerScores[9 - i].text = " ";
+                            }
                         }
                     }
                     else
@@ -338,7 +346,7 @@ public class LeaderboardManager : MonoBehaviour
         else if(difficulty == 3)
         {
             difficulty++;
-            difficultyButtonText.text = "EXTREME";
+            difficultyButtonText.text = "MADNESS";
         }
         else if(difficulty == 4)
         {
