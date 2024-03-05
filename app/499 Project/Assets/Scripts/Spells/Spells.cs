@@ -20,6 +20,7 @@ public class Spells : MonoBehaviour
     [SerializeField] private AudioSource fireballSound;
     [SerializeField] private AudioSource lightningSound;
     [SerializeField] private AudioSource seekingOrbSound;
+    [SerializeField] private AudioSource chadSound;
 
     void Update()
     {
@@ -113,7 +114,7 @@ public class Spells : MonoBehaviour
 
     public void SummonChad()
     {
-        //chadSound.Play();
+        chadSound.Play();
         GameObject newChad = Instantiate(chadPrefab, playerController.gunFollow.position, Quaternion.identity);
         healthSystem chadHealth = newChad.GetComponent<healthSystem>();
 
