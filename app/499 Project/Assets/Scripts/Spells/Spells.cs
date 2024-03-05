@@ -15,6 +15,7 @@ public class Spells : MonoBehaviour
     public GameObject seekingOrbPrefab;
     public GameObject chadPrefab;
     public float yOffset = 11.5f;
+    private List<GameObject> chads = new List<GameObject>();
 
     [SerializeField] private AudioSource fireballSound;
     [SerializeField] private AudioSource lightningSound;
@@ -113,20 +114,25 @@ public class Spells : MonoBehaviour
     public void SummonChad()
     {
         //chadSound.Play();
-        GameObject chad = Instantiate(chadPrefab, playerController.gunFollow.position, Quaternion.identity);
-        //kill Chad if he does not die after 20 seconds
-        Invoke("KillChad", 20f);
+        GameObject newChad = Instantiate(chadPrefab, playerController.gunFollow.position, Quaternion.identity);
+        healthSystem chadHealth = newChad.GetComponent<healthSystem>();
 
+        // Add the new Chad instance to the list
+        chads.Add(newChad);
+
+        // Start a coroutine to wait for a certain amount of time before calling Die() for this Chad instance
+        StartCoroutine(DelayedDeath(newChad, chadHealth));
     }
 
-    void KillChad()
+    IEnumerator DelayedDeath(GameObject chad, healthSystem chadHealth)
     {
-        GameObject chad = GameObject.FindGameObjectWithTag("Chad");
-        // Check if chad exists and has a health system
-        if (chad != null)
+        yield return new WaitForSeconds(15f); //wait for timer before killing chad
+
+        // Check if the chad still exists and has a health system
+        if (chad != null && chadHealth != null)
         {
-            healthSystem chadHealth = chad.GetComponent<healthSystem>();
             chadHealth.Die();
+            chads.Remove(chad); // Remove this Chad instance from the list
         }
     }
 

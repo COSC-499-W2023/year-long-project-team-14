@@ -9,6 +9,7 @@ public class spellUi : MonoBehaviour
     public Sprite fireSprite;
     public Sprite lightningSprite;
     public Sprite SeekingSprite;
+    public Sprite chadSprite;
     Spells spells;
 
     // Start is called before the first frame update
@@ -22,7 +23,7 @@ public class spellUi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spells.spellName == "Fireball" || spells.spellName == "Lightning" || spells.spellName == "SeekingOrb")
+        if (spells.spellName == "Fireball" || spells.spellName == "Lightning" || spells.spellName == "SeekingOrb" || spells.spellName == "SummonChad")
         {
             image.enabled = true;
 
@@ -33,6 +34,8 @@ public class spellUi : MonoBehaviour
                 image.sprite = lightningSprite;
             else if (spells.spellName == "SeekingOrb")
                 image.sprite = SeekingSprite;
+            else if (spells.spellName == "SummonChad")
+                image.sprite = chadSprite;
 
             // Update the fill amount based on the remaining cooldown
             if (spells.cooldownTimer > 0)
