@@ -295,6 +295,10 @@ public class PlayerController : MonoBehaviour
             {
                 interactable.GetComponent<SeekingOrbPickup>().Interact();
             }
+            else if (tag == "summonChad")
+            {
+                interactable.GetComponent<SummonChadPickup>().Interact();
+            }
         }
     }
 
