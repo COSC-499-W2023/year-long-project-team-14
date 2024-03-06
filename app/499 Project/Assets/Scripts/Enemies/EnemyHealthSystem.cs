@@ -66,7 +66,7 @@ public class EnemyHealthSystem : MonoBehaviour
     {
         if(collider.gameObject.CompareTag("FireballExplosion"))
         {
-            takeDamage(3);
+            takeDamage(4);
         }
     }
 
