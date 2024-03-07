@@ -39,7 +39,7 @@ public class SlimeMovementTest : MonoBehaviour
         //Spawn and set up the slime
         slime = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemies/Slime.prefab"), new Vector3(-10, 0, 0), Quaternion.identity) as GameObject;
         enemyMovement = slime.GetComponent<EnemyMovement>();
-        enemyMovement.movementSpeed = 35;
+        enemyMovement.movementSpeed = 20;
     }
 
     [UnityTest]
