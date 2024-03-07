@@ -1,5 +1,37 @@
 # Personal Log - Darion Pescada
 
+## Term 2 Week 8
+- Start Date: February 26
+- End Date: March 3
+
+### Tasks I worked on:
+![](screenshots/term2_tasks_darion_week8.png)
+  
+### Recap on your week's goals
+This week, my goals were to rebalance the game, implement the difficulties, and start designing some levels.
+
+### Which features were yours in the project plan for this milestone?
+- implemented the 4 difficulties and created unit tests for them
+- modified the player and enemies stats to make the game feel more balanced and fun
+- started designing and creating some of the levels
+- fixed some bugs
+
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed all of my tasks for this week.
+
+***
+
+## Term 2 Week 6 and 7
+- Start Date: February 12
+- End Date: February 25
+
+### Tasks I worked on:
+![](screenshots/term2_tasks_darion_week6.png)
+  
+Unfortunately during these weeks I was unable to work on the project due to the LFS issue. However, I had done a lot of extra work in the previous weeks so everything I needed to do was already completed.
+
+***
+
 ## Term 2 Week 5
 - Start Date: February 5
 - End Date: February 11

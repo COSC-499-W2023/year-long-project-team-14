@@ -1,4 +1,36 @@
 # Personal Log - Kibele Sebnem Yildirim
+## Week 19-21 - Term 2
+- Start Date: February 13
+- End Date: March 3
+
+### Tasks I worked on:
+![](screenshots/kibele_week21.png)
+![](screenshots/kibele_week19.png)
+
+### Recap on your week's goals
+- My goals this week were to:
+* create options menu accessible inside from the game scene for our game
+* Discuss with my team about the design
+* Review my teammates' code and fixes on the game
+* change design and features in current scenes
+* Write code for options menu's code
+* Write test for options menu's code
+
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to create options menu accessible inside from the game scene for our game, discuss with my team about the design, review my teammates' code and fixes on the game, change design and features in current scenes, write code for options menu's code, and write test for options menu's code.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week. 
+
+Here are the screenshots of my work on our the Options Menu accessible inside Pause Menu in the Game scene in Unity this week:
+![](screenshots/kibeleweeklyt2week8.png)
+![](screenshots/kibeleweeklyt2week8-2.png)
+
+Here are the screenshots of my codewoek on our the Options Menu accessible inside Pause Menu in the Game scene in Unity this week:
+![](screenshots/kibeleweeklyt2week8-1.png)
+
+
 ## Week 18 - Term 2
 - Start Date: February 5
 - End Date: February 12

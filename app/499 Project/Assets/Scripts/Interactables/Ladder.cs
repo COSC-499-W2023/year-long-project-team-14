@@ -19,8 +19,11 @@ public class Ladder : MonoBehaviour
         //get access to game master
         gameMaster = GameObject.FindWithTag("GameMaster").GetComponent<GameMaster>();
 
-        //set exit inactive to start
-        SetLadderActive(false);
+        //set exit inactive to start if not in shop
+        if(!gameMaster.inShop)
+            SetLadderActive(false);
+        else
+            SetLadderActive(true);
     }
 
     //player is within range

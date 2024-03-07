@@ -29,11 +29,11 @@ public class SprayBullet : MonoBehaviour
         if(diff == 1) 
             moveSpeed *= 1f;
         else if(diff == 2)
-            moveSpeed *= 1.33f;
+            moveSpeed *= 1.5f;
         else if(diff == 3)
-            moveSpeed *= 1.67f;
-        else if(diff == 4)
             moveSpeed *= 2f;
+        else if(diff == 4)
+            moveSpeed *= 2.5f;
     }
 
     // Update is called once per frame
