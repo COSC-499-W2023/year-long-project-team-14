@@ -43,6 +43,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8512256932429372769}
     m_Modifications:
+    - target: {fileID: 2652700196406471793, guid: 1c8bfeaa0a02b8c4baa99493804e8304, type: 3}
+      propertyPath: ladderArrow
+      value: 
+      objectReference: {fileID: 6809302000317509752}
     - target: {fileID: 7892380796491269603, guid: 1c8bfeaa0a02b8c4baa99493804e8304, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -13058,6 +13062,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LadderArrow
       objectReference: {fileID: 0}
+    - target: {fileID: 2947941714013667035, guid: e6bf2e044447a7e42acbd0d3f4fa1e1a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4411917869299295176, guid: e6bf2e044447a7e42acbd0d3f4fa1e1a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -13106,5 +13114,10 @@ PrefabInstance:
 --- !u!4 &5453004434866400619 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4411917869299295176, guid: e6bf2e044447a7e42acbd0d3f4fa1e1a, type: 3}
+  m_PrefabInstance: {fileID: 8545212270796279459}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6809302000317509752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2947941714013667035, guid: e6bf2e044447a7e42acbd0d3f4fa1e1a, type: 3}
   m_PrefabInstance: {fileID: 8545212270796279459}
   m_PrefabAsset: {fileID: 0}

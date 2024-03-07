@@ -622,8 +622,8 @@ MonoBehaviour:
   fireAtPlayerAmount: 100
   waitTime: 2
   totalShotsPerBurst: 3
-  bulletsAmount: 20
-  spiralAngleIncrease: 10
+  bulletsAmount: 16
+  spiralAngleIncrease: 12
   startAngle: 0
   endAngle: 360
   firingEnabled: 1
@@ -646,6 +646,8 @@ MonoBehaviour:
   enemyCollider: {fileID: 0}
   ladder: {fileID: 0}
   portal: {fileID: 0}
+  healthBar: {fileID: 0}
+  healthAmount: 0
   hitSound: {fileID: 3173257750792531549}
   deathSound: {fileID: 8125996693403395747}
 --- !u!114 &7956662997441100755
