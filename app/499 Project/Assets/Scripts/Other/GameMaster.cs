@@ -16,6 +16,7 @@ public class GameMaster : MonoBehaviour
     public int player2ControlScheme = 1;
 
     public int currentLevel = 1;
+    public bool inShop = false;
 
     public GameObject WinMenu;
 
@@ -33,6 +34,7 @@ public class GameMaster : MonoBehaviour
     public GameObject player1Prefab;
     public GameObject player2Prefab;
 
+    public GameObject shopLevel;
     public GameObject levelTemplate;
     public GameObject level1;
     public GameObject[] levels;
@@ -101,12 +103,23 @@ public class GameMaster : MonoBehaviour
             if(playerCount > 1)
                 player2.transform.position = new Vector3(1000, 0, 0);
 
-            //Increase level count
-            currentLevel++;
+            if(currentLevel % 2 == 0 && !inShop) //Go to shop
+            {
+                level = Instantiate(shopLevel, transform.position, Quaternion.identity);
+                inShop = true;
+            }
+            else //Go to next level
+            {
+                if(inShop)
+                    inShop = false;
 
-            //Spawn in new level
-            level = Instantiate(levels[currentLevel-1], transform.position, Quaternion.identity);
-            AstarPath.active.Scan();
+                //Increase level count
+                currentLevel++;
+
+                //Spawn in new level
+                level = Instantiate(levels[currentLevel-1], transform.position, Quaternion.identity);
+                AstarPath.active.Scan();
+            }
             
             //Set player positions to new start positions
             player1Spawn = GameObject.FindWithTag("Player1Spawn").GetComponent<Transform>();
@@ -118,16 +131,19 @@ public class GameMaster : MonoBehaviour
             }
 
             //Give players health
-            if(healthSystem1.life < 3 && !healthSystem1.dead)
+            if(!inShop)
             {
-                healthSystem1.life++;
-                healthSystem1.SetHeartsActive();
-            }
+                if(healthSystem1.life < 3 && !healthSystem1.dead)
+                {
+                    healthSystem1.life++;
+                    healthSystem1.SetHeartsActive();
+                }
 
-            if(playerCount > 1 && healthSystem2.life < 3 && !healthSystem2.dead)
-            {
-                healthSystem2.life++;
-                healthSystem2.SetHeartsActive();
+                if(playerCount > 1 && healthSystem2.life < 3 && !healthSystem2.dead)
+                {
+                    healthSystem2.life++;
+                    healthSystem2.SetHeartsActive();
+                }
             }
             
             //Respawn player if dead
