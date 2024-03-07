@@ -23,8 +23,6 @@ public class MiniBossHealthSystem : MonoBehaviour
 
     private void Start()
     {
-        healthAmount = enemyHealth;
-
         // Add the enemy to the list of allEnemies when it's instantiated
         GameObject port = GameObject.FindWithTag("Portal");
         if (port != null)
@@ -40,6 +38,21 @@ public class MiniBossHealthSystem : MonoBehaviour
                 ladder.allEnemies.Add(gameObject);
             }
         }
+
+        //Get difficulty
+        int diff = PlayerPrefs.GetInt("difficulty");
+
+        //Set boss health
+        if(diff == 1) 
+            enemyHealth = (int)Mathf.Round(enemyHealth * 1.5f);
+        else if(diff == 2)
+            enemyHealth = (int)Mathf.Round(enemyHealth * 2f);
+        else if(diff == 3)
+            enemyHealth = (int)Mathf.Round(enemyHealth * 2.5f);
+        else if(diff == 4)
+            enemyHealth = (int)Mathf.Round(enemyHealth * 3f);
+
+        healthAmount = enemyHealth;
         
         enemyCollider = GetComponent<CircleCollider2D>();
     }

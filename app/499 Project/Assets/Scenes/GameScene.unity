@@ -3708,6 +3708,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mage_player1
       objectReference: {fileID: 0}
+    - target: {fileID: 881379806320011560, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4452037770434438324, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
       propertyPath: buttonClick
       value: 
@@ -10530,6 +10534,10 @@ PrefabInstance:
     - target: {fileID: 881379806320011560, guid: 076a5c51a2c98254abac4863d7fab8ef, type: 3}
       propertyPath: m_Name
       value: Mage_player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 881379806320011560, guid: 076a5c51a2c98254abac4863d7fab8ef, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4452037770434438324, guid: 076a5c51a2c98254abac4863d7fab8ef, type: 3}
       propertyPath: buttonClick
