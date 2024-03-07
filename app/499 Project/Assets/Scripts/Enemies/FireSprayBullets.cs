@@ -74,8 +74,8 @@ public class FireSprayBullets : MonoBehaviour
             spiralAngleIncrease /= 1.33f;
             totalSpirals *= 1.5f;
 
-            fireAtPlayerRateOfFire /= 1.5f;
-            fireAtPlayerAmount *= 1.5f;
+            fireAtPlayerRateOfFire /= 2f;
+            fireAtPlayerAmount *= 2f;
         }
         else if(diff == 3)
         {
@@ -87,8 +87,8 @@ public class FireSprayBullets : MonoBehaviour
             spiralAngleIncrease /= 1.67f;
             totalSpirals *= 2f;
 
-            fireAtPlayerRateOfFire /= 2f;
-            fireAtPlayerAmount *= 2f;
+            fireAtPlayerRateOfFire /= 3.33f;
+            fireAtPlayerAmount *= 3.33f;
         }
         else if(diff == 4)
         {
@@ -100,8 +100,8 @@ public class FireSprayBullets : MonoBehaviour
             spiralAngleIncrease /= 2f;
             totalSpirals *= 2.5f;
 
-            fireAtPlayerRateOfFire /= 2.5f;
-            fireAtPlayerAmount *= 2.5f;
+            fireAtPlayerRateOfFire /= 5f;
+            fireAtPlayerAmount *= 5f;
         }
 
         totalShotsPerBurst = 1 + diff;

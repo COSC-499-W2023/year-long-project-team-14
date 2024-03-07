@@ -23,8 +23,6 @@ public class MiniBossHealthSystem : MonoBehaviour
 
     private void Start()
     {
-        healthAmount = enemyHealth;
-
         // Add the enemy to the list of allEnemies when it's instantiated
         GameObject port = GameObject.FindWithTag("Portal");
         if (port != null)
@@ -53,6 +51,8 @@ public class MiniBossHealthSystem : MonoBehaviour
             enemyHealth = (int)Mathf.Round(enemyHealth * 2.5f);
         else if(diff == 4)
             enemyHealth = (int)Mathf.Round(enemyHealth * 3f);
+
+        healthAmount = enemyHealth;
         
         enemyCollider = GetComponent<CircleCollider2D>();
     }
