@@ -642,10 +642,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   shoot: {fileID: 0}
-  enemyHealth: 50
+  enemyHealth: 20
   enemyCollider: {fileID: 0}
   ladder: {fileID: 0}
   portal: {fileID: 0}
+  healthBar: {fileID: 0}
+  healthAmount: 0
   hitSound: {fileID: 3173257750792531549}
   deathSound: {fileID: 8125996693403395747}
 --- !u!114 &7956662997441100755
