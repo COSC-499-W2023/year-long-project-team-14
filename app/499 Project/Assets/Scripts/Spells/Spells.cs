@@ -84,9 +84,22 @@ public class Spells : MonoBehaviour
                 enemyHealthSystem.takeDamage(1);
                 Destroy(lightning, 0.25f);
             }
-                
         }
 
+        //Check if there is a boss in the level
+        GameObject boss = GameObject.FindGameObjectWithTag("Boss");
+        if (boss != null)
+        {
+            MiniBossHealthSystem miniBossHealthSystem = boss.GetComponent<MiniBossHealthSystem>();
+            if(miniBossHealthSystem.enemyHealth > 0)
+            {
+                    lightningSound.Play();
+                    Vector3 lightningPos = new Vector3(boss.transform.position.x, boss.transform.position.y + yOffset, boss.transform.position.z);
+                    GameObject lightning = Instantiate(lightningPrefab, lightningPos, Quaternion.identity);
+                    miniBossHealthSystem.takeDamage(3);
+                    Destroy(lightning, 0.25f);
+            }
+        }
     }
 
     public void SeekingOrb()
