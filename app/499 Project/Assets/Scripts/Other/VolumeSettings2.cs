@@ -6,24 +6,26 @@ using System.Collections.Generic;
 public class MusicManager : MonoBehaviour
 {
     public AudioClip[] tracks;
-    private AudioSource audioSource;
-    [SerializeField] private Slider volumeSlider;
+    public AudioSource audioSource;
+    [SerializeField] public Slider volumeSlider;
 
-    void Start()
+   public void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        ShuffleTracks();
-        PlayNextTrack();
+         audioSource = GetComponent<AudioSource>();
 
-        if (PlayerPrefs.HasKey("Volume"))
-        {
-            AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1);
-            Load();
-        }
-        else
-        {
-            Load();
-        }
+    ShuffleTracks();
+
+    PlayNextTrack();
+
+    if (PlayerPrefs.HasKey("Volume"))
+    {
+        AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1);
+        Load();
+    }
+    else
+    {
+        Load();
+    }
     }
 
     public void ChangeVolume()
@@ -33,17 +35,17 @@ public class MusicManager : MonoBehaviour
          Save(); 
     }
 
-    void Load()
+    public void Load()
     {
         volumeSlider.value = PlayerPrefs.GetFloat("Volume");
     }
 
-    void Save()
+public void Save()
     {
         PlayerPrefs.SetFloat("Volume", volumeSlider.value);
     }
 
-    void ShuffleTracks()
+    public void ShuffleTracks()
     {
         List<AudioClip> shuffledTracks = new List<AudioClip>(tracks);
         int n = shuffledTracks.Count;
@@ -58,7 +60,7 @@ public class MusicManager : MonoBehaviour
         tracks = shuffledTracks.ToArray();
     }
 
-    void PlayNextTrack()
+    public void PlayNextTrack()
     {
         if (tracks.Length > 0)
         {

@@ -7021,7 +7021,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 925822467}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f823d27f68999e4390f24c2553a55b2, type: 3}
   m_Name: 
@@ -7037,6 +7037,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d732897c0d1a27c42b321ed8dc6dd5ac, type: 3}
   - {fileID: 8300000, guid: 3bc427230494feb498590bd75a91d9f1, type: 3}
   - {fileID: 8300000, guid: dc89a18d7e8a69b48915bce46aac03b0, type: 3}
+  audioSource: {fileID: 0}
   volumeSlider: {fileID: 1008436490}
 --- !u!82 &925822478
 AudioSource:
@@ -7045,7 +7046,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 925822467}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -7637,7 +7638,6 @@ GameObject:
   - component: {fileID: 1008436489}
   - component: {fileID: 1008436490}
   - component: {fileID: 1008436492}
-  - component: {fileID: 1008436493}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -7718,7 +7718,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1008436493}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MusicManager, ProjectScripts
         m_MethodName: ChangeVolume
         m_Mode: 1
@@ -7826,30 +7826,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1008436493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1008436488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f823d27f68999e4390f24c2553a55b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tracks:
-  - {fileID: 8300000, guid: a4afeb260808624409096d465646eca1, type: 3}
-  - {fileID: 8300000, guid: 471ffa94223a21e4ca6e8914c2a871aa, type: 3}
-  - {fileID: 8300000, guid: 3eb9355bdd7bd1842820654265a140d6, type: 3}
-  - {fileID: 8300000, guid: 769cf49eb6c9a7d4baa79efc7ef06830, type: 3}
-  - {fileID: 8300000, guid: bdda51a21f3f9cc43a9ab575ccc8ea00, type: 3}
-  - {fileID: 8300000, guid: ef9ca878c8f2c7a49ae8c1a0a1cd0bac, type: 3}
-  - {fileID: 8300000, guid: b5601684df0f401418920eef0a24cb32, type: 3}
-  - {fileID: 8300000, guid: d732897c0d1a27c42b321ed8dc6dd5ac, type: 3}
-  - {fileID: 8300000, guid: 3bc427230494feb498590bd75a91d9f1, type: 3}
-  - {fileID: 8300000, guid: dc89a18d7e8a69b48915bce46aac03b0, type: 3}
-  volumeSlider: {fileID: 1008436490}
 --- !u!1 &1021118522
 GameObject:
   m_ObjectHideFlags: 0
@@ -11859,7 +11835,6 @@ GameObject:
   - component: {fileID: 1565400434}
   - component: {fileID: 1565400433}
   - component: {fileID: 1565400436}
-  - component: {fileID: 1565400435}
   m_Layer: 5
   m_Name: MusicSlider
   m_TagString: Untagged
@@ -11927,20 +11902,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1565400431}
   m_CullTransparentMesh: 1
---- !u!114 &1565400435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1565400431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f823d27f68999e4390f24c2553a55b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tracks: []
-  volumeSlider: {fileID: 0}
 --- !u!82 &1565400436
 AudioSource:
   m_ObjectHideFlags: 0
