@@ -28,8 +28,9 @@ public class MusicManager : MonoBehaviour
 
     public void ChangeVolume()
     {
-        AudioListener.volume = volumeSlider.value;
-        Save();
+        float volume = volumeSlider.value; 
+        AudioListener.volume = volume; 
+         Save(); 
     }
 
     void Load()
