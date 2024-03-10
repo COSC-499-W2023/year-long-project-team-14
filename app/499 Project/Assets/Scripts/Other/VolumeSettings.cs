@@ -10,7 +10,7 @@ public class VolumeSettings : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("Volume"))
         {
-            AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1); // Fix this line
+            AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1);
             Load();
         }
         else

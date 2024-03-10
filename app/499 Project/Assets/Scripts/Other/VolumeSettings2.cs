@@ -6,7 +6,36 @@ public class MusicManager : MonoBehaviour
 {
     public AudioClip[] tracks;
     private AudioSource audioSource;
+ [SerializeField] private Slider volumeSlider;
 
+    void Start()
+    {
+        if (PlayerPrefs.HasKey("Volume"))
+        {
+            AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1);
+            Load();
+        }
+        else
+        {
+            Load();
+        }
+    }
+
+    public void ChangeVolume()
+    {
+        AudioListener.volume = volumeSlider.value;
+        Save();
+    }
+
+    void Load()
+    {
+        volumeSlider.value = PlayerPrefs.GetFloat("Volume");
+    }
+
+    void Save()
+    {
+        PlayerPrefs.SetFloat("Volume", volumeSlider.value);
+    }
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
