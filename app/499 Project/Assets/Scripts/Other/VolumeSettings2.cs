@@ -13,7 +13,6 @@ public class MusicManager : MonoBehaviour
         PlayNextTrack();
     }
 
-    
 void ShuffleTracks()
     {
         List<AudioClip> shuffledTracks = new List<AudioClip>(tracks);
