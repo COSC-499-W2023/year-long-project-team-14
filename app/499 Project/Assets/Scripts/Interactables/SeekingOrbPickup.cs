@@ -33,8 +33,7 @@ public class SeekingOrbPickup : MonoBehaviour
         {
             playerIsOver = true;
             player = other.gameObject;
-            string cd = "cooldown: " + player.GetComponent<Spells>().spellCooldown;
-            if (!prompt.isDisplayed) prompt.SetUp("Seeking Orb", cd);
+            if (!prompt.isDisplayed) prompt.SetUp();
         }
     }
 

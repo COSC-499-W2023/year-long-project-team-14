@@ -15,6 +15,7 @@ public class healthSystem : MonoBehaviour
     public GameOverMenu gameOverMenu;
     public PlayerController playerController;
     public bool isInvic = false;
+    public bool chad = false;
 
     [SerializeField] private AudioSource hitSound;
     [SerializeField] private AudioSource deathSound;
@@ -108,7 +109,7 @@ public class healthSystem : MonoBehaviour
         dead = true;
         spriteRenderer.sortingOrder = 8;
 
-        if(gameOverMenu != null)
+        if(gameOverMenu != null && !chad)
             gameOverMenu.playercount--;
     }
 
