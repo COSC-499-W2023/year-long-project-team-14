@@ -13,7 +13,7 @@ public void ChangeVolume()
 
 private void Load()
 {
-
+ volumeSlider.value = PlayerPrefs.GetFloat("Volume");
 }
 
 private void Save()
