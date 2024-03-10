@@ -4,5 +4,7 @@ using UnityEngine;
 
 public class VolumeSettings : MonoBehaviour
 {
-    
+    [SerializeField] private AudioMixer myMixer;
+    [SerializeField] private Slider musicSlider;
+
 }
