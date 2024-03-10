@@ -172,6 +172,21 @@ public class healthSystem : MonoBehaviour
 
         yield return new WaitForSeconds(0.15f);
          currentColor = spriteRenderer.color; // Set the transparency (alpha) value
+        currentColor.a = 0f; // Adjust the alpha value as needed
+        spriteRenderer.color = currentColor;
+
+        yield return new WaitForSeconds(0.15f);
+         currentColor = spriteRenderer.color; // Set the transparency (alpha) value
+        currentColor.a = 0.5f; // Adjust the alpha value as needed
+        spriteRenderer.color = currentColor;
+
+        yield return new WaitForSeconds(0.15f);
+         currentColor = spriteRenderer.color; // Set the transparency (alpha) value
+        currentColor.a = 0f; // Adjust the alpha value as needed
+        spriteRenderer.color = currentColor;
+
+        yield return new WaitForSeconds(0.15f);
+         currentColor = spriteRenderer.color; // Set the transparency (alpha) value
         currentColor.a = 1f; // Adjust the alpha value as needed
         spriteRenderer.color = currentColor;
 
