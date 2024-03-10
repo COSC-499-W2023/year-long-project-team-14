@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class VolumeSettings : MonoBehaviour
 {
-    [SerializeField] private AudioMixer myMixer;
-    [SerializeField] private Slider musicSlider;
+        [SerializeField] private Slider volumeSlider;
 
+public void ChangeVolume()
+{
+    AudioListener.volume = volumeSlider.value;
+}
 }
