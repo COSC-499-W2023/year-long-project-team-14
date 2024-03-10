@@ -33,8 +33,7 @@ public class FireballPickup : MonoBehaviour
         {
             playerIsOver = true;
             player = other.gameObject;
-            string cd = "cooldown: " + player.GetComponent<Spells>().spellCooldown;
-            if (!prompt.isDisplayed) prompt.SetUp("Fireball", cd);
+            if (!prompt.isDisplayed) prompt.SetUp();
         }
     }
 

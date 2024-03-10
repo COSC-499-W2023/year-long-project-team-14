@@ -33,8 +33,7 @@ public class SummonChadPickup : MonoBehaviour
         {
             playerIsOver = true;
             player = other.gameObject;
-            string cd = "cooldown: " + player.GetComponent<Spells>().spellCooldown;
-            if (!prompt.isDisplayed) prompt.SetUp("Summon Chad", cd);
+            if (!prompt.isDisplayed) prompt.SetUp();
         }
     }
 
