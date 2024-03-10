@@ -14,7 +14,20 @@ public class MusicManager : MonoBehaviour
     }
 
     
-
+void ShuffleTracks()
+    {
+        List<AudioClip> shuffledTracks = new List<AudioClip>(tracks);
+        int n = shuffledTracks.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = Random.Range(0, n + 1);
+            AudioClip value = shuffledTracks[k];
+            shuffledTracks[k] = shuffledTracks[n];
+            shuffledTracks[n] = value;
+        }
+        tracks = shuffledTracks.ToArray();
+    }
     void PlayNextTrack()
     {
         if (tracks.Length > 0)
