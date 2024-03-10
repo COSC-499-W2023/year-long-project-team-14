@@ -4,31 +4,34 @@ using UnityEngine;
 
 public class VolumeSettings : MonoBehaviour
 {
-        [SerializeField] private Slider volumeSlider;
+    [SerializeField] private Slider volumeSlider;
 
- void Start()
-{
- if (PlayerPrefs.HasKey("Volume"))
- {
-playerPrefs.GetFloat("Volume", 1);
-  Load();}
- else
- {
-Load(); }
-public void ChangeVolume()
-{
-    AudioListener.volume = volumeSlider.value;
-    Save();
-}
+    void Start()
+    {
+        if (PlayerPrefs.HasKey("Volume"))
+        {
+            AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1); // Fix this line
+            Load();
+        }
+        else
+        {
+            Load();
+        }
+    }
 
-private void Load()
-{
- volumeSlider.value = PlayerPrefs.GetFloat("Volume");
-}
+    public void ChangeVolume()
+    {
+        AudioListener.volume = volumeSlider.value;
+        Save();
+    }
 
-private void Save()
-{
- PlayerPrefs.SetFloat("Volume", volumeSlider.value);
-}
-}
+    void Load()
+    {
+        volumeSlider.value = PlayerPrefs.GetFloat("Volume");
+    }
 
+    void Save()
+    {
+        PlayerPrefs.SetFloat("Volume", volumeSlider.value);
+    }
+}
