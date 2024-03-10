@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VolumeSettings : MonoBehaviour
 {
-    [SerializeField] private Slider volumeSlider;
+    [SerializeField] public Slider volumeSlider;
 
     void Start()
     {
@@ -25,12 +25,12 @@ public class VolumeSettings : MonoBehaviour
         Save();
     }
 
-    void Load()
+   public void Load()
     {
         volumeSlider.value = PlayerPrefs.GetFloat("Volume");
     }
 
-    void Save()
+   public void Save()
     {
         PlayerPrefs.SetFloat("Volume", volumeSlider.value);
     }
