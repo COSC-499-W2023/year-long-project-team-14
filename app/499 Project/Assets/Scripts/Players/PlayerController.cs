@@ -301,6 +301,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (tag == "Shield")
             {
+                //if the player interacts with the shield pickup call the function Interact() in the script ShieldPickup
                 interactable.GetComponent<ShieldPickup>().Interact();
             }
         }
