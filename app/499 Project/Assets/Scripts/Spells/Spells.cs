@@ -15,6 +15,8 @@ public class Spells : MonoBehaviour
     public GameObject seekingOrbPrefab;
     public GameObject chadPrefab;
     public GameObject shieldPrefab;
+    public GameObject shield;
+    public bool isShield = false;
     public float yOffset = 11.5f;
     private List<GameObject> chads = new List<GameObject>();
 
@@ -25,7 +27,17 @@ public class Spells : MonoBehaviour
 
     void Update()
     {
+        if(spellName=="Shield"){
+            spellCooldown = 7f;
+        }
+
         cooldownTimer += Time.deltaTime;
+
+        if(isShield == true){
+            Transform shieldT = shield.transform;
+
+            shieldT.position = playerController.transform.position;
+        }
     }
 
     public void Spell(InputAction.CallbackContext context)
@@ -156,8 +168,19 @@ public class Spells : MonoBehaviour
     }
 
     public void ShieldSpell(){
-        GameObject shield = Instantiate(shieldPrefab, playerController.transform.position, Quaternion.identity);
+        shield = Instantiate(shieldPrefab, playerController.transform.position, Quaternion.identity);
+        isShield = true;
         
+        
+        // Start a coroutine to wait for a certain amount of time before calling Die() for this Chad instance
+        StartCoroutine(DestroyShield(shield));
+    }
+
+    IEnumerator DestroyShield(GameObject shield)
+    {
+        yield return new WaitForSeconds(5f); //wait for timer before killing chad
+        Destroy(shield);
+        isShield = false;
     }
 
 }
