@@ -1,5 +1,28 @@
 # Personal Log - Darion Pescada
 
+## Term 2 Week 9
+- Start Date: March 4
+- End Date: March 10
+
+### Tasks I worked on:
+![](screenshots/term2_tasks_darion_week9.png)
+  
+### Recap on your week's goals
+This week, my goals were to design new levels, connect the spell shop to the transition system, and make sure everything is ready for peer testing.
+
+### Which features were yours in the project plan for this milestone?
+- designed new levels for peer testing
+- made the transition system take the players to the spell shop after every other level
+- created unit tests for the spell shop transitions
+- worked with gabby to redesign the shop and spell prompts
+- rebalanced the players and enemies
+- fixed bugs
+
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed all of my tasks for this week.
+
+***
+
 ## Term 2 Week 8
 - Start Date: February 26
 - End Date: March 3
