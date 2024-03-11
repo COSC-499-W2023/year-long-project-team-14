@@ -299,6 +299,10 @@ public class PlayerController : MonoBehaviour
             {
                 interactable.GetComponent<SummonChadPickup>().Interact();
             }
+            else if (tag == "Shield")
+            {
+                interactable.GetComponent<ShieldPickup>().Interact();
+            }
         }
     }
 

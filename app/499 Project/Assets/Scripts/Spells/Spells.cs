@@ -27,10 +27,6 @@ public class Spells : MonoBehaviour
 
     void Update()
     {
-        if(spellName=="Shield"){
-            spellCooldown = 7f;
-        }
-
         cooldownTimer += Time.deltaTime;
 
         if(isShield == true){
