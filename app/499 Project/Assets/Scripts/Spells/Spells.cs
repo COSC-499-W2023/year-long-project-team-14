@@ -14,6 +14,7 @@ public class Spells : MonoBehaviour
     public GameObject lightningPrefab;
     public GameObject seekingOrbPrefab;
     public GameObject chadPrefab;
+    public GameObject shieldPrefab;
     public float yOffset = 11.5f;
     private List<GameObject> chads = new List<GameObject>();
 
@@ -59,6 +60,10 @@ public class Spells : MonoBehaviour
             else if (spellName == "SummonChad")
             {
                 SummonChad();
+            }
+             else if (spellName == "Shield")
+            {
+               ShieldSpell();
             }
         }
     }
@@ -148,6 +153,11 @@ public class Spells : MonoBehaviour
             chadHealth.Die();
             chads.Remove(chad); // Remove this Chad instance from the list
         }
+    }
+
+    public void ShieldSpell(){
+        GameObject shield = Instantiate(shieldPrefab, playerController.transform.position, Quaternion.identity);
+        
     }
 
 }
