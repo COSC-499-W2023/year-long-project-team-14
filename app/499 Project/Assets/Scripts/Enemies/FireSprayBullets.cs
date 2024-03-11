@@ -67,41 +67,41 @@ public class FireSprayBullets : MonoBehaviour
         else if(diff == 2)
         {
             rateOfFire /= 1.5f;
-            waitTime /= 1.5f;
+            waitTime /= 1.33f;
             bulletsAmount *= 1.33f;
 
-            spiralRateOfFire /= 2f;
+            spiralRateOfFire /= 1.78f;
             spiralAngleIncrease /= 1.33f;
-            totalSpirals *= 1.5f;
-
-            fireAtPlayerRateOfFire /= 1.5f;
-            fireAtPlayerAmount *= 1.5f;
-        }
-        else if(diff == 3)
-        {
-            rateOfFire /= 2f;
-            waitTime /= 2f;
-            bulletsAmount *= 1.67f;
-
-            spiralRateOfFire /= 3.33f;
-            spiralAngleIncrease /= 1.67f;
-            totalSpirals *= 2f;
+            totalSpirals *= 1.33f;
 
             fireAtPlayerRateOfFire /= 2f;
             fireAtPlayerAmount *= 2f;
         }
+        else if(diff == 3)
+        {
+            rateOfFire /= 2f;
+            waitTime /= 1.67f;
+            bulletsAmount *= 1.67f;
+
+            spiralRateOfFire /= 2.78f;
+            spiralAngleIncrease /= 1.67f;
+            totalSpirals *= 1.67f;
+
+            fireAtPlayerRateOfFire /= 3f;
+            fireAtPlayerAmount *= 3f;
+        }
         else if(diff == 4)
         {
             rateOfFire /= 2.5f;
-            waitTime /= 2.5f;
+            waitTime /= 2f;
             bulletsAmount *= 2f;
 
-            spiralRateOfFire /= 5f;
+            spiralRateOfFire /= 4f;
             spiralAngleIncrease /= 2f;
-            totalSpirals *= 2.5f;
+            totalSpirals *= 2f;
 
-            fireAtPlayerRateOfFire /= 2.5f;
-            fireAtPlayerAmount *= 2.5f;
+            fireAtPlayerRateOfFire /= 4f;
+            fireAtPlayerAmount *= 4f;
         }
 
         totalShotsPerBurst = 1 + diff;

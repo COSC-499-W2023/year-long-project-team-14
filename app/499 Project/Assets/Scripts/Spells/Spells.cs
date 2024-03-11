@@ -13,11 +13,14 @@ public class Spells : MonoBehaviour
     public GameObject fireballPrefab;
     public GameObject lightningPrefab;
     public GameObject seekingOrbPrefab;
+    public GameObject chadPrefab;
     public float yOffset = 11.5f;
+    private List<GameObject> chads = new List<GameObject>();
 
     [SerializeField] private AudioSource fireballSound;
     [SerializeField] private AudioSource lightningSound;
     [SerializeField] private AudioSource seekingOrbSound;
+    [SerializeField] private AudioSource chadSound;
 
     void Update()
     {
@@ -53,6 +56,10 @@ public class Spells : MonoBehaviour
             {   
                 SeekingOrb();
             }
+            else if (spellName == "SummonChad")
+            {
+                SummonChad();
+            }
         }
     }
 
@@ -77,9 +84,22 @@ public class Spells : MonoBehaviour
                 enemyHealthSystem.takeDamage(1);
                 Destroy(lightning, 0.25f);
             }
-                
         }
 
+        //Check if there is a boss in the level
+        GameObject boss = GameObject.FindGameObjectWithTag("Boss");
+        if (boss != null)
+        {
+            MiniBossHealthSystem miniBossHealthSystem = boss.GetComponent<MiniBossHealthSystem>();
+            if(miniBossHealthSystem.enemyHealth > 0)
+            {
+                    lightningSound.Play();
+                    Vector3 lightningPos = new Vector3(boss.transform.position.x, boss.transform.position.y + yOffset, boss.transform.position.z);
+                    GameObject lightning = Instantiate(lightningPrefab, lightningPos, Quaternion.identity);
+                    miniBossHealthSystem.takeDamage(3);
+                    Destroy(lightning, 0.25f);
+            }
+        }
     }
 
     public void SeekingOrb()
@@ -105,5 +125,29 @@ public class Spells : MonoBehaviour
        
     }
 
-    
+    public void SummonChad()
+    {
+        chadSound.Play();
+        GameObject newChad = Instantiate(chadPrefab, playerController.gunFollow.position, Quaternion.identity);
+        healthSystem chadHealth = newChad.GetComponent<healthSystem>();
+
+        // Add the new Chad instance to the list
+        chads.Add(newChad);
+
+        // Start a coroutine to wait for a certain amount of time before calling Die() for this Chad instance
+        StartCoroutine(DelayedDeath(newChad, chadHealth));
+    }
+
+    IEnumerator DelayedDeath(GameObject chad, healthSystem chadHealth)
+    {
+        yield return new WaitForSeconds(15f); //wait for timer before killing chad
+
+        // Check if the chad still exists and has a health system
+        if (chad != null && chadHealth != null)
+        {
+            chadHealth.Die();
+            chads.Remove(chad); // Remove this Chad instance from the list
+        }
+    }
+
 }

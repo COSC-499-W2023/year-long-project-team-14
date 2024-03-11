@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 5829597694115131600}
   - component: {fileID: 8049298216514591554}
   - component: {fileID: 5848230849106940349}
+  - component: {fileID: 2376870225415034407}
   m_Layer: 7
   m_Name: Mage_player1
   m_TagString: Player
@@ -455,6 +456,7 @@ MonoBehaviour:
   isInvic: 0
   hitSound: {fileID: 5617919102717672389}
   deathSound: {fileID: 2466968929111969126}
+  ChadAttack: chadAttack
 --- !u!114 &5323379100632877089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -779,10 +781,12 @@ MonoBehaviour:
   fireballPrefab: {fileID: 1345593741101300040, guid: 18f719aa43c40ed4d9679fe79f234e7f, type: 3}
   lightningPrefab: {fileID: 4084521033630141133, guid: 9414e171bb10ea848b96be1cb0081fab, type: 3}
   seekingOrbPrefab: {fileID: 1287584697726197767, guid: b5dce37d418318a48bf4101d9ddb1d4d, type: 3}
+  chadPrefab: {fileID: 47225787850154555, guid: 87c0e3250bb6bd54fbf05cb8653bde2e, type: 3}
   yOffset: 2.5
   fireballSound: {fileID: 6020226581851858952}
   lightningSound: {fileID: 5829597694115131600}
   seekingOrbSound: {fileID: 8049298216514591554}
+  chadSound: {fileID: 2376870225415034407}
 --- !u!82 &6020226581851858952
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1167,6 +1171,102 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!82 &2376870225415034407
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881379806320011560}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 674caf418db4c324ba425e2e6169a94d, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.751
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1552418433214647782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,7 +1303,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 10, y: -59.9}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 166.67, y: 149.5502}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &9035096679077234424
 CanvasRenderer:
@@ -1229,6 +1329,7 @@ MonoBehaviour:
   fireSprite: {fileID: -1659854389, guid: 71f101bd904da3a4eb89ffd963ac31b7, type: 3}
   lightningSprite: {fileID: 339508314, guid: fa739449f8985d74aa6afb409a7beb86, type: 3}
   SeekingSprite: {fileID: -1788315041, guid: 052d2d598db74c242b7b861ed291772f, type: 3}
+  chadSprite: {fileID: -276574461, guid: b857dab66404fbc459aaa2150c73d56d, type: 3}
 --- !u!114 &4305409814652023011
 MonoBehaviour:
   m_ObjectHideFlags: 0

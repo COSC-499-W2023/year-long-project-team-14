@@ -57,13 +57,16 @@ public class MovingWallsTest : MonoBehaviour
     public IEnumerator movingWallHurtsEnemy()
     {
         //Allow the wall to move
-        childWall.GetComponent<movingWall>().speed = 2f;
+        childWall.GetComponent<movingWall>().speed = 10f;
+
+        //Get enemy health
+        int health = enemyHealthSystem.enemyHealth;
 
         //Wait for the wall to squish the enemy against the upper wall
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
 
         //Check that the orc was damaged
-        Assert.IsTrue(enemyHealthSystem.enemyHealth < 3);
+        Assert.IsTrue(enemyHealthSystem.enemyHealth < health);
         //Destroy(orc);
     }
 
@@ -82,10 +85,10 @@ public class MovingWallsTest : MonoBehaviour
         yield return null;
 
         //Allow the wall to move
-        childWall.GetComponent<movingWall>().speed = 2f;
+        childWall.GetComponent<movingWall>().speed = 10f;
 
         //Wait for the wall to squish the player against the upper wall
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
 
         //Check that the player was damaged
         Assert.IsTrue(healthSystem.life < 3);

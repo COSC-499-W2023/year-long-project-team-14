@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 4084945443069986836}
   m_Layer: 9
   m_Name: mini_boss_viking
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -618,12 +618,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rateOfFire: 2
   spiralRateOfFire: 0.1
-  fireAtPlayerRateOfFire: 0.04
-  fireAtPlayerAmount: 100
+  fireAtPlayerRateOfFire: 0.08
+  fireAtPlayerAmount: 40
   waitTime: 2
   totalShotsPerBurst: 3
-  bulletsAmount: 20
-  spiralAngleIncrease: 10
+  bulletsAmount: 15
+  spiralAngleIncrease: 12
   startAngle: 0
   endAngle: 360
   firingEnabled: 1
@@ -642,10 +642,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   shoot: {fileID: 0}
-  enemyHealth: 50
+  enemyHealth: 20
   enemyCollider: {fileID: 0}
   ladder: {fileID: 0}
   portal: {fileID: 0}
+  healthBar: {fileID: 0}
+  healthAmount: 0
   hitSound: {fileID: 3173257750792531549}
   deathSound: {fileID: 8125996693403395747}
 --- !u!114 &7956662997441100755

@@ -1,5 +1,24 @@
 # Personal Log - Justin McKendry
 
+## Week 21 (term 2 week 9)
+- Start Date: March 4th 
+- End Date: March 10th
+
+### Tasks I worked on:
+We had an issue with Git LFS again and can no longer push any screenshots so this is blank for now
+
+### Recap on your week's goals
+My goals this week were to: 
+* Increase the duration for the invinicibility
+* Make as much progress on the shield spell as I can
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Develop the shield spell.
+  
+### Among these tasks, which have you completed/in progress in the last week?
+I have started making progress on the shield. It will be finished by the end of week 22. Along with that I have increased the duration of invinicbility after taking damage.
+
 ## Week 20 (term 2 week 8)
 - Start Date: Feburary 26th 
 - End Date: March 3rd
