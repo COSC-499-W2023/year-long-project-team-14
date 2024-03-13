@@ -13,8 +13,10 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public int bulletBounces;
     public bool player1 = false;
+
     public float holdCooldown = 0;
-    public float mouseClick = 0;
+    public float mouseHold = 0;
+    public float dashHold = 0;
     public bool aimingInWall = false;
 
     public GameObject bulletPrefab;
@@ -141,8 +143,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(attackCharge >= attackCost && mouseClick == 1 && holdCooldown > 0.2f)
+        if(attackCharge >= attackCost && mouseHold == 1 && holdCooldown > 0.2f)
             Shoot();
+
+        if(dashHold == 1)
+            Dash();
 
         holdCooldown += Time.deltaTime;
 
@@ -172,15 +177,12 @@ public class PlayerController : MonoBehaviour
     //Detects if player presses shoot button
     public void Fire(InputAction.CallbackContext context)
     {
-        mouseClick = context.ReadValue<float>();
+        mouseHold = context.ReadValue<float>();
     }
 
     public void Dash(InputAction.CallbackContext context)
     {
-        if(context.performed)
-        {
-            Dash();
-        }
+        dashHold = context.ReadValue<float>();
     }
 
     public void Interact(InputAction.CallbackContext context)
