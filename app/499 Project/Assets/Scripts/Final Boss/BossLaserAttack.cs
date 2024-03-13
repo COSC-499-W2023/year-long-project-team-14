@@ -24,7 +24,8 @@ public class BossLaserAttack : MonoBehaviour
     void ShootLaser()
     {
         animator.SetTrigger("ChargeLeft");
-        GameObject clone = Instantiate(laser, transform.position, transform.rotation);
+        Vector3 laserPos = new Vector3(transform.position.x - 10.0f, transform.position.y, transform.position.z);
+        GameObject clone = Instantiate(laser, laserPos, transform.rotation);
         Destroy(clone, 1.0f);
     }
 }
