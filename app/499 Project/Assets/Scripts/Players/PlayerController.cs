@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public int bulletBounces;
     public bool player1 = false;
-
+    public float holdCooldown = 0;
+    public float mouseClick = 0;
     public bool aimingInWall = false;
 
     public GameObject bulletPrefab;
@@ -140,9 +141,13 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if(attackCharge >= attackCost && mouseClick == 1 && holdCooldown > 0.2f)
+            Shoot();
+
+        holdCooldown += Time.deltaTime;
+
         //Used for the dash cooldown (its the timer)
         dashCDT += Time.deltaTime;
-
     }
 
     private void FixedUpdate()
@@ -167,10 +172,7 @@ public class PlayerController : MonoBehaviour
     //Detects if player presses shoot button
     public void Fire(InputAction.CallbackContext context)
     {
-        if(context.performed)
-        {
-            Shoot();
-        }
+        mouseClick = context.ReadValue<float>();
     }
 
     public void Dash(InputAction.CallbackContext context)
@@ -220,7 +222,7 @@ public class PlayerController : MonoBehaviour
     //Shoots a bullet in the direction the player is aiming in if they can shoot
     public void Shoot()
     {
-        if(attackCharge >= attackCost && !hs.dead && !PauseMenu.GameIsPaused)
+        if(!hs.dead && !PauseMenu.GameIsPaused)
         {
             bulletUI bullets = GetComponent<bulletUI>();
             if (bullets != null)
@@ -228,6 +230,7 @@ public class PlayerController : MonoBehaviour
                 bullets.oneLessShot();
             }
             attackCharge -= attackCost;
+            holdCooldown = 0;
 
             GameObject bullet = Instantiate(bulletPrefab, gunFollow.position, Quaternion.identity);
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
