@@ -14,6 +14,7 @@ public class Spells : MonoBehaviour
     public GameObject lightningPrefab;
     public GameObject seekingOrbPrefab;
     public GameObject chadPrefab;
+    public GameObject iceCubePrefab;
     public float yOffset = 11.5f;
     private List<GameObject> chads = new List<GameObject>();
 
@@ -21,6 +22,10 @@ public class Spells : MonoBehaviour
     [SerializeField] private AudioSource lightningSound;
     [SerializeField] private AudioSource seekingOrbSound;
     [SerializeField] private AudioSource chadSound;
+
+    public GameObject freezeFlash;
+    public GameObject iceCubeBreak;
+
 
     void Update()
     {
@@ -59,6 +64,10 @@ public class Spells : MonoBehaviour
             else if (spellName == "SummonChad")
             {
                 SummonChad();
+            }
+            else if (spellName == "Freeze")
+            {
+                StartCoroutine(Freeze());
             }
         }
     }
@@ -148,6 +157,37 @@ public class Spells : MonoBehaviour
             chadHealth.Die();
             chads.Remove(chad); // Remove this Chad instance from the list
         }
+    }
+
+    public IEnumerator Freeze()
+    {
+        float freezeTime = 4;
+
+        GameObject flash = Instantiate(freezeFlash, new Vector3(0, 0, 0), Quaternion.identity);
+        Destroy(flash, 1);
+
+        //Destroy all enemy bullets
+        GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
+        for(int i = 0; i < enemyBullets.Length; i++) Destroy(enemyBullets[i]);
+
+        //Freeze all enemies
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        for(int i = 0; i < enemies.Length; i++)
+        {
+            enemies[i].GetComponent<EnemyMovement>().movementSpeed /= 1000;
+            GameObject ice = Instantiate(iceCubePrefab, enemies[i].transform.position, Quaternion.identity);
+            Destroy(ice, freezeTime);
+        }
+
+        yield return new WaitForSeconds(freezeTime);
+
+        for(int i = 0; i < enemies.Length; i++)
+        {
+            enemies[i].GetComponent<EnemyMovement>().movementSpeed *= 1000;
+            GameObject effect = Instantiate(iceCubeBreak, new Vector3(0, 0, 0), Quaternion.identity);
+            Destroy(effect, 1);
+        }
+
     }
 
 }
