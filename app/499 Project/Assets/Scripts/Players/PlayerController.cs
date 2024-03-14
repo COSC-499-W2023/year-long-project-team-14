@@ -245,7 +245,7 @@ public class PlayerController : MonoBehaviour
 
     public void Dash(){
         //If the dash is off cooldown, the player is alive and the game is not paused.
-        if(dashCDT >= dashCooldown && !hs.dead && !PauseMenu.GameIsPaused){
+        if(dashCDT >= dashCooldown && !hs.dead && !PauseMenu.GameIsPaused && gameObject.layer != 17){
             dashSound.Play();
             GameObject dashSmoke = Instantiate(dashPrefab, transform.position, transform.rotation);
             //Add force in the direction the player is moving
