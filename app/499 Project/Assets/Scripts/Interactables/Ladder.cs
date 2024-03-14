@@ -27,23 +27,18 @@ public class Ladder : MonoBehaviour
     }
 
     //player is within range
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            if(gameMaster.currentLevel == 1 && ladderArrow != null)
+            if(gameMaster.currentLevel == 1 && exitUnlocked && ladderArrow != null)
                 ladderArrow.SetActive(false);
+            
+            if(exitUnlocked)
+                floatingText.SetActive(true);
 
             playerIsOverExit = true;
         }
-        if (other.CompareTag("Player") && exitUnlocked)
-        {
-            ShowFloatingText();
-        }
-    }
-    void ShowFloatingText()
-    {
-        Instantiate(floatingText, transform.position, Quaternion.identity, transform);
     }
 
     //player is no longer within range
@@ -52,6 +47,7 @@ public class Ladder : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsOverExit = false;
+            floatingText.SetActive(false);
         }
     }
 
