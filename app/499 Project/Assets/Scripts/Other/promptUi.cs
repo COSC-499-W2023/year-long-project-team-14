@@ -15,10 +15,8 @@ public class promptUi : MonoBehaviour
     }
 
     public bool isDisplayed = false;
-    public void SetUp(string text1, string text2)
+    public void SetUp()
     {
-        titleText.text = text1;
-        contentText.text = text2;
         image.SetActive(true);
         isDisplayed = true;
     }

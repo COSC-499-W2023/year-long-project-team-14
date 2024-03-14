@@ -15,6 +15,7 @@ public class healthSystem : MonoBehaviour
     public GameOverMenu gameOverMenu;
     public PlayerController playerController;
     public bool isInvic = false;
+    public bool chad = false;
 
     [SerializeField] private AudioSource hitSound;
     [SerializeField] private AudioSource deathSound;
@@ -108,7 +109,7 @@ public class healthSystem : MonoBehaviour
         dead = true;
         spriteRenderer.sortingOrder = 8;
 
-        if(gameOverMenu != null)
+        if(gameOverMenu != null && !chad)
             gameOverMenu.playercount--;
     }
 
@@ -167,6 +168,21 @@ public class healthSystem : MonoBehaviour
         yield return new WaitForSeconds(0.15f);
          currentColor = spriteRenderer.color; // Set the transparency (alpha) value
         currentColor.a = 0.5f; // Adjust the alpha value as needed
+        spriteRenderer.color = currentColor;
+
+        yield return new WaitForSeconds(0.15f);
+         currentColor = spriteRenderer.color; // Set the transparency (alpha) value
+        currentColor.a = 0f; // Adjust the alpha value as needed
+        spriteRenderer.color = currentColor;
+
+        yield return new WaitForSeconds(0.15f);
+         currentColor = spriteRenderer.color; // Set the transparency (alpha) value
+        currentColor.a = 0.5f; // Adjust the alpha value as needed
+        spriteRenderer.color = currentColor;
+
+        yield return new WaitForSeconds(0.15f);
+         currentColor = spriteRenderer.color; // Set the transparency (alpha) value
+        currentColor.a = 0f; // Adjust the alpha value as needed
         spriteRenderer.color = currentColor;
 
         yield return new WaitForSeconds(0.15f);

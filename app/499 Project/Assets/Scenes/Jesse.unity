@@ -793,6 +793,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mage_player1
       objectReference: {fileID: 0}
+    - target: {fileID: 4335837073719164080, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
+      propertyPath: spellName
+      value: Lightning
+      objectReference: {fileID: 0}
     - target: {fileID: 9020650352874436745, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.87
@@ -1090,10 +1094,6 @@ PrefabInstance:
     - target: {fileID: 2247206093011270241, guid: 1e76f7aa62f36b64094958356d52545c, type: 3}
       propertyPath: m_Name
       value: mini_boss_viking
-      objectReference: {fileID: 0}
-    - target: {fileID: 4788542615315652322, guid: 1e76f7aa62f36b64094958356d52545c, type: 3}
-      propertyPath: spiralRateOfFire
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5707318513063649654, guid: 1e76f7aa62f36b64094958356d52545c, type: 3}
       propertyPath: healthBar

@@ -20,7 +20,7 @@ public class SprayBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moveSpeed = 3f;
+        moveSpeed = 2.5f;
 
         //Get difficulty
         int diff = PlayerPrefs.GetInt("difficulty");
