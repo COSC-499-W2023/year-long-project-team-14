@@ -16,6 +16,9 @@ Assets acknowledgement:
 * Fireball explosion: https://xthekendrick.itch.io/2d-explosions-pack
 * Lightning bolt: https://ansimuz.itch.io/gothicvania-magic-pack-9
 * Bullet effects: https://bdragon1727.itch.io/free-effect-and-bullet-16x16
+* Ice cube: https://nemorium.itch.io/ice-asset-pack
+* Spell prompt banner: https://bdragon1727.itch.io/border-and-panels-menu-part-2
+* Prompt button icons: https://greatdocbrown.itch.io/gamepad-ui
 
 Please use the provided folder structure for your docs (project plan, design documentation, communications log, weekly logs, and final documentation), source code, testing, etc.    You are free to organize any additional internal folder structure as required by the project.  Please use a branching workflow and once an item is ready, do remember to issue a PR, code review, and merge it into the develop branch and then the master branch.
 ```
