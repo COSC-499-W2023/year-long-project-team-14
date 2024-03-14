@@ -454,6 +454,7 @@ MonoBehaviour:
   gameOverMenu: {fileID: 0}
   playerController: {fileID: 4452037770434438324}
   isInvic: 0
+  chad: 0
   hitSound: {fileID: 5617919102717672389}
   deathSound: {fileID: 2466968929111969126}
   ChadAttack: chadAttack
@@ -773,7 +774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e25061756d70d4f809c184106d804a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellName: Fireball
+  spellName: Freeze
   spellCooldown: 10
   cooldownTimer: 0
   playerController: {fileID: 4452037770434438324}
@@ -782,11 +783,14 @@ MonoBehaviour:
   lightningPrefab: {fileID: 4084521033630141133, guid: 9414e171bb10ea848b96be1cb0081fab, type: 3}
   seekingOrbPrefab: {fileID: 1287584697726197767, guid: b5dce37d418318a48bf4101d9ddb1d4d, type: 3}
   chadPrefab: {fileID: 47225787850154555, guid: 87c0e3250bb6bd54fbf05cb8653bde2e, type: 3}
+  iceCubePrefab: {fileID: 5353155636119205557, guid: 2b44b4606410f624489e839e71c78d63, type: 3}
   yOffset: 2.5
   fireballSound: {fileID: 6020226581851858952}
   lightningSound: {fileID: 5829597694115131600}
   seekingOrbSound: {fileID: 8049298216514591554}
   chadSound: {fileID: 2376870225415034407}
+  freezeFlash: {fileID: 8839434359703360610, guid: 8d1a06cceef4e0a40bf0f15c7971b23e, type: 3}
+  iceCubeBreak: {fileID: 0}
 --- !u!82 &6020226581851858952
 AudioSource:
   m_ObjectHideFlags: 0

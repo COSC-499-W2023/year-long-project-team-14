@@ -184,8 +184,8 @@ public class Spells : MonoBehaviour
         for(int i = 0; i < enemies.Length; i++)
         {
             enemies[i].GetComponent<EnemyMovement>().movementSpeed *= 1000;
-            GameObject effect = Instantiate(iceCubeBreak, new Vector3(0, 0, 0), Quaternion.identity);
-            Destroy(effect, 1);
+            //GameObject effect = Instantiate(iceCubeBreak, new Vector3(0, 0, 0), Quaternion.identity);
+            //Destroy(effect, 1);
         }
 
     }
