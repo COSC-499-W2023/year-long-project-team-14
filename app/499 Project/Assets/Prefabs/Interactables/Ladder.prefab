@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8531640523310012043
 Transform:
   m_ObjectHideFlags: 0
@@ -228,7 +228,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b2be3b8b8f838b418e65e9812373f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingText: {fileID: 1682910297720456518, guid: e126d45dcb5af714583837313a1b2ee7, type: 3}
+  prompt: {fileID: 2951218418639254991}
+  xPrompt: {fileID: 21300000, guid: e962da0ea95eabf459148290944d295e, type: 3}
+  aPrompt: {fileID: 21300000, guid: 440208def2e09dd4eb3ae502fa2c02c7, type: 3}
+  ePrompt: {fileID: 21300000, guid: 04023dad15e00984080d76d25a7ba5c9, type: 3}
   exitUnlocked: 0
   spriteRenderer: {fileID: 2593783467049871882}
   ladderSprite: {fileID: 21300000, guid: aa22c9b1c600b954b8b30861088de863, type: 3}

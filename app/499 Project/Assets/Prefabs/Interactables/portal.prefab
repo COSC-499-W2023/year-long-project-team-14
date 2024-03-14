@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6981497667453939577
 Transform:
   m_ObjectHideFlags: 0
@@ -237,7 +237,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7ab9250001a0148b56e629e729df50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingText: {fileID: 1682910297720456518, guid: e126d45dcb5af714583837313a1b2ee7, type: 3}
+  prompt: {fileID: 6510480051966041412}
+  xPrompt: {fileID: 21300000, guid: e962da0ea95eabf459148290944d295e, type: 3}
+  aPrompt: {fileID: 21300000, guid: 440208def2e09dd4eb3ae502fa2c02c7, type: 3}
+  ePrompt: {fileID: 21300000, guid: 04023dad15e00984080d76d25a7ba5c9, type: 3}
   allEnemies: []
   port: {fileID: 5090652253888192386}
   portalActive: 0

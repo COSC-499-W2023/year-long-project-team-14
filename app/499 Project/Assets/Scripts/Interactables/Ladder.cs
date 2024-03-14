@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Ladder : MonoBehaviour
 {
-    public GameObject floatingText;
+    public SpriteRenderer prompt;
+    public Sprite xPrompt;
+    public Sprite aPrompt;
+    public Sprite ePrompt;
 
     private bool playerIsOverExit = false;
     public bool exitUnlocked = false;
@@ -29,15 +32,43 @@ public class Ladder : MonoBehaviour
     //player is within range
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !other.gameObject.GetComponent<healthSystem>().chad)
         {
+            playerIsOverExit = true;
+            
             if(gameMaster.currentLevel == 1 && exitUnlocked && ladderArrow != null)
                 ladderArrow.SetActive(false);
             
             if(exitUnlocked)
-                floatingText.SetActive(true);
-
-            playerIsOverExit = true;
+            {
+                prompt.gameObject.SetActive(true);
+                if(other.gameObject.GetComponent<PlayerController>().player1)
+                {
+                    if(gameMaster.player1Controls == "PS")
+                    {
+                        prompt.sprite = xPrompt;
+                    }
+                    else if(gameMaster.player1Controls == "Xbox")
+                    {
+                        prompt.sprite = aPrompt;
+                    }
+                    else
+                        prompt.sprite = ePrompt;
+                }
+                else
+                {
+                    if(gameMaster.player2Controls == "PS")
+                    {
+                        prompt.sprite = xPrompt;
+                    }
+                    else if(gameMaster.player2Controls == "Xbox")
+                    {
+                        prompt.sprite = aPrompt;
+                    }
+                    else
+                        prompt.sprite = ePrompt;
+                }
+            }
         }
     }
 
@@ -47,7 +78,7 @@ public class Ladder : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsOverExit = false;
-            floatingText.SetActive(false);
+            prompt.gameObject.SetActive(false);
         }
     }
 
