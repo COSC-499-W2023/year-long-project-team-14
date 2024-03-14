@@ -61,6 +61,8 @@ MonoBehaviour:
   image: {fileID: 2517229127961533415}
   fireSprite: {fileID: -1659854389, guid: 71f101bd904da3a4eb89ffd963ac31b7, type: 3}
   lightningSprite: {fileID: 339508314, guid: fa739449f8985d74aa6afb409a7beb86, type: 3}
+  SeekingSprite: {fileID: 0}
+  chadSprite: {fileID: 0}
 --- !u!114 &2517229127961533415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,8 +562,10 @@ MonoBehaviour:
   gameOverMenu: {fileID: 0}
   playerController: {fileID: 4452037770434438324}
   isInvic: 0
+  chad: 0
   hitSound: {fileID: 3364955169198809843}
   deathSound: {fileID: -2053607497160900435}
+  ChadAttack: chadAttack
 --- !u!82 &-3089450358657967342
 AudioSource:
   m_ObjectHideFlags: 0
@@ -870,10 +874,12 @@ MonoBehaviour:
   fireballPrefab: {fileID: 1345593741101300040, guid: 18f719aa43c40ed4d9679fe79f234e7f, type: 3}
   lightningPrefab: {fileID: 4084521033630141133, guid: 9414e171bb10ea848b96be1cb0081fab, type: 3}
   seekingOrbPrefab: {fileID: 1287584697726197767, guid: b5dce37d418318a48bf4101d9ddb1d4d, type: 3}
+  chadPrefab: {fileID: 0}
   yOffset: 2.5
   fireballSound: {fileID: 7860525362818205043}
   lightningSound: {fileID: 6808735797056020385}
   seekingOrbSound: {fileID: 5033179128970622421}
+  chadSound: {fileID: 0}
 --- !u!82 &7860525362818205043
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1410,8 +1416,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.7490196, b: 1, a: 0.24705882}
-      key1: {r: 0, g: 0.7490196, b: 1, a: 0.24705882}
+      key0: {r: 0, g: 0.7490196, b: 1, a: 0.12156863}
+      key1: {r: 0, g: 0.7490196, b: 1, a: 0.12156863}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
