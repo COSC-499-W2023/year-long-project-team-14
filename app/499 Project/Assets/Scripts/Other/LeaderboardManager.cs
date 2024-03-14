@@ -31,6 +31,7 @@ public class LeaderboardManager : MonoBehaviour
     public GameObject submitButton;
     public GameObject menuButton;
     public bool lbMenu = false;
+    public TMP_Text leaderboardText;
 
 
     void Start()
@@ -197,7 +198,10 @@ public class LeaderboardManager : MonoBehaviour
     }
 
     public void FetchHighscores(string leaderboardID) //Retrieve leaderboard scores 
-    {       
+    {   
+        ClearLeaderboard(10);
+        leaderboardText.text = "Loading...";
+
         done = false;
 
         if(leaderboardID == null)
@@ -221,55 +225,74 @@ public class LeaderboardManager : MonoBehaviour
                 if(scoreType == 1)
                     start = response.rank < 6 ? 0 : response.rank - 5;
 
-                LootLockerSDKManager.GetScoreList(leaderboardID, 10, start, (response) =>
+                if(scoreType == 2 || response.rank != 0)
                 {
-                    if(response.success)
+                    LootLockerSDKManager.GetScoreList(leaderboardID, 10, start, (response) =>
                     {
-                        LootLockerLeaderboardMember[] members = response.items;
-                        string name = "";
-
-                        if(members != null)
+                        if(response.success)
                         {
-                            for(int i = 0; i < members.Length; i++)
-                            {
-                                if(members[i].member_id != "")
-                                {
-                                    name = members[i].member_id + "";
-                                }
-                                else
-                                {
-                                    name = members[i].member_id + "";
-                                }
-                                DisplayHighscore(i, members[i].rank, name, members[i].member_id, members[i].score);
-                            }
+                            leaderboardText.text = "";
 
-                            done = true;
-                            connected = true;
+                            LootLockerLeaderboardMember[] members = response.items;
+                            string name = "";
 
-                            int blankSpots = 10 - members.Length;
-                            for(int i = 0; i < blankSpots; i++)
+                            if(members != null)
                             {
-                                playerRanks[9 - i].text = " ";
-                                playerNames[9 - i].text = " ";
-                                playerScores[9 - i].text = " ";
+                                for(int i = 0; i < members.Length; i++)
+                                {
+                                    if(members[i].member_id != "")
+                                    {
+                                        name = members[i].member_id + "";
+                                    }
+                                    else
+                                    {
+                                        name = members[i].member_id + "";
+                                    }
+                                    DisplayHighscore(i, members[i].rank, name, members[i].member_id, members[i].score);
+                                }
+
+                                done = true;
+                                connected = true;
+                                
+                                int blankSpots = 10 - members.Length;
+                                ClearLeaderboard(blankSpots);
                             }
                         }
-                    }
-                    else
-                    {
-                        print("Failed to fetch scores");
-                        done = true;
-                        connected = false;
-                    }
-                });
+                        else
+                        {
+                            ClearLeaderboard(10);
+                            leaderboardText.text = "Error. Try again later.";
+                            print("Failed to fetch scores");
+                            done = true;
+                            connected = false;
+                        }
+                    });
+                }
+                else
+                {
+                    ClearLeaderboard(10);
+                    leaderboardText.text = "Submit a score to appear on this leaderboard.";
+                }
             }
             else
             {
+                ClearLeaderboard(10);
+                leaderboardText.text = "Error. Try again later.";
                 Debug.Log("Failed to get player rank");
                 done = true;
                 connected = false;
             }
         });
+    }
+
+    public void ClearLeaderboard(int x)
+    {
+        for(int i = 0; i < x; i++)
+        {
+            playerRanks[9 - i].text = " ";
+            playerNames[9 - i].text = " ";
+            playerScores[9 - i].text = " ";
+        }
     }
 
     public void DisplayHighscore(int iteration, int rank, string name, string memberID, int score) //Display leaderboard scores on leaderboard menu
