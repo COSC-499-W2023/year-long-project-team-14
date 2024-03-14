@@ -270,6 +270,7 @@ public class LeaderboardManager : MonoBehaviour
                 }
                 else
                 {
+                    done = true;
                     ClearLeaderboard(10);
                     leaderboardText.text = "Submit a score to appear on this leaderboard.";
                 }
