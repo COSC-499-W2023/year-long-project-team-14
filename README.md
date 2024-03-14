@@ -23,6 +23,7 @@ Assets acknowledgement:
 * In game music: https://www.youtube.com/watch?v=PPOnlNBrHug
 * Mini boss song: https://xdeviruchi.itch.io/8-bit-fantasy-adventure-music-pack
 * Final boss song: https://www.youtube.com/watch?v=uIfD2BKaD2k
+* Final boss art: https://darkpixel-kronovi.itch.io/mecha-golem-free
 
 Please use the provided folder structure for your docs (project plan, design documentation, communications log, weekly logs, and final documentation), source code, testing, etc.    You are free to organize any additional internal folder structure as required by the project.  Please use a branching workflow and once an item is ready, do remember to issue a PR, code review, and merge it into the develop branch and then the master branch.
 ```
