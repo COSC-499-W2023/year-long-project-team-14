@@ -49,7 +49,7 @@ public class healthSystem : MonoBehaviour
 
     //Used to check collision with the spikes while still allowing the player to walk through them.
     private void OnTriggerStay2D(Collider2D collision){
-        if(collision.gameObject.CompareTag("Spike")){
+        if(collision.gameObject.CompareTag("Spike") || collision.gameObject.CompareTag("EnemyBullet")){
             takeDamage();
         }
     }
@@ -168,6 +168,21 @@ public class healthSystem : MonoBehaviour
         yield return new WaitForSeconds(0.15f);
          currentColor = spriteRenderer.color; // Set the transparency (alpha) value
         currentColor.a = 0.5f; // Adjust the alpha value as needed
+        spriteRenderer.color = currentColor;
+
+        yield return new WaitForSeconds(0.15f);
+         currentColor = spriteRenderer.color; // Set the transparency (alpha) value
+        currentColor.a = 0f; // Adjust the alpha value as needed
+        spriteRenderer.color = currentColor;
+
+        yield return new WaitForSeconds(0.15f);
+         currentColor = spriteRenderer.color; // Set the transparency (alpha) value
+        currentColor.a = 0.5f; // Adjust the alpha value as needed
+        spriteRenderer.color = currentColor;
+
+        yield return new WaitForSeconds(0.15f);
+         currentColor = spriteRenderer.color; // Set the transparency (alpha) value
+        currentColor.a = 0f; // Adjust the alpha value as needed
         spriteRenderer.color = currentColor;
 
         yield return new WaitForSeconds(0.15f);

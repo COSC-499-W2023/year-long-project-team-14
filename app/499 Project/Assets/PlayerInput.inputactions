@@ -19,7 +19,7 @@
                     "type": "Value",
                     "id": "56fff046-a044-43d7-8bb4-cf7bbd34d892",
                     "expectedControlType": "Vector2",
-                    "processors": "",
+                    "processors": "StickDeadzone(min=0.25,max=0.925)",
                     "interactions": "",
                     "initialStateCheck": true
                 },
