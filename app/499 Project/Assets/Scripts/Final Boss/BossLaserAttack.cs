@@ -261,13 +261,35 @@ public class BossLaserAttack : MonoBehaviour
             }
         }
     }
+
+    public GameObject clone;
     private IEnumerator ShootLaser()
     {
         animator.SetTrigger("ChargeLeft");
         Vector3 laserPos = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
-        GameObject clone = Instantiate(laser, laserPos, transform.rotation);
+        clone = Instantiate(laser, laserPos, transform.rotation);
+
+        float rotationSpeed = 500.0f; // Adjust this value to control the rotation speed
+
+        // Quaternion targetRotation = Quaternion.Euler(0, 0, 360); // Target rotation angle
+
+        // while (Quaternion.Angle(clone.transform.rotation, targetRotation) > 0.1f)
+        // {
+        //     clone.transform.rotation = Quaternion.RotateTowards(clone.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        //     yield return null;
+        // }
+        
         //Destroy(clone, 1.0f);
-        yield return new WaitForSeconds(fireAtPlayerRateOfFire);
+         yield return null;
+    }
+
+    void Update()
+    {
+        if(clone != null)
+        {
+            clone.transform.Rotate(new Vector3(0,0,10*Time.deltaTime));
+        }
+       
     }
 }
 
