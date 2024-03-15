@@ -60,8 +60,8 @@ public class SeekingOrbTest
         Assert.IsTrue(orbs.Length > 0); 
 
         //Wait for the orbs to hit the enemy
-        yield return new WaitUntil(() => enemyHealthSystem.enemyHealth <= 0);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitUntil(() => enemyHealthSystem.enemyHealth < health);
+        yield return new WaitForSeconds(0.75f);
     
         //Check that the enemy got hit by the orbs
         Assert.IsTrue(enemyHealthSystem.enemyHealth < health);

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    public GameObject floatingText;
+    public SpriteRenderer prompt;
+    public Sprite xPrompt;
+    public Sprite aPrompt;
+    public Sprite ePrompt;
 
     // Define the next level scene name
     GameMaster gameMaster;
@@ -20,21 +23,43 @@ public class Portal : MonoBehaviour
     }
 
     //player is within range
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if(other.CompareTag("Player") && !other.gameObject.GetComponent<healthSystem>().chad)
         {
             playerIsOverPortal = true;
-        }
-        if (other.CompareTag("Player") && portalActive)
-        {
-            ShowFloatingText();
-        }
-    }
 
-    void ShowFloatingText()
-    {
-        Instantiate(floatingText, transform.position, Quaternion.identity, transform);
+            if(portalActive)
+            {
+                prompt.gameObject.SetActive(true);
+                if(other.gameObject.GetComponent<PlayerController>().player1)
+                {
+                    if(gameMaster.player1Controls == "PS")
+                    {
+                        prompt.sprite = xPrompt;
+                    }
+                    else if(gameMaster.player1Controls == "Xbox")
+                    {
+                        prompt.sprite = aPrompt;
+                    }
+                    else
+                        prompt.sprite = ePrompt;
+                }
+                else
+                {
+                    if(gameMaster.player2Controls == "PS")
+                    {
+                        prompt.sprite = xPrompt;
+                    }
+                    else if(gameMaster.player2Controls == "Xbox")
+                    {
+                        prompt.sprite = aPrompt;
+                    }
+                    else
+                        prompt.sprite = ePrompt;
+                }
+            }
+        }
     }
 
     //player is no longer within range
@@ -43,6 +68,7 @@ public class Portal : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsOverPortal = false;
+            prompt.gameObject.SetActive(false);
         }
     }
 

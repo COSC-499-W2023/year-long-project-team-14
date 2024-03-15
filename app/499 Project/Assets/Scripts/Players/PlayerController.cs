@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
                     if(aimDirection.x != 0 && aimDirection.y != 0)
                     {
                         Quaternion rotation = Quaternion.LookRotation(aimDirection, playerCenter.transform.TransformDirection(Vector3.forward));
-                        playerCenter.transform.rotation = Quaternion.Slerp(playerCenter.transform.rotation, new Quaternion(0, 0, rotation.z, rotation.w), 50 * Time.deltaTime);
+                        playerCenter.transform.rotation = Quaternion.Slerp(playerCenter.transform.rotation, new Quaternion(0, 0, rotation.z, rotation.w), 24 * Time.deltaTime);
                     }
                     else if(player1)
                     {
@@ -250,7 +250,7 @@ public class PlayerController : MonoBehaviour
 
     public void Dash(){
         //If the dash is off cooldown, the player is alive and the game is not paused.
-        if(dashCDT >= dashCooldown && !hs.dead && !PauseMenu.GameIsPaused){
+        if(dashCDT >= dashCooldown && !hs.dead && !PauseMenu.GameIsPaused && gameObject.layer != 17){
             dashSound.Play();
             GameObject dashSmoke = Instantiate(dashPrefab, transform.position, transform.rotation);
             //Add force in the direction the player is moving
