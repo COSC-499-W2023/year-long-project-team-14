@@ -6,6 +6,7 @@ public class BossLaserAttack : MonoBehaviour
 {   
     public Animator animator;
     public GameObject laser;
+    public EnemyMovement em;
     
     [SerializeField]
     private float rateOfFire = 1f; // Set the rate of fire for circular burst
@@ -46,10 +47,10 @@ public class BossLaserAttack : MonoBehaviour
      void Start()
     {
         animator = GetComponent<Animator>();
+        em = GetComponent<EnemyMovement>();
 
-        //StartCoroutine(AlternatingShooting());
-        //TEST
-        StartCoroutine(ShootLaser());
+        StartCoroutine(AlternatingShooting());
+        
 
         //StartCoroutine(FireBursts());
         //InvokeRepeating("Fire", 0f, 1f / rateOfFire);
@@ -265,29 +266,21 @@ public class BossLaserAttack : MonoBehaviour
     public GameObject clone;
     private IEnumerator ShootLaser()
     {
+        em.enabled = false;
         animator.SetTrigger("ChargeLeft");
         Vector3 laserPos = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
         clone = Instantiate(laser, laserPos, transform.rotation);
-
-        float rotationSpeed = 500.0f; // Adjust this value to control the rotation speed
-
-        // Quaternion targetRotation = Quaternion.Euler(0, 0, 360); // Target rotation angle
-
-        // while (Quaternion.Angle(clone.transform.rotation, targetRotation) > 0.1f)
-        // {
-        //     clone.transform.rotation = Quaternion.RotateTowards(clone.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        //     yield return null;
-        // }
         
-        //Destroy(clone, 1.0f);
-         yield return null;
+        yield return new WaitForSeconds(5.0f);  
+        em.enabled = true;
+        Destroy(clone);
     }
 
     void Update()
     {
         if(clone != null)
         {
-            clone.transform.Rotate(new Vector3(0,0,10*Time.deltaTime));
+            clone.transform.Rotate(new Vector3(0,0,100*Time.deltaTime));
         }
        
     }
