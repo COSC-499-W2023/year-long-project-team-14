@@ -915,6 +915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   shoot: {fileID: 0}
+  bossAttack: {fileID: 0}
   enemyHealth: 3
   enemyCollider: {fileID: 0}
   ladder: {fileID: 0}
@@ -930,13 +931,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3785175334044080466}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d418acd50c56c144f96c94627884d381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0}
-  movementSpeed: 2
+  movementSpeed: 20
   nextWaypointDistance: 15
   chargeDuration: 0
   waitTime: 0
@@ -988,6 +989,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   laser: {fileID: 6501547363171174366, guid: 84b090c2e3cd54241879ee0e53818379, type: 3}
+  em: {fileID: 0}
+  hs: {fileID: 0}
   rateOfFire: 2
   spiralRateOfFire: 0.1
   fireAtPlayerRateOfFire: 4
@@ -1000,3 +1003,4 @@ MonoBehaviour:
   endAngle: 360
   firingEnabled: 1
   totalSpirals: 1
+  clone: {fileID: 0}

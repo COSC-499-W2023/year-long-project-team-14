@@ -1177,14 +1177,6 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1517546132}
-    - target: {fileID: 6000421223058309759, guid: be52253c13897be49879f2168b815edc, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6000421223058309759, guid: be52253c13897be49879f2168b815edc, type: 3}
-      propertyPath: movementSpeed
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 6461595776689869080, guid: be52253c13897be49879f2168b815edc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1223,10 +1215,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6461595776689869080, guid: be52253c13897be49879f2168b815edc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532526182953842053, guid: be52253c13897be49879f2168b815edc, type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
