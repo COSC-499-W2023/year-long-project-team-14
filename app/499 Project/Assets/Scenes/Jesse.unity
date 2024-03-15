@@ -690,11 +690,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4023927712557199288, guid: 84b090c2e3cd54241879ee0e53818379, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.7
+      value: 10.05
       objectReference: {fileID: 0}
     - target: {fileID: 4023927712557199288, guid: 84b090c2e3cd54241879ee0e53818379, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.39
+      value: 5.86
       objectReference: {fileID: 0}
     - target: {fileID: 4023927712557199288, guid: 84b090c2e3cd54241879ee0e53818379, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1177,33 +1177,21 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1517546132}
-    - target: {fileID: 4553109566687864018, guid: be52253c13897be49879f2168b815edc, type: 3}
-      propertyPath: m_Radius
-      value: 1.2
-      objectReference: {fileID: 0}
     - target: {fileID: 6000421223058309759, guid: be52253c13897be49879f2168b815edc, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6000421223058309759, guid: be52253c13897be49879f2168b815edc, type: 3}
       propertyPath: movementSpeed
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6461595776689869080, guid: be52253c13897be49879f2168b815edc, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6461595776689869080, guid: be52253c13897be49879f2168b815edc, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6461595776689869080, guid: be52253c13897be49879f2168b815edc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.94
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6461595776689869080, guid: be52253c13897be49879f2168b815edc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.62
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6461595776689869080, guid: be52253c13897be49879f2168b815edc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1237,9 +1225,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8940415145431181823, guid: be52253c13897be49879f2168b815edc, type: 3}
-      propertyPath: m_Mass
-      value: 100
+    - target: {fileID: 8532526182953842053, guid: be52253c13897be49879f2168b815edc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
