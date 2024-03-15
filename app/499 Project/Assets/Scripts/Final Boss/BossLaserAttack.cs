@@ -7,6 +7,7 @@ public class BossLaserAttack : MonoBehaviour
     public Animator animator;
     public GameObject laser;
     public EnemyMovement em;
+    public MiniBossHealthSystem hs;
     
     [SerializeField]
     private float rateOfFire = 1f; // Set the rate of fire for circular burst
@@ -48,6 +49,7 @@ public class BossLaserAttack : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         em = GetComponent<EnemyMovement>();
+        hs = GetComponent<MiniBossHealthSystem>();
 
         StartCoroutine(AlternatingShooting());
         
@@ -122,6 +124,8 @@ public class BossLaserAttack : MonoBehaviour
         {
             yield return new WaitForSeconds(3f / (((diff - 1) / 2) + 1)); // delay between attacks
             int rand = Random.Range(0, 3);
+            rand = 2;
+
             if(rand == 0)
             {
     yield return StartCoroutine(FireSingleBurst());
@@ -266,14 +270,29 @@ public class BossLaserAttack : MonoBehaviour
     public GameObject clone;
     private IEnumerator ShootLaser()
     {
-        em.enabled = false;
-        animator.SetTrigger("ChargeLeft");
-        Vector3 laserPos = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
-        clone = Instantiate(laser, laserPos, transform.rotation);
+         if(firingEnabled)
+        {
+            em.enabled = false;
+            animator.SetTrigger("ChargeLeft");
+            Vector3 laserPos = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
+            clone = Instantiate(laser, laserPos, transform.rotation);
+
+            BoxCollider2D laserHitbox;
+            laserHitbox = clone.GetComponent<BoxCollider2D>();
+            
+            yield return new WaitForSeconds(0.6f);  
+            laserHitbox.enabled = true;
+
+            yield return new WaitForSeconds(5.0f);
+            
+            if(hs.enemyHealth > 0)
+            {
+                em.enabled = true;
+                laserHitbox.enabled = false;
+                Destroy(clone);
+            }
         
-        yield return new WaitForSeconds(5.0f);  
-        em.enabled = true;
-        Destroy(clone);
+        }
     }
 
     void Update()
@@ -281,6 +300,11 @@ public class BossLaserAttack : MonoBehaviour
         if(clone != null)
         {
             clone.transform.Rotate(new Vector3(0,0,100*Time.deltaTime));
+        }
+
+        if(hs.enemyHealth <= 0)
+        {
+            Destroy(clone);
         }
        
     }
