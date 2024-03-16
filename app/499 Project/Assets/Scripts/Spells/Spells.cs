@@ -162,7 +162,7 @@ public class Spells : MonoBehaviour
     public IEnumerator Freeze()
     {
         //Set freeze duration
-        float freezeTime = 4;
+        float freezeTime = 3;
 
         //Play flash animation
         GameObject flash = Instantiate(freezeFlash, new Vector3(0, 0, 0), Quaternion.identity);
@@ -200,8 +200,8 @@ public class Spells : MonoBehaviour
             {
                 enemies[i].GetComponent<EnemyMovement>().enabled = true;
 
-                //GameObject effect = Instantiate(iceCubeBreak, new Vector3(0, 0, 0), Quaternion.identity);
-                //Destroy(effect, 1);
+                GameObject effect = Instantiate(iceCubeBreak, enemies[i].transform.position, Quaternion.identity);
+                Destroy(effect, 1);
 
                 EnemyAttack enemyAttack = enemies[i].GetComponent<EnemyAttack>();
                 if(enemyAttack != null)
