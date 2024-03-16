@@ -74,7 +74,10 @@ public class Spells : MonoBehaviour
 
     public void FireballSpell()
     {
+        //Play shoot fireball sound effect
         fireballSound.Play();
+
+        //Spawn fireball and launch it based on players aim direction
         GameObject fireball = Instantiate(fireballPrefab, playerController.gunFollow.position, playerController.playerCenter.transform.rotation);
         Rigidbody2D fireballRB = fireball.GetComponent<Rigidbody2D>();
         fireballRB.AddForce(-playerController.gunFollow.up * 25 * playerController.bulletForce);
@@ -113,12 +116,13 @@ public class Spells : MonoBehaviour
 
     public void SeekingOrb()
     {
-        // GameObject orb = Instantiate(seekingOrbPrefab, playerController.gunFollow.position, playerController.playerCenter.transform.rotation);
-        // Rigidbody2D orbRB = orb.GetComponent<Rigidbody2D>();
-        // orbRB.AddForce(-playerController.gunFollow.up * 200 * playerController.bulletForce);
+        //Play orb shoot sound effect
         seekingOrbSound.Play();
+
+        //Get player aim rotation
         Quaternion rotation = playerController.playerCenter.transform.rotation * Quaternion.Euler(0, 0, 180);
 
+        //Spawn orbs and launch them based on rotation
         GameObject orb = Instantiate(seekingOrbPrefab, playerController.gunFollow.position, rotation);
         Rigidbody2D orbRB = orb.GetComponent<Rigidbody2D>();
         orbRB.AddForce(orb.transform.up * 80 * playerController.bulletForce);
@@ -172,26 +176,31 @@ public class Spells : MonoBehaviour
         GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
         for(int i = 0; i < enemyBullets.Length; i++) enemyBullets[i].SetActive(false);
 
-        //Freeze all enemies
+        //Get array of enemies
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         for(int i = 0; i < enemies.Length; i++)
         {
+            //Get enemy health system
             EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
 
             if(enemyHealthSystem != null)
             {
                 if(enemyHealthSystem.enemyHealth > 0)
                 {
+                    //Disable movement and hit box
                     enemies[i].GetComponent<EnemyMovement>().enabled = false;
                     enemies[i].GetComponent<CircleCollider2D>().enabled = false;
 
+                    //Spawn ice cube on enemy
                     GameObject ice = Instantiate(iceCubePrefab, enemies[i].transform.position, Quaternion.identity);
                     Destroy(ice, freezeTime);
 
+                    //Disable orc attacks
                     EnemyAttack enemyAttack = enemies[i].GetComponent<EnemyAttack>();
                     if(enemyAttack != null)
                         enemyAttack.enabled = false;
 
+                    //Disable triple shot attacks
                     EnemyTripleShot enemyTripleShot = enemies[i].GetComponent<EnemyTripleShot>();
                     if(enemyTripleShot != null)
                         enemyTripleShot.enabled = false;
@@ -199,39 +208,47 @@ public class Spells : MonoBehaviour
             }
         }
 
-        //Play ice effect on boss
+        //Get array of bosses
         GameObject[] bosses = GameObject.FindGameObjectsWithTag("Boss");
         for(int i = 0; i < bosses.Length; i++)
         {
+            //Get boss health system
             MiniBossHealthSystem miniBossHealthSystem = bosses[i].GetComponent<MiniBossHealthSystem>();
                 
             if(miniBossHealthSystem != null)
             {
                 if(miniBossHealthSystem.enemyHealth > 0)
                 {
+                    //Play ice break effect on boss
                     GameObject effect = Instantiate(iceCubeBreak, bosses[i].transform.position, Quaternion.identity);
                     Destroy(effect, 1);
                 }
             }
         }
 
+        //Wait for duration of freeze
         yield return new WaitForSeconds(freezeTime);
 
         for(int i = 0; i < enemies.Length; i++)
         {
+            //Get enemy health system
             EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
             if(enemyHealthSystem != null && enemyHealthSystem.enemyHealth > 0)
             {
+                //Enable enemy movement and hit box
                 enemies[i].GetComponent<EnemyMovement>().enabled = true;
                 enemies[i].GetComponent<CircleCollider2D>().enabled = true;
 
+                //Play ice break effect on enemy
                 GameObject effect = Instantiate(iceCubeBreak, enemies[i].transform.position, Quaternion.identity);
                 Destroy(effect, 1);
 
+                //Enable orc attacks
                 EnemyAttack enemyAttack = enemies[i].GetComponent<EnemyAttack>();
                 if(enemyAttack != null)
                     enemyAttack.enabled = true;
 
+                //Enable triple shot attacks
                 EnemyTripleShot enemyTripleShot = enemies[i].GetComponent<EnemyTripleShot>();
                 if(enemyTripleShot != null)
                     enemyTripleShot.enabled = false;
