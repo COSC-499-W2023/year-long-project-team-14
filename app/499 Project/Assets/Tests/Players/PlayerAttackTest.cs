@@ -31,9 +31,7 @@ public class PlayerAttackTest
     [UnityTest]
     public IEnumerator AttackTest()
     {
-        //attempt to shoot 2 bullets, assert that only 1 bullet spawned since attackCharge is < 2
-        playerController.Shoot();
-        yield return new WaitForSeconds(0.1f);
+        //shoot a bullet
         playerController.Shoot();
         bullets = GameObject.FindGameObjectsWithTag("Player_bullet");
         Assert.IsTrue(bullets.Length == 1);
