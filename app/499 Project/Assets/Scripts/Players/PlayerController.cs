@@ -299,6 +299,10 @@ public class PlayerController : MonoBehaviour
             {
                 interactable.GetComponent<SummonChadPickup>().Interact();
             }
+            else if (tag == "Freeze")
+            {
+                interactable.GetComponent<FreezePickup>().Interact();
+            }
         }
     }
 
