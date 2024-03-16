@@ -18,6 +18,7 @@ public class SeekingOrb : MonoBehaviour
 
     public GameObject target;
     public GameObject[] enemies;
+    public GameObject[] bosses;
 
     public GameObject explosionPrefab;
 
@@ -85,7 +86,7 @@ public class SeekingOrb : MonoBehaviour
     //If orb collides with enemy... KABOOM!!!
     void OnCollisionEnter2D(Collision2D collision)
     {   
-        if(collision.gameObject.CompareTag("Enemy"))
+        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Boss"))
         {     
             EnemyHealthSystem enemyHealthSystem = collision.gameObject.GetComponent<EnemyHealthSystem>();
             if(enemyHealthSystem != null)
@@ -104,6 +105,8 @@ public class SeekingOrb : MonoBehaviour
     public IEnumerator FindRandomEnemy() 
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        bosses = GameObject.FindGameObjectsWithTag("Boss");
+        
         List<GameObject> aliveEnemies = new List<GameObject>();
 
         for(int i = 0; i < enemies.Length; i++)
@@ -114,14 +117,15 @@ public class SeekingOrb : MonoBehaviour
                 if(enemyHealthSystem.enemyHealth > 0)
                     aliveEnemies.Add(enemies[i]);
             }
-            else
+        }
+
+         for(int i = 0; i < bosses.Length; i++)
+        {
+            MiniBossHealthSystem miniBossHealthSystem = bosses[i].GetComponent<MiniBossHealthSystem>();
+            if(miniBossHealthSystem != null)
             {
-                MiniBossHealthSystem miniBossHealthSystem = enemies[i].GetComponent<MiniBossHealthSystem>();
-                if(miniBossHealthSystem != null)
-                {
-                    if(miniBossHealthSystem.enemyHealth > 0)
-                        aliveEnemies.Add(enemies[i]);
-                }
+                if(miniBossHealthSystem.enemyHealth > 0)
+                    aliveEnemies.Add(bosses[i]);
             }
         }
 

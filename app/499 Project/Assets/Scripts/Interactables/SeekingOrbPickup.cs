@@ -10,7 +10,7 @@ public class SeekingOrbPickup : MonoBehaviour
     public float bobbingSpeed = 0.5f; // Speed of bobbing movement
     private float startY; // Initial Y position of the sprite
 
-    [SerializeField] private promptUi prompt;
+    [SerializeField] public promptUi prompt;
 
     void Start()
     {

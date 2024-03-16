@@ -14,6 +14,8 @@ public class GameMaster : MonoBehaviour
     public int playerCount = 1;
     public int player1ControlScheme = 0;
     public int player2ControlScheme = 1;
+    public string player1Controls = "Keyboard";
+    public string player2Controls = "Keyboard";
 
     public int currentLevel = 1;
     public bool inShop = false;
@@ -90,8 +92,10 @@ public class GameMaster : MonoBehaviour
             Destroy(level);
             GameObject[] playerBullets = GameObject.FindGameObjectsWithTag("Player_bullet");
             GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
+            GameObject[] chads = GameObject.FindGameObjectsWithTag("Player");
             for(int i = 0; i < playerBullets.Length; i++) Destroy(playerBullets[i]);
             for(int i = 0; i < enemyBullets.Length; i++) enemyBullets[i].SetActive(false);
+            for(int i = 0; i < chads.Length; i++) if(chads[i].GetComponent<healthSystem>().chad) Destroy(chads[i]);
             yield return null;
 
             //Start to fade back in
@@ -238,14 +242,27 @@ public class GameMaster : MonoBehaviour
             if(playerCount > 1 && gamepads.Length > 1)
             {
                 player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Keyboard.current, Mouse.current, gamepads[1]);
+                if(gamepads[1] is UnityEngine.InputSystem.DualShock.DualShockGamepad)
+                    player1Controls = "PS";
+                else if(gamepads[1] is UnityEngine.InputSystem.XInput.XInputController)
+                    player1Controls = "Xbox";
+                else
+                    player1Controls = "Keyboard";
             }
             else if(playerCount < 2 && gamepads.Length > 0)
             {
                 player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Keyboard.current, Mouse.current, gamepads[0]);
+                if(gamepads[0] is UnityEngine.InputSystem.DualShock.DualShockGamepad)
+                    player1Controls = "PS";
+                else if(gamepads[0] is UnityEngine.InputSystem.XInput.XInputController)
+                    player1Controls = "Xbox";
+                else
+                    player1Controls = "Keyboard";
             }
             else
             {
                 player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Keyboard.current, Mouse.current);
+                player1Controls = "Keyboard";
             }
         }
 
@@ -264,9 +281,18 @@ public class GameMaster : MonoBehaviour
             if(gamepads.Length > 0)
             {
                 player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[0]);
+                if(gamepads[0] is UnityEngine.InputSystem.DualShock.DualShockGamepad)
+                    player2Controls = "PS";
+                else if(gamepads[0] is UnityEngine.InputSystem.XInput.XInputController)
+                    player2Controls = "Xbox";
+                else
+                    player2Controls = "Keyboard";
             }
             else
+            {
                 player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Touch");
+                player2Controls = "Keyboard";
+            }
         }
 
         yield return new WaitForSeconds(1);
