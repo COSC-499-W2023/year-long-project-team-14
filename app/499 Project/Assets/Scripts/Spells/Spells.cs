@@ -177,22 +177,41 @@ public class Spells : MonoBehaviour
         for(int i = 0; i < enemies.Length; i++)
         {
             EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
-            if(enemyHealthSystem != null && enemyHealthSystem.enemyHealth > 0)
+
+            if(enemyHealthSystem != null)
             {
-                enemies[i].GetComponent<EnemyMovement>().enabled = false;
-                enemies[i].GetComponent<CircleCollider2D>().enabled = false;
+                if(enemyHealthSystem.enemyHealth > 0)
+                {
+                    enemies[i].GetComponent<EnemyMovement>().enabled = false;
+                    enemies[i].GetComponent<CircleCollider2D>().enabled = false;
 
-                GameObject ice = Instantiate(iceCubePrefab, enemies[i].transform.position, Quaternion.identity);
-                Destroy(ice, freezeTime);
+                    GameObject ice = Instantiate(iceCubePrefab, enemies[i].transform.position, Quaternion.identity);
+                    Destroy(ice, freezeTime);
 
-                EnemyAttack enemyAttack = enemies[i].GetComponent<EnemyAttack>();
-                if(enemyAttack != null)
-                    enemyAttack.enabled = false;
+                    EnemyAttack enemyAttack = enemies[i].GetComponent<EnemyAttack>();
+                    if(enemyAttack != null)
+                        enemyAttack.enabled = false;
 
-                EnemyTripleShot enemyTripleShot = enemies[i].GetComponent<EnemyTripleShot>();
-                if(enemyTripleShot != null)
-                    enemyTripleShot.enabled = false;
+                    EnemyTripleShot enemyTripleShot = enemies[i].GetComponent<EnemyTripleShot>();
+                    if(enemyTripleShot != null)
+                        enemyTripleShot.enabled = false;
+                }
+            }
+        }
 
+        //Play ice effect on boss
+        GameObject[] bosses = GameObject.FindGameObjectsWithTag("Boss");
+        for(int i = 0; i < bosses.Length; i++)
+        {
+            MiniBossHealthSystem miniBossHealthSystem = bosses[i].GetComponent<MiniBossHealthSystem>();
+                
+            if(miniBossHealthSystem != null)
+            {
+                if(miniBossHealthSystem.enemyHealth > 0)
+                {
+                    GameObject effect = Instantiate(iceCubeBreak, bosses[i].transform.position, Quaternion.identity);
+                    Destroy(effect, 1);
+                }
             }
         }
 
