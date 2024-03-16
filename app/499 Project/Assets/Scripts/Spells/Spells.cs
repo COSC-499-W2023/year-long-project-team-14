@@ -161,8 +161,10 @@ public class Spells : MonoBehaviour
 
     public IEnumerator Freeze()
     {
+        //Set freeze duration
         float freezeTime = 4;
 
+        //Play flash animation
         GameObject flash = Instantiate(freezeFlash, new Vector3(0, 0, 0), Quaternion.identity);
         Destroy(flash, 1);
 
@@ -174,18 +176,37 @@ public class Spells : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         for(int i = 0; i < enemies.Length; i++)
         {
-            enemies[i].GetComponent<EnemyMovement>().movementSpeed /= 1000;
-            GameObject ice = Instantiate(iceCubePrefab, enemies[i].transform.position, Quaternion.identity);
-            Destroy(ice, freezeTime);
+            EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
+            if(enemyHealthSystem != null && enemyHealthSystem.enemyHealth > 0)
+            {
+                enemies[i].GetComponent<EnemyMovement>().enabled = false;
+
+                GameObject ice = Instantiate(iceCubePrefab, enemies[i].transform.position, Quaternion.identity);
+                Destroy(ice, freezeTime);
+
+                EnemyAttack enemyAttack = enemies[i].GetComponent<EnemyAttack>();
+                if(enemyAttack != null)
+                    enemyAttack.enabled = false;
+
+            }
         }
 
         yield return new WaitForSeconds(freezeTime);
 
         for(int i = 0; i < enemies.Length; i++)
         {
-            enemies[i].GetComponent<EnemyMovement>().movementSpeed *= 1000;
-            //GameObject effect = Instantiate(iceCubeBreak, new Vector3(0, 0, 0), Quaternion.identity);
-            //Destroy(effect, 1);
+            EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
+            if(enemyHealthSystem != null && enemyHealthSystem.enemyHealth > 0)
+            {
+                enemies[i].GetComponent<EnemyMovement>().enabled = true;
+
+                //GameObject effect = Instantiate(iceCubeBreak, new Vector3(0, 0, 0), Quaternion.identity);
+                //Destroy(effect, 1);
+
+                EnemyAttack enemyAttack = enemies[i].GetComponent<EnemyAttack>();
+                if(enemyAttack != null)
+                    enemyAttack.enabled = true;
+            }
         }
 
     }
