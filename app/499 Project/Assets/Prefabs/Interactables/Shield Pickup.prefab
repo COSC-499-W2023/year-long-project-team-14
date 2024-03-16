@@ -558,10 +558,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1657990462588059773}
   - component: {fileID: 4527150604156332844}
-  - component: {fileID: 1190368701220220803}
+  - component: {fileID: -5854126258352413208}
   m_Layer: 0
   m_Name: Shield Pickup
-  m_TagString: summonChad
+  m_TagString: Shield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -628,7 +628,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5}
   m_EdgeRadius: 0
---- !u!114 &1190368701220220803
+--- !u!114 &-5854126258352413208
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -637,7 +637,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6174184101631234506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d030cf5c95acc6419085899ac34db1d, type: 3}
+  m_Script: {fileID: 11500000, guid: 41bcc1369e3a1eb4d9a9ddb3e3825adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bobbingAmount: 0.1
