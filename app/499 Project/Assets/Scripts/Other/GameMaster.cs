@@ -91,7 +91,7 @@ public class GameMaster : MonoBehaviour
             GameObject[] playerBullets = GameObject.FindGameObjectsWithTag("Player_bullet");
             GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
             for(int i = 0; i < playerBullets.Length; i++) Destroy(playerBullets[i]);
-            for(int i = 0; i < enemyBullets.Length; i++) Destroy(enemyBullets[i]);
+            for(int i = 0; i < enemyBullets.Length; i++) enemyBullets[i].SetActive(false);
             yield return null;
 
             //Start to fade back in

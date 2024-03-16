@@ -170,7 +170,7 @@ public class Spells : MonoBehaviour
 
         //Destroy all enemy bullets
         GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
-        for(int i = 0; i < enemyBullets.Length; i++) Destroy(enemyBullets[i]);
+        for(int i = 0; i < enemyBullets.Length; i++) enemyBullets[i].SetActive(false);
 
         //Freeze all enemies
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
