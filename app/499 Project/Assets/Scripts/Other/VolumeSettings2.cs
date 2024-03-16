@@ -9,30 +9,32 @@ public class MusicManager : MonoBehaviour
     public AudioSource audioSource;
     [SerializeField] public Slider volumeSlider;
 
-   public void Start()
-    {
-         audioSource = GetComponent<AudioSource>();
+    private int currentTrackIndex = 0;
 
-    ShuffleTracks();
-
-    PlayNextTrack();
-
-    if (PlayerPrefs.HasKey("Volume"))
+    public void Start()
     {
-        AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1);
-        Load();
-    }
-    else
-    {
-        Load();
-    }
+        audioSource = GetComponent<AudioSource>();
+
+        ShuffleTracks();
+
+        PlayNextTrack();
+
+        if (PlayerPrefs.HasKey("Volume"))
+        {
+            AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1);
+            Load();
+        }
+        else
+        {
+            Load();
+        }
     }
 
     public void ChangeVolume()
     {
         float volume = volumeSlider.value; 
         AudioListener.volume = volume; 
-         Save(); 
+        Save(); 
     }
 
     public void Load()
@@ -40,7 +42,7 @@ public class MusicManager : MonoBehaviour
         volumeSlider.value = PlayerPrefs.GetFloat("Volume");
     }
 
-public void Save()
+    public void Save()
     {
         PlayerPrefs.SetFloat("Volume", volumeSlider.value);
     }
@@ -64,7 +66,17 @@ public void Save()
     {
         if (tracks.Length > 0)
         {
-            audioSource.clip = tracks[0];
+            audioSource.clip = tracks[currentTrackIndex];
+            audioSource.Play();
+
+            currentTrackIndex++;
+            if (currentTrackIndex >= tracks.Length)
+            {
+                currentTrackIndex = 0;
+                ShuffleTracks(); 
+            }
+
+            audioSource.loop = false;
             audioSource.Play();
 
             Invoke("PlayNextTrack", audioSource.clip.length);
