@@ -180,6 +180,7 @@ public class Spells : MonoBehaviour
             if(enemyHealthSystem != null && enemyHealthSystem.enemyHealth > 0)
             {
                 enemies[i].GetComponent<EnemyMovement>().enabled = false;
+                enemies[i].GetComponent<CircleCollider2D>().enabled = false;
 
                 GameObject ice = Instantiate(iceCubePrefab, enemies[i].transform.position, Quaternion.identity);
                 Destroy(ice, freezeTime);
@@ -187,6 +188,10 @@ public class Spells : MonoBehaviour
                 EnemyAttack enemyAttack = enemies[i].GetComponent<EnemyAttack>();
                 if(enemyAttack != null)
                     enemyAttack.enabled = false;
+
+                EnemyTripleShot enemyTripleShot = enemies[i].GetComponent<EnemyTripleShot>();
+                if(enemyTripleShot != null)
+                    enemyTripleShot.enabled = false;
 
             }
         }
@@ -199,6 +204,7 @@ public class Spells : MonoBehaviour
             if(enemyHealthSystem != null && enemyHealthSystem.enemyHealth > 0)
             {
                 enemies[i].GetComponent<EnemyMovement>().enabled = true;
+                enemies[i].GetComponent<CircleCollider2D>().enabled = true;
 
                 GameObject effect = Instantiate(iceCubeBreak, enemies[i].transform.position, Quaternion.identity);
                 Destroy(effect, 1);
@@ -206,6 +212,10 @@ public class Spells : MonoBehaviour
                 EnemyAttack enemyAttack = enemies[i].GetComponent<EnemyAttack>();
                 if(enemyAttack != null)
                     enemyAttack.enabled = true;
+
+                EnemyTripleShot enemyTripleShot = enemies[i].GetComponent<EnemyTripleShot>();
+                if(enemyTripleShot != null)
+                    enemyTripleShot.enabled = false;
             }
         }
 

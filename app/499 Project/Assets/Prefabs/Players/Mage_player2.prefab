@@ -276,6 +276,9 @@ MonoBehaviour:
   moveSpeed: 8
   bulletBounces: 1
   player1: 0
+  holdCooldown: 0
+  mouseHold: 0
+  dashHold: 0
   aimingInWall: 0
   bulletPrefab: {fileID: 8495944747531926129, guid: e0f038ea01aad6a479c19c275fdbd3d1, type: 3}
   playerInput: {fileID: 3476007376617294521}
@@ -287,7 +290,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 517172463433549030}
   layerDetection:
     serializedVersion: 2
-    m_Bits: 525056
+    m_Bits: 590592
   unitTest: 0
   unitTest2: 0
   shootSound: {fileID: -3089450358657967342}

@@ -184,6 +184,9 @@ MonoBehaviour:
   moveSpeed: 8
   bulletBounces: 1
   player1: 1
+  holdCooldown: 0
+  mouseHold: 0
+  dashHold: 0
   aimingInWall: 0
   bulletPrefab: {fileID: 5755921796930191897, guid: 3d996469d34a57d48b5cda7756cb6536, type: 3}
   playerInput: {fileID: 3476007376617294521}
@@ -195,7 +198,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 4187919560129157548}
   layerDetection:
     serializedVersion: 2
-    m_Bits: 525056
+    m_Bits: 590592
   unitTest: 0
   unitTest2: 0
   shootSound: {fileID: 1950902560532192884}
@@ -775,7 +778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellName: Freeze
-  spellCooldown: 1
+  spellCooldown: 10
   cooldownTimer: 0
   playerController: {fileID: 4452037770434438324}
   hs: {fileID: 182166649963881013}
