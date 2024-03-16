@@ -11,8 +11,8 @@ public class MusicManager : MonoBehaviour
     [SerializeField] public Slider volumeSlider;
 
     private int currentTrackIndex = 0;
-    private GameMaster gameMaster;
-    private int previousLevel = -1;
+    public GameMaster gameMaster;
+    public int previousLevel = -1;
 
     public void Start()
     {
@@ -92,7 +92,7 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    void Update()
+    public void Update()
     {
         if (gameMaster.currentLevel != previousLevel)
         {
