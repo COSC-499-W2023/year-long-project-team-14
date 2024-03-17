@@ -5,8 +5,8 @@
 - End Date: March 17th
 
 ### Tasks I worked on:
-- Complete the shield spell (just unit test was remaining)
-- Mage Rage spell
+![](screenshots/tasks_justin_week_21.png)
+
   
 ### Recap on your week's goals
 My goals this week were to: 
