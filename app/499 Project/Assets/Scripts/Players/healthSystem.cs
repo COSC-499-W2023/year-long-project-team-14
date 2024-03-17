@@ -49,7 +49,7 @@ public class healthSystem : MonoBehaviour
 
     //Used to check collision with the spikes while still allowing the player to walk through them.
     private void OnTriggerStay2D(Collider2D collision){
-        if(collision.gameObject.CompareTag("Spike")){
+        if(collision.gameObject.CompareTag("Spike") || collision.gameObject.CompareTag("EnemyBullet")){
             takeDamage();
         }
     }

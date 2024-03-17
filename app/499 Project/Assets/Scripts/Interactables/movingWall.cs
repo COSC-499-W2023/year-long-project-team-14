@@ -18,6 +18,7 @@ public class movingWall : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.takeDamage();
+                StartCoroutine(StunPlayer(collision.gameObject));
             }
         }
 
@@ -28,6 +29,7 @@ public class movingWall : MonoBehaviour
             if (enemyHealth != null)
             {
                 enemyHealth.takeDamage();
+                StartCoroutine(StunEnemy(collision.gameObject));
             }
         }
     }
@@ -44,5 +46,28 @@ public class movingWall : MonoBehaviour
             }
         }
         transform.position = Vector2.MoveTowards(transform.position, waypoints[index].transform.position, Time.deltaTime * speed);
+    }
+
+    public IEnumerator StunPlayer(GameObject player)
+    {
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        playerController.moveSpeed /= 1000;
+        player.layer = 17;
+
+        yield return new WaitForSeconds(0.5f);
+
+        playerController.moveSpeed *= 1000;
+        player.layer = 7;
+    }
+    public IEnumerator StunEnemy(GameObject enemy)
+    {
+        EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
+        enemyMovement.movementSpeed /= 1000;
+        enemy.layer = 17;
+
+        yield return new WaitForSeconds(0.5f);
+
+        enemyMovement.movementSpeed *= 1000;
+        enemy.layer = 9;
     }
 }

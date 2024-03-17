@@ -10,6 +10,7 @@ public class MiniBossHealthSystem : MonoBehaviour
     private Rigidbody2D rb;
     private EnemyMovement em;
     public FireSprayBullets shoot; 
+    public BossLaserAttack bossAttack; 
     public int enemyHealth = 10;
 
     public CircleCollider2D enemyCollider;
@@ -62,8 +63,8 @@ public class MiniBossHealthSystem : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         shoot = GetComponent<FireSprayBullets>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        shoot = GetComponent<FireSprayBullets>();
         em = GetComponent<EnemyMovement>();
+        bossAttack = GetComponent<BossLaserAttack>();
         
     }
      // Damage enemy if colliding with bullet
@@ -142,7 +143,15 @@ public class MiniBossHealthSystem : MonoBehaviour
     {
         enemyHealth = 0;
         
-        shoot.firingEnabled = false;
+        if(shoot != null)
+        {
+            shoot.firingEnabled = false;
+        }
+
+        if(bossAttack != null)
+        {
+            bossAttack.firingEnabled = false;
+        }
 
         enemyCollider.enabled = false;
         em.enabled = false;

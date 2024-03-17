@@ -23,7 +23,6 @@ public class OrcHealthTest
         orc = GameObject.Instantiate(orcPrefab) as GameObject;
 
         enemyHealthSystem = orc.GetComponent<EnemyHealthSystem>();
-        enemyHealthSystem.enemyHealth = 2; //give the enemy 2 lives
 
         //Set up path so the orc can move and shoot without an error from the path finding algo
         path = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Other/Pathfinder.prefab")) as GameObject;
@@ -36,7 +35,7 @@ public class OrcHealthTest
     [UnityTest]
     public IEnumerator orcHealth()
     {
-        
+        enemyHealthSystem.enemyHealth = 2; //give the enemy 2 lives
 
         enemyHealthSystem.takeDamage();
         // Assert the orc lost a life
