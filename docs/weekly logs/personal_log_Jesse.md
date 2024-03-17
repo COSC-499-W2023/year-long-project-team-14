@@ -1,4 +1,170 @@
 # Personal Log - Jesse Lazzari
+
+## Term 2 Week 9
+- Start Date: March 4
+- End Date: March 10
+  
+### Tasks I worked on:
+![](screenshots/t2week9_tasks_jesse.PNG)
+  
+### Recap on your week's goals
+My goals this week were to:
+* Ensure team prepardness prior to peer testing
+* Run peer testing station, test other team's projects, and provide relevant feedback
+* Begin working on final boss animations and scripts
+* Bug fixes relating to abilities and mini-boss
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Final boss enemy implementation (animations and attack function scripts)
+* Meet with team and write team log
+
+### Among these tasks, which have you completed/in progress in the last week?
+* Overall the peer testing session was a success and I was able to compile great feedback at my station
+* In progress tasks are continuing to work on the final boss encounter and add additional animations and attack functionality
+
+***
+
+## Term 2 Week 8
+- Start Date: February 26
+- End Date: March 3
+  
+### Tasks I worked on:
+![](screenshots/week8_term2_tasks_jesse.PNG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Meet with team and compile task list for upcoming peer testing session
+* Modified mini-boss health system script and added UI health bar
+* Added additional unit testing for mini-boss health system and healthbar
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Finalize mini-boss UI and health script
+* Meet with team and write team log
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have finalized all features I set out to complete for this week and look forward to the upcoming peer testing session!
+
+***
+
+## Term 2 Week 5
+- Start Date: February 5
+- End Date: February 11
+  
+### Tasks I worked on:
+![](screenshots/t2week5_tasks.PNG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Meet with team brainstorm ideas for future quality of life additions to the game (modifications to controller behaviour)
+* Add mini boss movement
+* Add mini boss health system
+* Add additional mini boss shooting patterns
+* Add additional fields that can be modified to change difficulty of the mini-boss in a future update (total # of bullets, bullet speed, delay between shots, etc.)
+* Add randomized attack selector so that there is variety each time the mini-boss is fought by the player
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Finalize mini-boss and associated scripts
+* Meet with team and write team log
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed most features for the mini-boss
+* In progress tasks are adding a healthbar so that the player(s) know their progress as they are fighting the mini-boss
+* Additional unit testing for mini-boss
+
+***
+
+## Term 2 Week 4
+- Start Date: January 29
+- End Date: February 4
+  
+### Tasks I worked on:
+![](screenshots/t2week4_tasks.PNG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Meet with team and discuss plan for peer testing session
+* Outline tasks list for peer testing session
+* Host my peer testing station
+* Complete peer feedback for the teams I participated in
+* Create a questionnaire for testers to fill out
+* Compile relevant suggestions and feedback
+* Complete team log for team
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Add unit testing for lightning spell ability
+* Add unit testing for dash ability effects
+* Learn about object pooling to increase game performance when adding upcoming enemy type
+* Additional bug testing related to peer testing feedback
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed unit testing for the lightning spell and dash effects
+* I have also learned about object pooling and have applied this as I continue to work on a prototype "mini-boss" (a stand-alone enemy encounter with more advanced attack patterns)
+* The peer testing session was a success and I have compiled the relevant peer feedback
+* In progress tasks will be to modify the game in order to address relevant feedback and critiques
+
+***
+
+## Term 2 Week 3
+- Start Date: January 22
+- End Date: January 27
+  
+### Tasks I worked on:
+![](screenshots/t2week3_tasks.PNG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Meet with team and discuss task list for upcoming peer evaluation
+* Add additional unit testing for the bullet particle effects
+* Add an additional spell ability for players to use
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Add unit testing for bullet particle effects for player 1, 2, and enemies when bullets are destroyed
+* Add lightning ability to "spells" script which cast a lightning bolt onto each enemy in the game scene and inflicts 1 damage per enemy. If an enemy is dead they are not struck by lightning. There is also a cooldown on the abillity which will be re-balanced later on
+* Research additional copyright free sprite and sound effect assets to add to the game
+* Modify bullet shooting sounds based on team feedback
+* Write weekly team log for the team
+* Test completion time with team for completing all peer testing tasks
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed the features I set out to implement as outlined above
+* In progress tasks are additional unit testing for the "lightning" ability and working on next player abillity 
+
+***
+## Term 2 Week 2
+- Start Date: January 15
+- End Date: January 21
+  
+### Tasks I worked on:
+![](screenshots/t2week2_tasks.PNG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Meet with team and discuss gameplay improvements and controls
+* Learn how to add particle effects in Unity and follow additional tutorial videos
+* Add red particle effects for player 1 and enemies when bullets are destroyed
+* Add blue particle effects for player 2 when bullets are destroyed
+* Add new enemy type, Slime with all animations
+* Add new enemy type, light armored "bonk" orc with all animations 
+* Write team log report
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Add red particle effects for player 1 and enemies when bullets are destroyed
+* Add blue particle effects for player 2 when bullets are destroyed
+* Add new enemy type, Slime with all animations
+* Add new enemy type, light armored "bonk" orc with all animations 
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed the features I set out to implement as outlined above
+* In progress tasks are additional unit testing for existing features and work on "lightning" ability for players which zaps enemies
+
+***
+
 ## Term 2 Week 1
 - Start Date: January 8
 - End Date: January 14

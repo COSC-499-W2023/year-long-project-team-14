@@ -1,4 +1,176 @@
 # Personal Log - Kibele Sebnem Yildirim
+
+## Week 9 - Term 2
+- Start Date: March 3
+- End Date: March 10
+
+### Tasks I worked on:
+![](screenshots/kibeleweek9.png)
+
+
+### Recap on your week's goals
+- My goals this week were to:
+* connect music sliders in both game scene and in main menu scene to the musics in the game, also enabling players to control the level of music in the game via the slider objects
+* Discuss with my team about the music options and planning on the application of musics
+* Review my teammates' code and fixes on the game
+* change some features in current scenes
+* Write code for shuffling the 10 different music tracks, adding the music to the game, and creating a music effect for the game
+* Write test for the music effects such as saving, loading, or playing the music.
+* ensure the game is ready for the peer testing
+* check the document of instructions and details for the peer testing
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to connect music sliders in both game scene and in main menu scene to the musics in the game, also enabling players to control the level of music in the game via the slider objects, discuss with my team about the music options and planning on the application of musics, review my teammates' code and fixes on the game, change some features in current scenes, write code for shuffling the 10 different music tracks, adding the music to the game, and creating a music effect for the game, write test for the music effects such as saving, loading, or playing the music, ensure the game is ready for the peer testing, and check the document of instructions and details for the peer testing. 
+
+Technically, this week was a little more effort I have put into the game. I have worked on the music options and planning on the application of musics. I have watched multiple tutorials and then written code for shuffling the 10 different music tracks, adding the music to the game. 
+
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week. 
+
+Here are the screenshots of my codework connecting sliders and musics both in the Game scene and in the Main Menu on VSCode this week:
+![](screenshots/kibeleweeklyt2week9.png)
+
+Here are the screenshots of my test codes that i have written for the code I have produced in Unity this week:
+![](screenshots/kibeleweeklyt2week9-1.png)
+
+## Week 19-21 - Term 2
+- Start Date: February 13
+- End Date: March 3
+
+### Tasks I worked on:
+![](screenshots/kibele_week21.png)
+![](screenshots/kibele_week19.png)
+
+### Recap on your week's goals
+- My goals this week were to:
+* create options menu accessible inside from the game scene for our game
+* Discuss with my team about the design
+* Review my teammates' code and fixes on the game
+* change design and features in current scenes
+* Write code for options menu's code
+* Write test for options menu's code
+
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to create options menu accessible inside from the game scene for our game, discuss with my team about the design, review my teammates' code and fixes on the game, change design and features in current scenes, write code for options menu's code, and write test for options menu's code.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week. 
+
+Here are the screenshots of my work on our the Options Menu accessible inside Pause Menu in the Game scene in Unity this week:
+![](screenshots/kibeleweeklyt2week8.png)
+![](screenshots/kibeleweeklyt2week8-2.png)
+
+Here are the screenshots of my codewoek on our the Options Menu accessible inside Pause Menu in the Game scene in Unity this week:
+![](screenshots/kibeleweeklyt2week8-1.png)
+
+
+## Week 18 - Term 2
+- Start Date: February 5
+- End Date: February 12
+
+### Tasks I worked on:
+![](screenshots/kibele_week18.png)
+
+### Recap on your week's goals
+- My goals this week were to:
+* finalize the difficulty menu for our game
+* Discuss with my team about the design
+* Review my teammates' code and fixes on the game
+* Write test for difficulty menu's code
+
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to finalize the difficulty menu for our game, discuss with my team about the design, review my teammates' code and fixes on the game, and write test for difficulty menu's code.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week. 
+
+Here are the screenshots of my work on our Difficulty Menu in Unity this week:
+![](screenshots/kibeleweek18.png)
+
+
+## Week 17 - Term 2
+- Start Date: January 29
+- End Date: February 5
+
+### Tasks I worked on:
+![](screenshots/kibele_week17.png)
+
+### Recap on your week's goals
+- My goals this week were to:
+* start and finalize the win menu for our game
+* Discuss with my team about the design
+* Review my teammates' code and fixes on the game
+* Write test for win menu's code
+
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to start and finalize the win menu for our game, discuss with my team about the design, review my teammates' code and fixes on the game, and write test for win menu's code.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week. 
+
+Here are the screenshots of my work on our Win Menu in Unity this week:
+![](screenshots/kibeleweek17_1.png)
+
+This is the screenshot of my work on VScode in Win Menu this week:
+![](screenshots/kibeleweek17.png)
+
+
+## Week 16 - Term 2
+- Start Date: January 22
+- End Date: January 28
+
+### Tasks I worked on:
+![](screenshots/kibele_week16.png)
+
+### Recap on your week's goals
+- My goals this week were to:
+* start and finalize the win menu for our game
+* Discuss with my team about the design
+* Review my teammates' code and fixes on the game
+* Write test for win menu's code
+
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to start and finalize the win menu for our game, discuss with my team about the design, review my teammates' code and fixes on the game, and write test for win menu's code.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week. 
+
+Here are the screenshots of my work on our Win Menu in Unity this week:
+![](screenshots/kibeleweek16-1.png)
+
+This is the screenshot of my work on VScode in Win Menu this week:
+![](screenshots/kibeleweek16.png)
+
+## Week 15 - Term 2
+- Start Date: January 16
+- End Date: January 21
+
+### Tasks I worked on:
+![](screenshots/weekly_kibele_week15.png)
+
+### Recap on your week's goals
+- My goals this week were to:
+* finalize the controls menu for our game
+* Discuss with my team about the design
+* Review my teammates' work on the game
+* Write test for my menu's code
+
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to finalize the controls menu for our game, discuss with my team about the design, review my teammates' work on the game, and write test for my menu's code.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week. 
+
+Here are the screenshots of my work on our Controls Menu in Unity this week:
+![](screenshots/kibeleweek15-1.png)
+
+![](screenshots/kibeleweek15.png)
+
 ## Week 14 - Term 2
 - Start Date: January 8
 - End Date: January 15

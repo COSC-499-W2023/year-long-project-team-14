@@ -18,6 +18,18 @@ TagManager:
   - Portal
   - Ladder
   - LeaderboardManager
+  - Breakable
+  - MovingWall
+  - FireballExplosion
+  - Fireball
+  - effect
+  - dashEffect
+  - lightning
+  - SeekingOrb
+  - Spike
+  - summonChad
+  - Boss
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -30,13 +42,14 @@ TagManager:
   - Obstacle
   - Enemy
   - EnemyBullet
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - prompt
+  - Fireball
+  - NoCollide
+  - BrokenWall
+  - Spike
+  - Slime
+  - WallSquish
+  - Shield
   - 
   - 
   - 
@@ -54,4 +67,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: New Layer 1
+    uniqueID: 2019806113
     locked: 0
