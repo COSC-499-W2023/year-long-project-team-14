@@ -10,6 +10,8 @@ public class LightningPickup : MonoBehaviour
     public float bobbingSpeed = 0.5f; // Speed of bobbing movement
     private float startY; // Initial Y position of the sprite
 
+    [SerializeField] private promptUi prompt;
+
     void Start()
     {
         startY = transform.position.y; // Store the initial Y position
@@ -31,6 +33,7 @@ public class LightningPickup : MonoBehaviour
         {
             playerIsOver = true;
             player = other.gameObject;
+            if (!prompt.isDisplayed) prompt.SetUp();
         }
     }
 
@@ -40,6 +43,7 @@ public class LightningPickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsOver = false;
+            if (prompt.isDisplayed) prompt.Close();
         }
     }
 
@@ -50,6 +54,7 @@ public class LightningPickup : MonoBehaviour
         {
             playerIsOver = false;
             player.GetComponent<Spells>().spellName = "Lightning";
+            player.GetComponent<Spells>().spellCooldown = 10;
             Destroy(gameObject);
         }
     }

@@ -39,17 +39,20 @@ public class SlimeMovementTest : MonoBehaviour
         //Spawn and set up the slime
         slime = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemies/Slime.prefab"), new Vector3(-10, 0, 0), Quaternion.identity) as GameObject;
         enemyMovement = slime.GetComponent<EnemyMovement>();
-        enemyMovement.movementSpeed = 35;
+        enemyMovement.movementSpeed = 20;
     }
 
     [UnityTest]
     public IEnumerator SlimeMoveTest()
     {
+        //Get starting health
+        int health = healthScript.life;
+        
         //Wait for the slime to move through the level to get to the player
         yield return new WaitUntil(() => slime.transform.position.x >= 9.5);
 
         //Check if the the slime reached the player and damaged them
-        Assert.IsTrue(healthScript.life == 2); 
+        Assert.IsTrue(healthScript.life == health - 1); 
     }
 
     [UnityTearDown]

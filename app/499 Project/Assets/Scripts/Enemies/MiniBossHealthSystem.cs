@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MiniBossHealthSystem : MonoBehaviour
 {
@@ -9,11 +10,14 @@ public class MiniBossHealthSystem : MonoBehaviour
     private Rigidbody2D rb;
     private EnemyMovement em;
     public FireSprayBullets shoot; 
+    public BossLaserAttack bossAttack; 
     public int enemyHealth = 10;
 
     public CircleCollider2D enemyCollider;
     public Ladder ladder;
     public Portal portal;
+    public Image healthBar;
+    public float healthAmount;
 
     [SerializeField] private AudioSource hitSound;
     [SerializeField] private AudioSource deathSound;
@@ -35,6 +39,21 @@ public class MiniBossHealthSystem : MonoBehaviour
                 ladder.allEnemies.Add(gameObject);
             }
         }
+
+        //Get difficulty
+        int diff = PlayerPrefs.GetInt("difficulty");
+
+        //Set boss health
+        if(diff == 1) 
+            enemyHealth = (int)Mathf.Round(enemyHealth * 1.5f);
+        else if(diff == 2)
+            enemyHealth = (int)Mathf.Round(enemyHealth * 2f);
+        else if(diff == 3)
+            enemyHealth = (int)Mathf.Round(enemyHealth * 2.5f);
+        else if(diff == 4)
+            enemyHealth = (int)Mathf.Round(enemyHealth * 3f);
+
+        healthAmount = enemyHealth;
         
         enemyCollider = GetComponent<CircleCollider2D>();
     }
@@ -44,8 +63,8 @@ public class MiniBossHealthSystem : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         shoot = GetComponent<FireSprayBullets>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        shoot = GetComponent<FireSprayBullets>();
         em = GetComponent<EnemyMovement>();
+        bossAttack = GetComponent<BossLaserAttack>();
         
     }
      // Damage enemy if colliding with bullet
@@ -62,7 +81,7 @@ public class MiniBossHealthSystem : MonoBehaviour
     {
         if(collider.gameObject.CompareTag("FireballExplosion"))
         {
-            takeDamage(3);
+            takeDamage(4);
         }
     }
 
@@ -75,6 +94,7 @@ public class MiniBossHealthSystem : MonoBehaviour
 
             if (enemyHealth <= 0)
             {
+                healthBar.fillAmount = 0;
                 Die();
             }
             else
@@ -84,6 +104,9 @@ public class MiniBossHealthSystem : MonoBehaviour
 
                 //play hit sound
                 hitSound.Play();
+
+                //update boss healthbar
+                healthBar.fillAmount =  enemyHealth / healthAmount;
             }
         }
     }
@@ -97,6 +120,7 @@ public class MiniBossHealthSystem : MonoBehaviour
 
             if (enemyHealth <= 0)
             {
+                healthBar.fillAmount = 0;
                 Die();
             }
             else
@@ -106,6 +130,10 @@ public class MiniBossHealthSystem : MonoBehaviour
 
                 //play hit sound
                 hitSound.Play();
+
+                //update boss healthbar
+                healthBar.fillAmount =  enemyHealth / healthAmount;
+
             }
         }
     }
@@ -115,7 +143,15 @@ public class MiniBossHealthSystem : MonoBehaviour
     {
         enemyHealth = 0;
         
-        shoot.firingEnabled = false;
+        if(shoot != null)
+        {
+            shoot.firingEnabled = false;
+        }
+
+        if(bossAttack != null)
+        {
+            bossAttack.firingEnabled = false;
+        }
 
         enemyCollider.enabled = false;
         em.enabled = false;

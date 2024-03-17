@@ -42,9 +42,24 @@ public class EnemyMovement : MonoBehaviour
         //Set starting wait time and charge duration
         if(chargePlayer)
         {
-            ResetWaitTime(1f, 2f);
-            chargeDuration = 1;
+            ResetWaitTime(0.5f, 1f);
+            chargeDuration = 0.75f;
         }
+
+        //Get difficulty
+        int diff = PlayerPrefs.GetInt("difficulty");
+
+        //Set slime move speed
+        if(followPlayer) 
+            movementSpeed *= diff; 
+        else if(diff == 1) //Set other enemy move speed
+            movementSpeed *= 1f;
+        else if(diff == 2)
+            movementSpeed *= 1.5f;
+        else if(diff == 3)
+            movementSpeed *= 2f;
+        else if(diff == 4)
+            movementSpeed *= 2.5f;
         
         //Start pathfinding
         InvokeRepeating("UpdatePath", 0f, 0.1f);
@@ -132,7 +147,7 @@ public class EnemyMovement : MonoBehaviour
         if(chargePlayer && timer >= waitTime + chargeDuration)
         {
             ResetWaitTime(1f, 2f);
-            chargeDuration = 1;
+            chargeDuration = 0.75f;
         }
     }
 
@@ -157,7 +172,7 @@ public class EnemyMovement : MonoBehaviour
         if(collision.gameObject.CompareTag("Player") && (chargePlayer || followPlayer))
         {     
             ResetWaitTime(1f, 2f);
-            chargeDuration = 1;
+            chargeDuration = 0.75f;
         }
         else if((collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("BrokenWall") || collision.gameObject.CompareTag("Breakable") || collision.gameObject.CompareTag("Player")) && !chargePlayer && !followPlayer)
         {

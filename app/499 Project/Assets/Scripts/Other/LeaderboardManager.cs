@@ -31,6 +31,7 @@ public class LeaderboardManager : MonoBehaviour
     public GameObject submitButton;
     public GameObject menuButton;
     public bool lbMenu = false;
+    public TMP_Text leaderboardText;
 
 
     void Start()
@@ -132,16 +133,18 @@ public class LeaderboardManager : MonoBehaviour
         
         done = false;
 
-        if(gameMaster.difficulty == 1){ leaderboardID = "Easy"; difficultyButtonText.text = "EASY";}
-        else if(gameMaster.difficulty == 2){ leaderboardID = "Medium"; difficultyButtonText.text = "MEDIUM";}
-        else if(gameMaster.difficulty == 3){ leaderboardID = "Hard"; difficultyButtonText.text = "HARD";}
-        else if(gameMaster.difficulty == 4){ leaderboardID = "Extreme"; difficultyButtonText.text = "EXTREME";}
+        int diff = PlayerPrefs.GetInt("difficulty");
+
+        if(diff == 1){ leaderboardID = "Easy"; difficultyButtonText.text = "EASY";}
+        else if(diff == 2){ leaderboardID = "Medium"; difficultyButtonText.text = "MEDIUM";}
+        else if(diff == 3){ leaderboardID = "Hard"; difficultyButtonText.text = "HARD";}
+        else if(diff == 4){ leaderboardID = "Extreme"; difficultyButtonText.text = "MADNESS";}
 
         if(gameMaster.playerCount == 1){ leaderboardID += "1"; playerButtonText.text = "1 PLAYER";}
         else{ leaderboardID += "2"; playerButtonText.text = "2 PLAYER";}
         leaderboardID += "Player";
 
-        difficulty = gameMaster.difficulty;
+        difficulty = diff;
         players = gameMaster.playerCount;
 
         if(unitTest)
@@ -195,7 +198,10 @@ public class LeaderboardManager : MonoBehaviour
     }
 
     public void FetchHighscores(string leaderboardID) //Retrieve leaderboard scores 
-    {       
+    {   
+        ClearLeaderboard(10);
+        leaderboardText.text = "Loading...";
+
         done = false;
 
         if(leaderboardID == null)
@@ -219,51 +225,75 @@ public class LeaderboardManager : MonoBehaviour
                 if(scoreType == 1)
                     start = response.rank < 6 ? 0 : response.rank - 5;
 
-                LootLockerSDKManager.GetScoreList(leaderboardID, 10, start, (response) =>
+                if(scoreType == 2 || response.rank != 0)
                 {
-                    if(response.success)
+                    LootLockerSDKManager.GetScoreList(leaderboardID, 10, start, (response) =>
                     {
-                        LootLockerLeaderboardMember[] members = response.items;
-                        string name = "";
-
-                        for(int i = 0; i < members.Length; i++)
+                        if(response.success)
                         {
-                            if(members[i].member_id != "")
-                            {
-                                name = members[i].member_id + "";
-                            }
-                            else
-                            {
-                                name = members[i].member_id + "";
-                            }
-                            DisplayHighscore(i, members[i].rank, name, members[i].member_id, members[i].score);
-                        }
-                        done = true;
-                        connected = true;
+                            leaderboardText.text = "";
 
-                        int blankSpots = 10 - members.Length;
-                        for(int i = 0; i < blankSpots; i++)
-                        {
-                            playerRanks[9 - i].text = " ";
-                            playerNames[9 - i].text = " ";
-                            playerScores[9 - i].text = " ";
+                            LootLockerLeaderboardMember[] members = response.items;
+                            string name = "";
+
+                            if(members != null)
+                            {
+                                for(int i = 0; i < members.Length; i++)
+                                {
+                                    if(members[i].member_id != "")
+                                    {
+                                        name = members[i].member_id + "";
+                                    }
+                                    else
+                                    {
+                                        name = members[i].member_id + "";
+                                    }
+                                    DisplayHighscore(i, members[i].rank, name, members[i].member_id, members[i].score);
+                                }
+
+                                done = true;
+                                connected = true;
+                                
+                                int blankSpots = 10 - members.Length;
+                                ClearLeaderboard(blankSpots);
+                            }
                         }
-                    }
-                    else
-                    {
-                        print("Failed to fetch scores");
-                        done = true;
-                        connected = false;
-                    }
-                });
+                        else
+                        {
+                            ClearLeaderboard(10);
+                            leaderboardText.text = "Error. Try again later.";
+                            print("Failed to fetch scores");
+                            done = true;
+                            connected = false;
+                        }
+                    });
+                }
+                else
+                {
+                    done = true;
+                    ClearLeaderboard(10);
+                    leaderboardText.text = "Submit a score to appear on this leaderboard.";
+                }
             }
             else
             {
+                ClearLeaderboard(10);
+                leaderboardText.text = "Error. Try again later.";
                 Debug.Log("Failed to get player rank");
                 done = true;
                 connected = false;
             }
         });
+    }
+
+    public void ClearLeaderboard(int x)
+    {
+        for(int i = 0; i < x; i++)
+        {
+            playerRanks[9 - i].text = " ";
+            playerNames[9 - i].text = " ";
+            playerScores[9 - i].text = " ";
+        }
     }
 
     public void DisplayHighscore(int iteration, int rank, string name, string memberID, int score) //Display leaderboard scores on leaderboard menu
@@ -340,7 +370,7 @@ public class LeaderboardManager : MonoBehaviour
         else if(difficulty == 3)
         {
             difficulty++;
-            difficultyButtonText.text = "EXTREME";
+            difficultyButtonText.text = "MADNESS";
         }
         else if(difficulty == 4)
         {

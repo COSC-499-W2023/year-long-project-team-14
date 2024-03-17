@@ -20,7 +20,7 @@ public class PlayerBullet : MonoBehaviour
         }
 
         //Break bullet if colliding with enemy
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Boss"))
         {
                 Destroy(gameObject);
                 GameObject clone = Instantiate(impactEffect, transform.position, transform.rotation);

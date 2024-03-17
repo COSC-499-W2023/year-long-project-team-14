@@ -14,7 +14,7 @@ public class LeaderboardTest : MonoBehaviour
     public IEnumerator DisplayNameTest()
     {
         //Load into menu
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("GameScene");
         yield return null;
 
         //Get LeaderboardManager
@@ -53,6 +53,7 @@ public class LeaderboardTest : MonoBehaviour
         //Save previous name and set new name for test
         string name = PlayerPrefs.GetString("DisplayName");
         PlayerPrefs.SetString("DisplayName", "UnitTest");
+        yield return null;
 
         //Load into game scene
         SceneManager.LoadScene("GameScene");
@@ -90,6 +91,11 @@ public class LeaderboardTest : MonoBehaviour
     [UnityTest]
     public IEnumerator FetchScoreTest()
     {
+        //Save previous name and set new name for test
+        string name = PlayerPrefs.GetString("DisplayName");
+        PlayerPrefs.SetString("DisplayName", "UnitTest");
+        yield return null;
+
         //Load into menu
         SceneManager.LoadScene("Menu");
         yield return null;
@@ -115,6 +121,9 @@ public class LeaderboardTest : MonoBehaviour
 
         //Check that the scores are being formatted and displayed correctly
         Assert.IsTrue(leaderboardManager.playerScores[0].text == "00:01.00");
+
+        //Reset name
+        PlayerPrefs.SetString("DisplayName", name);
     }
 
     [UnityTest]

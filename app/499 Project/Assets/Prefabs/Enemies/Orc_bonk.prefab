@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0}
-  movementSpeed: 16
+  movementSpeed: 10
   nextWaypointDistance: 0.5
   chargeDuration: 0
   waitTime: 0
@@ -246,8 +246,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   ea: {fileID: 0}
+  et: {fileID: 0}
   enemyMovement: {fileID: 0}
-  enemyHealth: 3
+  enemyHealth: 4
   enemyCollider: {fileID: 0}
   ladder: {fileID: 0}
   portal: {fileID: 0}
@@ -296,7 +297,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  swordSound: {fileID: 4684723863293885669}
 --- !u!82 &4684723863293885669
 AudioSource:
   m_ObjectHideFlags: 0

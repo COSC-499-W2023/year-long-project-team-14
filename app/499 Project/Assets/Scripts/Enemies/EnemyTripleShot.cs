@@ -11,7 +11,7 @@ public class EnemyTripleShot : MonoBehaviour
     public float bulletSpeed = 10.0f;
     public float lastShootTime;
    
-
+    EnemyHealthSystem enemyHealthSystem;
 
 
     public List<Vector3> Points1;
@@ -34,6 +34,8 @@ public class EnemyTripleShot : MonoBehaviour
 
     private List<GameObject> bulls;
 
+    int diff = 1;
+
     void Start()
     {
         //Create list of points for each line renderer
@@ -41,9 +43,34 @@ public class EnemyTripleShot : MonoBehaviour
         Points2 = new List<Vector3>();
         Points3 = new List<Vector3>();
 
+        //Get difficulty
+        diff = PlayerPrefs.GetInt("difficulty");
+        
+        //Set enemy fire rate
+        if(diff == 1) 
+            shootInterval /= 1f;
+        else if(diff == 2)
+            shootInterval /= 1.33f;
+        else if(diff == 3)
+            shootInterval /= 1.67f;
+        else if(diff == 4)
+            shootInterval /= 2f;
+
+        //Set enemy bullet speed
+        if(diff == 1) 
+            bulletSpeed *= 1f;
+        else if(diff == 2)
+            bulletSpeed *= 1.5f;
+        else if(diff == 3)
+            bulletSpeed *= 2f;
+        else if(diff == 4)
+            bulletSpeed *= 2.5f;
+
         //Prevent enemies from shooting at the start of a level
-        lastShootTime = 0;
+        lastShootTime = Time.time + Random.Range(0, shootInterval/2);
         shootSound = GetComponent<AudioSource>();
+
+        enemyHealthSystem = GetComponent<EnemyHealthSystem>();
         
     }
 
@@ -121,20 +148,27 @@ public class EnemyTripleShot : MonoBehaviour
    IEnumerator Shoot(LineRenderer lr) //Shoot a bullet in the direction of the line renderer (its an IEnumerator because of the wait that is needed between bullets)
     {
         // Reset the shoot timer to delay the next series of shots 
-        lastShootTime = 0;
+        lastShootTime = Random.Range(-1f / diff, 1f / diff);
 
         //Loop 3 times since youll shoot 3 bullets
         for(int i = 1 ; i <= 3; i++){
-            //Instantiate a bullet in the target direction
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            Vector2 direction = lr.transform.right;
-            //Set the velocity and max number of bounces
-            bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
-            bullet.GetComponent<EnemyBullet>().bounces = maxReflections;
-            //A wait between each shot so it appears as if they are shot in a seqeuence
-            //Below plays the sound after each shot
-            shootSound.Play();
-            yield return new WaitForSeconds(0.65f);
+            
+            if(enemyHealthSystem.enemyHealth > 0)
+            {
+                AimAtPlayer(lineRenderer1);
+                AimAtPlayer(lineRenderer2);
+
+                //Instantiate a bullet in the target direction
+                GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                Vector2 direction = lr.transform.right;
+                //Set the velocity and max number of bounces
+                bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+                bullet.GetComponent<EnemyBullet>().bounces = maxReflections;
+                //A wait between each shot so it appears as if they are shot in a seqeuence
+                //Below plays the sound after each shot
+                shootSound.Play();
+                yield return new WaitForSeconds(0.65f / (((diff - 1) / 2) + 1));
+            }
         }
 
         
