@@ -200,20 +200,22 @@ public class Spells : MonoBehaviour
     public void mageRage(){
       
       
-       //Increase the players damage, bullet speed, and movement speed to reflect the stat buff from the spell
-        GameObject[] enemies2 = GameObject.FindGameObjectsWithTag("Enemy");
-        for(int i = 0; i < enemies2.Length; i++)
-        {  
-            EnemyHealthSystem enemyHealthSystem = enemies2[i].GetComponent<EnemyHealthSystem>();
-            enemyHealthSystem.mageRisOn = true;
-        }
+       //Increase the players damage
+        // GameObject[] enemies2 = GameObject.FindGameObjectsWithTag("Enemy");
+        // for(int i = 0; i < enemies2.Length; i++)
+        // {  
+        //     EnemyHealthSystem enemyHealthSystem = enemies2[i].GetComponent<EnemyHealthSystem>();
+        //     enemyHealthSystem.mageRisOn = true;
+        // }
         
-        playerController.attackChargeMax = 15;
-        playerController.attackCharge = 15;
+        //Increase the recharge time of the bullets so the player can continously shoot
+        playerController.attackChargeSpeed = 5;
         
-        playerController.bulletForce = 20;
+        //Increase the speed of the bullets
+        playerController.bulletForce = 25;
 
-        playerController.moveSpeed = 200;
+        //Increase the movement speed of the player
+        playerController.moveSpeed = 20;
 
 
         StartCoroutine(timer()); //wait for timer before destroying the shield
@@ -226,16 +228,16 @@ public class Spells : MonoBehaviour
     {
         yield return new WaitForSeconds(5f); //wait for timer to decrease stats back to normal
 
-        //Decrease all the stats back to the normal 
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        for(int i = 0; i < enemies.Length; i++)
-        {  
-            EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
-            enemyHealthSystem.mageRisOn = false;
-        }
+        //After 5 seconds return the stats to the original values.
+        // GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        // for(int i = 0; i < enemies.Length; i++)
+        // {  
+        //     EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
+        //     enemyHealthSystem.mageRisOn = false;
+        // }
         
-        playerController.attackChargeMax = 3;
-        playerController.attackCharge = 3;
+        playerController.attackChargeSpeed = 2;
+
         
         playerController.bulletForce = 12;
 
