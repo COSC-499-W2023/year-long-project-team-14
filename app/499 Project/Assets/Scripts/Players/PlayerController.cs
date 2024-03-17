@@ -239,7 +239,8 @@ public class PlayerController : MonoBehaviour
             bulletRB.AddForce(-gunFollow.up * 50 * bulletForce);
 
             //shoot sound effect
-            shootSound.Play();
+            if(!unitTest)
+                shootSound.Play();
 
             PlayerBullet playerBullet = bullet.GetComponent<PlayerBullet>();
             playerBullet.bounces = bulletBounces;
@@ -303,6 +304,10 @@ public class PlayerController : MonoBehaviour
             else if (tag == "summonChad")
             {
                 interactable.GetComponent<SummonChadPickup>().Interact();
+            }
+            else if (tag == "Freeze")
+            {
+                interactable.GetComponent<FreezePickup>().Interact();
             }
             else if (tag == "Shield")
             {

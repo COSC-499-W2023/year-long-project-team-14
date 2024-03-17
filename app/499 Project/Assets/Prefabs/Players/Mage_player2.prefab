@@ -61,8 +61,9 @@ MonoBehaviour:
   image: {fileID: 2517229127961533415}
   fireSprite: {fileID: -1659854389, guid: 71f101bd904da3a4eb89ffd963ac31b7, type: 3}
   lightningSprite: {fileID: 339508314, guid: fa739449f8985d74aa6afb409a7beb86, type: 3}
-  SeekingSprite: {fileID: 0}
-  chadSprite: {fileID: 0}
+  SeekingSprite: {fileID: -1788315041, guid: 052d2d598db74c242b7b861ed291772f, type: 3}
+  chadSprite: {fileID: -276574461, guid: b857dab66404fbc459aaa2150c73d56d, type: 3}
+  freezeSprite: {fileID: -58245785, guid: fa739449f8985d74aa6afb409a7beb86, type: 3}
 --- !u!114 &2517229127961533415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +277,9 @@ MonoBehaviour:
   moveSpeed: 8
   bulletBounces: 1
   player1: 0
+  holdCooldown: 0
+  mouseHold: 0
+  dashHold: 0
   aimingInWall: 0
   bulletPrefab: {fileID: 8495944747531926129, guid: e0f038ea01aad6a479c19c275fdbd3d1, type: 3}
   playerInput: {fileID: 3476007376617294521}
@@ -287,7 +291,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 517172463433549030}
   layerDetection:
     serializedVersion: 2
-    m_Bits: 66304
+    m_Bits: 590592
   unitTest: 0
   unitTest2: 0
   shootSound: {fileID: -3089450358657967342}
@@ -875,6 +879,7 @@ MonoBehaviour:
   lightningPrefab: {fileID: 4084521033630141133, guid: 9414e171bb10ea848b96be1cb0081fab, type: 3}
   seekingOrbPrefab: {fileID: 1287584697726197767, guid: b5dce37d418318a48bf4101d9ddb1d4d, type: 3}
   chadPrefab: {fileID: 0}
+  iceCubePrefab: {fileID: 5353155636119205557, guid: 2b44b4606410f624489e839e71c78d63, type: 3}
   shieldPrefab: {fileID: 758289626637381577, guid: b72145187a5b557469b33ef2c319f6e0, type: 3}
   shield: {fileID: 0}
   isShield: 0
@@ -883,6 +888,8 @@ MonoBehaviour:
   lightningSound: {fileID: 6808735797056020385}
   seekingOrbSound: {fileID: 5033179128970622421}
   chadSound: {fileID: 0}
+  freezeFlash: {fileID: 8839434359703360610, guid: 8d1a06cceef4e0a40bf0f15c7971b23e, type: 3}
+  iceCubeBreak: {fileID: 6302075490922154978, guid: f6f228fdec1e39d4f97cbe2539b2c9d6, type: 3}
 --- !u!82 &7860525362818205043
 AudioSource:
   m_ObjectHideFlags: 0

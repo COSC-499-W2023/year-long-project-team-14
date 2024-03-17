@@ -184,6 +184,9 @@ MonoBehaviour:
   moveSpeed: 8
   bulletBounces: 1
   player1: 1
+  holdCooldown: 0
+  mouseHold: 0
+  dashHold: 0
   aimingInWall: 0
   bulletPrefab: {fileID: 5755921796930191897, guid: 3d996469d34a57d48b5cda7756cb6536, type: 3}
   playerInput: {fileID: 3476007376617294521}
@@ -195,7 +198,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 4187919560129157548}
   layerDetection:
     serializedVersion: 2
-    m_Bits: 66304
+    m_Bits: 590592
   unitTest: 0
   unitTest2: 0
   shootSound: {fileID: 1950902560532192884}
@@ -774,7 +777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e25061756d70d4f809c184106d804a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellName: Fireball
+  spellName: Freeze
   spellCooldown: 10
   cooldownTimer: 0
   playerController: {fileID: 4452037770434438324}
@@ -783,6 +786,7 @@ MonoBehaviour:
   lightningPrefab: {fileID: 4084521033630141133, guid: 9414e171bb10ea848b96be1cb0081fab, type: 3}
   seekingOrbPrefab: {fileID: 1287584697726197767, guid: b5dce37d418318a48bf4101d9ddb1d4d, type: 3}
   chadPrefab: {fileID: 47225787850154555, guid: 87c0e3250bb6bd54fbf05cb8653bde2e, type: 3}
+  iceCubePrefab: {fileID: 5353155636119205557, guid: 2b44b4606410f624489e839e71c78d63, type: 3}
   shieldPrefab: {fileID: 758289626637381577, guid: b72145187a5b557469b33ef2c319f6e0, type: 3}
   shield: {fileID: 0}
   isShield: 0
@@ -791,6 +795,8 @@ MonoBehaviour:
   lightningSound: {fileID: 5829597694115131600}
   seekingOrbSound: {fileID: 8049298216514591554}
   chadSound: {fileID: 2376870225415034407}
+  freezeFlash: {fileID: 8839434359703360610, guid: 8d1a06cceef4e0a40bf0f15c7971b23e, type: 3}
+  iceCubeBreak: {fileID: 6302075490922154978, guid: f6f228fdec1e39d4f97cbe2539b2c9d6, type: 3}
 --- !u!82 &6020226581851858952
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1334,6 +1340,7 @@ MonoBehaviour:
   lightningSprite: {fileID: 339508314, guid: fa739449f8985d74aa6afb409a7beb86, type: 3}
   SeekingSprite: {fileID: -1788315041, guid: 052d2d598db74c242b7b861ed291772f, type: 3}
   chadSprite: {fileID: -276574461, guid: b857dab66404fbc459aaa2150c73d56d, type: 3}
+  freezeSprite: {fileID: -58245785, guid: fa739449f8985d74aa6afb409a7beb86, type: 3}
   shieldSprite: {fileID: 21300000, guid: ef1884aedfd4e3a46a8dc138f602d5a1, type: 3}
 --- !u!114 &4305409814652023011
 MonoBehaviour:

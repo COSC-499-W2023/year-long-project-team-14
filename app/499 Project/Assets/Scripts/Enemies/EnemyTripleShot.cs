@@ -153,7 +153,7 @@ public class EnemyTripleShot : MonoBehaviour
         //Loop 3 times since youll shoot 3 bullets
         for(int i = 1 ; i <= 3; i++){
             
-            if(enemyHealthSystem.enemyHealth > 0)
+            if(enemyHealthSystem.enemyHealth > 0 && GetComponent<EnemyTripleShot>().enabled)
             {
                 AimAtPlayer(lineRenderer1);
                 AimAtPlayer(lineRenderer2);
@@ -170,8 +170,6 @@ public class EnemyTripleShot : MonoBehaviour
                 yield return new WaitForSeconds(0.65f / (((diff - 1) / 2) + 1));
             }
         }
-
-        
     }
 
     
