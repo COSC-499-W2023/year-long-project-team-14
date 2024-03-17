@@ -15,6 +15,12 @@ public class Spells : MonoBehaviour
     public GameObject seekingOrbPrefab;
     public GameObject chadPrefab;
     public GameObject iceCubePrefab;
+    public GameObject shieldPrefab;
+    public GameObject shield;
+
+    //Used to indicate when the shield is active 
+    public bool isShield = false;
+
     public float yOffset = 11.5f;
     private List<GameObject> chads = new List<GameObject>();
 
@@ -30,6 +36,16 @@ public class Spells : MonoBehaviour
     void Update()
     {
         cooldownTimer += Time.deltaTime;
+
+        if(isShield == true){
+            //If the shield is active 
+
+            //Get the shield transform 
+            Transform shieldT = shield.transform;
+
+            //Make the shield position follow the players position
+            shieldT.position = playerController.transform.position;
+        }
     }
 
     public void Spell(InputAction.CallbackContext context)
@@ -68,6 +84,11 @@ public class Spells : MonoBehaviour
             else if (spellName == "Freeze")
             {
                 StartCoroutine(Freeze());
+            }
+             else if (spellName == "Shield")
+            {
+               //If the user has the shield spell and presses q then call ShieldSpell()
+               ShieldSpell();
             }
         }
     }
@@ -254,7 +275,26 @@ public class Spells : MonoBehaviour
                     enemyTripleShot.enabled = false;
             }
         }
+    }
 
+    public void ShieldSpell(){
+        //Instantiate the shield on the player
+        shield = Instantiate(shieldPrefab, playerController.transform.position, Quaternion.identity);
+        
+        //Indicate that the shield is active 
+        isShield = true;
+        
+        
+        // Start a coroutine to wait for a certain amount of time before destroying the shield
+        StartCoroutine(DestroyShield(shield));
+    }
+
+    IEnumerator DestroyShield(GameObject shield)
+    {
+        yield return new WaitForSeconds(5f); //wait for timer before destroying the shield
+        Destroy(shield);
+        //Mark that the shield is inactive.
+        isShield = false;
     }
 
 }

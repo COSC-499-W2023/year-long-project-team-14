@@ -787,6 +787,9 @@ MonoBehaviour:
   seekingOrbPrefab: {fileID: 1287584697726197767, guid: b5dce37d418318a48bf4101d9ddb1d4d, type: 3}
   chadPrefab: {fileID: 47225787850154555, guid: 87c0e3250bb6bd54fbf05cb8653bde2e, type: 3}
   iceCubePrefab: {fileID: 5353155636119205557, guid: 2b44b4606410f624489e839e71c78d63, type: 3}
+  shieldPrefab: {fileID: 758289626637381577, guid: b72145187a5b557469b33ef2c319f6e0, type: 3}
+  shield: {fileID: 0}
+  isShield: 0
   yOffset: 2.5
   fireballSound: {fileID: 6020226581851858952}
   lightningSound: {fileID: 5829597694115131600}
@@ -1338,6 +1341,7 @@ MonoBehaviour:
   SeekingSprite: {fileID: -1788315041, guid: 052d2d598db74c242b7b861ed291772f, type: 3}
   chadSprite: {fileID: -276574461, guid: b857dab66404fbc459aaa2150c73d56d, type: 3}
   freezeSprite: {fileID: -58245785, guid: fa739449f8985d74aa6afb409a7beb86, type: 3}
+  shieldSprite: {fileID: 21300000, guid: ef1884aedfd4e3a46a8dc138f602d5a1, type: 3}
 --- !u!114 &4305409814652023011
 MonoBehaviour:
   m_ObjectHideFlags: 0
