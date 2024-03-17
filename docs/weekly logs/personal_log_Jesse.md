@@ -1,5 +1,28 @@
 # Personal Log - Jesse Lazzari
 
+## Term 2 Week 10
+- Start Date: March 11
+- End Date: March 17
+  
+### Tasks I worked on:
+![](screenshots/t2week10_tasks_jesse.PNG)
+  
+### Recap on your week's goals
+My goals this week were to:
+* Finalize animations, movement and attack selection scripts for final boss encounter
+* Add new rotating laser attack for final boss
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Continue work on the final boss enemy encounter and add more variety to its attacks
+* Meet with team and write team log
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed the animations as well as added functionality for the movement, health and rotating laser attack scripts for the final boss
+* In progress tasks are additional unit testing as well as add another type of attack for the final boss so that gameplay is more interesting for players during the encounter
+
+***
+
 ## Term 2 Week 9
 - Start Date: March 4
 - End Date: March 10
