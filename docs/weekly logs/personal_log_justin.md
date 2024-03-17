@@ -5,7 +5,7 @@
 - End Date: March 17th
 
 ### Tasks I worked on:
-![](screenshots/tasks_justin_week_21.png)
+![](screenshots/tasks_justin_week_22.png)
 
   
 ### Recap on your week's goals
@@ -28,7 +28,7 @@ I have completed the shield spell completely and began work on the mage rage spe
 - End Date: March 10th
 
 ### Tasks I worked on:
-We had an issue with Git LFS again and can no longer push any screenshots so this is blank for now
+![](screenshots/tasks_justin_week_21.png)
 
 ### Recap on your week's goals
 My goals this week were to: 
