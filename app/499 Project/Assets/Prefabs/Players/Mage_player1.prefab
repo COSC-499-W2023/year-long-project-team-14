@@ -184,6 +184,9 @@ MonoBehaviour:
   moveSpeed: 8
   bulletBounces: 1
   player1: 1
+  holdCooldown: 0
+  mouseHold: 0
+  dashHold: 0
   aimingInWall: 0
   bulletPrefab: {fileID: 5755921796930191897, guid: 3d996469d34a57d48b5cda7756cb6536, type: 3}
   playerInput: {fileID: 3476007376617294521}

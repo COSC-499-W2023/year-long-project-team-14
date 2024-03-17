@@ -81,6 +81,11 @@ public class Spells : MonoBehaviour
                //If the user has the shield spell and presses q then call ShieldSpell()
                ShieldSpell();
             }
+            else if (spellName == "mR")
+            {
+               //If the user has the mage rage spell and presses q then call ShieldSpell()
+               mageRage();
+            }
         }
     }
 
@@ -189,6 +194,53 @@ public class Spells : MonoBehaviour
         Destroy(shield);
         //Mark that the shield is inactive.
         isShield = false;
+    }
+
+    //This will be used for the mage rage spell 
+    public void mageRage(){
+      
+      
+       //Increase the players damage, bullet speed, and movement speed to reflect the stat buff from the spell
+        GameObject[] enemies2 = GameObject.FindGameObjectsWithTag("Enemy");
+        for(int i = 0; i < enemies2.Length; i++)
+        {  
+            EnemyHealthSystem enemyHealthSystem = enemies2[i].GetComponent<EnemyHealthSystem>();
+            enemyHealthSystem.mageRisOn = true;
+        }
+        
+        playerController.attackChargeMax = 15;
+        playerController.attackCharge = 15;
+        
+        playerController.bulletForce = 20;
+
+        playerController.moveSpeed = 200;
+
+
+        StartCoroutine(timer()); //wait for timer before destroying the shield
+
+       
+
+    }
+
+    IEnumerator timer()
+    {
+        yield return new WaitForSeconds(5f); //wait for timer to decrease stats back to normal
+
+        //Decrease all the stats back to the normal 
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        for(int i = 0; i < enemies.Length; i++)
+        {  
+            EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
+            enemyHealthSystem.mageRisOn = false;
+        }
+        
+        playerController.attackChargeMax = 3;
+        playerController.attackCharge = 3;
+        
+        playerController.bulletForce = 12;
+
+        playerController.moveSpeed = 8;
+
     }
 
 }
