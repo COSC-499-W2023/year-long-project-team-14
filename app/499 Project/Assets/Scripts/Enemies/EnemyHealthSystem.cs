@@ -69,7 +69,7 @@ public class EnemyHealthSystem : MonoBehaviour
      // Damage enemy if colliding with bullet
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player_bullet") && mageRisOn == false)
+        if (collision.gameObject.CompareTag("Player_bullet") )
         {
             takeDamage();
         }
