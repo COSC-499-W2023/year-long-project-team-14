@@ -45,21 +45,21 @@ public class EnemyAttack : MonoBehaviour
         if(diff == 1) 
             shootInterval /= 1f;
         else if(diff == 2)
-            shootInterval /= 1.5f;
+            shootInterval /= 1.66f;
         else if(diff == 3)
-            shootInterval /= 2f;
+            shootInterval /= 2.33f;
         else if(diff == 4)
-            shootInterval /= 2.5f;
+            shootInterval /= 3f;
         
         //Set enemy bullet speed
         if(diff == 1) 
             bulletSpeed *= 1f;
         else if(diff == 2)
-            bulletSpeed *= 1.5f;
+            bulletSpeed *= 1.66f;
         else if(diff == 3)
-            bulletSpeed *= 2f;
+            bulletSpeed *= 2.33f;
         else if(diff == 4)
-            bulletSpeed *= 2.5f;
+            bulletSpeed *= 3f;
 
         //Prevent enemies from shooting at the start of a level
         lastShootTime = Time.time + Random.Range(0, shootInterval/2);
