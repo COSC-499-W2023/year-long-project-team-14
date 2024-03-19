@@ -52,7 +52,7 @@ public class ShieldTest
         spells.ShieldSpell();
 
         //Check that the shield exists
-        GameObject shield = GameObject.FindWithTag("Shield");
+        GameObject shield = GameObject.Find("Shield(Clone)");
         Assert.IsTrue(shield != null); 
 
         //Wait for enemy to hit the player

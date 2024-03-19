@@ -55,7 +55,7 @@ public class FireballTest
         spells.FireballSpell();
 
         //Check that the fireball exists
-        GameObject fireball = GameObject.FindWithTag("Fireball");
+        GameObject fireball = GameObject.Find("Fireball(Clone)");
         Assert.IsTrue(fireball != null); 
 
         //Wait for fireball to hit enemy
