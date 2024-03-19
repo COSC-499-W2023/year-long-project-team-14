@@ -121,8 +121,8 @@ public class TransitionTest
         Ladder ladder = GameObject.FindWithTag("Ladder").GetComponent<Ladder>();
         GameObject level = gameMaster.level;
 
-        //Set level to 2
-        gameMaster.currentLevel = 2;
+        //Set level to 4
+        gameMaster.currentLevel = 4;
 
         //Set player life to 1
         gameMaster.healthSystem1.life = 1;
@@ -148,7 +148,7 @@ public class TransitionTest
         Assert.IsTrue(gameMaster.healthSystem1.life == 1);
 
         //Check that it transitioned to the shop and the level counter didn't increase
-        Assert.IsTrue(gameMaster.currentLevel == 2);
+        Assert.IsTrue(gameMaster.currentLevel == 4);
         Assert.IsTrue(gameMaster.level != level);
         Assert.IsTrue(gameMaster.inShop == true);
 
@@ -161,7 +161,7 @@ public class TransitionTest
         Assert.IsTrue(gameMaster.healthSystem1.life == 2);
 
         //Check that it transitioned out of the shop and the level counter increased
-        Assert.IsTrue(gameMaster.currentLevel == 3);
+        Assert.IsTrue(gameMaster.currentLevel == 5);
         Assert.IsTrue(gameMaster.level != level);
         Assert.IsTrue(gameMaster.inShop == false);
     }
