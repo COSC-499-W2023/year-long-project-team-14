@@ -148,8 +148,8 @@ public class LeaderboardTest : MonoBehaviour
         Assert.IsTrue(leaderboardManager.difficultyButtonText.text == "MEDIUM");
         Assert.IsTrue(leaderboardManager.players == 2);
         Assert.IsTrue(leaderboardManager.playerButtonText.text == "2 PLAYER");
-        Assert.IsTrue(leaderboardManager.scoreType == 2);
-        Assert.IsTrue(leaderboardManager.scoreButtonText.text == "TOP SCORES");
+        Assert.IsTrue(leaderboardManager.scoreType == 1);
+        Assert.IsTrue(leaderboardManager.scoreButtonText.text == "YOUR SCORE");
     }
 
     [UnityTest]
