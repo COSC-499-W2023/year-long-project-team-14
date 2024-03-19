@@ -19,7 +19,7 @@ public class SpellRandomizer : MonoBehaviour
     void SelectSpell(Transform pos)
     {
         int rand = Random.Range(0, spells.Count);
-        Instantiate(spells[rand], pos.position, Quaternion.identity);
+        Instantiate(spells[rand], pos.position, Quaternion.identity, gameObject.transform);
         spells.RemoveAt(rand);
     }
 }
