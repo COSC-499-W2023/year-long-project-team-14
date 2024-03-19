@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8472498119711648457}
   m_Layer: 12
   m_Name: SeekingOrb
-  m_TagString: SeekingOrb
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,4 +217,5 @@ MonoBehaviour:
   nextWaypointDistance: 1
   target: {fileID: 0}
   enemies: []
+  bosses: []
   explosionPrefab: {fileID: 6623527852450687671, guid: b088abfc47238f7489d987c9c0a86ba5, type: 3}
