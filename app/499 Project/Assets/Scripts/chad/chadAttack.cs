@@ -38,29 +38,6 @@ public class chadAttack : MonoBehaviour
         Points2 = new List<Vector3>();
         Points3 = new List<Vector3>();
 
-        //Get difficulty
-        diff = PlayerPrefs.GetInt("difficulty");
-
-        //Set enemy fire rate
-        if(diff == 1) 
-            shootInterval /= 1f;
-        else if(diff == 2)
-            shootInterval /= 1.5f;
-        else if(diff == 3)
-            shootInterval /= 2f;
-        else if(diff == 4)
-            shootInterval /= 2.5f;
-        
-        //Set enemy bullet speed
-        if(diff == 1) 
-            bulletSpeed *= 1f;
-        else if(diff == 2)
-            bulletSpeed *= 1.33f;
-        else if(diff == 3)
-            bulletSpeed *= 1.67f;
-        else if(diff == 4)
-            bulletSpeed *= 2f;
-
         //Prevent enemies from shooting at the start of a level
         lastShootTime = Time.time + Random.Range(0, shootInterval/2);
     }
