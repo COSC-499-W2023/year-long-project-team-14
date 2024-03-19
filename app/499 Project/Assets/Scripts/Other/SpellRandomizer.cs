@@ -7,11 +7,13 @@ public class SpellRandomizer : MonoBehaviour
     public List<GameObject> spells = new List<GameObject>();
     public Transform spawn1;
     public Transform spawn2;
+    public Transform spawn3;
 
     void Start()
     {
         SelectSpell(spawn1);
         SelectSpell(spawn2);
+        SelectSpell(spawn3);
     }
 
     void SelectSpell(Transform pos)
