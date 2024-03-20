@@ -97,7 +97,10 @@ MonoBehaviour:
   playerCount: 2
   player1ControlScheme: 0
   player2ControlScheme: 1
+  player1Controls: Keyboard
+  player2Controls: Keyboard
   currentLevel: 1
+  inShop: 0
   WinMenu: {fileID: 0}
   pauseMenu: {fileID: 0}
   winMenu: {fileID: 0}
@@ -110,15 +113,30 @@ MonoBehaviour:
   healthSystem2: {fileID: 0}
   player1Prefab: {fileID: 881379806320011560, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
   player2Prefab: {fileID: 881379806320011560, guid: 076a5c51a2c98254abac4863d7fab8ef, type: 3}
+  shopLevel: {fileID: 726191110550990116, guid: 28d0032bef7ea0146830b867d7ded1cb, type: 3}
   levelTemplate: {fileID: 4522541046923769925, guid: bea5726489661344bbf1dea76e4253fa, type: 3}
   level1: {fileID: 5268933187418098543, guid: be654b483021c914c931345e096af7bb, type: 3}
   levels:
   - {fileID: 5268933187418098543, guid: be654b483021c914c931345e096af7bb, type: 3}
+  - {fileID: 1400377424962179213, guid: 924a85c2a14c91b479ab2c8c63b1082c, type: 3}
   - {fileID: 5844207685631834531, guid: 3043074287534c349ada20ff8feed134, type: 3}
-  - {fileID: 5841024311893014779, guid: c929546503c4675488a96b32b10da7da, type: 3}
+  - {fileID: 6361803820142365704, guid: 83344894b9182814da8cb162ed708138, type: 3}
+  - {fileID: 9068804309496012482, guid: 083bdaaa111c53549a7d0fad1da09a4a, type: 3}
+  - {fileID: 1905898410710676578, guid: c929546503c4675488a96b32b10da7da, type: 3}
+  - {fileID: 8060546388971580311, guid: a5574f02225ba7a4b9d9b35cbfa741b1, type: 3}
   - {fileID: 3445720954937112156, guid: f22c37e9b9eae88448447453049e2566, type: 3}
-  - {fileID: 4871658359017782882, guid: 92feaafecaf83b44f9869605e9dad7d6, type: 3}
+  - {fileID: 5592016364860960086, guid: fa6b64cf5e4ec9d469c9389818b64826, type: 3}
   - {fileID: 5920520649088949437, guid: 48b6aca2f0d96ca43845a1c4f056cadc, type: 3}
+  - {fileID: 4674389598007767861, guid: 536c65204e256d64f922cee4ee3e2f1c, type: 3}
+  - {fileID: 2137636828200186201, guid: 92feaafecaf83b44f9869605e9dad7d6, type: 3}
+  - {fileID: 7518464631256412072, guid: c420b2bb9f6cf194989fcfbd1c8408c0, type: 3}
+  - {fileID: 4742473617637882416, guid: 39caa49427a9c8f4898e9424ba0fa6f1, type: 3}
+  - {fileID: 6080738095447082616, guid: 5418fd3e5f183604cb589672d38b9a56, type: 3}
+  - {fileID: 3505857997633827815, guid: ea8168de25c83a24ebd8f0b232e2b2c5, type: 3}
+  - {fileID: 370773024611647295, guid: 261fc674fb3537a448ad1adc5c62ee8d, type: 3}
+  - {fileID: 8383200778035539414, guid: 4ac36ebd66ceb394488681a262f15697, type: 3}
+  - {fileID: 4717852839581272085, guid: 5150d717b9ec11a4c9f13bc186ff7309, type: 3}
+  - {fileID: 590482083821775993, guid: 9236982023a47fa47b636ef911a7b471, type: 3}
   level: {fileID: 0}
   stopTimer: 0
   unitTest: 0
