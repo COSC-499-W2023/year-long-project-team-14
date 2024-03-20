@@ -140,7 +140,7 @@ public class BossLaserAttack : MonoBehaviour
             }
             else if(rand == 2)
             {
-                yield return StartCoroutine(ShootSlimeLeft());
+                yield return StartCoroutine(ShootSlimeRight());
                 yield return new WaitForSeconds(1f); // delay between attacks
             }
         }
@@ -362,9 +362,26 @@ public class BossLaserAttack : MonoBehaviour
             em.enabled = false;
             animator.SetTrigger("ShootLeft");
 
-            GameObject slimeClone = Instantiate(slime, transform.position, Quaternion.identity);
-            Vector2 direction = -transform.right;
-            slimeClone.GetComponent<Rigidbody2D>().AddForce(direction * slimeSpeed);
+            yield return new WaitForSeconds(0.25f);
+
+            GameObject slimeClone = Instantiate(slime, transform.position + new Vector3(-2.0f, 0.75f, 0), Quaternion.identity);
+            slimeClone.GetComponent<Rigidbody2D>().AddForce(-transform.right * slimeSpeed);
+
+        }
+        yield return null;
+    }
+
+    private IEnumerator ShootSlimeRight()
+    {
+         if(firingEnabled)
+        {
+            em.enabled = false;
+            animator.SetTrigger("ShootRight");
+
+            yield return new WaitForSeconds(0.25f);
+
+            GameObject slimeClone = Instantiate(slime, transform.position + new Vector3(2.0f, 0.75f, 0), Quaternion.identity);
+            slimeClone.GetComponent<Rigidbody2D>().AddForce(transform.right * slimeSpeed);
 
         }
         yield return null;
