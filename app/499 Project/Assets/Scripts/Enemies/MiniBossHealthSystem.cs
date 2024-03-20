@@ -163,6 +163,11 @@ public class MiniBossHealthSystem : MonoBehaviour
         deathSound.Play();
 
         StartCoroutine(Transparent());
+        GameObject[] slimes = GameObject.FindGameObjectsWithTag("Enemy");
+        for(int i = 0; i < slimes.Length; i++)
+        {
+            slimes[i].GetComponent<EnemyHealthSystem>().Die();
+        } 
 
         //If last enemy, end level
         if (portal != null)

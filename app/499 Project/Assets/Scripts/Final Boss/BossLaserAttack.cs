@@ -140,7 +140,7 @@ public class BossLaserAttack : MonoBehaviour
             }
             else if(rand == 2)
             {
-                yield return StartCoroutine(ShootSlimeRight());
+                yield return StartCoroutine(TripleShotSlimesLeft());
                 yield return new WaitForSeconds(1f); // delay between attacks
             }
         }
@@ -359,11 +359,8 @@ public class BossLaserAttack : MonoBehaviour
     {
          if(firingEnabled)
         {
-            em.enabled = false;
             animator.SetTrigger("ShootLeft");
-
             yield return new WaitForSeconds(0.25f);
-
             GameObject slimeClone = Instantiate(slime, transform.position + new Vector3(-2.0f, 0.75f, 0), Quaternion.identity);
             slimeClone.GetComponent<Rigidbody2D>().AddForce(-transform.right * slimeSpeed);
 
@@ -373,18 +370,46 @@ public class BossLaserAttack : MonoBehaviour
 
     private IEnumerator ShootSlimeRight()
     {
-         if(firingEnabled)
+        if(firingEnabled)
         {
-            em.enabled = false;
             animator.SetTrigger("ShootRight");
-
             yield return new WaitForSeconds(0.25f);
-
             GameObject slimeClone = Instantiate(slime, transform.position + new Vector3(2.0f, 0.75f, 0), Quaternion.identity);
             slimeClone.GetComponent<Rigidbody2D>().AddForce(transform.right * slimeSpeed);
 
         }
         yield return null;
+    }
+
+    private IEnumerator TripleShotSlimesLeft()
+    {
+        
+        for(int i = 1 ; i <= 3; i++)
+        {
+            if(firingEnabled)
+            {
+                animator.SetTrigger("ShootLeft");
+                yield return new WaitForSeconds(0.25f);
+                GameObject slimeClone = Instantiate(slime, transform.position + new Vector3(-2.0f, 0.75f, 0), Quaternion.identity);
+                slimeClone.GetComponent<Rigidbody2D>().AddForce(-transform.right * slimeSpeed);
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
+    }
+
+    private IEnumerator TripleShotSlimesRight()
+    {
+        for(int i = 1 ; i <= 3; i++)
+        {
+            if(firingEnabled)
+            {
+                animator.SetTrigger("ShootLeft");
+                yield return new WaitForSeconds(0.25f);
+                GameObject slimeClone = Instantiate(slime, transform.position + new Vector3(2.0f, 0.75f, 0), Quaternion.identity);
+                slimeClone.GetComponent<Rigidbody2D>().AddForce(transform.right * slimeSpeed);
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
     }
 
     void Update()
