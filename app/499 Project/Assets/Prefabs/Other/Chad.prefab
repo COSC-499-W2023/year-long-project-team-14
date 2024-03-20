@@ -514,8 +514,8 @@ MonoBehaviour:
   players: []
   targetPlayer: {fileID: 0}
   bulletPrefab: {fileID: 5755921796930191897, guid: 0627c6b426e36a2419a5c88695dfeafc, type: 3}
-  shootInterval: 3
-  bulletSpeed: 3
+  shootInterval: 2
+  bulletSpeed: 15
   lastShootTime: 0
   Points1: []
   Points2: []
@@ -525,7 +525,7 @@ MonoBehaviour:
   lineRenderer3: {fileID: 4708126343900329802}
   LayerDetection:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 66304
   maxReflections: 1
   rotationSpeed: 250
   shootSound: {fileID: 1292430777746416027}
@@ -578,6 +578,7 @@ MonoBehaviour:
   gameOverMenu: {fileID: 0}
   playerController: {fileID: 1955199670846603571}
   isInvic: 0
+  chad: 1
   hitSound: {fileID: 506454921404844893}
   deathSound: {fileID: 4143684547295427126}
   ChadAttack: chadAttack
@@ -820,6 +821,7 @@ MonoBehaviour:
   fireSprite: {fileID: -1659854389, guid: 71f101bd904da3a4eb89ffd963ac31b7, type: 3}
   lightningSprite: {fileID: 339508314, guid: fa739449f8985d74aa6afb409a7beb86, type: 3}
   SeekingSprite: {fileID: -1788315041, guid: 052d2d598db74c242b7b861ed291772f, type: 3}
+  chadSprite: {fileID: 0}
 --- !u!114 &6486275301687426159
 MonoBehaviour:
   m_ObjectHideFlags: 0

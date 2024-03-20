@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Ladder : MonoBehaviour
 {
-    public GameObject floatingText;
+    public SpriteRenderer prompt;
+    public Sprite xPrompt;
+    public Sprite aPrompt;
+    public Sprite ePrompt;
 
     private bool playerIsOverExit = false;
     public bool exitUnlocked = false;
@@ -19,28 +22,54 @@ public class Ladder : MonoBehaviour
         //get access to game master
         gameMaster = GameObject.FindWithTag("GameMaster").GetComponent<GameMaster>();
 
-        //set exit inactive to start
-        SetLadderActive(false);
+        //set exit inactive to start if not in shop
+        if(!gameMaster.inShop)
+            SetLadderActive(false);
+        else
+            SetLadderActive(true);
     }
 
     //player is within range
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !other.gameObject.GetComponent<healthSystem>().chad)
         {
-            if(gameMaster.currentLevel == 1 && ladderArrow != null)
-                ladderArrow.SetActive(false);
-
             playerIsOverExit = true;
+            
+            if(gameMaster.currentLevel == 1 && exitUnlocked && ladderArrow != null)
+                ladderArrow.SetActive(false);
+            
+            if(exitUnlocked)
+            {
+                prompt.gameObject.SetActive(true);
+                if(other.gameObject.GetComponent<PlayerController>().player1)
+                {
+                    if(gameMaster.player1Controls == "PS")
+                    {
+                        prompt.sprite = xPrompt;
+                    }
+                    else if(gameMaster.player1Controls == "Xbox")
+                    {
+                        prompt.sprite = aPrompt;
+                    }
+                    else
+                        prompt.sprite = ePrompt;
+                }
+                else
+                {
+                    if(gameMaster.player2Controls == "PS")
+                    {
+                        prompt.sprite = xPrompt;
+                    }
+                    else if(gameMaster.player2Controls == "Xbox")
+                    {
+                        prompt.sprite = aPrompt;
+                    }
+                    else
+                        prompt.sprite = ePrompt;
+                }
+            }
         }
-        if (other.CompareTag("Player") && exitUnlocked)
-        {
-            ShowFloatingText();
-        }
-    }
-    void ShowFloatingText()
-    {
-        Instantiate(floatingText, transform.position, Quaternion.identity, transform);
     }
 
     //player is no longer within range
@@ -49,6 +78,7 @@ public class Ladder : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsOverExit = false;
+            prompt.gameObject.SetActive(false);
         }
     }
 

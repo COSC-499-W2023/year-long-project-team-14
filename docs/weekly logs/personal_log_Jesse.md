@@ -1,5 +1,53 @@
 # Personal Log - Jesse Lazzari
 
+## Term 2 Week 10
+- Start Date: March 11
+- End Date: March 17
+  
+### Tasks I worked on:
+![](screenshots/t2week10_tasks_jesse.PNG)
+  
+### Recap on your week's goals
+My goals this week were to:
+* Finalize animations, movement and attack selection scripts for final boss encounter
+* Add new rotating laser attack for final boss
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Continue work on the final boss enemy encounter and add more variety to its attacks
+* Meet with team and write team log
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed the animations as well as added functionality for the movement, health and rotating laser attack scripts for the final boss
+* In progress tasks are additional unit testing as well as add another type of attack for the final boss so that gameplay is more interesting for players during the encounter
+
+***
+
+## Term 2 Week 9
+- Start Date: March 4
+- End Date: March 10
+  
+### Tasks I worked on:
+![](screenshots/t2week9_tasks_jesse.PNG)
+  
+### Recap on your week's goals
+My goals this week were to:
+* Ensure team prepardness prior to peer testing
+* Run peer testing station, test other team's projects, and provide relevant feedback
+* Begin working on final boss animations and scripts
+* Bug fixes relating to abilities and mini-boss
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Final boss enemy implementation (animations and attack function scripts)
+* Meet with team and write team log
+
+### Among these tasks, which have you completed/in progress in the last week?
+* Overall the peer testing session was a success and I was able to compile great feedback at my station
+* In progress tasks are continuing to work on the final boss encounter and add additional animations and attack functionality
+
+***
+
 ## Term 2 Week 8
 - Start Date: February 26
 - End Date: March 3

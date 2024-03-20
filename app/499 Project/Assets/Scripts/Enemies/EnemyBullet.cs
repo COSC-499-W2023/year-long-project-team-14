@@ -7,6 +7,11 @@ public class EnemyBullet : MonoBehaviour
     public int bounces = 1;
     public GameObject impactEffect;
 
+    void Start()
+    {
+        Destroy(gameObject, 25);
+    }
+
     void OnCollisionEnter2D(Collision2D collision){
         //Destroy bullet if bounces <= 0 and colliding with an object
         if(collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Breakable")){

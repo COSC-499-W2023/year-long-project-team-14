@@ -282,7 +282,6 @@ GameObject:
   m_Component:
   - component: {fileID: 245533132286007785}
   - component: {fileID: 4238540384194116264}
-  - component: {fileID: 8183162795079139518}
   - component: {fileID: 7456751732130865646}
   - component: {fileID: 3020591997773401752}
   - component: {fileID: 3768150872046747958}
@@ -340,36 +339,6 @@ MonoBehaviour:
   followPlayer: 1
   chargePlayer: 0
   noWait: 0
---- !u!114 &8183162795079139518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5701880002770581090}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 225a2e1302af1ba4eb0d640a1ca63f5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players: []
-  targetPlayer: {fileID: 0}
-  bulletPrefab: {fileID: 3646651384316253834, guid: 1bfe49c7730abc141b70578a420c4ce7, type: 3}
-  shootInterval: 3
-  bulletSpeed: 5
-  lastShootTime: 0
-  Points1: []
-  Points2: []
-  Points3: []
-  lineRenderer1: {fileID: 6097162704761103495}
-  lineRenderer2: {fileID: 3964643379965476771}
-  lineRenderer3: {fileID: 592404196890699259}
-  LayerDetection:
-    serializedVersion: 2
-    m_Bits: 384
-  maxReflections: 1
-  rotationSpeed: 250
-  shootSound: {fileID: -988510893411580385}
 --- !u!212 &7456751732130865646
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -549,7 +518,7 @@ MonoBehaviour:
   ea: {fileID: 0}
   et: {fileID: 0}
   enemyMovement: {fileID: 0}
-  enemyHealth: 5
+  enemyHealth: 2
   enemyCollider: {fileID: 0}
   ladder: {fileID: 0}
   portal: {fileID: 0}

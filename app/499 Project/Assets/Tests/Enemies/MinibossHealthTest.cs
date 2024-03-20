@@ -7,7 +7,7 @@ using UnityEditor;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class MinibossHealthTest : MonoBehaviour
+public class MinibossHealthTest
 {
     private GameObject miniboss;
     private MiniBossHealthSystem miniBossHealthSystem;
@@ -32,12 +32,13 @@ public class MinibossHealthTest : MonoBehaviour
         miniboss = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemies/mini_boss_viking.prefab"), new Vector3(-5, 0, 0), Quaternion.identity) as GameObject;
 
         miniBossHealthSystem = miniboss.GetComponent<MiniBossHealthSystem>();
-        miniBossHealthSystem.enemyHealth = 5; //give the miniboss 2 lives
     }
 
     [UnityTest]
     public IEnumerator miniBossHealthDieTest()
     {
+        miniBossHealthSystem.enemyHealth = 5; //give the miniboss 5 lives
+        miniBossHealthSystem.healthAmount = 5;
 
         //Test that miniboss health is properly set to 5 lives when instantiated
         yield return null;

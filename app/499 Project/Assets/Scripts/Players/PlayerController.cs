@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     public int bulletBounces;
     public bool player1 = false;
 
+    public float holdCooldown = 0;
+    public float mouseHold = 0;
+    public float dashHold = 0;
     public bool aimingInWall = false;
 
     public GameObject bulletPrefab;
@@ -113,7 +116,7 @@ public class PlayerController : MonoBehaviour
                     if(aimDirection.x != 0 && aimDirection.y != 0)
                     {
                         Quaternion rotation = Quaternion.LookRotation(aimDirection, playerCenter.transform.TransformDirection(Vector3.forward));
-                        playerCenter.transform.rotation = Quaternion.Slerp(playerCenter.transform.rotation, new Quaternion(0, 0, rotation.z, rotation.w), 50 * Time.deltaTime);
+                        playerCenter.transform.rotation = Quaternion.Slerp(playerCenter.transform.rotation, new Quaternion(0, 0, rotation.z, rotation.w), 24 * Time.deltaTime);
                     }
                     else if(player1)
                     {
@@ -140,9 +143,19 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if(attackCharge >= attackCost && mouseHold == 1 && holdCooldown > 0.15f)
+            Shoot();
+
+        if(dashHold == 1)
+            Dash();
+
+        if(mouseHold == 0)
+            holdCooldown = 1;
+            
+        holdCooldown += Time.deltaTime;
+
         //Used for the dash cooldown (its the timer)
         dashCDT += Time.deltaTime;
-
     }
 
     private void FixedUpdate()
@@ -167,18 +180,12 @@ public class PlayerController : MonoBehaviour
     //Detects if player presses shoot button
     public void Fire(InputAction.CallbackContext context)
     {
-        if(context.performed)
-        {
-            Shoot();
-        }
+        mouseHold = context.ReadValue<float>();
     }
 
     public void Dash(InputAction.CallbackContext context)
     {
-        if(context.performed)
-        {
-            Dash();
-        }
+        dashHold = context.ReadValue<float>();
     }
 
     public void Interact(InputAction.CallbackContext context)
@@ -220,7 +227,7 @@ public class PlayerController : MonoBehaviour
     //Shoots a bullet in the direction the player is aiming in if they can shoot
     public void Shoot()
     {
-        if(attackCharge >= attackCost && !hs.dead && !PauseMenu.GameIsPaused)
+        if(!hs.dead && !PauseMenu.GameIsPaused)
         {
             bulletUI bullets = GetComponent<bulletUI>();
             if (bullets != null)
@@ -228,13 +235,15 @@ public class PlayerController : MonoBehaviour
                 bullets.oneLessShot();
             }
             attackCharge -= attackCost;
+            holdCooldown = 0;
 
             GameObject bullet = Instantiate(bulletPrefab, gunFollow.position, Quaternion.identity);
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
             bulletRB.AddForce(-gunFollow.up * 50 * bulletForce);
 
             //shoot sound effect
-            shootSound.Play();
+            if(!unitTest)
+                shootSound.Play();
 
             PlayerBullet playerBullet = bullet.GetComponent<PlayerBullet>();
             playerBullet.bounces = bulletBounces;
@@ -245,7 +254,7 @@ public class PlayerController : MonoBehaviour
 
     public void Dash(){
         //If the dash is off cooldown, the player is alive and the game is not paused.
-        if(dashCDT >= dashCooldown && !hs.dead && !PauseMenu.GameIsPaused){
+        if(dashCDT >= dashCooldown && !hs.dead && !PauseMenu.GameIsPaused && gameObject.layer != 17){
             dashSound.Play();
             GameObject dashSmoke = Instantiate(dashPrefab, transform.position, transform.rotation);
             //Add force in the direction the player is moving
@@ -298,6 +307,15 @@ public class PlayerController : MonoBehaviour
             else if (tag == "summonChad")
             {
                 interactable.GetComponent<SummonChadPickup>().Interact();
+            }
+            else if (tag == "Freeze")
+            {
+                interactable.GetComponent<FreezePickup>().Interact();
+            }
+            else if (tag == "Shield")
+            {
+                //if the player interacts with the shield pickup call the function Interact() in the script ShieldPickup
+                interactable.GetComponent<ShieldPickup>().Interact();
             }
         }
     }

@@ -15,6 +15,8 @@ public class healthSystem : MonoBehaviour
     public GameOverMenu gameOverMenu;
     public PlayerController playerController;
     public bool isInvic = false;
+    public bool blinking = false;
+    public bool chad = false;
 
     [SerializeField] private AudioSource hitSound;
     [SerializeField] private AudioSource deathSound;
@@ -48,7 +50,7 @@ public class healthSystem : MonoBehaviour
 
     //Used to check collision with the spikes while still allowing the player to walk through them.
     private void OnTriggerStay2D(Collider2D collision){
-        if(collision.gameObject.CompareTag("Spike")){
+        if(collision.gameObject.CompareTag("Spike") || collision.gameObject.CompareTag("EnemyBullet")){
             takeDamage();
         }
     }
@@ -108,7 +110,7 @@ public class healthSystem : MonoBehaviour
         dead = true;
         spriteRenderer.sortingOrder = 8;
 
-        if(gameOverMenu != null)
+        if(gameOverMenu != null && !chad)
             gameOverMenu.playercount--;
     }
 
@@ -131,6 +133,8 @@ public class healthSystem : MonoBehaviour
     //This is used to show when the player is invicible 
     IEnumerator Transparent2()
     {
+        blinking = true;
+
         //Make the player transparent
         yield return new WaitForSeconds(0f);
         Color currentColor = spriteRenderer.color; // Set the transparency (alpha) value
@@ -171,11 +175,27 @@ public class healthSystem : MonoBehaviour
 
         yield return new WaitForSeconds(0.15f);
          currentColor = spriteRenderer.color; // Set the transparency (alpha) value
+        currentColor.a = 0f; // Adjust the alpha value as needed
+        spriteRenderer.color = currentColor;
+
+        yield return new WaitForSeconds(0.15f);
+         currentColor = spriteRenderer.color; // Set the transparency (alpha) value
+        currentColor.a = 0.5f; // Adjust the alpha value as needed
+        spriteRenderer.color = currentColor;
+
+        yield return new WaitForSeconds(0.15f);
+         currentColor = spriteRenderer.color; // Set the transparency (alpha) value
+        currentColor.a = 0f; // Adjust the alpha value as needed
+        spriteRenderer.color = currentColor;
+
+        yield return new WaitForSeconds(0.15f);
+         currentColor = spriteRenderer.color; // Set the transparency (alpha) value
         currentColor.a = 1f; // Adjust the alpha value as needed
         spriteRenderer.color = currentColor;
 
         //Make the player able to take damage again
         isInvic = false;
+        blinking = false;
     }
 
     //This is used during the dash to make the player transparent and resets invincibility 
@@ -194,9 +214,10 @@ public class healthSystem : MonoBehaviour
         spriteRenderer.color = currentColor;
 
         //reset invincibility. 
-        isInvic = false;
-        gameObject.layer = LayerMask.NameToLayer("Player");
+        if(!blinking)
+            isInvic = false;
 
+        gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
     //Update heart UI

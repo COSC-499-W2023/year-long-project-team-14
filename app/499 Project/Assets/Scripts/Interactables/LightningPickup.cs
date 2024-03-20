@@ -33,8 +33,7 @@ public class LightningPickup : MonoBehaviour
         {
             playerIsOver = true;
             player = other.gameObject;
-            string cd = "cooldown: " + player.GetComponent<Spells>().spellCooldown;
-            if (!prompt.isDisplayed) prompt.SetUp("Lightning", cd);
+            if (!prompt.isDisplayed) prompt.SetUp();
         }
     }
 

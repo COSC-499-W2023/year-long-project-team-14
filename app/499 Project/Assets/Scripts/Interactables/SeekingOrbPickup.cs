@@ -10,7 +10,7 @@ public class SeekingOrbPickup : MonoBehaviour
     public float bobbingSpeed = 0.5f; // Speed of bobbing movement
     private float startY; // Initial Y position of the sprite
 
-    [SerializeField] private promptUi prompt;
+    [SerializeField] public promptUi prompt;
 
     void Start()
     {
@@ -33,8 +33,7 @@ public class SeekingOrbPickup : MonoBehaviour
         {
             playerIsOver = true;
             player = other.gameObject;
-            string cd = "cooldown: " + player.GetComponent<Spells>().spellCooldown;
-            if (!prompt.isDisplayed) prompt.SetUp("Seeking Orb", cd);
+            if (!prompt.isDisplayed) prompt.SetUp();
         }
     }
 

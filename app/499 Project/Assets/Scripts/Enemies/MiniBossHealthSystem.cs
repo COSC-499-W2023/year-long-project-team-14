@@ -10,6 +10,7 @@ public class MiniBossHealthSystem : MonoBehaviour
     private Rigidbody2D rb;
     private EnemyMovement em;
     public FireSprayBullets shoot; 
+    public BossLaserAttack bossAttack; 
     public int enemyHealth = 10;
 
     public CircleCollider2D enemyCollider;
@@ -23,8 +24,6 @@ public class MiniBossHealthSystem : MonoBehaviour
 
     private void Start()
     {
-        healthAmount = enemyHealth;
-
         // Add the enemy to the list of allEnemies when it's instantiated
         GameObject port = GameObject.FindWithTag("Portal");
         if (port != null)
@@ -40,6 +39,21 @@ public class MiniBossHealthSystem : MonoBehaviour
                 ladder.allEnemies.Add(gameObject);
             }
         }
+
+        //Get difficulty
+        int diff = PlayerPrefs.GetInt("difficulty");
+
+        //Set boss health
+        if(diff == 1) 
+            enemyHealth = (int)Mathf.Round(enemyHealth * 1f);
+        else if(diff == 2)
+            enemyHealth = (int)Mathf.Round(enemyHealth * 1.5f);
+        else if(diff == 3)
+            enemyHealth = (int)Mathf.Round(enemyHealth * 2f);
+        else if(diff == 4)
+            enemyHealth = (int)Mathf.Round(enemyHealth * 2.5f);
+
+        healthAmount = enemyHealth;
         
         enemyCollider = GetComponent<CircleCollider2D>();
     }
@@ -49,8 +63,8 @@ public class MiniBossHealthSystem : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         shoot = GetComponent<FireSprayBullets>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        shoot = GetComponent<FireSprayBullets>();
         em = GetComponent<EnemyMovement>();
+        bossAttack = GetComponent<BossLaserAttack>();
         
     }
      // Damage enemy if colliding with bullet
@@ -129,7 +143,15 @@ public class MiniBossHealthSystem : MonoBehaviour
     {
         enemyHealth = 0;
         
-        shoot.firingEnabled = false;
+        if(shoot != null)
+        {
+            shoot.firingEnabled = false;
+        }
+
+        if(bossAttack != null)
+        {
+            bossAttack.firingEnabled = false;
+        }
 
         enemyCollider.enabled = false;
         em.enabled = false;

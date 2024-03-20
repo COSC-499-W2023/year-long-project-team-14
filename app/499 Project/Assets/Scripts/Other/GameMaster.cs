@@ -14,8 +14,11 @@ public class GameMaster : MonoBehaviour
     public int playerCount = 1;
     public int player1ControlScheme = 0;
     public int player2ControlScheme = 1;
+    public string player1Controls = "Keyboard";
+    public string player2Controls = "Keyboard";
 
     public int currentLevel = 1;
+    public bool inShop = false;
 
     public GameObject WinMenu;
 
@@ -33,6 +36,7 @@ public class GameMaster : MonoBehaviour
     public GameObject player1Prefab;
     public GameObject player2Prefab;
 
+    public GameObject shopLevel;
     public GameObject levelTemplate;
     public GameObject level1;
     public GameObject[] levels;
@@ -88,8 +92,10 @@ public class GameMaster : MonoBehaviour
             Destroy(level);
             GameObject[] playerBullets = GameObject.FindGameObjectsWithTag("Player_bullet");
             GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
+            GameObject[] chads = GameObject.FindGameObjectsWithTag("Player");
             for(int i = 0; i < playerBullets.Length; i++) Destroy(playerBullets[i]);
-            for(int i = 0; i < enemyBullets.Length; i++) Destroy(enemyBullets[i]);
+            for(int i = 0; i < enemyBullets.Length; i++) enemyBullets[i].SetActive(false);
+            for(int i = 0; i < chads.Length; i++) if(chads[i].GetComponent<healthSystem>().chad) Destroy(chads[i]);
             yield return null;
 
             //Start to fade back in
@@ -101,12 +107,23 @@ public class GameMaster : MonoBehaviour
             if(playerCount > 1)
                 player2.transform.position = new Vector3(1000, 0, 0);
 
-            //Increase level count
-            currentLevel++;
+            if(currentLevel % 5 == 4 && !inShop) //Go to shop
+            {
+                level = Instantiate(shopLevel, transform.position, Quaternion.identity);
+                inShop = true;
+            }
+            else //Go to next level
+            {
+                if(inShop)
+                    inShop = false;
 
-            //Spawn in new level
-            level = Instantiate(levels[currentLevel-1], transform.position, Quaternion.identity);
-            AstarPath.active.Scan();
+                //Increase level count
+                currentLevel++;
+
+                //Spawn in new level
+                level = Instantiate(levels[currentLevel-1], transform.position, Quaternion.identity);
+                AstarPath.active.Scan();
+            }
             
             //Set player positions to new start positions
             player1Spawn = GameObject.FindWithTag("Player1Spawn").GetComponent<Transform>();
@@ -118,16 +135,19 @@ public class GameMaster : MonoBehaviour
             }
 
             //Give players health
-            if(healthSystem1.life < 3 && !healthSystem1.dead)
+            if(!inShop)
             {
-                healthSystem1.life++;
-                healthSystem1.SetHeartsActive();
-            }
+                if(healthSystem1.life < 3 && !healthSystem1.dead)
+                {
+                    healthSystem1.life++;
+                    healthSystem1.SetHeartsActive();
+                }
 
-            if(playerCount > 1 && healthSystem2.life < 3 && !healthSystem2.dead)
-            {
-                healthSystem2.life++;
-                healthSystem2.SetHeartsActive();
+                if(playerCount > 1 && healthSystem2.life < 3 && !healthSystem2.dead)
+                {
+                    healthSystem2.life++;
+                    healthSystem2.SetHeartsActive();
+                }
             }
             
             //Respawn player if dead
@@ -222,14 +242,27 @@ public class GameMaster : MonoBehaviour
             if(playerCount > 1 && gamepads.Length > 1)
             {
                 player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Keyboard.current, Mouse.current, gamepads[1]);
+                if(gamepads[1] is UnityEngine.InputSystem.DualShock.DualShockGamepad)
+                    player1Controls = "PS";
+                else if(gamepads[1] is UnityEngine.InputSystem.XInput.XInputController)
+                    player1Controls = "Xbox";
+                else
+                    player1Controls = "Keyboard";
             }
             else if(playerCount < 2 && gamepads.Length > 0)
             {
                 player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Keyboard.current, Mouse.current, gamepads[0]);
+                if(gamepads[0] is UnityEngine.InputSystem.DualShock.DualShockGamepad)
+                    player1Controls = "PS";
+                else if(gamepads[0] is UnityEngine.InputSystem.XInput.XInputController)
+                    player1Controls = "Xbox";
+                else
+                    player1Controls = "Keyboard";
             }
             else
             {
                 player1.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", Keyboard.current, Mouse.current);
+                player1Controls = "Keyboard";
             }
         }
 
@@ -248,9 +281,18 @@ public class GameMaster : MonoBehaviour
             if(gamepads.Length > 0)
             {
                 player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Gamepad", gamepads[0]);
+                if(gamepads[0] is UnityEngine.InputSystem.DualShock.DualShockGamepad)
+                    player2Controls = "PS";
+                else if(gamepads[0] is UnityEngine.InputSystem.XInput.XInputController)
+                    player2Controls = "Xbox";
+                else
+                    player2Controls = "Keyboard";
             }
             else
+            {
                 player2.GetComponent<PlayerInput>().SwitchCurrentControlScheme("Touch");
+                player2Controls = "Keyboard";
+            }
         }
 
         yield return new WaitForSeconds(1);
