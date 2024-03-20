@@ -6,8 +6,10 @@ public class BossLaserAttack : MonoBehaviour
 {   
     public Animator animator;
     public GameObject laser;
+    public GameObject slime;
     public EnemyMovement em;
     public MiniBossHealthSystem hs;
+    public float slimeSpeed = 50.0f;
     
     [SerializeField]
     private float rateOfFire = 1f; // Set the rate of fire for circular burst
@@ -138,7 +140,7 @@ public class BossLaserAttack : MonoBehaviour
             }
             else if(rand == 2)
             {
-                yield return StartCoroutine(ShootLaser());
+                yield return StartCoroutine(ShootSlimeLeft());
                 yield return new WaitForSeconds(1f); // delay between attacks
             }
         }
@@ -268,6 +270,10 @@ public class BossLaserAttack : MonoBehaviour
     }
 
     public GameObject clone;
+    public GameObject clone2;
+    public GameObject clone3;
+    public GameObject clone4;
+    public bool phase2 = true;
     private IEnumerator ShootLaser()
     {
          if(firingEnabled)
@@ -295,6 +301,75 @@ public class BossLaserAttack : MonoBehaviour
         }
     }
 
+    private IEnumerator ShootFourLasers()
+    {
+        if(firingEnabled)
+        {
+            em.enabled = false;
+
+            //laser 1
+            animator.SetTrigger("ChargeLeft");
+            Vector3 laserPos = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
+            clone = Instantiate(laser, laserPos, transform.rotation);
+            BoxCollider2D laserHitbox;
+            laserHitbox = clone.GetComponent<BoxCollider2D>();
+            
+             //laser 2
+            Vector3 laserPos2 = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
+            clone2 = Instantiate(laser, laserPos2, Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 0, 90.0f)));
+            BoxCollider2D laserHitbox2;
+            laserHitbox2 = clone2.GetComponent<BoxCollider2D>();
+
+             //laser 3
+            Vector3 laserPos3 = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
+            clone3 = Instantiate(laser, laserPos3, Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 0, 180.0f)));
+            BoxCollider2D laserHitbox3;
+            laserHitbox3 = clone3.GetComponent<BoxCollider2D>();
+            
+            //laser 4
+            Vector3 laserPos4 = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
+            clone4 = Instantiate(laser, laserPos4, Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 0, 270.0f)));
+            BoxCollider2D laserHitbox4;
+            laserHitbox4 = clone4.GetComponent<BoxCollider2D>();
+            
+            yield return new WaitForSeconds(0.6f);  
+            laserHitbox.enabled = true;
+            laserHitbox2.enabled = true; 
+            laserHitbox3.enabled = true;
+            laserHitbox4.enabled = true;
+            yield return new WaitForSeconds(5.0f);
+
+            if(hs.enemyHealth > 0)
+            {
+                em.enabled = true;
+                laserHitbox.enabled = false;
+                laserHitbox2.enabled = false;
+                laserHitbox3.enabled = false;
+                laserHitbox4.enabled = false;
+                Destroy(clone);
+                Destroy(clone2);
+                Destroy(clone3);
+                Destroy(clone4);
+            }
+        
+        }
+    }
+
+    private IEnumerator ShootSlimeLeft()
+    {
+         if(firingEnabled)
+        {
+            em.enabled = false;
+            animator.SetTrigger("ShootLeft");
+
+            GameObject slimeClone = Instantiate(slime, transform.position, Quaternion.identity);
+            Vector2 direction = -transform.right;
+            slimeClone.GetComponent<Rigidbody2D>().AddForce(direction * slimeSpeed);
+
+        }
+        yield return null;
+    }
+
     void Update()
     {
         if(clone != null)
@@ -302,9 +377,27 @@ public class BossLaserAttack : MonoBehaviour
             clone.transform.Rotate(new Vector3(0,0,100*Time.deltaTime));
         }
 
+        if(clone2 != null && phase2 == true)
+        {
+            clone2.transform.Rotate(new Vector3(0,0,100*Time.deltaTime));
+        }
+
+        if(clone3 != null && phase2 == true)
+        {
+            clone3.transform.Rotate(new Vector3(0,0,100*Time.deltaTime));
+        }
+
+        if(clone4 != null && phase2 == true)
+        {
+            clone4.transform.Rotate(new Vector3(0,0,100*Time.deltaTime));
+        }
+
         if(hs.enemyHealth <= 0)
         {
             Destroy(clone);
+            Destroy(clone2);
+            Destroy(clone3);
+            Destroy(clone4);
         }
        
     }
