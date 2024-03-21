@@ -17,6 +17,7 @@ public class SeekerBullet : MonoBehaviour
 
     Seeker seeker; 
     Rigidbody2D rb;
+    public Animator anim;
 
     public GameObject target;
     public GameObject[] players;
@@ -174,7 +175,9 @@ public class SeekerBullet : MonoBehaviour
     {
         allowMovement = false;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.25f);
+        anim.Play("RedSeeker");
+        yield return new WaitForSeconds(0.25f);
 
         chasePlayer = true;
     }
