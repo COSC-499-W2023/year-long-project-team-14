@@ -424,38 +424,93 @@ public class BossLaserAttack : MonoBehaviour
 
     public IEnumerator SeekerShot()
     {
-        em.enabled = false;
-        GameObject[] bullets = new GameObject[15];
+        //Find closest player
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        List<GameObject> alivePlayers = new List<GameObject>();
+        GameObject target = null;
 
-        //Spawn bullets
-        for(int i = 0; i < 15; i++)
+        for(int i = 0; i < players.Length; i++)
         {
-            float bulDirX = Mathf.Sin(((24 * i + 180f) * Mathf.PI) / 180f);
-            float bulDirY = Mathf.Cos(((24 * i + 180f) * Mathf.PI) / 180f);
-            bullets[i] = Instantiate(bossBulletPrefab, new Vector3(transform.position.x + bulDirX * 2, transform.position.y + bulDirY * 2, 0), Quaternion.Euler(0, 0, -90 + (-24 * i)));
-            yield return new WaitForSeconds(0.1f);
+            healthSystem hs = players[i].GetComponent<healthSystem>();
+            if(hs != null)
+            {
+                if(hs.life > 0)
+                    alivePlayers.Add(players[i]);
+            }
         }
+        
+        if(alivePlayers.Count > 1)
+        {
+            float distance1 = Vector3.Distance(gameObject.transform.position, alivePlayers[0].transform.position);
+            float distance2 = Vector3.Distance(gameObject.transform.position, alivePlayers[1].transform.position);
+            if(distance2 < distance1)
+                target = alivePlayers[1];
+            else
+                target = alivePlayers[0];
+        }
+        else if(alivePlayers.Count > 0)
+            target = alivePlayers[0];
 
+        //Disable boss movement
+        em.enabled = false;
+
+        yield return new WaitForSeconds(0.25f);
+
+        //Spawn bullets aiming at the closest player
+        int shots = 5;
+        GameObject[] bullets = new GameObject[shots];
+        for(int i = 0; i < shots; i++)
+        {
+            Vector3 direction = target.transform.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x ) * Mathf.Rad2Deg + (90 / (shots - 1)) * i - 45; 
+            Vector3 position = Quaternion.Euler(0, 0, angle) * transform.right;
+
+            bullets[i] = Instantiate(bossBulletPrefab, transform.position + position * 2.5f, Quaternion.Euler(0, 0, angle));
+            yield return new WaitForSeconds(0.075f);
+        }
+        
+        yield return new WaitForSeconds(0.5f);
+        
         //Shoot bullets
-        for(int i = 0; i < 15; i++)
+        for(int i = 0; i < shots; i++)
         {
             if(bullets[i] != null)
                 bullets[i].GetComponent<SeekerBullet>().allowMovement = true;
         }
-
+        
+        //Enable boss movement
         em.enabled = false;
     }
 
     public IEnumerator SeekerShots()
     {
-        GameObject[] bullets = new GameObject[15];
-        for(int i = 0; i < 15; i++)
+        //Disable boss movement
+        em.enabled = false;
+
+        yield return new WaitForSeconds(0.25f);
+
+        //Spawn bullets
+        int shots = 15;
+        GameObject[] bullets = new GameObject[shots];
+        for(int i = 0; i < shots; i++)
         {
-            float bulDirX = transform.position.x + Mathf.Sin(((24 + 180f * i) * Mathf.PI) / 180f);
-            float bulDirY = transform.position.y + Mathf.Cos(((24 + 180f * i) * Mathf.PI) / 180f);
-            bullets[i] = Instantiate(bossBulletPrefab, new Vector3(bulDirX, bulDirY, 0), Quaternion.identity);
-            yield return new WaitForSeconds(0.1f);
+            float bulDirX = Mathf.Sin(((360 / shots * i + 180f) * Mathf.PI) / 180f);
+            float bulDirY = Mathf.Cos(((360 / shots * i + 180f) * Mathf.PI) / 180f);
+            bullets[i] = Instantiate(bossBulletPrefab, new Vector3(transform.position.x + bulDirX * 2.5f, transform.position.y + bulDirY * 2.5f, 0), Quaternion.Euler(0, 0, -90 + (-360 / shots * i)));
+            yield return new WaitForSeconds(0.075f);
         }
+        
+        yield return new WaitForSeconds(0.5f);
+        
+        //Shoot bullets
+        for(int i = 0; i < shots; i++)
+        {
+            if(bullets[i] != null)
+                bullets[i].GetComponent<SeekerBullet>().allowMovement = true;
+        }
+
+        //Enable boss movement
+        em.enabled = false;
     }
 
     void Update()

@@ -166,18 +166,17 @@ public class SeekerBullet : MonoBehaviour
 
     public void Explode()
     {
-        //GameObject dashSmoke2 = Instantiate(explosionPrefab, transform.position, transform.rotation);
-        //Destroy(dashSmoke2, 0.55f);
+        GameObject explosion = Instantiate(explosionPrefab, transform.position, transform.rotation);
+        Destroy(explosion, 0.5f);
         Destroy(gameObject);
     }
 
     public IEnumerator DelayBeforeChasing() 
     {
         allowMovement = false;
-
-        yield return new WaitForSeconds(0.25f);
+            
         anim.Play("RedSeeker");
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
 
         chasePlayer = true;
     }

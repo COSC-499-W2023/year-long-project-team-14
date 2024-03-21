@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6375542986338487748}
   - component: {fileID: 8426762895756547323}
   - component: {fileID: 4969153993261685379}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: BossBullet
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
@@ -131,12 +131,12 @@ MonoBehaviour:
   allowMovement: 0
   chasePlayer: 0
   targetPosition: {x: 0, y: 0}
-  movementSpeed: 4
+  movementSpeed: 3
   nextWaypointDistance: 1
   anim: {fileID: 8426762895756547323}
   target: {fileID: 0}
   players: []
-  explosionPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 6623527852450687671, guid: b088abfc47238f7489d987c9c0a86ba5, type: 3}
 --- !u!114 &6375542986338487748
 MonoBehaviour:
   m_ObjectHideFlags: 0
