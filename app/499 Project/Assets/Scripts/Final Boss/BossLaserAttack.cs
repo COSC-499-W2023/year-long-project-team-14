@@ -131,7 +131,7 @@ public class BossLaserAttack : MonoBehaviour
         {
             yield return new WaitForSeconds(3f / (((diff - 1) / 2) + 1)); // delay between attacks
             int rand = Random.Range(0, 3);
-            rand = 2;
+
             //PHASE 1 ATTACKS
             if(phase2 == false)
             {
@@ -413,7 +413,7 @@ public class BossLaserAttack : MonoBehaviour
         {
             if(firingEnabled)
             {
-                animator.SetTrigger("ShootLeft");
+                animator.SetTrigger("ShootRight");
                 yield return new WaitForSeconds(0.25f);
                 GameObject slimeClone = Instantiate(slime, transform.position + new Vector3(2.0f, 0.75f, 0), Quaternion.identity);
                 slimeClone.GetComponent<Rigidbody2D>().AddForce(transform.right * slimeSpeed);
@@ -457,7 +457,7 @@ public class BossLaserAttack : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
         //Spawn bullets aiming at the closest player
-        int shots = 5;
+        int shots = 3;
         GameObject[] bullets = new GameObject[shots];
         for(int i = 0; i < shots; i++)
         {
@@ -490,7 +490,7 @@ public class BossLaserAttack : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
         //Spawn bullets
-        int shots = 15;
+        int shots = 10;
         GameObject[] bullets = new GameObject[shots];
         for(int i = 0; i < shots; i++)
         {
@@ -517,7 +517,7 @@ public class BossLaserAttack : MonoBehaviour
     {
         if(clone != null)
         {
-            clone.transform.Rotate(new Vector3(0,0,100*Time.deltaTime));
+            clone.transform.Rotate(new Vector3(0,0,50*Time.deltaTime));
         }
 
         if (hs.enemyHealth < hs.healthAmount * 0.5f)

@@ -987,6 +987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc16a78fbc6ed4473ad639d33476ad52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossBulletPrefab: {fileID: 8066723354652685289, guid: 8b745e48bd80c224a8a6f1d925271c8f, type: 3}
   animator: {fileID: 0}
   laser: {fileID: 6501547363171174366, guid: 84b090c2e3cd54241879ee0e53818379, type: 3}
   quadLaser: {fileID: 934005786809906075, guid: 87e3013ee2aa2614990b1a769fdafe2c, type: 3}
@@ -994,6 +995,7 @@ MonoBehaviour:
   em: {fileID: 0}
   hs: {fileID: 0}
   slimeSpeed: 20000
+  bulletForce: 5
   clone: {fileID: 0}
   phase2: 0
   rateOfFire: 2
