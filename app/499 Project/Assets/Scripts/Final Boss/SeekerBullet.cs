@@ -5,6 +5,7 @@ using Pathfinding;
 
 public class SeekerBullet : MonoBehaviour
 {
+    public bool allowMovement = false;
     public bool chasePlayer = false;
     public Vector2 targetPosition;
 
@@ -40,6 +41,11 @@ public class SeekerBullet : MonoBehaviour
         //Update target position
         if(target != null)
             SetTargetPosition();
+
+        if(allowMovement && !chasePlayer)
+        {
+            rb.velocity = transform.right * movementSpeed;
+        }
     }
 
     void UpdatePath()
@@ -59,7 +65,7 @@ public class SeekerBullet : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(chasePlayer)
+        if(chasePlayer && !allowMovement)
         {
             if(path == null)
                 return;
@@ -96,9 +102,14 @@ public class SeekerBullet : MonoBehaviour
             Explode();
         }
 
+        if(collision.gameObject.CompareTag("Player_bullet"))
+        {     
+            Explode();
+        }
+
         if(collision.gameObject.CompareTag("Wall"))
         {     
-            chasePlayer = true;
+            StartCoroutine(DelayBeforeChasing());
         }
     }
 
@@ -127,7 +138,7 @@ public class SeekerBullet : MonoBehaviour
             else
                 target = alivePlayers[0];
         }
-        else
+        else if(alivePlayers.Count > 0)
             target = alivePlayers[0];
         
         yield return new WaitForSeconds(0.25f);
@@ -157,5 +168,14 @@ public class SeekerBullet : MonoBehaviour
         //GameObject dashSmoke2 = Instantiate(explosionPrefab, transform.position, transform.rotation);
         //Destroy(dashSmoke2, 0.55f);
         Destroy(gameObject);
+    }
+
+    public IEnumerator DelayBeforeChasing() 
+    {
+        allowMovement = false;
+
+        yield return new WaitForSeconds(2f);
+
+        chasePlayer = true;
     }
 }

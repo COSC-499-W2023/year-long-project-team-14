@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4193600756269787924}
   - component: {fileID: 5486417326900836248}
   - component: {fileID: 6375542986338487748}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: BossBullet
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 3
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}

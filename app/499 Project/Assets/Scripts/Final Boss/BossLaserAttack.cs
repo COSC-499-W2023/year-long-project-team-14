@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossLaserAttack : MonoBehaviour
 {   
+    public GameObject bossBulletPrefab;
     public Animator animator;
     public GameObject laser;
     public GameObject quadLaser;
@@ -11,6 +12,7 @@ public class BossLaserAttack : MonoBehaviour
     public EnemyMovement em;
     public MiniBossHealthSystem hs;
     public float slimeSpeed = 50.0f;
+    public float bulletForce = 50;
     public GameObject clone;
     public bool phase2 = false;
 
@@ -129,7 +131,7 @@ public class BossLaserAttack : MonoBehaviour
         {
             yield return new WaitForSeconds(3f / (((diff - 1) / 2) + 1)); // delay between attacks
             int rand = Random.Range(0, 3);
-
+            rand = 2;
             //PHASE 1 ATTACKS
             if(phase2 == false)
             {
@@ -150,8 +152,8 @@ public class BossLaserAttack : MonoBehaviour
                 }
                 else if(rand == 2)
                 {
-                    //yield return StartCoroutine(FireBursts());
-                    //yield return new WaitForSeconds(1f); // delay between attacks
+                    yield return StartCoroutine(SeekerShot());
+                    yield return new WaitForSeconds(1f); // delay between attacks
                 }
             }
 
@@ -175,8 +177,8 @@ public class BossLaserAttack : MonoBehaviour
                 }
                 else if(rand == 2)
                 {
-                    //yield return StartCoroutine(FireBursts());
-                    //yield return new WaitForSeconds(1f); // delay between attacks
+                    yield return StartCoroutine(SeekerShots());
+                    yield return new WaitForSeconds(1f); // delay between attacks
                 }
             }
         }
@@ -417,6 +419,42 @@ public class BossLaserAttack : MonoBehaviour
                 slimeClone.GetComponent<Rigidbody2D>().AddForce(transform.right * slimeSpeed);
                 yield return new WaitForSeconds(0.5f);
             }
+        }
+    }
+
+    public IEnumerator SeekerShot()
+    {
+        em.enabled = false;
+        GameObject[] bullets = new GameObject[15];
+
+        //Spawn bullets
+        for(int i = 0; i < 15; i++)
+        {
+            float bulDirX = Mathf.Sin(((24 * i + 180f) * Mathf.PI) / 180f);
+            float bulDirY = Mathf.Cos(((24 * i + 180f) * Mathf.PI) / 180f);
+            bullets[i] = Instantiate(bossBulletPrefab, new Vector3(transform.position.x + bulDirX * 2, transform.position.y + bulDirY * 2, 0), Quaternion.Euler(0, 0, -90 + (-24 * i)));
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        //Shoot bullets
+        for(int i = 0; i < 15; i++)
+        {
+            if(bullets[i] != null)
+                bullets[i].GetComponent<SeekerBullet>().allowMovement = true;
+        }
+
+        em.enabled = false;
+    }
+
+    public IEnumerator SeekerShots()
+    {
+        GameObject[] bullets = new GameObject[15];
+        for(int i = 0; i < 15; i++)
+        {
+            float bulDirX = transform.position.x + Mathf.Sin(((24 + 180f * i) * Mathf.PI) / 180f);
+            float bulDirY = transform.position.y + Mathf.Cos(((24 + 180f * i) * Mathf.PI) / 180f);
+            bullets[i] = Instantiate(bossBulletPrefab, new Vector3(bulDirX, bulDirY, 0), Quaternion.identity);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
