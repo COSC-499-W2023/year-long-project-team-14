@@ -55,6 +55,15 @@ public class healthSystem : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Laser"))
+        {
+            takeDamage();
+
+        }
+    }
+
     public void takeDamage()
     {
         //Check if the player has >= health and if the player is temporarly invincible
