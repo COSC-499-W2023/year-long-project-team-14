@@ -6,11 +6,14 @@ public class BossLaserAttack : MonoBehaviour
 {   
     public Animator animator;
     public GameObject laser;
+    public GameObject quadLaser;
     public GameObject slime;
     public EnemyMovement em;
     public MiniBossHealthSystem hs;
     public float slimeSpeed = 50.0f;
-    
+    public GameObject clone;
+    public bool phase2 = false;
+
     [SerializeField]
     private float rateOfFire = 1f; // Set the rate of fire for circular burst
     
@@ -126,22 +129,55 @@ public class BossLaserAttack : MonoBehaviour
         {
             yield return new WaitForSeconds(3f / (((diff - 1) / 2) + 1)); // delay between attacks
             int rand = Random.Range(0, 3);
-            rand = 2;
 
-            if(rand == 0)
+            //PHASE 1 ATTACKS
+            if(phase2 == false)
             {
-    yield return StartCoroutine(FireSingleBurst());
-                yield return new WaitForSeconds(1f); // delay between attacks
+                if(rand == 0)
+                {
+                    yield return StartCoroutine(ShootLaser());
+                    yield return new WaitForSeconds(1f); // delay between attacks
+                }
+                else if(rand == 1 && transform.position.x > 0)
+                {
+                    yield return StartCoroutine(ShootSlimeLeft());
+                    yield return new WaitForSeconds(1f); // delay between attacks
+                }
+                else if(rand == 1 && transform.position.x < 0)
+                {
+                    yield return StartCoroutine(ShootSlimeRight());
+                    yield return new WaitForSeconds(1f); // delay between attacks
+                }
+                else if(rand == 2)
+                {
+                    //yield return StartCoroutine(FireBursts());
+                    //yield return new WaitForSeconds(1f); // delay between attacks
+                }
             }
-            else if(rand == 1)
+
+            //PHASE 2 ATTACKS
+            if(phase2 == true)
             {
-                yield return StartCoroutine(FireDoubleSpiral());
-                yield return new WaitForSeconds(1f); // delay between attacks
-            }
-            else if(rand == 2)
-            {
-                yield return StartCoroutine(TripleShotSlimesLeft());
-                yield return new WaitForSeconds(1f); // delay between attacks
+                if(rand == 0)
+                {
+                    yield return StartCoroutine(ShootFourLasers());
+                    yield return new WaitForSeconds(1f); // delay between attacks
+                }
+                else if(rand == 1 && transform.position.x > 0)
+                {
+                    yield return StartCoroutine(TripleShotSlimesLeft());
+                    yield return new WaitForSeconds(1f); // delay between attacks
+                }
+                else if(rand == 1 && transform.position.x < 0)
+                {
+                    yield return StartCoroutine(TripleShotSlimesRight());
+                    yield return new WaitForSeconds(1f); // delay between attacks
+                }
+                else if(rand == 2)
+                {
+                    //yield return StartCoroutine(FireBursts());
+                    //yield return new WaitForSeconds(1f); // delay between attacks
+                }
             }
         }
     }
@@ -269,11 +305,7 @@ public class BossLaserAttack : MonoBehaviour
         }
     }
 
-    public GameObject clone;
-    public GameObject clone2;
-    public GameObject clone3;
-    public GameObject clone4;
-    public bool phase2 = true;
+    
     private IEnumerator ShootLaser()
     {
          if(firingEnabled)
@@ -306,37 +338,18 @@ public class BossLaserAttack : MonoBehaviour
         if(firingEnabled)
         {
             em.enabled = false;
-
-            //laser 1
             animator.SetTrigger("ChargeLeft");
             Vector3 laserPos = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
-            clone = Instantiate(laser, laserPos, transform.rotation);
+            clone = Instantiate(quadLaser, laserPos, transform.rotation);
+            
             BoxCollider2D laserHitbox;
-            laserHitbox = clone.GetComponent<BoxCollider2D>();
-            
-             //laser 2
-            Vector3 laserPos2 = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
-            clone2 = Instantiate(laser, laserPos2, Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 0, 90.0f)));
             BoxCollider2D laserHitbox2;
-            laserHitbox2 = clone2.GetComponent<BoxCollider2D>();
+            laserHitbox = clone.GetComponent<BoxCollider2D>();
+            laserHitbox2 = clone.transform.GetChild(0).GetComponent<BoxCollider2D>();
 
-             //laser 3
-            Vector3 laserPos3 = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
-            clone3 = Instantiate(laser, laserPos3, Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 0, 180.0f)));
-            BoxCollider2D laserHitbox3;
-            laserHitbox3 = clone3.GetComponent<BoxCollider2D>();
-            
-            //laser 4
-            Vector3 laserPos4 = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
-            clone4 = Instantiate(laser, laserPos4, Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(0, 0, 270.0f)));
-            BoxCollider2D laserHitbox4;
-            laserHitbox4 = clone4.GetComponent<BoxCollider2D>();
-            
             yield return new WaitForSeconds(0.6f);  
             laserHitbox.enabled = true;
-            laserHitbox2.enabled = true; 
-            laserHitbox3.enabled = true;
-            laserHitbox4.enabled = true;
+            laserHitbox2.enabled = true;
             yield return new WaitForSeconds(5.0f);
 
             if(hs.enemyHealth > 0)
@@ -344,14 +357,9 @@ public class BossLaserAttack : MonoBehaviour
                 em.enabled = true;
                 laserHitbox.enabled = false;
                 laserHitbox2.enabled = false;
-                laserHitbox3.enabled = false;
-                laserHitbox4.enabled = false;
                 Destroy(clone);
-                Destroy(clone2);
-                Destroy(clone3);
-                Destroy(clone4);
             }
-        
+
         }
     }
 
@@ -419,27 +427,14 @@ public class BossLaserAttack : MonoBehaviour
             clone.transform.Rotate(new Vector3(0,0,100*Time.deltaTime));
         }
 
-        if(clone2 != null && phase2 == true)
+        if (hs.enemyHealth < hs.healthAmount * 0.5f)
         {
-            clone2.transform.Rotate(new Vector3(0,0,100*Time.deltaTime));
-        }
-
-        if(clone3 != null && phase2 == true)
-        {
-            clone3.transform.Rotate(new Vector3(0,0,100*Time.deltaTime));
-        }
-
-        if(clone4 != null && phase2 == true)
-        {
-            clone4.transform.Rotate(new Vector3(0,0,100*Time.deltaTime));
+            phase2 = true;
         }
 
         if(hs.enemyHealth <= 0)
         {
             Destroy(clone);
-            Destroy(clone2);
-            Destroy(clone3);
-            Destroy(clone4);
         }
        
     }

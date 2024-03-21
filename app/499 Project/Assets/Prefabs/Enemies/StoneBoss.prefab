@@ -916,7 +916,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   shoot: {fileID: 0}
   bossAttack: {fileID: 0}
-  enemyHealth: 3
+  enemyHealth: 20
   enemyCollider: {fileID: 0}
   ladder: {fileID: 0}
   portal: {fileID: 0}
@@ -989,8 +989,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   laser: {fileID: 6501547363171174366, guid: 84b090c2e3cd54241879ee0e53818379, type: 3}
+  quadLaser: {fileID: 934005786809906075, guid: 87e3013ee2aa2614990b1a769fdafe2c, type: 3}
+  slime: {fileID: 5701880002770581090, guid: 2ea9238c69ef458479c9e29fd0cc6d63, type: 3}
   em: {fileID: 0}
   hs: {fileID: 0}
+  slimeSpeed: 20000
+  clone: {fileID: 0}
+  phase2: 0
   rateOfFire: 2
   spiralRateOfFire: 0.1
   fireAtPlayerRateOfFire: 4
@@ -1003,8 +1008,3 @@ MonoBehaviour:
   endAngle: 360
   firingEnabled: 1
   totalSpirals: 1
-  clone: {fileID: 0}
-  clone2: {fileID: 0}
-  clone3: {fileID: 0}
-  clone4: {fileID: 0}
-  phase2: 1
