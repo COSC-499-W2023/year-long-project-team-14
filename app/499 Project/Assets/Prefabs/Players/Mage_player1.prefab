@@ -457,6 +457,7 @@ MonoBehaviour:
   gameOverMenu: {fileID: 0}
   playerController: {fileID: 4452037770434438324}
   isInvic: 0
+  blinking: 0
   chad: 0
   hitSound: {fileID: 5617919102717672389}
   deathSound: {fileID: 2466968929111969126}
@@ -777,8 +778,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e25061756d70d4f809c184106d804a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellName: 
-  spellCooldown: 10
+  spellName: Fireball
+  spellCooldown: 1
   cooldownTimer: 0
   playerController: {fileID: 4452037770434438324}
   hs: {fileID: 182166649963881013}
@@ -1342,6 +1343,7 @@ MonoBehaviour:
   chadSprite: {fileID: -276574461, guid: b857dab66404fbc459aaa2150c73d56d, type: 3}
   freezeSprite: {fileID: -58245785, guid: fa739449f8985d74aa6afb409a7beb86, type: 3}
   shieldSprite: {fileID: 21300000, guid: ef1884aedfd4e3a46a8dc138f602d5a1, type: 3}
+  rainbowSprite: {fileID: 21300000, guid: c55639e28a605b94cbcb519f002424b3, type: 3}
 --- !u!114 &4305409814652023011
 MonoBehaviour:
   m_ObjectHideFlags: 0
