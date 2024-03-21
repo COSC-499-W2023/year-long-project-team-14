@@ -6,9 +6,14 @@ public class BossLaserAttack : MonoBehaviour
 {   
     public Animator animator;
     public GameObject laser;
+    public GameObject quadLaser;
+    public GameObject slime;
     public EnemyMovement em;
     public MiniBossHealthSystem hs;
-    
+    public float slimeSpeed = 50.0f;
+    public GameObject clone;
+    public bool phase2 = false;
+
     [SerializeField]
     private float rateOfFire = 1f; // Set the rate of fire for circular burst
     
@@ -124,22 +129,55 @@ public class BossLaserAttack : MonoBehaviour
         {
             yield return new WaitForSeconds(3f / (((diff - 1) / 2) + 1)); // delay between attacks
             int rand = Random.Range(0, 3);
-            rand = 2;
 
-            if(rand == 0)
+            //PHASE 1 ATTACKS
+            if(phase2 == false)
             {
-    yield return StartCoroutine(FireSingleBurst());
-                yield return new WaitForSeconds(1f); // delay between attacks
+                if(rand == 0)
+                {
+                    yield return StartCoroutine(ShootLaser());
+                    yield return new WaitForSeconds(1f); // delay between attacks
+                }
+                else if(rand == 1 && transform.position.x > 0)
+                {
+                    yield return StartCoroutine(ShootSlimeLeft());
+                    yield return new WaitForSeconds(1f); // delay between attacks
+                }
+                else if(rand == 1 && transform.position.x < 0)
+                {
+                    yield return StartCoroutine(ShootSlimeRight());
+                    yield return new WaitForSeconds(1f); // delay between attacks
+                }
+                else if(rand == 2)
+                {
+                    //yield return StartCoroutine(FireBursts());
+                    //yield return new WaitForSeconds(1f); // delay between attacks
+                }
             }
-            else if(rand == 1)
+
+            //PHASE 2 ATTACKS
+            if(phase2 == true)
             {
-                yield return StartCoroutine(FireDoubleSpiral());
-                yield return new WaitForSeconds(1f); // delay between attacks
-            }
-            else if(rand == 2)
-            {
-                yield return StartCoroutine(ShootLaser());
-                yield return new WaitForSeconds(1f); // delay between attacks
+                if(rand == 0)
+                {
+                    yield return StartCoroutine(ShootFourLasers());
+                    yield return new WaitForSeconds(1f); // delay between attacks
+                }
+                else if(rand == 1 && transform.position.x > 0)
+                {
+                    yield return StartCoroutine(TripleShotSlimesLeft());
+                    yield return new WaitForSeconds(1f); // delay between attacks
+                }
+                else if(rand == 1 && transform.position.x < 0)
+                {
+                    yield return StartCoroutine(TripleShotSlimesRight());
+                    yield return new WaitForSeconds(1f); // delay between attacks
+                }
+                else if(rand == 2)
+                {
+                    //yield return StartCoroutine(FireBursts());
+                    //yield return new WaitForSeconds(1f); // delay between attacks
+                }
             }
         }
     }
@@ -267,7 +305,7 @@ public class BossLaserAttack : MonoBehaviour
         }
     }
 
-    public GameObject clone;
+    
     private IEnumerator ShootLaser()
     {
          if(firingEnabled)
@@ -295,11 +333,103 @@ public class BossLaserAttack : MonoBehaviour
         }
     }
 
+    private IEnumerator ShootFourLasers()
+    {
+        if(firingEnabled)
+        {
+            em.enabled = false;
+            animator.SetTrigger("ChargeLeft");
+            Vector3 laserPos = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
+            clone = Instantiate(quadLaser, laserPos, transform.rotation);
+            
+            BoxCollider2D laserHitbox;
+            BoxCollider2D laserHitbox2;
+            laserHitbox = clone.GetComponent<BoxCollider2D>();
+            laserHitbox2 = clone.transform.GetChild(0).GetComponent<BoxCollider2D>();
+
+            yield return new WaitForSeconds(0.6f);  
+            laserHitbox.enabled = true;
+            laserHitbox2.enabled = true;
+            yield return new WaitForSeconds(5.0f);
+
+            if(hs.enemyHealth > 0)
+            {
+                em.enabled = true;
+                laserHitbox.enabled = false;
+                laserHitbox2.enabled = false;
+                Destroy(clone);
+            }
+
+        }
+    }
+
+    private IEnumerator ShootSlimeLeft()
+    {
+         if(firingEnabled)
+        {
+            animator.SetTrigger("ShootLeft");
+            yield return new WaitForSeconds(0.25f);
+            GameObject slimeClone = Instantiate(slime, transform.position + new Vector3(-2.0f, 0.75f, 0), Quaternion.identity);
+            slimeClone.GetComponent<Rigidbody2D>().AddForce(-transform.right * slimeSpeed);
+
+        }
+        yield return null;
+    }
+
+    private IEnumerator ShootSlimeRight()
+    {
+        if(firingEnabled)
+        {
+            animator.SetTrigger("ShootRight");
+            yield return new WaitForSeconds(0.25f);
+            GameObject slimeClone = Instantiate(slime, transform.position + new Vector3(2.0f, 0.75f, 0), Quaternion.identity);
+            slimeClone.GetComponent<Rigidbody2D>().AddForce(transform.right * slimeSpeed);
+
+        }
+        yield return null;
+    }
+
+    private IEnumerator TripleShotSlimesLeft()
+    {
+        
+        for(int i = 1 ; i <= 3; i++)
+        {
+            if(firingEnabled)
+            {
+                animator.SetTrigger("ShootLeft");
+                yield return new WaitForSeconds(0.25f);
+                GameObject slimeClone = Instantiate(slime, transform.position + new Vector3(-2.0f, 0.75f, 0), Quaternion.identity);
+                slimeClone.GetComponent<Rigidbody2D>().AddForce(-transform.right * slimeSpeed);
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
+    }
+
+    private IEnumerator TripleShotSlimesRight()
+    {
+        for(int i = 1 ; i <= 3; i++)
+        {
+            if(firingEnabled)
+            {
+                animator.SetTrigger("ShootLeft");
+                yield return new WaitForSeconds(0.25f);
+                GameObject slimeClone = Instantiate(slime, transform.position + new Vector3(2.0f, 0.75f, 0), Quaternion.identity);
+                slimeClone.GetComponent<Rigidbody2D>().AddForce(transform.right * slimeSpeed);
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
+    }
+
     void Update()
     {
         if(clone != null)
         {
             clone.transform.Rotate(new Vector3(0,0,100*Time.deltaTime));
+        }
+
+        if (hs.enemyHealth < hs.healthAmount * 0.5f)
+        {
+            phase2 = true;
         }
 
         if(hs.enemyHealth <= 0)
