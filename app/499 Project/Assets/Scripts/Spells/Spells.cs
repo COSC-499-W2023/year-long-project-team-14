@@ -309,7 +309,7 @@ public class Spells : MonoBehaviour
     }
 
     public void RainbowSpell(){
-        int rng = Random.Range(7,8);
+        int rng = Random.Range(1,8);
 
         //Cast the spell associated with the rng value 
         // TODO: increase the range with each addition of a new spell
