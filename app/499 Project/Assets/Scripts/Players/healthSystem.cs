@@ -15,6 +15,7 @@ public class healthSystem : MonoBehaviour
     public GameOverMenu gameOverMenu;
     public PlayerController playerController;
     public bool isInvic = false;
+    public bool blinking = false;
     public bool chad = false;
 
     [SerializeField] private AudioSource hitSound;
@@ -132,6 +133,8 @@ public class healthSystem : MonoBehaviour
     //This is used to show when the player is invicible 
     IEnumerator Transparent2()
     {
+        blinking = true;
+
         //Make the player transparent
         yield return new WaitForSeconds(0f);
         Color currentColor = spriteRenderer.color; // Set the transparency (alpha) value
@@ -192,6 +195,7 @@ public class healthSystem : MonoBehaviour
 
         //Make the player able to take damage again
         isInvic = false;
+        blinking = false;
     }
 
     //This is used during the dash to make the player transparent and resets invincibility 
@@ -210,9 +214,10 @@ public class healthSystem : MonoBehaviour
         spriteRenderer.color = currentColor;
 
         //reset invincibility. 
-        isInvic = false;
-        gameObject.layer = LayerMask.NameToLayer("Player");
+        if(!blinking)
+            isInvic = false;
 
+        gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
     //Update heart UI

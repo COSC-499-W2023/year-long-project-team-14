@@ -1,4 +1,28 @@
 # Personal Log - Gabriel Mercier
+## Week 10 - T2
+- Start Date: March 11
+- End Date: March 17
+  
+### Tasks I worked on:
+![](screenshots/t2Week10_peerEval_Gabriel.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* prioritize tasks that are needs for the end
+* make sure everyone knows what they're wokring on for the remainder of the semester
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Unit test for summon chad
+* Unit test for spell pickups
+* Started work on laser obstacle
+* Fixed LFS
+
+
+### Among these tasks, which have you completed/in progress in the last week?
+I completed all my tasks.
+
+***
 ## Week 9 - T2
 - Start Date: March 4
 - End Date: March 10

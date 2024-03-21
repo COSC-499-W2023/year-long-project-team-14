@@ -54,7 +54,7 @@ public class CooldownUiTest : MonoBehaviour
 
         player.GetComponent<Spells>().CastSpell();
         // Assert fill is consistent with spell cooldown
-        Assert.AreEqual(ui.image.fillAmount, (player.GetComponent<Spells>().cooldownTimer / player.GetComponent<Spells>().spellCooldown));
+        Assert.AreEqual(ui.image.fillAmount, Mathf.Round(player.GetComponent<Spells>().cooldownTimer / player.GetComponent<Spells>().spellCooldown));
 
         yield return null;
     }
