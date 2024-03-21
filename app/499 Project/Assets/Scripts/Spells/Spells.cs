@@ -16,6 +16,10 @@ public class Spells : MonoBehaviour
     public GameObject chadPrefab;
     public GameObject shieldPrefab;
     public GameObject shield;
+    
+    // Below is used to change the sprite during the duraiton of the mage rage spell 
+    public SpriteRenderer spriteRenderer;
+
 
     //Used to indicate when the shield is active 
     public bool isShield = false;
@@ -226,6 +230,9 @@ public class Spells : MonoBehaviour
 
     IEnumerator timer()
     {
+
+        spriteRenderer.color = new Color (255, 0, 0, 255);
+
         yield return new WaitForSeconds(5f); //wait for timer to decrease stats back to normal
 
         //After 5 seconds return the stats to the original values.
@@ -235,13 +242,24 @@ public class Spells : MonoBehaviour
         //     EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
         //     enemyHealthSystem.mageRisOn = false;
         // }
-        
+
+        // Color currentColor = spriteRenderer.color;
+
+
+        // currentColor. = 255f;
+        // currentColor.g = 11f;
+        // currentColor.b = 11f;
+        // currentColor.a= 255f;
+
         playerController.attackChargeSpeed = 2;
 
         
         playerController.bulletForce = 12;
 
         playerController.moveSpeed = 8;
+
+        spriteRenderer.color = new Color (255, 255, 255, 255);
+
 
     }
 
