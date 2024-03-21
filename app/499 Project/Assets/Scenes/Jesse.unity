@@ -1051,22 +1051,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3098334304864082715, guid: be52253c13897be49879f2168b815edc, type: 3}
-      propertyPath: slime
-      value: 
-      objectReference: {fileID: 5701880002770581090, guid: 2ea9238c69ef458479c9e29fd0cc6d63, type: 3}
-    - target: {fileID: 3098334304864082715, guid: be52253c13897be49879f2168b815edc, type: 3}
-      propertyPath: phase2
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3098334304864082715, guid: be52253c13897be49879f2168b815edc, type: 3}
-      propertyPath: quadLaser
-      value: 
-      objectReference: {fileID: 934005786809906075, guid: 87e3013ee2aa2614990b1a769fdafe2c, type: 3}
-    - target: {fileID: 3098334304864082715, guid: be52253c13897be49879f2168b815edc, type: 3}
-      propertyPath: slimeSpeed
-      value: 20000
-      objectReference: {fileID: 0}
     - target: {fileID: 3785175334044080466, guid: be52253c13897be49879f2168b815edc, type: 3}
       propertyPath: m_Name
       value: StoneBoss
@@ -1075,10 +1059,6 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1517546132}
-    - target: {fileID: 3800158664806633070, guid: be52253c13897be49879f2168b815edc, type: 3}
-      propertyPath: enemyHealth
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 6461595776689869080, guid: be52253c13897be49879f2168b815edc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.54
@@ -1117,10 +1097,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6461595776689869080, guid: be52253c13897be49879f2168b815edc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8940415145431181823, guid: be52253c13897be49879f2168b815edc, type: 3}
-      propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
