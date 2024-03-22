@@ -92,8 +92,13 @@ public class spellUi : MonoBehaviour
                 }
 
                 button.color = new Color(1, 1, 1, 1);
+                image.color = new Color(1, 1, 1, 1);
             }
-            else button.color = new Color(1, 1, 1, 0);
+            else 
+            {
+                button.color = new Color(1, 1, 1, 0);
+                image.color = new Color(1, 1, 1, 0.35f);
+            }
         }
         else
         {
