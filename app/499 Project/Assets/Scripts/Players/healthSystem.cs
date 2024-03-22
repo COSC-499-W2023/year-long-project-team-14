@@ -34,7 +34,7 @@ public class healthSystem : MonoBehaviour
     // Damage player if colliding with enemy or bullet
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet") ){
+        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet")){
             takeDamage();
         }
     }
@@ -52,6 +52,15 @@ public class healthSystem : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision){
         if(collision.gameObject.CompareTag("Spike") || collision.gameObject.CompareTag("EnemyBullet")){
             takeDamage();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Laser"))
+        {
+            takeDamage();
+
         }
     }
 
