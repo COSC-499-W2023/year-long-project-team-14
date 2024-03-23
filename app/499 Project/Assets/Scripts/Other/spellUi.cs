@@ -26,7 +26,9 @@ public class spellUi : MonoBehaviour
         image.enabled = false;
         // Get access to Spells
         spells = GetComponentInParent<Spells>();
-        gameMaster = GameObject.FindWithTag("GameMaster").GetComponent<GameMaster>();
+        GameObject g = GameObject.FindWithTag("GameMaster");
+        if(g != null)
+            gameMaster = g.GetComponent<GameMaster>();
     }
 
     // Update is called once per frame
@@ -61,7 +63,7 @@ public class spellUi : MonoBehaviour
                 image.fillAmount = 0f;
             }
 
-            if(spells.cooldownTimer >= spells.spellCooldown)
+            if(gameMaster != null && spells.cooldownTimer >= spells.spellCooldown)
             {
                 //Change prompt icon depending on controls
                 if(player1)

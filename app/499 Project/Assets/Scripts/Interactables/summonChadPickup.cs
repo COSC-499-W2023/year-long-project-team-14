@@ -23,7 +23,9 @@ public class SummonChadPickup : MonoBehaviour
     {
         startY = transform.position.y; // Store the initial Y position
 
-        gameMaster = GameObject.FindWithTag("GameMaster").GetComponent<GameMaster>();
+        GameObject g = GameObject.FindWithTag("GameMaster");
+        if(g != null)
+            gameMaster = g.GetComponent<GameMaster>();
     }
 
     void Update()
@@ -49,7 +51,7 @@ public class SummonChadPickup : MonoBehaviour
             }
 
             //Change prompt icon depending on controls
-            if(other.gameObject.GetComponent<PlayerController>().player1)
+            if(gameMaster != null && other.gameObject.GetComponent<PlayerController>().player1)
             {
                 if(gameMaster.player1Controls == "PS")
                 {
@@ -62,7 +64,7 @@ public class SummonChadPickup : MonoBehaviour
                 else
                     promptIcon.sprite = ePrompt;
             }
-            else
+            else if(gameMaster != null)
             {
                 if(gameMaster.player2Controls == "PS")
                 {
