@@ -13,6 +13,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject resumeButton;
     public bool pauseMenu = false;
     public GameMaster gameMaster;
+    public MusicManager musicManager;
 
     //Load into menu scene
     public void LoadMenu() {
@@ -54,6 +55,8 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
         if(gameMaster != null)
             gameMaster.SelectButton(resumeButton);
+        
+        musicManager.audioSource.Pause();
     }
 
     //Resume the game deactivate pause menu
@@ -64,6 +67,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
         EventSystem.current.SetSelectedGameObject(null);
+        musicManager.audioSource.Play();
     }
 }
 

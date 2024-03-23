@@ -96,13 +96,13 @@ public class MusicManager : MonoBehaviour
     {
         if (gameMaster.currentLevel != previousLevel)
         {
-            if (gameMaster.currentLevel == 5)
+            if (gameMaster.currentLevel == 10)
             {
                 audioSource.Stop();
                 audioSource.clip = minibossTrack;
                 audioSource.Play();
             }
-            else if(gameMaster.currentLevel == 6)
+            else if(gameMaster.currentLevel == 11)
             {
                 PlayNextTrack();
             }
