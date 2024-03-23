@@ -43,7 +43,7 @@ public class LaserTest : MonoBehaviour
         // Wait for 1 seconds to ensure the laser hits the player
         yield return new WaitForSeconds(0.5f);
 
-        // Check if the the player took damage from the spikes or not 
+        // Check if the the player took damage from the laser
         Assert.IsTrue(healthSystem.life == 2);
 
     }
