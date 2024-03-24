@@ -139,7 +139,7 @@ public class TransitionTest
         //Transition to next level
         gameMaster.LevelComplete();
         yield return null;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.6f);
 
         //Check that player health did not increase
         Assert.IsTrue(gameMaster.healthSystem1.life == 1);
