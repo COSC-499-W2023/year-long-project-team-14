@@ -865,8 +865,10 @@ MonoBehaviour:
   iceCubePrefab: {fileID: 5353155636119205557, guid: 2b44b4606410f624489e839e71c78d63, type: 3}
   shieldPrefab: {fileID: 758289626637381577, guid: b72145187a5b557469b33ef2c319f6e0, type: 3}
   shield: {fileID: 0}
-  spriteRenderer: {fileID: 47878624049746190}
+  mRAura: {fileID: 4103782466199260733, guid: e9bf3a87404f347ef826f289185f620e, type: 3}
+  aura: {fileID: 0}
   isShield: 0
+  isRage: 0
   yOffset: 2.5
   fireballSound: {fileID: 6020226581851858952}
   lightningSound: {fileID: 5829597694115131600}
@@ -1365,7 +1367,6 @@ GameObject:
   - component: {fileID: 4086989857799604084}
   - component: {fileID: 9035096679077234424}
   - component: {fileID: 4952088285177256778}
-  - component: {fileID: 4305409814652023011}
   m_Layer: 5
   m_Name: spell
   m_TagString: Untagged
@@ -1413,50 +1414,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player1: 1
-  image: {fileID: 4305409814652023011}
+  image: {fileID: 0}
   fireSprite: {fileID: -1659854389, guid: 71f101bd904da3a4eb89ffd963ac31b7, type: 3}
   lightningSprite: {fileID: 339508314, guid: fa739449f8985d74aa6afb409a7beb86, type: 3}
   SeekingSprite: {fileID: -1788315041, guid: 052d2d598db74c242b7b861ed291772f, type: 3}
   chadSprite: {fileID: -276574461, guid: b857dab66404fbc459aaa2150c73d56d, type: 3}
   freezeSprite: {fileID: -58245785, guid: fa739449f8985d74aa6afb409a7beb86, type: 3}
   shieldSprite: {fileID: 21300000, guid: ef1884aedfd4e3a46a8dc138f602d5a1, type: 3}
-
-
+  mRSprite: {fileID: 0}
   gameMaster: {fileID: 0}
-  button: {fileID: 5445237934524193817}
-  ltIcon: {fileID: 21300000, guid: 5407b74134b1eb844a010a559f91aaf9, type: 3}
-  qIcon: {fileID: 21300000, guid: b1a327496b72430448cb4c25f5bad357, type: 3}
-
-  mRSprite: {fileID: 21300000, guid: b9b53c76806330248820605e900c01df, type: 3}
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1552418433214647782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: -1275449256, guid: 889df7a3b6803df4d893a2a33f2c4b67, type: 3}
-  m_Type: 3
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  button: {fileID: 0}
+  ltIcon: {fileID: 0}
+  qIcon: {fileID: 0}
 --- !u!1 &4048208355466576517
 GameObject:
   m_ObjectHideFlags: 0

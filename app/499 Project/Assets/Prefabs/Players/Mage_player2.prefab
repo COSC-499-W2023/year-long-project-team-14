@@ -66,6 +66,7 @@ MonoBehaviour:
   chadSprite: {fileID: -276574461, guid: b857dab66404fbc459aaa2150c73d56d, type: 3}
   freezeSprite: {fileID: -58245785, guid: fa739449f8985d74aa6afb409a7beb86, type: 3}
   shieldSprite: {fileID: 21300000, guid: ef1884aedfd4e3a46a8dc138f602d5a1, type: 3}
+  mRSprite: {fileID: 0}
   gameMaster: {fileID: 0}
   button: {fileID: 3581139936707756502}
   ltIcon: {fileID: 21300000, guid: 5407b74134b1eb844a010a559f91aaf9, type: 3}
@@ -298,7 +299,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 517172463433549030}
   layerDetection:
     serializedVersion: 2
-    m_Bits: 66304
+    m_Bits: 0
   unitTest: 0
   unitTest2: 0
   shootSound: {fileID: -3089450358657967342}
@@ -890,7 +891,10 @@ MonoBehaviour:
   iceCubePrefab: {fileID: 5353155636119205557, guid: 2b44b4606410f624489e839e71c78d63, type: 3}
   shieldPrefab: {fileID: 758289626637381577, guid: b72145187a5b557469b33ef2c319f6e0, type: 3}
   shield: {fileID: 0}
+  mRAura: {fileID: 4103782466199260733, guid: e9bf3a87404f347ef826f289185f620e, type: 3}
+  aura: {fileID: 0}
   isShield: 0
+  isRage: 0
   yOffset: 2.5
   fireballSound: {fileID: 7860525362818205043}
   lightningSound: {fileID: 6808735797056020385}
