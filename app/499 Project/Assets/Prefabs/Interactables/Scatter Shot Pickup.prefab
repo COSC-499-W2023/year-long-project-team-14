@@ -1,5 +1,80 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &324650791664163265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5409307484634602425}
+  - component: {fileID: 5885769587958513828}
+  - component: {fileID: 6198079644399846899}
+  m_Layer: 5
+  m_Name: InteractIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &5409307484634602425
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324650791664163265}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6605592253927588907}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -15, y: 10}
+  m_SizeDelta: {x: 8, y: 8}
+  m_Pivot: {x: 0, y: 0.5}
+--- !u!222 &5885769587958513828
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324650791664163265}
+  m_CullTransparentMesh: 1
+--- !u!114 &6198079644399846899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324650791664163265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 9cb9dd7976ce06149ab87ed2c36a1806, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &545348899983720757
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +184,7 @@ RectTransform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5409307484634602425}
   - {fileID: 5604303786747036239}
   m_Father: {fileID: 928117774666989796}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -138,7 +214,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 9
+  m_SortingOrder: 15
   m_TargetDisplay: 0
 --- !u!114 &838644831087851012
 MonoBehaviour:
@@ -153,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_ReferencePixelsPerUnit: 16
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
@@ -208,7 +284,7 @@ GameObject:
   - component: {fileID: 1707581139664236305}
   m_Layer: 0
   m_Name: Bottle Image
-  m_TagString: summonChad
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -345,7 +421,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Distraction Bomb
+  m_text: Scatter Shot
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e10e00b4d3e137e4da0876362a21e06c, type: 2}
   m_sharedMaterial: {fileID: 885593585194045846, guid: e10e00b4d3e137e4da0876362a21e06c, type: 2}
@@ -426,7 +502,7 @@ GameObject:
   - component: {fileID: 1340498746768478471}
   - component: {fileID: 12181679782506605}
   m_Layer: 0
-  m_Name: Distraction Bomb Pickup
+  m_Name: Scatter Shot Pickup
   m_TagString: summonChad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -509,6 +585,11 @@ MonoBehaviour:
   bobbingAmount: 0.1
   bobbingSpeed: 0.5
   prompt: {fileID: 2599116138116726155}
+  gameMaster: {fileID: 0}
+  promptIcon: {fileID: 0}
+  xPrompt: {fileID: 0}
+  aPrompt: {fileID: 0}
+  ePrompt: {fileID: 0}
 --- !u!1 &4001675531508089719
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +625,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -3.5}
-  m_SizeDelta: {x: 70, y: 100}
+  m_SizeDelta: {x: 72, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2405215402804041674
 CanvasRenderer:
@@ -574,7 +655,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Throw a bomb to distract enemies for 5s before exploding.
+  m_text: 'Shoot out a ring of orbs that bounce 5 times and deal 1 damage.
 
 
     Cooldown:
@@ -617,7 +698,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 25
+  m_lineSpacing: 20
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0

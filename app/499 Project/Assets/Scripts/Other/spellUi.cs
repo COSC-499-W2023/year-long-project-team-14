@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class spellUi : MonoBehaviour
 {
+    public bool player1 = true;
     public Image image;
     public Sprite fireSprite;
     public Sprite lightningSprite;
@@ -14,12 +15,20 @@ public class spellUi : MonoBehaviour
     public Sprite shieldSprite;
     Spells spells;
 
+    public GameMaster gameMaster;
+    public Image button;
+    public Sprite ltIcon;
+    public Sprite qIcon;
+
     // Start is called before the first frame update
     void Start()
     {
         image.enabled = false;
         // Get access to Spells
         spells = GetComponentInParent<Spells>();
+        GameObject g = GameObject.FindWithTag("GameMaster");
+        if(g != null)
+            gameMaster = g.GetComponent<GameMaster>();
     }
 
     // Update is called once per frame
@@ -52,6 +61,45 @@ public class spellUi : MonoBehaviour
             {
                 // Reset fill amount to fully visible when cooldown is complete
                 image.fillAmount = 0f;
+            }
+
+            if(gameMaster != null && spells.cooldownTimer >= spells.spellCooldown)
+            {
+                //Change prompt icon depending on controls
+                if(player1)
+                {
+                    if(gameMaster.player1Controls == "PS")
+                    {
+                        button.sprite = ltIcon;
+                    }
+                    else if(gameMaster.player1Controls == "Xbox")
+                    {
+                        button.sprite = ltIcon;
+                    }
+                    else
+                        button.sprite = qIcon;
+                }
+                else
+                {
+                    if(gameMaster.player2Controls == "PS")
+                    {
+                        button.sprite = ltIcon;
+                    }
+                    else if(gameMaster.player2Controls == "Xbox")
+                    {
+                        button.sprite = ltIcon;
+                    }
+                    else
+                        button.sprite = qIcon;
+                }
+
+                button.color = new Color(1, 1, 1, 1);
+                image.color = new Color(1, 1, 1, 1);
+            }
+            else 
+            {
+                button.color = new Color(1, 1, 1, 0);
+                image.color = new Color(1, 1, 1, 0.35f);
             }
         }
         else
