@@ -17,13 +17,24 @@ public class Spells : MonoBehaviour
     public GameObject iceCubePrefab;
     public GameObject shieldPrefab;
     public GameObject shield;
+
+    //This is used to display the sprite for mage rage
+     public GameObject mRAura;
+     public GameObject aura;
+
+
     
     // Below is used to change the sprite during the duraiton of the mage rage spell 
-    public SpriteRenderer spriteRenderer;
+    //This is not needed anymore
+    //public SpriteRenderer spriteRenderer;
 
 
     //Used to indicate when the shield is active 
     public bool isShield = false;
+
+    //Used to indicate when the player is in mage rage 
+    public bool isRage = false;
+
 
     public float yOffset = 11.5f;
     private List<GameObject> chads = new List<GameObject>();
@@ -49,6 +60,16 @@ public class Spells : MonoBehaviour
 
             //Make the shield position follow the players position
             shieldT.position = playerController.transform.position;
+        }
+
+        if(isRage == true){
+            //If the shield is active 
+
+            //Get the shield transform 
+            Transform rageT = aura.transform;
+
+            //Make the shield position follow the players position
+            rageT.position = playerController.transform.position;
         }
     }
 
@@ -318,6 +339,13 @@ public class Spells : MonoBehaviour
         //     enemyHealthSystem.mageRisOn = true;
         // }
         
+        //Make the sprite show for the mage rage
+        aura = Instantiate(mRAura, playerController.transform.position, Quaternion.identity);
+        
+        //Indicate that the shield is active 
+        isRage = true;
+
+
         //Increase the recharge time of the bullets so the player can continously shoot
         playerController.attackChargeSpeed = 5;
         
@@ -337,9 +365,9 @@ public class Spells : MonoBehaviour
     IEnumerator timer()
     {
 
-        spriteRenderer.color = new Color (255, 0, 0, 255);
-
         yield return new WaitForSeconds(5f); //wait for timer to decrease stats back to normal
+
+        
 
         //After 5 seconds return the stats to the original values.
         // GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -364,8 +392,9 @@ public class Spells : MonoBehaviour
 
         playerController.moveSpeed = 8;
 
-        spriteRenderer.color = new Color (255, 255, 255, 255);
+         isRage = false;
 
+        Destroy(aura);
 
     }
 
