@@ -19,10 +19,11 @@
 - i have completed all my tasks this week. 
 
 Here are the screenshots of my codework in the Game scene and in the Main Menu and its test on VSCode this week:
-![](screenshots/kibeleweeklyt2week11.png)
+![](screenshots/kibeleweeklyt2week11-2.png)
 
 Here are the screenshots of my visual changes that i have written in Unity this week:
 ![](screenshots/kibeleweeklyt2week11-1.png)
+![](screenshots/kibeleweeklyt2week11.png)
 
 
 ### Tasks I worked on:
