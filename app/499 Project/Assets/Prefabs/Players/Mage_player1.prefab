@@ -865,6 +865,7 @@ MonoBehaviour:
   iceCubePrefab: {fileID: 5353155636119205557, guid: 2b44b4606410f624489e839e71c78d63, type: 3}
   shieldPrefab: {fileID: 758289626637381577, guid: b72145187a5b557469b33ef2c319f6e0, type: 3}
   shield: {fileID: 0}
+  spriteRenderer: {fileID: 47878624049746190}
   isShield: 0
   yOffset: 2.5
   fireballSound: {fileID: 6020226581851858952}
@@ -1419,11 +1420,14 @@ MonoBehaviour:
   chadSprite: {fileID: -276574461, guid: b857dab66404fbc459aaa2150c73d56d, type: 3}
   freezeSprite: {fileID: -58245785, guid: fa739449f8985d74aa6afb409a7beb86, type: 3}
   shieldSprite: {fileID: 21300000, guid: ef1884aedfd4e3a46a8dc138f602d5a1, type: 3}
+
+
   gameMaster: {fileID: 0}
   button: {fileID: 5445237934524193817}
   ltIcon: {fileID: 21300000, guid: 5407b74134b1eb844a010a559f91aaf9, type: 3}
   qIcon: {fileID: 21300000, guid: b1a327496b72430448cb4c25f5bad357, type: 3}
---- !u!114 &4305409814652023011
+
+  mRSprite: {fileID: 21300000, guid: b9b53c76806330248820605e900c01df, type: 3}
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

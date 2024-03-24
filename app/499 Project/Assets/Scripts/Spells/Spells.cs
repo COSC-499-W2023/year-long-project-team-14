@@ -17,6 +17,10 @@ public class Spells : MonoBehaviour
     public GameObject iceCubePrefab;
     public GameObject shieldPrefab;
     public GameObject shield;
+    
+    // Below is used to change the sprite during the duraiton of the mage rage spell 
+    public SpriteRenderer spriteRenderer;
+
 
     //Used to indicate when the shield is active 
     public bool isShield = false;
@@ -89,6 +93,11 @@ public class Spells : MonoBehaviour
             {
                //If the user has the shield spell and presses q then call ShieldSpell()
                ShieldSpell();
+            }
+            else if (spellName == "mR")
+            {
+               //If the user has the mage rage spell and presses q then call ShieldSpell()
+               mageRage();
             }
         }
     }
@@ -295,6 +304,69 @@ public class Spells : MonoBehaviour
         Destroy(shield);
         //Mark that the shield is inactive.
         isShield = false;
+    }
+
+    //This will be used for the mage rage spell 
+    public void mageRage(){
+      
+      
+       //Increase the players damage
+        // GameObject[] enemies2 = GameObject.FindGameObjectsWithTag("Enemy");
+        // for(int i = 0; i < enemies2.Length; i++)
+        // {  
+        //     EnemyHealthSystem enemyHealthSystem = enemies2[i].GetComponent<EnemyHealthSystem>();
+        //     enemyHealthSystem.mageRisOn = true;
+        // }
+        
+        //Increase the recharge time of the bullets so the player can continously shoot
+        playerController.attackChargeSpeed = 5;
+        
+        //Increase the speed of the bullets
+        playerController.bulletForce = 25;
+
+        //Increase the movement speed of the player
+        playerController.moveSpeed = 20;
+
+
+        StartCoroutine(timer()); //wait for timer before destroying the shield
+
+       
+
+    }
+
+    IEnumerator timer()
+    {
+
+        spriteRenderer.color = new Color (255, 0, 0, 255);
+
+        yield return new WaitForSeconds(5f); //wait for timer to decrease stats back to normal
+
+        //After 5 seconds return the stats to the original values.
+        // GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        // for(int i = 0; i < enemies.Length; i++)
+        // {  
+        //     EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
+        //     enemyHealthSystem.mageRisOn = false;
+        // }
+
+        // Color currentColor = spriteRenderer.color;
+
+
+        // currentColor. = 255f;
+        // currentColor.g = 11f;
+        // currentColor.b = 11f;
+        // currentColor.a= 255f;
+
+        playerController.attackChargeSpeed = 2;
+
+        
+        playerController.bulletForce = 12;
+
+        playerController.moveSpeed = 8;
+
+        spriteRenderer.color = new Color (255, 255, 255, 255);
+
+
     }
 
 }

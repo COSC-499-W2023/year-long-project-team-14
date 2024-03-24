@@ -267,10 +267,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1320510422210185873}
   - component: {fileID: 6205134705775579191}
-  - component: {fileID: 630582665292061340}
+  - component: {fileID: 4524893017214024731}
   m_Layer: 0
   m_Name: Rage Mage Pickup
-  m_TagString: summonChad
+  m_TagString: mageRage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -337,7 +337,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5}
   m_EdgeRadius: 0
---- !u!114 &630582665292061340
+--- !u!114 &4524893017214024731
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5432033528146320037}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d030cf5c95acc6419085899ac34db1d, type: 3}
+  m_Script: {fileID: 11500000, guid: 4259fc54b6d13e947903107f823a4aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bobbingAmount: 0.1
