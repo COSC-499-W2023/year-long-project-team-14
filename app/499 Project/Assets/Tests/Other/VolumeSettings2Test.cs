@@ -57,8 +57,7 @@ public class VolumeSettings2Tests
 
     [Test]
     public void Shuffletrack()
-    {
-      
+    {  
         GameObject go = new GameObject();
         MusicManager musicManager = go.AddComponent<MusicManager>();
         AudioClip[] tracks = new AudioClip[3];
@@ -67,6 +66,35 @@ public class VolumeSettings2Tests
         Assert.IsNotNull(musicManager.tracks);
     }
 
+  
+    [Test]
+    public void PlayMinibossTrack_OnLevelChange()
+    {
+        GameObject go = new GameObject();
+        MusicManager musicManager = go.AddComponent<MusicManager>();
+
+        Slider slider = go.AddComponent<Slider>();
+        musicManager.volumeSlider = slider;
+
+        GameMaster gameMaster = go.AddComponent<GameMaster>();
+
+        gameMaster.currentLevel = 6;
+        musicManager.gameMaster = gameMaster;
+        musicManager.previousLevel = -1; 
+
+        AudioSource audioSource = go.AddComponent<AudioSource>();
+        musicManager.audioSource = audioSource;
+
+        AudioClip minibossTrack = AudioClip.Create("miniboss", 44100, 2, 44100, false);
+        musicManager.minibossTrack = minibossTrack;
+
+        musicManager.Update();
+
+        Assert.IsTrue(audioSource.isPlaying); 
+        Assert.AreEqual(minibossTrack, audioSource.clip);
+        Assert.AreEqual(gameMaster.currentLevel, musicManager.previousLevel); 
+    }
 }
+
 
 

@@ -7089,6 +7089,7 @@ MonoBehaviour:
   resumeButton: {fileID: 1109078355}
   pauseMenu: 0
   gameMaster: {fileID: 1436582726}
+  musicManager: {fileID: 925822477}
 --- !u!114 &925822473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7168,8 +7169,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d732897c0d1a27c42b321ed8dc6dd5ac, type: 3}
   - {fileID: 8300000, guid: 3bc427230494feb498590bd75a91d9f1, type: 3}
   - {fileID: 8300000, guid: dc89a18d7e8a69b48915bce46aac03b0, type: 3}
+  minibossTrack: {fileID: 8300000, guid: 6bea8cff3cf76a3439efbd3969e01c8f, type: 3}
   audioSource: {fileID: 925822478}
   volumeSlider: {fileID: 1008436490}
+  gameMaster: {fileID: 1436582726}
+  previousLevel: -1
 --- !u!82 &925822478
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7180,7 +7184,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6bea8cff3cf76a3439efbd3969e01c8f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
