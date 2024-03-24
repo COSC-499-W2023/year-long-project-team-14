@@ -13,8 +13,8 @@
 * Write test for the controls menu and its revised script
 
 ### Which features were yours in the project plan for this milestone?
-- My goals for the past week was to
-- 
+- My goals for the past week was to  make settings menu and implement controls menu inside, decide the next week's goal as a bonus, make changes on main mneu and game scene.
+
 ### Among these tasks, which have you completed/in progress in the last week?
 - i have completed all my tasks this week. 
 
