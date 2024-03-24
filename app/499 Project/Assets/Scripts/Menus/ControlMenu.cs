@@ -10,11 +10,12 @@ public class ControlMenu : MonoBehaviour
     public GameObject controlMenuUI; 
     public GameObject pauseMenuUI;
     public GameObject backButton;
+    public GameObject optionsMenuUI;
     public bool controlMenu = false;
     public GameMaster gameMaster;
     public PauseMenu pauseMenu;
+    public bool optionsMenu = false;
 
-    //Sets control menu to be active and deactivates pause menu
     public void ControlMenuButton()
     {
         controlMenu = true;
@@ -23,21 +24,32 @@ public class ControlMenu : MonoBehaviour
         pauseMenuUI.SetActive(false); 
         gameMaster.SelectButton(backButton);
     }
-    
-    //Sets pause menu to be active and deactivates control menu
     public void Back()
     {
         controlMenu = false;
         controlMenuUI.SetActive(false); 
-        pauseMenuUI.SetActive(true); 
-        gameMaster.SelectButton(pauseMenu.resumeButton);
+        optionsMenuUI.SetActive(true); 
+        optionsMenu = true;
+
         StartCoroutine(WaitForBack());
     }
+
 
     public IEnumerator WaitForBack()
     {
         yield return null;
         pauseMenu.pauseMenu = true;
     }
+
+    public void SetFirstSelected()
+    {
+        EventSystem.current.SetSelectedGameObject(backButton);
+    }
+
+    public void OnEnable()
+    {
+        SetFirstSelected();
+    }
+
 }
 
