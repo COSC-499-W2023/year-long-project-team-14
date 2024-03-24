@@ -1,5 +1,33 @@
 # Personal Log - Kibele Sebnem Yildirim
 
+## Week 11 - Term 2
+- Start Date: March 18
+- End Date: March 24
+
+- ### Recap on your week's goals
+- My goals this week were to:
+* make settings menu and implement controls menu inside
+* decide the next week's goal as a bonus 
+* Review my teammates' code and fixes on the game
+* make changes on main mneu and game scene
+* Write test for the controls menu and its revised script
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to
+- 
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week. 
+
+Here are the screenshots of my codework in the Game scene and in the Main Menu and its test on VSCode this week:
+![](screenshots/kibeleweeklyt2week11.png)
+
+Here are the screenshots of my visual changes that i have written in Unity this week:
+![](screenshots/kibeleweeklyt2week11-1.png)
+
+
+### Tasks I worked on:
+![](screenshots/kibeleweek11.png)
+
 ## Week 10 - Term 2
 - Start Date: March 11
 - End Date: March 17
