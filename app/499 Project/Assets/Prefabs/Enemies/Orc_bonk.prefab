@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 4121106410515801847}
   - component: {fileID: 2705404823323015084}
   - component: {fileID: 7685571072960722711}
-  - component: {fileID: 8862178526931939309}
   - component: {fileID: 7583071237577365499}
   - component: {fileID: 4684723863293885669}
   - component: {fileID: 8150639398049673041}
@@ -254,36 +253,6 @@ MonoBehaviour:
   portal: {fileID: 0}
   hitSound: {fileID: 8150639398049673041}
   deathSound: {fileID: 8850538584896908924}
---- !u!114 &8862178526931939309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3279354335901742904}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 225a2e1302af1ba4eb0d640a1ca63f5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players: []
-  targetPlayer: {fileID: 0}
-  bulletPrefab: {fileID: 0}
-  shootInterval: 2
-  bulletSpeed: 10
-  lastShootTime: 0
-  Points1: []
-  Points2: []
-  Points3: []
-  lineRenderer1: {fileID: 0}
-  lineRenderer2: {fileID: 0}
-  lineRenderer3: {fileID: 0}
-  LayerDetection:
-    serializedVersion: 2
-    m_Bits: 0
-  maxReflections: 1
-  rotationSpeed: 0
-  shootSound: {fileID: 4684723863293885669}
 --- !u!114 &7583071237577365499
 MonoBehaviour:
   m_ObjectHideFlags: 0

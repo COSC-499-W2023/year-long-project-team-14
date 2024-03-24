@@ -13,8 +13,29 @@ public class PauseMenu : MonoBehaviour
     public GameObject resumeButton;
     public bool pauseMenu = false;
     public GameMaster gameMaster;
+    public MusicManager musicManager;
 
-    //Load into menu scene
+    public void OnEnable()
+    {
+        if (pauseMenuUI != null)
+            EventSystem.current.SetSelectedGameObject(resumeButton);
+    }
+
+    public void Update()
+    {
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            if (GameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
+    }
+
     public void LoadMenu() {
         StartCoroutine(GoToMenu());
     }
@@ -28,8 +49,6 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
         SceneManager.LoadScene(0);
     }
-
-    //Restart the game
     public void Restart()
     {
         StartCoroutine(RestartGame());
@@ -44,8 +63,6 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
         SceneManager.LoadScene(1);
     }
-
-    //Pause the game and display pause menu
     public void Pause()
     {
         pauseMenu = true;
@@ -54,9 +71,10 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
         if(gameMaster != null)
             gameMaster.SelectButton(resumeButton);
+        
+        musicManager.audioSource.Pause();
     }
 
-    //Resume the game deactivate pause menu
     public void Resume()
     {
         pauseMenu = false;
@@ -64,6 +82,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
         EventSystem.current.SetSelectedGameObject(null);
+        musicManager.audioSource.Play();
     }
 }
 

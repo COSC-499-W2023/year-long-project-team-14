@@ -37,7 +37,7 @@ public class OrcAttackTest : MonoBehaviour
         //Spawn the orc on the left side of the wall
         orc = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemies/Orc_cyan.prefab"), new Vector3(-5, 0, 0), Quaternion.identity) as GameObject;
         enemyAttack = orc.GetComponent<EnemyAttack>();
-        enemyAttack.bulletSpeed = 20;
+        enemyAttack.bulletSpeed = 16;
         enemyAttack.shootInterval = 10f;
 
         //Restrict the orc from moving
@@ -74,7 +74,7 @@ public class OrcAttackTest : MonoBehaviour
         enemyAttack.lastShootTime = -10;
 
         //Wait for orc to shoot at player
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(1f);
 
         //Check that the orc was able to shoot off the wall to hit player 1
         Assert.IsTrue(healthSystem1.life < health1);

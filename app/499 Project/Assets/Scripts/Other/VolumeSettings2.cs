@@ -1,18 +1,22 @@
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(AudioSource))]
 public class MusicManager : MonoBehaviour
 {
     public AudioClip[] tracks;
+    public AudioClip minibossTrack; 
     public AudioSource audioSource;
     [SerializeField] public Slider volumeSlider;
 
     private int currentTrackIndex = 0;
+    public GameMaster gameMaster;
+    public int previousLevel = -1;
 
     public void Start()
     {
+        gameMaster = FindObjectOfType<GameMaster>();
         audioSource = GetComponent<AudioSource>();
 
         ShuffleTracks();
@@ -66,20 +70,44 @@ public class MusicManager : MonoBehaviour
     {
         if (tracks.Length > 0)
         {
-            audioSource.clip = tracks[currentTrackIndex];
-            audioSource.Play();
+            AudioClip nextClip;
 
-            currentTrackIndex++;
-            if (currentTrackIndex >= tracks.Length)
+            if (gameMaster.currentLevel == 6)
+                nextClip = minibossTrack;
+            else
             {
-                currentTrackIndex = 0;
-                ShuffleTracks(); 
+                nextClip = tracks[currentTrackIndex];
+                currentTrackIndex++;
+                if (currentTrackIndex >= tracks.Length)
+                {
+                    currentTrackIndex = 0;
+                    ShuffleTracks(); 
+                }
             }
 
-            audioSource.loop = false;
+            audioSource.clip = nextClip;
             audioSource.Play();
 
-            Invoke("PlayNextTrack", audioSource.clip.length);
+            Invoke("PlayNextTrack", nextClip.length);
+        }
+    }
+
+    public void Update()
+    {
+        if (gameMaster.currentLevel != previousLevel)
+        {
+            if (gameMaster.currentLevel == 10)
+            {
+                audioSource.Stop();
+                audioSource.clip = minibossTrack;
+                audioSource.Play();
+            }
+            else if(gameMaster.currentLevel == 11)
+            {
+                PlayNextTrack();
+            }
+
+            previousLevel = gameMaster.currentLevel;
         }
     }
 }

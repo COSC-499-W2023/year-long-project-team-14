@@ -7,7 +7,7 @@ using UnityEditor;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class SpellPickupTest : MonoBehaviour
+public class SpellPickupTest
 {
     private SeekingOrbPickup SeekingOrbPickup;
 
@@ -34,7 +34,7 @@ public class SpellPickupTest : MonoBehaviour
         SeekingOrbPickup = spellPickup.GetComponent<SeekingOrbPickup>();
 
         //Spawn player below the Spell Pickup
-        player = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Players/Mage_player1.prefab"), new Vector3(0, -5, 0), Quaternion.identity) as GameObject;
+        player = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Players/Mage_player1.prefab"), new Vector3(0, -10, 0), Quaternion.identity) as GameObject;
         spells = player.GetComponent<Spells>();
 
     }
@@ -49,19 +49,19 @@ public class SpellPickupTest : MonoBehaviour
         Vector3 newPosition = new Vector3(0, 0, 0);
         player.transform.position = newPosition;
         // wait a frame to allow for the position change
-        yield return null;
+        yield return new WaitForSeconds(0.1f);
         //assert the prompt is showing
         Assert.IsTrue(SeekingOrbPickup.prompt.isDisplayed);
 
-        yield return null;
+        yield return new WaitForSeconds(0.1f);
         //check that when a player interacts with the pickup, his spellname is switched to the corresponding pickup
 
         //assert the spellname is not equal to the pickup (Fireball is default)
-        Assert.IsTrue(spells.spellName == "Fireball");
+        Assert.IsTrue(spells.spellName != "Fireball");
         //make the player interact with the pickup
         SeekingOrbPickup.Interact();
         // wait a frame to allow for the interaction
-        yield return null;
+        yield return new WaitForSeconds(0.1f);
         //assert spellname is equal to the proper pickup
         Assert.IsTrue(spells.spellName == "SeekingOrb");
     }

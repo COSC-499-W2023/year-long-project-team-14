@@ -15,6 +15,7 @@ public class healthSystem : MonoBehaviour
     public GameOverMenu gameOverMenu;
     public PlayerController playerController;
     public bool isInvic = false;
+    public bool blinking = false;
     public bool chad = false;
 
     [SerializeField] private AudioSource hitSound;
@@ -33,7 +34,7 @@ public class healthSystem : MonoBehaviour
     // Damage player if colliding with enemy or bullet
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet") ){
+        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet")){
             takeDamage();
         }
     }
@@ -54,14 +55,26 @@ public class healthSystem : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Laser"))
+        {
+            takeDamage();
+
+        }
+    }
+
     public void takeDamage()
     {
         //Check if the player has >= health and if the player is temporarly invincible
         if(life >= 1 && isInvic == false)
         {
             //Decrease health by 1
-            life--;
-            hearts[life].SetActive(false);
+            if(!chad)
+            {
+                life--;
+                hearts[life].SetActive(false);
+            }
            
            //Make the player invicible 
            isInvic = true;
@@ -132,6 +145,8 @@ public class healthSystem : MonoBehaviour
     //This is used to show when the player is invicible 
     IEnumerator Transparent2()
     {
+        blinking = true;
+
         //Make the player transparent
         yield return new WaitForSeconds(0f);
         Color currentColor = spriteRenderer.color; // Set the transparency (alpha) value
@@ -192,6 +207,7 @@ public class healthSystem : MonoBehaviour
 
         //Make the player able to take damage again
         isInvic = false;
+        blinking = false;
     }
 
     //This is used during the dash to make the player transparent and resets invincibility 
@@ -210,9 +226,10 @@ public class healthSystem : MonoBehaviour
         spriteRenderer.color = currentColor;
 
         //reset invincibility. 
-        isInvic = false;
-        gameObject.layer = LayerMask.NameToLayer("Player");
+        if(!blinking)
+            isInvic = false;
 
+        gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
     //Update heart UI
