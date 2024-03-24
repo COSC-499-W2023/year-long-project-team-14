@@ -178,6 +178,11 @@ public class TransitionTest
             spells.Add(spell);
         spell = null;
 
+        spell = GameObject.FindWithTag("mageRage");
+        if(spell != null)
+            spells.Add(spell);
+        spell = null;
+
         GameObject[] s = GameObject.FindGameObjectsWithTag("summonChad");
         for(int i = 0; i < s.Length; i++)
             spells.Add(s[i]);
