@@ -107,7 +107,7 @@ public class GameMaster : MonoBehaviour
             if(playerCount > 1)
                 player2.transform.position = new Vector3(1000, 0, 0);
 
-            if(currentLevel % 2 == 0 && !inShop) //Go to shop
+            if(currentLevel % 5 == 4 && !inShop) //Go to shop
             {
                 level = Instantiate(shopLevel, transform.position, Quaternion.identity);
                 inShop = true;

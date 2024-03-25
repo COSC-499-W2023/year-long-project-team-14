@@ -11,38 +11,32 @@ public class ControlMenuTest
     [UnityTest]
     public IEnumerator ControlMenuBackTest()
     {
-        //Load into game scene
         SceneManager.LoadScene(1);
         yield return null;
 
-        //Set up control menu
         GameObject canvas = GameObject.FindWithTag("Canvas");
         ControlMenu controlMenu = canvas.GetComponent<ControlMenu>();
-        controlMenu.pauseMenu = canvas.GetComponent<PauseMenu>();
+        controlMenu.optionsMenu = canvas.GetComponent<OptionsMenu>();
         controlMenu.controlMenuUI = new GameObject();
-        controlMenu.pauseMenuUI = new GameObject();
+        controlMenu.optionsMenuUI = new GameObject();
 
-        //Call Back function and check that the pause menu is active and control menu is not
         controlMenu.Back();
         Assert.IsFalse(controlMenu.controlMenuUI.activeSelf);
-        Assert.IsTrue(controlMenu.pauseMenuUI.activeSelf);
+        Assert.IsTrue(controlMenu.optionsMenuUI.activeSelf);
     }
 
     [UnityTest]
     public IEnumerator ControlMenuButtonTest()
     {
-        //Load into game scene
         SceneManager.LoadScene(1);
         yield return null;
 
-        //Set up control menu
         GameObject canvas = GameObject.FindWithTag("Canvas");
         ControlMenu controlMenu = canvas.GetComponent<ControlMenu>();
         controlMenu.pauseMenu = canvas.GetComponent<PauseMenu>();
         controlMenu.controlMenuUI = new GameObject();
         controlMenu.pauseMenuUI = new GameObject();
 
-        //Call ControlMenuButton function and check that the control menu is active and pause menu is not
         controlMenu.ControlMenuButton();
         Assert.IsTrue(controlMenu.controlMenuUI.activeSelf);
         Assert.IsFalse(controlMenu.pauseMenuUI.activeSelf);

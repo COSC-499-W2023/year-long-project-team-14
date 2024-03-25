@@ -143,12 +143,15 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(attackCharge >= attackCost && mouseHold == 1 && holdCooldown > 0.2f)
+        if(attackCharge >= attackCost && mouseHold == 1 && holdCooldown > 0.15f)
             Shoot();
 
         if(dashHold == 1)
             Dash();
 
+        if(mouseHold == 0)
+            holdCooldown = 1;
+            
         holdCooldown += Time.deltaTime;
 
         //Used for the dash cooldown (its the timer)
@@ -313,6 +316,11 @@ public class PlayerController : MonoBehaviour
             {
                 //if the player interacts with the shield pickup call the function Interact() in the script ShieldPickup
                 interactable.GetComponent<ShieldPickup>().Interact();
+            }
+            else if (tag == "mageRage")
+            {
+                //if the player interacts with the shield pickup call the function Interact() in the script ShieldPickup
+                interactable.GetComponent<mageRagePickup>().Interact();
             }
         }
     }

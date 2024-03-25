@@ -18,8 +18,23 @@ public class Spells : MonoBehaviour
     public GameObject shieldPrefab;
     public GameObject shield;
 
+    //This is used to display the sprite for mage rage
+     public GameObject mRAura;
+     public GameObject aura;
+
+
+    
+    // Below is used to change the sprite during the duraiton of the mage rage spell 
+    //This is not needed anymore
+    //public SpriteRenderer spriteRenderer;
+
+
     //Used to indicate when the shield is active 
     public bool isShield = false;
+
+    //Used to indicate when the player is in mage rage 
+    public bool isRage = false;
+
 
     public float yOffset = 11.5f;
     private List<GameObject> chads = new List<GameObject>();
@@ -45,6 +60,16 @@ public class Spells : MonoBehaviour
 
             //Make the shield position follow the players position
             shieldT.position = playerController.transform.position;
+        }
+
+        if(isRage == true){
+            //If the shield is active 
+
+            //Get the shield transform 
+            Transform rageT = aura.transform;
+
+            //Make the shield position follow the players position
+            rageT.position = playerController.transform.position;
         }
     }
 
@@ -89,6 +114,11 @@ public class Spells : MonoBehaviour
             {
                //If the user has the shield spell and presses q then call ShieldSpell()
                ShieldSpell();
+            }
+            else if (spellName == "mR")
+            {
+               //If the user has the mage rage spell and presses q then call ShieldSpell()
+               mageRage();
             }
         }
     }
@@ -295,6 +325,77 @@ public class Spells : MonoBehaviour
         Destroy(shield);
         //Mark that the shield is inactive.
         isShield = false;
+    }
+
+    //This will be used for the mage rage spell 
+    public void mageRage(){
+      
+      
+       //Increase the players damage
+        // GameObject[] enemies2 = GameObject.FindGameObjectsWithTag("Enemy");
+        // for(int i = 0; i < enemies2.Length; i++)
+        // {  
+        //     EnemyHealthSystem enemyHealthSystem = enemies2[i].GetComponent<EnemyHealthSystem>();
+        //     enemyHealthSystem.mageRisOn = true;
+        // }
+        
+        //Make the sprite show for the mage rage
+        aura = Instantiate(mRAura, playerController.transform.position, Quaternion.identity);
+        
+        //Indicate that the shield is active 
+        isRage = true;
+
+
+        //Increase the recharge time of the bullets so the player can continously shoot
+        playerController.attackChargeSpeed = 5;
+        
+        //Increase the speed of the bullets
+        playerController.bulletForce = 25;
+
+        //Increase the movement speed of the player
+        playerController.moveSpeed = 20;
+
+
+        StartCoroutine(timer()); //wait for timer before destroying the shield
+
+       
+
+    }
+
+    IEnumerator timer()
+    {
+
+        yield return new WaitForSeconds(5f); //wait for timer to decrease stats back to normal
+
+        
+
+        //After 5 seconds return the stats to the original values.
+        // GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        // for(int i = 0; i < enemies.Length; i++)
+        // {  
+        //     EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
+        //     enemyHealthSystem.mageRisOn = false;
+        // }
+
+        // Color currentColor = spriteRenderer.color;
+
+
+        // currentColor. = 255f;
+        // currentColor.g = 11f;
+        // currentColor.b = 11f;
+        // currentColor.a= 255f;
+
+        playerController.attackChargeSpeed = 2;
+
+        
+        playerController.bulletForce = 12;
+
+        playerController.moveSpeed = 8;
+
+         isRage = false;
+
+        Destroy(aura);
+
     }
 
 }

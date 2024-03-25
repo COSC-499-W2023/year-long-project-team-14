@@ -58,6 +58,10 @@ public class FreezeTest
         //Check that the enemy components are disabled
         Assert.IsTrue(!enemyMovement.enabled); 
 
+        //Check that the ice cube exists
+        GameObject ice = GameObject.Find("IceCube(Clone)");
+        Assert.IsTrue(ice != null); 
+
         //Wait for fireball to hit enemy
         yield return new WaitForSeconds(3.1f);
 
@@ -65,7 +69,7 @@ public class FreezeTest
         Assert.IsTrue(enemyMovement.enabled); 
 
         //Check that enemy bullets get deleted
-        GameObject bullet = GameObject.FindWithTag("EnemyBullet");
+        GameObject bullet = GameObject.Find("EnemyBullet");
         Assert.IsTrue(bullet == null); 
     }
 

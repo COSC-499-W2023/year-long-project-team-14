@@ -54,7 +54,7 @@ public class LightningAbilityTest
         spells.LightningSpell();
 
         //Check that the lightning exists
-        GameObject lightning = GameObject.FindWithTag("lightning");
+        GameObject lightning = GameObject.Find("Lightning(Clone)");
         Assert.IsTrue(lightning != null); 
 
         //Wait for lightningF to hit enemy

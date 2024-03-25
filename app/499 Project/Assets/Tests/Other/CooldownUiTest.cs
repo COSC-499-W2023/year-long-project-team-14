@@ -51,12 +51,14 @@ public class CooldownUiTest : MonoBehaviour
     [UnityTest]
     public IEnumerator CooldownTest()
     {
+        player.GetComponent<Spells>().spellName = "Fireball";
+        player.GetComponent<Spells>().spellCooldown = 10;
+
+        yield return null;
 
         player.GetComponent<Spells>().CastSpell();
         // Assert fill is consistent with spell cooldown
-        Assert.AreEqual(ui.image.fillAmount, (player.GetComponent<Spells>().cooldownTimer / player.GetComponent<Spells>().spellCooldown));
-
-        yield return null;
+        Assert.AreEqual(ui.image.fillAmount, player.GetComponent<Spells>().cooldownTimer / player.GetComponent<Spells>().spellCooldown);
     }
 
 

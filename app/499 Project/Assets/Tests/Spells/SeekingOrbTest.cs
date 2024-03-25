@@ -56,8 +56,8 @@ public class SeekingOrbTest
         spells.SeekingOrb();
 
         //Check that the orbs exists
-        GameObject[] orbs = GameObject.FindGameObjectsWithTag("SeekingOrb");
-        Assert.IsTrue(orbs.Length > 0); 
+        GameObject orb = GameObject.Find("SeekingOrb(Clone)");
+        Assert.IsTrue(orb != null); 
 
         //Wait for the orbs to hit the enemy
         yield return new WaitUntil(() => enemyHealthSystem.enemyHealth < health);
@@ -67,8 +67,8 @@ public class SeekingOrbTest
         Assert.IsTrue(enemyHealthSystem.enemyHealth < health);
 
         //Check that the orbs got deleted after colliding with something
-        orbs = GameObject.FindGameObjectsWithTag("SeekingOrb");
-        Assert.IsTrue(orbs.Length == 0); 
+        orb = GameObject.Find("SeekingOrb(Clone)");
+        Assert.IsTrue(orb == null); 
     }
 
     [UnityTearDown]
