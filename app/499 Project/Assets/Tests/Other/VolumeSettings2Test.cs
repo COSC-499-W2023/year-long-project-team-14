@@ -78,7 +78,7 @@ public class VolumeSettings2Tests
 
         GameMaster gameMaster = go.AddComponent<GameMaster>();
 
-        gameMaster.currentLevel = 6;
+        gameMaster.currentLevel = 10;
         musicManager.gameMaster = gameMaster;
         musicManager.previousLevel = -1; 
 

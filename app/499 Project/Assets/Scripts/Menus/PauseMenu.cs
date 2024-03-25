@@ -23,17 +23,17 @@ public class PauseMenu : MonoBehaviour
 
     public void Update()
     {
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
-        {
-            if (GameIsPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
-        }
+        // if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        // {
+        //     if (GameIsPaused)
+        //     {
+        //         Resume();
+        //     }
+        //     else
+        //     {
+        //         Pause();
+        //     }
+        // }
     }
 
     public void LoadMenu() {
@@ -72,7 +72,8 @@ public class PauseMenu : MonoBehaviour
         if(gameMaster != null)
             gameMaster.SelectButton(resumeButton);
         
-        musicManager.audioSource.Pause();
+        if(musicManager != null)
+            musicManager.audioSource.Pause();
     }
 
     public void Resume()
@@ -82,7 +83,9 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
         EventSystem.current.SetSelectedGameObject(null);
-        musicManager.audioSource.Play();
+
+        if(musicManager != null)
+            musicManager.audioSource.Play();
     }
 }
 
