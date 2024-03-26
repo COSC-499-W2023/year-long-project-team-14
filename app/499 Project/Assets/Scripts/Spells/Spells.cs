@@ -362,6 +362,11 @@ public class Spells : MonoBehaviour
 
     }
 
+    public void ScatterShot()
+    {
+
+    }
+
     IEnumerator timer()
     {
 
