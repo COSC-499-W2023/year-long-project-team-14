@@ -11,14 +11,15 @@ public class LaserScript : MonoBehaviour
     private GameObject start;
     private GameObject middle;
     private GameObject end;
-
+    public LayerMask layerMask;
     public float rotationSpeed;
+    public bool useLaserStart = true;
 
     // Update is called once per frame
     void Update()
     {
         // Create the laser start from the prefab
-        if (start == null)
+        if (start == null && useLaserStart)
         {
             start = Instantiate(laserStart, transform);
             start.transform.localPosition = Vector2.zero;
@@ -35,7 +36,7 @@ public class LaserScript : MonoBehaviour
         float maxLaserSize = 30f;
 
         // Raycast to detect hits
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, maxLaserSize);
+        RaycastHit2D hit = Physics2D.CircleCast(transform.position, 0.25f, transform.right, maxLaserSize, layerMask);
 
         if (hit.collider != null)
         {
@@ -50,10 +51,10 @@ public class LaserScript : MonoBehaviour
 
             // Set the position and scale of the middle sprite
             middle.transform.localPosition = new Vector2(currentLaserSize / 2f, 0f);
-            middle.transform.localScale = new Vector3(currentLaserSize, 1f, 1f);
+            middle.transform.localScale = new Vector3(currentLaserSize + 0.25f, 1f, 1f);
 
             // Set the position of the end sprite
-            end.transform.localPosition = new Vector2(currentLaserSize, 0f);
+            end.transform.localPosition = new Vector2(currentLaserSize + 0.25f, 0f);
 
             // Check if the object hit has the "Player" tag and apply damage
             if (hit.collider.CompareTag("Player"))

@@ -322,12 +322,14 @@ public class PlayerController : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collider)
     {
-        interactable = collider.gameObject;
+        if(collider.tag != "Spike")
+            interactable = collider.gameObject;
     }
 
     public void OnTriggerExit2D(Collider2D collider)
     {
-        interactable = null;
+        if(collider.tag != "Spike")
+            interactable = null;
     }
 
     public Vector2 GetMoveDirection()
