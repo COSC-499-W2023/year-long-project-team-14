@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScatterShootPickup : MonoBehaviour
+public class ScatterShotPickup : MonoBehaviour
 {
     private bool playerIsOver = false;
     GameObject player;
