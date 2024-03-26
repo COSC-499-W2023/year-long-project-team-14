@@ -865,6 +865,7 @@ MonoBehaviour:
   iceCubePrefab: {fileID: 5353155636119205557, guid: 2b44b4606410f624489e839e71c78d63, type: 3}
   shieldPrefab: {fileID: 758289626637381577, guid: b72145187a5b557469b33ef2c319f6e0, type: 3}
   shield: {fileID: 0}
+  ScatterShotPrefab: {fileID: 2690387278358215443, guid: 22bef6c5b47cb4841ab8a2c760e3e831, type: 3}
   mRAura: {fileID: 4103782466199260733, guid: e9bf3a87404f347ef826f289185f620e, type: 3}
   aura: {fileID: 0}
   isShield: 0
@@ -876,6 +877,9 @@ MonoBehaviour:
   chadSound: {fileID: 2376870225415034407}
   freezeFlash: {fileID: 8839434359703360610, guid: 8d1a06cceef4e0a40bf0f15c7971b23e, type: 3}
   iceCubeBreak: {fileID: 6302075490922154978, guid: f6f228fdec1e39d4f97cbe2539b2c9d6, type: 3}
+  bulletsAmount: 10
+  startAngle: 0
+  endAngle: 360
 --- !u!82 &6020226581851858952
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1423,6 +1427,7 @@ MonoBehaviour:
   freezeSprite: {fileID: -58245785, guid: fa739449f8985d74aa6afb409a7beb86, type: 3}
   shieldSprite: {fileID: 21300000, guid: ef1884aedfd4e3a46a8dc138f602d5a1, type: 3}
   mRSprite: {fileID: 668703104, guid: 97bb028556ef449f5bbd3c83f7c405ec, type: 3}
+  scatterSprite: {fileID: 1819548605, guid: 7aa2071947da1894db5df32164a6be12, type: 3}
   gameMaster: {fileID: 0}
   button: {fileID: 5445237934524193817}
   ltIcon: {fileID: 21300000, guid: 5407b74134b1eb844a010a559f91aaf9, type: 3}

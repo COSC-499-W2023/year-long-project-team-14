@@ -17,9 +17,10 @@ public class Spells : MonoBehaviour
     public GameObject iceCubePrefab;
     public GameObject shieldPrefab;
     public GameObject shield;
+    public GameObject ScatterShotPrefab;
 
     //This is used to display the sprite for mage rage
-     public GameObject mRAura;
+    public GameObject mRAura;
      public GameObject aura;
 
 
@@ -92,7 +93,7 @@ public class Spells : MonoBehaviour
             cooldownTimer = 0;
 
             //Cast the correct spell that the user has equipped
-            if(spellName == "Fireball")
+            if (spellName == "Fireball")
             {
                 FireballSpell();
             }
@@ -124,7 +125,7 @@ public class Spells : MonoBehaviour
             }
             else if (spellName == "ScatterShot")
             {
-                StartCoroutine(FireScatter());
+                scatterShot();
             }
         }
     }
@@ -368,18 +369,10 @@ public class Spells : MonoBehaviour
 
     }
 
-    private IEnumerator FireScatter()
-    {
-        yield return StartCoroutine(Fire());
-    }
-
-    private IEnumerator Fire()
-    {
-        yield return new WaitForSeconds(1f); // 1 second delay before first shots fired
-        scatterShot();
-    }
     public void scatterShot()
     {
+        GameObject Scatter = Instantiate(ScatterShotPrefab, playerController.gunFollow.position, Quaternion.identity);
+
         float angleStep = (endAngle - startAngle) / bulletsAmount;
         float angle = startAngle;
 
