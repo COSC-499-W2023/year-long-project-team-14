@@ -500,10 +500,10 @@ GameObject:
   m_Component:
   - component: {fileID: 928117774666989796}
   - component: {fileID: 1340498746768478471}
-  - component: {fileID: 12181679782506605}
+  - component: {fileID: 6676902231032024196}
   m_Layer: 0
   m_Name: Scatter Shot Pickup
-  m_TagString: summonChad
+  m_TagString: ScatterShot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -570,7 +570,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5}
   m_EdgeRadius: 0
---- !u!114 &12181679782506605
+--- !u!114 &6676902231032024196
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -579,12 +579,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3417158002455029902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d030cf5c95acc6419085899ac34db1d, type: 3}
+  m_Script: {fileID: 11500000, guid: 29cf7dadd64452f42a268bbd51eca34f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bobbingAmount: 0.1
   bobbingSpeed: 0.5
-  prompt: {fileID: 2599116138116726155}
+  prompt: {fileID: 0}
   gameMaster: {fileID: 0}
   promptIcon: {fileID: 0}
   xPrompt: {fileID: 0}
