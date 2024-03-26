@@ -30,12 +30,6 @@ public class OptionsMenu : MonoBehaviour
         PlayerPrefs.SetFloat("MusicVolume", volume);
     }
 
-    public void SetVoiceVolume(float volume)
-    {
-        audioMixer.SetFloat("VoiceVolume", volume);
-        PlayerPrefs.SetFloat("VoiceVolume", volume);
-    }
-
     public void SetFirstSelected()
     {
         EventSystem.current.SetSelectedGameObject(firstSelected);

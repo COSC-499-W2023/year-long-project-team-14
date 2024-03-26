@@ -70,8 +70,11 @@ public class healthSystem : MonoBehaviour
         if(life >= 1 && isInvic == false)
         {
             //Decrease health by 1
-            life--;
-            hearts[life].SetActive(false);
+            if(!chad)
+            {
+                life--;
+                hearts[life].SetActive(false);
+            }
            
            //Make the player invicible 
            isInvic = true;
