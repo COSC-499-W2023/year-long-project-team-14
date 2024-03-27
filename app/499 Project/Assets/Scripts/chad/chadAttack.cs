@@ -38,29 +38,6 @@ public class chadAttack : MonoBehaviour
         Points2 = new List<Vector3>();
         Points3 = new List<Vector3>();
 
-        //Get difficulty
-        diff = PlayerPrefs.GetInt("difficulty");
-
-        //Set enemy fire rate
-        if(diff == 1) 
-            shootInterval /= 1f;
-        else if(diff == 2)
-            shootInterval /= 1.5f;
-        else if(diff == 3)
-            shootInterval /= 2f;
-        else if(diff == 4)
-            shootInterval /= 2.5f;
-        
-        //Set enemy bullet speed
-        if(diff == 1) 
-            bulletSpeed *= 1f;
-        else if(diff == 2)
-            bulletSpeed *= 1.33f;
-        else if(diff == 3)
-            bulletSpeed *= 1.67f;
-        else if(diff == 4)
-            bulletSpeed *= 2f;
-
         //Prevent enemies from shooting at the start of a level
         lastShootTime = Time.time + Random.Range(0, shootInterval/2);
     }
@@ -177,12 +154,25 @@ public class chadAttack : MonoBehaviour
     {
         if(players.Length > 1)
         {
-            float distance1 = Vector3.Distance(gameObject.transform.position, players[0].transform.position);
-            float distance2 = Vector3.Distance(gameObject.transform.position, players[1].transform.position);
-            if(distance2 < distance1)
-                targetPlayer = players[1];
-            else
-                targetPlayer = players[0];
+            float shortestDistance = Vector3.Distance(gameObject.transform.position, players[0].transform.position);
+            targetPlayer = players[0];
+
+            if(players[0].GetComponent<EnemyHealthSystem>().enemyHealth <= 0)
+                shortestDistance = 999;
+            
+            for(int i = 1; i < players.Length; i++)
+            {
+                float distance = Vector3.Distance(gameObject.transform.position, players[i].transform.position);
+
+                if(players[i].GetComponent<EnemyHealthSystem>().enemyHealth <= 0)
+                    distance = 999;
+
+                if(distance < shortestDistance)
+                {
+                    shortestDistance = distance;
+                    targetPlayer = players[i];
+                }
+            }
         }
         else
             targetPlayer = players[0];

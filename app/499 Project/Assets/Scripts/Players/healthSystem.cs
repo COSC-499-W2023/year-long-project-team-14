@@ -34,7 +34,7 @@ public class healthSystem : MonoBehaviour
     // Damage player if colliding with enemy or bullet
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet") ){
+        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet")){
             takeDamage();
         }
     }
@@ -55,14 +55,26 @@ public class healthSystem : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Laser"))
+        {
+            takeDamage();
+
+        }
+    }
+
     public void takeDamage()
     {
         //Check if the player has >= health and if the player is temporarly invincible
         if(life >= 1 && isInvic == false)
         {
             //Decrease health by 1
-            life--;
-            hearts[life].SetActive(false);
+            if(!chad)
+            {
+                life--;
+                hearts[life].SetActive(false);
+            }
            
            //Make the player invicible 
            isInvic = true;

@@ -109,10 +109,7 @@ public class TransitionTest
         SceneManager.LoadScene("GameScene");
         yield return null;
 
-        //Instantiate GameMaster and Pathfinder
-        // pathfinder = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Other/Pathfinder.prefab")) as GameObject;
-        // gameMaster = (GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Other/GameMaster.prefab")) as GameObject).GetComponent<GameMaster>();
-        
+        //Get the game master
         gameMaster = GameObject.FindWithTag("GameMaster").GetComponent<GameMaster>();
         gameMaster.unitTest = true;
         yield return null;
@@ -142,7 +139,7 @@ public class TransitionTest
         //Transition to next level
         gameMaster.LevelComplete();
         yield return null;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.6f);
 
         //Check that player health did not increase
         Assert.IsTrue(gameMaster.healthSystem1.life == 1);
@@ -151,6 +148,80 @@ public class TransitionTest
         Assert.IsTrue(gameMaster.currentLevel == 4);
         Assert.IsTrue(gameMaster.level != level);
         Assert.IsTrue(gameMaster.inShop == true);
+
+        //Get a list of all 3 spells that spawned in
+        GameObject spell = null;
+        List<GameObject> spells = new List<GameObject>();
+
+        spell = GameObject.FindWithTag("Fireball");
+        if(spell != null)
+            spells.Add(spell);
+        spell = null;
+
+        spell = GameObject.FindWithTag("SeekingOrb");
+        if(spell != null)
+            spells.Add(spell);
+        spell = null;
+
+        spell = GameObject.FindWithTag("Freeze");
+        if(spell != null)
+            spells.Add(spell);
+        spell = null;
+
+        spell = GameObject.FindWithTag("lightning");
+        if(spell != null)
+            spells.Add(spell);
+        spell = null;
+
+        spell = GameObject.FindWithTag("Shield");
+        if(spell != null)
+            spells.Add(spell);
+        spell = null;
+
+        spell = GameObject.FindWithTag("mageRage");
+        if(spell != null)
+            spells.Add(spell);
+        spell = null;
+
+        GameObject[] s = GameObject.FindGameObjectsWithTag("summonChad");
+        for(int i = 0; i < s.Length; i++)
+            spells.Add(s[i]);
+        spell = null;
+
+        Debug.Log(spells.Count);
+
+        // spell = GameObject.FindWithTag("summonChad");
+        // if(spell != null)
+        //     spells.Add(spell);
+        // spell = null;
+
+        // spell = GameObject.FindWithTag("RageMage");
+        // if(spell != null)
+        //     spells.Add(spell);
+        // spell = null;
+
+        // spell = GameObject.FindWithTag("Rainbow");
+        // if(spell != null)
+        //     spells.Add(spell);
+        // spell = null;
+
+        // spell = GameObject.FindWithTag("ScatterShot");
+        // if(spell != null)
+        //     spells.Add(spell);
+        // spell = null;
+
+        // spell = GameObject.FindWithTag("Laser");
+        // if(spell != null)
+        //     spells.Add(spell);
+        // spell = null;
+
+        //Check that there are 3 spells
+        Assert.IsTrue(spells.Count == 3);
+
+        //Check that they arent the same
+        Assert.IsTrue(spells[0] != spells[1]);
+        Assert.IsTrue(spells[0] != spells[2]);
+        Assert.IsTrue(spells[2] != spells[1]);
 
         //Transition to next level
         gameMaster.LevelComplete();

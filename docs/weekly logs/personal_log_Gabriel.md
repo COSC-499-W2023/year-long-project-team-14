@@ -1,4 +1,25 @@
 # Personal Log - Gabriel Mercier
+## Week 11 - T2
+- Start Date: March 18
+- End Date: March 24
+  
+### Tasks I worked on:
+![](screenshots/t2Week11_peerEval_Gabriel.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Work on final features for the project
+* Evaluate things that I need to get done from here to the end
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Made Spinning laser level obstacle
+* Unit tests for laser
+
+### Among these tasks, which have you completed/in progress in the last week?
+I completed all my tasks.
+
+***
 ## Week 10 - T2
 - Start Date: March 11
 - End Date: March 17
