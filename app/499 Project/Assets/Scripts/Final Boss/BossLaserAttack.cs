@@ -9,6 +9,9 @@ public class BossLaserAttack : MonoBehaviour
     public GameObject laser;
     public GameObject quadLaser;
     public GameObject slime;
+    public GameObject bonk;
+    public GameObject orc;
+    public GameObject triple;
     public EnemyMovement em;
     public MiniBossHealthSystem hs;
     public float slimeSpeed = 50.0f;
@@ -127,57 +130,69 @@ public class BossLaserAttack : MonoBehaviour
 
     private IEnumerator AlternatingShooting()
     {
+
         while (firingEnabled == true) 
         {
             yield return new WaitForSeconds(3f / (((diff - 1) / 2) + 1)); // delay between attacks
-            int rand = Random.Range(0, 3);
+            int rand = Random.Range(0, 100);
 
             //PHASE 1 ATTACKS
             if(phase2 == false)
             {
-                if(rand == 0)
+                if(rand < 25)
                 {
                     yield return StartCoroutine(ShootLaser());
                     yield return new WaitForSeconds(1f); // delay between attacks
                 }
-                else if(rand == 1 && transform.position.x > 0)
+                else if(rand < 50 && transform.position.x > 0)
                 {
-                    yield return StartCoroutine(ShootSlimeLeft());
+                    yield return StartCoroutine(TripleShotSlimesLeft(2));
                     yield return new WaitForSeconds(1f); // delay between attacks
                 }
-                else if(rand == 1 && transform.position.x < 0)
+                else if(rand < 50 && transform.position.x < 0)
                 {
-                    yield return StartCoroutine(ShootSlimeRight());
+                    yield return StartCoroutine(TripleShotSlimesRight(2));
                     yield return new WaitForSeconds(1f); // delay between attacks
                 }
-                else if(rand == 2)
+                else if(rand < 75)
                 {
                     yield return StartCoroutine(SeekerShot());
                     yield return new WaitForSeconds(1f); // delay between attacks
                 }
+                else if(rand < 100)
+                {
+                    yield return StartCoroutine(FireSingleBurst());
+                    yield return new WaitForSeconds(1f); // delay between attacks
+                }
+                
             }
 
             //PHASE 2 ATTACKS
             if(phase2 == true)
             {
-                if(rand == 0)
+                if(rand < 25)
                 {
                     yield return StartCoroutine(ShootFourLasers());
                     yield return new WaitForSeconds(1f); // delay between attacks
                 }
-                else if(rand == 1 && transform.position.x > 0)
+                else if(rand < 50 && transform.position.x > 0)
                 {
-                    yield return StartCoroutine(TripleShotSlimesLeft());
+                    yield return StartCoroutine(TripleShotSlimesLeft(4));
                     yield return new WaitForSeconds(1f); // delay between attacks
                 }
-                else if(rand == 1 && transform.position.x < 0)
+                else if(rand < 50 && transform.position.x < 0)
                 {
-                    yield return StartCoroutine(TripleShotSlimesRight());
+                    yield return StartCoroutine(TripleShotSlimesRight(4));
                     yield return new WaitForSeconds(1f); // delay between attacks
                 }
-                else if(rand == 2)
+                else if(rand < 75)
                 {
                     yield return StartCoroutine(SeekerShots());
+                    yield return new WaitForSeconds(1f); // delay between attacks
+                }
+                else if(rand < 100)
+                {
+                    yield return StartCoroutine(FireDoubleSpiral());
                     yield return new WaitForSeconds(1f); // delay between attacks
                 }
             }
@@ -365,36 +380,92 @@ public class BossLaserAttack : MonoBehaviour
         }
     }
 
-    private IEnumerator ShootSlimeLeft()
+    private IEnumerator ShootEnemiesLeft()
     {
          if(firingEnabled)
         {
+            GameObject enemyPrefab = null;
+            int amount = 0;
+            int rand = Random.Range(0, 4);
+            if(rand == 0)
+            {
+                enemyPrefab = slime;
+                amount = 6;
+            }
+            else if(rand == 1)
+            {
+                enemyPrefab = bonk;
+                amount = 3;
+            }
+            else if(rand == 2)
+            {
+                enemyPrefab = orc;
+                amount = 4;
+            }
+            else if(rand == 3)
+            {
+                enemyPrefab = triple;
+                amount = 2;
+            }
+
             animator.SetTrigger("ShootLeft");
             yield return new WaitForSeconds(0.25f);
-            GameObject slimeClone = Instantiate(slime, transform.position + new Vector3(-2.0f, 0.75f, 0), Quaternion.identity);
-            slimeClone.GetComponent<Rigidbody2D>().AddForce(-transform.right * slimeSpeed);
 
+            for(int i = 0; i < amount; i++)
+            {
+                GameObject enemy = Instantiate(enemyPrefab, transform.position + new Vector3(-2.0f, 0.75f, 0), Quaternion.Euler(0, 0, i * -20));
+                enemy.GetComponent<Rigidbody2D>().AddForce(-enemy.transform.right * slimeSpeed);
+                enemy.transform.rotation = Quaternion.identity;
+            }
         }
         yield return null;
     }
 
-    private IEnumerator ShootSlimeRight()
+    private IEnumerator ShootEnemiesRight()
     {
         if(firingEnabled)
         {
+            GameObject enemyPrefab = null;
+            int amount = 0;
+            int rand = Random.Range(0, 4);
+            if(rand == 0)
+            {
+                enemyPrefab = slime;
+                amount = 6;
+            }
+            else if(rand == 1)
+            {
+                enemyPrefab = bonk;
+                amount = 3;
+            }
+            else if(rand == 2)
+            {
+                enemyPrefab = orc;
+                amount = 4;
+            }
+            else if(rand == 3)
+            {
+                enemyPrefab = triple;
+                amount = 2;
+            }
+
             animator.SetTrigger("ShootRight");
             yield return new WaitForSeconds(0.25f);
-            GameObject slimeClone = Instantiate(slime, transform.position + new Vector3(2.0f, 0.75f, 0), Quaternion.identity);
-            slimeClone.GetComponent<Rigidbody2D>().AddForce(transform.right * slimeSpeed);
 
+            for(int i = 0; i < amount; i++)
+            {
+                GameObject enemy = Instantiate(enemyPrefab, transform.position + new Vector3(2.0f, 0.75f, 0), Quaternion.Euler(0, 0, i * -20));
+                enemy.GetComponent<Rigidbody2D>().AddForce(enemy.transform.right * slimeSpeed);
+                enemy.transform.rotation = Quaternion.identity;
+            }
         }
         yield return null;
     }
 
-    private IEnumerator TripleShotSlimesLeft()
+    private IEnumerator TripleShotSlimesLeft(int n)
     {
         
-        for(int i = 1 ; i <= 3; i++)
+        for(int i = 1 ; i <= n; i++)
         {
             if(firingEnabled)
             {
@@ -407,9 +478,9 @@ public class BossLaserAttack : MonoBehaviour
         }
     }
 
-    private IEnumerator TripleShotSlimesRight()
+    private IEnumerator TripleShotSlimesRight(int n)
     {
-        for(int i = 1 ; i <= 3; i++)
+        for(int i = 1 ; i <= n; i++)
         {
             if(firingEnabled)
             {
