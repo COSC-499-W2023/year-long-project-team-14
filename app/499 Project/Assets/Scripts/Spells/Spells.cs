@@ -44,6 +44,7 @@ public class Spells : MonoBehaviour
     [SerializeField] private AudioSource lightningSound;
     [SerializeField] private AudioSource seekingOrbSound;
     [SerializeField] private AudioSource chadSound;
+    [SerializeField] private AudioSource ScatterShotSound;
 
     public GameObject freezeFlash;
     public GameObject iceCubeBreak;
@@ -371,6 +372,8 @@ public class Spells : MonoBehaviour
 
     public void scatterShot()
     {
+        //Play shoot scatter shot sound effect
+        ScatterShotSound.Play();
         GameObject Scatter = Instantiate(ScatterShotPrefab, playerController.gunFollow.position, Quaternion.identity);
 
         float angleStep = (endAngle - startAngle) / bulletsAmount;
