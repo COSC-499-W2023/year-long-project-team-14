@@ -17,7 +17,12 @@ public class BossLaserAttack : MonoBehaviour
     public float slimeSpeed = 50.0f;
     public float bulletForce = 50;
     public GameObject clone;
+    public bool phase1 = true;
     public bool phase2 = false;
+    public bool phase3 = false;
+    public bool phase4 = false;
+    public bool phase5 = false;
+    public bool phase6 = false;
 
     [SerializeField]
     private float rateOfFire = 1f; // Set the rate of fire for circular burst
@@ -130,6 +135,10 @@ public class BossLaserAttack : MonoBehaviour
 
     private IEnumerator AlternatingShooting()
     {
+        bool spawnEnemies1 = true;
+        bool spawnEnemies2 = true;
+        bool spawnEnemies3 = true;
+        bool spawnEnemies4 = true;
 
         while (firingEnabled == true) 
         {
@@ -137,22 +146,54 @@ public class BossLaserAttack : MonoBehaviour
             int rand = Random.Range(0, 100);
 
             //PHASE 1 ATTACKS
-            if(phase2 == false)
+            if(phase2 && spawnEnemies1)
+            {
+                if(transform.position.x > 0)
+                    StartCoroutine(ShootEnemiesLeft(0));
+                else
+                    StartCoroutine(ShootEnemiesRight(0));
+                spawnEnemies1 = false;
+            }
+            else if(phase3 && spawnEnemies2)
+            {
+                if(transform.position.x > 0)
+                    StartCoroutine(ShootEnemiesLeft(1));
+                else
+                    StartCoroutine(ShootEnemiesRight(1));
+                spawnEnemies2 = false;
+            }
+            else if(phase5 && spawnEnemies3)
+            {
+                if(transform.position.x > 0)
+                    StartCoroutine(ShootEnemiesLeft(2));
+                else
+                    StartCoroutine(ShootEnemiesRight(2));
+                spawnEnemies3 = false;
+            }
+            else if(phase6 && spawnEnemies4)
+            {
+                if(transform.position.x > 0)
+                    StartCoroutine(ShootEnemiesLeft(3));
+                else
+                    StartCoroutine(ShootEnemiesRight(3));
+                spawnEnemies4 = false;
+            }
+            else if(phase4 == false)
             {
                 if(rand < 25)
                 {
                     yield return StartCoroutine(ShootLaser());
-                    yield return new WaitForSeconds(1f); // delay between attacks
+                    yield return new WaitForSeconds(0.5f); // delay between attacks
                 }
                 else if(rand < 50 && transform.position.x > 0)
                 {
                     yield return StartCoroutine(TripleShotSlimesLeft(2));
-                    yield return new WaitForSeconds(1f); // delay between attacks
+                    yield return new WaitForSeconds(0.25f); // delay between attacks
                 }
                 else if(rand < 50 && transform.position.x < 0)
                 {
                     yield return StartCoroutine(TripleShotSlimesRight(2));
-                    yield return new WaitForSeconds(1f); // delay between attacks
+                    yield return new WaitForSeconds(0.25f); // delay between attacks
                 }
                 else if(rand < 75)
                 {
@@ -162,28 +203,28 @@ public class BossLaserAttack : MonoBehaviour
                 else if(rand < 100)
                 {
                     yield return StartCoroutine(FireSingleBurst());
-                    yield return new WaitForSeconds(1f); // delay between attacks
+                    yield return new WaitForSeconds(0.5f); // delay between attacks
                 }
                 
             }
 
             //PHASE 2 ATTACKS
-            if(phase2 == true)
+            else if(phase4 == true)
             {
                 if(rand < 25)
                 {
                     yield return StartCoroutine(ShootFourLasers());
-                    yield return new WaitForSeconds(1f); // delay between attacks
+                    yield return new WaitForSeconds(0.5f); // delay between attacks
                 }
                 else if(rand < 50 && transform.position.x > 0)
                 {
                     yield return StartCoroutine(TripleShotSlimesLeft(4));
-                    yield return new WaitForSeconds(1f); // delay between attacks
+                    yield return new WaitForSeconds(0.25f); // delay between attacks
                 }
                 else if(rand < 50 && transform.position.x < 0)
                 {
                     yield return StartCoroutine(TripleShotSlimesRight(4));
-                    yield return new WaitForSeconds(1f); // delay between attacks
+                    yield return new WaitForSeconds(0.25f); // delay between attacks
                 }
                 else if(rand < 75)
                 {
@@ -193,7 +234,7 @@ public class BossLaserAttack : MonoBehaviour
                 else if(rand < 100)
                 {
                     yield return StartCoroutine(FireDoubleSpiral());
-                    yield return new WaitForSeconds(1f); // delay between attacks
+                    yield return new WaitForSeconds(0.5f); // delay between attacks
                 }
             }
         }
@@ -236,7 +277,7 @@ public class BossLaserAttack : MonoBehaviour
         {
             for (int i = 0; i < bulletsAmount + 1; i++)
             {
-                GameObject bul = BulletSprayPool.Instance.GetBullet();
+                GameObject bul = BulletSprayPool.Instance.GetBossBullet();
 
                 float bulDirX = transform.position.x + Mathf.Sin((angle * Mathf.PI) / 180f);
                 float bulDirY = transform.position.y + Mathf.Cos((angle * Mathf.PI) / 180f);
@@ -264,7 +305,7 @@ public class BossLaserAttack : MonoBehaviour
             {
                 for (int j = 0; j <= 1; j++)
                 {
-                    GameObject bul = BulletSprayPool.Instance.GetBullet();
+                    GameObject bul = BulletSprayPool.Instance.GetBossBullet();
 
                     float bulDirX = transform.position.x + Mathf.Sin(((spiralAngle + 180f * j) * Mathf.PI) / 180f);
                     float bulDirY = transform.position.y + Mathf.Cos(((spiralAngle + 180f * j) * Mathf.PI) / 180f);
@@ -304,7 +345,7 @@ public class BossLaserAttack : MonoBehaviour
         {
             if(firingEnabled == true)
             {
-                GameObject bul = BulletSprayPool.Instance.GetBullet();
+                GameObject bul = BulletSprayPool.Instance.GetBossBullet();
 
                 float rand = Random.Range(0, 360);
 
@@ -380,29 +421,28 @@ public class BossLaserAttack : MonoBehaviour
         }
     }
 
-    private IEnumerator ShootEnemiesLeft()
+    private IEnumerator ShootEnemiesLeft(int n)
     {
          if(firingEnabled)
         {
             GameObject enemyPrefab = null;
             int amount = 0;
-            int rand = Random.Range(0, 4);
-            if(rand == 0)
+            if(n == 0)
             {
                 enemyPrefab = slime;
                 amount = 6;
             }
-            else if(rand == 1)
+            else if(n == 1)
             {
                 enemyPrefab = bonk;
                 amount = 3;
             }
-            else if(rand == 2)
+            else if(n == 2)
             {
                 enemyPrefab = orc;
                 amount = 4;
             }
-            else if(rand == 3)
+            else if(n == 3)
             {
                 enemyPrefab = triple;
                 amount = 2;
@@ -421,29 +461,28 @@ public class BossLaserAttack : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator ShootEnemiesRight()
+    private IEnumerator ShootEnemiesRight(int n)
     {
         if(firingEnabled)
         {
             GameObject enemyPrefab = null;
             int amount = 0;
-            int rand = Random.Range(0, 4);
-            if(rand == 0)
+            if(n == 0)
             {
                 enemyPrefab = slime;
                 amount = 6;
             }
-            else if(rand == 1)
+            else if(n == 1)
             {
                 enemyPrefab = bonk;
                 amount = 3;
             }
-            else if(rand == 2)
+            else if(n == 2)
             {
                 enemyPrefab = orc;
                 amount = 4;
             }
-            else if(rand == 3)
+            else if(n == 3)
             {
                 enemyPrefab = triple;
                 amount = 2;
@@ -591,9 +630,25 @@ public class BossLaserAttack : MonoBehaviour
             clone.transform.Rotate(new Vector3(0,0,50*Time.deltaTime));
         }
 
-        if (hs.enemyHealth < hs.healthAmount * 0.5f)
+        if (hs.enemyHealth < hs.healthAmount * 0.8f)
         {
             phase2 = true;
+        }
+        if (hs.enemyHealth < hs.healthAmount * 0.6f)
+        {
+            phase3 = true;
+        }
+        if (hs.enemyHealth < hs.healthAmount * 0.5f)
+        {
+            phase4 = true;
+        }
+        if (hs.enemyHealth < hs.healthAmount * 0.4f)
+        {
+            phase5 = true;
+        }
+        if (hs.enemyHealth < hs.healthAmount * 0.2f)
+        {
+            phase6 = true;
         }
 
         if(hs.enemyHealth <= 0)

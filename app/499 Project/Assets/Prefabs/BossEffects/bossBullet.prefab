@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5168846991300429057}
-  - component: {fileID: 4901533624768407957}
   - component: {fileID: 2460096030383143430}
   - component: {fileID: 6723681892528845747}
   - component: {fileID: 4642113717917605397}
   - component: {fileID: 6211748107417569255}
+  - component: {fileID: -4325135601244061809}
   m_Layer: 10
   m_Name: bossBullet
   m_TagString: EnemyBullet
@@ -36,20 +36,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4901533624768407957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4058401055982841037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23b02cf7045a89e44bcbc38e5ac08df6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bounces: 1
-  impactEffect: {fileID: 8485985454199790694, guid: 09e4cd0310ce5a64b88201bde5c67eb7, type: 3}
 --- !u!212 &2460096030383143430
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -185,3 +171,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-4325135601244061809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4058401055982841037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6281a8cf253da6141a80c85d8183a7da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactEffect: {fileID: 8485985454199790694, guid: 09e4cd0310ce5a64b88201bde5c67eb7, type: 3}
