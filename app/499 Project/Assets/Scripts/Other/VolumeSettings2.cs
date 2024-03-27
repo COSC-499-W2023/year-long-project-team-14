@@ -101,6 +101,7 @@ public class MusicManager : MonoBehaviour
                 audioSource.Stop();
                 audioSource.clip = minibossTrack;
                 audioSource.Play();
+                CancelInvoke();
             }
             else if(gameMaster.currentLevel == 11)
             {
