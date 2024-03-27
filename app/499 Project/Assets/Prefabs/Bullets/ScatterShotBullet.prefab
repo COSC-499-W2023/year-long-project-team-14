@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4158677531171865101}
   - component: {fileID: 9055567832381317733}
   - component: {fileID: -3430057067120130861}
+  - component: {fileID: 6455337159943027160}
   m_Layer: 6
   m_Name: ScatterShotBullet
   m_TagString: Player_bullet
@@ -134,3 +135,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactEffect: {fileID: 2180493595720893571, guid: 6a288e87caca7184385cf3297155fbfc, type: 3}
+  moveSpeed: 5
+  bounces: 5
+--- !u!50 &6455337159943027160
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7485150222391817449}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: 01818fc205c10014190814bd3825adcc, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

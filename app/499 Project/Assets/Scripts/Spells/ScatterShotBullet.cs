@@ -6,8 +6,9 @@ public class ScatterShotBullet : MonoBehaviour
 {
     public GameObject impactEffect;
     private Vector2 moveDirection;
-    private float moveSpeed;
+    public float moveSpeed;
     public int bounces = 5;
+    private Rigidbody2D rb;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -20,7 +21,19 @@ public class ScatterShotBullet : MonoBehaviour
                 GameObject clone = Instantiate(impactEffect, transform.position, transform.rotation);
                 Destroy(clone, 1.0f);
             }
-            bounces--;
+            else
+            {
+                // Get the contact normal (direction the bullet hits the wall)
+                Vector2 normal = collision.GetContact(0).normal;
+
+                // Reflect the bullet's velocity off the wall
+                Vector2 reflectedVelocity = Vector2.Reflect(rb.velocity, normal);
+
+                // Update the bullet's velocity to the reflected velocity
+                rb.velocity = reflectedVelocity;
+
+                bounces--;
+            }
         }
 
         //Break bullet if colliding with enemy
@@ -36,6 +49,9 @@ public class ScatterShotBullet : MonoBehaviour
     void Start()
     {
         moveSpeed = 5f;
+        rb = GetComponent<Rigidbody2D>();
+        // Set initial velocity
+        rb.velocity = moveDirection * moveSpeed *5;
     }
 
     // Update is called once per frame
