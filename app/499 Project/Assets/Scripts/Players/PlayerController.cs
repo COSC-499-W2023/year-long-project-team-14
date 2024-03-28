@@ -322,10 +322,6 @@ public class PlayerController : MonoBehaviour
                 //if the player interacts with the shield pickup call the function Interact() in the script ShieldPickup
                 interactable.GetComponent<mageRagePickup>().Interact();
             }
-            else if (tag == "ScatterShot")
-            {
-                interactable.GetComponent<ScatterShotPickup>().Interact();
-            }
         }
     }
 
