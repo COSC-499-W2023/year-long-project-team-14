@@ -47,11 +47,11 @@ public class MiniBossHealthSystem : MonoBehaviour
         if(diff == 1) 
             enemyHealth = (int)Mathf.Round(enemyHealth * 1f);
         else if(diff == 2)
-            enemyHealth = (int)Mathf.Round(enemyHealth * 1.5f);
+            enemyHealth = (int)Mathf.Round(enemyHealth * 1.33f);
         else if(diff == 3)
-            enemyHealth = (int)Mathf.Round(enemyHealth * 2f);
+            enemyHealth = (int)Mathf.Round(enemyHealth * 1.67f);
         else if(diff == 4)
-            enemyHealth = (int)Mathf.Round(enemyHealth * 2.5f);
+            enemyHealth = (int)Mathf.Round(enemyHealth * 2f);
 
         healthAmount = enemyHealth;
         

@@ -417,6 +417,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6461595776689869080}
+  - component: {fileID: 3098334304864082715}
   - component: {fileID: 4533660160452610915}
   - component: {fileID: 8940415145431181823}
   - component: {fileID: 4553109566687864018}
@@ -424,11 +425,9 @@ GameObject:
   - component: {fileID: 7133197041792628243}
   - component: {fileID: 6677208003184006893}
   - component: {fileID: 2515169435139231015}
-  - component: {fileID: 8532526182953842053}
   - component: {fileID: 3800158664806633070}
   - component: {fileID: 6000421223058309759}
   - component: {fileID: 6698284275904801921}
-  - component: {fileID: 3098334304864082715}
   m_Layer: 9
   m_Name: StoneBoss
   m_TagString: Boss
@@ -454,6 +453,52 @@ Transform:
   - {fileID: 5329429154762806141}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3098334304864082715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3785175334044080466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc16a78fbc6ed4473ad639d33476ad52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossBulletPrefab: {fileID: 8066723354652685289, guid: 8b745e48bd80c224a8a6f1d925271c8f, type: 3}
+  animator: {fileID: 0}
+  laserPrefab: {fileID: 6501547363171174366, guid: 84b090c2e3cd54241879ee0e53818379, type: 3}
+  quadLaser: {fileID: 934005786809906075, guid: 87e3013ee2aa2614990b1a769fdafe2c, type: 3}
+  slime: {fileID: 5701880002770581090, guid: 2ea9238c69ef458479c9e29fd0cc6d63, type: 3}
+  bonk: {fileID: 3279354335901742904, guid: 631116f9e5af3194d937127daacdc445, type: 3}
+  orc: {fileID: 604422109994451894, guid: 521fad6bc7d5e4f4e9157bef5ee8e044, type: 3}
+  triple: {fileID: 6988037432058799580, guid: f7a72d5dbc80e4844b8d38cf929a774c, type: 3}
+  em: {fileID: 0}
+  hs: {fileID: 0}
+  slimeSpeed: 15000
+  bulletForce: 5
+  laser: {fileID: 6501547363171174366, guid: 84b090c2e3cd54241879ee0e53818379, type: 3}
+  phase1: 1
+  phase2: 0
+  phase3: 0
+  phase4: 0
+  phase5: 0
+  phase6: 0
+  laserSpinSpeed: 24
+  seekerShotAmount: 2
+  seekerShotsAmount: 4
+  rateOfFire: 2
+  spiralRateOfFire: 0.1
+  fireAtPlayerRateOfFire: 0.08
+  fireAtPlayerAmount: 40
+  waitTime: 2
+  totalShotsPerBurst: 3
+  bulletsAmount: 12
+  spiralAngleIncrease: 12
+  startAngle: 0
+  endAngle: 360
+  firingEnabled: 1
+  totalSpirals: 0.5
 --- !u!212 &4533660160452610915
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -518,7 +563,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 1000
   m_LinearDrag: 10
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -877,30 +922,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8532526182953842053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3785175334044080466}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67fbf6db10821324882f8833e8fee50e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rateOfFire: 2
-  spiralRateOfFire: 0.1
-  fireAtPlayerRateOfFire: 0.08
-  fireAtPlayerAmount: 40
-  waitTime: 2
-  totalShotsPerBurst: 3
-  bulletsAmount: 15
-  spiralAngleIncrease: 12
-  startAngle: 0
-  endAngle: 360
-  firingEnabled: 1
-  totalSpirals: 0.5
 --- !u!114 &3800158664806633070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -916,7 +937,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   shoot: {fileID: 0}
   bossAttack: {fileID: 0}
-  enemyHealth: 20
+  enemyHealth: 60
   enemyCollider: {fileID: 0}
   ladder: {fileID: 0}
   portal: {fileID: 0}
@@ -937,7 +958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0}
-  movementSpeed: 20
+  movementSpeed: 200
   nextWaypointDistance: 15
   chargeDuration: 0
   waitTime: 0
@@ -975,41 +996,3 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!114 &3098334304864082715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3785175334044080466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc16a78fbc6ed4473ad639d33476ad52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossBulletPrefab: {fileID: 8066723354652685289, guid: 8b745e48bd80c224a8a6f1d925271c8f, type: 3}
-  animator: {fileID: 0}
-  laser: {fileID: 6501547363171174366, guid: 84b090c2e3cd54241879ee0e53818379, type: 3}
-  quadLaser: {fileID: 934005786809906075, guid: 87e3013ee2aa2614990b1a769fdafe2c, type: 3}
-  slime: {fileID: 5701880002770581090, guid: 2ea9238c69ef458479c9e29fd0cc6d63, type: 3}
-  bonk: {fileID: 3279354335901742904, guid: 631116f9e5af3194d937127daacdc445, type: 3}
-  orc: {fileID: 604422109994451894, guid: 521fad6bc7d5e4f4e9157bef5ee8e044, type: 3}
-  triple: {fileID: 6988037432058799580, guid: f7a72d5dbc80e4844b8d38cf929a774c, type: 3}
-  em: {fileID: 0}
-  hs: {fileID: 0}
-  slimeSpeed: 20000
-  bulletForce: 5
-  clone: {fileID: 0}
-  phase2: 0
-  rateOfFire: 2
-  spiralRateOfFire: 0.1
-  fireAtPlayerRateOfFire: 4
-  fireAtPlayerAmount: 20
-  waitTime: 3
-  totalShotsPerBurst: 2
-  bulletsAmount: 10
-  spiralAngleIncrease: 10
-  startAngle: 0
-  endAngle: 360
-  firingEnabled: 1
-  totalSpirals: 1

@@ -24,11 +24,28 @@ public class SeekerBullet : MonoBehaviour
 
     public GameObject explosionPrefab;
 
+    int diff = 0;
+
     void Start()
     {
+        movementSpeed = 2.5f;
+
         //Get components
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+
+        //Get difficulty
+        diff = PlayerPrefs.GetInt("difficulty");
+
+        //Set bullet speed
+        if(diff == 1) 
+            movementSpeed *= 1f;
+        else if(diff == 2)
+            movementSpeed *= 1.33f;
+        else if(diff == 3)
+            movementSpeed *= 1.67f;
+        else if(diff == 4)
+            movementSpeed *= 2f;
 
         //Start pathfinding
         InvokeRepeating("UpdatePath", 0f, 0.1f);
@@ -45,7 +62,7 @@ public class SeekerBullet : MonoBehaviour
 
         if(allowMovement && !chasePlayer)
         {
-            rb.velocity = transform.right * movementSpeed;
+            rb.velocity = transform.right * movementSpeed * 2;
         }
     }
 
