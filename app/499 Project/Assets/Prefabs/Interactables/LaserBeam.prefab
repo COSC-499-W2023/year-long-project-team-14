@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8235765139826384778}
   - component: {fileID: 1186216497330198395}
   - component: {fileID: 4536963465612315040}
-  m_Layer: 0
+  - component: {fileID: 4515792143150839351}
+  m_Layer: 8
   m_Name: LaserBeam
   m_TagString: Laser
   m_Icon: {fileID: 0}
@@ -48,7 +49,11 @@ MonoBehaviour:
   laserStart: {fileID: 1635351724580545413, guid: a2746cda9c9514e4cb652e157b4a149a, type: 3}
   laserMiddle: {fileID: 1791354222948775196, guid: 5ff691cab5a1e59428d1df0f5bcf216e, type: 3}
   laserEnd: {fileID: 2260894312547587643, guid: 5615b772e2b462247a98571fb1c3ce6f, type: 3}
-  rotationSpeed: 30
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1311104
+  rotationSpeed: -30
+  useLaserStart: 0
 --- !u!212 &4536963465612315040
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -101,3 +106,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &4515792143150839351
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4488495285262688084}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.45
