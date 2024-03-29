@@ -157,7 +157,7 @@ public class BossLaserAttack : MonoBehaviour
 
         while (firingEnabled == true) 
         {
-            yield return new WaitForSeconds(2f / (((diff - 1) / 2) + 1)); // delay between attacks
+            yield return new WaitForSeconds(2f / (((diff - 1) / 3) + 1)); // delay between attacks
             int rand = Random.Range(0, 100);
 
             //PHASE 1 ATTACKS
@@ -266,7 +266,7 @@ public class BossLaserAttack : MonoBehaviour
                 }
             }
 
-            yield return new WaitForSeconds(2f / (((diff - 1) / 2) + 1)); // delay between attacks
+            yield return new WaitForSeconds(2f / (((diff - 1) / 3) + 1)); // delay between attacks
         }
     }
 
