@@ -10,7 +10,10 @@ public class BulletSprayPool : MonoBehaviour
 
     [SerializeField]
     private GameObject pooledBullet;
+    [SerializeField]
+    private GameObject bossBullet;
     private List<GameObject> sprayBullets;
+    private List<GameObject> bossBullets;
 
     private void Awake()
     {
@@ -21,12 +24,17 @@ public class BulletSprayPool : MonoBehaviour
     private void InitializeBulletPool()
     {   
         sprayBullets = new List<GameObject>();
+        bossBullets = new List<GameObject>();
 
         for (int i = 0; i < poolSize; i++)
         {
             GameObject bullet = Instantiate(pooledBullet);
             bullet.SetActive(false);
             sprayBullets.Add(bullet);
+
+            GameObject bullet2 = Instantiate(bossBullet);
+            bullet2.SetActive(false);
+            bossBullets.Add(bullet2);
         }
     }
 
@@ -50,6 +58,25 @@ public class BulletSprayPool : MonoBehaviour
         GameObject newBullet = Instantiate(pooledBullet);
         newBullet.SetActive(false);
         sprayBullets.Add(newBullet);
+
+        return newBullet;
+    }
+
+    public GameObject GetBossBullet()
+    {
+        // Search for an inactive bullet in the pool
+        for (int i = 0; i < bossBullets.Count; i++)
+        {
+            if (!bossBullets[i].activeInHierarchy)
+            {
+                return bossBullets[i];
+            }
+        }
+
+        // If no inactive bullet is found, create a new one
+        GameObject newBullet = Instantiate(bossBullet);
+        newBullet.SetActive(false);
+        bossBullets.Add(newBullet);
 
         return newBullet;
     }

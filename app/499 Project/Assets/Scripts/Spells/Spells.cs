@@ -17,10 +17,9 @@ public class Spells : MonoBehaviour
     public GameObject iceCubePrefab;
     public GameObject shieldPrefab;
     public GameObject shield;
-    public GameObject ScatterShotPrefab;
 
     //This is used to display the sprite for mage rage
-    public GameObject mRAura;
+     public GameObject mRAura;
      public GameObject aura;
 
 
@@ -44,13 +43,10 @@ public class Spells : MonoBehaviour
     [SerializeField] private AudioSource lightningSound;
     [SerializeField] private AudioSource seekingOrbSound;
     [SerializeField] private AudioSource chadSound;
-    [SerializeField] private AudioSource ScatterShotSound;
 
     public GameObject freezeFlash;
     public GameObject iceCubeBreak;
 
-    public float bulletsAmount = 10; // Sets the total number of bullets in the spread
-    public float startAngle = 0, endAngle = 360f; // Sets the start and end angle of the burst
 
     void Update()
     {
@@ -94,7 +90,7 @@ public class Spells : MonoBehaviour
             cooldownTimer = 0;
 
             //Cast the correct spell that the user has equipped
-            if (spellName == "Fireball")
+            if(spellName == "Fireball")
             {
                 FireballSpell();
             }
@@ -123,10 +119,6 @@ public class Spells : MonoBehaviour
             {
                //If the user has the mage rage spell and presses q then call ShieldSpell()
                mageRage();
-            }
-            else if (spellName == "ScatterShot")
-            {
-                scatterShot();
             }
         }
     }
@@ -368,34 +360,6 @@ public class Spells : MonoBehaviour
 
        
 
-    }
-
-    public void scatterShot()
-    {
-        //Play shoot scatter shot sound effect
-        ScatterShotSound.Play();
-        GameObject Scatter = Instantiate(ScatterShotPrefab, playerController.gunFollow.position, Quaternion.identity);
-
-        float angleStep = (endAngle - startAngle) / bulletsAmount;
-        float angle = startAngle;
-
-            for (int i = 0; i < bulletsAmount + 1; i++)
-            {
-                GameObject bul = ScatterShot.Instance.GetBullet();
-
-                float bulDirX = transform.position.x + Mathf.Sin((angle * Mathf.PI) / 180f);
-                float bulDirY = transform.position.y + Mathf.Cos((angle * Mathf.PI) / 180f);
-
-                Vector3 bulMoveVector = new Vector3(bulDirX, bulDirY, 0f);
-                Vector2 bulDir = (bulMoveVector - transform.position).normalized;
-
-                bul.transform.position = transform.position;
-                bul.transform.rotation = transform.rotation;
-                bul.SetActive(true);
-                bul.GetComponent<ScatterShotBullet>().SetMoveDirection(bulDir);
-
-                angle += angleStep;
-            }
     }
 
     IEnumerator timer()
