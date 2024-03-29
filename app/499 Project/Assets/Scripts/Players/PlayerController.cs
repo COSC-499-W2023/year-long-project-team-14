@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     GameOverMenu gameOverMenu;
     ControlMenu controlMenu;
     WinMenu winMenu;
+    MusicManager musicManager;
 
     [HideInInspector] public bool unitTest = false;
     [HideInInspector] public bool unitTest2 = false;
@@ -70,6 +71,7 @@ public class PlayerController : MonoBehaviour
             gameOverMenu = canvas.GetComponent<GameOverMenu>();
             controlMenu = canvas.GetComponent<ControlMenu>();
             winMenu = canvas.GetComponent<WinMenu>();
+            musicManager = canvas.GetComponent<MusicManager>();
         }
 
         GameObject gm = GameObject.FindWithTag("GameMaster");
@@ -205,6 +207,16 @@ public class PlayerController : MonoBehaviour
                 controlMenu.Back();
                 buttonClick.Play();
             }
+            else if(musicManager.optionsMenu)
+            {
+                musicManager.Back();
+                buttonClick.Play();
+            }
+            else if(pauseMenu.pauseMenu)
+            {
+                pauseMenu.Resume();
+                buttonClick.Play();
+            }
         }   
     }
 
@@ -213,13 +225,25 @@ public class PlayerController : MonoBehaviour
     {
         if(context.performed)
         {
-            if(pauseMenu.pauseMenu)
+            if(controlMenu.controlMenu)
+            {
+                controlMenu.Back();
+                buttonClick.Play();
+            }
+            else if(musicManager.optionsMenu)
+            {
+                musicManager.Back();
+                buttonClick.Play();
+            }
+            else if(pauseMenu.pauseMenu)
             {
                 pauseMenu.Resume();
+                buttonClick.Play();
             }
-            else if(!winMenu.winMenu &&!controlMenu.controlMenu && !gameOverMenu.GameIsOver)   //TODO: add win menu to this when its done
+            else if(!winMenu.winMenu &&!controlMenu.controlMenu && !gameOverMenu.GameIsOver)
             {
                 pauseMenu.Pause();
+                buttonClick.Play();
             }
         }
     }

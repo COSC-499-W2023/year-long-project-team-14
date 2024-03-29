@@ -23,6 +23,7 @@ public class GameMaster : MonoBehaviour
     public GameObject WinMenu;
 
     public PauseMenu pauseMenu;
+    public MusicManager musicManager;
     public WinMenu winMenu;
     public GameOverMenu gameOverMenu;
     public ControlMenu controlMenu;
@@ -327,7 +328,15 @@ public class GameMaster : MonoBehaviour
             {
                 if(EventSystem.current.currentSelectedGameObject == null)
                 {
-                    if(pauseMenu.pauseMenu)
+                    if(controlMenu.controlMenu)
+                    {
+                        EventSystem.current.SetSelectedGameObject(controlMenu.backButton);
+                    }
+                    else if(musicManager.optionsMenu)
+                    {
+                        EventSystem.current.SetSelectedGameObject(musicManager.volumeSlider.gameObject);
+                    }
+                    else if(pauseMenu.pauseMenu)
                     {
                         EventSystem.current.SetSelectedGameObject(pauseMenu.resumeButton);
                     }
@@ -342,10 +351,6 @@ public class GameMaster : MonoBehaviour
                     else if(gameOverMenu.gameOverMenu)
                     {
                         EventSystem.current.SetSelectedGameObject(gameOverMenu.restartButton);
-                    }
-                    else if(controlMenu.controlMenu)
-                    {
-                        EventSystem.current.SetSelectedGameObject(controlMenu.backButton);
                     }
                 }
             }

@@ -1197,22 +1197,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 911344141}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 925822477}
+        m_TargetAssemblyTypeName: MusicManager, ProjectScripts
+        m_MethodName: OptionsButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 629044995}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 783468010}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6973,18 +6973,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 629044995}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 783468010}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
@@ -6997,10 +6985,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 548764993}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 925822474}
+        m_TargetAssemblyTypeName: ControlMenu, ProjectScripts
+        m_MethodName: ControlMenuButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7767,8 +7755,6 @@ GameObject:
   - component: {fileID: 925822475}
   - component: {fileID: 925822477}
   - component: {fileID: 925822478}
-  - component: {fileID: 925822480}
-  - component: {fileID: 925822479}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Canvas
@@ -7915,11 +7901,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlMenuUI: {fileID: 548764993}
-  pauseMenuUI: {fileID: 911344141}
   backButton: {fileID: 1592892748}
-  optionsMenuUI: {fileID: 0}
+  optionsMenuUI: {fileID: 629044995}
   controlMenu: 0
   gameMaster: {fileID: 1436582726}
+  musicManager: {fileID: 925822477}
   pauseMenu: {fileID: 925822472}
   optionsMenu: 0
 --- !u!114 &925822475
@@ -7967,6 +7953,12 @@ MonoBehaviour:
   minibossTrack: {fileID: 8300000, guid: 6bea8cff3cf76a3439efbd3969e01c8f, type: 3}
   audioSource: {fileID: 925822478}
   volumeSlider: {fileID: 1008436490}
+  optionsMenu: 0
+  pauseMenu: {fileID: 925822472}
+  optionsButton: {fileID: 100619854}
+  backButton: {fileID: 1066527043}
+  pauseMenuUI: {fileID: 911344141}
+  optionsMenuUI: {fileID: 629044995}
   gameMaster: {fileID: 1436582726}
   previousLevel: -1
 --- !u!82 &925822478
@@ -8065,46 +8057,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &925822479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 925822467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d6851d61c56d41af923913dfd1474a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controlMenuUI: {fileID: 0}
-  pauseMenuUI: {fileID: 0}
-  backButton: {fileID: 0}
-  optionsMenuUI: {fileID: 0}
-  controlMenu: 0
-  gameMaster: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  optionsMenu: 0
---- !u!114 &925822480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 925822467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d6851d61c56d41af923913dfd1474a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controlMenuUI: {fileID: 0}
-  pauseMenuUI: {fileID: 0}
-  backButton: {fileID: 0}
-  optionsMenuUI: {fileID: 0}
-  controlMenu: 0
-  gameMaster: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  optionsMenu: 0
 --- !u!1 &928307466
 GameObject:
   m_ObjectHideFlags: 0
@@ -9357,22 +9309,22 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 629044995}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 925822477}
+        m_TargetAssemblyTypeName: MusicManager, ProjectScripts
+        m_MethodName: Back
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 911344141}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 783468010}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12110,6 +12062,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 925822473}
     - target: {fileID: 2255637680890580704, guid: fcdd986f2de65fc4681d45730eb9b2ed, type: 3}
+      propertyPath: musicManager
+      value: 
+      objectReference: {fileID: 925822477}
+    - target: {fileID: 2255637680890580704, guid: fcdd986f2de65fc4681d45730eb9b2ed, type: 3}
       propertyPath: leaderboardManager
       value: 
       objectReference: {fileID: 40737993}
@@ -13582,18 +13538,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 548764993}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 783468010}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
@@ -13606,10 +13550,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 629044995}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 925822474}
+        m_TargetAssemblyTypeName: ControlMenu, ProjectScripts
+        m_MethodName: Back
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
