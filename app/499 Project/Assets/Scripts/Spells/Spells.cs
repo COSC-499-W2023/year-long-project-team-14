@@ -217,7 +217,7 @@ public class Spells : MonoBehaviour
     public IEnumerator Freeze()
     {
         //Set freeze duration
-        float freezeTime = 3;
+        float freezeTime = 2;
 
         //Play flash animation
         GameObject flash = Instantiate(freezeFlash, new Vector3(0, 0, 0), Quaternion.identity);
@@ -347,13 +347,13 @@ public class Spells : MonoBehaviour
 
 
         //Increase the recharge time of the bullets so the player can continously shoot
-        playerController.attackChargeSpeed = 5;
+        playerController.attackChargeSpeed *= 1.75f;
         
         //Increase the speed of the bullets
-        playerController.bulletForce = 25;
+        playerController.bulletForce *= 2f;
 
         //Increase the movement speed of the player
-        playerController.moveSpeed = 20;
+        playerController.moveSpeed *= 1.5f;
 
 
         StartCoroutine(timer()); //wait for timer before destroying the shield
@@ -385,12 +385,11 @@ public class Spells : MonoBehaviour
         // currentColor.b = 11f;
         // currentColor.a= 255f;
 
-        playerController.attackChargeSpeed = 2;
-
+        playerController.attackChargeSpeed /= 1.75f;
         
-        playerController.bulletForce = 12;
+        playerController.bulletForce /= 2f;
 
-        playerController.moveSpeed = 8;
+        playerController.moveSpeed /= 1.5f;
 
          isRage = false;
 

@@ -101,7 +101,7 @@ public class ShieldPickup : MonoBehaviour
         {
             playerIsOver = false;
             player.GetComponent<Spells>().spellName = "Shield";
-            player.GetComponent<Spells>().spellCooldown = 10;
+            player.GetComponent<Spells>().spellCooldown = 20;
             Destroy(gameObject);
         }
     }
