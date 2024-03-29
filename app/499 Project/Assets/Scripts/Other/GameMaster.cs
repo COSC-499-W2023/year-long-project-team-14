@@ -41,6 +41,9 @@ public class GameMaster : MonoBehaviour
     public GameObject levelTemplate;
     public GameObject level1;
     public GameObject[] levels;
+    public GameObject[] secretLevel;
+    public int secretExit = 0;
+    public bool hasKey = false;
     private Transform player1Spawn;
     private Transform player2Spawn;
 
@@ -84,7 +87,7 @@ public class GameMaster : MonoBehaviour
 
         if(currentLevel < levels.Length)
         {
-            //Wait for screen to fade out and then destroy current level and bullets
+            //Wait for screen to fade out and then destroy current level and other objects
             if (fadeAnim != null)
             {
                 fadeAnim.Play("ScreenFadeOut");
@@ -93,9 +96,11 @@ public class GameMaster : MonoBehaviour
             Destroy(level);
             GameObject[] playerBullets = GameObject.FindGameObjectsWithTag("Player_bullet");
             GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             GameObject[] chads = GameObject.FindGameObjectsWithTag("Player");
             for(int i = 0; i < playerBullets.Length; i++) Destroy(playerBullets[i]);
             for(int i = 0; i < enemyBullets.Length; i++) enemyBullets[i].SetActive(false);
+            for(int i = 0; i < enemies.Length; i++) Destroy(enemies[i]);
             for(int i = 0; i < chads.Length; i++) if(chads[i].GetComponent<healthSystem>().chad) Destroy(chads[i]);
             yield return null;
 
@@ -108,7 +113,16 @@ public class GameMaster : MonoBehaviour
             if(playerCount > 1)
                 player2.transform.position = new Vector3(1000, 0, 0);
 
-            if(currentLevel % 5 == 4 && !inShop) //Go to shop
+            if(secretExit != 0)
+            {
+                if(secretExit == 3 || secretExit == 5 || secretExit == 8)
+                    currentLevel++;
+
+                level = Instantiate(secretLevel[secretExit], transform.position, Quaternion.identity);
+                secretExit = 0;
+                
+            }
+            else if(currentLevel % 5 == 4 && !inShop) //Go to shop
             {
                 level = Instantiate(shopLevel, transform.position, Quaternion.identity);
                 inShop = true;

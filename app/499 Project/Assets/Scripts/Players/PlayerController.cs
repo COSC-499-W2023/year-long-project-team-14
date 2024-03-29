@@ -316,6 +316,18 @@ public class PlayerController : MonoBehaviour
             {
                 interactable.GetComponent<Portal>().Interact();
             }
+            else if(tag == "Key")
+            {
+                interactable.GetComponent<Key>().Interact();
+            }
+            else if(tag == "Chest")
+            {
+                interactable.GetComponent<Chest>().Interact();
+            }
+            else if(tag == "Bottle")
+            {
+                interactable.GetComponent<HealthPotion>().Interact(hs);
+            }
             else if(tag == "lightning")
             {
                 interactable.GetComponent<LightningPickup>().Interact();
@@ -355,12 +367,14 @@ public class PlayerController : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collider)
     {
-        interactable = collider.gameObject;
+        if(collider.tag != "Spike")
+            interactable = collider.gameObject;
     }
 
     public void OnTriggerExit2D(Collider2D collider)
     {
-        interactable = null;
+        if(collider.tag != "Spike")
+            interactable = null;
     }
 
     public Vector2 GetMoveDirection()
