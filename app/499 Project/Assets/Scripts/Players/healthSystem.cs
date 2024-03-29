@@ -129,7 +129,8 @@ public class healthSystem : MonoBehaviour
     public void dashHs(){
         // Set the player to invincible during the dash
         isInvic = true;
-        gameObject.layer = LayerMask.NameToLayer("NoCollide");
+        if(gameObject.layer == LayerMask.NameToLayer("Player"))
+            gameObject.layer = LayerMask.NameToLayer("NoCollide");
         //Start the transparent anamation for the dash
         StartCoroutine(Transparent3());
     }
@@ -229,7 +230,8 @@ public class healthSystem : MonoBehaviour
         if(!blinking)
             isInvic = false;
 
-        gameObject.layer = LayerMask.NameToLayer("Player");
+        if(gameObject.layer == LayerMask.NameToLayer("NoCollide"))
+            gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
     //Update heart UI

@@ -234,6 +234,9 @@ public class Spells : MonoBehaviour
             //Get enemy health system
             EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
 
+            //Get enemy sprite renderer
+            SpriteRenderer spriteRenderer = enemies[i].GetComponent<SpriteRenderer>();
+
             if(enemyHealthSystem != null)
             {
                 if(enemyHealthSystem.enemyHealth > 0)
@@ -245,6 +248,9 @@ public class Spells : MonoBehaviour
                     //Spawn ice cube on enemy
                     GameObject ice = Instantiate(iceCubePrefab, enemies[i].transform.position, Quaternion.identity);
                     Destroy(ice, freezeTime);
+
+                    //Make enemy invisible to avoid seeing them clip through the edge of the ice cube
+                    spriteRenderer.color = new Color(0, 0, 0, 0);
 
                     //Disable orc attacks
                     EnemyAttack enemyAttack = enemies[i].GetComponent<EnemyAttack>();
@@ -284,6 +290,10 @@ public class Spells : MonoBehaviour
         {
             //Get enemy health system
             EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
+            
+            //Get enemy sprite renderer
+            SpriteRenderer spriteRenderer = enemies[i].GetComponent<SpriteRenderer>();
+
             if(enemyHealthSystem != null && enemyHealthSystem.enemyHealth > 0)
             {
                 //Enable enemy movement and hit box
@@ -293,6 +303,9 @@ public class Spells : MonoBehaviour
                 //Play ice break effect on enemy
                 GameObject effect = Instantiate(iceCubeBreak, enemies[i].transform.position, Quaternion.identity);
                 Destroy(effect, 1);
+
+                //Make enemy visible again
+                spriteRenderer.color = new Color(1, 1, 1, 1);
 
                 //Enable orc attacks
                 EnemyAttack enemyAttack = enemies[i].GetComponent<EnemyAttack>();
@@ -313,7 +326,7 @@ public class Spells : MonoBehaviour
         
         //Indicate that the shield is active 
         isShield = true;
-        
+        gameObject.layer = LayerMask.NameToLayer("ShieldPlayer");
         
         // Start a coroutine to wait for a certain amount of time before destroying the shield
         StartCoroutine(DestroyShield(shield));
@@ -325,6 +338,7 @@ public class Spells : MonoBehaviour
         Destroy(shield);
         //Mark that the shield is inactive.
         isShield = false;
+        gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
     //This will be used for the mage rage spell 
@@ -350,10 +364,10 @@ public class Spells : MonoBehaviour
         playerController.attackChargeSpeed *= 1.75f;
         
         //Increase the speed of the bullets
-        playerController.bulletForce *= 2f;
+        playerController.bulletForce *= 1.75f;
 
         //Increase the movement speed of the player
-        playerController.moveSpeed *= 1.5f;
+        playerController.moveSpeed *= 1.75f;
 
 
         StartCoroutine(timer()); //wait for timer before destroying the shield
@@ -387,9 +401,9 @@ public class Spells : MonoBehaviour
 
         playerController.attackChargeSpeed /= 1.75f;
         
-        playerController.bulletForce /= 2f;
+        playerController.bulletForce /= 1.75f;
 
-        playerController.moveSpeed /= 1.5f;
+        playerController.moveSpeed /= 1.75f;
 
          isRage = false;
 
