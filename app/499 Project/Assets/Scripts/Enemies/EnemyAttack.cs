@@ -62,7 +62,7 @@ public class EnemyAttack : MonoBehaviour
             bulletSpeed *= 3f;
 
         //Prevent enemies from shooting at the start of a level
-        lastShootTime = Time.time + Random.Range(0, shootInterval/2);
+        lastShootTime = Time.time;
     }
 
     void Update()
