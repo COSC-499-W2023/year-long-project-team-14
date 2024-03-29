@@ -178,9 +178,9 @@ public class MainMenu : MonoBehaviour
     public void ControlMenu()
     {
         controlMenu = true;
-        mainMenu = false;
+        optionsMenu = false;
         controlMenuObject.SetActive(true); 
-        mainMenuObject.SetActive(false); 
+        optionsMenuObject.SetActive(false); 
         SelectButton(controlsBackButton);
     }
     
@@ -188,10 +188,10 @@ public class MainMenu : MonoBehaviour
     public void ControlMenuBackButton()
     {
         controlMenu = false;
-        mainMenu = true;
+        optionsMenu = true;
         controlMenuObject.SetActive(false); 
-        mainMenuObject.SetActive(true); 
-        SelectButton(playButton);
+        optionsMenuObject.SetActive(true); 
+        SelectButton(musicSlider);
     }
 
     //Quit the game

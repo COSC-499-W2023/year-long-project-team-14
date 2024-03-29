@@ -9,6 +9,12 @@ public class MusicManager : MonoBehaviour
     public AudioClip minibossTrack; 
     public AudioSource audioSource;
     [SerializeField] public Slider volumeSlider;
+    public bool optionsMenu = false;
+    public PauseMenu pauseMenu;
+    public GameObject optionsButton;
+    public GameObject backButton;
+    public GameObject pauseMenuUI;
+    public GameObject optionsMenuUI;
 
     private int currentTrackIndex = 0;
     public GameMaster gameMaster;
@@ -110,5 +116,23 @@ public class MusicManager : MonoBehaviour
 
             previousLevel = gameMaster.currentLevel;
         }
+    }
+
+    public void Back()
+    {
+        optionsMenu = false;
+        pauseMenu.pauseMenu = true;
+        optionsMenuUI.SetActive(false); 
+        pauseMenuUI.SetActive(true); 
+        gameMaster.SelectButton(pauseMenu.resumeButton);
+    }
+
+    public void OptionsButton()
+    {
+        optionsMenu = true;
+        pauseMenu.pauseMenu = false;
+        optionsMenuUI.SetActive(true); 
+        pauseMenuUI.SetActive(false); 
+        gameMaster.SelectButton(volumeSlider.gameObject);
     }
 }

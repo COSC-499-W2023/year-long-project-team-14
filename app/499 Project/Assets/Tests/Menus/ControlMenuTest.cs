@@ -35,11 +35,11 @@ public class ControlMenuTest
         ControlMenu controlMenu = canvas.GetComponent<ControlMenu>();
         controlMenu.pauseMenu = canvas.GetComponent<PauseMenu>();
         controlMenu.controlMenuUI = new GameObject();
-        controlMenu.pauseMenuUI = new GameObject();
+        controlMenu.optionsMenuUI = new GameObject();
 
         controlMenu.ControlMenuButton();
         Assert.IsTrue(controlMenu.controlMenuUI.activeSelf);
-        Assert.IsFalse(controlMenu.pauseMenuUI.activeSelf);
+        Assert.IsFalse(controlMenu.optionsMenuUI.activeSelf);
     }
 
     [TearDown]
