@@ -39,11 +39,15 @@ public class EnemyMovement : MonoBehaviour
         if(!followPlayer && !chargePlayer)
             NewTarget();
 
-        //Set starting wait time and charge duration
+        //Set starting wait time for slime
+        if(followPlayer)
+            waitTime = Random.Range(0, 0.5f);
+
+        //Set starting wait time and charge duration for bonk
         if(chargePlayer)
         {
             ResetWaitTime(0.5f, 1.5f);
-            chargeDuration = 0.65f;
+            chargeDuration = 0.7f;
         }
 
         //Get difficulty
@@ -147,7 +151,7 @@ public class EnemyMovement : MonoBehaviour
         if(chargePlayer && timer >= waitTime + chargeDuration)
         {
             ResetWaitTime(0.5f, 2f);
-            chargeDuration = 0.65f;
+            chargeDuration = 0.7f;
         }
     }
 
@@ -172,7 +176,7 @@ public class EnemyMovement : MonoBehaviour
         if(collision.gameObject.CompareTag("Player") && (chargePlayer || followPlayer))
         {     
             ResetWaitTime(0.5f, 2f);
-            chargeDuration = 0.65f;
+            chargeDuration = 0.7f;
         }
         else if((collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("BrokenWall") || collision.gameObject.CompareTag("Breakable") || collision.gameObject.CompareTag("Player")) && !chargePlayer && !followPlayer)
         {

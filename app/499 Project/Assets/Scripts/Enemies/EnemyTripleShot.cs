@@ -67,8 +67,8 @@ public class EnemyTripleShot : MonoBehaviour
             bulletSpeed *= 3f;
 
         //Prevent enemies from shooting at the start of a level
-        lastShootTime = Time.time;
-        
+        lastShootTime = Time.time + Random.Range(-0.5f, 0.5f);
+
         shootSound = GetComponent<AudioSource>();
 
         enemyHealthSystem = GetComponent<EnemyHealthSystem>();

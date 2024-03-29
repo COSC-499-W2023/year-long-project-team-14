@@ -157,7 +157,7 @@ public class BossLaserAttack : MonoBehaviour
 
         while (firingEnabled == true) 
         {
-            yield return new WaitForSeconds(1.5f / (((diff - 1) / 2) + 1)); // delay between attacks
+            yield return new WaitForSeconds(2f / (((diff - 1) / 2) + 1)); // delay between attacks
             int rand = Random.Range(0, 100);
 
             //PHASE 1 ATTACKS
@@ -215,18 +215,18 @@ public class BossLaserAttack : MonoBehaviour
                 }
                 else if(rand < 50 && transform.position.x > 0)
                 {
-                    yield return StartCoroutine(TripleShotSlimesLeft(diff));
-                    yield return new WaitForSeconds(0.25f); // delay between attacks
+                    yield return StartCoroutine(TripleShotSlimesLeft((int)Mathf.Round(diff / 2)));
+                    yield return new WaitForSeconds(0.5f); // delay between attacks
                 }
                 else if(rand < 50 && transform.position.x < 0)
                 {
-                    yield return StartCoroutine(TripleShotSlimesRight(diff));
-                    yield return new WaitForSeconds(0.25f); // delay between attacks
+                    yield return StartCoroutine(TripleShotSlimesRight((int)Mathf.Round(diff / 2)));
+                    yield return new WaitForSeconds(0.5f); // delay between attacks
                 }
                 else if(rand < 75)
                 {
                     yield return StartCoroutine(SeekerShot());
-                    yield return new WaitForSeconds(0.5f); // delay between attacks
+                    yield return new WaitForSeconds(1f); // delay between attacks
                 }
                 else if(rand < 100)
                 {
@@ -246,18 +246,18 @@ public class BossLaserAttack : MonoBehaviour
                 }
                 else if(rand < 50 && transform.position.x > 0)
                 {
-                    yield return StartCoroutine(TripleShotSlimesLeft(diff*2));
-                    yield return new WaitForSeconds(0.25f); // delay between attacks
+                    yield return StartCoroutine(TripleShotSlimesLeft((int)Mathf.Round(diff / 2) + 1));
+                    yield return new WaitForSeconds(0.5f); // delay between attacks
                 }
                 else if(rand < 50 && transform.position.x < 0)
                 {
-                    yield return StartCoroutine(TripleShotSlimesRight(diff*2));
-                    yield return new WaitForSeconds(0.25f); // delay between attacks
+                    yield return StartCoroutine(TripleShotSlimesRight((int)Mathf.Round(diff / 2) + 1));
+                    yield return new WaitForSeconds(0.5f); // delay between attacks
                 }
                 else if(rand < 75)
                 {
                     yield return StartCoroutine(SeekerShots());
-                    yield return new WaitForSeconds(0.5f); // delay between attacks
+                    yield return new WaitForSeconds(1f); // delay between attacks
                 }
                 else if(rand < 100)
                 {
@@ -266,7 +266,7 @@ public class BossLaserAttack : MonoBehaviour
                 }
             }
 
-            yield return new WaitForSeconds(1.5f / (((diff - 1) / 2) + 1)); // delay between attacks
+            yield return new WaitForSeconds(2f / (((diff - 1) / 2) + 1)); // delay between attacks
         }
     }
 
