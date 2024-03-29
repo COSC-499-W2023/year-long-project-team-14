@@ -3611,17 +3611,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level20
       objectReference: {fileID: 0}
-    - target: {fileID: 590482083821775993, guid: 9236982023a47fa47b636ef911a7b471, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2113479705838072639, guid: 9236982023a47fa47b636ef911a7b471, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2113479705838072639, guid: 9236982023a47fa47b636ef911a7b471, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -137
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2113479705838072639, guid: 9236982023a47fa47b636ef911a7b471, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3655,14 +3651,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2230741131132776655, guid: 9236982023a47fa47b636ef911a7b471, type: 3}
-      propertyPath: m_ColliderPaths.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6148429149425543849, guid: 9236982023a47fa47b636ef911a7b471, type: 3}
-      propertyPath: m_ColliderPaths.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3676,10 +3664,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 527126497578478856, guid: 48b6aca2f0d96ca43845a1c4f056cadc, type: 3}
-      propertyPath: m_ColliderPaths.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1696444362006211815, guid: 48b6aca2f0d96ca43845a1c4f056cadc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 48
@@ -3720,17 +3704,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5545635661458143086, guid: 48b6aca2f0d96ca43845a1c4f056cadc, type: 3}
-      propertyPath: m_ColliderPaths.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5920520649088949437, guid: 48b6aca2f0d96ca43845a1c4f056cadc, type: 3}
       propertyPath: m_Name
       value: Level10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5920520649088949437, guid: 48b6aca2f0d96ca43845a1c4f056cadc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

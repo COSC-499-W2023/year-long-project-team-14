@@ -500,7 +500,7 @@ GameObject:
   m_Component:
   - component: {fileID: 928117774666989796}
   - component: {fileID: 1340498746768478471}
-  - component: {fileID: 6676902231032024196}
+  - component: {fileID: 12181679782506605}
   m_Layer: 0
   m_Name: Scatter Shot Pickup
   m_TagString: ScatterShot
@@ -570,7 +570,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5}
   m_EdgeRadius: 0
---- !u!114 &6676902231032024196
+--- !u!114 &12181679782506605
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -579,17 +579,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 3417158002455029902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29cf7dadd64452f42a268bbd51eca34f, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d030cf5c95acc6419085899ac34db1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bobbingAmount: 0.1
   bobbingSpeed: 0.5
   prompt: {fileID: 2599116138116726155}
   gameMaster: {fileID: 0}
-  promptIcon: {fileID: 6198079644399846899}
-  xPrompt: {fileID: 21300000, guid: b7fca5920312e5a4e8ae2896749a0be6, type: 3}
-  aPrompt: {fileID: 21300000, guid: 2b0f3081d76aee14288dfcfa50554511, type: 3}
-  ePrompt: {fileID: 21300000, guid: 9cb9dd7976ce06149ab87ed2c36a1806, type: 3}
+  promptIcon: {fileID: 0}
+  xPrompt: {fileID: 0}
+  aPrompt: {fileID: 0}
+  ePrompt: {fileID: 0}
 --- !u!1 &4001675531508089719
 GameObject:
   m_ObjectHideFlags: 0

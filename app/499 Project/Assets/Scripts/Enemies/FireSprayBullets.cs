@@ -68,7 +68,7 @@ public class FireSprayBullets : MonoBehaviour
         {
             rateOfFire /= 1.5f;
             waitTime /= 1.33f;
-            bulletsAmount *= 1.33f;
+            bulletsAmount = Mathf.Round(bulletsAmount * 1.33f);
 
             spiralRateOfFire /= 1.78f;
             spiralAngleIncrease /= 1.33f;
@@ -81,7 +81,7 @@ public class FireSprayBullets : MonoBehaviour
         {
             rateOfFire /= 2f;
             waitTime /= 1.67f;
-            bulletsAmount *= 1.67f;
+            bulletsAmount = Mathf.Round(bulletsAmount * 1.67f);
 
             spiralRateOfFire /= 2.78f;
             spiralAngleIncrease /= 1.67f;
