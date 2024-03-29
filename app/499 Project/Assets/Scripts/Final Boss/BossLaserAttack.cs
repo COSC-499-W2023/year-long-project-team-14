@@ -215,12 +215,12 @@ public class BossLaserAttack : MonoBehaviour
                 }
                 else if(rand < 50 && transform.position.x > 0)
                 {
-                    yield return StartCoroutine(TripleShotSlimesLeft((int)Mathf.Round(diff / 2)));
+                    yield return StartCoroutine(TripleShotSlimesLeft((int)Mathf.Ceil((diff + 0.9f) / 3)));
                     yield return new WaitForSeconds(0.5f); // delay between attacks
                 }
                 else if(rand < 50 && transform.position.x < 0)
                 {
-                    yield return StartCoroutine(TripleShotSlimesRight((int)Mathf.Round(diff / 2)));
+                    yield return StartCoroutine(TripleShotSlimesRight((int)Mathf.Ceil((diff + 0.9f) / 3)));
                     yield return new WaitForSeconds(0.5f); // delay between attacks
                 }
                 else if(rand < 75)
@@ -246,12 +246,12 @@ public class BossLaserAttack : MonoBehaviour
                 }
                 else if(rand < 50 && transform.position.x > 0)
                 {
-                    yield return StartCoroutine(TripleShotSlimesLeft((int)Mathf.Round(diff / 2) + 1));
+                    yield return StartCoroutine(TripleShotSlimesLeft((int)Mathf.Ceil((diff + 0.9f) / 3) + 1));
                     yield return new WaitForSeconds(0.5f); // delay between attacks
                 }
                 else if(rand < 50 && transform.position.x < 0)
                 {
-                    yield return StartCoroutine(TripleShotSlimesRight((int)Mathf.Round(diff / 2) + 1));
+                    yield return StartCoroutine(TripleShotSlimesRight((int)Mathf.Ceil((diff + 0.9f) / 3) + 1));
                     yield return new WaitForSeconds(0.5f); // delay between attacks
                 }
                 else if(rand < 75)
@@ -491,7 +491,7 @@ public class BossLaserAttack : MonoBehaviour
                     laserHitbox2.enabled = true;
                     spinLaser = true;
                 }
-                yield return new WaitForSeconds(180 / laserSpinSpeed);
+                yield return new WaitForSeconds(120 / laserSpinSpeed);
 
                 if(firingEnabled)
                 {
