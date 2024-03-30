@@ -519,6 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d208e4fe668d8ff4c88d978a46a66ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerUI: {fileID: 21372215535025271}
   spriteRenderer: {fileID: 47878624049746190}
   rb: {fileID: 8516023400171509827}
   hearts:
@@ -2038,6 +2039,11 @@ PrefabInstance:
       addedObject: {fileID: 4633502083961546569}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23548c19517cc464ca7f13c8470ae116, type: 3}
+--- !u!1 &21372215535025271 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1900535750530054359, guid: 23548c19517cc464ca7f13c8470ae116, type: 3}
+  m_PrefabInstance: {fileID: 1885850289114776736}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &134766041247242457 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2014564617280478329, guid: 23548c19517cc464ca7f13c8470ae116, type: 3}

@@ -221,6 +221,9 @@ public class GameMaster : MonoBehaviour
         hs.animator.SetTrigger("isHit");
         hs.animator.SetBool("IsDead", false);
         hs.isInvic = false;
+
+        if(hs.playerUI != null)
+            hs.playerUI.SetActive(true);
     }
 
     //Set up controls for players

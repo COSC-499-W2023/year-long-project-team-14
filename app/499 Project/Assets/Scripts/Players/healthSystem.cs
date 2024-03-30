@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class healthSystem : MonoBehaviour
 {
+    public GameObject playerUI;
     public SpriteRenderer spriteRenderer;
     public Rigidbody2D rb;
     public GameObject[] hearts;
@@ -117,6 +118,9 @@ public class healthSystem : MonoBehaviour
         {
             (component as Behaviour).enabled = false;
         }
+
+        if(playerUI != null)
+            playerUI.SetActive(false);
         
         dead = true;
         spriteRenderer.sortingOrder = 8;
