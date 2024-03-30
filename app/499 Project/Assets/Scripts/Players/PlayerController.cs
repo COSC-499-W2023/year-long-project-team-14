@@ -238,12 +238,10 @@ public class PlayerController : MonoBehaviour
             else if(pauseMenu.pauseMenu)
             {
                 pauseMenu.Resume();
-                buttonClick.Play();
             }
             else if(!winMenu.winMenu &&!controlMenu.controlMenu && !gameOverMenu.GameIsOver)
             {
                 pauseMenu.Pause();
-                buttonClick.Play();
             }
         }
     }

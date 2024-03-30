@@ -77,6 +77,7 @@ public class Portal : MonoBehaviour
     {
         if (playerIsOverPortal && portalActive)
         {
+            portalActive = false;
             playerIsOverPortal = false;
             gameMaster.LevelComplete();
         }
