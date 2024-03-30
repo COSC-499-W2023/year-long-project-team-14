@@ -135,6 +135,7 @@ public class Spells : MonoBehaviour
             else if (spellName == "ScatterShot")
             {
                 scatterShot();
+            }
             else if (spellName == "Rainbow")
             {
                //If the user has the shield spell and presses q then call ShieldSpell()
