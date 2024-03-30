@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class mageRagePickup : MonoBehaviour
+public class ScatterShotPickup : MonoBehaviour
 {
     private bool playerIsOver = false;
     GameObject player;
@@ -24,7 +24,7 @@ public class mageRagePickup : MonoBehaviour
         startY = transform.position.y; // Store the initial Y position
 
         GameObject g = GameObject.FindWithTag("GameMaster");
-        if(g != null)
+        if (g != null)
             gameMaster = g.GetComponent<GameMaster>();
     }
 
@@ -51,26 +51,26 @@ public class mageRagePickup : MonoBehaviour
             }
 
             //Change prompt icon depending on controls
-            if(gameMaster != null && other.gameObject.GetComponent<PlayerController>().player1)
+            if (gameMaster != null && other.gameObject.GetComponent<PlayerController>().player1)
             {
-                if(gameMaster.player1Controls == "PS")
+                if (gameMaster.player1Controls == "PS")
                 {
                     promptIcon.sprite = xPrompt;
                 }
-                else if(gameMaster.player1Controls == "Xbox")
+                else if (gameMaster.player1Controls == "Xbox")
                 {
                     promptIcon.sprite = aPrompt;
                 }
                 else
                     promptIcon.sprite = ePrompt;
             }
-            else if(gameMaster != null)
+            else if (gameMaster != null)
             {
-                if(gameMaster.player2Controls == "PS")
+                if (gameMaster.player2Controls == "PS")
                 {
                     promptIcon.sprite = xPrompt;
                 }
-                else if(gameMaster.player2Controls == "Xbox")
+                else if (gameMaster.player2Controls == "Xbox")
                 {
                     promptIcon.sprite = aPrompt;
                 }
@@ -100,8 +100,8 @@ public class mageRagePickup : MonoBehaviour
         if (playerIsOver)
         {
             playerIsOver = false;
-            player.GetComponent<Spells>().spellName = "mR";
-            player.GetComponent<Spells>().spellCooldown = 30;
+            player.GetComponent<Spells>().spellName = "ScatterShot";
+            player.GetComponent<Spells>().spellCooldown = 10;
             Destroy(gameObject);
         }
     }

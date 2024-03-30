@@ -67,6 +67,7 @@ MonoBehaviour:
   freezeSprite: {fileID: -58245785, guid: fa739449f8985d74aa6afb409a7beb86, type: 3}
   shieldSprite: {fileID: 21300000, guid: ef1884aedfd4e3a46a8dc138f602d5a1, type: 3}
   mRSprite: {fileID: 668703104, guid: 97bb028556ef449f5bbd3c83f7c405ec, type: 3}
+  scatterShotSprite: {fileID: 1819548605, guid: 7aa2071947da1894db5df32164a6be12, type: 3}
   gameMaster: {fileID: 0}
   button: {fileID: 3581139936707756502}
   ltIcon: {fileID: 21300000, guid: 5407b74134b1eb844a010a559f91aaf9, type: 3}
@@ -127,6 +128,7 @@ GameObject:
   - component: {fileID: 5033179128970622421}
   - component: {fileID: 906854908322882072}
   - component: {fileID: 2794759393156402573}
+  - component: {fileID: 5248856751013865811}
   m_Layer: 7
   m_Name: Mage_player2
   m_TagString: Player
@@ -560,6 +562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d208e4fe668d8ff4c88d978a46a66ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerUI: {fileID: 3278872418890278532}
   spriteRenderer: {fileID: 47878624049746190}
   rb: {fileID: 8516023400171509827}
   hearts:
@@ -891,6 +894,7 @@ MonoBehaviour:
   iceCubePrefab: {fileID: 5353155636119205557, guid: 2b44b4606410f624489e839e71c78d63, type: 3}
   shieldPrefab: {fileID: 758289626637381577, guid: b72145187a5b557469b33ef2c319f6e0, type: 3}
   shield: {fileID: 0}
+  ScatterShotPrefab: {fileID: 2690387278358215443, guid: 22bef6c5b47cb4841ab8a2c760e3e831, type: 3}
   mRAura: {fileID: 4103782466199260733, guid: e9bf3a87404f347ef826f289185f620e, type: 3}
   aura: {fileID: 0}
   isShield: 0
@@ -900,8 +904,12 @@ MonoBehaviour:
   lightningSound: {fileID: 6808735797056020385}
   seekingOrbSound: {fileID: 5033179128970622421}
   chadSound: {fileID: 2794759393156402573}
+  ScatterShotSound: {fileID: 5248856751013865811}
   freezeFlash: {fileID: 8839434359703360610, guid: 8d1a06cceef4e0a40bf0f15c7971b23e, type: 3}
   iceCubeBreak: {fileID: 6302075490922154978, guid: f6f228fdec1e39d4f97cbe2539b2c9d6, type: 3}
+  bulletsAmount: 10
+  startAngle: 0
+  endAngle: 360
 --- !u!82 &7860525362818205043
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1298,7 +1306,103 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 674caf418db4c324ba425e2e6169a94d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.751
+  m_Volume: 0.15
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &5248856751013865811
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881379806320011560}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9b69ac2cbde51be4da573485d4c6ca58, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1395,7 +1499,7 @@ GameObject:
   - component: {fileID: 517172463433549030}
   - component: {fileID: 8734306913601111512}
   - component: {fileID: 247140600194767053}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: playerBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1908,6 +2012,11 @@ GameObject:
 --- !u!4 &3176658405298471466 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2014564617280478329, guid: 23548c19517cc464ca7f13c8470ae116, type: 3}
+  m_PrefabInstance: {fileID: 4026475514364550739}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3278872418890278532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1900535750530054359, guid: 23548c19517cc464ca7f13c8470ae116, type: 3}
   m_PrefabInstance: {fileID: 4026475514364550739}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &4417156863679542413 stripped

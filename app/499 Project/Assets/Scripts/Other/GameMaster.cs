@@ -108,10 +108,14 @@ public class GameMaster : MonoBehaviour
             if(fadeAnim != null)
                 fadeAnim.Play("ScreenFadeIn");
 
-            //Move players out of the way
+            //Move players out of the way and reset line of sight
             player1.transform.position = new Vector3(1000, 0, 0);
+            player1.GetComponent<PlayerController>().aimingInWall = false;
             if(playerCount > 1)
+            {
                 player2.transform.position = new Vector3(1000, 0, 0);
+                player2.GetComponent<PlayerController>().aimingInWall = false;
+            }
 
             if(secretExit != 0)
             {
@@ -217,6 +221,9 @@ public class GameMaster : MonoBehaviour
         hs.animator.SetTrigger("isHit");
         hs.animator.SetBool("IsDead", false);
         hs.isInvic = false;
+
+        if(hs.playerUI != null)
+            hs.playerUI.SetActive(true);
     }
 
     //Set up controls for players

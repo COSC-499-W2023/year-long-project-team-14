@@ -12,6 +12,7 @@ public class MiniBossHealthSystem : MonoBehaviour
     public FireSprayBullets shoot; 
     public BossLaserAttack bossAttack; 
     public int enemyHealth = 10;
+    public GameObject healthBarObj;
 
     public CircleCollider2D enemyCollider;
     public Ladder ladder;
@@ -191,6 +192,8 @@ public class MiniBossHealthSystem : MonoBehaviour
                 }
             }
         }
+
+        Destroy(healthBarObj);
     }
 
     IEnumerator Transparent()

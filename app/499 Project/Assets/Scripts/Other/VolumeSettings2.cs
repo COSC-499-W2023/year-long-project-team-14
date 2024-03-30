@@ -31,30 +31,25 @@ public class MusicManager : MonoBehaviour
 
         if (PlayerPrefs.HasKey("Volume"))
         {
-            AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1);
-            Load();
-        }
-        else
-        {
             Load();
         }
     }
 
     public void ChangeVolume()
     {
-        float volume = volumeSlider.value; 
-        AudioListener.volume = volume; 
+        AudioListener.volume = volumeSlider.value * 2f; 
         Save(); 
     }
 
     public void Load()
     {
-        volumeSlider.value = PlayerPrefs.GetFloat("Volume");
+        volumeSlider.value = PlayerPrefs.GetFloat("Volume") / 2f;
+        AudioListener.volume = volumeSlider.value * 2f; 
     }
 
     public void Save()
     {
-        PlayerPrefs.SetFloat("Volume", volumeSlider.value);
+        PlayerPrefs.SetFloat("Volume", volumeSlider.value * 2f);
     }
 
     public void ShuffleTracks()

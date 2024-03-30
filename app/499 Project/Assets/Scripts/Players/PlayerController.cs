@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(attackCharge >= attackCost && mouseHold >= 0.5f && holdCooldown > 0.1f)
+        if(attackCharge >= attackCost && mouseHold >= 0.5f && holdCooldown > 0.11f)
             Shoot();
 
         if(dashHold == 1)
@@ -238,12 +238,10 @@ public class PlayerController : MonoBehaviour
             else if(pauseMenu.pauseMenu)
             {
                 pauseMenu.Resume();
-                buttonClick.Play();
             }
             else if(!winMenu.winMenu &&!controlMenu.controlMenu && !gameOverMenu.GameIsOver)
             {
                 pauseMenu.Pause();
-                buttonClick.Play();
             }
         }
     }
@@ -305,7 +303,7 @@ public class PlayerController : MonoBehaviour
     //Calls a function depending on what object you are interacting with
     public void Interact()
     {
-        if(interactable != null)
+        if(interactable != null && !hs.dead && !PauseMenu.GameIsPaused)
         {
             string tag = interactable.tag;
             if(tag == "Ladder")
@@ -358,18 +356,22 @@ public class PlayerController : MonoBehaviour
                 //if the player interacts with the shield pickup call the function Interact() in the script ShieldPickup
                 interactable.GetComponent<mageRagePickup>().Interact();
             }
+            else if (tag == "ScatterShot")
+            {
+                interactable.GetComponent<ScatterShotPickup>().Interact();
+            }
         }
     }
 
     public void OnTriggerStay2D(Collider2D collider)
     {
-        if(collider.tag != "Spike")
+        if(collider.tag != "Spike" && collider.tag != "Laser" && collider.tag != "Breakable")
             interactable = collider.gameObject;
     }
 
     public void OnTriggerExit2D(Collider2D collider)
     {
-        if(collider.tag != "Spike")
+        if(collider.tag != "Spike" && collider.tag != "Laser" && collider.tag != "Breakable")
             interactable = null;
     }
 

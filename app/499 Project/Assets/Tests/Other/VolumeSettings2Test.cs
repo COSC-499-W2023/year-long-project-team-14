@@ -36,7 +36,7 @@ public class VolumeSettings2Tests
 
         musicManager.Load();
 
-        Assert.AreEqual(expectedSliderValue, musicManager.volumeSlider.value);
+        Assert.AreEqual(expectedSliderValue, musicManager.volumeSlider.value * 2);
     }
 
     [Test]
@@ -52,7 +52,7 @@ public class VolumeSettings2Tests
         musicManager.volumeSlider.value = expectedSliderValue;
         musicManager.Save();
 
-        Assert.AreEqual(expectedSliderValue, PlayerPrefs.GetFloat("Volume"));
+        Assert.AreEqual(expectedSliderValue, PlayerPrefs.GetFloat("Volume") / 2);
     }
 
     [Test]
