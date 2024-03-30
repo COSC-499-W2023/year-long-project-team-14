@@ -17,6 +17,8 @@ public class Spells : MonoBehaviour
     public GameObject iceCubePrefab;
     public GameObject shieldPrefab;
     public GameObject shield;
+    //Storing rngSP here so it can be used during unit testing. This is only for the rng used to check which spell is used
+    public int rngSP = 0;
 
     //Used to store the prefabs of enemy's for the rainbow spell. 
     public GameObject e1;
@@ -309,38 +311,38 @@ public class Spells : MonoBehaviour
     }
 
     public void RainbowSpell(){
-        int rng = Random.Range(1,8);
+         rngSP = Random.Range(1,8);
 
-        //Cast the spell associated with the rng value 
+        //Cast the spell associated with the rngSP value 
         // TODO: increase the range with each addition of a new spell
-            if(rng == 1)
+            if(rngSP == 1)
             {
                 FireballSpell();
             }
-            else if(rng == 2)
+            else if(rngSP == 2)
             {   
                 LightningSpell();
             }
-            else if(rng == 3)
+            else if(rngSP == 3)
             {   
                 SeekingOrb();
             }
-            else if (rng == 4)
+            else if (rngSP == 4)
             {
                 SummonChad();
             }
-            else if (rng == 5)
+            else if (rngSP == 5)
             {
                 StartCoroutine(Freeze());
             }
-             else if (rng == 6)
+             else if (rngSP == 6)
             {
                //If the user has the shield spell and presses q then call ShieldSpell()
                ShieldSpell();
             }
-            else if (rng >= 7)
+            else if (rngSP >= 7)
             {
-               //If you hit the unlucky 7 than get a second rng value and spawn that associated enemy 
+               //If you hit the unlucky 7 than get a second rngSP value (simply named rng2) and spawn that associated enemy 
                int rng2 = Random.Range(1,5);
 
                if(rng2 == 1){
