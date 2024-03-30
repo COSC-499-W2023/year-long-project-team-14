@@ -13,45 +13,48 @@ public class GameOverMenu : MonoBehaviour
     public bool gameOverMenu = false;
     public int playercount; 
     public GameMaster gameMaster;
+    public MusicManager musicManager; 
 
     public void Start()
     {
         playercount = PlayerPrefs.GetInt("playerCount");
     }
 
-    //If both players are dead, end game
-    public void Update(){
-        if (playercount == 0 && GameIsOver==false){
+    public void Update()
+    {
+        if (playercount == 0 && GameIsOver == false)
+        {
             StartCoroutine(ShowGameOverMenu());
+
+            if (musicManager != null)
+                musicManager.PlayGameOverMusic();
         }
     }
 
-    //Display the game over menu
     public IEnumerator ShowGameOverMenu()
     {
         GameIsOver = true;
         gameOverMenu = true;
 
-        if(gameMaster != null)
+        if (gameMaster != null)
             gameMaster.stopTimer = true;
 
         yield return new WaitForSecondsRealtime(1f);
 
-         if (fadeAnim != null)
+        if (fadeAnim != null)
             fadeAnim.Play("ScreenFadeOut");
 
         yield return new WaitForSecondsRealtime(0.5f);
 
         gameOverMenuUI?.SetActive(true);
 
-        if(gameMaster != null)
+        if (gameMaster != null)
             gameMaster.SelectButton(restartButton);
 
         if (fadeAnim != null)
             fadeAnim.Play("ScreenFadeIn");
     }
 
-    //Load into menu scene
     public void LoadMenu()
     {
         StartCoroutine(GoToMenu());
@@ -67,7 +70,6 @@ public class GameOverMenu : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    //Restart game
     public void Restart()
     {
         StartCoroutine(RestartGame());

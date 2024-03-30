@@ -105,7 +105,7 @@ public class MusicManager : MonoBehaviour
         audioSource.Play();
     }
 
-    public void PlayGameOverMusic() 
+    public void PlayGameOverMusic() {
         audioSource.Pause();
         audioSource.clip = gameoverMenuTrack;
         audioSource.Play();
