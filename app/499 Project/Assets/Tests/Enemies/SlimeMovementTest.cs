@@ -50,6 +50,7 @@ public class SlimeMovementTest : MonoBehaviour
         
         //Wait for the slime to move through the level to get to the player
         yield return new WaitUntil(() => slime.transform.position.x >= 9.5);
+        yield return new WaitForSeconds(0.25f);
 
         //Check if the the slime reached the player and damaged them
         Assert.IsTrue(healthScript.life == health - 1); 
