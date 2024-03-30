@@ -42,19 +42,19 @@ public class MusicManager : MonoBehaviour
 
     public void ChangeVolume()
     {
-        float volume = volumeSlider.value; 
+        float volume = volumeSlider.value * 2f; 
         AudioListener.volume = volume; 
         Save(); 
     }
 
     public void Load()
     {
-        volumeSlider.value = PlayerPrefs.GetFloat("Volume");
+        volumeSlider.value = PlayerPrefs.GetFloat("Volume") / 2f;
     }
 
     public void Save()
     {
-        PlayerPrefs.SetFloat("Volume", volumeSlider.value);
+        PlayerPrefs.SetFloat("Volume", volumeSlider.value * 2f);
     }
 
     public void ShuffleTracks()
