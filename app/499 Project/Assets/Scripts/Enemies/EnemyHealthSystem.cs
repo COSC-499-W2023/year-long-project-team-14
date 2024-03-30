@@ -98,6 +98,9 @@ public class EnemyHealthSystem : MonoBehaviour
             if (enemyHealth <= 0)
             {
                 Die();
+
+                //play death sound
+                deathSound.Play();
             }
             else
             {
@@ -120,6 +123,9 @@ public class EnemyHealthSystem : MonoBehaviour
             if (enemyHealth <= 0)
             {
                 Die();
+
+                //play death sound
+                deathSound.Play();
             }
             else
             {
@@ -147,9 +153,6 @@ public class EnemyHealthSystem : MonoBehaviour
         animator.SetBool("IsWalking", false);
         
         animator.SetBool("IsDead", true);
-
-        //play death sound
-        deathSound.Play();
 
         StartCoroutine(Transparent());
 
