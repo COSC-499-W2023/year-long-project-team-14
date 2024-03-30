@@ -303,7 +303,7 @@ public class PlayerController : MonoBehaviour
     //Calls a function depending on what object you are interacting with
     public void Interact()
     {
-        if(interactable != null)
+        if(interactable != null && !hs.dead && !PauseMenu.GameIsPaused)
         {
             string tag = interactable.tag;
             if(tag == "Ladder")
