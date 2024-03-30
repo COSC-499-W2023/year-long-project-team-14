@@ -142,7 +142,7 @@ public class SeekerBullet : MonoBehaviour
             healthSystem hs = players[i].GetComponent<healthSystem>();
             if(hs != null)
             {
-                if(hs.life > 0)
+                if(hs.life > 0 && !hs.chad)
                     alivePlayers.Add(players[i]);
             }
         }

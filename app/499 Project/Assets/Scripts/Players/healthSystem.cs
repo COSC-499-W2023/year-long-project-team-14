@@ -67,14 +67,11 @@ public class healthSystem : MonoBehaviour
     public void takeDamage()
     {
         //Check if the player has >= health and if the player is temporarly invincible
-        if(life >= 1 && isInvic == false)
+        if(life >= 1 && isInvic == false && !chad)
         {
             //Decrease health by 1
-            if(!chad)
-            {
-                life--;
-                hearts[life].SetActive(false);
-            }
+            life--;
+            hearts[life].SetActive(false);
            
            //Make the player invicible 
            isInvic = true;
@@ -99,6 +96,8 @@ public class healthSystem : MonoBehaviour
 
     public void Die()
     {
+        life = 0;
+
         //Play death animation
         animator.SetBool("IsWalking", false);
         animator.SetBool("IsDead", true);
