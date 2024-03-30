@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public GameObject[] players;
+    public GameObject[] p;
+    public List<GameObject> players;
     public GameObject targetPlayer;
     public GameObject bulletPrefab;
     public float shootInterval = 2.0f;
@@ -33,6 +34,8 @@ public class EnemyAttack : MonoBehaviour
 
     void Start()
     {
+        players = new List<GameObject>();
+
         //Create list of points for each line renderer
         Points1 = new List<Vector3>();
         Points2 = new List<Vector3>();
@@ -62,15 +65,26 @@ public class EnemyAttack : MonoBehaviour
             bulletSpeed *= 3f;
 
         //Prevent enemies from shooting at the start of a level
-        lastShootTime = Time.time + Random.Range(0, shootInterval/2);
+        lastShootTime = Time.time + Random.Range(-0.5f, 0.5f);
     }
 
     void Update()
     {
         //Get players
-        players = GameObject.FindGameObjectsWithTag("Player");
+        players.RemoveRange(0, players.Count);
+        p = GameObject.FindGameObjectsWithTag("Player");
 
-        if(players.Length > 0)
+        for(int i = 0; i < p.Length; i++)
+        {
+            healthSystem hs = p[i].GetComponent<healthSystem>();
+            if(hs != null)
+            {
+                if(hs.life > 0)
+                    players.Add(p[i]);
+            }
+        }
+
+        if(players.Count > 0)
         {
             //Find closest player and aim at them
             FindClosestPlayer();
@@ -155,10 +169,13 @@ public class EnemyAttack : MonoBehaviour
             }
             else if(hitData.collider.CompareTag("Player")) //If raycast hits player, shoot in that direction
             {
-                Points.Add(hitData.centroid);
+                if(hitData.collider.GetComponent<healthSystem>().life > 0)
+                {
+                    Points.Add(hitData.centroid);
 
-                if(Time.time - lastShootTime >= shootInterval)
-                    Shoot(lr);
+                    if(Time.time - lastShootTime >= shootInterval)
+                        Shoot(lr);
+                }
             }
         }
     }
@@ -174,8 +191,23 @@ public class EnemyAttack : MonoBehaviour
     }
 
     void FindClosestPlayer() //Sets target to be the player closest to the enemy
-    {
-        if(players.Length > 1)
+    {   
+        if(players.Count > 2)
+        {
+            float distance1 = Vector3.Distance(gameObject.transform.position, players[0].transform.position);
+            float distance2 = Vector3.Distance(gameObject.transform.position, players[1].transform.position);
+            float distance3 = Vector3.Distance(gameObject.transform.position, players[2].transform.position);
+            
+            if(distance2 < distance1 || distance3 < distance1)
+            {
+                if(distance2 < distance3)
+                    targetPlayer = players[1];
+                else targetPlayer = players[2];
+            }    
+            else
+                targetPlayer = players[0]; 
+        }
+        else if(players.Count > 1)
         {
             float distance1 = Vector3.Distance(gameObject.transform.position, players[0].transform.position);
             float distance2 = Vector3.Distance(gameObject.transform.position, players[1].transform.position);

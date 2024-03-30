@@ -39,19 +39,23 @@ public class EnemyMovement : MonoBehaviour
         if(!followPlayer && !chargePlayer)
             NewTarget();
 
-        //Set starting wait time and charge duration
+        //Set starting wait time for slime
+        if(followPlayer)
+            waitTime = Random.Range(0, 0.5f);
+
+        //Set starting wait time and charge duration for bonk
         if(chargePlayer)
         {
-            ResetWaitTime(0.5f, 1f);
-            chargeDuration = 0.75f;
+            ResetWaitTime(0.5f, 1.5f);
+            chargeDuration = 0.7f;
         }
 
         //Get difficulty
         int diff = PlayerPrefs.GetInt("difficulty");
 
-        //Set slime move speed
-        if(followPlayer) 
-            movementSpeed *= diff; 
+        
+        if(followPlayer) //Set slime move speed
+            movementSpeed *= diff;
         else if(diff == 1) //Set other enemy move speed
             movementSpeed *= 1f;
         else if(diff == 2)
@@ -96,7 +100,7 @@ public class EnemyMovement : MonoBehaviour
         animator.SetBool("IsWalking", false);
 
         //Wait for timer before moving unless followPlayer = true
-        if((timer >= waitTime || followPlayer) && (targetPlayer != null || (!followPlayer && !chargePlayer)) || noWait)
+        if((timer >= waitTime) && (targetPlayer != null || (!followPlayer && !chargePlayer)) || noWait)
         {
             if(path == null)
                 return;
@@ -146,8 +150,8 @@ public class EnemyMovement : MonoBehaviour
         //Reset wait time and charge duration
         if(chargePlayer && timer >= waitTime + chargeDuration)
         {
-            ResetWaitTime(1f, 2f);
-            chargeDuration = 0.75f;
+            ResetWaitTime(0.5f, 2f);
+            chargeDuration = 0.7f;
         }
     }
 
@@ -171,8 +175,8 @@ public class EnemyMovement : MonoBehaviour
     {   
         if(collision.gameObject.CompareTag("Player") && (chargePlayer || followPlayer))
         {     
-            ResetWaitTime(1f, 2f);
-            chargeDuration = 0.75f;
+            ResetWaitTime(0.5f, 2f);
+            chargeDuration = 0.7f;
         }
         else if((collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("BrokenWall") || collision.gameObject.CompareTag("Breakable") || collision.gameObject.CompareTag("Player")) && !chargePlayer && !followPlayer)
         {
