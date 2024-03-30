@@ -10,7 +10,8 @@ public class MusicManager : MonoBehaviour
 {
     public AudioClip[] tracks;
     public AudioClip minibossTrack; 
-    public AudioClip winMenuTrack; // Add win menu music track
+    public AudioClip winMenuTrack; 
+    public AudioClip gameoverMenuTrack; 
     public AudioSource audioSource;
     [SerializeField] public Slider volumeSlider;
     public bool optionsMenu = false;
@@ -101,6 +102,12 @@ public class MusicManager : MonoBehaviour
     {
         audioSource.Pause();
         audioSource.clip = winMenuTrack;
+        audioSource.Play();
+    }
+
+    public void PlayGameOverMusic() 
+        audioSource.Pause();
+        audioSource.clip = gameoverMenuTrack;
         audioSource.Play();
     }
 
