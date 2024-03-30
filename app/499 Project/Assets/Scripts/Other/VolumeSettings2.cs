@@ -1,6 +1,3 @@
-
-
-
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -10,8 +7,6 @@ public class MusicManager : MonoBehaviour
 {
     public AudioClip[] tracks;
     public AudioClip minibossTrack; 
-    public AudioClip winMenuTrack; 
-    public AudioClip gameoverMenuTrack; 
     public AudioSource audioSource;
     [SerializeField] public Slider volumeSlider;
     public bool optionsMenu = false;
@@ -24,6 +19,9 @@ public class MusicManager : MonoBehaviour
     private int currentTrackIndex = 0;
     public GameMaster gameMaster;
     public int previousLevel = -1;
+
+   public AudioClip winMenuTrack; 
+    public AudioClip gameoverMenuTrack; 
 
     public void Start()
     {
@@ -98,19 +96,6 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    public void PlayWinMenuMusic()
-    {
-        audioSource.Pause();
-        audioSource.clip = winMenuTrack;
-        audioSource.Play();
-    }
-
-    public void PlayGameOverMusic() {
-        audioSource.Pause();
-        audioSource.clip = gameoverMenuTrack;
-        audioSource.Play();
-    }
-
     public void Update()
     {
         if (gameMaster.currentLevel != previousLevel)
@@ -131,6 +116,19 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    public void PlayWinMenuMusic()
+    {
+        audioSource.Stop();
+        audioSource.clip = winMenuTrack;
+        audioSource.Play();
+    }
+
+    public void PlayGameOverMenuMusic()
+    {
+        audioSource.Stop();
+        audioSource.clip = gameoverMenuTrack;
+        audioSource.Play();
+    }
     public void Back()
     {
         optionsMenu = false;
