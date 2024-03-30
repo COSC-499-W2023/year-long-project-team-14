@@ -145,7 +145,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(attackCharge >= attackCost && mouseHold >= 0.5f && holdCooldown > 0.1f)
+        if(attackCharge >= attackCost && mouseHold >= 0.5f && holdCooldown > 0.11f)
             Shoot();
 
         if(dashHold == 1)
