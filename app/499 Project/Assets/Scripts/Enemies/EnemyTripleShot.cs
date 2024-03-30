@@ -98,13 +98,13 @@ public class EnemyTripleShot : MonoBehaviour
         {
             //Find closest player and aim at them
             FindClosestPlayer();
-            AimAtPlayer(lineRenderer3);
+            AimAtPlayer(lineRenderer3, 0);
 
             //Once enemy can shoot, aim other 2 line renderers at player
             if(Time.time - lastShootTime >= shootInterval - 0.1f && Time.time - lastShootTime < shootInterval)
             {
-                AimAtPlayer(lineRenderer1);
-                AimAtPlayer(lineRenderer2);
+                AimAtPlayer(lineRenderer1, 180);
+                AimAtPlayer(lineRenderer2, 180);
             }
 
             //Rotate 2 of the line renderers in oposite directions to check every possible angle
@@ -166,10 +166,7 @@ public class EnemyTripleShot : MonoBehaviour
         for(int i = 1 ; i <= 3; i++){
             
             if(enemyHealthSystem.enemyHealth > 0 && GetComponent<EnemyTripleShot>().enabled)
-            {
-                AimAtPlayer(lineRenderer1);
-                AimAtPlayer(lineRenderer2);
-
+            {                
                 //Instantiate a bullet in the target direction
                 GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
                 Vector2 direction = lr.transform.right;
@@ -199,11 +196,14 @@ public class EnemyTripleShot : MonoBehaviour
             }
             else if(hitData.collider.CompareTag("Player")) //If raycast hits player, shoot in that direction
             {
-                Points.Add(hitData.centroid);
+                if(hitData.collider.GetComponent<healthSystem>().life > 0)
+                {
+                    Points.Add(hitData.centroid);
 
-                if(Time.time - lastShootTime >= shootInterval){
-                        
-                    StartCoroutine(Shoot(lr));
+                    if(Time.time - lastShootTime >= shootInterval){
+                            
+                        StartCoroutine(Shoot(lr));
+                    }
                 }
             }
         }
@@ -249,11 +249,11 @@ public class EnemyTripleShot : MonoBehaviour
             targetPlayer = players[0];
     }
 
-    void AimAtPlayer(LineRenderer lr) //Aims line renderer directly at player
+    void AimAtPlayer(LineRenderer lr, int rot) //Aims line renderer directly at player
     {
         Vector3 aimDirection = targetPlayer.transform.position - lr.transform.position;
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle + rot));
         lr.transform.rotation = Quaternion.Slerp(lr.transform.rotation, rotation, 1000 * Time.deltaTime);
     }
 

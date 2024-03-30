@@ -169,10 +169,13 @@ public class EnemyAttack : MonoBehaviour
             }
             else if(hitData.collider.CompareTag("Player")) //If raycast hits player, shoot in that direction
             {
-                Points.Add(hitData.centroid);
+                if(hitData.collider.GetComponent<healthSystem>().life > 0)
+                {
+                    Points.Add(hitData.centroid);
 
-                if(Time.time - lastShootTime >= shootInterval)
-                    Shoot(lr);
+                    if(Time.time - lastShootTime >= shootInterval)
+                        Shoot(lr);
+                }
             }
         }
     }
