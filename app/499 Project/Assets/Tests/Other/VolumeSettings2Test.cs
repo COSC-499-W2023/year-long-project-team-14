@@ -1,8 +1,6 @@
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.TestTools;
 using UnityEngine.UI;
-using System.Collections;
 
 [TestFixture]
 public class VolumeSettings2Tests
@@ -21,6 +19,28 @@ public class VolumeSettings2Tests
 
         Assert.AreEqual(expectedVolume, AudioListener.volume);
     }
+
+   [Test]
+public void PlayGameOverMenuMusic_Test()
+{
+    GameObject musicManagerObject = new GameObject("MusicManager");
+
+    MusicManager musicManager = musicManagerObject.AddComponent<MusicManager>();
+
+    AudioSource audioSource = musicManagerObject.AddComponent<AudioSource>();
+    musicManager.audioSource = audioSource;
+
+    AudioClip gameoverMenuTrack = AudioClip.Create("GameoverTrack", 44100, 2, 44100, false);
+    musicManager.gameoverMenuTrack = gameoverMenuTrack;
+
+    musicManager.PlayGameOverMenuMusic();
+
+    Assert.IsTrue(audioSource.isPlaying, "AudioSource is not playing!");
+    Assert.AreEqual(gameoverMenuTrack, audioSource.clip, "Incorrect clip is playing!");
+
+    GameObject.Destroy(musicManagerObject);
+}
+
 
     [Test]
     public void Load_SetsVolumeSliderValue()
@@ -95,6 +115,3 @@ public class VolumeSettings2Tests
         Assert.AreEqual(gameMaster.currentLevel, musicManager.previousLevel); 
     }
 }
-
-
-
