@@ -142,6 +142,8 @@ public class Spells : MonoBehaviour
                RainbowSpell();
             }
         }
+        
+        
     }
 
     public void FireballSpell()
@@ -461,10 +463,9 @@ public class Spells : MonoBehaviour
     }
 
     public void RainbowSpell(){
-         rngSP = Random.Range(1,8);
+         rngSP = Random.Range(1,10);
 
         //Cast the spell associated with the rngSP value 
-        // TODO: increase the range with each addition of a new spell
             if(rngSP == 1)
             {
                 FireballSpell();
@@ -487,12 +488,19 @@ public class Spells : MonoBehaviour
             }
              else if (rngSP == 6)
             {
-               //If the user has the shield spell and presses q then call ShieldSpell()
                ShieldSpell();
             }
-            else if (rngSP >= 7)
+            else if (rngSP == 7)
             {
-               //If you hit the unlucky 7 than get a second rngSP value (simply named rng2) and spawn that associated enemy 
+                scatterShot();
+            }
+            else if (rngSP == 8)
+            {
+                mageRage();
+            }
+            else if (rngSP >= 9)
+            {
+               //If you hit the unlucky 9 than get a second rngSP value (simply named rng2) and spawn that associated enemy 
                int rng2 = Random.Range(1,5);
 
                if(rng2 == 1){
@@ -506,9 +514,11 @@ public class Spells : MonoBehaviour
                }
                else if(rng2 == 4){
                 Instantiate(e4, playerController.transform.position, Quaternion.identity);
-               }
             }
+        }
             
-    }
+    }   
 
 }
+
+
