@@ -68,6 +68,7 @@ MonoBehaviour:
   shieldSprite: {fileID: 21300000, guid: ef1884aedfd4e3a46a8dc138f602d5a1, type: 3}
   mRSprite: {fileID: 668703104, guid: 97bb028556ef449f5bbd3c83f7c405ec, type: 3}
   scatterShotSprite: {fileID: 1819548605, guid: 7aa2071947da1894db5df32164a6be12, type: 3}
+  rainbowSprite: {fileID: 21300000, guid: da0df15a72341f74c8ac2fa904068c52, type: 3}
   gameMaster: {fileID: 0}
   button: {fileID: 3581139936707756502}
   ltIcon: {fileID: 21300000, guid: 5407b74134b1eb844a010a559f91aaf9, type: 3}
@@ -897,6 +898,11 @@ MonoBehaviour:
   ScatterShotPrefab: {fileID: 2690387278358215443, guid: 22bef6c5b47cb4841ab8a2c760e3e831, type: 3}
   mRAura: {fileID: 4103782466199260733, guid: e9bf3a87404f347ef826f289185f620e, type: 3}
   aura: {fileID: 0}
+  rngSP: 0
+  e1: {fileID: 5701880002770581090, guid: 2ea9238c69ef458479c9e29fd0cc6d63, type: 3}
+  e2: {fileID: 604422109994451894, guid: 521fad6bc7d5e4f4e9157bef5ee8e044, type: 3}
+  e3: {fileID: 3279354335901742904, guid: 631116f9e5af3194d937127daacdc445, type: 3}
+  e4: {fileID: 6988037432058799580, guid: f7a72d5dbc80e4844b8d38cf929a774c, type: 3}
   isShield: 0
   isRage: 0
   yOffset: 2.5

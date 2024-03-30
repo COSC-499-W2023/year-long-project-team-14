@@ -55,20 +55,20 @@ public class RainbowTest
         spells.RainbowSpell();
 
         rngTest2 = spells.rngSP; 
+    
+        //Ensure both of the rng values have been changed
+        Assert.IsTrue(rngTest1 != 0 && rngTest2 != 0);
 
         //Check that the first and second rng values are not the same meaning a different spell was cast. If they are than see below 
         Assert.IsTrue(rngTest1 != rngTest2 );  
         
+        //Recast the rainbow spell to get a different rng value (meaning different spell used).
         spells.RainbowSpell();
         
-        //Recast the rainbow spell to get a different rng value (meaning different spell used). 
         rngTest2 = spells.rngSP; 
 
         //Check that the first rng value is not the same as the third rng value now (as the first two rng vlaues were the same). 
         Assert.IsTrue(rngTest1 != rngTest2 ); 
-
-        //If you got the same spell three times (highly unlikely) then atleast check that the rng is not equal to 0 (meaning you were still getting a random number that was not the default that is unused by spells).
-        Assert.IsTrue(rngTest1 != 0 && rngTest2 != 0);
 
         yield return null;
     }
