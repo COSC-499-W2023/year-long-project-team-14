@@ -29,6 +29,14 @@ public class Spells : MonoBehaviour
     //This is not needed anymore
     //public SpriteRenderer spriteRenderer;
 
+    //Storing rngSP here so it can be used during unit testing. This is only for the rng used to check which spell is used
+    public int rngSP = 0;
+
+    //Used to store the prefabs of enemy's for the rainbow spell. 
+    public GameObject e1;
+    public GameObject e2;
+    public GameObject e3;
+    public GameObject e4;
 
     //Used to indicate when the shield is active 
     public bool isShield = false;
@@ -127,6 +135,10 @@ public class Spells : MonoBehaviour
             else if (spellName == "ScatterShot")
             {
                 scatterShot();
+            else if (spellName == "Rainbow")
+            {
+               //If the user has the shield spell and presses q then call ShieldSpell()
+               RainbowSpell();
             }
         }
     }
@@ -445,6 +457,57 @@ public class Spells : MonoBehaviour
 
                 angle += angleStep;
             }
+    }
+
+    public void RainbowSpell(){
+         rngSP = Random.Range(1,8);
+
+        //Cast the spell associated with the rngSP value 
+        // TODO: increase the range with each addition of a new spell
+            if(rngSP == 1)
+            {
+                FireballSpell();
+            }
+            else if(rngSP == 2)
+            {   
+                LightningSpell();
+            }
+            else if(rngSP == 3)
+            {   
+                SeekingOrb();
+            }
+            else if (rngSP == 4)
+            {
+                SummonChad();
+            }
+            else if (rngSP == 5)
+            {
+                StartCoroutine(Freeze());
+            }
+             else if (rngSP == 6)
+            {
+               //If the user has the shield spell and presses q then call ShieldSpell()
+               ShieldSpell();
+            }
+            else if (rngSP >= 7)
+            {
+               //If you hit the unlucky 7 than get a second rngSP value (simply named rng2) and spawn that associated enemy 
+               int rng2 = Random.Range(1,5);
+
+               if(rng2 == 1){
+                Instantiate(e1, playerController.transform.position, Quaternion.identity);
+               }
+               else if(rng2 == 2){
+                Instantiate(e2, playerController.transform.position, Quaternion.identity);
+               }
+               else if(rng2 == 3){
+                Instantiate(e3, playerController.transform.position, Quaternion.identity);
+               }
+               else if(rng2 == 4){
+                Instantiate(e4, playerController.transform.position, Quaternion.identity);
+               }
+            }
+            
     }
 
 }

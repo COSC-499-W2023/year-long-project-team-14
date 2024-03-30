@@ -360,6 +360,11 @@ public class PlayerController : MonoBehaviour
             {
                 interactable.GetComponent<ScatterShotPickup>().Interact();
             }
+            else if (tag == "Rainbow")
+            {
+                //if the player interacts with the shield pickup call the function Interact() in the script ShieldPickup
+                interactable.GetComponent<RainbowPickup>().Interact();
+            }
         }
     }
 
