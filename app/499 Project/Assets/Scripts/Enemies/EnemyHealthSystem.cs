@@ -43,13 +43,13 @@ public class EnemyHealthSystem : MonoBehaviour
 
         //Set enemy health
         if(diff == 1) 
-            enemyHealth = (int)Mathf.Round(enemyHealth * 1f);
-        else if(diff == 2)
             enemyHealth = (int)Mathf.Round(enemyHealth * 1.5f);
-        else if(diff == 3)
+        else if(diff == 2)
             enemyHealth = (int)Mathf.Round(enemyHealth * 2f);
-        else if(diff == 4)
+        else if(diff == 3)
             enemyHealth = (int)Mathf.Round(enemyHealth * 2.5f);
+        else if(diff == 4)
+            enemyHealth = (int)Mathf.Round(enemyHealth * 3f);
         
         enemyCollider = GetComponent<CircleCollider2D>();
     }
@@ -84,7 +84,7 @@ public class EnemyHealthSystem : MonoBehaviour
     {
         if(collider.gameObject.CompareTag("FireballExplosion"))
         {
-            takeDamage(4);
+            takeDamage(3);
         }
     }
 

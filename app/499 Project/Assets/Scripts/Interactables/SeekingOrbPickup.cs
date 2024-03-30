@@ -101,6 +101,7 @@ public class SeekingOrbPickup : MonoBehaviour
         {
             playerIsOver = false;
             player.GetComponent<Spells>().spellName = "SeekingOrb";
+            player.GetComponent<Spells>().spellCooldown = 15;
             Destroy(gameObject);
         }
     }

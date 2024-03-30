@@ -101,7 +101,7 @@ public class LightningPickup : MonoBehaviour
         {
             playerIsOver = false;
             player.GetComponent<Spells>().spellName = "Lightning";
-            player.GetComponent<Spells>().spellCooldown = 10;
+            player.GetComponent<Spells>().spellCooldown = 15;
             Destroy(gameObject);
         }
     }

@@ -101,7 +101,7 @@ public class FireballPickup : MonoBehaviour
         {
             playerIsOver = false;
             player.GetComponent<Spells>().spellName = "Fireball";
-            player.GetComponent<Spells>().spellCooldown = 10;
+            player.GetComponent<Spells>().spellCooldown = 20;
             Destroy(gameObject);
         }
     }

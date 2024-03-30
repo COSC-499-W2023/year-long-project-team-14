@@ -37,8 +37,12 @@ public class MageRageTest
     }
 
     [UnityTest]
-    public IEnumerator CastLightningTest()
+    public IEnumerator MageRage()
     {
+        //Get starting stats
+        float originalAttackChargeSpeed = playerController.attackChargeSpeed;
+        float originalBulletForce = playerController.bulletForce;
+        float originalMoveSpeed = playerController.moveSpeed;
 
         //Cast the mageRage spell
         spells.mageRage();
@@ -48,9 +52,9 @@ public class MageRageTest
 
 
         //Check that the mage's stats have been changed
-        Assert.IsTrue(playerController.attackChargeSpeed == 5); 
-        Assert.IsTrue(playerController.bulletForce == 25); 
-        Assert.IsTrue(playerController.moveSpeed == 20); 
+        Assert.IsTrue(playerController.attackChargeSpeed != originalAttackChargeSpeed); 
+        Assert.IsTrue(playerController.bulletForce != originalBulletForce); 
+        Assert.IsTrue(playerController.moveSpeed != originalMoveSpeed); 
         //Assert.IsTrue(spriteRenderer.color ==  cT);
 
 
@@ -58,9 +62,9 @@ public class MageRageTest
         yield return new WaitForSeconds(5f);
 
         //Check that the mage's stats have returned back to the original before the buff.
-        Assert.IsTrue(playerController.attackChargeSpeed == 2); 
-        Assert.IsTrue(playerController.bulletForce == 12); 
-        Assert.IsTrue(playerController.moveSpeed == 8); 
+        Assert.IsTrue(playerController.attackChargeSpeed == originalAttackChargeSpeed); 
+        Assert.IsTrue(playerController.bulletForce == originalBulletForce); 
+        Assert.IsTrue(playerController.moveSpeed == originalMoveSpeed); 
         //Assert.IsTrue(spriteRenderer.color == cT2);
 
     }

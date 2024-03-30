@@ -39,7 +39,7 @@ public class chadAttack : MonoBehaviour
         Points3 = new List<Vector3>();
 
         //Prevent enemies from shooting at the start of a level
-        lastShootTime = Time.time + Random.Range(0, shootInterval/2);
+        lastShootTime = Time.time;
     }
 
     void Update()
@@ -114,7 +114,7 @@ public class chadAttack : MonoBehaviour
         Vector2 direction = lr.transform.right;
         bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
         bullet.GetComponent<PlayerBullet>().bounces = maxReflections;
-        lastShootTime = Time.time + Random.Range(-1f / diff, 1f / diff);;
+        lastShootTime = Time.time + Random.Range(-0.5f, 0.5f);
         //play shoot sound
         shootSound.Play();
     }

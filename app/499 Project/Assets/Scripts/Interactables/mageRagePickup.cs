@@ -54,7 +54,7 @@ public class mageRagePickup : MonoBehaviour
         {
             playerIsOver = false;
             player.GetComponent<Spells>().spellName = "mR";
-            player.GetComponent<Spells>().spellCooldown = 10;
+            player.GetComponent<Spells>().spellCooldown = 30;
             Destroy(gameObject);
         }
     }

@@ -47,11 +47,11 @@ public class MiniBossHealthSystem : MonoBehaviour
         if(diff == 1) 
             enemyHealth = (int)Mathf.Round(enemyHealth * 1f);
         else if(diff == 2)
-            enemyHealth = (int)Mathf.Round(enemyHealth * 1.33f);
+            enemyHealth = (int)Mathf.Round(enemyHealth * 1.25f);
         else if(diff == 3)
-            enemyHealth = (int)Mathf.Round(enemyHealth * 1.67f);
+            enemyHealth = (int)Mathf.Round(enemyHealth * 1.5f);
         else if(diff == 4)
-            enemyHealth = (int)Mathf.Round(enemyHealth * 2f);
+            enemyHealth = (int)Mathf.Round(enemyHealth * 1.75f);
 
         healthAmount = enemyHealth;
         
@@ -81,7 +81,7 @@ public class MiniBossHealthSystem : MonoBehaviour
     {
         if(collider.gameObject.CompareTag("FireballExplosion"))
         {
-            takeDamage(4);
+            takeDamage(3);
         }
     }
 

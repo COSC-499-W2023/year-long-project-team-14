@@ -67,7 +67,8 @@ public class EnemyTripleShot : MonoBehaviour
             bulletSpeed *= 3f;
 
         //Prevent enemies from shooting at the start of a level
-        lastShootTime = Time.time + Random.Range(0, shootInterval/2);
+        lastShootTime = Time.time + Random.Range(-0.5f, 0.5f);
+
         shootSound = GetComponent<AudioSource>();
 
         enemyHealthSystem = GetComponent<EnemyHealthSystem>();
@@ -139,16 +140,13 @@ public class EnemyTripleShot : MonoBehaviour
             lineRenderer3.SetPositions(Points3.ToArray());
 
             
-        } 
-
-        lastShootTime+= Time.deltaTime;
-           
+        }   
     }
 
    IEnumerator Shoot(LineRenderer lr) //Shoot a bullet in the direction of the line renderer (its an IEnumerator because of the wait that is needed between bullets)
     {
         // Reset the shoot timer to delay the next series of shots 
-        lastShootTime = Random.Range(-1f / diff, 1f / diff);
+        lastShootTime = Time.time + Random.Range(-1f / diff, 1f / diff);
 
         //Loop 3 times since youll shoot 3 bullets
         for(int i = 1 ; i <= 3; i++){
@@ -189,7 +187,7 @@ public class EnemyTripleShot : MonoBehaviour
             {
                 Points.Add(hitData.centroid);
 
-                if(lastShootTime >= shootInterval){
+                if(Time.time - lastShootTime >= shootInterval){
                         
                     StartCoroutine(Shoot(lr));
                 }
