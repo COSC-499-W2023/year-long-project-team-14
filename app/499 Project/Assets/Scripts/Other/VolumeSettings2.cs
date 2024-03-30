@@ -1,3 +1,6 @@
+
+
+
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -7,6 +10,7 @@ public class MusicManager : MonoBehaviour
 {
     public AudioClip[] tracks;
     public AudioClip minibossTrack; 
+    public AudioClip winMenuTrack; // Add win menu music track
     public AudioSource audioSource;
     [SerializeField] public Slider volumeSlider;
     public bool optionsMenu = false;
@@ -91,6 +95,13 @@ public class MusicManager : MonoBehaviour
 
             Invoke("PlayNextTrack", nextClip.length);
         }
+    }
+
+    public void PlayWinMenuMusic()
+    {
+        audioSource.Pause();
+        audioSource.clip = winMenuTrack;
+        audioSource.Play();
     }
 
     public void Update()
