@@ -365,13 +365,13 @@ public class PlayerController : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collider)
     {
-        if(collider.tag != "Spike")
+        if(collider.tag != "Spike" && collider.tag != "Laser" && collider.tag != "Breakable")
             interactable = collider.gameObject;
     }
 
     public void OnTriggerExit2D(Collider2D collider)
     {
-        if(collider.tag != "Spike")
+        if(collider.tag != "Spike" && collider.tag != "Laser" && collider.tag != "Breakable")
             interactable = null;
     }
 
