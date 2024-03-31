@@ -1,4 +1,25 @@
 # Personal Log - Gabriel Mercier
+## Week 12 - T2
+- Start Date: March 25
+- End Date: March 31
+  
+### Tasks I worked on:
+![](screenshots/t2Week12_peerEval_Gabriel.png)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* ensure the team is on the same page for the individual reports
+* Identify anything that needs work
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Made scatter shot spell
+* unit test for scatter shot
+
+### Among these tasks, which have you completed/in progress in the last week?
+I completed all my tasks. Working on adding any missing sound effects
+
+***
 ## Week 11 - T2
 - Start Date: March 18
 - End Date: March 24
