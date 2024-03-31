@@ -20,6 +20,9 @@ public class MusicManager : MonoBehaviour
     public GameMaster gameMaster;
     public int previousLevel = -1;
 
+   public AudioClip winMenuTrack; 
+    public AudioClip gameoverMenuTrack; 
+
     public void Start()
     {
         gameMaster = FindObjectOfType<GameMaster>();
@@ -113,6 +116,19 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    public void PlayWinMenuMusic()
+    {
+        audioSource.Stop();
+        audioSource.clip = winMenuTrack;
+        audioSource.Play();
+    }
+
+    public void PlayGameOverMenuMusic()
+    {
+        audioSource.Stop();
+        audioSource.clip = gameoverMenuTrack;
+        audioSource.Play();
+    }
     public void Back()
     {
         optionsMenu = false;

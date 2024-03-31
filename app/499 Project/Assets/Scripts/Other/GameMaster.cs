@@ -23,7 +23,6 @@ public class GameMaster : MonoBehaviour
     public GameObject WinMenu;
 
     public PauseMenu pauseMenu;
-    public MusicManager musicManager;
     public WinMenu winMenu;
     public GameOverMenu gameOverMenu;
     public ControlMenu controlMenu;
@@ -52,6 +51,7 @@ public class GameMaster : MonoBehaviour
     public bool stopTimer = false;
     public bool unitTest = false;
 
+    public MusicManager musicManager; 
     [SerializeField] private AudioSource transitionSound;
 
     void Start() //Sets everything up
@@ -199,6 +199,10 @@ public class GameMaster : MonoBehaviour
             GameObject portal = GameObject.FindWithTag("Portal");
             if(portal != null)
                 Destroy(portal);
+
+             // Start playing the win menu music
+            if(musicManager != null)
+                musicManager.PlayWinMenuMusic();
 
             //Fade back in
             if (fadeAnim != null)
