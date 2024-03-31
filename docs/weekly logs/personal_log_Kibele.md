@@ -1,5 +1,30 @@
 # Personal Log - Kibele Sebnem Yildirim
 
+## Week 12 (Bonus Feature) - Term 2
+- Start Date: March 25
+- End Date: March 31
+
+- ### Recap on your week's goals
+- My goals this week were to:
+* add music to win menu and game over menu as a bonus to the features i have worked during the term
+*talk with team about wrapping up the project
+
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to add music for when the player beats the game or looses the game.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week. 
+
+Here are the screenshots of my codework in the Game Master, GamoverMenu, and VolumeSettings and their test on VSCode this week:
+![](screenshots/kibeleweeklyt2week12-2.png)
+![](screenshots/kibeleweeklyt2week12.png)
+![](screenshots/kibeleweeklyt2week12-1.png)
+
+
+### Tasks I worked on:
+![](screenshots/kibeleweek12.png)
+
 ## Week 11 - Term 2
 - Start Date: March 18
 - End Date: March 24
