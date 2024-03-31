@@ -1,5 +1,26 @@
 # Personal Log - Justin McKendry
 
+## Week 24 (term 2 week 12)
+- Start Date: March 25th 
+- End Date: March 31st
+
+### Tasks I worked on:
+![](screenshots/tasks_justin_week_24.png)
+
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Complete the unit test for the rainbow spell
+* Update the build of the game online
+* Update the test log to reflect all of the completed unit tests for the total project.
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Complete the rainbow spell (just the unit test and updated functionality for the spells released to develop since the begging of development of the rainbow spell was remaining)
+  
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed the rainbow spell and all other additional goals this week.
+
 ## Week 23 (term 2 week 11)
 - Start Date: March 18th 
 - End Date: March 24th
