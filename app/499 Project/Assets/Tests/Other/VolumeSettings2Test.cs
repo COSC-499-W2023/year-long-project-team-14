@@ -41,6 +41,26 @@ public void PlayGameOverMenuMusic_Test()
     GameObject.Destroy(musicManagerObject);
 }
 
+[Test]
+public void PlayWinMenuMusic_Test(){
+     GameObject musicManagerObject = new GameObject("MusicManager");
+
+    MusicManager musicManager = musicManagerObject.AddComponent<MusicManager>();
+
+    AudioSource audioSource = musicManagerObject.AddComponent<AudioSource>();
+    musicManager.audioSource = audioSource;
+
+    AudioClip winMenuTrack = AudioClip.Create("winMenuTrack", 44100, 2, 44100, false);
+    musicManager.winMenuTrack = winMenuTrack;
+
+    musicManager.PlayWinMenuMusic();
+
+    Assert.IsTrue(audioSource.isPlaying, "AudioSource is not playing!");
+    Assert.AreEqual(winMenuTrack, audioSource.clip, "Incorrect clip is playing!");
+
+    GameObject.Destroy(musicManagerObject);
+}
+
 
     [Test]
     public void Load_SetsVolumeSliderValue()
