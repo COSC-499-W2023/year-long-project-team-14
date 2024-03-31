@@ -1,6 +1,28 @@
 # Personal Log - Darion Pescada
 
 ## Term 2 Week 11
+- Start Date: March 25
+- End Date: March 31
+
+### Tasks I worked on:
+![](screenshots/term2_tasks_darion_week12.png)
+  
+### Recap on your week's goals
+This week, my goals were to finish creating all the levels and fix all of the bugs and issues with the game.
+
+### Which features were yours in the project plan for this milestone?
+- finished creating all 20 levels
+- updated and fixed controller support for the menus
+- added the 4 difficulties to the final boss 
+- rebalanced the game to be easier and more fair
+- fixed a ton of bugs and other issues
+
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed all of my tasks for this week.
+
+***
+
+## Term 2 Week 11
 - Start Date: March 18
 - End Date: March 24
 
