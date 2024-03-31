@@ -12,6 +12,7 @@ public class MiniBossHealthSystem : MonoBehaviour
     public FireSprayBullets shoot; 
     public BossLaserAttack bossAttack; 
     public int enemyHealth = 10;
+    public GameObject healthBarObj;
 
     public CircleCollider2D enemyCollider;
     public Ladder ladder;
@@ -45,13 +46,13 @@ public class MiniBossHealthSystem : MonoBehaviour
 
         //Set boss health
         if(diff == 1) 
-            enemyHealth = (int)Mathf.Round(enemyHealth * 1.5f);
+            enemyHealth = (int)Mathf.Round(enemyHealth * 1f);
         else if(diff == 2)
-            enemyHealth = (int)Mathf.Round(enemyHealth * 2f);
+            enemyHealth = (int)Mathf.Round(enemyHealth * 1.25f);
         else if(diff == 3)
-            enemyHealth = (int)Mathf.Round(enemyHealth * 2.5f);
+            enemyHealth = (int)Mathf.Round(enemyHealth * 1.5f);
         else if(diff == 4)
-            enemyHealth = (int)Mathf.Round(enemyHealth * 3f);
+            enemyHealth = (int)Mathf.Round(enemyHealth * 1.75f);
 
         healthAmount = enemyHealth;
         
@@ -81,7 +82,7 @@ public class MiniBossHealthSystem : MonoBehaviour
     {
         if(collider.gameObject.CompareTag("FireballExplosion"))
         {
-            takeDamage(4);
+            takeDamage(3);
         }
     }
 
@@ -163,6 +164,11 @@ public class MiniBossHealthSystem : MonoBehaviour
         deathSound.Play();
 
         StartCoroutine(Transparent());
+        GameObject[] slimes = GameObject.FindGameObjectsWithTag("Enemy");
+        for(int i = 0; i < slimes.Length; i++)
+        {
+            slimes[i].GetComponent<EnemyHealthSystem>().Die();
+        } 
 
         //If last enemy, end level
         if (portal != null)
@@ -186,6 +192,8 @@ public class MiniBossHealthSystem : MonoBehaviour
                 }
             }
         }
+
+        Destroy(healthBarObj);
     }
 
     IEnumerator Transparent()

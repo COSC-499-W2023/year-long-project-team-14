@@ -4,13 +4,14 @@ TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
   fontSize: 16
-  forceTextureCase: -2
+  forceTextureCase: -1
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
   fontNames:
   - Press Start 2P
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 5b38d2283a399fd4a9ff8a031cdc7cc8, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

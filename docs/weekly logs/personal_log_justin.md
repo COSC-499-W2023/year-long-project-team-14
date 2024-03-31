@@ -1,11 +1,56 @@
 # Personal Log - Justin McKendry
 
+## Week 23 (term 2 week 11)
+- Start Date: March 18th 
+- End Date: March 24th
+
+### Tasks I worked on:
+![](screenshots/tasks_justin_week_23.png)
+
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Complete the unit test for the mage rage spell
+* Complete most of the functionality for the rainbow spell
+* Update the build of the game online
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Complete the mage rage spell (just unit test was remaining)
+* Work on the rainbow spell.
+  
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed the mage rage spell completely and began work on the rainbow spell. The rainbow spell should be completed earlie on in week 24.
+
+## Week 22 (term 2 week 10)
+- Start Date: March 11th 
+- End Date: March 17th
+
+### Tasks I worked on:
+![](screenshots/tasks_justin_week_22.png)
+
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Complete the unit test for the shield spell
+* Complete most of the functionality for the mage rage spell
+* Update the build of the game online
+* Update the test log
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Complete the shield spell (just unit test was remaining)
+* Work on the mage rage spell.
+  
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed the shield spell completely and began work on the mage rage spell. The mage rage spell should be completed earlie on in week 23.
+
 ## Week 21 (term 2 week 9)
 - Start Date: March 4th 
 - End Date: March 10th
 
 ### Tasks I worked on:
-We had an issue with Git LFS again and can no longer push any screenshots so this is blank for now
+![](screenshots/tasks_justin_week_21.png)
 
 ### Recap on your week's goals
 My goals this week were to: 

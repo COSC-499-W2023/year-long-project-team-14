@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShieldPickup : MonoBehaviour
 {
@@ -12,9 +13,19 @@ public class ShieldPickup : MonoBehaviour
 
     [SerializeField] private promptUi prompt;
 
+    public GameMaster gameMaster;
+    public Image promptIcon;
+    public Sprite xPrompt;
+    public Sprite aPrompt;
+    public Sprite ePrompt;
+
     void Start()
     {
         startY = transform.position.y; // Store the initial Y position
+
+        GameObject g = GameObject.FindWithTag("GameMaster");
+        if(g != null)
+            gameMaster = g.GetComponent<GameMaster>();
     }
 
     void Update()
@@ -33,7 +44,39 @@ public class ShieldPickup : MonoBehaviour
         {
             playerIsOver = true;
             player = other.gameObject;
-            if (!prompt.isDisplayed) prompt.SetUp();
+            if (!prompt.isDisplayed)
+            {
+                prompt.SetUp();
+                promptIcon.gameObject.SetActive(true);
+            }
+
+            //Change prompt icon depending on controls
+            if(gameMaster != null && other.gameObject.GetComponent<PlayerController>().player1)
+            {
+                if(gameMaster.player1Controls == "PS")
+                {
+                    promptIcon.sprite = xPrompt;
+                }
+                else if(gameMaster.player1Controls == "Xbox")
+                {
+                    promptIcon.sprite = aPrompt;
+                }
+                else
+                    promptIcon.sprite = ePrompt;
+            }
+            else if(gameMaster != null)
+            {
+                if(gameMaster.player2Controls == "PS")
+                {
+                    promptIcon.sprite = xPrompt;
+                }
+                else if(gameMaster.player2Controls == "Xbox")
+                {
+                    promptIcon.sprite = aPrompt;
+                }
+                else
+                    promptIcon.sprite = ePrompt;
+            }
         }
     }
 
@@ -43,7 +86,11 @@ public class ShieldPickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerIsOver = false;
-            if (prompt.isDisplayed) prompt.Close();
+            if (prompt.isDisplayed)
+            {
+                prompt.Close();
+                promptIcon.gameObject.SetActive(false);
+            }
         }
     }
 
@@ -54,7 +101,7 @@ public class ShieldPickup : MonoBehaviour
         {
             playerIsOver = false;
             player.GetComponent<Spells>().spellName = "Shield";
-            player.GetComponent<Spells>().spellCooldown = 10;
+            player.GetComponent<Spells>().spellCooldown = 20;
             Destroy(gameObject);
         }
     }

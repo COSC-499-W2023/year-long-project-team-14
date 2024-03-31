@@ -11,6 +11,7 @@ public class EnemyHealthSystem : MonoBehaviour
     public EnemyTripleShot et;
     public EnemyMovement enemyMovement; 
     public int enemyHealth = 3;
+    //public bool mageRisOn = false;
 
     public CircleCollider2D enemyCollider;
     public Ladder ladder;
@@ -68,10 +69,14 @@ public class EnemyHealthSystem : MonoBehaviour
      // Damage enemy if colliding with bullet
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player_bullet"))
+        if (collision.gameObject.CompareTag("Player_bullet") )
         {
             takeDamage();
         }
+        // else if (collision.gameObject.CompareTag("Player_bullet") && mageRisOn == true)
+        // {
+        //     takeDamage(4);
+        // }
     }
 
     // Damage enemy if colliding with fireball
@@ -79,7 +84,7 @@ public class EnemyHealthSystem : MonoBehaviour
     {
         if(collider.gameObject.CompareTag("FireballExplosion"))
         {
-            takeDamage(4);
+            takeDamage(3);
         }
     }
 
@@ -93,6 +98,9 @@ public class EnemyHealthSystem : MonoBehaviour
             if (enemyHealth <= 0)
             {
                 Die();
+
+                //play death sound
+                deathSound.Play();
             }
             else
             {
@@ -115,6 +123,9 @@ public class EnemyHealthSystem : MonoBehaviour
             if (enemyHealth <= 0)
             {
                 Die();
+
+                //play death sound
+                deathSound.Play();
             }
             else
             {
@@ -142,9 +153,6 @@ public class EnemyHealthSystem : MonoBehaviour
         animator.SetBool("IsWalking", false);
         
         animator.SetBool("IsDead", true);
-
-        //play death sound
-        deathSound.Play();
 
         StartCoroutine(Transparent());
 

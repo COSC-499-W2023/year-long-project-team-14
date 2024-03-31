@@ -13,18 +13,33 @@ public class GameOverMenu : MonoBehaviour
     public bool gameOverMenu = false;
     public int playercount; 
     public GameMaster gameMaster;
+    
+    public MusicManager musicManager;
 
     public void Start()
     {
         playercount = PlayerPrefs.GetInt("playerCount");
+        musicManager = FindObjectOfType<MusicManager>();
+
     }
 
-    //If both players are dead, end game
-    public void Update(){
-        if (playercount == 0 && GameIsOver==false){
-            StartCoroutine(ShowGameOverMenu());
-        }
+    public void Update()
+{
+    if (playercount == 0 && GameIsOver == false)
+    {
+        StartCoroutine(ShowGameOverMenu());
+
+       if (musicManager != null)
+{
+    Debug.Log("MusicManager reference is not null, playing game over music.");
+    musicManager.PlayGameOverMenuMusic();
+}
+else
+{
+    Debug.LogError("MusicManager reference is null in GameOverMenu!");
+}
     }
+}
 
     //Display the game over menu
     public IEnumerator ShowGameOverMenu()

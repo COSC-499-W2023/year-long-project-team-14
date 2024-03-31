@@ -41,6 +41,7 @@ public class PlayerController : MonoBehaviour
     GameOverMenu gameOverMenu;
     ControlMenu controlMenu;
     WinMenu winMenu;
+    MusicManager musicManager;
 
     [HideInInspector] public bool unitTest = false;
     [HideInInspector] public bool unitTest2 = false;
@@ -70,6 +71,7 @@ public class PlayerController : MonoBehaviour
             gameOverMenu = canvas.GetComponent<GameOverMenu>();
             controlMenu = canvas.GetComponent<ControlMenu>();
             winMenu = canvas.GetComponent<WinMenu>();
+            musicManager = canvas.GetComponent<MusicManager>();
         }
 
         GameObject gm = GameObject.FindWithTag("GameMaster");
@@ -143,12 +145,15 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(attackCharge >= attackCost && mouseHold == 1 && holdCooldown > 0.2f)
+        if(attackCharge >= attackCost && mouseHold >= 0.5f && holdCooldown > 0.11f)
             Shoot();
 
         if(dashHold == 1)
             Dash();
 
+        if(mouseHold < 0.5f)
+            holdCooldown = 1;
+            
         holdCooldown += Time.deltaTime;
 
         //Used for the dash cooldown (its the timer)
@@ -202,6 +207,16 @@ public class PlayerController : MonoBehaviour
                 controlMenu.Back();
                 buttonClick.Play();
             }
+            else if(musicManager.optionsMenu)
+            {
+                musicManager.Back();
+                buttonClick.Play();
+            }
+            else if(pauseMenu.pauseMenu)
+            {
+                pauseMenu.Resume();
+                buttonClick.Play();
+            }
         }   
     }
 
@@ -210,11 +225,21 @@ public class PlayerController : MonoBehaviour
     {
         if(context.performed)
         {
-            if(pauseMenu.pauseMenu)
+            if(controlMenu.controlMenu)
+            {
+                controlMenu.Back();
+                buttonClick.Play();
+            }
+            else if(musicManager.optionsMenu)
+            {
+                musicManager.Back();
+                buttonClick.Play();
+            }
+            else if(pauseMenu.pauseMenu)
             {
                 pauseMenu.Resume();
             }
-            else if(!winMenu.winMenu &&!controlMenu.controlMenu && !gameOverMenu.GameIsOver)   //TODO: add win menu to this when its done
+            else if(!winMenu.winMenu &&!controlMenu.controlMenu && !gameOverMenu.GameIsOver)
             {
                 pauseMenu.Pause();
             }
@@ -239,7 +264,8 @@ public class PlayerController : MonoBehaviour
             bulletRB.AddForce(-gunFollow.up * 50 * bulletForce);
 
             //shoot sound effect
-            shootSound.Play();
+            if(!unitTest)
+                shootSound.Play();
 
             PlayerBullet playerBullet = bullet.GetComponent<PlayerBullet>();
             playerBullet.bounces = bulletBounces;
@@ -277,7 +303,7 @@ public class PlayerController : MonoBehaviour
     //Calls a function depending on what object you are interacting with
     public void Interact()
     {
-        if(interactable != null)
+        if(interactable != null && !hs.dead && !PauseMenu.GameIsPaused)
         {
             string tag = interactable.tag;
             if(tag == "Ladder")
@@ -287,6 +313,18 @@ public class PlayerController : MonoBehaviour
             else if(tag == "Portal")
             {
                 interactable.GetComponent<Portal>().Interact();
+            }
+            else if(tag == "Key")
+            {
+                interactable.GetComponent<Key>().Interact();
+            }
+            else if(tag == "Chest")
+            {
+                interactable.GetComponent<Chest>().Interact();
+            }
+            else if(tag == "Bottle")
+            {
+                interactable.GetComponent<HealthPotion>().Interact(hs);
             }
             else if(tag == "lightning")
             {
@@ -304,22 +342,42 @@ public class PlayerController : MonoBehaviour
             {
                 interactable.GetComponent<SummonChadPickup>().Interact();
             }
+            else if (tag == "Freeze")
+            {
+                interactable.GetComponent<FreezePickup>().Interact();
+            }
             else if (tag == "Shield")
             {
                 //if the player interacts with the shield pickup call the function Interact() in the script ShieldPickup
                 interactable.GetComponent<ShieldPickup>().Interact();
+            }
+            else if (tag == "mageRage")
+            {
+                //if the player interacts with the shield pickup call the function Interact() in the script ShieldPickup
+                interactable.GetComponent<mageRagePickup>().Interact();
+            }
+            else if (tag == "ScatterShot")
+            {
+                interactable.GetComponent<ScatterShotPickup>().Interact();
+            }
+            else if (tag == "Rainbow")
+            {
+                //if the player interacts with the shield pickup call the function Interact() in the script ShieldPickup
+                interactable.GetComponent<RainbowPickup>().Interact();
             }
         }
     }
 
     public void OnTriggerStay2D(Collider2D collider)
     {
-        interactable = collider.gameObject;
+        if(collider.tag != "Spike" && collider.tag != "Laser" && collider.tag != "Breakable")
+            interactable = collider.gameObject;
     }
 
     public void OnTriggerExit2D(Collider2D collider)
     {
-        interactable = null;
+        if(collider.tag != "Spike" && collider.tag != "Laser" && collider.tag != "Breakable")
+            interactable = null;
     }
 
     public Vector2 GetMoveDirection()

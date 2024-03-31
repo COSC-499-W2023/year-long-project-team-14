@@ -17,13 +17,14 @@ public class Ladder : MonoBehaviour
     public Sprite trapDoorSprite;
     public List<GameObject> allEnemies = new List<GameObject>();
     public GameObject ladderArrow;
+    public int secretExit = 0;
     private void Start()
     {
         //get access to game master
         gameMaster = GameObject.FindWithTag("GameMaster").GetComponent<GameMaster>();
 
         //set exit inactive to start if not in shop
-        if(!gameMaster.inShop)
+        if(!gameMaster.inShop && secretExit == 0)
             SetLadderActive(false);
         else
             SetLadderActive(true);
@@ -89,6 +90,9 @@ public class Ladder : MonoBehaviour
         {
             exitUnlocked = false;
             gameMaster.LevelComplete();
+
+            if(secretExit != 0)
+                gameMaster.secretExit = secretExit;
         }
     }
 

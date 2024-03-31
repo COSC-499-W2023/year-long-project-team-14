@@ -333,7 +333,7 @@ MonoBehaviour:
   movementSpeed: 3
   nextWaypointDistance: 1
   chargeDuration: 0
-  waitTime: 0
+  waitTime: 0.25
   timer: 0
   targetPlayer: {fileID: 0}
   players: []
@@ -355,7 +355,7 @@ MonoBehaviour:
   players: []
   targetPlayer: {fileID: 0}
   bulletPrefab: {fileID: 3646651384316253834, guid: 1bfe49c7730abc141b70578a420c4ce7, type: 3}
-  shootInterval: 3.5
+  shootInterval: 6.5
   bulletSpeed: 2.5
   lastShootTime: 0
   Points1: []
@@ -366,7 +366,7 @@ MonoBehaviour:
   lineRenderer3: {fileID: 6799709459550248674}
   LayerDetection:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 532864
   maxReflections: 1
   rotationSpeed: 250
   shootSound: {fileID: -4583386987018979497}

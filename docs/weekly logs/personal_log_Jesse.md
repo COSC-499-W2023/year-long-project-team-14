@@ -1,4 +1,51 @@
-# Personal Log - Jesse Lazzari
+# Personal Log - Jesse Lazzari 
+
+## Term 2 Week 11
+- Start Date: March 18
+- End Date: March 24
+  
+### Tasks I worked on:
+![](screenshots/t2week11_tasks.PNG)
+  
+### Recap on your week's goals
+My goals this week were to:
+* Add new attack for final boss which shoots slime enemies at player
+* Add phase 2 attacks for final boss (4 directional laser beam, upgraded version of slime shoot attack)
+* Add functionality for boss behaviour which cycles between attacks, and switches to phase 2 of the encounter when health is less than 50%
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Finalize the final boss enemy encounter and timings for attacks so that the encounter is challenging and rewarding for players to beat
+* Meet with team and write team log
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed all of my tasks for this week
+* In progress tasks for the upcoming milestone are additional unit testing for the final boss
+
+***
+
+## Term 2 Week 10
+- Start Date: March 11
+- End Date: March 17
+  
+### Tasks I worked on:
+![](screenshots/t2week10_tasks_jesse.PNG)
+  
+### Recap on your week's goals
+My goals this week were to:
+* Finalize animations, movement and attack selection scripts for final boss encounter
+* Add new rotating laser attack for final boss
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Continue work on the final boss enemy encounter and add more variety to its attacks
+* Meet with team and write team log
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed the animations as well as added functionality for the movement, health and rotating laser attack scripts for the final boss
+* In progress tasks are additional unit testing as well as add another type of attack for the final boss so that gameplay is more interesting for players during the encounter
+
+***
 
 ## Term 2 Week 9
 - Start Date: March 4

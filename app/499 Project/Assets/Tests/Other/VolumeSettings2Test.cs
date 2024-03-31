@@ -1,8 +1,6 @@
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.TestTools;
 using UnityEngine.UI;
-using System.Collections;
 
 [TestFixture]
 public class VolumeSettings2Tests
@@ -22,6 +20,48 @@ public class VolumeSettings2Tests
         Assert.AreEqual(expectedVolume, AudioListener.volume);
     }
 
+   [Test]
+public void PlayGameOverMenuMusic_Test()
+{
+    GameObject musicManagerObject = new GameObject("MusicManager");
+
+    MusicManager musicManager = musicManagerObject.AddComponent<MusicManager>();
+
+    AudioSource audioSource = musicManagerObject.AddComponent<AudioSource>();
+    musicManager.audioSource = audioSource;
+
+    AudioClip gameoverMenuTrack = AudioClip.Create("GameoverTrack", 44100, 2, 44100, false);
+    musicManager.gameoverMenuTrack = gameoverMenuTrack;
+
+    musicManager.PlayGameOverMenuMusic();
+
+    Assert.IsTrue(audioSource.isPlaying, "AudioSource is not playing!");
+    Assert.AreEqual(gameoverMenuTrack, audioSource.clip, "Incorrect clip is playing!");
+
+    GameObject.Destroy(musicManagerObject);
+}
+
+[Test]
+public void PlayWinMenuMusic_Test(){
+     GameObject musicManagerObject = new GameObject("MusicManager");
+
+    MusicManager musicManager = musicManagerObject.AddComponent<MusicManager>();
+
+    AudioSource audioSource = musicManagerObject.AddComponent<AudioSource>();
+    musicManager.audioSource = audioSource;
+
+    AudioClip winMenuTrack = AudioClip.Create("winMenuTrack", 44100, 2, 44100, false);
+    musicManager.winMenuTrack = winMenuTrack;
+
+    musicManager.PlayWinMenuMusic();
+
+    Assert.IsTrue(audioSource.isPlaying, "AudioSource is not playing!");
+    Assert.AreEqual(winMenuTrack, audioSource.clip, "Incorrect clip is playing!");
+
+    GameObject.Destroy(musicManagerObject);
+}
+
+
     [Test]
     public void Load_SetsVolumeSliderValue()
     {
@@ -36,7 +76,7 @@ public class VolumeSettings2Tests
 
         musicManager.Load();
 
-        Assert.AreEqual(expectedSliderValue, musicManager.volumeSlider.value);
+        Assert.AreEqual(expectedSliderValue, musicManager.volumeSlider.value * 2);
     }
 
     [Test]
@@ -52,13 +92,12 @@ public class VolumeSettings2Tests
         musicManager.volumeSlider.value = expectedSliderValue;
         musicManager.Save();
 
-        Assert.AreEqual(expectedSliderValue, PlayerPrefs.GetFloat("Volume"));
+        Assert.AreEqual(expectedSliderValue, PlayerPrefs.GetFloat("Volume") / 2);
     }
 
     [Test]
     public void Shuffletrack()
-    {
-      
+    {  
         GameObject go = new GameObject();
         MusicManager musicManager = go.AddComponent<MusicManager>();
         AudioClip[] tracks = new AudioClip[3];
@@ -67,6 +106,32 @@ public class VolumeSettings2Tests
         Assert.IsNotNull(musicManager.tracks);
     }
 
+  
+    [Test]
+    public void PlayMinibossTrack_OnLevelChange()
+    {
+        GameObject go = new GameObject();
+        MusicManager musicManager = go.AddComponent<MusicManager>();
+
+        Slider slider = go.AddComponent<Slider>();
+        musicManager.volumeSlider = slider;
+
+        GameMaster gameMaster = go.AddComponent<GameMaster>();
+
+        gameMaster.currentLevel = 10;
+        musicManager.gameMaster = gameMaster;
+        musicManager.previousLevel = -1; 
+
+        AudioSource audioSource = go.AddComponent<AudioSource>();
+        musicManager.audioSource = audioSource;
+
+        AudioClip minibossTrack = AudioClip.Create("miniboss", 44100, 2, 44100, false);
+        musicManager.minibossTrack = minibossTrack;
+
+        musicManager.Update();
+
+        Assert.IsTrue(audioSource.isPlaying); 
+        Assert.AreEqual(minibossTrack, audioSource.clip);
+        Assert.AreEqual(gameMaster.currentLevel, musicManager.previousLevel); 
+    }
 }
-
-

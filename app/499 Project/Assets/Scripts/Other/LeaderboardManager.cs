@@ -36,6 +36,9 @@ public class LeaderboardManager : MonoBehaviour
 
     void Start()
     {
+        if(!PlayerPrefs.HasKey("DisplayName"))
+            PlayerPrefs.SetString("DisplayName", "blank");
+
         StartCoroutine(StartSession());
     }
     

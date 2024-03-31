@@ -109,10 +109,7 @@ public class TransitionTest
         SceneManager.LoadScene("GameScene");
         yield return null;
 
-        //Instantiate GameMaster and Pathfinder
-        // pathfinder = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Other/Pathfinder.prefab")) as GameObject;
-        // gameMaster = (GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Other/GameMaster.prefab")) as GameObject).GetComponent<GameMaster>();
-        
+        //Get the game master
         gameMaster = GameObject.FindWithTag("GameMaster").GetComponent<GameMaster>();
         gameMaster.unitTest = true;
         yield return null;
@@ -121,8 +118,8 @@ public class TransitionTest
         Ladder ladder = GameObject.FindWithTag("Ladder").GetComponent<Ladder>();
         GameObject level = gameMaster.level;
 
-        //Set level to 2
-        gameMaster.currentLevel = 2;
+        //Set level to 4
+        gameMaster.currentLevel = 4;
 
         //Set player life to 1
         gameMaster.healthSystem1.life = 1;
@@ -142,15 +139,67 @@ public class TransitionTest
         //Transition to next level
         gameMaster.LevelComplete();
         yield return null;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.6f);
 
         //Check that player health did not increase
         Assert.IsTrue(gameMaster.healthSystem1.life == 1);
 
         //Check that it transitioned to the shop and the level counter didn't increase
-        Assert.IsTrue(gameMaster.currentLevel == 2);
+        Assert.IsTrue(gameMaster.currentLevel == 4);
         Assert.IsTrue(gameMaster.level != level);
         Assert.IsTrue(gameMaster.inShop == true);
+
+        //Get a list of all 3 spells that spawned in
+        GameObject spell = null;
+        List<GameObject> spells = new List<GameObject>();
+
+        spell = GameObject.FindWithTag("Fireball");
+        if(spell != null)
+            spells.Add(spell);
+        spell = null;
+
+        spell = GameObject.FindWithTag("SeekingOrb");
+        if(spell != null)
+            spells.Add(spell);
+        spell = null;
+
+        spell = GameObject.FindWithTag("Freeze");
+        if(spell != null)
+            spells.Add(spell);
+        spell = null;
+
+        spell = GameObject.FindWithTag("lightning");
+        if(spell != null)
+            spells.Add(spell);
+        spell = null;
+
+        spell = GameObject.FindWithTag("Shield");
+        if(spell != null)
+            spells.Add(spell);
+        spell = null;
+
+        spell = GameObject.FindWithTag("mageRage");
+        if(spell != null)
+            spells.Add(spell);
+        spell = null;
+
+        spell = GameObject.FindWithTag("ScatterShot");
+        if(spell != null)
+            spells.Add(spell);
+        spell = null;
+
+        GameObject[] s = GameObject.FindGameObjectsWithTag("summonChad");
+        for(int i = 0; i < s.Length; i++)
+            spells.Add(s[i]);
+        spell = null;
+
+        //Check that there are 3 spells
+        Assert.IsTrue(spells.Count == 3);
+
+        //Check that they arent the same
+        Assert.IsTrue(spells[0] != spells[1]);
+        Assert.IsTrue(spells[0] != spells[2]);
+        Assert.IsTrue(spells[2] != spells[1]);
 
         //Transition to next level
         gameMaster.LevelComplete();
@@ -161,7 +210,7 @@ public class TransitionTest
         Assert.IsTrue(gameMaster.healthSystem1.life == 2);
 
         //Check that it transitioned out of the shop and the level counter increased
-        Assert.IsTrue(gameMaster.currentLevel == 3);
+        Assert.IsTrue(gameMaster.currentLevel == 5);
         Assert.IsTrue(gameMaster.level != level);
         Assert.IsTrue(gameMaster.inShop == false);
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class chadAttack : MonoBehaviour
 {
-    public GameObject[] players;
+    private List<GameObject> players;
     public GameObject targetPlayer;
     public GameObject bulletPrefab;
     public float shootInterval = 2.0f;
@@ -38,39 +38,27 @@ public class chadAttack : MonoBehaviour
         Points2 = new List<Vector3>();
         Points3 = new List<Vector3>();
 
-        //Get difficulty
-        diff = PlayerPrefs.GetInt("difficulty");
-
-        //Set enemy fire rate
-        if(diff == 1) 
-            shootInterval /= 1f;
-        else if(diff == 2)
-            shootInterval /= 1.5f;
-        else if(diff == 3)
-            shootInterval /= 2f;
-        else if(diff == 4)
-            shootInterval /= 2.5f;
-        
-        //Set enemy bullet speed
-        if(diff == 1) 
-            bulletSpeed *= 1f;
-        else if(diff == 2)
-            bulletSpeed *= 1.33f;
-        else if(diff == 3)
-            bulletSpeed *= 1.67f;
-        else if(diff == 4)
-            bulletSpeed *= 2f;
-
         //Prevent enemies from shooting at the start of a level
-        lastShootTime = Time.time + Random.Range(0, shootInterval/2);
+        lastShootTime = Time.time;
+
+        players = new List<GameObject>();
     }
 
     void Update()
     {
-        //Get players
-        players = GameObject.FindGameObjectsWithTag("Enemy");
+        players.RemoveRange(0, players.Count);
 
-        if(players.Length > 0)
+        //Get players
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] bosses = GameObject.FindGameObjectsWithTag("Boss");
+
+        for(int i = 0; i < enemies.Length; i++)
+            players.Add(enemies[i]);
+        for(int j = 0; j < bosses.Length; j++)
+            players.Add(bosses[j]);
+        
+
+        if(players.Count > 0)
         {
             //Find closest player and aim at them
             FindClosestPlayer();
@@ -137,7 +125,7 @@ public class chadAttack : MonoBehaviour
         Vector2 direction = lr.transform.right;
         bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
         bullet.GetComponent<PlayerBullet>().bounces = maxReflections;
-        lastShootTime = Time.time + Random.Range(-1f / diff, 1f / diff);;
+        lastShootTime = Time.time + Random.Range(-0.5f, 0.5f);
         //play shoot sound
         shootSound.Play();
     }
@@ -153,7 +141,7 @@ public class chadAttack : MonoBehaviour
                 else
                     Points.Add(hitData.centroid);
             }
-            else if(hitData.collider.CompareTag("Enemy")) //If raycast hits enemy, shoot in that direction
+            else if(hitData.collider.CompareTag("Enemy") || hitData.collider.CompareTag("Boss")) //If raycast hits enemy, shoot in that direction
             {
                 Points.Add(hitData.centroid);
 
@@ -175,14 +163,47 @@ public class chadAttack : MonoBehaviour
 
     void FindClosestPlayer() //Sets target to be the player closest to the enemy
     {
-        if(players.Length > 1)
+        if(players.Count > 1)
         {
-            float distance1 = Vector3.Distance(gameObject.transform.position, players[0].transform.position);
-            float distance2 = Vector3.Distance(gameObject.transform.position, players[1].transform.position);
-            if(distance2 < distance1)
-                targetPlayer = players[1];
+            float shortestDistance = Vector3.Distance(gameObject.transform.position, players[0].transform.position);
+            targetPlayer = players[0];
+
+            EnemyHealthSystem ehs = players[0].GetComponent<EnemyHealthSystem>();
+            MiniBossHealthSystem bhs = players[0].GetComponent<MiniBossHealthSystem>();
+            if(ehs != null)
+            {
+                if(ehs.enemyHealth <= 0)
+                    shortestDistance = 999;
+            }
             else
-                targetPlayer = players[0];
+            {
+                if(bhs.enemyHealth <= 0)
+                    shortestDistance = 999;
+            }
+            
+            for(int i = 1; i < players.Count; i++)
+            {
+                float distance = Vector3.Distance(gameObject.transform.position, players[i].transform.position);
+
+                EnemyHealthSystem ehs2 = players[i].GetComponent<EnemyHealthSystem>();
+                MiniBossHealthSystem bhs2 = players[i].GetComponent<MiniBossHealthSystem>();
+                if(ehs2 != null)
+                {
+                    if(ehs2.enemyHealth <= 0)
+                        distance = 999;
+                }
+                else
+                {
+                    if(bhs2.enemyHealth <= 0)
+                        distance = 999;
+                }
+
+                if(distance < shortestDistance)
+                {
+                    shortestDistance = distance;
+                    targetPlayer = players[i];
+                }
+            }
         }
         else
             targetPlayer = players[0];

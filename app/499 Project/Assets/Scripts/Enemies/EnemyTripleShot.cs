@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyTripleShot : MonoBehaviour
 {
-    public GameObject[] players;
+    public GameObject[] p;
+    public List<GameObject> players;
     public GameObject targetPlayer;
     public GameObject bulletPrefab;
     public float shootInterval = 8;
@@ -38,6 +39,8 @@ public class EnemyTripleShot : MonoBehaviour
 
     void Start()
     {
+        players = new List<GameObject>();
+
         //Create list of points for each line renderer
         Points1 = new List<Vector3>();
         Points2 = new List<Vector3>();
@@ -50,24 +53,25 @@ public class EnemyTripleShot : MonoBehaviour
         if(diff == 1) 
             shootInterval /= 1f;
         else if(diff == 2)
-            shootInterval /= 1.33f;
+            shootInterval /= 1.66f;
         else if(diff == 3)
-            shootInterval /= 1.67f;
+            shootInterval /= 2.33f;
         else if(diff == 4)
-            shootInterval /= 2f;
+            shootInterval /= 3f;
 
         //Set enemy bullet speed
         if(diff == 1) 
             bulletSpeed *= 1f;
         else if(diff == 2)
-            bulletSpeed *= 1.5f;
+            bulletSpeed *= 1.66f;
         else if(diff == 3)
-            bulletSpeed *= 2f;
+            bulletSpeed *= 2.33f;
         else if(diff == 4)
-            bulletSpeed *= 2.5f;
+            bulletSpeed *= 3f;
 
         //Prevent enemies from shooting at the start of a level
-        lastShootTime = Time.time + Random.Range(0, shootInterval/2);
+        lastShootTime = Time.time + Random.Range(-0.5f, 0.5f);
+
         shootSound = GetComponent<AudioSource>();
 
         enemyHealthSystem = GetComponent<EnemyHealthSystem>();
@@ -77,19 +81,30 @@ public class EnemyTripleShot : MonoBehaviour
     void Update()
     {
         //Get players
-        players = GameObject.FindGameObjectsWithTag("Player");
+        players.RemoveRange(0, players.Count);
+        p = GameObject.FindGameObjectsWithTag("Player");
 
-        if(players.Length > 0)
+        for(int i = 0; i < p.Length; i++)
+        {
+            healthSystem hs = p[i].GetComponent<healthSystem>();
+            if(hs != null)
+            {
+                if(hs.life > 0)
+                    players.Add(p[i]);
+            }
+        }
+
+        if(players.Count > 0)
         {
             //Find closest player and aim at them
             FindClosestPlayer();
-            AimAtPlayer(lineRenderer3);
+            AimAtPlayer(lineRenderer3, 0);
 
             //Once enemy can shoot, aim other 2 line renderers at player
             if(Time.time - lastShootTime >= shootInterval - 0.1f && Time.time - lastShootTime < shootInterval)
             {
-                AimAtPlayer(lineRenderer1);
-                AimAtPlayer(lineRenderer2);
+                AimAtPlayer(lineRenderer1, 180);
+                AimAtPlayer(lineRenderer2, 180);
             }
 
             //Rotate 2 of the line renderers in oposite directions to check every possible angle
@@ -139,25 +154,19 @@ public class EnemyTripleShot : MonoBehaviour
             lineRenderer3.SetPositions(Points3.ToArray());
 
             
-        } 
-
-        lastShootTime+= Time.deltaTime;
-           
+        }   
     }
 
    IEnumerator Shoot(LineRenderer lr) //Shoot a bullet in the direction of the line renderer (its an IEnumerator because of the wait that is needed between bullets)
     {
         // Reset the shoot timer to delay the next series of shots 
-        lastShootTime = Random.Range(-1f / diff, 1f / diff);
+        lastShootTime = Time.time + Random.Range(-1f / diff, 1f / diff);
 
         //Loop 3 times since youll shoot 3 bullets
         for(int i = 1 ; i <= 3; i++){
             
-            if(enemyHealthSystem.enemyHealth > 0)
-            {
-                AimAtPlayer(lineRenderer1);
-                AimAtPlayer(lineRenderer2);
-
+            if(enemyHealthSystem.enemyHealth > 0 && GetComponent<EnemyTripleShot>().enabled)
+            {                
                 //Instantiate a bullet in the target direction
                 GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
                 Vector2 direction = lr.transform.right;
@@ -170,8 +179,6 @@ public class EnemyTripleShot : MonoBehaviour
                 yield return new WaitForSeconds(0.65f / (((diff - 1) / 2) + 1));
             }
         }
-
-        
     }
 
     
@@ -189,11 +196,14 @@ public class EnemyTripleShot : MonoBehaviour
             }
             else if(hitData.collider.CompareTag("Player")) //If raycast hits player, shoot in that direction
             {
-                Points.Add(hitData.centroid);
+                if(hitData.collider.GetComponent<healthSystem>().life > 0)
+                {
+                    Points.Add(hitData.centroid);
 
-                if(lastShootTime >= shootInterval){
-                        
-                    StartCoroutine(Shoot(lr));
+                    if(Time.time - lastShootTime >= shootInterval){
+                            
+                        StartCoroutine(Shoot(lr));
+                    }
                 }
             }
         }
@@ -210,8 +220,23 @@ public class EnemyTripleShot : MonoBehaviour
     }
 
     void FindClosestPlayer() //Sets target to be the player closest to the enemy
-    {
-        if(players.Length > 1)
+    {   
+        if(players.Count > 2)
+        {
+            float distance1 = Vector3.Distance(gameObject.transform.position, players[0].transform.position);
+            float distance2 = Vector3.Distance(gameObject.transform.position, players[1].transform.position);
+            float distance3 = Vector3.Distance(gameObject.transform.position, players[2].transform.position);
+            
+            if(distance2 < distance1 || distance3 < distance1)
+            {
+                if(distance2 < distance3)
+                    targetPlayer = players[1];
+                else targetPlayer = players[2];
+            }    
+            else
+                targetPlayer = players[0]; 
+        }
+        else if(players.Count > 1)
         {
             float distance1 = Vector3.Distance(gameObject.transform.position, players[0].transform.position);
             float distance2 = Vector3.Distance(gameObject.transform.position, players[1].transform.position);
@@ -224,11 +249,11 @@ public class EnemyTripleShot : MonoBehaviour
             targetPlayer = players[0];
     }
 
-    void AimAtPlayer(LineRenderer lr) //Aims line renderer directly at player
+    void AimAtPlayer(LineRenderer lr, int rot) //Aims line renderer directly at player
     {
         Vector3 aimDirection = targetPlayer.transform.position - lr.transform.position;
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle + rot));
         lr.transform.rotation = Quaternion.Slerp(lr.transform.rotation, rotation, 1000 * Time.deltaTime);
     }
 
