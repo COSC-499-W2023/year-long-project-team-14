@@ -33,8 +33,6 @@ public class RainbowTest
         player = GameObject.Instantiate(playerPrefab, new Vector3(0, 1, 0), Quaternion.identity) as GameObject;
         playerController = player.GetComponent<PlayerController>();
         spells = player.GetComponent<Spells>();
-        // Below will be used to check that the sprite changes.
-        spriteRenderer = player.GetComponent<SpriteRenderer>();
         playerController.unitTest = true; //this prevents some code from running in PlayerController that requires user input
 
         //This is just incase one of the AI is spawned 
@@ -49,27 +47,35 @@ public class RainbowTest
         //Cast the rainbow spell
         spells.RainbowSpell();
 
+        //Store the rng value in rngTest1.
         rngTest1 = spells.rngSP; 
 
         //Cast the rainbow spell again to store the second rng to ensure that a different spell was cast 
         spells.RainbowSpell();
-
+        
+        //Store the rng value in rngTest2.
         rngTest2 = spells.rngSP; 
     
-        //Ensure both of the rng values have been changed
-        Assert.IsTrue(rngTest1 != 0 && rngTest2 != 0);
-
-        //Check that the first and second rng values are not the same meaning a different spell was cast. If they are than see below 
-        Assert.IsTrue(rngTest1 != rngTest2 );  
+        //Ensure that both of the rng values have been changed from the default.
+        if(rngTest1 != 0 && rngTest2 != 0){
+            //If they have been changed from the default then test if they are the same value. This is a 1/9 * 1/9 chance of happening. 
+            if(rngTest1 != rngTest2){
+                // If they are not the same then pass the test as both rng values are not the default and are different from one another.
+                Assert.IsTrue(rngTest1 != rngTest2 );
+            }else{
+               //If the first two rng values are not equal then recast spell to get a different rng value. The odds of this value being the same as the first are a 1/9 * 1/9 * 1/9. Using this strategy has taken most of the randomness out of the test.
+                spells.RainbowSpell();
         
-        //Recast the rainbow spell to get a different rng value (meaning different spell used).
-        spells.RainbowSpell();
-        
-        rngTest2 = spells.rngSP; 
+                rngTest2 = spells.rngSP; 
 
-        //Check that the first rng value is not the same as the third rng value now (as the first two rng vlaues were the same). 
-        Assert.IsTrue(rngTest1 != rngTest2 ); 
+                Assert.IsTrue(rngTest1 != rngTest2 ); 
+            }
+        }else{
+            // This will make the test fail as the rng values have not been changed from the default. 
+            Assert.IsTrue(rngTest1 != 0 && rngTest2 != 0);
+        }
 
+        //Just a default so all code paths return a value
         yield return null;
     }
 
