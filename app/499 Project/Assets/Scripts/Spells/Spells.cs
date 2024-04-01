@@ -53,6 +53,12 @@ public class Spells : MonoBehaviour
     [SerializeField] private AudioSource seekingOrbSound;
     [SerializeField] private AudioSource chadSound;
     [SerializeField] private AudioSource ScatterShotSound;
+    [SerializeField] private AudioSource freezeSound;
+    [SerializeField] private AudioSource unfreezeSound;
+    [SerializeField] private AudioSource rageSound;
+    [SerializeField] private AudioSource unrageSound;
+    [SerializeField] private AudioSource shieldSound;
+    [SerializeField] private AudioSource unshieldSound;
 
     public GameObject freezeFlash;
     public GameObject iceCubeBreak;
@@ -242,6 +248,9 @@ public class Spells : MonoBehaviour
         //Set freeze duration
         float freezeTime = 2;
 
+        //play freeze sound
+        freezeSound.Play();
+
         //Play flash animation
         GameObject flash = Instantiate(freezeFlash, new Vector3(0, 0, 0), Quaternion.identity);
         Destroy(flash, 1);
@@ -327,6 +336,9 @@ public class Spells : MonoBehaviour
                 GameObject effect = Instantiate(iceCubeBreak, enemies[i].transform.position, Quaternion.identity);
                 Destroy(effect, 1);
 
+                //play unfreeze sound
+                unfreezeSound.Play();
+
                 //Make enemy visible again
                 spriteRenderer.color = new Color(1, 1, 1, 1);
 
@@ -344,6 +356,9 @@ public class Spells : MonoBehaviour
     }
 
     public void ShieldSpell(){
+        //play shield sound
+        shieldSound.Play();
+
         //Instantiate the shield on the player
         shield = Instantiate(shieldPrefab, playerController.transform.position, Quaternion.identity);
         
@@ -359,6 +374,8 @@ public class Spells : MonoBehaviour
     {
         yield return new WaitForSeconds(5f); //wait for timer before destroying the shield
         Destroy(shield);
+        //play unshield sound
+        unshieldSound.Play();
         //Mark that the shield is inactive.
         isShield = false;
         gameObject.layer = LayerMask.NameToLayer("Player");
@@ -366,16 +383,17 @@ public class Spells : MonoBehaviour
 
     //This will be used for the mage rage spell 
     public void mageRage(){
-      
-      
-       //Increase the players damage
+        //play rage sound
+        rageSound.Play();
+
+        //Increase the players damage
         // GameObject[] enemies2 = GameObject.FindGameObjectsWithTag("Enemy");
         // for(int i = 0; i < enemies2.Length; i++)
         // {  
         //     EnemyHealthSystem enemyHealthSystem = enemies2[i].GetComponent<EnemyHealthSystem>();
         //     enemyHealthSystem.mageRisOn = true;
         // }
-        
+
         //Make the sprite show for the mage rage
         aura = Instantiate(mRAura, playerController.transform.position, Quaternion.identity);
         
@@ -431,6 +449,9 @@ public class Spells : MonoBehaviour
          isRage = false;
 
         Destroy(aura);
+
+        //play unrage sound
+        unrageSound.Play();
 
     }
 

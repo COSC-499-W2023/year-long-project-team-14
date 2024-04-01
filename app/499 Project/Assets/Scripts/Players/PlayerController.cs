@@ -50,6 +50,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource dashSound;
     public AudioSource buttonClick;
 
+    [SerializeField] private AudioSource pickupSound;
+
     //dash cooldown
     public float dashCooldown = 1;
     
@@ -329,41 +331,50 @@ public class PlayerController : MonoBehaviour
             else if(tag == "lightning")
             {
                 interactable.GetComponent<LightningPickup>().Interact();
+                pickupSound.Play();
             }
             else if (tag == "Fireball")
             {
                 interactable.GetComponent<FireballPickup>().Interact();
+                pickupSound.Play();
             }
             else if (tag == "SeekingOrb")
             {
                 interactable.GetComponent<SeekingOrbPickup>().Interact();
+                pickupSound.Play();
             }
             else if (tag == "summonChad")
             {
                 interactable.GetComponent<SummonChadPickup>().Interact();
+                pickupSound.Play();
             }
             else if (tag == "Freeze")
             {
                 interactable.GetComponent<FreezePickup>().Interact();
+                pickupSound.Play();
             }
             else if (tag == "Shield")
             {
                 //if the player interacts with the shield pickup call the function Interact() in the script ShieldPickup
                 interactable.GetComponent<ShieldPickup>().Interact();
+                pickupSound.Play();
             }
             else if (tag == "mageRage")
             {
                 //if the player interacts with the shield pickup call the function Interact() in the script ShieldPickup
                 interactable.GetComponent<mageRagePickup>().Interact();
+                pickupSound.Play();
             }
             else if (tag == "ScatterShot")
             {
                 interactable.GetComponent<ScatterShotPickup>().Interact();
+                pickupSound.Play();
             }
             else if (tag == "Rainbow")
             {
                 //if the player interacts with the shield pickup call the function Interact() in the script ShieldPickup
                 interactable.GetComponent<RainbowPickup>().Interact();
+                pickupSound.Play();
             }
         }
     }
