@@ -18,6 +18,8 @@ public class Ladder : MonoBehaviour
     public List<GameObject> allEnemies = new List<GameObject>();
     public GameObject ladderArrow;
     public int secretExit = 0;
+
+    [SerializeField] private AudioSource levelCompleteSound;
     private void Start()
     {
         //get access to game master
@@ -29,6 +31,7 @@ public class Ladder : MonoBehaviour
         else
             SetLadderActive(true);
     }
+
 
     //player is within range
     private void OnTriggerStay2D(Collider2D other)
@@ -105,6 +108,10 @@ public class Ladder : MonoBehaviour
             exitUnlocked = true;
             if(gameMaster.currentLevel == 1 && ladderArrow != null)
                 ladderArrow.SetActive(true);
+            if (!gameMaster.inShop)
+            {
+                levelCompleteSound.Play();
+            }
         }
         else
         {
