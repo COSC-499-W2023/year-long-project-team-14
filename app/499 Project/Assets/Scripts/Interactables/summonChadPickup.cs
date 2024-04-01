@@ -101,7 +101,7 @@ public class SummonChadPickup : MonoBehaviour
         {
             playerIsOver = false;
             player.GetComponent<Spells>().spellName = "SummonChad";
-            player.GetComponent<Spells>().spellCooldown = 10;
+            player.GetComponent<Spells>().spellCooldown = 30;
             Destroy(gameObject);
         }
     }

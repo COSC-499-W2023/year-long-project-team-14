@@ -188,7 +188,7 @@ MonoBehaviour:
   m_text: 'Become enraged and gain immense power for 5s.
 
 
-    Cooldown: 10s'
+    Cooldown: 30s'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e10e00b4d3e137e4da0876362a21e06c, type: 2}
   m_sharedMaterial: {fileID: 885593585194045846, guid: e10e00b4d3e137e4da0876362a21e06c, type: 2}
@@ -352,6 +352,11 @@ MonoBehaviour:
   bobbingAmount: 0.1
   bobbingSpeed: 0.5
   prompt: {fileID: 5067045420197640723}
+  gameMaster: {fileID: 0}
+  promptIcon: {fileID: 2827515012694334692}
+  xPrompt: {fileID: 21300000, guid: b7fca5920312e5a4e8ae2896749a0be6, type: 3}
+  aPrompt: {fileID: 21300000, guid: 2b0f3081d76aee14288dfcfa50554511, type: 3}
+  ePrompt: {fileID: 21300000, guid: 9cb9dd7976ce06149ab87ed2c36a1806, type: 3}
 --- !u!1 &6887212177742545169
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.75294125, g: 0.75294125, b: 0.75294125, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -502,7 +507,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 8
-  m_Sprite: {fileID: 21300000, guid: b9b53c76806330248820605e900c01df, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f23cbe142a0d73d40891456a55e9db32, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

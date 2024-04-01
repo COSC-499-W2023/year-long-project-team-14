@@ -9,10 +9,19 @@ public class MusicManager : MonoBehaviour
     public AudioClip minibossTrack; 
     public AudioSource audioSource;
     [SerializeField] public Slider volumeSlider;
+    public bool optionsMenu = false;
+    public PauseMenu pauseMenu;
+    public GameObject optionsButton;
+    public GameObject backButton;
+    public GameObject pauseMenuUI;
+    public GameObject optionsMenuUI;
 
     private int currentTrackIndex = 0;
     public GameMaster gameMaster;
     public int previousLevel = -1;
+
+   public AudioClip winMenuTrack; 
+    public AudioClip gameoverMenuTrack; 
 
     public void Start()
     {
@@ -25,30 +34,25 @@ public class MusicManager : MonoBehaviour
 
         if (PlayerPrefs.HasKey("Volume"))
         {
-            AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1);
-            Load();
-        }
-        else
-        {
             Load();
         }
     }
 
     public void ChangeVolume()
     {
-        float volume = volumeSlider.value; 
-        AudioListener.volume = volume; 
+        AudioListener.volume = volumeSlider.value * 2f; 
         Save(); 
     }
 
     public void Load()
     {
-        volumeSlider.value = PlayerPrefs.GetFloat("Volume");
+        volumeSlider.value = PlayerPrefs.GetFloat("Volume") / 2f;
+        AudioListener.volume = volumeSlider.value * 2f; 
     }
 
     public void Save()
     {
-        PlayerPrefs.SetFloat("Volume", volumeSlider.value);
+        PlayerPrefs.SetFloat("Volume", volumeSlider.value * 2f);
     }
 
     public void ShuffleTracks()
@@ -101,6 +105,7 @@ public class MusicManager : MonoBehaviour
                 audioSource.Stop();
                 audioSource.clip = minibossTrack;
                 audioSource.Play();
+                CancelInvoke();
             }
             else if(gameMaster.currentLevel == 11)
             {
@@ -109,5 +114,36 @@ public class MusicManager : MonoBehaviour
 
             previousLevel = gameMaster.currentLevel;
         }
+    }
+
+    public void PlayWinMenuMusic()
+    {
+        audioSource.Stop();
+        audioSource.clip = winMenuTrack;
+        audioSource.Play();
+    }
+
+    public void PlayGameOverMenuMusic()
+    {
+        audioSource.Stop();
+        audioSource.clip = gameoverMenuTrack;
+        audioSource.Play();
+    }
+    public void Back()
+    {
+        optionsMenu = false;
+        pauseMenu.pauseMenu = true;
+        optionsMenuUI.SetActive(false); 
+        pauseMenuUI.SetActive(true); 
+        gameMaster.SelectButton(pauseMenu.resumeButton);
+    }
+
+    public void OptionsButton()
+    {
+        optionsMenu = true;
+        pauseMenu.pauseMenu = false;
+        optionsMenuUI.SetActive(true); 
+        pauseMenuUI.SetActive(false); 
+        gameMaster.SelectButton(volumeSlider.gameObject);
     }
 }

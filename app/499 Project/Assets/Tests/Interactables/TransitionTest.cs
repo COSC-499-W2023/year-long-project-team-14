@@ -183,37 +183,15 @@ public class TransitionTest
             spells.Add(spell);
         spell = null;
 
+        spell = GameObject.FindWithTag("ScatterShot");
+        if(spell != null)
+            spells.Add(spell);
+        spell = null;
+
         GameObject[] s = GameObject.FindGameObjectsWithTag("summonChad");
         for(int i = 0; i < s.Length; i++)
             spells.Add(s[i]);
         spell = null;
-
-        Debug.Log(spells.Count);
-
-        // spell = GameObject.FindWithTag("summonChad");
-        // if(spell != null)
-        //     spells.Add(spell);
-        // spell = null;
-
-        // spell = GameObject.FindWithTag("RageMage");
-        // if(spell != null)
-        //     spells.Add(spell);
-        // spell = null;
-
-        // spell = GameObject.FindWithTag("Rainbow");
-        // if(spell != null)
-        //     spells.Add(spell);
-        // spell = null;
-
-        // spell = GameObject.FindWithTag("ScatterShot");
-        // if(spell != null)
-        //     spells.Add(spell);
-        // spell = null;
-
-        // spell = GameObject.FindWithTag("Laser");
-        // if(spell != null)
-        //     spells.Add(spell);
-        // spell = null;
 
         //Check that there are 3 spells
         Assert.IsTrue(spells.Count == 3);

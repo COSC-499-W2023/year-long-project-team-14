@@ -17,6 +17,7 @@ public class Spells : MonoBehaviour
     public GameObject iceCubePrefab;
     public GameObject shieldPrefab;
     public GameObject shield;
+    public GameObject ScatterShotPrefab;
 
     //This is used to display the sprite for mage rage
      public GameObject mRAura;
@@ -28,6 +29,14 @@ public class Spells : MonoBehaviour
     //This is not needed anymore
     //public SpriteRenderer spriteRenderer;
 
+    //Storing rngSP here so it can be used during unit testing. This is only for the rng used to check which spell is used
+    public int rngSP = 0;
+
+    //Used to store the prefabs of enemy's for the rainbow spell. 
+    public GameObject e1;
+    public GameObject e2;
+    public GameObject e3;
+    public GameObject e4;
 
     //Used to indicate when the shield is active 
     public bool isShield = false;
@@ -43,10 +52,13 @@ public class Spells : MonoBehaviour
     [SerializeField] private AudioSource lightningSound;
     [SerializeField] private AudioSource seekingOrbSound;
     [SerializeField] private AudioSource chadSound;
+    [SerializeField] private AudioSource ScatterShotSound;
 
     public GameObject freezeFlash;
     public GameObject iceCubeBreak;
 
+    public float bulletsAmount = 10; // Sets the total number of bullets in the spread
+    public float startAngle = 0, endAngle = 360f; // Sets the start and end angle of the burst
 
     void Update()
     {
@@ -120,7 +132,18 @@ public class Spells : MonoBehaviour
                //If the user has the mage rage spell and presses q then call ShieldSpell()
                mageRage();
             }
+            else if (spellName == "ScatterShot")
+            {
+                scatterShot();
+            }
+            else if (spellName == "Rainbow")
+            {
+               //If the user has the shield spell and presses q then call ShieldSpell()
+               RainbowSpell();
+            }
         }
+        
+        
     }
 
     public void FireballSpell()
@@ -217,7 +240,7 @@ public class Spells : MonoBehaviour
     public IEnumerator Freeze()
     {
         //Set freeze duration
-        float freezeTime = 3;
+        float freezeTime = 2;
 
         //Play flash animation
         GameObject flash = Instantiate(freezeFlash, new Vector3(0, 0, 0), Quaternion.identity);
@@ -234,6 +257,9 @@ public class Spells : MonoBehaviour
             //Get enemy health system
             EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
 
+            //Get enemy sprite renderer
+            SpriteRenderer spriteRenderer = enemies[i].GetComponent<SpriteRenderer>();
+
             if(enemyHealthSystem != null)
             {
                 if(enemyHealthSystem.enemyHealth > 0)
@@ -245,6 +271,9 @@ public class Spells : MonoBehaviour
                     //Spawn ice cube on enemy
                     GameObject ice = Instantiate(iceCubePrefab, enemies[i].transform.position, Quaternion.identity);
                     Destroy(ice, freezeTime);
+
+                    //Make enemy invisible to avoid seeing them clip through the edge of the ice cube
+                    spriteRenderer.color = new Color(0, 0, 0, 0);
 
                     //Disable orc attacks
                     EnemyAttack enemyAttack = enemies[i].GetComponent<EnemyAttack>();
@@ -284,6 +313,10 @@ public class Spells : MonoBehaviour
         {
             //Get enemy health system
             EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
+            
+            //Get enemy sprite renderer
+            SpriteRenderer spriteRenderer = enemies[i].GetComponent<SpriteRenderer>();
+
             if(enemyHealthSystem != null && enemyHealthSystem.enemyHealth > 0)
             {
                 //Enable enemy movement and hit box
@@ -293,6 +326,9 @@ public class Spells : MonoBehaviour
                 //Play ice break effect on enemy
                 GameObject effect = Instantiate(iceCubeBreak, enemies[i].transform.position, Quaternion.identity);
                 Destroy(effect, 1);
+
+                //Make enemy visible again
+                spriteRenderer.color = new Color(1, 1, 1, 1);
 
                 //Enable orc attacks
                 EnemyAttack enemyAttack = enemies[i].GetComponent<EnemyAttack>();
@@ -313,7 +349,7 @@ public class Spells : MonoBehaviour
         
         //Indicate that the shield is active 
         isShield = true;
-        
+        gameObject.layer = LayerMask.NameToLayer("ShieldPlayer");
         
         // Start a coroutine to wait for a certain amount of time before destroying the shield
         StartCoroutine(DestroyShield(shield));
@@ -325,6 +361,7 @@ public class Spells : MonoBehaviour
         Destroy(shield);
         //Mark that the shield is inactive.
         isShield = false;
+        gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
     //This will be used for the mage rage spell 
@@ -347,13 +384,13 @@ public class Spells : MonoBehaviour
 
 
         //Increase the recharge time of the bullets so the player can continously shoot
-        playerController.attackChargeSpeed = 5;
+        playerController.attackChargeSpeed *= 1.75f;
         
         //Increase the speed of the bullets
-        playerController.bulletForce = 25;
+        playerController.bulletForce *= 1.75f;
 
         //Increase the movement speed of the player
-        playerController.moveSpeed = 20;
+        playerController.moveSpeed *= 1.75f;
 
 
         StartCoroutine(timer()); //wait for timer before destroying the shield
@@ -385,12 +422,11 @@ public class Spells : MonoBehaviour
         // currentColor.b = 11f;
         // currentColor.a= 255f;
 
-        playerController.attackChargeSpeed = 2;
-
+        playerController.attackChargeSpeed /= 1.75f;
         
-        playerController.bulletForce = 12;
+        playerController.bulletForce /= 1.75f;
 
-        playerController.moveSpeed = 8;
+        playerController.moveSpeed /= 1.75f;
 
          isRage = false;
 
@@ -398,4 +434,91 @@ public class Spells : MonoBehaviour
 
     }
 
+    public void scatterShot()
+    {
+        //Play shoot scatter shot sound effect
+        ScatterShotSound.Play();
+        GameObject Scatter = Instantiate(ScatterShotPrefab, playerController.gunFollow.position, Quaternion.identity);
+
+        float angleStep = (endAngle - startAngle) / bulletsAmount;
+        float angle = startAngle + 15;
+
+            for (int i = 0; i < bulletsAmount + 1; i++)
+            {
+                GameObject bul = ScatterShot.Instance.GetBullet();
+
+                float bulDirX = transform.position.x + Mathf.Sin((angle * Mathf.PI) / 180f);
+                float bulDirY = transform.position.y + Mathf.Cos((angle * Mathf.PI) / 180f);
+
+                Vector3 bulMoveVector = new Vector3(bulDirX, bulDirY, 0f);
+                Vector2 bulDir = (bulMoveVector - transform.position).normalized;
+
+                bul.transform.position = transform.position;
+                bul.transform.rotation = transform.rotation;
+                bul.SetActive(true);
+                bul.GetComponent<ScatterShotBullet>().SetMoveDirection(bulDir);
+
+                angle += angleStep;
+            }
+    }
+
+    public void RainbowSpell(){
+         rngSP = Random.Range(1,10);
+
+        //Cast the spell associated with the rngSP value 
+            if(rngSP == 1)
+            {
+                FireballSpell();
+            }
+            else if(rngSP == 2)
+            {   
+                LightningSpell();
+            }
+            else if(rngSP == 3)
+            {   
+                SeekingOrb();
+            }
+            else if (rngSP == 4)
+            {
+                SummonChad();
+            }
+            else if (rngSP == 5)
+            {
+                StartCoroutine(Freeze());
+            }
+             else if (rngSP == 6)
+            {
+               ShieldSpell();
+            }
+            else if (rngSP == 7)
+            {
+                scatterShot();
+            }
+            else if (rngSP == 8)
+            {
+                mageRage();
+            }
+            else if (rngSP >= 9)
+            {
+               //If you hit the unlucky 9 than get a second rngSP value (simply named rng2) and spawn that associated enemy 
+               int rng2 = Random.Range(1,5);
+
+               if(rng2 == 1){
+                Instantiate(e1, playerController.transform.position, Quaternion.identity);
+               }
+               else if(rng2 == 2){
+                Instantiate(e2, playerController.transform.position, Quaternion.identity);
+               }
+               else if(rng2 == 3){
+                Instantiate(e3, playerController.transform.position, Quaternion.identity);
+               }
+               else if(rng2 == 4){
+                Instantiate(e4, playerController.transform.position, Quaternion.identity);
+            }
+        }
+            
+    }   
+
 }
+
+

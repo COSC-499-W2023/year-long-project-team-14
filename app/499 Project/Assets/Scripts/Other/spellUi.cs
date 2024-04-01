@@ -14,6 +14,8 @@ public class spellUi : MonoBehaviour
     public Sprite freezeSprite;
     public Sprite shieldSprite;
     public Sprite mRSprite;
+    public Sprite scatterShotSprite;
+    public Sprite rainbowSprite;
     Spells spells;
 
     public GameMaster gameMaster;
@@ -36,8 +38,7 @@ public class spellUi : MonoBehaviour
     void Update()
     {
 
-        if (spells.spellName == "Fireball" || spells.spellName == "Lightning" || spells.spellName == "SeekingOrb" || spells.spellName == "SummonChad"|| spells.spellName == "Shield"|| spells.spellName == "mR" ||spells.spellName == "Freeze")
-
+        if (spells.spellName == "Fireball" || spells.spellName == "Lightning" || spells.spellName == "SeekingOrb" || spells.spellName == "SummonChad"|| spells.spellName == "Shield"|| spells.spellName == "mR" || spells.spellName == "Freeze" || spells.spellName == "ScatterShot"  || spells.spellName == "Rainbow")
         {
             image.enabled = true;
 
@@ -56,6 +57,10 @@ public class spellUi : MonoBehaviour
                 image.sprite = shieldSprite;
             else if (spells.spellName == "mR")
                 image.sprite = mRSprite;
+            else if (spells.spellName == "ScatterShot")
+                image.sprite = scatterShotSprite;
+            else if (spells.spellName == "Rainbow")
+                image.sprite = rainbowSprite;
 
             // Update the fill amount based on the remaining cooldown
             if (spells.cooldownTimer > 0)

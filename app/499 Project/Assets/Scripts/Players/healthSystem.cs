@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class healthSystem : MonoBehaviour
 {
+    public GameObject playerUI;
     public SpriteRenderer spriteRenderer;
     public Rigidbody2D rb;
     public GameObject[] hearts;
@@ -34,7 +35,7 @@ public class healthSystem : MonoBehaviour
     // Damage player if colliding with enemy or bullet
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet")){
+        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet") || collision.gameObject.CompareTag("Boss")){
             takeDamage();
         }
     }
@@ -42,7 +43,7 @@ public class healthSystem : MonoBehaviour
     //Continue to take damage if still touching enemy
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy")){
+        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Boss")){
             takeDamage();
             
         }
@@ -67,14 +68,11 @@ public class healthSystem : MonoBehaviour
     public void takeDamage()
     {
         //Check if the player has >= health and if the player is temporarly invincible
-        if(life >= 1 && isInvic == false)
+        if(life >= 1 && isInvic == false && !chad)
         {
             //Decrease health by 1
-            if(!chad)
-            {
-                life--;
-                hearts[life].SetActive(false);
-            }
+            life--;
+            hearts[life].SetActive(false);
            
            //Make the player invicible 
            isInvic = true;
@@ -99,6 +97,8 @@ public class healthSystem : MonoBehaviour
 
     public void Die()
     {
+        life = 0;
+
         //Play death animation
         animator.SetBool("IsWalking", false);
         animator.SetBool("IsDead", true);
@@ -118,6 +118,9 @@ public class healthSystem : MonoBehaviour
         {
             (component as Behaviour).enabled = false;
         }
+
+        if(playerUI != null)
+            playerUI.SetActive(false);
         
         dead = true;
         spriteRenderer.sortingOrder = 8;
@@ -129,7 +132,8 @@ public class healthSystem : MonoBehaviour
     public void dashHs(){
         // Set the player to invincible during the dash
         isInvic = true;
-        gameObject.layer = LayerMask.NameToLayer("NoCollide");
+        if(gameObject.layer == LayerMask.NameToLayer("Player"))
+            gameObject.layer = LayerMask.NameToLayer("NoCollide");
         //Start the transparent anamation for the dash
         StartCoroutine(Transparent3());
     }
@@ -229,7 +233,8 @@ public class healthSystem : MonoBehaviour
         if(!blinking)
             isInvic = false;
 
-        gameObject.layer = LayerMask.NameToLayer("Player");
+        if(gameObject.layer == LayerMask.NameToLayer("NoCollide"))
+            gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
     //Update heart UI

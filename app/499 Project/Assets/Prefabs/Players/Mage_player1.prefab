@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 8049298216514591554}
   - component: {fileID: 5848230849106940349}
   - component: {fileID: 2376870225415034407}
+  - component: {fileID: 3585561621097829892}
   m_Layer: 7
   m_Name: Mage_player1
   m_TagString: Player
@@ -252,7 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCharge: 1
-  attackChargeSpeed: 2
+  attackChargeSpeed: 3
   attackChargeMax: 3
   attackCost: 1
   bulletForce: 12
@@ -518,6 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d208e4fe668d8ff4c88d978a46a66ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerUI: {fileID: 21372215535025271}
   spriteRenderer: {fileID: 47878624049746190}
   rb: {fileID: 8516023400171509827}
   hearts:
@@ -865,8 +867,14 @@ MonoBehaviour:
   iceCubePrefab: {fileID: 5353155636119205557, guid: 2b44b4606410f624489e839e71c78d63, type: 3}
   shieldPrefab: {fileID: 758289626637381577, guid: b72145187a5b557469b33ef2c319f6e0, type: 3}
   shield: {fileID: 0}
+  ScatterShotPrefab: {fileID: 2690387278358215443, guid: 22bef6c5b47cb4841ab8a2c760e3e831, type: 3}
   mRAura: {fileID: 4103782466199260733, guid: e9bf3a87404f347ef826f289185f620e, type: 3}
   aura: {fileID: 0}
+  rngSP: 0
+  e1: {fileID: 5701880002770581090, guid: 2ea9238c69ef458479c9e29fd0cc6d63, type: 3}
+  e2: {fileID: 604422109994451894, guid: 521fad6bc7d5e4f4e9157bef5ee8e044, type: 3}
+  e3: {fileID: 3279354335901742904, guid: 631116f9e5af3194d937127daacdc445, type: 3}
+  e4: {fileID: 6988037432058799580, guid: f7a72d5dbc80e4844b8d38cf929a774c, type: 3}
   isShield: 0
   isRage: 0
   yOffset: 2.5
@@ -874,8 +882,12 @@ MonoBehaviour:
   lightningSound: {fileID: 5829597694115131600}
   seekingOrbSound: {fileID: 8049298216514591554}
   chadSound: {fileID: 2376870225415034407}
+  ScatterShotSound: {fileID: 3585561621097829892}
   freezeFlash: {fileID: 8839434359703360610, guid: 8d1a06cceef4e0a40bf0f15c7971b23e, type: 3}
   iceCubeBreak: {fileID: 6302075490922154978, guid: f6f228fdec1e39d4f97cbe2539b2c9d6, type: 3}
+  bulletsAmount: 10
+  startAngle: 0
+  endAngle: 360
 --- !u!82 &6020226581851858952
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1272,7 +1284,103 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 674caf418db4c324ba425e2e6169a94d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.751
+  m_Volume: 0.15
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &3585561621097829892
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881379806320011560}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 9b69ac2cbde51be4da573485d4c6ca58, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1423,6 +1531,8 @@ MonoBehaviour:
   freezeSprite: {fileID: -58245785, guid: fa739449f8985d74aa6afb409a7beb86, type: 3}
   shieldSprite: {fileID: 21300000, guid: ef1884aedfd4e3a46a8dc138f602d5a1, type: 3}
   mRSprite: {fileID: 668703104, guid: 97bb028556ef449f5bbd3c83f7c405ec, type: 3}
+  scatterShotSprite: {fileID: 1819548605, guid: 7aa2071947da1894db5df32164a6be12, type: 3}
+  rainbowSprite: {fileID: 21300000, guid: da0df15a72341f74c8ac2fa904068c52, type: 3}
   gameMaster: {fileID: 0}
   button: {fileID: 5445237934524193817}
   ltIcon: {fileID: 21300000, guid: 5407b74134b1eb844a010a559f91aaf9, type: 3}
@@ -1502,7 +1612,7 @@ GameObject:
   - component: {fileID: 4187919560129157548}
   - component: {fileID: 1904450588972080266}
   - component: {fileID: 7322727331824776052}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: playerBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1935,6 +2045,11 @@ PrefabInstance:
       addedObject: {fileID: 4633502083961546569}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23548c19517cc464ca7f13c8470ae116, type: 3}
+--- !u!1 &21372215535025271 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1900535750530054359, guid: 23548c19517cc464ca7f13c8470ae116, type: 3}
+  m_PrefabInstance: {fileID: 1885850289114776736}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &134766041247242457 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2014564617280478329, guid: 23548c19517cc464ca7f13c8470ae116, type: 3}
