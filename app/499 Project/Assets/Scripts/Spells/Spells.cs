@@ -18,6 +18,8 @@ public class Spells : MonoBehaviour
     public GameObject shieldPrefab;
     public GameObject shield;
     public GameObject ScatterShotPrefab;
+    public GameObject voidBeamPrefab;
+    public GameObject voidBeamEffect;
 
     //This is used to display the sprite for mage rage
      public GameObject mRAura;
@@ -59,6 +61,7 @@ public class Spells : MonoBehaviour
     [SerializeField] private AudioSource unrageSound;
     [SerializeField] private AudioSource shieldSound;
     [SerializeField] private AudioSource unshieldSound;
+    [SerializeField] private AudioSource voidBeamSound;
 
     public GameObject freezeFlash;
     public GameObject iceCubeBreak;
@@ -142,6 +145,10 @@ public class Spells : MonoBehaviour
             {
                 scatterShot();
             }
+            else if (spellName == "VoidBeam")
+            {
+                StartCoroutine(VoidBeam());
+            }
             else if (spellName == "Rainbow")
             {
                //If the user has the shield spell and presses q then call ShieldSpell()
@@ -161,6 +168,29 @@ public class Spells : MonoBehaviour
         GameObject fireball = Instantiate(fireballPrefab, playerController.gunFollow.position, playerController.playerCenter.transform.rotation);
         Rigidbody2D fireballRB = fireball.GetComponent<Rigidbody2D>();
         fireballRB.AddForce(-playerController.gunFollow.up * 25 * playerController.bulletForce);
+    }
+
+    public IEnumerator VoidBeam()
+    {
+        voidBeamSound.Play();
+
+        GameObject[] beams = new GameObject[75];
+
+        GameObject beam = Instantiate(voidBeamPrefab, playerController.gunFollow.position, playerController.gunFollow.rotation);
+        // Rigidbody2D beamRB = beam.GetComponent<Rigidbody2D>();
+        // beamRB.AddForce(-playerController.gunFollow.transform.up * 2650);
+        Destroy(beam, 0.3f);
+
+        beams[0] = Instantiate(voidBeamEffect, playerController.gunFollow.position, playerController.gunFollow.rotation * Quaternion.Euler(0, 0, -90));
+        Destroy(beams[0], 0.3f);
+
+        for(int i = 1; i < beams.Length; i++)
+        {
+            beams[i] = Instantiate(voidBeamEffect, beams[i-1].transform.position + (beams[i-1].transform.right / 2), beams[i-1].transform.rotation);
+            Destroy(beams[i], 0.3f);
+            
+        }
+        yield return new WaitForSeconds(0.01f);
     }
 
     public void LightningSpell()
