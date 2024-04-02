@@ -174,20 +174,28 @@ public class Spells : MonoBehaviour
     {
         voidBeamSound.Play();
 
-        GameObject[] beams = new GameObject[75];
+        GameObject[] beams = new GameObject[121];
 
         GameObject beam = Instantiate(voidBeamPrefab, playerController.gunFollow.position, playerController.gunFollow.rotation);
-        // Rigidbody2D beamRB = beam.GetComponent<Rigidbody2D>();
-        // beamRB.AddForce(-playerController.gunFollow.transform.up * 2650);
+        
         Destroy(beam, 0.3f);
 
         beams[0] = Instantiate(voidBeamEffect, playerController.gunFollow.position, playerController.gunFollow.rotation * Quaternion.Euler(0, 0, -90));
         Destroy(beams[0], 0.3f);
 
-        for(int i = 1; i < beams.Length; i++)
+        beams[1] = Instantiate(voidBeamEffect, playerController.gunFollow.position - new Vector3(0.25f, -0.25f, 0), playerController.gunFollow.rotation * Quaternion.Euler(0, 0, -90));
+        Destroy(beams[1], 0.3f);
+
+        beams[2] = Instantiate(voidBeamEffect, playerController.gunFollow.position + new Vector3(0.25f, 0, 0), playerController.gunFollow.rotation * Quaternion.Euler(0, 0, -90));
+        Destroy(beams[2], 0.3f);
+
+        for(int i = 3; i < beams.Length; i += 2)
         {
-            beams[i] = Instantiate(voidBeamEffect, beams[i-1].transform.position + (beams[i-1].transform.right / 2), beams[i-1].transform.rotation);
+            beams[i] = Instantiate(voidBeamEffect, beams[i-2].transform.position + (beams[i-2].transform.right / 2), beams[i-2].transform.rotation);
             Destroy(beams[i], 0.3f);
+
+            beams[i+1] = Instantiate(voidBeamEffect, beams[i-1].transform.position + (beams[i-1].transform.right / 2), beams[i-1].transform.rotation);
+            Destroy(beams[i+1], 0.3f);
             
         }
     }
