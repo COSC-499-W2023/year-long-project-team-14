@@ -68,8 +68,10 @@ public class BossLaserAttack : MonoBehaviour
 
     int diff = 1;
 
+    [SerializeField] private AudioSource spawnSound;
+
     // Start is called before the first frame update
-     void Start()
+    void Start()
     {
         animator = GetComponent<Animator>();
         em = GetComponent<EnemyMovement>();
@@ -538,6 +540,7 @@ public class BossLaserAttack : MonoBehaviour
                 animator.SetTrigger("ShootLeft");
                 yield return new WaitForSeconds(0.25f);
 
+                spawnSound.Play();
                 GameObject enemy = Instantiate(slime, transform.position + new Vector3(-2.0f, 0.75f, 0), Quaternion.Euler(0, 0, 0));
                 enemy.GetComponent<Rigidbody2D>().AddForce(-enemy.transform.right * slimeSpeed);
                 enemy.transform.rotation = Quaternion.identity;
@@ -546,6 +549,7 @@ public class BossLaserAttack : MonoBehaviour
                 animator.SetTrigger("ShootLeft");
                 yield return new WaitForSeconds(0.25f);
 
+                spawnSound.Play();
                 enemy = Instantiate(orc, transform.position + new Vector3(-2.0f, 0.75f, 0), Quaternion.Euler(0, 0, 0));
                 enemy.GetComponent<Rigidbody2D>().AddForce(-enemy.transform.right * slimeSpeed);
                 enemy.transform.rotation = Quaternion.identity;
@@ -554,6 +558,7 @@ public class BossLaserAttack : MonoBehaviour
                 animator.SetTrigger("ShootLeft");
                 yield return new WaitForSeconds(0.25f);
 
+                spawnSound.Play();
                 enemy = Instantiate(bonk, transform.position + new Vector3(-2.0f, 0.75f, 0), Quaternion.Euler(0, 0, 0));
                 enemy.GetComponent<Rigidbody2D>().AddForce(-enemy.transform.right * slimeSpeed);
                 enemy.transform.rotation = Quaternion.identity;
@@ -573,6 +578,7 @@ public class BossLaserAttack : MonoBehaviour
 
                 for(int i = 0; i < amount; i++)
                 {
+                    spawnSound.Play();
                     GameObject enemy = Instantiate(enemyPrefab, transform.position + new Vector3(-2.0f, 0.75f, 0), Quaternion.Euler(0, 0, (40 / (amount + 1)) * (i + 1) - 20));
                     enemy.GetComponent<Rigidbody2D>().AddForce(-enemy.transform.right * slimeSpeed);
                     enemy.transform.rotation = Quaternion.identity;
@@ -615,6 +621,7 @@ public class BossLaserAttack : MonoBehaviour
                 animator.SetTrigger("ShootRight");
                 yield return new WaitForSeconds(0.25f);
 
+                spawnSound.Play();
                 GameObject enemy = Instantiate(slime, transform.position + new Vector3(-2.0f, 0.75f, 0), Quaternion.Euler(0, 0, 0));
                 enemy.GetComponent<Rigidbody2D>().AddForce(-enemy.transform.right * slimeSpeed);
                 enemy.transform.rotation = Quaternion.identity;
@@ -623,6 +630,7 @@ public class BossLaserAttack : MonoBehaviour
                 animator.SetTrigger("ShootRight");
                 yield return new WaitForSeconds(0.25f);
 
+                spawnSound.Play();
                 enemy = Instantiate(orc, transform.position + new Vector3(-2.0f, 0.75f, 0), Quaternion.Euler(0, 0, 0));
                 enemy.GetComponent<Rigidbody2D>().AddForce(-enemy.transform.right * slimeSpeed);
                 enemy.transform.rotation = Quaternion.identity;
@@ -631,6 +639,7 @@ public class BossLaserAttack : MonoBehaviour
                 animator.SetTrigger("ShootRight");
                 yield return new WaitForSeconds(0.25f);
 
+                spawnSound.Play();
                 enemy = Instantiate(bonk, transform.position + new Vector3(-2.0f, 0.75f, 0), Quaternion.Euler(0, 0, 0));
                 enemy.GetComponent<Rigidbody2D>().AddForce(-enemy.transform.right * slimeSpeed);
                 enemy.transform.rotation = Quaternion.identity;
@@ -650,6 +659,7 @@ public class BossLaserAttack : MonoBehaviour
 
                 for(int i = 0; i < amount; i++)
                 {
+                    spawnSound.Play();
                     GameObject enemy = Instantiate(enemyPrefab, transform.position + new Vector3(2.0f, 0.75f, 0), Quaternion.Euler(0, 0, (40 / (amount + 1)) * (i + 1) - 20));
                     enemy.GetComponent<Rigidbody2D>().AddForce(enemy.transform.right * slimeSpeed);
                     enemy.transform.rotation = Quaternion.identity;
@@ -667,6 +677,7 @@ public class BossLaserAttack : MonoBehaviour
             {
                 animator.SetTrigger("ShootLeft");
                 yield return new WaitForSeconds(0.25f);
+                spawnSound.Play();
                 GameObject slimeClone = Instantiate(slime, transform.position + new Vector3(-2.0f, 0.75f, 0), Quaternion.identity);
                 slimeClone.GetComponent<Rigidbody2D>().AddForce(-transform.right * slimeSpeed);
                 yield return new WaitForSeconds(0.5f);
@@ -682,6 +693,7 @@ public class BossLaserAttack : MonoBehaviour
             {
                 animator.SetTrigger("ShootRight");
                 yield return new WaitForSeconds(0.25f);
+                spawnSound.Play();
                 GameObject slimeClone = Instantiate(slime, transform.position + new Vector3(2.0f, 0.75f, 0), Quaternion.identity);
                 slimeClone.GetComponent<Rigidbody2D>().AddForce(transform.right * slimeSpeed);
                 yield return new WaitForSeconds(0.5f);
