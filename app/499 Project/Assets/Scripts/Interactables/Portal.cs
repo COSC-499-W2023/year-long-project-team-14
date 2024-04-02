@@ -15,6 +15,8 @@ public class Portal : MonoBehaviour
     public List<GameObject> allEnemies = new List<GameObject>();
     public GameObject port;
     public bool portalActive = false;
+
+    [SerializeField] private AudioSource levelCompleteSound;
     private void Start()
     {
         // Initially, the portal is inactive
@@ -88,8 +90,14 @@ public class Portal : MonoBehaviour
     {
         port.SetActive(active);
 
-        if(active)
+        if (active)
+        {
             portalActive = true;
+            if (!gameMaster.inShop)
+            {
+                levelCompleteSound.Play();
+            }
+        }
         else
             portalActive = false;
     }

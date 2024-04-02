@@ -24,6 +24,26 @@ Assets acknowledgement:
 * Mini boss song: https://xdeviruchi.itch.io/8-bit-fantasy-adventure-music-pack
 * Final boss song: https://www.youtube.com/watch?v=uIfD2BKaD2k
 * Final boss art: https://darkpixel-kronovi.itch.io/mecha-golem-free
+* Sound effect for picking up spells
+https://pixabay.com/sound-effects/cute-level-up-3-189853/
+* Sound effect for fireball explosions
+https://pixabay.com/sound-effects/fire-spell-100276/
+* Sound effect for seeking orb explosions
+https://pixabay.com/sound-effects/explosion-95176/
+* Sound effect for the ladder opening up after killing the last enemy
+https://pixabay.com/sound-effects/success-1-6297/
+* Freeze spell freeze and unfreeze
+  * Freeze: https://www.fesliyanstudios.com/royalty-free-sound-effects-download/magic-spell-222
+  * Unfreeze: https://www.soundjay.com/nature/sounds/breaking-ice-02.mp3
+* Shield spell activate and deactivate
+  * Activate: https://pixabay.com/sound-effects/retro-gaming-fx-i-28793/
+  * Deactivate: https://mixkit.co/free-sound-effects/lose/
+* Mage rage activate and deactivate
+  * Activate: https://pixabay.com/sound-effects/062708-laser-charging-81968/
+  * Deactivate:  https://pixabay.com/sound-effects/sucked-into-classroom-103774/
+* Final boss/mini boss sounds:
+https://ef9.itch.io/ultimate-8bit-sfx-library-vol-1
+
 
 Please use the provided folder structure for your docs (project plan, design documentation, communications log, weekly logs, and final documentation), source code, testing, etc.    You are free to organize any additional internal folder structure as required by the project.  Please use a branching workflow and once an item is ready, do remember to issue a PR, code review, and merge it into the develop branch and then the master branch.
 ```
