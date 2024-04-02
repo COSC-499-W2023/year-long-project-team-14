@@ -70,6 +70,7 @@ public class BossLaserAttack : MonoBehaviour
 
     [SerializeField] private AudioSource spawnSound;
     [SerializeField] private AudioSource circleShotSound;
+    [SerializeField] private AudioSource spiralShotSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -320,6 +321,7 @@ public class BossLaserAttack : MonoBehaviour
             {
                 for (int j = 0; j <= 1; j++)
                 {
+                    spiralShotSound.Play();
                     GameObject bul = BulletSprayPool.Instance.GetBossBullet();
 
                     float bulDirX = transform.position.x + Mathf.Sin(((spiralAngle + 180f * j) * Mathf.PI) / 180f);
