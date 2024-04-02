@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3832160045151702936}
   - component: {fileID: 6123180486279695702}
-  - component: {fileID: 1561387908625497509}
+  - component: {fileID: 7538415176604260292}
   m_Layer: 0
-  m_Name: Laser Pickup
-  m_TagString: summonChad
+  m_Name: Void Beam Pickup
+  m_TagString: Void
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,7 +80,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.5}
   m_EdgeRadius: 0
---- !u!114 &1561387908625497509
+--- !u!114 &7538415176604260292
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1464995195072739364}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d030cf5c95acc6419085899ac34db1d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a6c47c76a19e744593a0b6be15d8565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bobbingAmount: 0.1
@@ -242,7 +242,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Laser Beam
+  m_text: Void Beam
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e10e00b4d3e137e4da0876362a21e06c, type: 2}
   m_sharedMaterial: {fileID: 885593585194045846, guid: e10e00b4d3e137e4da0876362a21e06c, type: 2}
@@ -655,7 +655,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Cast a laser beam dealing 4 damage to all enemies in its path. \n\nCooldown:
+  m_text: "Cast a beam of darkness dealing 4 damage to all enemies in its path. \n\nCooldown:
     25s"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e10e00b4d3e137e4da0876362a21e06c, type: 2}

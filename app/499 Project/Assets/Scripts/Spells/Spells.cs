@@ -147,7 +147,7 @@ public class Spells : MonoBehaviour
             }
             else if (spellName == "VoidBeam")
             {
-                StartCoroutine(VoidBeam());
+                VoidBeam();
             }
             else if (spellName == "Rainbow")
             {
@@ -170,7 +170,7 @@ public class Spells : MonoBehaviour
         fireballRB.AddForce(-playerController.gunFollow.up * 25 * playerController.bulletForce);
     }
 
-    public IEnumerator VoidBeam()
+    public void VoidBeam()
     {
         voidBeamSound.Play();
 
@@ -190,7 +190,6 @@ public class Spells : MonoBehaviour
             Destroy(beams[i], 0.3f);
             
         }
-        yield return new WaitForSeconds(0.01f);
     }
 
     public void LightningSpell()
@@ -514,12 +513,16 @@ public class Spells : MonoBehaviour
     }
 
     public void RainbowSpell(){
-         rngSP = Random.Range(1,10);
+         rngSP = Random.Range(0,10);
 
         //Cast the spell associated with the rngSP value 
-            if(rngSP == 1)
+            if(rngSP == 0)
             {
                 FireballSpell();
+            }
+            else if(rngSP == 1)
+            {
+                VoidBeam();
             }
             else if(rngSP == 2)
             {   
