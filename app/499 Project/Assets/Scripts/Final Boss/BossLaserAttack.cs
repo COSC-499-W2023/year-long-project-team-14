@@ -69,7 +69,7 @@ public class BossLaserAttack : MonoBehaviour
     int diff = 1;
 
     [SerializeField] private AudioSource spawnSound;
-
+    [SerializeField] private AudioSource circleShotSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -284,6 +284,7 @@ public class BossLaserAttack : MonoBehaviour
 
     private void Fire()
     {
+        circleShotSound.Play();
         float angleStep = (endAngle - startAngle) / bulletsAmount;
         float angle = startAngle;
 
