@@ -98,11 +98,13 @@ public class GameMaster : MonoBehaviour
             GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             GameObject[] chads = GameObject.FindGameObjectsWithTag("Player");
+            GameObject chest = GameObject.FindWithTag("Chest");
             for(int i = 0; i < playerBullets.Length; i++) Destroy(playerBullets[i]);
             for(int i = 0; i < giantBullets.Length; i++) Destroy(giantBullets[i]);
             for(int i = 0; i < enemyBullets.Length; i++) enemyBullets[i].SetActive(false);
             for(int i = 0; i < enemies.Length; i++) Destroy(enemies[i]);
             for(int i = 0; i < chads.Length; i++) if(chads[i].GetComponent<healthSystem>().chad) Destroy(chads[i]);
+            if(chest != null) Destroy(chest);
             yield return null;
 
             //Start to fade back in

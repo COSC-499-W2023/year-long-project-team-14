@@ -8,6 +8,13 @@ public class Breakable : MonoBehaviour
     public GameObject ladder;
     public bool unlocked = false;
     public bool slimes = false;
+    public bool boss = false;
+    public int brokenWalls = 0;
+    public Breakable masterBreakable;
+    public GameObject justin;
+    public Collider2D justinsCollider;
+    public FireSprayBullets justinsAttack;
+    public GameObject[] breakables;
     public GameObject slimePrefab;
 
     public int health = 6;
@@ -42,7 +49,26 @@ public class Breakable : MonoBehaviour
     public IEnumerator Unlock()
     {
         unlocked = true;
-        animator.enabled = true;
+        animator.Play("WallFadeOut");
+
+        if(boss)
+        {
+            masterBreakable.brokenWalls++;
+
+            if(masterBreakable.brokenWalls == 4 && masterBreakable == this)
+            {
+                justin.SetActive(true);
+                yield return new WaitForSeconds(0.6f);
+                
+                for(int i = 0; i < breakables.Length; i++)
+                    Destroy(breakables[i]);
+
+                justinsCollider.enabled = true;
+                justinsAttack.enabled = true;
+            }
+            else
+                StartCoroutine(CheckWalls());
+        }
 
         if(ladder != null)
             ladder.SetActive(true);
@@ -58,6 +84,20 @@ public class Breakable : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         //Destroy walls
-        Destroy(gameObject);
+        if(!boss)
+            Destroy(gameObject);
+    }
+
+    public IEnumerator CheckWalls()
+    {
+        yield return new WaitForSeconds(2.5f);
+
+        if(masterBreakable.brokenWalls < 4)
+        {
+            masterBreakable.brokenWalls--;
+            health = 1;
+            unlocked = false;
+            animator.Play("WallFadeIn");
+        }
     }
 }

@@ -16,6 +16,7 @@ public class Chest : MonoBehaviour
 
     private bool playerIsOverChest = false;
     public bool chestOpened = false;
+    public bool needsKey = true;
     GameMaster gameMaster;
     public SpriteRenderer spriteRenderer;
     public Sprite openChest;
@@ -45,7 +46,7 @@ public class Chest : MonoBehaviour
         //get access to game master
         gameMaster = GameObject.FindWithTag("GameMaster").GetComponent<GameMaster>();
 
-        if(gameMaster.hasKey)
+        if(gameMaster.hasKey || !needsKey)
         {
             button.gameObject.SetActive(true);
             prompt.sprite = openPrompt;
@@ -103,21 +104,18 @@ public class Chest : MonoBehaviour
     //go to next level if player interacts with exit and satisfies conditions
     public void Interact(PlayerController playerController, healthSystem hs)
     {
-        if(playerIsOverChest && gameMaster.hasKey)
+        if(playerIsOverChest && (gameMaster.hasKey || !needsKey))
         {
             if(!chestOpened)
             {
                 chestOpened = true;
                 spriteRenderer.sprite = openChest;
                 Destroy(prompt.gameObject);
-
-                playerController.blastBullet = false;
                 
                 canvas.SetActive(true);
                 chestPopup.Play("chestPopup");
 
                 int rand = Random.Range(0, 6);
-                rand = 5;
 
                 if(rand == 0) //Blast
                 {

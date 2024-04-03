@@ -162,6 +162,8 @@ public class EnemyHealthSystem : MonoBehaviour
 
         StartCoroutine(Transparent());
 
+        spriteRenderer.sortingOrder = 8;
+
         //If last enemy, end level
         if (portal != null)
         {

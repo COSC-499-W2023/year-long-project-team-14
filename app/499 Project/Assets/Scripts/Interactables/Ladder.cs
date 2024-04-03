@@ -102,7 +102,7 @@ public class Ladder : MonoBehaviour
     //sets exit active or inactive
     public void SetLadderActive(bool active)
     {
-        if(active)
+        if(active && !exitUnlocked)
         {
             spriteRenderer.sprite = ladderSprite;
             exitUnlocked = true;

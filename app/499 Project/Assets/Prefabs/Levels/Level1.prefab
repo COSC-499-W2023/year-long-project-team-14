@@ -503,6 +503,10 @@ MonoBehaviour:
   ladder: {fileID: 0}
   unlocked: 0
   slimes: 1
+  boss: 0
+  brokenWalls: 0
+  masterBreakable: {fileID: 0}
+  justin: {fileID: 0}
   slimePrefab: {fileID: 5701880002770581090, guid: 2ea9238c69ef458479c9e29fd0cc6d63, type: 3}
   health: 30
 --- !u!95 &3680536897008007839
@@ -513,7 +517,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2890815160419590524}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 822b3c0ea3a224d4eb6bedf9566c6866, type: 2}
   m_CullingMode: 0

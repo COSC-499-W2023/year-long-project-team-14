@@ -19,6 +19,9 @@ public class MiniBossHealthSystem : MonoBehaviour
     public Portal portal;
     public Image healthBar;
     public float healthAmount;
+    public Collider2D cover;
+    public GameObject chest;
+    public bool justin = false;
 
     [SerializeField] private AudioSource hitSound;
     [SerializeField] private AudioSource deathSound;
@@ -53,6 +56,9 @@ public class MiniBossHealthSystem : MonoBehaviour
             enemyHealth = (int)Mathf.Round(enemyHealth * 1.5f);
         else if(diff == 4)
             enemyHealth = (int)Mathf.Round(enemyHealth * 1.75f);
+
+        if(justin)
+            enemyHealth = 100;
 
         healthAmount = enemyHealth;
         
@@ -171,7 +177,13 @@ public class MiniBossHealthSystem : MonoBehaviour
         //play death sound
         deathSound.Play();
 
+        if(cover != null)
+            cover.enabled = true;
+
         StartCoroutine(Transparent());
+
+        spriteRenderer.sortingOrder = 8;
+        
         GameObject[] slimes = GameObject.FindGameObjectsWithTag("Enemy");
         for(int i = 0; i < slimes.Length; i++)
         {
@@ -200,6 +212,9 @@ public class MiniBossHealthSystem : MonoBehaviour
                 }
             }
         }
+
+        if(justin)
+            Instantiate(chest, transform.position, Quaternion.identity);
 
         Destroy(healthBarObj);
     }

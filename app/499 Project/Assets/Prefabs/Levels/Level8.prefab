@@ -2146,6 +2146,10 @@ MonoBehaviour:
   ladder: {fileID: 0}
   unlocked: 0
   slimes: 0
+  boss: 0
+  brokenWalls: 0
+  masterBreakable: {fileID: 0}
+  justin: {fileID: 0}
   slimePrefab: {fileID: 5701880002770581090, guid: 2ea9238c69ef458479c9e29fd0cc6d63, type: 3}
   health: 4
 --- !u!95 &6080315954198399490
@@ -2156,7 +2160,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630097070188663966}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 822b3c0ea3a224d4eb6bedf9566c6866, type: 2}
   m_CullingMode: 0
@@ -2954,6 +2958,10 @@ MonoBehaviour:
   ladder: {fileID: 5893367432291927826}
   unlocked: 0
   slimes: 0
+  boss: 0
+  brokenWalls: 0
+  masterBreakable: {fileID: 0}
+  justin: {fileID: 0}
   slimePrefab: {fileID: 5701880002770581090, guid: 2ea9238c69ef458479c9e29fd0cc6d63, type: 3}
   health: 4
 --- !u!95 &2486347899439399839
@@ -2964,7 +2972,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4044824301336937091}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 822b3c0ea3a224d4eb6bedf9566c6866, type: 2}
   m_CullingMode: 0
@@ -3350,6 +3358,10 @@ MonoBehaviour:
   ladder: {fileID: 0}
   unlocked: 0
   slimes: 0
+  boss: 0
+  brokenWalls: 0
+  masterBreakable: {fileID: 0}
+  justin: {fileID: 0}
   slimePrefab: {fileID: 5701880002770581090, guid: 2ea9238c69ef458479c9e29fd0cc6d63, type: 3}
   health: 4
 --- !u!95 &2697497468679215529
@@ -3360,7 +3372,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4339914538644877393}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 822b3c0ea3a224d4eb6bedf9566c6866, type: 2}
   m_CullingMode: 0
@@ -4865,6 +4877,10 @@ MonoBehaviour:
   ladder: {fileID: 0}
   unlocked: 0
   slimes: 0
+  boss: 0
+  brokenWalls: 0
+  masterBreakable: {fileID: 0}
+  justin: {fileID: 0}
   slimePrefab: {fileID: 5701880002770581090, guid: 2ea9238c69ef458479c9e29fd0cc6d63, type: 3}
   health: 4
 --- !u!95 &119858930574624227
@@ -4875,7 +4891,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5989028946234190568}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 822b3c0ea3a224d4eb6bedf9566c6866, type: 2}
   m_CullingMode: 0
@@ -5541,6 +5557,10 @@ MonoBehaviour:
   ladder: {fileID: 0}
   unlocked: 0
   slimes: 0
+  boss: 0
+  brokenWalls: 0
+  masterBreakable: {fileID: 0}
+  justin: {fileID: 0}
   slimePrefab: {fileID: 5701880002770581090, guid: 2ea9238c69ef458479c9e29fd0cc6d63, type: 3}
   health: 4
 --- !u!95 &8144376297692061143
@@ -5551,7 +5571,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7485627021887722442}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 822b3c0ea3a224d4eb6bedf9566c6866, type: 2}
   m_CullingMode: 0
@@ -5937,6 +5957,10 @@ MonoBehaviour:
   ladder: {fileID: 0}
   unlocked: 0
   slimes: 0
+  boss: 0
+  brokenWalls: 0
+  masterBreakable: {fileID: 0}
+  justin: {fileID: 0}
   slimePrefab: {fileID: 5701880002770581090, guid: 2ea9238c69ef458479c9e29fd0cc6d63, type: 3}
   health: 4
 --- !u!95 &8044494723947699561
@@ -5947,7 +5971,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8045071414247553787}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 822b3c0ea3a224d4eb6bedf9566c6866, type: 2}
   m_CullingMode: 0
