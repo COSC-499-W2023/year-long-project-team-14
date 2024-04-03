@@ -14,6 +14,7 @@ public class EnemyHealthSystem : MonoBehaviour
     //public bool mageRisOn = false;
 
     public CircleCollider2D enemyCollider;
+    public GameObject[] ladders;
     public Ladder ladder;
     public Portal portal;
 
@@ -30,12 +31,13 @@ public class EnemyHealthSystem : MonoBehaviour
         }
         else
         {
-            GameObject lad = GameObject.FindWithTag("Ladder");
-            if(lad != null)
-            {
-                ladder = lad.GetComponent<Ladder>();
-                ladder.allEnemies.Add(gameObject);
-            }
+            ladders = GameObject.FindGameObjectsWithTag("Ladder");
+            for(int i = 0; i < ladders.Length; i++)
+                if(ladders[i] != null)
+                {
+                    ladder = ladders[i].GetComponent<Ladder>();
+                    ladder.allEnemies.Add(gameObject);
+                }
         }
 
         //Get difficulty
@@ -167,20 +169,22 @@ public class EnemyHealthSystem : MonoBehaviour
 
             if (portal.allEnemies.Count == 0)
             {
-                EndLevel();
+                EndLevel(ladder);
             }
         }
         else
         {
-            if (ladder != null)
-            {
-                ladder.allEnemies.Remove(gameObject);
-
-                if (ladder.allEnemies.Count == 0)
+            for(int i = 0; i < ladders.Length; i++)
+                if (ladders[i] != null)
                 {
-                    EndLevel();
+                    ladder = ladders[i].GetComponent<Ladder>();
+                    ladder.allEnemies.Remove(gameObject);
+
+                    if (ladder.allEnemies.Count == 0)
+                    {
+                        EndLevel(ladder);
+                    }
                 }
-            }
         }
     }
 
@@ -192,7 +196,7 @@ public class EnemyHealthSystem : MonoBehaviour
         spriteRenderer.color = currentColor;
     }
 
-    void EndLevel()
+    void EndLevel(Ladder lad)
     {
         if (portal != null)
         {
@@ -200,9 +204,9 @@ public class EnemyHealthSystem : MonoBehaviour
         }
         else
         {
-            if (ladder != null)
+            if (lad != null)
             {
-                ladder.SetLadderActive(true);
+                lad.SetLadderActive(true);
             }
         }
     }

@@ -26,7 +26,7 @@ public class Ladder : MonoBehaviour
         gameMaster = GameObject.FindWithTag("GameMaster").GetComponent<GameMaster>();
 
         //set exit inactive to start if not in shop
-        if(!gameMaster.inShop && secretExit == 0)
+        if(!gameMaster.inShop && secretExit != 3 && secretExit != 5 && secretExit != 7  && secretExit != 8)
             SetLadderActive(false);
         else
             SetLadderActive(true);
@@ -108,7 +108,8 @@ public class Ladder : MonoBehaviour
             exitUnlocked = true;
             if(gameMaster.currentLevel == 1 && ladderArrow != null)
                 ladderArrow.SetActive(true);
-            if (!gameMaster.inShop)
+
+            if (!gameMaster.inShop && (secretExit == 0 || secretExit == 2))
             {
                 levelCompleteSound.Play();
             }
