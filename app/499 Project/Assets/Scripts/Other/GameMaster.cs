@@ -19,6 +19,7 @@ public class GameMaster : MonoBehaviour
 
     public int currentLevel = 1;
     public bool inShop = false;
+    public bool invincible = false;
 
     public GameObject WinMenu;
 
@@ -81,9 +82,7 @@ public class GameMaster : MonoBehaviour
         transitionSound.Play();
 
         //Make players invincible while transitioning
-        healthSystem1.isInvic = true;
-        if(playerCount > 1)
-            healthSystem2.isInvic = true;
+        invincible = true;
 
         if(currentLevel < levels.Length)
         {
@@ -177,9 +176,7 @@ public class GameMaster : MonoBehaviour
                 RespawnPlayer(healthSystem2);
 
             //Make player not invincible
-            healthSystem1.isInvic = false;
-            if(playerCount > 1)
-                healthSystem2.isInvic = false;
+            invincible = false;
         }
         else
         {

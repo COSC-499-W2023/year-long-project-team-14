@@ -15,6 +15,7 @@ public class healthSystem : MonoBehaviour
     public bool dead;
     public GameOverMenu gameOverMenu;
     public PlayerController playerController;
+    GameMaster gameMaster;
     public bool isInvic = false;
     public bool blinking = false;
     public bool chad = false;
@@ -30,6 +31,10 @@ public class healthSystem : MonoBehaviour
         GameObject canvas = GameObject.FindWithTag("Canvas");
         if(canvas != null)
             gameOverMenu = canvas.GetComponent<GameOverMenu>();
+
+        GameObject gm = GameObject.FindWithTag("GameMaster");
+        if(gm != null)
+            gameMaster = gm.GetComponent<GameMaster>();
     }
 
     // Damage player if colliding with enemy or bullet
@@ -68,7 +73,7 @@ public class healthSystem : MonoBehaviour
     public void takeDamage()
     {
         //Check if the player has >= health and if the player is temporarly invincible
-        if(life >= 1 && isInvic == false && !chad)
+        if(life >= 1 && isInvic == false && !chad && !gameMaster.invincible)
         {
             //Decrease health by 1
             life--;
