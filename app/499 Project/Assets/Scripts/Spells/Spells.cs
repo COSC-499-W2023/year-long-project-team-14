@@ -521,7 +521,7 @@ public class Spells : MonoBehaviour
     }
 
     public void RainbowSpell(){
-         rngSP = Random.Range(0,10);
+        rngSP = Random.Range(0,10);
 
         //Cast the spell associated with the rngSP value 
             if(rngSP == 0)
@@ -563,19 +563,31 @@ public class Spells : MonoBehaviour
             else if (rngSP >= 9)
             {
                //If you hit the unlucky 9 than get a second rngSP value (simply named rng2) and spawn that associated enemy 
-               int rng2 = Random.Range(1,5);
-
-               if(rng2 == 1){
-                Instantiate(e1, playerController.transform.position, Quaternion.identity);
-               }
-               else if(rng2 == 2){
-                Instantiate(e2, playerController.transform.position, Quaternion.identity);
-               }
-               else if(rng2 == 3){
-                Instantiate(e3, playerController.transform.position, Quaternion.identity);
-               }
-               else if(rng2 == 4){
-                Instantiate(e4, playerController.transform.position, Quaternion.identity);
+               int rng2 = Random.Range(0,5);
+               
+                if(rng2 == 0)
+                {
+                    FireballSpell();
+                    VoidBeam();
+                    LightningSpell();
+                    SeekingOrb();
+                    SummonChad();
+                    StartCoroutine(Freeze());
+                    ShieldSpell();
+                    scatterShot();
+                    mageRage();
+                }
+                else if(rng2 == 1){
+                    Instantiate(e1, playerController.gunFollow.position, Quaternion.identity);
+                }
+                else if(rng2 == 2){
+                    Instantiate(e2, playerController.gunFollow.position, Quaternion.identity);
+                }
+                else if(rng2 == 3){
+                    Instantiate(e3, playerController.gunFollow.position, Quaternion.identity);
+                }
+                else if(rng2 == 4){
+                    Instantiate(e4, playerController.gunFollow.position, Quaternion.identity);
             }
         }
             
