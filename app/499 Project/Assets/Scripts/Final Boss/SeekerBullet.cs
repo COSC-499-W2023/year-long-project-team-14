@@ -120,7 +120,7 @@ public class SeekerBullet : MonoBehaviour
             Explode();
         }
 
-        if(collision.gameObject.CompareTag("Player_bullet"))
+        if(collision.gameObject.CompareTag("Player_bullet") || collision.gameObject.CompareTag("GiantBullet"))
         {     
             Explode();
         }

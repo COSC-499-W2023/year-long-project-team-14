@@ -94,10 +94,12 @@ public class GameMaster : MonoBehaviour
             }
             Destroy(level);
             GameObject[] playerBullets = GameObject.FindGameObjectsWithTag("Player_bullet");
+            GameObject[] giantBullets = GameObject.FindGameObjectsWithTag("GiantBullet");
             GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             GameObject[] chads = GameObject.FindGameObjectsWithTag("Player");
             for(int i = 0; i < playerBullets.Length; i++) Destroy(playerBullets[i]);
+            for(int i = 0; i < giantBullets.Length; i++) Destroy(giantBullets[i]);
             for(int i = 0; i < enemyBullets.Length; i++) enemyBullets[i].SetActive(false);
             for(int i = 0; i < enemies.Length; i++) Destroy(enemies[i]);
             for(int i = 0; i < chads.Length; i++) if(chads[i].GetComponent<healthSystem>().chad) Destroy(chads[i]);
@@ -155,13 +157,13 @@ public class GameMaster : MonoBehaviour
             //Give players health
             if(!inShop)
             {
-                if(healthSystem1.life < 3 && !healthSystem1.dead)
+                if(healthSystem1.life < healthSystem1.maxLife && !healthSystem1.dead)
                 {
                     healthSystem1.life++;
                     healthSystem1.SetHeartsActive();
                 }
 
-                if(playerCount > 1 && healthSystem2.life < 3 && !healthSystem2.dead)
+                if(playerCount > 1 && healthSystem2.life < healthSystem2.maxLife && !healthSystem2.dead)
                 {
                     healthSystem2.life++;
                     healthSystem2.SetHeartsActive();
@@ -169,13 +171,13 @@ public class GameMaster : MonoBehaviour
             }
             else
             {
-                if(healthSystem1.life < 3 && !healthSystem1.dead)
+                if(healthSystem1.life < healthSystem1.maxLife && healthSystem1.maxLife > 1 && !healthSystem1.dead)
                 {
                     healthSystem1.life = 3;
                     healthSystem1.SetHeartsActive();
                 }
 
-                if(playerCount > 1 && healthSystem2.life < 3 && !healthSystem2.dead)
+                if(playerCount > 1 && healthSystem2.life < healthSystem2.maxLife && healthSystem2.maxLife > 1 && !healthSystem2.dead)
                 {
                     healthSystem2.life = 3;
                     healthSystem2.SetHeartsActive();

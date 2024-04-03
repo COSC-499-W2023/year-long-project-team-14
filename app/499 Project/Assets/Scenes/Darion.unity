@@ -645,14 +645,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mage_player1
       objectReference: {fileID: 0}
-    - target: {fileID: 4335837073719164080, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
-      propertyPath: spellName
-      value: SeekingOrb
-      objectReference: {fileID: 0}
-    - target: {fileID: 4335837073719164080, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
-      propertyPath: spellCooldown
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 9020650352874436745, guid: b1c82709b1b19e246a42b416167a6dd5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12
@@ -3283,21 +3275,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2182703370127773124, guid: 990b5bb1eec3d9e47a8a075aeb22a4fe, type: 3}
-      propertyPath: m_ColliderPaths.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6191378183802886050, guid: 990b5bb1eec3d9e47a8a075aeb22a4fe, type: 3}
-      propertyPath: m_ColliderPaths.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9030598024028717186, guid: 990b5bb1eec3d9e47a8a075aeb22a4fe, type: 3}
       propertyPath: m_Name
       value: SecretLevel1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9030598024028717186, guid: 990b5bb1eec3d9e47a8a075aeb22a4fe, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -53090,10 +53070,6 @@ PrefabInstance:
     - target: {fileID: 881379806320011560, guid: 076a5c51a2c98254abac4863d7fab8ef, type: 3}
       propertyPath: m_Name
       value: Mage_player2
-      objectReference: {fileID: 0}
-    - target: {fileID: 881379806320011560, guid: 076a5c51a2c98254abac4863d7fab8ef, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9020650352874436745, guid: 076a5c51a2c98254abac4863d7fab8ef, type: 3}
       propertyPath: m_LocalPosition.x

@@ -71,14 +71,14 @@ public class EnemyHealthSystem : MonoBehaviour
      // Damage enemy if colliding with bullet
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player_bullet") )
+        if (collision.gameObject.CompareTag("Player_bullet"))
         {
             takeDamage();
         }
-        // else if (collision.gameObject.CompareTag("Player_bullet") && mageRisOn == true)
-        // {
-        //     takeDamage(4);
-        // }
+        else if (collision.gameObject.CompareTag("GiantBullet"))
+        {
+            takeDamage(2);
+        }
     }
 
     // Damage enemy if colliding with fireball

@@ -75,6 +75,10 @@ public class MiniBossHealthSystem : MonoBehaviour
         {
             takeDamage();
         }
+        else if (collision.gameObject.CompareTag("GiantBullet"))
+        {
+            takeDamage(2);
+        }
     }
 
     // Damage enemy if colliding with fireball

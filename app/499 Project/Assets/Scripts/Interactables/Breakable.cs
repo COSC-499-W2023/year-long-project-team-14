@@ -13,7 +13,7 @@ public class Breakable : MonoBehaviour
     public int health = 6;
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player_bullet"))
+        if (collision.gameObject.CompareTag("Player_bullet") || collision.gameObject.CompareTag("GiantBullet"))
         {
             health--;
 
