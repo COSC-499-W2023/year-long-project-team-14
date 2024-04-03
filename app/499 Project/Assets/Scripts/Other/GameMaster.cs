@@ -167,6 +167,20 @@ public class GameMaster : MonoBehaviour
                     healthSystem2.SetHeartsActive();
                 }
             }
+            else
+            {
+                if(healthSystem1.life < 3 && !healthSystem1.dead)
+                {
+                    healthSystem1.life = 3;
+                    healthSystem1.SetHeartsActive();
+                }
+
+                if(playerCount > 1 && healthSystem2.life < 3 && !healthSystem2.dead)
+                {
+                    healthSystem2.life = 3;
+                    healthSystem2.SetHeartsActive();
+                }
+            }
             
             //Respawn player if dead
             if(healthSystem1.dead)
