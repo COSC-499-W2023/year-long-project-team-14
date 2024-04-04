@@ -14,6 +14,7 @@ public class BossLaserAttack : MonoBehaviour
     public GameObject triple;
     public EnemyMovement em;
     public MiniBossHealthSystem hs;
+    public SpriteRenderer spriteRenderer;
     public float slimeSpeed = 50.0f;
     public float bulletForce = 50;
     public GameObject laser;
@@ -71,6 +72,9 @@ public class BossLaserAttack : MonoBehaviour
     [SerializeField] private AudioSource spawnSound;
     [SerializeField] private AudioSource circleShotSound;
     [SerializeField] private AudioSource spiralShotSound;
+    [SerializeField] private AudioSource chargeUp;
+    [SerializeField] private AudioSource seekerSound;
+    public AudioSource phaseSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -319,9 +323,10 @@ public class BossLaserAttack : MonoBehaviour
         {
             if(firingEnabled == true)
             {
+                spiralShotSound.Play();
+
                 for (int j = 0; j <= 1; j++)
                 {
-                    spiralShotSound.Play();
                     GameObject bul = BulletSprayPool.Instance.GetBossBullet();
 
                     float bulDirX = transform.position.x + Mathf.Sin(((spiralAngle + 180f * j) * Mathf.PI) / 180f);
@@ -416,6 +421,7 @@ public class BossLaserAttack : MonoBehaviour
             {
                 em.enabled = false;
                 animator.SetTrigger("ChargeLeft");
+                chargeUp.Play();
                 Vector3 laserPos = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
                 Vector3 direction = target.transform.position - transform.position;
                 float angle = Mathf.Atan2(direction.y, direction.x ) * Mathf.Rad2Deg + 90; 
@@ -423,11 +429,15 @@ public class BossLaserAttack : MonoBehaviour
 
                 BoxCollider2D laserHitbox;
                 laserHitbox = laser.GetComponent<BoxCollider2D>();
+
+                AudioSource laserAudio;
+                laserAudio = laser.GetComponent<AudioSource>();
                 
                 yield return new WaitForSeconds(0.6f);  
                 if(firingEnabled)
                 {
                     laserHitbox.enabled = true;
+                    laserAudio.enabled = true;
                     spinLaser = true;
                 }
 
@@ -437,6 +447,7 @@ public class BossLaserAttack : MonoBehaviour
                 {
                     em.enabled = true;
                     laserHitbox.enabled = false;
+                    laserAudio.enabled = false;
                     spinLaser = false;
                     Destroy(laser);
                 }
@@ -479,6 +490,7 @@ public class BossLaserAttack : MonoBehaviour
             {
                 em.enabled = false;
                 animator.SetTrigger("ChargeLeft");
+                chargeUp.Play();
                 Vector3 laserPos = new Vector3(transform.position.x, transform.position.y + 1.0f, transform.position.z);
                 Vector3 direction = target.transform.position - transform.position;
                 float angle = Mathf.Atan2(direction.y, direction.x ) * Mathf.Rad2Deg + 45; 
@@ -489,11 +501,15 @@ public class BossLaserAttack : MonoBehaviour
                 laserHitbox = laser.GetComponent<BoxCollider2D>();
                 laserHitbox2 = laser.transform.GetChild(0).GetComponent<BoxCollider2D>();
 
+                AudioSource laserAudio;
+                laserAudio = laser.GetComponent<AudioSource>();
+
                 yield return new WaitForSeconds(0.6f);  
                 if(firingEnabled)
                 {
                     laserHitbox.enabled = true;
                     laserHitbox2.enabled = true;
+                    laserAudio.enabled = true;
                     spinLaser = true;
                 }
                 yield return new WaitForSeconds(120 / laserSpinSpeed);
@@ -503,6 +519,7 @@ public class BossLaserAttack : MonoBehaviour
                     em.enabled = true;
                     laserHitbox.enabled = false;
                     laserHitbox2.enabled = false;
+                    laserAudio.enabled = false;
                     spinLaser = false;
                     Destroy(laser);
                 }
@@ -763,8 +780,11 @@ public class BossLaserAttack : MonoBehaviour
                 for(int i = 0; i < seekerShotAmount; i++)
                 {
                     if(firingEnabled == true)
+                    {
+                        seekerSound.Play();
                         if(bullets[i] != null)
                             bullets[i].GetComponent<SeekerBullet>().allowMovement = true;
+                    }
                 }
                 
                 //Enable boss movement
@@ -801,8 +821,11 @@ public class BossLaserAttack : MonoBehaviour
             for(int i = 0; i < seekerShotsAmount; i++)
             {
                 if(firingEnabled == true)
+                {
+                    seekerSound.Play();
                     if(bullets[i] != null)
                         bullets[i].GetComponent<SeekerBullet>().allowMovement = true;
+                }
             }
 
             //Enable boss movement
@@ -827,6 +850,12 @@ public class BossLaserAttack : MonoBehaviour
         }
         if (hs.enemyHealth < hs.healthAmount * 0.5f)
         {
+            if(!phase4)
+            {
+                spriteRenderer.color = new Color32(255, 96, 96, 255);
+                phaseSound.Play();
+            }
+
             phase4 = true;
         }
         if (hs.enemyHealth < hs.healthAmount * 0.4f)
@@ -838,10 +867,18 @@ public class BossLaserAttack : MonoBehaviour
             phase6 = true;
         }
 
-        if(hs.enemyHealth <= 0)
+        if(hs.enemyHealth <= 0 && laser != null)
         {
             Destroy(laser);
         }
+    }
+
+    public IEnumerator Disable()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        firingEnabled = false;
+        this.enabled = false;
     }
 }
 

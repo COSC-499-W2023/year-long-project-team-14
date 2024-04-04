@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
     public AudioSource buttonClick;
 
     [SerializeField] private AudioSource pickupSound;
+    [SerializeField] private AudioSource keySound;
+    [SerializeField] private AudioSource healSound;
 
     //dash cooldown
     public float dashCooldown = 1;
@@ -61,6 +63,8 @@ public class PlayerController : MonoBehaviour
     public GameObject dashPrefab; 
 
     public GameObject interactable;
+    public SpriteRenderer aimOrb;
+    public bool blastBullet = false;
 
     void Start()
     {
@@ -265,6 +269,29 @@ public class PlayerController : MonoBehaviour
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
             bulletRB.AddForce(-gunFollow.up * 50 * bulletForce);
 
+            if(blastBullet)
+            {
+                bullet = Instantiate(bulletPrefab, gunFollow.position, gunFollow.rotation * Quaternion.Euler(0, 0, 15));
+                bulletRB = bullet.GetComponent<Rigidbody2D>();
+                bulletRB.AddForce(-bullet.transform.up * 50 * bulletForce);
+                bullet.transform.rotation = Quaternion.identity;
+
+                bullet = Instantiate(bulletPrefab, gunFollow.position, gunFollow.rotation * Quaternion.Euler(0, 0, -15));
+                bulletRB = bullet.GetComponent<Rigidbody2D>();
+                bulletRB.AddForce(-bullet.transform.up * 50 * bulletForce);
+                bullet.transform.rotation = Quaternion.identity;
+
+                bullet = Instantiate(bulletPrefab, gunFollow.position, gunFollow.rotation * Quaternion.Euler(0, 0, 30));
+                bulletRB = bullet.GetComponent<Rigidbody2D>();
+                bulletRB.AddForce(-bullet.transform.up * 50 * bulletForce);
+                bullet.transform.rotation = Quaternion.identity;
+
+                bullet = Instantiate(bulletPrefab, gunFollow.position, gunFollow.rotation * Quaternion.Euler(0, 0, -30));
+                bulletRB = bullet.GetComponent<Rigidbody2D>();
+                bulletRB.AddForce(-bullet.transform.up * 50 * bulletForce);
+                bullet.transform.rotation = Quaternion.identity;
+            }
+
             //shoot sound effect
             if(!unitTest)
                 shootSound.Play();
@@ -319,14 +346,16 @@ public class PlayerController : MonoBehaviour
             else if(tag == "Key")
             {
                 interactable.GetComponent<Key>().Interact();
+                keySound.Play();
             }
             else if(tag == "Chest")
             {
-                interactable.GetComponent<Chest>().Interact();
+                interactable.GetComponent<Chest>().Interact(this, hs);
             }
             else if(tag == "Bottle")
             {
                 interactable.GetComponent<HealthPotion>().Interact(hs);
+                healSound.Play();
             }
             else if(tag == "lightning")
             {

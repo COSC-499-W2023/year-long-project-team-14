@@ -64,6 +64,9 @@ public class SeekerBullet : MonoBehaviour
         {
             rb.velocity = transform.right * movementSpeed * 2;
         }
+
+        if(allowMovement && chasePlayer)
+            allowMovement = false;
     }
 
     void UpdatePath()
@@ -120,7 +123,7 @@ public class SeekerBullet : MonoBehaviour
             Explode();
         }
 
-        if(collision.gameObject.CompareTag("Player_bullet"))
+        if(collision.gameObject.CompareTag("Player_bullet") || collision.gameObject.CompareTag("GiantBullet"))
         {     
             Explode();
         }
@@ -193,6 +196,8 @@ public class SeekerBullet : MonoBehaviour
         allowMovement = false;
             
         anim.Play("RedSeeker");
+        gameObject.layer = LayerMask.NameToLayer("BossSeekerRed");
+
         yield return new WaitForSeconds(0.5f);
 
         chasePlayer = true;

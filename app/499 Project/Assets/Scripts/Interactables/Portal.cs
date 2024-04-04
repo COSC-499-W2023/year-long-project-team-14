@@ -20,7 +20,7 @@ public class Portal : MonoBehaviour
     private void Start()
     {
         // Initially, the portal is inactive
-        SetPortalActive(false);
+        StartCoroutine(SetPortalActive(false));
         gameMaster = GameObject.FindWithTag("GameMaster").GetComponent<GameMaster>();
     }
 
@@ -86,12 +86,13 @@ public class Portal : MonoBehaviour
     }
 
     //sets exit active or inactive
-    public void SetPortalActive(bool active)
+    public IEnumerator SetPortalActive(bool active)
     {
-        port.SetActive(active);
-
         if (active)
         {
+            yield return new WaitForSeconds(0.5f);
+
+            port.SetActive(active);
             portalActive = true;
             if (!gameMaster.inShop)
             {
@@ -99,6 +100,11 @@ public class Portal : MonoBehaviour
             }
         }
         else
+        {
+            port.SetActive(active);
             portalActive = false;
+        }
+
+        yield return null;
     }
 }

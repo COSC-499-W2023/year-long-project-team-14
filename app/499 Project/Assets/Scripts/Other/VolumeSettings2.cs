@@ -7,6 +7,7 @@ public class MusicManager : MonoBehaviour
 {
     public AudioClip[] tracks;
     public AudioClip minibossTrack; 
+    public AudioClip finalbossTrack;
     public AudioSource audioSource;
     [SerializeField] public Slider volumeSlider;
     public bool optionsMenu = false;
@@ -20,8 +21,14 @@ public class MusicManager : MonoBehaviour
     public GameMaster gameMaster;
     public int previousLevel = -1;
 
-   public AudioClip winMenuTrack; 
+    public AudioClip winMenuTrack; 
+    public AudioClip madnessWinTrack;
     public AudioClip gameoverMenuTrack; 
+    public AudioClip secretTrack; 
+    public bool playMusic = false;
+    public bool unitTest = false;
+
+    public float time = 0;
 
     public void Start()
     {
@@ -76,17 +83,12 @@ public class MusicManager : MonoBehaviour
         {
             AudioClip nextClip;
 
-            if (gameMaster.currentLevel == 6)
-                nextClip = minibossTrack;
-            else
+            nextClip = tracks[currentTrackIndex];
+            currentTrackIndex++;
+            if (currentTrackIndex >= tracks.Length)
             {
-                nextClip = tracks[currentTrackIndex];
-                currentTrackIndex++;
-                if (currentTrackIndex >= tracks.Length)
-                {
-                    currentTrackIndex = 0;
-                    ShuffleTracks(); 
-                }
+                currentTrackIndex = 0;
+                ShuffleTracks(); 
             }
 
             audioSource.clip = nextClip;
@@ -107,24 +109,50 @@ public class MusicManager : MonoBehaviour
                 audioSource.Play();
                 CancelInvoke();
             }
+            else if (gameMaster.currentLevel == 20)
+            {
+                audioSource.Stop();
+                audioSource.clip = finalbossTrack;
+                audioSource.Play();
+                CancelInvoke();
+            }
             else if(gameMaster.currentLevel == 11)
             {
+                PlayNextTrack();
+            }
+            else if(playMusic)
+            {
+                playMusic = false;
                 PlayNextTrack();
             }
 
             previousLevel = gameMaster.currentLevel;
         }
+
+        time += Time.deltaTime;
+
+        if(time > 150 && (gameMaster.currentLevel == 10 || gameMaster.currentLevel == 20))
+        {
+            time = 0;
+            audioSource.clip = secretTrack;
+            audioSource.Play();
+        }
     }
 
     public void PlayWinMenuMusic()
     {
+        CancelInvoke();
         audioSource.Stop();
-        audioSource.clip = winMenuTrack;
+        if(!unitTest && PlayerPrefs.GetInt("difficulty") == 4)
+            audioSource.clip = madnessWinTrack;
+        else
+            audioSource.clip = winMenuTrack;
         audioSource.Play();
     }
 
     public void PlayGameOverMenuMusic()
     {
+        CancelInvoke();
         audioSource.Stop();
         audioSource.clip = gameoverMenuTrack;
         audioSource.Play();

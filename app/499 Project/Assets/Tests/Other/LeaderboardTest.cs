@@ -28,6 +28,7 @@ public class LeaderboardTest : MonoBehaviour
         //Check that their are no errors when connecting
         Assert.IsTrue(leaderboardManager.connected);
 
+        leaderboardManager.unitTest = true;
 
         //Save current display name so it can be set again after the unit test
         string name = PlayerPrefs.GetString("DisplayName");

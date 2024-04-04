@@ -101,6 +101,7 @@ MonoBehaviour:
   player2Controls: Keyboard
   currentLevel: 1
   inShop: 0
+  invincible: 0
   WinMenu: {fileID: 0}
   pauseMenu: {fileID: 0}
   winMenu: {fileID: 0}
@@ -128,12 +129,12 @@ MonoBehaviour:
   - {fileID: 5592016364860960086, guid: fa6b64cf5e4ec9d469c9389818b64826, type: 3}
   - {fileID: 5920520649088949437, guid: 48b6aca2f0d96ca43845a1c4f056cadc, type: 3}
   - {fileID: 4674389598007767861, guid: 536c65204e256d64f922cee4ee3e2f1c, type: 3}
-  - {fileID: 3931087982853395146, guid: 39caa49427a9c8f4898e9424ba0fa6f1, type: 3}
-  - {fileID: 6099229941159999668, guid: 5418fd3e5f183604cb589672d38b9a56, type: 3}
   - {fileID: 3109325079899320079, guid: c420b2bb9f6cf194989fcfbd1c8408c0, type: 3}
-  - {fileID: 5615280289829453486, guid: ea8168de25c83a24ebd8f0b232e2b2c5, type: 3}
-  - {fileID: 370773024611647295, guid: 261fc674fb3537a448ad1adc5c62ee8d, type: 3}
+  - {fileID: 6099229941159999668, guid: 5418fd3e5f183604cb589672d38b9a56, type: 3}
+  - {fileID: 3931087982853395146, guid: 39caa49427a9c8f4898e9424ba0fa6f1, type: 3}
   - {fileID: 2004005754714322623, guid: 92feaafecaf83b44f9869605e9dad7d6, type: 3}
+  - {fileID: 370773024611647295, guid: 261fc674fb3537a448ad1adc5c62ee8d, type: 3}
+  - {fileID: 5615280289829453486, guid: ea8168de25c83a24ebd8f0b232e2b2c5, type: 3}
   - {fileID: 460217794237917233, guid: 4ac36ebd66ceb394488681a262f15697, type: 3}
   - {fileID: 5786781464829869510, guid: 5150d717b9ec11a4c9f13bc186ff7309, type: 3}
   - {fileID: 590482083821775993, guid: 9236982023a47fa47b636ef911a7b471, type: 3}
@@ -146,11 +147,13 @@ MonoBehaviour:
   - {fileID: 5592016364860960086, guid: fa6b64cf5e4ec9d469c9389818b64826, type: 3}
   - {fileID: 582094964255904404, guid: e28eb850eb875fc469833f063da32bbd, type: 3}
   - {fileID: 1882081588836291915, guid: 39cfb5375a3359048b1b63c5b72f2fcf, type: 3}
-  - {fileID: 5615280289829453486, guid: ea8168de25c83a24ebd8f0b232e2b2c5, type: 3}
+  - {fileID: 6099229941159999668, guid: 5418fd3e5f183604cb589672d38b9a56, type: 3}
   secretExit: 0
+  hasKey: 0
   level: {fileID: 0}
   stopTimer: 0
   unitTest: 0
+  musicManager: {fileID: 0}
   transitionSound: {fileID: 5396071285216400737}
 --- !u!61 &7205540267827596304
 BoxCollider2D:
