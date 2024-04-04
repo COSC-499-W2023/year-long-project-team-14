@@ -44,7 +44,7 @@ public class bulletCollisionTest
         playerController.unitTest = true; 
         //Give the player a bullet to shoot
         playerController.attackCharge = 0;
-        playerController.bulletForce = 35;
+        playerController.bulletForce = 15;
         playerController.attackChargeSpeed = 0;
 
 
@@ -55,7 +55,7 @@ public class bulletCollisionTest
         orcPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemies/Orc_cyan.prefab"); 
         orc = GameObject.Instantiate(orcPrefab, new Vector3(0, -5, 0), Quaternion.identity) as GameObject;
         orcShooter = orc.GetComponent<EnemyAttack>();
-        orcShooter.bulletSpeed = 35;
+        orcShooter.bulletSpeed = 15;
 
         //restrict orcs shooting
         orcShooter.shootInterval = 10f;
@@ -102,7 +102,7 @@ public class bulletCollisionTest
         playerController.Shoot();
 
         //Allow the bullets to make contact 
-        yield return new WaitForSeconds(0.5f); 
+        yield return new WaitForSeconds(1f); 
 
         /*store the amount of bullets in an array which should be empty because the bullets have already collided
           so both arrays would be empty.

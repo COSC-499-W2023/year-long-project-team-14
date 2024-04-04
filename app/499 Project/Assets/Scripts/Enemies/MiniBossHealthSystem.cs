@@ -184,8 +184,11 @@ public class MiniBossHealthSystem : MonoBehaviour
         //play death sound
         deathSound.Play();
 
-        musicManager.audioSource.Stop();
-        musicManager.time = 0;
+        if(musicManager != null)
+        {
+            musicManager.audioSource.Stop();
+            musicManager.time = 0;
+        }
 
         if(bossAttack != null)
         {

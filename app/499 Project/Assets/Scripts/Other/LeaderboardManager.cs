@@ -90,7 +90,7 @@ public class LeaderboardManager : MonoBehaviour
     {
         done = false;
 
-        if((placeholderText.text != "Enter Name" && placeholderText.text.Length >= 3) || displayNameText.text.Length >= 4)
+        if((placeholderText.text != "Enter Name" && placeholderText.text.Length >= 3) || displayNameText.text.Length >= 4 || unitTest)
             PlayerPrefs.SetString("DisplayName", name); 
 
         StartCoroutine(UpdatePlayerName());

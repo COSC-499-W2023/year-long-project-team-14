@@ -73,7 +73,7 @@ public class healthSystem : MonoBehaviour
     public void takeDamage()
     {
         //Check if the player has >= health and if the player is temporarly invincible
-        if(life >= 1 && isInvic == false && !chad && !gameMaster.invincible)
+        if(life >= 1 && isInvic == false && !chad && (gameMaster == null || !gameMaster.invincible))
         {
             //Decrease health by 1
             life--;

@@ -159,7 +159,8 @@ public class GameMaster : MonoBehaviour
                 AstarPath.active.Scan();
             }
 
-            musicManager.time = -999;
+            if(musicManager != null)
+                musicManager.time = -999;
             
             //Set player positions to new start positions
             player1Spawn = GameObject.FindWithTag("Player1Spawn").GetComponent<Transform>();

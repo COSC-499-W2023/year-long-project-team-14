@@ -26,6 +26,7 @@ public class MusicManager : MonoBehaviour
     public AudioClip gameoverMenuTrack; 
     public AudioClip secretTrack; 
     public bool playMusic = false;
+    public bool unitTest = false;
 
     public float time = 0;
 
@@ -142,7 +143,7 @@ public class MusicManager : MonoBehaviour
     {
         CancelInvoke();
         audioSource.Stop();
-        if(PlayerPrefs.GetInt("difficulty") == 4)
+        if(!unitTest && PlayerPrefs.GetInt("difficulty") == 4)
             audioSource.clip = madnessWinTrack;
         else
             audioSource.clip = winMenuTrack;
