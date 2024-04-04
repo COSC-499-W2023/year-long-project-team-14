@@ -13,6 +13,7 @@ public class MiniBossHealthSystem : MonoBehaviour
     public BossLaserAttack bossAttack; 
     public int enemyHealth = 10;
     public GameObject healthBarObj;
+    public MusicManager musicManager;
 
     public CircleCollider2D enemyCollider;
     public Ladder ladder;
@@ -44,6 +45,10 @@ public class MiniBossHealthSystem : MonoBehaviour
                 ladder.allEnemies.Add(gameObject);
             }
         }
+
+        GameObject canvas = GameObject.FindWithTag("Canvas");
+        if(canvas != null)
+            musicManager = canvas.GetComponent<MusicManager>();
 
         //Get difficulty
         int diff = PlayerPrefs.GetInt("difficulty");
@@ -167,8 +172,7 @@ public class MiniBossHealthSystem : MonoBehaviour
 
         if(bossAttack != null)
         {
-            bossAttack.firingEnabled = false;
-            bossAttack.enabled = false;
+            StartCoroutine(bossAttack.Disable());
         }
 
         enemyCollider.enabled = false;
@@ -179,6 +183,9 @@ public class MiniBossHealthSystem : MonoBehaviour
 
         //play death sound
         deathSound.Play();
+
+        musicManager.audioSource.Stop();
+        musicManager.time = 0;
 
         if(bossAttack != null)
         {
@@ -224,7 +231,10 @@ public class MiniBossHealthSystem : MonoBehaviour
         }
 
         if(justin)
+        {
             Instantiate(chest, transform.position, Quaternion.identity);
+            musicManager.playMusic = true;
+        }
 
         Destroy(healthBarObj);
     }
@@ -239,16 +249,16 @@ public class MiniBossHealthSystem : MonoBehaviour
 
     IEnumerator EndLevel()
     { 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(1f);
         if (portal != null)
         {
-            portal.SetPortalActive(true);
+            StartCoroutine(portal.SetPortalActive(true));
         }
         else
         {
             if (ladder != null)
             {
-                ladder.SetLadderActive(true);
+                StartCoroutine(ladder.SetLadderActive(true));
             }
         }
     }

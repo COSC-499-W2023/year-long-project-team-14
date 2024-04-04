@@ -202,13 +202,13 @@ public class EnemyHealthSystem : MonoBehaviour
     {
         if (portal != null)
         {
-            portal.SetPortalActive(true);
+            StartCoroutine(portal.SetPortalActive(true));
         }
         else
         {
             if (lad != null)
             {
-                lad.SetLadderActive(true);
+                StartCoroutine(lad.SetLadderActive(true));
             }
         }
     }

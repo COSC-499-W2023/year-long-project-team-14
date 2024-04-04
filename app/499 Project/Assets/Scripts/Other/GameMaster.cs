@@ -54,6 +54,7 @@ public class GameMaster : MonoBehaviour
 
     public MusicManager musicManager; 
     [SerializeField] private AudioSource transitionSound;
+    [SerializeField] private AudioSource portalSound;
 
     void Start() //Sets everything up
     {
@@ -79,7 +80,10 @@ public class GameMaster : MonoBehaviour
     public IEnumerator NextLevel()
     {
         //Play transition sound
-        transitionSound.Play();
+        if(currentLevel == 10 || currentLevel == 20)
+            portalSound.Play();
+        else
+            transitionSound.Play();
 
         //Make players invincible while transitioning
         invincible = true;
@@ -122,6 +126,14 @@ public class GameMaster : MonoBehaviour
 
             if(secretExit != 0)
             {
+                if(secretExit == 7)
+                {
+                    musicManager.audioSource.Stop();
+                    musicManager.CancelInvoke();
+                }
+                else if(secretExit == 8)
+                    musicManager.playMusic = true;
+
                 if(secretExit == 3 || secretExit == 5 || secretExit == 8)
                     currentLevel++;
 
@@ -146,6 +158,8 @@ public class GameMaster : MonoBehaviour
                 level = Instantiate(levels[currentLevel-1], transform.position, Quaternion.identity);
                 AstarPath.active.Scan();
             }
+
+            musicManager.time = -999;
             
             //Set player positions to new start positions
             player1Spawn = GameObject.FindWithTag("Player1Spawn").GetComponent<Transform>();

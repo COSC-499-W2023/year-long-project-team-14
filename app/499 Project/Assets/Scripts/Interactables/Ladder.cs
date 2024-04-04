@@ -27,9 +27,9 @@ public class Ladder : MonoBehaviour
 
         //set exit inactive to start if not in shop
         if(!gameMaster.inShop && secretExit != 3 && secretExit != 5 && secretExit != 7  && secretExit != 8)
-            SetLadderActive(false);
+            StartCoroutine(SetLadderActive(false));
         else
-            SetLadderActive(true);
+            StartCoroutine(SetLadderActive(true));
     }
 
 
@@ -100,10 +100,12 @@ public class Ladder : MonoBehaviour
     }
 
     //sets exit active or inactive
-    public void SetLadderActive(bool active)
+    public IEnumerator SetLadderActive(bool active)
     {
         if(active && !exitUnlocked)
         {
+            yield return new WaitForSeconds(0.5f);
+
             spriteRenderer.sprite = ladderSprite;
             exitUnlocked = true;
             if(gameMaster.currentLevel == 1 && ladderArrow != null)
@@ -114,11 +116,11 @@ public class Ladder : MonoBehaviour
                 levelCompleteSound.Play();
             }
         }
-        else
+        else if(!active)
         {
             spriteRenderer.sprite = trapDoorSprite;
             exitUnlocked = false;
         }
-
+        yield return null;
     }
 }

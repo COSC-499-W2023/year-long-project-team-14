@@ -64,6 +64,9 @@ public class SeekerBullet : MonoBehaviour
         {
             rb.velocity = transform.right * movementSpeed * 2;
         }
+
+        if(allowMovement && chasePlayer)
+            allowMovement = false;
     }
 
     void UpdatePath()

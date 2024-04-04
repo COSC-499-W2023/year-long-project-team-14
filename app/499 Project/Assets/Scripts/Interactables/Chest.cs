@@ -40,6 +40,7 @@ public class Chest : MonoBehaviour
 
     public TextMeshProUGUI popupText;
     public Image popupImage;
+    public AudioSource openSound;
 
     private void Start()
     {
@@ -114,6 +115,7 @@ public class Chest : MonoBehaviour
                 
                 canvas.SetActive(true);
                 chestPopup.Play("chestPopup");
+                openSound.Play();
 
                 int rand = Random.Range(0, 6);
 

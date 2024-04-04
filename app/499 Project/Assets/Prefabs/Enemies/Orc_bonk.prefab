@@ -249,6 +249,7 @@ MonoBehaviour:
   enemyMovement: {fileID: 0}
   enemyHealth: 4
   enemyCollider: {fileID: 0}
+  ladders: []
   ladder: {fileID: 0}
   portal: {fileID: 0}
   hitSound: {fileID: 8150639398049673041}
@@ -470,7 +471,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bafb4111145bcc54196a9f700fa8e1e2, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.125
   m_Pitch: 1
   Loop: 0
   Mute: 0

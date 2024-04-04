@@ -207,7 +207,8 @@ public class Spells : MonoBehaviour
         {   EnemyHealthSystem enemyHealthSystem = enemies[i].GetComponent<EnemyHealthSystem>();
             if(enemyHealthSystem.enemyHealth > 0)
             {
-                lightningSound.Play();
+                if(i == 0)
+                    lightningSound.Play();
                 Vector3 lightningPos = new Vector3(enemies[i].transform.position.x, enemies[i].transform.position.y + yOffset, enemies[i].transform.position.z);
                 GameObject lightning = Instantiate(lightningPrefab, lightningPos, Quaternion.identity);
                 enemyHealthSystem.takeDamage(1);

@@ -33,6 +33,10 @@ public class FireSprayBullets : MonoBehaviour
     private Vector2 bulletMoveDirection;
 
     public bool firingEnabled = true;
+
+    public AudioSource multiShot;
+    public AudioSource quickShot;
+    public AudioSource spiralShot;
     
     [SerializeField]
     float totalSpirals = 1f; 
@@ -166,6 +170,9 @@ public class FireSprayBullets : MonoBehaviour
 
         if(firingEnabled)
         {
+            multiShot.Stop();
+            multiShot.Play();
+
             for (int i = 0; i < bulletsAmount + 1; i++)
             {
                 GameObject bul = BulletSprayPool.Instance.GetBullet();
@@ -194,6 +201,9 @@ public class FireSprayBullets : MonoBehaviour
         {
             if(firingEnabled == true)
             {
+                spiralShot.Stop();
+                spiralShot.Play();
+
                 for (int j = 0; j <= 1; j++)
                 {
                     GameObject bul = BulletSprayPool.Instance.GetBullet();
@@ -236,6 +246,9 @@ public class FireSprayBullets : MonoBehaviour
         {
             if(firingEnabled == true)
             {
+                quickShot.Stop();
+                quickShot.Play();
+
                 GameObject bul = BulletSprayPool.Instance.GetBullet();
 
                 float rand = Random.Range(0, 360);

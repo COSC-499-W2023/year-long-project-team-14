@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
     public AudioSource buttonClick;
 
     [SerializeField] private AudioSource pickupSound;
+    [SerializeField] private AudioSource keySound;
+    [SerializeField] private AudioSource healSound;
 
     //dash cooldown
     public float dashCooldown = 1;
@@ -344,6 +346,7 @@ public class PlayerController : MonoBehaviour
             else if(tag == "Key")
             {
                 interactable.GetComponent<Key>().Interact();
+                keySound.Play();
             }
             else if(tag == "Chest")
             {
@@ -352,6 +355,7 @@ public class PlayerController : MonoBehaviour
             else if(tag == "Bottle")
             {
                 interactable.GetComponent<HealthPotion>().Interact(hs);
+                healSound.Play();
             }
             else if(tag == "lightning")
             {
