@@ -18,6 +18,8 @@ public class Spells : MonoBehaviour
     public GameObject shieldPrefab;
     public GameObject shield;
     public GameObject ScatterShotPrefab;
+    public GameObject voidBeamPrefab;
+    public GameObject voidBeamEffect;
 
     //This is used to display the sprite for mage rage
      public GameObject mRAura;
@@ -59,6 +61,7 @@ public class Spells : MonoBehaviour
     [SerializeField] private AudioSource unrageSound;
     [SerializeField] private AudioSource shieldSound;
     [SerializeField] private AudioSource unshieldSound;
+    [SerializeField] private AudioSource voidBeamSound;
 
     public GameObject freezeFlash;
     public GameObject iceCubeBreak;
@@ -142,6 +145,10 @@ public class Spells : MonoBehaviour
             {
                 scatterShot();
             }
+            else if (spellName == "VoidBeam")
+            {
+                VoidBeam();
+            }
             else if (spellName == "Rainbow")
             {
                //If the user has the shield spell and presses q then call ShieldSpell()
@@ -161,6 +168,36 @@ public class Spells : MonoBehaviour
         GameObject fireball = Instantiate(fireballPrefab, playerController.gunFollow.position, playerController.playerCenter.transform.rotation);
         Rigidbody2D fireballRB = fireball.GetComponent<Rigidbody2D>();
         fireballRB.AddForce(-playerController.gunFollow.up * 25 * playerController.bulletForce);
+    }
+
+    public void VoidBeam()
+    {
+        voidBeamSound.Play();
+
+        GameObject[] beams = new GameObject[121];
+
+        GameObject beam = Instantiate(voidBeamPrefab, playerController.gunFollow.position, playerController.gunFollow.rotation);
+        
+        Destroy(beam, 0.3f);
+
+        beams[0] = Instantiate(voidBeamEffect, playerController.gunFollow.position, playerController.gunFollow.rotation * Quaternion.Euler(0, 0, -90));
+        Destroy(beams[0], 0.3f);
+
+        beams[1] = Instantiate(voidBeamEffect, playerController.gunFollow.position - new Vector3(0.25f, -0.25f, 0), playerController.gunFollow.rotation * Quaternion.Euler(0, 0, -90));
+        Destroy(beams[1], 0.3f);
+
+        beams[2] = Instantiate(voidBeamEffect, playerController.gunFollow.position + new Vector3(0.25f, 0, 0), playerController.gunFollow.rotation * Quaternion.Euler(0, 0, -90));
+        Destroy(beams[2], 0.3f);
+
+        for(int i = 3; i < beams.Length; i += 2)
+        {
+            beams[i] = Instantiate(voidBeamEffect, beams[i-2].transform.position + (beams[i-2].transform.right / 2), beams[i-2].transform.rotation);
+            Destroy(beams[i], 0.3f);
+
+            beams[i+1] = Instantiate(voidBeamEffect, beams[i-1].transform.position + (beams[i-1].transform.right / 2), beams[i-1].transform.rotation);
+            Destroy(beams[i+1], 0.3f);
+            
+        }
     }
 
     public void LightningSpell()
@@ -484,12 +521,16 @@ public class Spells : MonoBehaviour
     }
 
     public void RainbowSpell(){
-         rngSP = Random.Range(1,10);
+         rngSP = Random.Range(0,10);
 
         //Cast the spell associated with the rngSP value 
-            if(rngSP == 1)
+            if(rngSP == 0)
             {
                 FireballSpell();
+            }
+            else if(rngSP == 1)
+            {
+                VoidBeam();
             }
             else if(rngSP == 2)
             {   

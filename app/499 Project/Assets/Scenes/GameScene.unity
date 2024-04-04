@@ -7952,8 +7952,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3bc427230494feb498590bd75a91d9f1, type: 3}
   - {fileID: 8300000, guid: dc89a18d7e8a69b48915bce46aac03b0, type: 3}
   minibossTrack: {fileID: 8300000, guid: 6bea8cff3cf76a3439efbd3969e01c8f, type: 3}
-  winMenuTrack: {fileID: 8300000, guid: 7dc5cf00cc2f8ef4f8c7d2175c9c4721, type: 3}
-  gameoverMenuTrack: {fileID: 8300000, guid: 2a0a5cf929cfb8547b1857df7ba6ae8f, type: 3}
   audioSource: {fileID: 925822478}
   volumeSlider: {fileID: 1008436490}
   optionsMenu: 0
@@ -7964,6 +7962,8 @@ MonoBehaviour:
   optionsMenuUI: {fileID: 629044995}
   gameMaster: {fileID: 1436582726}
   previousLevel: -1
+  winMenuTrack: {fileID: 8300000, guid: 7dc5cf00cc2f8ef4f8c7d2175c9c4721, type: 3}
+  gameoverMenuTrack: {fileID: 8300000, guid: 2a0a5cf929cfb8547b1857df7ba6ae8f, type: 3}
 --- !u!82 &925822478
 AudioSource:
   m_ObjectHideFlags: 0

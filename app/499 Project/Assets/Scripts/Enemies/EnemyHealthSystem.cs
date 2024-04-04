@@ -86,6 +86,10 @@ public class EnemyHealthSystem : MonoBehaviour
         {
             takeDamage(3);
         }
+        else if(collider.gameObject.CompareTag("VoidBeam"))
+        {
+            takeDamage(4);
+        }
     }
 
     //Decrease health by 1 and kill enemy if health <= 0

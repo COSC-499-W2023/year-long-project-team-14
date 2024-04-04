@@ -338,6 +338,11 @@ public class PlayerController : MonoBehaviour
                 interactable.GetComponent<FireballPickup>().Interact();
                 pickupSound.Play();
             }
+            else if (tag == "Void")
+            {
+                interactable.GetComponent<VoidBeamPickup>().Interact();
+                pickupSound.Play();
+            }
             else if (tag == "SeekingOrb")
             {
                 interactable.GetComponent<SeekingOrbPickup>().Interact();
