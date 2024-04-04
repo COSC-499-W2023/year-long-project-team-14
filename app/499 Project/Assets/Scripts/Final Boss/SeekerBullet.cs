@@ -193,6 +193,8 @@ public class SeekerBullet : MonoBehaviour
         allowMovement = false;
             
         anim.Play("RedSeeker");
+        gameObject.layer = LayerMask.NameToLayer("BossSeekerRed");
+
         yield return new WaitForSeconds(0.5f);
 
         chasePlayer = true;

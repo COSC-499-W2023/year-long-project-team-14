@@ -22,6 +22,7 @@ public class MiniBossHealthSystem : MonoBehaviour
     public Collider2D cover;
     public GameObject chest;
     public bool justin = false;
+    public GameObject deathExplosion;
 
     [SerializeField] private AudioSource hitSound;
     [SerializeField] private AudioSource deathSound;
@@ -161,11 +162,13 @@ public class MiniBossHealthSystem : MonoBehaviour
         if(shoot != null)
         {
             shoot.firingEnabled = false;
+            shoot.enabled = false;
         }
 
         if(bossAttack != null)
         {
             bossAttack.firingEnabled = false;
+            bossAttack.enabled = false;
         }
 
         enemyCollider.enabled = false;
@@ -177,12 +180,19 @@ public class MiniBossHealthSystem : MonoBehaviour
         //play death sound
         deathSound.Play();
 
+        if(bossAttack != null)
+        {
+            deathExplosion.SetActive(true);
+            Destroy(deathExplosion, 0.55f);
+        }
+
         if(cover != null)
             cover.enabled = true;
 
         StartCoroutine(Transparent());
 
         spriteRenderer.sortingOrder = 8;
+        spriteRenderer.color = new Color32(255, 255, 255, 255);
         
         GameObject[] slimes = GameObject.FindGameObjectsWithTag("Enemy");
         for(int i = 0; i < slimes.Length; i++)
@@ -197,7 +207,7 @@ public class MiniBossHealthSystem : MonoBehaviour
 
             if (portal.allEnemies.Count == 0)
             {
-                EndLevel();
+                StartCoroutine(EndLevel());
             }
         }
         else
@@ -208,7 +218,7 @@ public class MiniBossHealthSystem : MonoBehaviour
 
                 if (ladder.allEnemies.Count == 0)
                 {
-                    EndLevel();
+                    StartCoroutine(EndLevel());
                 }
             }
         }
@@ -227,8 +237,9 @@ public class MiniBossHealthSystem : MonoBehaviour
         spriteRenderer.color = currentColor;
     }
 
-    void EndLevel()
-    {
+    IEnumerator EndLevel()
+    { 
+        yield return new WaitForSeconds(2.5f);
         if (portal != null)
         {
             portal.SetPortalActive(true);
