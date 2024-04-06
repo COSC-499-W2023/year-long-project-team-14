@@ -388,7 +388,7 @@ public class Spells : MonoBehaviour
                 //Enable triple shot attacks
                 EnemyTripleShot enemyTripleShot = enemies[i].GetComponent<EnemyTripleShot>();
                 if(enemyTripleShot != null)
-                    enemyTripleShot.enabled = false;
+                    enemyTripleShot.enabled = true;
             }
         }
     }
