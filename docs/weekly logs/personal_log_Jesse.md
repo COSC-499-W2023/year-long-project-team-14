@@ -1,5 +1,20 @@
 # Personal Log - Jesse Lazzari 
 
+## Term 2 Week 13
+- Start Date: April 1
+- End Date: April 7
+  
+### Tasks I worked on:
+![](screenshots/t2week13tasks_jesse.PNG)
+  
+### Recap on your week's goals
+My goals this week were to:
+* Meet with team and discuss project wrap up 
+* Finalize my final individual report and video demo for the game
+
+### Among these tasks, which have you completed/in progress in the last week?
+* I have completed all of my tasks for this week!
+
 ## Term 2 Week 12
 - Start Date: March 25
 - End Date: March 31
