@@ -1,6 +1,26 @@
 # Personal Log - Darion Pescada
 
-## Term 2 Week 11
+## Term 2 Week 13
+- Start Date: April 1
+- End Date: April 7
+
+### Tasks I worked on:
+![](screenshots/term2_tasks_darion_week13.png)
+  
+### Recap on your week's goals
+This week, my goals were to finish up the project by making a few improvements and bug fixes, and to create my final project document and video.
+
+### Which features were yours in the project plan for this milestone?
+- added the void beam spell and unit tests
+- made final improvements and bug fixes
+- completed final project document and video
+
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed all of my tasks for this week.
+
+***
+
+## Term 2 Week 12
 - Start Date: March 25
 - End Date: March 31
 
