@@ -1,4 +1,25 @@
 # Personal Log - Gabriel Mercier
+## Week 13 - T2
+- Start Date: April 1
+- End Date: April 7
+  
+### Tasks I worked on:
+![](screenshots/t2Week13_peerEval_Gabriel.PNG)
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Ensure I had the right plan of attack for my report
+
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* Do my individual report
+* Added extra sound effects
+
+### Among these tasks, which have you completed/in progress in the last week?
+I completed all my tasks.
+
+***
 ## Week 12 - T2
 - Start Date: March 25
 - End Date: March 31
