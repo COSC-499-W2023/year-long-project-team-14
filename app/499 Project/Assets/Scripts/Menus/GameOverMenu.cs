@@ -24,22 +24,21 @@ public class GameOverMenu : MonoBehaviour
     }
 
     public void Update()
-{
-    if (playercount == 0 && GameIsOver == false)
     {
-        StartCoroutine(ShowGameOverMenu());
+        if (playercount == 0 && GameIsOver == false)
+        {
+            StartCoroutine(ShowGameOverMenu());
 
-       if (musicManager != null)
-{
-    Debug.Log("MusicManager reference is not null, playing game over music.");
-    musicManager.PlayGameOverMenuMusic();
-}
-else
-{
-    Debug.LogError("MusicManager reference is null in GameOverMenu!");
-}
+            if (musicManager != null)
+            {
+                musicManager.PlayGameOverMenuMusic();
+            }
+            else
+            {
+                Debug.LogError("MusicManager reference is null in GameOverMenu!");
+            }
+        }
     }
-}
 
     //Display the game over menu
     public IEnumerator ShowGameOverMenu()

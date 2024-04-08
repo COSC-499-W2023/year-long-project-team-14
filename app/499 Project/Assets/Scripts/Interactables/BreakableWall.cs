@@ -7,7 +7,7 @@ public class BreakableWall : MonoBehaviour
     public GameObject breakEffect;
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player_bullet") || collision.gameObject.CompareTag("EnemyBullet"))
+        if (collision.gameObject.CompareTag("Player_bullet") || collision.gameObject.CompareTag("EnemyBullet") || collision.gameObject.CompareTag("GiantBullet"))
         {
             //Destroy wall
             Destroy(gameObject);

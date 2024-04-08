@@ -40,7 +40,7 @@ public class PlayerInvincible : MonoBehaviour
         //Spawn the orc 
         orc = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemies/Orc_cyan.prefab"), new Vector3(-5, 0, 0), Quaternion.identity) as GameObject;
         enemyAttack = orc.GetComponent<EnemyAttack>();
-        enemyAttack.bulletSpeed = 35;
+        enemyAttack.bulletSpeed = 15;
         enemyAttack.shootInterval = 10f;
 
         //Restrict the orc from moving
@@ -49,7 +49,7 @@ public class PlayerInvincible : MonoBehaviour
         //Spawn the orc 
         orc2 = GameObject.Instantiate(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Enemies/Orc_cyan.prefab"), new Vector3(5, 0, 0), Quaternion.identity) as GameObject;
         enemyAttack2 = orc2.GetComponent<EnemyAttack>();
-        enemyAttack2.bulletSpeed = 25;
+        enemyAttack2.bulletSpeed = 15;
         enemyAttack2.shootInterval = 10f;
 
         //Restrict the orc from moving
@@ -72,7 +72,7 @@ public class PlayerInvincible : MonoBehaviour
         int health = healthSystem1.life;
 
         //Wait for orc's to shoot at player
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.6f);
         
 
         //Check that the player only lost 1 life
