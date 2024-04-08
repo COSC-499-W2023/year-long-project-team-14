@@ -1,5 +1,24 @@
 # Personal Log - Kibele Sebnem Yildirim
 
+## Week 13 - Term 2
+- Start Date: April 1
+- End Date: April 7
+
+- ### Recap on your week's goals
+- My goals this week were to:
+* finalize my personal report and demo video.
+
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to start and finalize my personal report and demo video.
+  
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week.
+  
+### Tasks I worked on:
+![](screenshots/kibeleweek13.png)
+
+
 ## Week 12 (Bonus Feature) - Term 2
 - Start Date: March 25
 - End Date: March 31
@@ -20,7 +39,6 @@ Here are the screenshots of my codework in the Game Master, GamoverMenu, and Vol
 ![](screenshots/kibeleweeklyt2week12-2.png)
 ![](screenshots/kibeleweeklyt2week12.png)
 ![](screenshots/kibeleweeklyt2week12-1.png)
-
 
 ### Tasks I worked on:
 ![](screenshots/kibeleweek12.png)
