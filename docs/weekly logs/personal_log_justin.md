@@ -1,5 +1,25 @@
 # Personal Log - Justin McKendry
 
+## Week 25 (term 2 week 12)
+- Start Date: April 1st
+- End Date: April 7th
+
+### Tasks I worked on:
+![](screenshots/tasks_justin_week_25.png)
+
+  
+### Recap on your week's goals
+My goals this week were to: 
+* Complete my final report
+* Help my teammates with any questions they have regarding my features for the final report.
+
+### Which features were yours in the project plan for this milestone?
+My features this week were to:
+* My features are all complete for the game.
+  
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed all of my features for the game.
+
 ## Week 24 (term 2 week 12)
 - Start Date: March 25th 
 - End Date: March 31st
