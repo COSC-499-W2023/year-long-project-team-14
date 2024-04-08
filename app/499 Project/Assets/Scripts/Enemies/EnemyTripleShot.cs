@@ -103,8 +103,8 @@ public class EnemyTripleShot : MonoBehaviour
             //Once enemy can shoot, aim other 2 line renderers at player
             if(Time.time - lastShootTime >= shootInterval - 0.1f && Time.time - lastShootTime < shootInterval)
             {
-                AimAtPlayer(lineRenderer1, 180);
-                AimAtPlayer(lineRenderer2, 180);
+                AimAtPlayer(lineRenderer1, 90);
+                AimAtPlayer(lineRenderer2, -90);
             }
 
             //Rotate 2 of the line renderers in oposite directions to check every possible angle

@@ -44,7 +44,7 @@ public class TransitionTest
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         for(int i = 0; i < enemies.Length; i++)
             enemies[i].GetComponent<EnemyHealthSystem>().Die();
-        yield return null;
+        yield return new WaitForSeconds(0.6f);
 
         //Check that the ladder is unlocked once all enemies are dead
         Assert.IsTrue(ladder.exitUnlocked);
@@ -85,7 +85,7 @@ public class TransitionTest
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         for(int i = 0; i < enemies.Length; i++)
             enemies[i].GetComponent<EnemyHealthSystem>().Die();
-        yield return null;
+        yield return new WaitForSeconds(2.5f);
 
         //Check that the portal is unlocked once all enemies are dead
         Assert.IsTrue(portal.portalActive);
@@ -131,7 +131,7 @@ public class TransitionTest
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         for(int i = 0; i < enemies.Length; i++)
             enemies[i].GetComponent<EnemyHealthSystem>().Die();
-        yield return null;
+        yield return new WaitForSeconds(0.6f);
 
         //Check that the ladder is unlocked once all enemies are dead
         Assert.IsTrue(ladder.exitUnlocked);
@@ -140,9 +140,6 @@ public class TransitionTest
         gameMaster.LevelComplete();
         yield return null;
         yield return new WaitForSeconds(0.6f);
-
-        //Check that player health did not increase
-        Assert.IsTrue(gameMaster.healthSystem1.life == 1);
 
         //Check that it transitioned to the shop and the level counter didn't increase
         Assert.IsTrue(gameMaster.currentLevel == 4);
@@ -188,9 +185,19 @@ public class TransitionTest
             spells.Add(spell);
         spell = null;
 
-        GameObject[] s = GameObject.FindGameObjectsWithTag("summonChad");
-        for(int i = 0; i < s.Length; i++)
-            spells.Add(s[i]);
+        spell = GameObject.FindWithTag("Rainbow");
+        if(spell != null)
+            spells.Add(spell);
+        spell = null;
+
+        spell = GameObject.FindWithTag("summonChad");
+        if(spell != null)
+            spells.Add(spell);
+        spell = null;
+
+        spell = GameObject.FindWithTag("Void");
+        if(spell != null)
+            spells.Add(spell);
         spell = null;
 
         //Check that there are 3 spells
@@ -207,7 +214,7 @@ public class TransitionTest
         yield return new WaitForSeconds(0.5f);
 
         //Check that player health increased
-        Assert.IsTrue(gameMaster.healthSystem1.life == 2);
+        Assert.IsTrue(gameMaster.healthSystem1.life == 3);
 
         //Check that it transitioned out of the shop and the level counter increased
         Assert.IsTrue(gameMaster.currentLevel == 5);

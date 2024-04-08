@@ -59,7 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.2392157, g: 0.14509805, b: 0.23137257, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -315,7 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.6981132, g: 0.04729666, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -568,7 +568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -654,6 +654,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (26)
@@ -840,9 +844,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 35406078852116632, guid: 7177fa7e1c324e545abff5e38dccd09f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7892380796491269603, guid: 7177fa7e1c324e545abff5e38dccd09f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7892380796491269603, guid: 7177fa7e1c324e545abff5e38dccd09f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -964,6 +972,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (9)
@@ -1150,6 +1162,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (35)
@@ -1212,6 +1228,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (22)
@@ -1336,6 +1356,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (27)
@@ -1460,6 +1484,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (6)
@@ -1584,6 +1612,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (34)
@@ -1646,6 +1678,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (3)
@@ -1708,6 +1744,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (41)
@@ -1770,6 +1810,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (2)
@@ -1894,6 +1938,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (36)
@@ -1956,6 +2004,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (24)
@@ -2080,6 +2132,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (16)
@@ -2266,6 +2322,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (12)
@@ -2328,6 +2388,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (30)
@@ -2452,6 +2516,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (4)
@@ -2638,6 +2706,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (18)
@@ -2700,6 +2772,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (15)
@@ -2762,6 +2838,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (25)
@@ -3174,9 +3254,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1522391810368976853, guid: 1e76f7aa62f36b64094958356d52545c, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2247206093011270241, guid: 1e76f7aa62f36b64094958356d52545c, type: 3}
       propertyPath: m_Name
       value: mini_boss_viking
+      objectReference: {fileID: 0}
+    - target: {fileID: 3082578717150763729, guid: 1e76f7aa62f36b64094958356d52545c, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5707318513063649654, guid: 1e76f7aa62f36b64094958356d52545c, type: 3}
       propertyPath: healthBar
@@ -3186,6 +3274,10 @@ PrefabInstance:
       propertyPath: healthBarObj
       value: 
       objectReference: {fileID: 1619940558023081014}
+    - target: {fileID: 5966222017269200796, guid: 1e76f7aa62f36b64094958356d52545c, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20514,6 +20606,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (40)
@@ -20948,6 +21044,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (21)
@@ -21010,6 +21110,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (38)
@@ -21196,6 +21300,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall
@@ -21382,6 +21490,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (23)
@@ -21444,6 +21556,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (14)
@@ -21568,6 +21684,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (29)
@@ -21630,6 +21750,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (31)
@@ -21692,6 +21816,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (33)
@@ -21816,6 +21944,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (20)
@@ -21878,6 +22010,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (1)
@@ -22064,6 +22200,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (39)
@@ -22250,6 +22390,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (13)
@@ -22436,6 +22580,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (5)
@@ -22622,6 +22770,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (17)
@@ -22746,6 +22898,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (7)
@@ -22932,6 +23088,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (37)
@@ -22994,6 +23154,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (32)
@@ -23180,6 +23344,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (10)
@@ -23242,6 +23410,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (11)
@@ -23366,6 +23538,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (8)
@@ -23986,6 +24162,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (28)
@@ -24048,6 +24228,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1696444362006211815}
     m_Modifications:
+    - target: {fileID: 1133713644839483627, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2951381514325153884, guid: 85c359a86e3f72347a8782a6669c1ef7, type: 3}
       propertyPath: m_Name
       value: BreakableWall (19)

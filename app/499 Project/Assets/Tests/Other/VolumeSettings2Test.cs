@@ -43,9 +43,10 @@ public void PlayGameOverMenuMusic_Test()
 
 [Test]
 public void PlayWinMenuMusic_Test(){
-     GameObject musicManagerObject = new GameObject("MusicManager");
+    GameObject musicManagerObject = new GameObject("MusicManager");
 
     MusicManager musicManager = musicManagerObject.AddComponent<MusicManager>();
+    musicManager.unitTest = true;
 
     AudioSource audioSource = musicManagerObject.AddComponent<AudioSource>();
     musicManager.audioSource = audioSource;

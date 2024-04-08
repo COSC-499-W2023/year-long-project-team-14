@@ -50,6 +50,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource dashSound;
     public AudioSource buttonClick;
 
+    [SerializeField] private AudioSource pickupSound;
+    [SerializeField] private AudioSource keySound;
+    [SerializeField] private AudioSource healSound;
+
     //dash cooldown
     public float dashCooldown = 1;
     
@@ -59,6 +63,8 @@ public class PlayerController : MonoBehaviour
     public GameObject dashPrefab; 
 
     public GameObject interactable;
+    public SpriteRenderer aimOrb;
+    public bool blastBullet = false;
 
     void Start()
     {
@@ -263,6 +269,29 @@ public class PlayerController : MonoBehaviour
             Rigidbody2D bulletRB = bullet.GetComponent<Rigidbody2D>();
             bulletRB.AddForce(-gunFollow.up * 50 * bulletForce);
 
+            if(blastBullet)
+            {
+                bullet = Instantiate(bulletPrefab, gunFollow.position, gunFollow.rotation * Quaternion.Euler(0, 0, 15));
+                bulletRB = bullet.GetComponent<Rigidbody2D>();
+                bulletRB.AddForce(-bullet.transform.up * 50 * bulletForce);
+                bullet.transform.rotation = Quaternion.identity;
+
+                bullet = Instantiate(bulletPrefab, gunFollow.position, gunFollow.rotation * Quaternion.Euler(0, 0, -15));
+                bulletRB = bullet.GetComponent<Rigidbody2D>();
+                bulletRB.AddForce(-bullet.transform.up * 50 * bulletForce);
+                bullet.transform.rotation = Quaternion.identity;
+
+                bullet = Instantiate(bulletPrefab, gunFollow.position, gunFollow.rotation * Quaternion.Euler(0, 0, 30));
+                bulletRB = bullet.GetComponent<Rigidbody2D>();
+                bulletRB.AddForce(-bullet.transform.up * 50 * bulletForce);
+                bullet.transform.rotation = Quaternion.identity;
+
+                bullet = Instantiate(bulletPrefab, gunFollow.position, gunFollow.rotation * Quaternion.Euler(0, 0, -30));
+                bulletRB = bullet.GetComponent<Rigidbody2D>();
+                bulletRB.AddForce(-bullet.transform.up * 50 * bulletForce);
+                bullet.transform.rotation = Quaternion.identity;
+            }
+
             //shoot sound effect
             if(!unitTest)
                 shootSound.Play();
@@ -317,53 +346,69 @@ public class PlayerController : MonoBehaviour
             else if(tag == "Key")
             {
                 interactable.GetComponent<Key>().Interact();
+                keySound.Play();
             }
             else if(tag == "Chest")
             {
-                interactable.GetComponent<Chest>().Interact();
+                interactable.GetComponent<Chest>().Interact(this, hs);
             }
             else if(tag == "Bottle")
             {
                 interactable.GetComponent<HealthPotion>().Interact(hs);
+                healSound.Play();
             }
             else if(tag == "lightning")
             {
                 interactable.GetComponent<LightningPickup>().Interact();
+                pickupSound.Play();
             }
             else if (tag == "Fireball")
             {
                 interactable.GetComponent<FireballPickup>().Interact();
+                pickupSound.Play();
+            }
+            else if (tag == "Void")
+            {
+                interactable.GetComponent<VoidBeamPickup>().Interact();
+                pickupSound.Play();
             }
             else if (tag == "SeekingOrb")
             {
                 interactable.GetComponent<SeekingOrbPickup>().Interact();
+                pickupSound.Play();
             }
             else if (tag == "summonChad")
             {
                 interactable.GetComponent<SummonChadPickup>().Interact();
+                pickupSound.Play();
             }
             else if (tag == "Freeze")
             {
                 interactable.GetComponent<FreezePickup>().Interact();
+                pickupSound.Play();
             }
             else if (tag == "Shield")
             {
                 //if the player interacts with the shield pickup call the function Interact() in the script ShieldPickup
                 interactable.GetComponent<ShieldPickup>().Interact();
+                pickupSound.Play();
             }
             else if (tag == "mageRage")
             {
                 //if the player interacts with the shield pickup call the function Interact() in the script ShieldPickup
                 interactable.GetComponent<mageRagePickup>().Interact();
+                pickupSound.Play();
             }
             else if (tag == "ScatterShot")
             {
                 interactable.GetComponent<ScatterShotPickup>().Interact();
+                pickupSound.Play();
             }
             else if (tag == "Rainbow")
             {
                 //if the player interacts with the shield pickup call the function Interact() in the script ShieldPickup
                 interactable.GetComponent<RainbowPickup>().Interact();
+                pickupSound.Play();
             }
         }
     }
