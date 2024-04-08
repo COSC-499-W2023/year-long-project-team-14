@@ -98,11 +98,11 @@ public class MiniBossHealthSystem : MonoBehaviour
     {
         if(collider.gameObject.CompareTag("FireballExplosion"))
         {
-            takeDamage(3);
+            takeDamage(4);
         }
         else if(collider.gameObject.CompareTag("VoidBeam"))
         {
-            takeDamage(4);
+            takeDamage(5);
         }
     }
 
