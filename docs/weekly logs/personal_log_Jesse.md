@@ -5,7 +5,7 @@
 - End Date: April 7
   
 ### Tasks I worked on:
-![](screenshots/t2week13tasks_jesse.PNG)
+![](screenshots/week13_term2_tasks_jesse.PNG)
   
 ### Recap on your week's goals
 My goals this week were to:
