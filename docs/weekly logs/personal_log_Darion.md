@@ -1,5 +1,72 @@
 # Personal Log - Darion Pescada
 
+## Term 2 Week 11
+- Start Date: March 25
+- End Date: March 31
+
+### Tasks I worked on:
+![](screenshots/term2_tasks_darion_week12.png)
+  
+### Recap on your week's goals
+This week, my goals were to finish creating all the levels and fix all of the bugs and issues with the game.
+
+### Which features were yours in the project plan for this milestone?
+- finished creating all 20 levels
+- updated and fixed controller support for the menus
+- added the 4 difficulties to the final boss 
+- rebalanced the game to be easier and more fair
+- fixed a ton of bugs and other issues
+
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed all of my tasks for this week.
+
+***
+
+## Term 2 Week 11
+- Start Date: March 18
+- End Date: March 24
+
+### Tasks I worked on:
+![](screenshots/term2_tasks_darion_week11.png)
+  
+### Recap on your week's goals
+This week, my goals were to update the spell shop to make the spells randomized and design more levels for the game.
+
+### Which features were yours in the project plan for this milestone?
+- created the spell randomizer to instantiate 3 random spell bottles when entering the shop
+- addded a unit test for the spell randomizer
+- added a button prompt above the spell bottles to tell the players how to pick it up depending on their input device
+- added a button prompt to the players UI to show how to cast their spell depending on their input device
+- continued to create more levels for the game
+- fixed bugs such as players losing invincibility when dashing, chad attacking already dead enemies, and the music going out of sync with the music timer when pausing the game
+- additionally, I helped Jesse with the final boss by adding the seeking shot attack
+
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed all of my tasks for this week.
+
+***
+
+## Term 2 Week 10
+- Start Date: March 11
+- End Date: March 17
+
+### Tasks I worked on:
+![](screenshots/term2_tasks_darion_week10.png)
+  
+### Recap on your week's goals
+This week, my goals were to add a new spell and fix any previous issues with the game.
+
+### Which features were yours in the project plan for this milestone?
+- created the freeze spell and unit tests for it
+- designed more levels for the game
+- helped Jesse implement the final bosses laser attack
+- fixed bugs and made improvements
+
+### Among these tasks, which have you completed/in progress in the last week?
+I have completed all of my tasks for this week.
+
+***
+
 ## Term 2 Week 9
 - Start Date: March 4
 - End Date: March 10

@@ -12,12 +12,18 @@ public class MiniBossHealthSystem : MonoBehaviour
     public FireSprayBullets shoot; 
     public BossLaserAttack bossAttack; 
     public int enemyHealth = 10;
+    public GameObject healthBarObj;
+    public MusicManager musicManager;
 
     public CircleCollider2D enemyCollider;
     public Ladder ladder;
     public Portal portal;
     public Image healthBar;
     public float healthAmount;
+    public Collider2D cover;
+    public GameObject chest;
+    public bool justin = false;
+    public GameObject deathExplosion;
 
     [SerializeField] private AudioSource hitSound;
     [SerializeField] private AudioSource deathSound;
@@ -40,18 +46,25 @@ public class MiniBossHealthSystem : MonoBehaviour
             }
         }
 
+        GameObject canvas = GameObject.FindWithTag("Canvas");
+        if(canvas != null)
+            musicManager = canvas.GetComponent<MusicManager>();
+
         //Get difficulty
         int diff = PlayerPrefs.GetInt("difficulty");
 
         //Set boss health
         if(diff == 1) 
-            enemyHealth = (int)Mathf.Round(enemyHealth * 1.5f);
+            enemyHealth = (int)Mathf.Round(enemyHealth * 1f);
         else if(diff == 2)
-            enemyHealth = (int)Mathf.Round(enemyHealth * 2f);
+            enemyHealth = (int)Mathf.Round(enemyHealth * 1.25f);
         else if(diff == 3)
-            enemyHealth = (int)Mathf.Round(enemyHealth * 2.5f);
+            enemyHealth = (int)Mathf.Round(enemyHealth * 1.5f);
         else if(diff == 4)
-            enemyHealth = (int)Mathf.Round(enemyHealth * 3f);
+            enemyHealth = (int)Mathf.Round(enemyHealth * 1.75f);
+
+        if(justin)
+            enemyHealth = 100;
 
         healthAmount = enemyHealth;
         
@@ -74,6 +87,10 @@ public class MiniBossHealthSystem : MonoBehaviour
         {
             takeDamage();
         }
+        else if (collision.gameObject.CompareTag("GiantBullet"))
+        {
+            takeDamage(2);
+        }
     }
 
     // Damage enemy if colliding with fireball
@@ -82,6 +99,10 @@ public class MiniBossHealthSystem : MonoBehaviour
         if(collider.gameObject.CompareTag("FireballExplosion"))
         {
             takeDamage(4);
+        }
+        else if(collider.gameObject.CompareTag("VoidBeam"))
+        {
+            takeDamage(5);
         }
     }
 
@@ -146,11 +167,12 @@ public class MiniBossHealthSystem : MonoBehaviour
         if(shoot != null)
         {
             shoot.firingEnabled = false;
+            shoot.enabled = false;
         }
 
         if(bossAttack != null)
         {
-            bossAttack.firingEnabled = false;
+            StartCoroutine(bossAttack.Disable());
         }
 
         enemyCollider.enabled = false;
@@ -162,7 +184,31 @@ public class MiniBossHealthSystem : MonoBehaviour
         //play death sound
         deathSound.Play();
 
+        if(musicManager != null)
+        {
+            musicManager.audioSource.Stop();
+            musicManager.time = 0;
+        }
+
+        if(bossAttack != null)
+        {
+            deathExplosion.SetActive(true);
+            Destroy(deathExplosion, 0.55f);
+        }
+
+        if(cover != null)
+            cover.enabled = true;
+
         StartCoroutine(Transparent());
+
+        spriteRenderer.sortingOrder = 8;
+        spriteRenderer.color = new Color32(255, 255, 255, 255);
+        
+        GameObject[] slimes = GameObject.FindGameObjectsWithTag("Enemy");
+        for(int i = 0; i < slimes.Length; i++)
+        {
+            slimes[i].GetComponent<EnemyHealthSystem>().Die();
+        } 
 
         //If last enemy, end level
         if (portal != null)
@@ -171,7 +217,7 @@ public class MiniBossHealthSystem : MonoBehaviour
 
             if (portal.allEnemies.Count == 0)
             {
-                EndLevel();
+                StartCoroutine(EndLevel());
             }
         }
         else
@@ -182,10 +228,18 @@ public class MiniBossHealthSystem : MonoBehaviour
 
                 if (ladder.allEnemies.Count == 0)
                 {
-                    EndLevel();
+                    StartCoroutine(EndLevel());
                 }
             }
         }
+
+        if(justin)
+        {
+            Instantiate(chest, transform.position, Quaternion.identity);
+            musicManager.playMusic = true;
+        }
+
+        Destroy(healthBarObj);
     }
 
     IEnumerator Transparent()
@@ -196,17 +250,18 @@ public class MiniBossHealthSystem : MonoBehaviour
         spriteRenderer.color = currentColor;
     }
 
-    void EndLevel()
-    {
+    IEnumerator EndLevel()
+    { 
+        yield return new WaitForSeconds(1f);
         if (portal != null)
         {
-            portal.SetPortalActive(true);
+            StartCoroutine(portal.SetPortalActive(true));
         }
         else
         {
             if (ladder != null)
             {
-                ladder.SetLadderActive(true);
+                StartCoroutine(ladder.SetLadderActive(true));
             }
         }
     }

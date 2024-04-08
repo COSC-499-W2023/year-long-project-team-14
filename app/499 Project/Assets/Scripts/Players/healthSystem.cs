@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class healthSystem : MonoBehaviour
 {
+    public GameObject playerUI;
     public SpriteRenderer spriteRenderer;
     public Rigidbody2D rb;
     public GameObject[] hearts;
@@ -14,7 +15,9 @@ public class healthSystem : MonoBehaviour
     public bool dead;
     public GameOverMenu gameOverMenu;
     public PlayerController playerController;
+    GameMaster gameMaster;
     public bool isInvic = false;
+    public bool blinking = false;
     public bool chad = false;
 
     [SerializeField] private AudioSource hitSound;
@@ -28,12 +31,16 @@ public class healthSystem : MonoBehaviour
         GameObject canvas = GameObject.FindWithTag("Canvas");
         if(canvas != null)
             gameOverMenu = canvas.GetComponent<GameOverMenu>();
+
+        GameObject gm = GameObject.FindWithTag("GameMaster");
+        if(gm != null)
+            gameMaster = gm.GetComponent<GameMaster>();
     }
 
     // Damage player if colliding with enemy or bullet
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet") ){
+        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyBullet") || collision.gameObject.CompareTag("Boss")){
             takeDamage();
         }
     }
@@ -41,7 +48,7 @@ public class healthSystem : MonoBehaviour
     //Continue to take damage if still touching enemy
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Enemy")){
+        if(collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Boss")){
             takeDamage();
             
         }
@@ -54,10 +61,19 @@ public class healthSystem : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Laser"))
+        {
+            takeDamage();
+
+        }
+    }
+
     public void takeDamage()
     {
         //Check if the player has >= health and if the player is temporarly invincible
-        if(life >= 1 && isInvic == false)
+        if(life >= 1 && isInvic == false && !chad && (gameMaster == null || !gameMaster.invincible))
         {
             //Decrease health by 1
             life--;
@@ -86,6 +102,8 @@ public class healthSystem : MonoBehaviour
 
     public void Die()
     {
+        life = 0;
+
         //Play death animation
         animator.SetBool("IsWalking", false);
         animator.SetBool("IsDead", true);
@@ -105,6 +123,9 @@ public class healthSystem : MonoBehaviour
         {
             (component as Behaviour).enabled = false;
         }
+
+        if(playerUI != null)
+            playerUI.SetActive(false);
         
         dead = true;
         spriteRenderer.sortingOrder = 8;
@@ -116,7 +137,8 @@ public class healthSystem : MonoBehaviour
     public void dashHs(){
         // Set the player to invincible during the dash
         isInvic = true;
-        gameObject.layer = LayerMask.NameToLayer("NoCollide");
+        if(gameObject.layer == LayerMask.NameToLayer("Player"))
+            gameObject.layer = LayerMask.NameToLayer("NoCollide");
         //Start the transparent anamation for the dash
         StartCoroutine(Transparent3());
     }
@@ -132,6 +154,8 @@ public class healthSystem : MonoBehaviour
     //This is used to show when the player is invicible 
     IEnumerator Transparent2()
     {
+        blinking = true;
+
         //Make the player transparent
         yield return new WaitForSeconds(0f);
         Color currentColor = spriteRenderer.color; // Set the transparency (alpha) value
@@ -192,6 +216,7 @@ public class healthSystem : MonoBehaviour
 
         //Make the player able to take damage again
         isInvic = false;
+        blinking = false;
     }
 
     //This is used during the dash to make the player transparent and resets invincibility 
@@ -210,9 +235,11 @@ public class healthSystem : MonoBehaviour
         spriteRenderer.color = currentColor;
 
         //reset invincibility. 
-        isInvic = false;
-        gameObject.layer = LayerMask.NameToLayer("Player");
+        if(!blinking)
+            isInvic = false;
 
+        if(gameObject.layer == LayerMask.NameToLayer("NoCollide"))
+            gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
     //Update heart UI

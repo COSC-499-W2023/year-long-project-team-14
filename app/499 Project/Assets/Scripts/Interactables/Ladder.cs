@@ -17,17 +17,21 @@ public class Ladder : MonoBehaviour
     public Sprite trapDoorSprite;
     public List<GameObject> allEnemies = new List<GameObject>();
     public GameObject ladderArrow;
+    public int secretExit = 0;
+
+    [SerializeField] private AudioSource levelCompleteSound;
     private void Start()
     {
         //get access to game master
         gameMaster = GameObject.FindWithTag("GameMaster").GetComponent<GameMaster>();
 
         //set exit inactive to start if not in shop
-        if(!gameMaster.inShop)
-            SetLadderActive(false);
+        if(!gameMaster.inShop && secretExit != 3 && secretExit != 5 && secretExit != 7  && secretExit != 8)
+            StartCoroutine(SetLadderActive(false));
         else
-            SetLadderActive(true);
+            StartCoroutine(SetLadderActive(true));
     }
+
 
     //player is within range
     private void OnTriggerStay2D(Collider2D other)
@@ -89,24 +93,34 @@ public class Ladder : MonoBehaviour
         {
             exitUnlocked = false;
             gameMaster.LevelComplete();
+
+            if(secretExit != 0)
+                gameMaster.secretExit = secretExit;
         }
     }
 
     //sets exit active or inactive
-    public void SetLadderActive(bool active)
+    public IEnumerator SetLadderActive(bool active)
     {
-        if(active)
+        if(active && !exitUnlocked)
         {
+            yield return new WaitForSeconds(0.5f);
+
             spriteRenderer.sprite = ladderSprite;
             exitUnlocked = true;
             if(gameMaster.currentLevel == 1 && ladderArrow != null)
                 ladderArrow.SetActive(true);
+
+            if (!gameMaster.inShop && (secretExit == 0 || secretExit == 2))
+            {
+                levelCompleteSound.Play();
+            }
         }
-        else
+        else if(!active)
         {
             spriteRenderer.sprite = trapDoorSprite;
             exitUnlocked = false;
         }
-
+        yield return null;
     }
 }

@@ -34,7 +34,7 @@ public class VolumeSettingsTests
 
         volumeSettings.Load();
 
-        Assert.AreEqual(expectedSliderValue, volumeSettings.volumeSlider.value);
+        Assert.AreEqual(expectedSliderValue, volumeSettings.volumeSlider.value * 2);
     }
 
     [Test]
@@ -50,7 +50,7 @@ public class VolumeSettingsTests
         volumeSettings.volumeSlider.value = expectedSliderValue;
         volumeSettings.Save();
 
-        Assert.AreEqual(expectedSliderValue, PlayerPrefs.GetFloat("Volume"));
+        Assert.AreEqual(expectedSliderValue, PlayerPrefs.GetFloat("Volume") / 2);
     }
     
 }

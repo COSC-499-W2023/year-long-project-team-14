@@ -29,7 +29,18 @@ TagManager:
   - Spike
   - summonChad
   - Boss
+  - Freeze
   - Shield
+  - Laser
+  - mageRage
+  - ScatterShot
+  - Chest
+  - Key
+  - Bottle
+  - Rainbow
+  - VoidBeam
+  - Void
+  - GiantBullet
   layers:
   - Default
   - TransparentFX
@@ -50,13 +61,12 @@ TagManager:
   - Slime
   - WallSquish
   - Shield
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - ShieldPlayer
+  - IceCube
+  - BossSeeker
+  - FinalBoss
+  - VoidBeam
+  - BossSeekerRed
   - 
   - 
   - 
@@ -67,7 +77,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: New Layer 1
-    uniqueID: 2019806113
     locked: 0

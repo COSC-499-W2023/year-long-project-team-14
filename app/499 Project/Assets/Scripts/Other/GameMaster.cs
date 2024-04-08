@@ -19,6 +19,7 @@ public class GameMaster : MonoBehaviour
 
     public int currentLevel = 1;
     public bool inShop = false;
+    public bool invincible = false;
 
     public GameObject WinMenu;
 
@@ -40,6 +41,9 @@ public class GameMaster : MonoBehaviour
     public GameObject levelTemplate;
     public GameObject level1;
     public GameObject[] levels;
+    public GameObject[] secretLevel;
+    public int secretExit = 0;
+    public bool hasKey = false;
     private Transform player1Spawn;
     private Transform player2Spawn;
 
@@ -48,7 +52,9 @@ public class GameMaster : MonoBehaviour
     public bool stopTimer = false;
     public bool unitTest = false;
 
+    public MusicManager musicManager; 
     [SerializeField] private AudioSource transitionSound;
+    [SerializeField] private AudioSource portalSound;
 
     void Start() //Sets everything up
     {
@@ -74,16 +80,17 @@ public class GameMaster : MonoBehaviour
     public IEnumerator NextLevel()
     {
         //Play transition sound
-        transitionSound.Play();
+        if(currentLevel == 10 || currentLevel == 20)
+            portalSound.Play();
+        else
+            transitionSound.Play();
 
         //Make players invincible while transitioning
-        healthSystem1.isInvic = true;
-        if(playerCount > 1)
-            healthSystem2.isInvic = true;
+        invincible = true;
 
         if(currentLevel < levels.Length)
         {
-            //Wait for screen to fade out and then destroy current level and bullets
+            //Wait for screen to fade out and then destroy current level and other objects
             if (fadeAnim != null)
             {
                 fadeAnim.Play("ScreenFadeOut");
@@ -91,23 +98,50 @@ public class GameMaster : MonoBehaviour
             }
             Destroy(level);
             GameObject[] playerBullets = GameObject.FindGameObjectsWithTag("Player_bullet");
+            GameObject[] giantBullets = GameObject.FindGameObjectsWithTag("GiantBullet");
             GameObject[] enemyBullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             GameObject[] chads = GameObject.FindGameObjectsWithTag("Player");
+            GameObject chest = GameObject.FindWithTag("Chest");
             for(int i = 0; i < playerBullets.Length; i++) Destroy(playerBullets[i]);
-            for(int i = 0; i < enemyBullets.Length; i++) Destroy(enemyBullets[i]);
+            for(int i = 0; i < giantBullets.Length; i++) Destroy(giantBullets[i]);
+            for(int i = 0; i < enemyBullets.Length; i++) enemyBullets[i].SetActive(false);
+            for(int i = 0; i < enemies.Length; i++) Destroy(enemies[i]);
             for(int i = 0; i < chads.Length; i++) if(chads[i].GetComponent<healthSystem>().chad) Destroy(chads[i]);
+            if(chest != null) Destroy(chest);
             yield return null;
 
             //Start to fade back in
             if(fadeAnim != null)
                 fadeAnim.Play("ScreenFadeIn");
 
-            //Move players out of the way
+            //Move players out of the way and reset line of sight
             player1.transform.position = new Vector3(1000, 0, 0);
+            player1.GetComponent<PlayerController>().aimingInWall = false;
             if(playerCount > 1)
+            {
                 player2.transform.position = new Vector3(1000, 0, 0);
+                player2.GetComponent<PlayerController>().aimingInWall = false;
+            }
 
-            if(currentLevel % 2 == 0 && !inShop) //Go to shop
+            if(secretExit != 0)
+            {
+                if(secretExit == 7)
+                {
+                    musicManager.audioSource.Stop();
+                    musicManager.CancelInvoke();
+                }
+                else if(secretExit == 8)
+                    musicManager.playMusic = true;
+
+                if(secretExit == 3 || secretExit == 5 || secretExit == 8)
+                    currentLevel++;
+
+                level = Instantiate(secretLevel[secretExit], transform.position, Quaternion.identity);
+                secretExit = 0;
+                
+            }
+            else if(currentLevel % 5 == 4 && !inShop) //Go to shop
             {
                 level = Instantiate(shopLevel, transform.position, Quaternion.identity);
                 inShop = true;
@@ -124,6 +158,9 @@ public class GameMaster : MonoBehaviour
                 level = Instantiate(levels[currentLevel-1], transform.position, Quaternion.identity);
                 AstarPath.active.Scan();
             }
+
+            if(musicManager != null)
+                musicManager.time = -999;
             
             //Set player positions to new start positions
             player1Spawn = GameObject.FindWithTag("Player1Spawn").GetComponent<Transform>();
@@ -137,15 +174,29 @@ public class GameMaster : MonoBehaviour
             //Give players health
             if(!inShop)
             {
-                if(healthSystem1.life < 3 && !healthSystem1.dead)
+                if(healthSystem1.life < healthSystem1.maxLife && !healthSystem1.dead)
                 {
                     healthSystem1.life++;
                     healthSystem1.SetHeartsActive();
                 }
 
-                if(playerCount > 1 && healthSystem2.life < 3 && !healthSystem2.dead)
+                if(playerCount > 1 && healthSystem2.life < healthSystem2.maxLife && !healthSystem2.dead)
                 {
                     healthSystem2.life++;
+                    healthSystem2.SetHeartsActive();
+                }
+            }
+            else
+            {
+                if(healthSystem1.life < healthSystem1.maxLife && healthSystem1.maxLife > 1 && !healthSystem1.dead)
+                {
+                    healthSystem1.life = 3;
+                    healthSystem1.SetHeartsActive();
+                }
+
+                if(playerCount > 1 && healthSystem2.life < healthSystem2.maxLife && healthSystem2.maxLife > 1 && !healthSystem2.dead)
+                {
+                    healthSystem2.life = 3;
                     healthSystem2.SetHeartsActive();
                 }
             }
@@ -158,9 +209,7 @@ public class GameMaster : MonoBehaviour
                 RespawnPlayer(healthSystem2);
 
             //Make player not invincible
-            healthSystem1.isInvic = false;
-            if(playerCount > 1)
-                healthSystem2.isInvic = false;
+            invincible = false;
         }
         else
         {
@@ -180,6 +229,10 @@ public class GameMaster : MonoBehaviour
             GameObject portal = GameObject.FindWithTag("Portal");
             if(portal != null)
                 Destroy(portal);
+
+             // Start playing the win menu music
+            if(musicManager != null)
+                musicManager.PlayWinMenuMusic();
 
             //Fade back in
             if (fadeAnim != null)
@@ -202,6 +255,9 @@ public class GameMaster : MonoBehaviour
         hs.animator.SetTrigger("isHit");
         hs.animator.SetBool("IsDead", false);
         hs.isInvic = false;
+
+        if(hs.playerUI != null)
+            hs.playerUI.SetActive(true);
     }
 
     //Set up controls for players
@@ -327,7 +383,15 @@ public class GameMaster : MonoBehaviour
             {
                 if(EventSystem.current.currentSelectedGameObject == null)
                 {
-                    if(pauseMenu.pauseMenu)
+                    if(controlMenu.controlMenu)
+                    {
+                        EventSystem.current.SetSelectedGameObject(controlMenu.backButton);
+                    }
+                    else if(musicManager.optionsMenu)
+                    {
+                        EventSystem.current.SetSelectedGameObject(musicManager.volumeSlider.gameObject);
+                    }
+                    else if(pauseMenu.pauseMenu)
                     {
                         EventSystem.current.SetSelectedGameObject(pauseMenu.resumeButton);
                     }
@@ -342,10 +406,6 @@ public class GameMaster : MonoBehaviour
                     else if(gameOverMenu.gameOverMenu)
                     {
                         EventSystem.current.SetSelectedGameObject(gameOverMenu.restartButton);
-                    }
-                    else if(controlMenu.controlMenu)
-                    {
-                        EventSystem.current.SetSelectedGameObject(controlMenu.backButton);
                     }
                 }
             }

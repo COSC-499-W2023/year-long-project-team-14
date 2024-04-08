@@ -11,8 +11,10 @@ public class EnemyHealthSystem : MonoBehaviour
     public EnemyTripleShot et;
     public EnemyMovement enemyMovement; 
     public int enemyHealth = 3;
+    //public bool mageRisOn = false;
 
     public CircleCollider2D enemyCollider;
+    public GameObject[] ladders;
     public Ladder ladder;
     public Portal portal;
 
@@ -29,12 +31,13 @@ public class EnemyHealthSystem : MonoBehaviour
         }
         else
         {
-            GameObject lad = GameObject.FindWithTag("Ladder");
-            if(lad != null)
-            {
-                ladder = lad.GetComponent<Ladder>();
-                ladder.allEnemies.Add(gameObject);
-            }
+            ladders = GameObject.FindGameObjectsWithTag("Ladder");
+            for(int i = 0; i < ladders.Length; i++)
+                if(ladders[i] != null)
+                {
+                    ladder = ladders[i].GetComponent<Ladder>();
+                    ladder.allEnemies.Add(gameObject);
+                }
         }
 
         //Get difficulty
@@ -72,6 +75,10 @@ public class EnemyHealthSystem : MonoBehaviour
         {
             takeDamage();
         }
+        else if (collision.gameObject.CompareTag("GiantBullet"))
+        {
+            takeDamage(2);
+        }
     }
 
     // Damage enemy if colliding with fireball
@@ -80,6 +87,10 @@ public class EnemyHealthSystem : MonoBehaviour
         if(collider.gameObject.CompareTag("FireballExplosion"))
         {
             takeDamage(4);
+        }
+        else if(collider.gameObject.CompareTag("VoidBeam"))
+        {
+            takeDamage(5);
         }
     }
 
@@ -93,6 +104,9 @@ public class EnemyHealthSystem : MonoBehaviour
             if (enemyHealth <= 0)
             {
                 Die();
+
+                //play death sound
+                deathSound.Play();
             }
             else
             {
@@ -115,6 +129,9 @@ public class EnemyHealthSystem : MonoBehaviour
             if (enemyHealth <= 0)
             {
                 Die();
+
+                //play death sound
+                deathSound.Play();
             }
             else
             {
@@ -143,10 +160,9 @@ public class EnemyHealthSystem : MonoBehaviour
         
         animator.SetBool("IsDead", true);
 
-        //play death sound
-        deathSound.Play();
-
         StartCoroutine(Transparent());
+
+        spriteRenderer.sortingOrder = 8;
 
         //If last enemy, end level
         if (portal != null)
@@ -155,20 +171,22 @@ public class EnemyHealthSystem : MonoBehaviour
 
             if (portal.allEnemies.Count == 0)
             {
-                EndLevel();
+                EndLevel(ladder);
             }
         }
         else
         {
-            if (ladder != null)
-            {
-                ladder.allEnemies.Remove(gameObject);
-
-                if (ladder.allEnemies.Count == 0)
+            for(int i = 0; i < ladders.Length; i++)
+                if (ladders[i] != null)
                 {
-                    EndLevel();
+                    ladder = ladders[i].GetComponent<Ladder>();
+                    ladder.allEnemies.Remove(gameObject);
+
+                    if (ladder.allEnemies.Count == 0)
+                    {
+                        EndLevel(ladder);
+                    }
                 }
-            }
         }
     }
 
@@ -180,17 +198,17 @@ public class EnemyHealthSystem : MonoBehaviour
         spriteRenderer.color = currentColor;
     }
 
-    void EndLevel()
+    void EndLevel(Ladder lad)
     {
         if (portal != null)
         {
-            portal.SetPortalActive(true);
+            StartCoroutine(portal.SetPortalActive(true));
         }
         else
         {
-            if (ladder != null)
+            if (lad != null)
             {
-                ladder.SetLadderActive(true);
+                StartCoroutine(lad.SetLadderActive(true));
             }
         }
     }

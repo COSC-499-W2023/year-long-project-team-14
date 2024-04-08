@@ -15,10 +15,12 @@ public class Portal : MonoBehaviour
     public List<GameObject> allEnemies = new List<GameObject>();
     public GameObject port;
     public bool portalActive = false;
+
+    [SerializeField] private AudioSource levelCompleteSound;
     private void Start()
     {
         // Initially, the portal is inactive
-        SetPortalActive(false);
+        StartCoroutine(SetPortalActive(false));
         gameMaster = GameObject.FindWithTag("GameMaster").GetComponent<GameMaster>();
     }
 
@@ -77,19 +79,32 @@ public class Portal : MonoBehaviour
     {
         if (playerIsOverPortal && portalActive)
         {
+            portalActive = false;
             playerIsOverPortal = false;
             gameMaster.LevelComplete();
         }
     }
 
     //sets exit active or inactive
-    public void SetPortalActive(bool active)
+    public IEnumerator SetPortalActive(bool active)
     {
-        port.SetActive(active);
+        if (active)
+        {
+            yield return new WaitForSeconds(0.5f);
 
-        if(active)
+            port.SetActive(active);
             portalActive = true;
+            if (!gameMaster.inShop)
+            {
+                levelCompleteSound.Play();
+            }
+        }
         else
+        {
+            port.SetActive(active);
             portalActive = false;
+        }
+
+        yield return null;
     }
 }

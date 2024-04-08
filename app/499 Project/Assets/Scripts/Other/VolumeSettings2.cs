@@ -1,18 +1,38 @@
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(AudioSource))]
 public class MusicManager : MonoBehaviour
 {
     public AudioClip[] tracks;
+    public AudioClip minibossTrack; 
+    public AudioClip finalbossTrack;
     public AudioSource audioSource;
     [SerializeField] public Slider volumeSlider;
+    public bool optionsMenu = false;
+    public PauseMenu pauseMenu;
+    public GameObject optionsButton;
+    public GameObject backButton;
+    public GameObject pauseMenuUI;
+    public GameObject optionsMenuUI;
 
     private int currentTrackIndex = 0;
+    public GameMaster gameMaster;
+    public int previousLevel = -1;
+
+    public AudioClip winMenuTrack; 
+    public AudioClip madnessWinTrack;
+    public AudioClip gameoverMenuTrack; 
+    public AudioClip secretTrack; 
+    public bool playMusic = false;
+    public bool unitTest = false;
+
+    public float time = 0;
 
     public void Start()
     {
+        gameMaster = FindObjectOfType<GameMaster>();
         audioSource = GetComponent<AudioSource>();
 
         ShuffleTracks();
@@ -21,30 +41,25 @@ public class MusicManager : MonoBehaviour
 
         if (PlayerPrefs.HasKey("Volume"))
         {
-            AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1);
-            Load();
-        }
-        else
-        {
             Load();
         }
     }
 
     public void ChangeVolume()
     {
-        float volume = volumeSlider.value; 
-        AudioListener.volume = volume; 
+        AudioListener.volume = volumeSlider.value * 2f; 
         Save(); 
     }
 
     public void Load()
     {
-        volumeSlider.value = PlayerPrefs.GetFloat("Volume");
+        volumeSlider.value = PlayerPrefs.GetFloat("Volume") / 2f;
+        AudioListener.volume = volumeSlider.value * 2f; 
     }
 
     public void Save()
     {
-        PlayerPrefs.SetFloat("Volume", volumeSlider.value);
+        PlayerPrefs.SetFloat("Volume", volumeSlider.value * 2f);
     }
 
     public void ShuffleTracks()
@@ -66,9 +81,9 @@ public class MusicManager : MonoBehaviour
     {
         if (tracks.Length > 0)
         {
-            audioSource.clip = tracks[currentTrackIndex];
-            audioSource.Play();
+            AudioClip nextClip;
 
+            nextClip = tracks[currentTrackIndex];
             currentTrackIndex++;
             if (currentTrackIndex >= tracks.Length)
             {
@@ -76,10 +91,87 @@ public class MusicManager : MonoBehaviour
                 ShuffleTracks(); 
             }
 
-            audioSource.loop = false;
+            audioSource.clip = nextClip;
             audioSource.Play();
 
-            Invoke("PlayNextTrack", audioSource.clip.length);
+            Invoke("PlayNextTrack", nextClip.length);
         }
+    }
+
+    public void Update()
+    {
+        if (gameMaster.currentLevel != previousLevel)
+        {
+            if (gameMaster.currentLevel == 10)
+            {
+                audioSource.Stop();
+                audioSource.clip = minibossTrack;
+                audioSource.Play();
+                CancelInvoke();
+            }
+            else if (gameMaster.currentLevel == 20)
+            {
+                audioSource.Stop();
+                audioSource.clip = finalbossTrack;
+                audioSource.Play();
+                CancelInvoke();
+            }
+            else if(gameMaster.currentLevel == 11)
+            {
+                PlayNextTrack();
+            }
+            else if(playMusic)
+            {
+                playMusic = false;
+                PlayNextTrack();
+            }
+
+            previousLevel = gameMaster.currentLevel;
+        }
+
+        time += Time.deltaTime;
+
+        if(time > 150 && (gameMaster.currentLevel == 10 || gameMaster.currentLevel == 20))
+        {
+            time = 0;
+            audioSource.clip = secretTrack;
+            audioSource.Play();
+        }
+    }
+
+    public void PlayWinMenuMusic()
+    {
+        CancelInvoke();
+        audioSource.Stop();
+        if(!unitTest && PlayerPrefs.GetInt("difficulty") == 4)
+            audioSource.clip = madnessWinTrack;
+        else
+            audioSource.clip = winMenuTrack;
+        audioSource.Play();
+    }
+
+    public void PlayGameOverMenuMusic()
+    {
+        CancelInvoke();
+        audioSource.Stop();
+        audioSource.clip = gameoverMenuTrack;
+        audioSource.Play();
+    }
+    public void Back()
+    {
+        optionsMenu = false;
+        pauseMenu.pauseMenu = true;
+        optionsMenuUI.SetActive(false); 
+        pauseMenuUI.SetActive(true); 
+        gameMaster.SelectButton(pauseMenu.resumeButton);
+    }
+
+    public void OptionsButton()
+    {
+        optionsMenu = true;
+        pauseMenu.pauseMenu = false;
+        optionsMenuUI.SetActive(true); 
+        pauseMenuUI.SetActive(false); 
+        gameMaster.SelectButton(volumeSlider.gameObject);
     }
 }

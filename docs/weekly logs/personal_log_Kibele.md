@@ -1,5 +1,77 @@
 # Personal Log - Kibele Sebnem Yildirim
 
+## Week 13 - Term 2
+- Start Date: April 1
+- End Date: April 7
+
+- ### Recap on your week's goals
+- My goals this week were to:
+* finalize my personal report and demo video.
+
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to start and finalize my personal report and demo video.
+  
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week.
+  
+### Tasks I worked on:
+![](screenshots/kibeleweek13.png)
+
+
+## Week 12 (Bonus Feature) - Term 2
+- Start Date: March 25
+- End Date: March 31
+
+- ### Recap on your week's goals
+- My goals this week were to:
+* add music to win menu and game over menu as a bonus to the features i have worked during the term
+*talk with team about wrapping up the project
+
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to add music for when the player beats the game or looses the game.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week. 
+
+Here are the screenshots of my codework in the Game Master, GamoverMenu, and VolumeSettings and their test on VSCode this week:
+![](screenshots/kibeleweeklyt2week12-2.png)
+![](screenshots/kibeleweeklyt2week12.png)
+![](screenshots/kibeleweeklyt2week12-1.png)
+
+### Tasks I worked on:
+![](screenshots/kibeleweek12.png)
+
+## Week 11 - Term 2
+- Start Date: March 18
+- End Date: March 24
+
+- ### Recap on your week's goals
+- My goals this week were to:
+* make settings menu and implement controls menu inside
+* decide the next week's goal as a bonus 
+* Review my teammates' code and fixes on the game
+* make changes on main mneu and game scene
+* Write test for the controls menu and its revised script
+
+### Which features were yours in the project plan for this milestone?
+- My goals for the past week was to  make settings menu and implement controls menu inside, decide the next week's goal as a bonus, make changes on main mneu and game scene.
+
+### Among these tasks, which have you completed/in progress in the last week?
+- i have completed all my tasks this week. 
+
+Here are the screenshots of my codework in the Game scene and in the Main Menu and its test on VSCode this week:
+![](screenshots/kibeleweeklyt2week11-2.png)
+
+Here are the screenshots of my visual changes that i have written in Unity this week:
+![](screenshots/kibeleweeklyt2week11-1.png)
+![](screenshots/kibeleweeklyt2week11.png)
+
+
+### Tasks I worked on:
+![](screenshots/kibeleweek11.png)
+
 ## Week 10 - Term 2
 - Start Date: March 11
 - End Date: March 17

@@ -333,7 +333,7 @@ MonoBehaviour:
   movementSpeed: 3
   nextWaypointDistance: 1
   chargeDuration: 0
-  waitTime: 0
+  waitTime: 0.25
   timer: 0
   targetPlayer: {fileID: 0}
   players: []
@@ -352,10 +352,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 956495c62943b5e4e838883212030450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  p: []
   players: []
   targetPlayer: {fileID: 0}
   bulletPrefab: {fileID: 3646651384316253834, guid: 1bfe49c7730abc141b70578a420c4ce7, type: 3}
-  shootInterval: 3.5
+  shootInterval: 6.5
   bulletSpeed: 2.5
   lastShootTime: 0
   Points1: []
@@ -366,7 +367,7 @@ MonoBehaviour:
   lineRenderer3: {fileID: 6799709459550248674}
   LayerDetection:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 532864
   maxReflections: 1
   rotationSpeed: 250
   shootSound: {fileID: -4583386987018979497}
@@ -551,6 +552,7 @@ MonoBehaviour:
   enemyMovement: {fileID: 0}
   enemyHealth: 4
   enemyCollider: {fileID: 0}
+  ladders: []
   ladder: {fileID: 0}
   portal: {fileID: 0}
   hitSound: {fileID: 5349970572320734504}
@@ -759,7 +761,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bafb4111145bcc54196a9f700fa8e1e2, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.125
   m_Pitch: 1
   Loop: 0
   Mute: 0

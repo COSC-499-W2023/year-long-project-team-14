@@ -511,11 +511,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f863001c275f6e419b4274bd8ee6db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players: []
   targetPlayer: {fileID: 0}
   bulletPrefab: {fileID: 5755921796930191897, guid: 0627c6b426e36a2419a5c88695dfeafc, type: 3}
-  shootInterval: 2
-  bulletSpeed: 15
+  shootInterval: 1.25
+  bulletSpeed: 20
   lastShootTime: 0
   Points1: []
   Points2: []
@@ -578,6 +577,7 @@ MonoBehaviour:
   gameOverMenu: {fileID: 0}
   playerController: {fileID: 1955199670846603571}
   isInvic: 0
+  blinking: 0
   chad: 1
   hitSound: {fileID: 506454921404844893}
   deathSound: {fileID: 4143684547295427126}
@@ -602,6 +602,9 @@ MonoBehaviour:
   moveSpeed: 0
   bulletBounces: 0
   player1: 0
+  holdCooldown: 0
+  mouseHold: 0
+  dashHold: 0
   aimingInWall: 0
   bulletPrefab: {fileID: 0}
   playerInput: {fileID: 0}
@@ -817,11 +820,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 484c8d439e217a843bd634e0639fc928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1: 1
   image: {fileID: 6486275301687426159}
   fireSprite: {fileID: -1659854389, guid: 71f101bd904da3a4eb89ffd963ac31b7, type: 3}
   lightningSprite: {fileID: 339508314, guid: fa739449f8985d74aa6afb409a7beb86, type: 3}
   SeekingSprite: {fileID: -1788315041, guid: 052d2d598db74c242b7b861ed291772f, type: 3}
   chadSprite: {fileID: 0}
+  freezeSprite: {fileID: 0}
+  shieldSprite: {fileID: 0}
+  mRSprite: {fileID: 0}
+  scatterShotSprite: {fileID: 0}
+  gameMaster: {fileID: 0}
+  button: {fileID: 0}
+  ltIcon: {fileID: 0}
+  qIcon: {fileID: 0}
 --- !u!114 &6486275301687426159
 MonoBehaviour:
   m_ObjectHideFlags: 0
