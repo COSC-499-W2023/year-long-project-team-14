@@ -4,7 +4,7 @@
 - End Date: April 7
   
 ### Tasks I worked on:
-![](screenshots/t2Week13_peerEval_Gabriel.png)
+![](screenshots/t2Week13_peerEval_Gabriel.PNG)
   
 ### Recap on your week's goals
 My goals this week were to: 
